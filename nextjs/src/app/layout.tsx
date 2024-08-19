@@ -1,8 +1,12 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+  display: "block",
+  variable: "--font-source-sans-3",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${sourceSans3.variable}`}>{children}</body>
     </html>
   )
 }
