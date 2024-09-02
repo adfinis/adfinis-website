@@ -17,6 +17,7 @@
 }
 
 body {
+  @apply font-sans;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -30,4 +31,19 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/*
+* The default is "light", set in layout.tsx.
+*/
+[data-scheme="light"] {
+  --text-primary: theme("colors.neutral");
+  --bg-primary: theme("colors.saphire");
+  --text-secondary: theme("colors.saphire");
+  --bg-secondary: none;
+}
+[data-scheme="dark"] {
+  --text-primary: theme("colors.saphire");
+  --bg-primary: theme("colors.neutral");
+  --text-secondary: theme("colors.neutral");
 }
