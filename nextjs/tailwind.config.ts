@@ -22,7 +22,7 @@ const config: Config = {
     colors: {
       stone: "#0F0F0F",
       biscay: "#1C2E5D",
-      saphire: "#2E4B98",
+      sapphire: "#2E4B98",
       jumbo: "#8B8B8C",
       neutral: "#F5F6F5",
       sunglow: "#FFCA31",
@@ -36,6 +36,9 @@ const config: Config = {
     boxShadow: {
       "1": "0px 2px 6px 0px rgba(0, 0, 0, 0.20)",
       "2": "2px 4px 12px 0px rgba(0, 0, 0, 0.10)",
+    },
+    container: {
+      center: true,
     },
     extend: {
       backgroundImage: {
