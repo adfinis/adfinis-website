@@ -2,8 +2,8 @@ import { cva, VariantProps } from "class-variance-authority"
 import { twMerge } from "tailwind-merge"
 import React, { type ReactNode } from "react"
 
-import ChevronLeft from "./chevron-left"
-import ChevronRight from "./chevron-right"
+import IconChevronLeft from "./icon-chevron-left"
+import IconChevronRight from "./icon-chevron-right"
 
 export const buttonStyles = cva(
   [
@@ -68,9 +68,9 @@ const Button: React.FC<ButtonProps> = ({
       tabIndex={disabled ? -1 : 0}
       aria-disabled={disabled}
     >
-      {chevron === "left" && <ChevronLeft />}
+      {chevron === "left" && <IconChevronLeft />}
       {children}
-      {chevron === "right" && <ChevronRight />}
+      {chevron === "right" && <IconChevronRight />}
     </button>
   )
 }

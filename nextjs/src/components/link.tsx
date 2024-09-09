@@ -1,8 +1,8 @@
 import { cva, VariantProps } from "class-variance-authority"
 import Link, { type LinkProps } from "next/link"
 import { twMerge } from "tailwind-merge"
-import ChevronLeft from "./chevron-left"
-import ChevronRight from "./chevron-right"
+import IconChevronLeft from "./icon-chevron-left"
+import IconChevronRight from "./icon-chevron-right"
 
 import { buttonStyles } from "./button"
 
@@ -31,9 +31,9 @@ const Button = ({
       tabIndex={disabled ? -1 : 0}
       aria-disabled={Boolean(disabled)}
     >
-      {chevron === "left" && <ChevronLeft />}
+      {chevron === "left" && <IconChevronLeft />}
       {children}
-      {chevron === "right" && <ChevronRight />}
+      {chevron === "right" && <IconChevronRight />}
     </Link>
   )
 }

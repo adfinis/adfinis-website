@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
+import Logo from "@/components/logo"
+import TopbarGroup from "@/components/topbar-group"
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -25,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceSans3.variable}`} data-scheme="light">
+      <body
+        className={`bg-neutral ${sourceSans3.variable}`}
+        data-scheme="light"
+      >
+        <TopbarGroup />
         {children}
       </body>
     </html>

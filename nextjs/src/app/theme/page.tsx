@@ -10,10 +10,62 @@ export default function Theme() {
 
   return (
     <main className="bg-neutral">
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      {/* <div className="min-h-[300px]">Hero.</div> */}
+      <div className="container">
+        <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
+      </div>
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-2 lg:grid-cols-3">
+        <span className="h-40 w-full bg-stone rounded p-4 text-20 md:text-35">
+          <b>Stone</b>
+          <br /> #0f0f0f
+        </span>
+        <span className="h-40 w-full bg-sapphire rounded p-4 text-20 md:text-35">
+          <b>Sapphire</b>
+          <br /> #2e4b98
+        </span>
+        <span className="h-40 w-full bg-biscay rounded p-4 text-20 md:text-35">
+          <b>Biscay</b>
+          <br /> #1c2e5d
+        </span>
+        <span className="h-40 w-full bg-jumbo rounded p-4 text-20 md:text-35">
+          <b>Jumbo</b>
+          <br /> #8b8b8c
+        </span>
+        <span className="h-40 w-full bg-neutral text-stone rounded p-4 text-20 md:text-35 border border-stone">
+          <b>Neutral</b>
+          <br /> #f5f6f5
+        </span>
+        <span className="h-40 w-full bg-sunglow rounded p-4 text-20 md:text-35">
+          <b>Sunglow</b>
+          <br /> #ffca31
+        </span>
+        <span className="h-40 w-full bg-cinnamon rounded p-4 text-20 md:text-35">
+          <b>Cinnamon</b>
+          <br /> #e56820
+        </span>
+        <span className="h-40 w-full bg-green rounded p-4 text-20 md:text-35">
+          <b>Green</b>
+          <br /> #34ae6b
+        </span>
+        <span className="h-40 w-full bg-razzmatazz rounded p-4 text-20 md:text-35">
+          <b>Razzmatazz</b>
+          <br /> #e30d74
+        </span>
+        <span className="h-40 w-full bg-fuchsia rounded p-4 text-20 md:text-35">
+          <b>Fuchsia</b>
+          <br /> #7e57c2
+        </span>
+        <span className="h-40 w-full bg-manhattan rounded p-4 text-20 md:text-35">
+          <b>Manhattan</b>
+          <br /> #f7c6a5
+        </span>
+      </div>
+      <div className="container">
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">
           Buttons
         </h1>
+      </div>
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Button onClick={handleClick} size="large" variant="cta">
           CTA - large
         </Button>
@@ -42,7 +94,7 @@ export default function Theme() {
           label
         </Button>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Button onClick={handleClick} size="large" variant="text">
           text - large
         </Button>
@@ -103,7 +155,7 @@ export default function Theme() {
           label
         </Button>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Button onClick={handleClick} size="small" variant="cta">
           CTA - small
         </Button>
@@ -132,7 +184,7 @@ export default function Theme() {
           label
         </Button>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Button onClick={handleClick} size="small" variant="text">
           text - small
         </Button>
@@ -195,7 +247,7 @@ export default function Theme() {
       </div>
       {/* Dark Theme */}
       <div
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-biscay"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
         data-scheme="dark"
       >
         <Button onClick={handleClick} size="large" variant="cta">
@@ -228,7 +280,7 @@ export default function Theme() {
       </div>
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-biscay"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
       >
         <Button onClick={handleClick} size="large" variant="text">
           text - large
@@ -293,7 +345,7 @@ export default function Theme() {
 
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-stone"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
         <Button onClick={handleClick} size="small" variant="cta">
           CTA - small
@@ -325,7 +377,7 @@ export default function Theme() {
       </div>
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-stone"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
         <Button onClick={handleClick} size="small" variant="text">
           text - small
@@ -387,11 +439,13 @@ export default function Theme() {
           label
         </Button>
       </div>
+      <div className="container">
+        <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Links</h1>
+      </div>
       <div
         data-scheme="light"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3"
       >
-        <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Links</h1>
         <Link href="https://google.com" size="large" variant="cta">
           CTA - large
         </Link>
@@ -425,7 +479,7 @@ export default function Theme() {
           label
         </Link>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Link href="https://google.com" size="large" variant="text">
           text - large
         </Link>
@@ -486,7 +540,7 @@ export default function Theme() {
           label
         </Link>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Link href="https://google.com" size="small" variant="cta">
           CTA - small
         </Link>
@@ -520,7 +574,7 @@ export default function Theme() {
           label
         </Link>
       </div>
-      <div className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3">
+      <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
         <Link href="https://google.com" size="small" variant="text">
           text - small
         </Link>
@@ -583,7 +637,7 @@ export default function Theme() {
       </div>
       {/* Dark Theme */}
       <div
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-biscay"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
         data-scheme="dark"
       >
         <Link href="https://google.com" size="large" variant="cta">
@@ -621,7 +675,7 @@ export default function Theme() {
       </div>
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-biscay"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
       >
         <Link href="https://google.com" size="large" variant="text">
           text - large
@@ -686,7 +740,7 @@ export default function Theme() {
 
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-stone"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
         <Link href="https://google.com" size="small" variant="cta">
           CTA - small
@@ -723,7 +777,7 @@ export default function Theme() {
       </div>
       <div
         data-scheme="dark"
-        className="container p-8 grid max-w-screen-lg mx-auto place-items-start gap-12 grid-cols-3 bg-stone"
+        className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
         <Link href="https://google.com" size="small" variant="text">
           text - small
