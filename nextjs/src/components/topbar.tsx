@@ -12,8 +12,6 @@ const Topbar: React.FC = () => {
           <NavDesktop />
         </div>
       </div>
-      {/* spacer */}
-      <div className="transition-all duration-150 bg-neutral min-h-80" />
     </div>
   )
 }

@@ -9,7 +9,7 @@ export default function Theme() {
   }
 
   return (
-    <main className="bg-neutral">
+    <main className="bg-neutral pt-80">
       {/* <div className="min-h-[300px]">Hero.</div> */}
       <div className="container">
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
