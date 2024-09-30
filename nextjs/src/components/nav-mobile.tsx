@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, type LegacyRef } from "react"
 import clsx from "clsx"
 import { Transition } from "@headlessui/react"
+import { useClickAway } from "@uidotdev/usehooks"
 
 import IconHamburgerMenu from "./icon-hamburger-menu"
 import Link from "next/link"
@@ -11,11 +12,14 @@ import TopbarActions from "./topbar-actions"
 
 const NavMobile: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const ref = useClickAway(() => {
+    setIsOpen(false)
+  }) as LegacyRef<HTMLButtonElement> | undefined
 
   return (
     <div className="lg:hidden relative">
       <nav className="grid grid-cols-3 justify-between h-20 px-4 ">
-        <button onClick={() => setIsOpen(!isOpen)}>
+        <button onClick={() => setIsOpen(!isOpen)} ref={ref}>
           <IconHamburgerMenu />
         </button>
         <Link href="/theme" className="h-20 flex justify-center">
@@ -37,21 +41,13 @@ const NavMobile: React.FC = () => {
           ])}
         >
           <li>
-            <Link
-              onClick={() => setIsOpen(false)}
-              className="flex justify-between py-4"
-              href="/theme"
-            >
+            <Link className="flex justify-between py-4" href="/theme">
               Adfinis.com
               <IconChevronRight />
             </Link>
           </li>
           <li>
-            <ButtonLink
-              onClick={() => setIsOpen(false)}
-              href={"/theme"}
-              variant={"cta"}
-            >
+            <ButtonLink href={"/theme"} variant={"cta"}>
               Get started!
             </ButtonLink>
           </li>
