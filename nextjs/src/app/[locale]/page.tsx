@@ -1,6 +1,10 @@
 import Image from "next/image"
 
-export default function Home({ params: { locale } }) {
+export default function Home({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
   return (
     <main className=" flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
