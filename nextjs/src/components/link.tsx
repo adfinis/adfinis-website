@@ -1,8 +1,8 @@
 import { cva, VariantProps } from "class-variance-authority"
 import Link, { type LinkProps } from "next/link"
 import { twMerge } from "tailwind-merge"
-import IconChevronLeft from "./icon-chevron-left"
-import IconChevronRight from "./icon-chevron-right"
+import IconChevronLeft from "./icons/icon-chevron-left"
+import IconChevronRight from "./icons/icon-chevron-right"
 
 import { buttonStyles } from "./button"
 

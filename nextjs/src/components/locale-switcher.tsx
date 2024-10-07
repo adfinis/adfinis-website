@@ -1,9 +1,9 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
 import React from "react"
 import { useParams } from "next/navigation"
-import IconChevronDown from "./icon-chevron-down"
+import IconChevronDown from "./icons/icon-chevron-down"
 import Link from "next/link"
-import IconGlobe from "./icon-globe"
+import IconGlobe from "./icons/icon-globe"
 
 const locales = ["en-US", "en-AU", "de-CH", "de-DE", "nl-NL"]
 

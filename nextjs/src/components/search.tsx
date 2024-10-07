@@ -1,5 +1,5 @@
 import React from "react"
-import IconSearch from "./icon-search"
+import IconSearch from "./icons/icon-search"
 
 const Search: React.FC = () => {
   return (

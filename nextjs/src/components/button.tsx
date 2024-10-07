@@ -2,8 +2,8 @@ import { cva, VariantProps } from "class-variance-authority"
 import { twMerge } from "tailwind-merge"
 import React, { type ReactNode } from "react"
 
-import IconChevronLeft from "./icon-chevron-left"
-import IconChevronRight from "./icon-chevron-right"
+import IconChevronLeft from "./icons/icon-chevron-left"
+import IconChevronRight from "./icons/icon-chevron-right"
 
 export const buttonStyles = cva(
   [
