@@ -1,7 +1,7 @@
 import path from 'path'
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite')
+  const client = env('DATABASE_CLIENT', 'postgres')
 
   const connections = {
     postgres: {
@@ -13,9 +13,8 @@ export default ({ env }) => {
         user: env('DATABASE_USERNAME', 'strapi'),
         password: env('DATABASE_PASSWORD', 'strapi'),
         schema: env('DATABASE_SCHEMA', 'public'),
-        ssl: env.bool('DATABASE_SSL', false) && {
+        ssl: {
           ca: env('DATABASE_SSL_CA', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', false),
         },
       },
       debug: false,
