@@ -1,6 +1,6 @@
 import React from "react"
 
-const ChevronRight: React.FC = ({ className }: { className?: string }) => (
+const IconChevronRight: React.FC = ({ className }: { className?: string }) => (
   <svg
     className="h-2.5 w-auto"
     xmlns="http://www.w3.org/2000/svg"
@@ -16,4 +16,4 @@ const ChevronRight: React.FC = ({ className }: { className?: string }) => (
   </svg>
 )
 
-export default ChevronRight
+export default IconChevronRight

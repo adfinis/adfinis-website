@@ -38,12 +38,44 @@ body {
 */
 [data-scheme="light"] {
   --text-primary: theme("colors.neutral");
-  --bg-primary: theme("colors.saphire");
-  --text-secondary: theme("colors.saphire");
+  --bg-primary: theme("colors.sapphire");
+  --text-secondary: theme("colors.sapphire");
   --bg-secondary: none;
 }
 [data-scheme="dark"] {
-  --text-primary: theme("colors.saphire");
+  --text-primary: theme("colors.sapphire");
   --bg-primary: theme("colors.neutral");
   --text-secondary: theme("colors.neutral");
+}
+
+/**
+* @layer components is for utility classes that are specific to a component.
+* @layer components makes sure that other tailwind classes still take precedence when passed to the component which has a components class.
+*/
+@layer components {
+  /**
+  * Responsive topbar utility.
+  * mobile: The width is calculated as the viewport minus 1rem. (@see tailwind.config.ts:container)
+  * desktop: The width is calculated as the viewport minus half of the screen minus the container.
+  */
+
+  .w-topbar {
+    width: calc(100vw - theme("spacing.4"));
+
+    @media (min-width: theme("screens.sm")) {
+      width: calc(100vw - (100vw - theme("screens.sm")) / 2);
+    }
+    @media (min-width: theme("screens.md")) {
+      width: calc(100vw - (100vw - theme("screens.md")) / 2);
+    }
+    @media (min-width: theme("screens.lg")) {
+      width: calc(100vw - (100vw - theme("screens.lg")) / 2);
+    }
+    @media (min-width: theme("screens.xl")) {
+      width: calc(100vw - (100vw - theme("screens.xl")) / 2);
+    }
+    @media (min-width: theme("screens.2xl")) {
+      width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
+    }
+  }
 }

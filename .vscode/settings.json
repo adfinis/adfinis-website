@@ -21,4 +21,5 @@
             "[\"'`]([^\"'`]*).*?[\"'`]"
         ]
     ],
+    "eslint.workingDirectories": ["nextjs", "strapi"]
 }
