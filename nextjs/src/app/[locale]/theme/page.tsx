@@ -1,6 +1,8 @@
 "use client"
 import Button from "@/components/button"
+import Hero from "@/components/hero"
 import Link from "@/components/link"
+import Title from "@/components/title"
 
 export default function Theme() {
   const handleClick = () => {
@@ -9,7 +11,32 @@ export default function Theme() {
   }
 
   return (
-    <main className="bg-neutral pt-80">
+    <main className="bg-neutral">
+      <Hero
+        color="cinnamon"
+        imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      >
+        <Title>
+          Potential. <b>Unlocked.</b>
+        </Title>
+        <p className="text-20 font-normal max-w-[600px]">
+          Open Source is our key to innovation and sustainable digitalization!
+          Plan innovatively. Build sustainably. Run resiliently.
+        </p>
+        <Button size="large">Learn how</Button>
+      </Hero>
+
+      <div className="container py-8" data-scheme="light">
+        <Title level={1}>
+          H1 Title: Meet <b>Adfinis</b> quality
+        </Title>
+        <Title level={2}>
+          H2 Title: <b>Example</b>
+        </Title>
+        <Title level={3}>
+          H3 Title: <b>Example</b>
+        </Title>
+      </div>
       {/* <div className="min-h-[300px]">Hero.</div> */}
       <div className="container">
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
