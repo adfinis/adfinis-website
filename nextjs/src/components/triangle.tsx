@@ -1,5 +1,6 @@
 import { twMerge } from "tailwind-merge"
 import { colors } from "../../tailwind.config"
+import { useId } from "react"
 
 type TriangleProps = {
   color: keyof typeof colors
@@ -7,6 +8,7 @@ type TriangleProps = {
 }
 
 const Triangle: React.FC<TriangleProps> = ({ color, className }) => {
+  const id = useId()
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,17 +16,17 @@ const Triangle: React.FC<TriangleProps> = ({ color, className }) => {
       height="150"
       viewBox="0 0 696 150"
       fill="none"
-      className={twMerge(className)}
+      className={className}
     >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M696 150.067V0.0665283L0 150.067H696Z"
-        fill="url(#triangle-gradient)"
+        fill={`url(#triangle-gradient-${id})`}
       />
       <defs>
         <linearGradient
-          id="triangle-gradient"
+          id={`triangle-gradient-${id}`}
           x1="226.492"
           y1="75.0665"
           x2="696"
