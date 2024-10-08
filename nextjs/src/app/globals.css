@@ -34,18 +34,22 @@ body {
 }
 
 /*
+* @info global css variable declarations
+* These are necessary as we want to use these variables in children of elements with a data-scheme.
 * The default is "light", set in layout.tsx.
 */
 [data-scheme="light"] {
-  --text-primary: theme("colors.neutral");
-  --bg-primary: theme("colors.sapphire");
-  --text-secondary: theme("colors.sapphire");
-  --bg-secondary: none;
+  --button-text-primary: theme("colors.neutral");
+  --button-bg-primary: theme("colors.sapphire");
+  --button-text-secondary: theme("colors.sapphire");
+  --button-bg-secondary: none;
+  --title-text-primary: theme("colors.biscay")
 }
 [data-scheme="dark"] {
-  --text-primary: theme("colors.sapphire");
-  --bg-primary: theme("colors.neutral");
-  --text-secondary: theme("colors.neutral");
+  --button-text-primary: theme("colors.sapphire");
+  --button-bg-primary: theme("colors.neutral");
+  --button-text-secondary: theme("colors.neutral");
+  --title-text-primary: theme("colors.neutral");
 }
 
 /**
@@ -77,5 +81,9 @@ body {
     @media (min-width: theme("screens.2xl")) {
       width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
     }
+  }
+  
+  b {
+    @apply font-semibold leading-none;
   }
 }

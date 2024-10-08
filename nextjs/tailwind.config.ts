@@ -44,6 +44,19 @@ const config: Config = {
       center: true,
     },
     extend: {
+      backgroundColor: {
+        "button-primary": "var(--button-bg-primary)",
+        "button-secondary": "var(--button-bg-secondary)",
+      },
+      textColor: {
+        "title-primary": "var(--title-text-primary)",
+        "button-primary": "var(--button-text-primary)",
+        "button-secondary": "var(--button-text-secondary)",
+      },
+      borderColor: {
+        "button-primary": "var(--button-text-primary)",
+        "button-secondary": "var(--button-text-secondary)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
