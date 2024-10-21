@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge"
-import { colors } from "../../tailwind.config"
+import { colors } from "@/lib/colors"
 import { useId } from "react"
 
 type TriangleProps = {

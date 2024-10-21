@@ -3,7 +3,7 @@ import Image from "next/image"
 import Triangle from "./triangle"
 import clsx from "clsx"
 import React from "react"
-import { colors } from "../../tailwind.config"
+import { colors } from "@/lib/colors"
 
 type HeroProps = {
   color: keyof typeof colors
