@@ -1,4 +1,5 @@
 export const colors = {
+  white: "#FFFFFF",
   stone: "#0F0F0F",
   biscay: "#1C2E5D",
   sapphire: "#2E4B98",

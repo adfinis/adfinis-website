@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
         'before:content-[""] before:absolute',
         "before:left-0 before:right-0",
         "before:bottom-[-15vw] before:h-[15vw] ",
-        "before:z-10 before:bg-neutral",
+        "before:z-10 before:bg-white",
         "before:skew-y-6",
         "before:origin-bottom-right",
       ])}
