@@ -25,7 +25,8 @@
         h3 {
             @apply font-light tracking-tight text-title-primary;
 
-            b {
+            b,
+            strong {
                 @apply font-semibold;
             }
         }

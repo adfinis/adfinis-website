@@ -73,7 +73,8 @@ body {
     }
   }
 
-  b {
+  b,
+  strong {
     @apply font-semibold leading-none;
   }
 }
