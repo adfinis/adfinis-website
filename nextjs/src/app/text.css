@@ -1,0 +1,96 @@
+@tailwind components;
+
+/**
+* @description Handles styling of the markdown text.tsx component.
+* @see src/components/text.tsx
+* 
+* @layer components is for utility classes that are specific to a component.
+* @layer components makes sure that other tailwind classes still take precedence when passed to the component which has a components class.
+* @example `gap-2` will take precedence over property `gap-8` in the component declared below. 
+*/
+@layer components {
+    .text {
+        @apply font-sans font-normal;
+        @apply text-20 lg:text-18;
+        @apply leading-[30px] lg:leading-[26px];
+        @apply text-paragraph-primary;
+        @apply grid gap-8;
+        /* you can override this gap with a different value.*/
+
+        /**
+        * The following identifiers have more specificity than above.
+        */
+        h1,
+        h2,
+        h3 {
+            @apply font-light tracking-tight text-title-primary;
+
+            b,
+            strong {
+                @apply font-semibold;
+            }
+        }
+
+        h1 {
+            @apply text-35 lg:text-50 leading-[30px] lg:leading-[50px];
+        }
+
+        h2 {
+            @apply text-35 lg:text-40 leading-[30px] lg:leading-[45px];
+        }
+
+        h3 {
+            @apply text-30 leading-[25px] lg:leading-[40px];
+        }
+
+        ol {
+            @apply list-decimal pl-[18px] lg:pl-3.5 list-outside;
+
+            li {
+                @apply pl-2 lg:pl-3;
+            }
+        }
+
+        ul {
+            @apply list-disc pl-3;
+
+            li {
+                /*specific for ol*/
+                @apply pl-3;
+                list-style-image: url('/svg/chevron-right-light.svg');
+
+                [data-scheme='dark'] & {
+                    list-style-image: url('/svg/chevron-right-dark.svg');
+                }
+            }
+        }
+
+        /**
+        * Equal spacing between nested li elements
+        */
+        li {
+
+            ul,
+            ol {
+                @apply mt-2;
+            }
+
+            &:not(:last-child) {
+                @apply mb-2;
+            }
+        }
+
+        b,
+        strong {
+            @apply font-semibold;
+        }
+
+        a {
+            @apply underline hover:text-title-primary;
+        }
+
+        blockquote {
+            @apply border-l-4 border-quote-primary pl-4;
+        }
+    }
+}

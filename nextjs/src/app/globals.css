@@ -2,29 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
   @apply font-sans;
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -43,14 +23,20 @@ body {
   --button-bg-primary: theme("colors.sapphire");
   --button-text-secondary: theme("colors.sapphire");
   --button-bg-secondary: none;
-  --title-text-primary: theme("colors.biscay")
+  --title-text-primary: theme("colors.biscay");
+  --paragraph-text-primary: theme("colors.stone");
+  --quote-border-primary: theme('colors.biscay');
 }
+
 [data-scheme="dark"] {
   --button-text-primary: theme("colors.sapphire");
   --button-bg-primary: theme("colors.neutral");
   --button-text-secondary: theme("colors.neutral");
   --title-text-primary: theme("colors.neutral");
+  --paragraph-text-primary: theme("colors.neutral");
+  --quote-border-primary: theme('colors.neutral');
 }
+
 
 /**
 * @layer components is for utility classes that are specific to a component.
@@ -69,21 +55,28 @@ body {
     @media (min-width: theme("screens.sm")) {
       width: calc(100vw - (100vw - theme("screens.sm")) / 2);
     }
+
     @media (min-width: theme("screens.md")) {
       width: calc(100vw - (100vw - theme("screens.md")) / 2);
     }
+
     @media (min-width: theme("screens.lg")) {
       width: calc(100vw - (100vw - theme("screens.lg")) / 2);
     }
+
     @media (min-width: theme("screens.xl")) {
       width: calc(100vw - (100vw - theme("screens.xl")) / 2);
     }
+
     @media (min-width: theme("screens.2xl")) {
       width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
     }
   }
-  
-  b {
+
+  b,
+  strong {
     @apply font-semibold leading-none;
   }
 }
+
+@import './text.css';
