@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority"
 import React from "react"
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import Markdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 const titleStyles = cva(["font-light tracking-tight text-title-primary"], {
   variants: {
@@ -22,13 +22,15 @@ const titleStyles = cva(["font-light tracking-tight text-title-primary"], {
   },
 })
 
-type ChildrenORString = | {
-  children: React.ReactNode
-  markdown?: never
-} | {
-  markdown: string
-  children?: never
-}
+type ChildrenORString =
+  | {
+      children: React.ReactNode
+      markdown?: never
+    }
+  | {
+      markdown: string
+      children?: never
+    }
 type TitleProps = VariantProps<typeof titleStyles> & ChildrenORString
 
 /**
@@ -38,17 +40,22 @@ type TitleProps = VariantProps<typeof titleStyles> & ChildrenORString
  * @example `<Title level={3}>Potential. <strong>Unlocked.</strong></Title>` ==> `h3>Potential. <strong>Unlocked.</strong></h3>`
  */
 const Title: React.FC<TitleProps> = ({ level, align, children, markdown }) => {
-  if (markdown){
+  if (markdown) {
+    const headingLevel = markdown.startsWith("###")
+      ? 3
+      : markdown.startsWith("##")
+        ? 2
+        : 1
 
-    const headingLevel = markdown.startsWith('###') ? 3 : markdown.startsWith('##') ? 2 : 1;
-
-    return <Markdown allowedElements={[
-      'h1',
-      'h2',
-      'h3',
-      'b',
-      'strong'
-    ]} remarkPlugins={[remarkGfm]} className={titleStyles({level: headingLevel, align})}>{markdown}</Markdown>
+    return (
+      <Markdown
+        allowedElements={["h1", "h2", "h3", "b", "strong"]}
+        remarkPlugins={[remarkGfm]}
+        className={titleStyles({ level: headingLevel, align })}
+      >
+        {markdown}
+      </Markdown>
+    )
   }
   const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements
   return <Tag className={titleStyles({ level, align })}>{children}</Tag>
