@@ -1,9 +1,11 @@
 "use client"
 import Button from "@/components/button"
 import Hero from "@/components/hero"
+import Intro from "@/components/intro"
 import Link from "@/components/link"
 import Title from "@/components/title"
-
+import Text from "@/components/text"
+import {hero, intro, example } from "./texts"
 export default function Theme() {
   const handleClick = () => {
     console.log("Button clicked!")
@@ -13,18 +15,21 @@ export default function Theme() {
   return (
     <main className="bg-neutral">
       <Hero
-        color="cinnamon"
+        color="neutral"
         imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       >
-        <Title>
-          Potential. <b>Unlocked.</b>
-        </Title>
-        <p className="text-20 font-normal max-w-[600px]">
-          Open Source is our key to innovation and sustainable digitalization!
-          Plan innovatively. Build sustainably. Run resiliently.
-        </p>
-        <Button size="large">Learn how</Button>
+        <Title markdown={hero.title} />
+        <Text markdown={hero.text} className="gap-0" />
+        <Link href="https://www.adfinis.com" size="large">Learn how</Link>
       </Hero>
+      <Intro>
+        <Title markdown={intro.title} align="center" />
+        <Text markdown={intro.text} />
+      </Intro>
+
+      <div data-scheme="dark" className="container py-8 bg-sapphire">
+        <Text markdown={example} />
+      </div>
 
       <div className="container py-8" data-scheme="light">
         <Title level={1}>
@@ -42,7 +47,7 @@ export default function Theme() {
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-2 lg:grid-cols-3">
-        <span className="h-40 w-full bg-stone rounded p-4 text-20 md:text-35">
+        <span className="h-40 w-full bg-stone rounded p-4 text-20 md:text-35 text-neutral">
           <b>Stone</b>
           <br /> #0f0f0f
         </span>
