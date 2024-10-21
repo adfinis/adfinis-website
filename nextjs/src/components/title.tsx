@@ -24,7 +24,7 @@ type TitleProps = VariantProps<typeof titleStyles> & {
 }
 
 const Title: React.FC<TitleProps> = ({ level, align, children }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements
+  const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements
   return <Tag className={titleStyles({ level, align })}>{children}</Tag>
 }
 
