@@ -38,10 +38,12 @@ const config: Config = {
         "title-primary": "var(--title-text-primary)",
         "button-primary": "var(--button-text-primary)",
         "button-secondary": "var(--button-text-secondary)",
+        "paragraph-primary": "var(--paragraph-text-primary)",
       },
       borderColor: {
         "button-primary": "var(--button-text-primary)",
         "button-secondary": "var(--button-text-secondary)",
+        "quote-primary": "var(--quote-border-primary)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
