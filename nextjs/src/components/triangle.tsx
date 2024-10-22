@@ -35,7 +35,7 @@ const Triangle: React.FC<TriangleProps> = ({ color, className }) => {
         >
           <stop
             stopColor={colors[color || "neutral"]}
-            stopOpacity={color === "neutral" ? 1 : 0}
+            stopOpacity={["neutral", "white"].includes(color) ? 1 : 0}
           />
           <stop offset="1" stopColor={colors[color || "neutral"]} />
         </linearGradient>
