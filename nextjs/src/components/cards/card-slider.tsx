@@ -5,6 +5,7 @@ import CardColored from "./card-colored"
 import Link from "../link"
 import CardSliderExplanation from "./card-slider-explanation"
 import type { CTA } from "@/lib/actions"
+import ButtonGroup from "../button-group"
 
 type CardSliderProps = {
   title: string
@@ -27,16 +28,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
 
       <div className="flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none pb-4 overscroll-x-none">
         <CardSliderExplanation title={title} description={description}>
-          {ctas.map((cta, index) => (
-            <Link
-              key={index}
-              href={cta.href}
-              variant={cta.variant}
-              size={"small"}
-            >
-              {cta.text}
-            </Link>
-          ))}
+          <ButtonGroup ctas={ctas} />
         </CardSliderExplanation>
 
         {cards.map((card, index) => {
@@ -51,18 +43,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
           )
         })}
       </div>
-      <div className="sm:hidden mt-8 flex gap-4">
-        {ctas.map((cta, index) => (
-          <Link
-            key={index}
-            href={cta.href}
-            variant={cta.variant}
-            size={"small"}
-          >
-            {cta.text}
-          </Link>
-        ))}
-      </div>
+      <div className="sm:hidden mt-8">{<ButtonGroup ctas={ctas} />}</div>
     </div>
   )
 }
