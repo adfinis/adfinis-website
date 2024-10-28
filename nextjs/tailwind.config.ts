@@ -1,4 +1,6 @@
 import { type Config } from "tailwindcss"
+import { colors } from "./src/lib/colors"
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,27 +14,15 @@ const config: Config = {
     fontSize: {
       14: "0.875rem", // 14px
       18: "1.125rem", // 18px
-      29: "1.25rem", // 20px
+      20: "1.25rem", // 20px
       22: "1.375rem", // 22px
+      25: "1.5625rem", // 25px
       30: "1.875rem", // 30px
       35: "2.1875rem", // 35px
       40: "2.5rem", // 40px
       50: "3.125rem", // 50px
     },
-    colors: {
-      stone: "#0F0F0F",
-      biscay: "#1C2E5D",
-      sapphire: "#2E4B98",
-      jumbo: "#8B8B8C",
-      neutral: "#F5F6F5",
-      sunglow: "#FFCA31",
-      sky: "#55C0EE",
-      cinnamon: "#E56820",
-      green: "#34AE6B",
-      razzmatazz: "#E30D74",
-      fuchsia: "#7E57C2",
-      manhattan: "#F7C6A5",
-    },
+    colors,
     boxShadow: {
       "1": "0px 2px 6px 0px rgba(0, 0, 0, 0.20)",
       "2": "2px 4px 12px 0px rgba(0, 0, 0, 0.10)",
@@ -41,6 +31,24 @@ const config: Config = {
       center: true,
     },
     extend: {
+      spacing: {
+        18: "4.5rem",
+      },
+      backgroundColor: {
+        "button-primary": "var(--button-bg-primary)",
+        "button-secondary": "var(--button-bg-secondary)",
+      },
+      textColor: {
+        "title-primary": "var(--title-text-primary)",
+        "button-primary": "var(--button-text-primary)",
+        "button-secondary": "var(--button-text-secondary)",
+        "paragraph-primary": "var(--paragraph-text-primary)",
+      },
+      borderColor: {
+        "button-primary": "var(--button-text-primary)",
+        "button-secondary": "var(--button-text-secondary)",
+        "quote-primary": "var(--quote-border-primary)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

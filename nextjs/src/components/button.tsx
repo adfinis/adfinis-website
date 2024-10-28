@@ -20,11 +20,10 @@ export const buttonStyles = cva(
       },
       variant: {
         cta: "min-w-40 px-10 bg-sunglow text-stone",
-        primary:
-          "min-w-40 px-10 text-[var(--text-primary)] bg-[var(--bg-primary)]",
+        primary: "min-w-40 px-10 text-button-primary bg-button-primary",
         secondary:
-          "min-w-40 px-10 border bg-none text-[var(--text-secondary)] border-[var(--text-secondary)]",
-        text: "text-[var(--text-secondary)] px-4",
+          "min-w-40 px-10 border bg-none text-button-secondary border-button-secondary",
+        text: "text-button-secondary px-4",
       },
       chevron: {
         left: "",

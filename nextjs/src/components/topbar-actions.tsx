@@ -6,7 +6,7 @@ const TopbarActions: React.FC = () => {
   // Add your component logic here
 
   return (
-    <div className="flex justify-end items-center gap-4 lg:gap-6">
+    <div className="flex justify-end items-center gap-4 lg:gap-6 text-neutral">
       <Search />
       <LocaleSwitcher />
     </div>
