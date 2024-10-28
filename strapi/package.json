@@ -16,6 +16,7 @@
     "@strapi/strapi": "4.24.5",
     "mysql": "2.18.1",
     "mysql2": "^3.10.0",
+    "pg": "^8.12.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
@@ -28,7 +29,7 @@
     "uuid": "b96f6494-8794-4522-adae-2459dbeb8719"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
+    "node": "20.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
