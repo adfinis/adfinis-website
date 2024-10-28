@@ -5,9 +5,11 @@ import Intro from "@/components/intro"
 import Link from "@/components/link"
 import Title from "@/components/title"
 import Text from "@/components/text"
-import { hero, intro, solutions, example } from "./texts"
+import { hero, intro, solutions, mediaSection, example } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
+import SectionCardWide from "@/components/sections/section-card-wide"
+import SectionGroup from "@/components/sections/section-group"
 export default function Theme() {
   const handleClick = () => {
     console.log("Button clicked!")
@@ -38,6 +40,26 @@ export default function Theme() {
           cards={solutions.cards}
           ctas={solutions.ctas}
         />
+      </Container>
+
+      <Container background="stone" padding="both-padding">
+        <SectionGroup title={mediaSection.title} text={mediaSection.text}>
+          {mediaSection.media.map((item, i) => {
+            return (
+              <SectionCardWide
+                reverse={i % 2 === 0}
+                image={item.image}
+                key={i}
+                ctas={item.ctas}
+              >
+                <Title level={3} boldness={"semibold"}>
+                  {item.title}
+                </Title>
+                <Text markdown={item.text} />
+              </SectionCardWide>
+            )
+          })}
+        </SectionGroup>
       </Container>
 
       <div data-scheme="dark" className="container py-8 bg-sapphire">
