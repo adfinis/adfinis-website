@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_global_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "blocks",
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    }
+  }
+}
