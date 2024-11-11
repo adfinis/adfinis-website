@@ -373,6 +373,7 @@ export interface ApiSolutionsPageSolutionsPage
   extends Struct.CollectionTypeSchema {
   collectionName: 'solutions_pages';
   info: {
+    description: '';
     displayName: 'Solutions page';
     pluralName: 'solutions-pages';
     singularName: 'solutions-page';
@@ -390,6 +391,20 @@ export interface ApiSolutionsPageSolutionsPage
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Hero_image: Schema.Attribute.Component<'global.hero', false> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Intro_section: Schema.Attribute.Component<'global.intro-section', false> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

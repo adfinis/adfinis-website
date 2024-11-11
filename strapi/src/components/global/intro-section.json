@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_global_intro_sections",
+  "info": {
+    "displayName": "Intro Section",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "richtext",
+      "required": true
+    },
+    "Paragraph": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
