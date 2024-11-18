@@ -6,16 +6,13 @@
 * 
 * @layer components is for utility classes that are specific to a component.
 * @layer components makes sure that other tailwind classes still take precedence when passed to the component which has a components class.
-* @example `gap-2` will take precedence over property `gap-8` in the component declared below. 
 */
 @layer components {
-    .text {
+    .markdown-text {
         @apply font-sans font-normal;
         @apply text-20 lg:text-18;
         @apply leading-[30px] lg:leading-[26px];
         @apply text-paragraph-primary;
-        @apply grid gap-8;
-        /* you can override this gap with a different value.*/
 
         /**
         * The following identifiers have more specificity than above.
