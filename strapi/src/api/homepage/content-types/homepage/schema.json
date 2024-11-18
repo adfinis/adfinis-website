@@ -1,11 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "solutions_pages",
+  "kind": "singleType",
+  "collectionName": "homepages",
   "info": {
-    "singularName": "solutions-page",
-    "pluralName": "solutions-pages",
-    "displayName": "Solutions page",
-    "description": ""
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage"
   },
   "options": {
     "draftAndPublish": true
@@ -25,16 +24,7 @@
       "type": "string",
       "required": true
     },
-    "Description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text",
-      "required": true
-    },
-    "Hero_image": {
+    "hero_image": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -45,7 +35,7 @@
       "component": "global.hero",
       "required": true
     },
-    "Intro_section": {
+    "intro_section": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -54,16 +44,6 @@
         }
       },
       "component": "global.intro-section",
-      "required": true
-    },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "targetField": "Title",
       "required": true
     }
   }

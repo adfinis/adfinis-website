@@ -2,16 +2,23 @@
   "collectionName": "components_global_heroes",
   "info": {
     "displayName": "Hero",
-    "icon": "picture"
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Title": {
-      "type": "blocks",
+      "type": "richtext",
       "required": true
     },
     "Description": {
-      "type": "text"
+      "type": "richtext",
+      "required": true
+    },
+    "external_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.cta-external-url"
     }
   }
 }
