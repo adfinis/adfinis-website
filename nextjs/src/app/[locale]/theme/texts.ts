@@ -171,6 +171,54 @@ export const logoSection = {
   }),
 } as const
 
+export const journeySection = {
+  title: "## Let's Shape Your Journey **Together**",
+  cards: [
+    {
+      title: "Plan",
+      description:
+        "We create a situation analysis and elicit the best possible solution for your current infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+      cta: {
+        text: "Get your checkup",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Build",
+      description:
+        "We optimally support you in the implementation of your individual infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_build.svg",
+        alt: "Build icon",
+      },
+      cta: {
+        text: "Find your solution",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Run",
+      description:
+        "With our 24/7 SLA, we provide you with all-round support. Benefit from fast and reliable support.",
+      icon: {
+        src: "/svg/icons/icon_run.svg",
+        alt: "Run icon",
+      },
+      cta: {
+        text: "Choose your service",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+  ],
+} as const
+
 export const example = `
 # Heading 1 **Example**
 ## Heading 2 **Example**
