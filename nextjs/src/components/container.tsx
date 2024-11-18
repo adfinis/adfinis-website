@@ -15,7 +15,7 @@ const containerStyles = cva(["py-18 lg:py-24"], {
       "start-padding": "pl-4 rtl:pr-4 rtl:pl-0", // padding on the start side, i.e. for sliders
     },
     background: {
-      white: "bg-white",
+      white: "bg-white border border-jumbo/30",
       neutral: "bg-neutral",
       sapphire: "bg-sapphire",
       stone: "bg-gradient-to-r bg-stone from-neutral/20 via-stone to-stone",
