@@ -30,7 +30,7 @@ interface TextProps {
  */
 const Text: React.FC<TextProps> = ({ markdown, className }) => {
   return (
-    <div className={`text ${className ||''}`}>
+    <div className={`markdown-text ${className || ""}`}>
       <Markdown
         allowedElements={[
           "a",

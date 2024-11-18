@@ -5,11 +5,20 @@ import Intro from "@/components/intro"
 import Link from "@/components/link"
 import Title from "@/components/title"
 import Text from "@/components/text"
-import { hero, intro, solutions, mediaSection, example } from "./texts"
+import {
+  hero,
+  intro,
+  solutions,
+  mediaSection,
+  logoSection,
+  example,
+} from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import SectionGroup from "@/components/sections/section-group"
+import LogoGroup from "@/components/logo-group"
+import ButtonGroup from "@/components/button-group"
 export default function Theme() {
   const handleClick = () => {
     console.log("Button clicked!")
@@ -23,14 +32,14 @@ export default function Theme() {
         imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       >
         <Title markdown={hero.title} />
-        <Text markdown={hero.text} className="gap-0" />
+        <Text markdown={hero.text} />
         <Link href="https://www.adfinis.com" size="large">
           Learn how
         </Link>
       </Hero>
       <Intro>
         <Title markdown={intro.title} align="center" />
-        <Text markdown={intro.text} />
+        <Text markdown={intro.text} className="grid gap-8" />
       </Intro>
 
       <Container padding={"start-padding"} id="solutions" background="neutral">
@@ -62,6 +71,17 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
+      <Container background="white" padding="both-padding">
+        <SectionGroup
+          title={logoSection.title}
+          text={logoSection.text}
+          align="center"
+        >
+          <ButtonGroup ctas={logoSection.ctas} align={"center"} />
+          <LogoGroup logos={[...logoSection.logos]} />
+        </SectionGroup>
+      </Container>
+
       <div data-scheme="dark" className="container py-8 bg-sapphire">
         <Text markdown={example} />
       </div>
@@ -82,53 +102,65 @@ export default function Theme() {
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-2 lg:grid-cols-3">
-        <span className="h-40 w-full bg-stone rounded p-4 text-20 md:text-35 text-neutral">
+        <span className="w-full bg-stone rounded p-4 text-20 md:text-35 text-neutral">
           <b>Stone</b>
           <br /> #0f0f0f
+          <br /> rgb(15, 15, 15)
         </span>
-        <span className="h-40 w-full bg-sapphire rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sapphire rounded p-4 text-20 md:text-35">
           <b>Sapphire</b>
           <br /> #2e4b98
+          <br /> rgb(46, 75, 152)
         </span>
-        <span className="h-40 w-full bg-sky rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sky rounded p-4 text-20 md:text-35">
           <b>Sky</b>
           <br /> #55c0ee
+          <br /> rgb(85, 192, 238)
         </span>
-        <span className="h-40 w-full bg-biscay rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-biscay rounded p-4 text-20 md:text-35">
           <b>Biscay</b>
           <br /> #1c2e5d
+          <br /> rgb(28, 46, 93)
         </span>
-        <span className="h-40 w-full bg-jumbo rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-jumbo rounded p-4 text-20 md:text-35">
           <b>Jumbo</b>
           <br /> #8b8b8c
+          <br /> rgb(139, 139, 140)
         </span>
-        <span className="h-40 w-full bg-neutral text-stone rounded p-4 text-20 md:text-35 border border-stone">
+        <span className="w-full bg-neutral text-stone rounded p-4 text-20 md:text-35 border border-stone">
           <b>Neutral</b>
           <br /> #f5f6f5
+          <br /> rgb(245, 246, 245)
         </span>
-        <span className="h-40 w-full bg-sunglow rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sunglow rounded p-4 text-20 md:text-35">
           <b>Sunglow</b>
           <br /> #ffca31
+          <br /> rgb(255, 202, 49)
         </span>
-        <span className="h-40 w-full bg-cinnamon rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-cinnamon rounded p-4 text-20 md:text-35">
           <b>Cinnamon</b>
           <br /> #e56820
+          <br /> rgb(229, 104, 32)
         </span>
-        <span className="h-40 w-full bg-green rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-green rounded p-4 text-20 md:text-35">
           <b>Green</b>
           <br /> #34ae6b
+          <br /> rgb(52, 174, 107)
         </span>
-        <span className="h-40 w-full bg-razzmatazz rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-razzmatazz rounded p-4 text-20 md:text-35">
           <b>Razzmatazz</b>
           <br /> #e30d74
+          <br /> rgb(227, 13, 116)
         </span>
-        <span className="h-40 w-full bg-fuchsia rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-fuchsia rounded p-4 text-20 md:text-35">
           <b>Fuchsia</b>
           <br /> #7e57c2
+          <br /> rgb(126, 87, 194)
         </span>
-        <span className="h-40 w-full bg-manhattan rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-manhattan rounded p-4 text-20 md:text-35">
           <b>Manhattan</b>
           <br /> #f7c6a5
+          <br /> rgb(247, 198, 165)
         </span>
       </div>
       <div className="container">

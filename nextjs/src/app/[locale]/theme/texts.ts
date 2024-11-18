@@ -78,7 +78,7 @@ const ctas = [
     href: "/services",
     variant: "secondary",
   },
-] satisfies CTA[]
+] as CTA[]
 
 export const solutions = {
   title: "Our Solutions",
@@ -91,7 +91,7 @@ export const solutions = {
 }
 
 export const mediaSection = {
-  title: "Our Projects",
+  title: "## Our Projects",
   text: `Lorem ipsum dolor sit amet, [consectetur adipiscing elit](https://example.com), sed do eiusmod tempor incididunt.
 Ut enim ad minim veniam, quis nostrud exercitation [ullamco laboris nisi](https://example.com) ut aliquip ex ea commodo consequat.
 Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu fugiat nulla](https://example.com) pariatur.`,
@@ -142,6 +142,33 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu
       ctas,
     },
   ],
+} as const
+
+export const logoSection = {
+  title: "## Meet our **Partners**",
+  text: `We work together with partners like GitLab, HashiCorp, Red Hat, and SUSE to help our customers from the first step to the optimal solutions. This includes everything from planning to integration, as well as 24/7 monitoring and operation of their systems.`,
+  logos: [
+    {
+      alt: "GitLab logo",
+      src: "/svg/logo/gitlab-white-logo.svg",
+    },
+    {
+      alt: "Red Hat logo",
+      src: "/svg/logo/redhat-white-logo.svg",
+    },
+    {
+      alt: "SUSE logo",
+      src: "/svg/logo/suse-white-logo.svg",
+    },
+    {
+      alt: "HashiCorp logo",
+      src: "/svg/logo/hashicorp-white-logo.svg",
+    },
+  ],
+  ctas: ctas.map((el) => {
+    el.size = "large"
+    return el
+  }),
 } as const
 
 export const example = `
