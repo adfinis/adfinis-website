@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_kpi_step_zones",
+  "info": {
+    "displayName": "KPI step zone",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "kpis": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.kpi-card",
+      "max": 3,
+      "min": 1
+    }
+  }
+}

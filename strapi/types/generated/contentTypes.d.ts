@@ -421,6 +421,45 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiSolutionsOverviewSolutionsOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'solutions_overviews';
+  info: {
+    displayName: 'Solutions overview';
+    pluralName: 'solutions-overviews';
+    singularName: 'solutions-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::solutions-overview.solutions-overview'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionsPageSolutionsPage
   extends Struct.CollectionTypeSchema {
   collectionName: 'solutions_pages';
@@ -458,6 +497,12 @@ export interface ApiSolutionsPageSolutionsPage
       }>;
     Intro_section: Schema.Attribute.Component<'global.intro-section', false> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    kpi_step_zone: Schema.Attribute.Component<'sections.kpi-step-zone', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -999,6 +1044,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

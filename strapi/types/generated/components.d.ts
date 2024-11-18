@@ -1,5 +1,24 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsKpiCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_kpi_cards';
+  info: {
+    description: '';
+    displayName: 'KPI Card';
+    icon: 'bell';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<
+      ['person_with_laptop', 'person_with_stars', 'puzzle_pieces_with_gear']
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+  };
+}
+
 export interface GlobalCtaExternalUrl extends Struct.ComponentSchema {
   collectionName: 'components_global_cta_external_urls';
   info: {
@@ -39,12 +58,33 @@ export interface GlobalIntroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsKpiStepZone extends Struct.ComponentSchema {
+  collectionName: 'components_sections_kpi_step_zones';
+  info: {
+    displayName: 'KPI step zone';
+    icon: 'bulletList';
+  };
+  attributes: {
+    kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 1;
+        },
+        number
+      >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.kpi-card': CardsKpiCard;
       'global.cta-external-url': GlobalCtaExternalUrl;
       'global.hero': GlobalHero;
       'global.intro-section': GlobalIntroSection;
+      'sections.kpi-step-zone': SectionsKpiStepZone;
     }
   }
 }

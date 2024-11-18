@@ -65,6 +65,16 @@
       "type": "uid",
       "targetField": "Title",
       "required": true
+    },
+    "kpi_step_zone": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.kpi-step-zone"
     }
   }
 }
