@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext } from "react"
+import { createContext, ReactNode, useContext } from "react"
 
 export type LinkedLocale = {
   locale: string
@@ -22,7 +22,13 @@ export const useLinkedLocales = (): LinkedLocale[] => {
   return context
 }
 
-export const LinkedLocalesProvider = ({ locales, children }) => {
+export const LinkedLocalesProvider = ({
+  locales,
+  children,
+}: {
+  locales: LinkedLocale[]
+  children: ReactNode
+}) => {
   const sortedLocales = locales.sort((a, b) => a.locale.localeCompare(b.locale))
 
   return (

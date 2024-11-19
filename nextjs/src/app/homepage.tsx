@@ -4,8 +4,15 @@ import Title from "@/components/title"
 import Text from "@/components/text"
 import Link from "@/components/link"
 import Intro from "@/components/intro"
+import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 
-export default async function Homepage({ url, activeLocale }) {
+export default async function Homepage({
+  url,
+  activeLocale,
+}: {
+  url: string
+  activeLocale: LinkedLocale
+}) {
   const { data } = await (await fetch(url)).json()
   const hero = data.hero_image ?? {
     Description: "placeholder",
@@ -15,7 +22,7 @@ export default async function Homepage({ url, activeLocale }) {
     Title: "placeholder",
     Paragraph: "placeholder",
   }
-  const locales = data.localizations.map((item) => {
+  const locales = data.localizations.map((item: { locale: string }) => {
     return {
       href: item.locale === "en" ? "/" : `/${item.locale}`,
       locale: item.locale,
