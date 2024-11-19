@@ -5,11 +5,6 @@ export default (config: UserConfig) => {
   console.log('MAU2', config)
   const newConfig = mergeConfig(config, {
     base,
-    define: {
-      'process.env': {
-        ADMIN_PATH: '/strapi/admin',
-      },
-    },
     resolve: {
       alias: {
         '@': '/src',
