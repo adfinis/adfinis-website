@@ -4,7 +4,7 @@ export default (config: UserConfig) => {
   const base = config.mode === 'production' ? `/strapi${config.base}` : config.base;
   console.log('MAU2', config)
   const newConfig = mergeConfig(config, {
-    base,
+    // base,
     resolve: {
       alias: {
         '@': '/src',
