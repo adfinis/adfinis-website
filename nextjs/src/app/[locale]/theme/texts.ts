@@ -219,6 +219,16 @@ export const journeySection = {
   ],
 } as const
 
+export const ctaSection = {
+  title: "## Start your **journey** with Adfinis",
+  cta: {
+    href: "/contact",
+    text: "Get started",
+    variant: "primary",
+    size: "large",
+  },
+} as const
+
 export const example = `
 # Heading 1 **Example**
 ## Heading 2 **Example**

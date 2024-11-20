@@ -13,6 +13,7 @@ import {
   logoSection,
   journeySection,
   example,
+  ctaSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -101,6 +102,12 @@ export default function Theme() {
               )
             })}
           </CardIconGroup>
+        </SectionGroup>
+      </Container>
+
+      <Container background="sapphire" padding="both-padding">
+        <SectionGroup title={ctaSection.title} align={"center"}>
+          <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
       </Container>
 
