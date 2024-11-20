@@ -2,13 +2,22 @@ import React from "react"
 import type { Card } from "./card"
 import Text from "../text"
 import Triangle from "../triangle"
+import type { colors } from "@/lib/colors"
+
+interface CardColoredProps extends Card {
+  color?: keyof typeof colors
+}
 
 /**
  * @description card for different colored triangles.
  * The triangle color represents in general an Adfinis "cloud journey". Each journey has a different unique color.
  * The journey-color mapping is done in the backend.
  */
-const CardColored: React.FC<Card> = ({ color, title, description }) => {
+const CardColored: React.FC<CardColoredProps> = ({
+  color,
+  title,
+  description,
+}) => {
   return (
     <article className="rounded-xl max-w-xs overflow-hidden bg-white h-full">
       <header

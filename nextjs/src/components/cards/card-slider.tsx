@@ -4,20 +4,20 @@ import Text from "../text"
 import CardColored from "./card-colored"
 import Link from "../link"
 import CardSliderExplanation from "./card-slider-explanation"
-import type { CTA } from "@/lib/actions"
+import type { CTA } from "@/lib/cta"
 import ButtonGroup from "../button-group"
 
 type CardSliderProps = {
   title: string
   description: string
   ctas: CTA[]
-  cards: Card[]
+  children: React.ReactNode
 }
 const CardSlider: React.FC<CardSliderProps> = ({
   title,
   description,
   ctas,
-  cards,
+  children,
 }) => {
   return (
     <div className="w-topbar ml-auto">
@@ -30,18 +30,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
         <CardSliderExplanation title={title} description={description}>
           <ButtonGroup ctas={ctas} />
         </CardSliderExplanation>
-
-        {cards.map((card, index) => {
-          return (
-            <div key={index} className="flex-shrink-0 snap-center">
-              <CardColored
-                color={card.color}
-                title={card.title}
-                description={card.description}
-              />
-            </div>
-          )
-        })}
+        {children}
       </div>
       <div className="sm:hidden mt-8">{<ButtonGroup ctas={ctas} />}</div>
     </div>

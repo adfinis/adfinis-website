@@ -1,4 +1,4 @@
-import { CTA } from "@/lib/actions"
+import { CTA } from "@/lib/cta"
 import Image from "next/image"
 import React from "react"
 import Title from "../title"
