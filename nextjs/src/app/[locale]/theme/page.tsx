@@ -11,6 +11,7 @@ import {
   solutions,
   mediaSection,
   logoSection,
+  journeySection,
   example,
 } from "./texts"
 import Container from "@/components/container"
@@ -19,6 +20,8 @@ import SectionCardWide from "@/components/sections/section-card-wide"
 import SectionGroup from "@/components/sections/section-group"
 import LogoGroup from "@/components/logo-group"
 import ButtonGroup from "@/components/button-group"
+import CardIcon from "@/components/cards/card-icon"
+import CardIconGroup from "@/components/cards/card-icon-group"
 export default function Theme() {
   const handleClick = () => {
     console.log("Button clicked!")
@@ -79,6 +82,25 @@ export default function Theme() {
         >
           <ButtonGroup ctas={logoSection.ctas} align={"center"} />
           <LogoGroup logos={[...logoSection.logos]} />
+        </SectionGroup>
+      </Container>
+
+      <Container background="neutral" padding="both-padding">
+        <SectionGroup title={journeySection.title}>
+          <CardIconGroup>
+            {/* Only fits 3 cards. */}
+            {journeySection.cards.map((item, i) => {
+              return (
+                <CardIcon
+                  icon={item.icon}
+                  title={item.title}
+                  description={item.description}
+                  cta={item.cta}
+                  key={i}
+                />
+              )
+            })}
+          </CardIconGroup>
         </SectionGroup>
       </Container>
 
