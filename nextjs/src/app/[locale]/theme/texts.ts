@@ -271,6 +271,66 @@ export const resourcesSection = {
   ],
 }
 
+export const media2Section = {
+  title: "## Our Projects",
+  text: `Lorem ipsum dolor sit amet, [consectetur adipiscing elit](https://example.com), sed do eiusmod tempor incididunt.
+Ut enim ad minim veniam, quis nostrud exercitation [ullamco laboris nisi](https://example.com) ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu fugiat nulla](https://example.com) pariatur.`,
+  media: [
+    {
+      image: {
+        src: "https://images.unsplash.com/photo-1519014961376-9e3f31b1a812?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Group of people in snow",
+      },
+      title: "Who we are?",
+      text: `Our team is passionate about open source and deeply rooted in technology. As dedicated tech enthusiasts, we thrive on innovation and are committed to leveraging open-source solutions to solve complex problems. Our collective enthusiasm for open source fuels our creativity and dedication, ensuring that we stay at the forefront of the industry while fostering a culture of continuous learning and growth.`,
+      ctas,
+    },
+    {
+      image: {
+        src: "https://images.unsplash.com/photo-1727805174504-3cd54f92b3eb?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image of an SBB train in Switzerland",
+      },
+      title: "Values and committment",
+      text: `At Adfinis we shape solutions based on Open Source without Vendor lock-in. We believe in openness and transparency and are a part of a worldwide Open Source community`,
+      ctas,
+    },
+  ],
+} as const
+
+export const statisticsSection = {
+  title: "## More on **Adfinis**",
+  description:
+    "Lorem ipsum dolor sit amet consectetur **adfinis** elit litora, cubilia habitant mollis mauris duis eget augue. Viverra curae faucibus fames ante dictum, mi magnis vulputate placerat accumsan vivamus, in nulla lacinia dis.",
+  cards: [
+    {
+      title: "2000",
+      description: "founded",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+    {
+      title: "200+",
+      description: "projects",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+    {
+      title: "150+",
+      description: "employees",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+  ],
+  logos: [...logoSection.logos, ...logoSection.logos],
+} as const
+
 export const example = `
 # Heading 1 **Example**
 ## Heading 2 **Example**
