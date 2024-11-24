@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Image from "next/image"
 import React from "react"
 
@@ -6,11 +7,20 @@ type LogoGroupProps = {
     src: string
     alt: string
   }[]
+  columns?: 4 | "auto"
 }
 
-const LogoGroup: React.FC<LogoGroupProps> = ({ logos }) => {
+const LogoGroup: React.FC<LogoGroupProps> = ({ logos, columns = 4 }) => {
   return (
-    <div className="flex pb-4 lg:pb-0 overflow-x-auto lg:grid lg:grid-cols-4 gap-6 lg:gap-12 justify-items-center items-center max-w-4xl">
+    <div
+      className={clsx([
+        "flex pb-4 lg:pb-0 overflow-x-auto gap-6 lg:gap-12 justify-items-center items-center",
+        {
+          "lg:grid lg:grid-cols-4": columns === 4,
+          "lg:flex-wrap": columns === "auto",
+        },
+      ])}
+    >
       {logos.map((logo, key) => (
         <Image
           className="max-h-8"

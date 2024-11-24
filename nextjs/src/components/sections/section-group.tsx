@@ -2,6 +2,7 @@ import React from "react"
 import Title from "../title"
 import Text from "../text"
 import { cva, VariantProps } from "class-variance-authority"
+import clsx from "clsx"
 
 const sectionGroupStyles = cva(["grid gap-10 lg:gap-16"], {
   variants: {
@@ -37,7 +38,14 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
     <div className={sectionGroupStyles({ align })}>
       {title && <Title align="center" boldness="light" markdown={title} />}
       {text && (
-        <div className="max-w-[874px] grid gap-8">
+        <div
+          className={clsx([
+            "max-w-4xl grid gap-8",
+            {
+              "mx-auto": align === "center",
+            },
+          ])}
+        >
           <Text markdown={text} className="text-justify lg:text-center" />
         </div>
       )}
