@@ -123,13 +123,13 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
-      <Container id="Resources" background="sapphire" padding="both-padding">
+      <Container id="JourneyCta" background="sapphire" padding="both-padding">
         <SectionGroup title={ctaSection.title} align={"center"}>
           <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
       </Container>
 
-      <Container padding={"start-padding"} id="resources" background="neutral">
+      <Container id="Resources" padding={"start-padding"} background="neutral">
         <CardSlider
           title={resourcesSection.title}
           description={resourcesSection.description}
@@ -185,6 +185,12 @@ export default function Theme() {
             logos={[...statisticsSection.logos.slice(0, 7)]}
             columns="auto"
           />
+        </SectionGroup>
+      </Container>
+
+      <Container id="CareerCta" background="sapphire" padding="both-padding">
+        <SectionGroup title={ctaSection.title} align={"center"}>
+          <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
       </Container>
 
