@@ -14,6 +14,7 @@ import {
   journeySection,
   example,
   ctaSection,
+  resourcesSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -25,6 +26,7 @@ import ButtonGroup from "@/components/button-group"
 import CardIcon from "@/components/cards/card-icon"
 import CardIconGroup from "@/components/cards/card-icon-group"
 import CardColored from "@/components/cards/card-colored"
+import CardArticle from "@/components/cards/card-article"
 
 export default function Theme() {
   const handleClick = () => {
@@ -123,6 +125,22 @@ export default function Theme() {
         <SectionGroup title={ctaSection.title} align={"center"}>
           <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
+      </Container>
+
+      <Container padding={"start-padding"} id="resources" background="neutral">
+        <CardSlider
+          title={resourcesSection.title}
+          description={resourcesSection.description}
+          ctas={resourcesSection.ctas}
+        >
+          {resourcesSection.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardArticle {...card} />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
       </Container>
 
       <div data-scheme="dark" className="container py-8 bg-sapphire">
