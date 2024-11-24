@@ -17,7 +17,7 @@ const containerStyles = cva(["py-18 lg:py-24"], {
     background: {
       white: "bg-white border border-jumbo/30",
       neutral: "bg-neutral",
-      sapphire: "bg-sapphire",
+      sapphire: "bg-gradient-to-br from-sapphire to-biscay",
       stone: "bg-gradient-to-r bg-stone from-neutral/20 via-stone to-stone",
     },
   },
