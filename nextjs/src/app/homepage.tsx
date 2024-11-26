@@ -14,6 +14,10 @@ export default async function Homepage({
   activeLocale: LinkedLocale
 }) {
   const { data } = await (await fetch(url)).json()
+  console.log({
+    data,
+    url,
+  })
   const hero = data.hero_image ?? {
     Description: "placeholder",
     Title: "placeholder",

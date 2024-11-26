@@ -1,6 +1,8 @@
 import Homepage from "@/app/homepage"
 import { STRAPI } from "@/lib/constants"
 
+export const dynamic = "force-dynamic"
+
 export default function Home({
   params: { locale },
 }: {
