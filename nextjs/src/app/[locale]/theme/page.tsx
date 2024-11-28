@@ -15,6 +15,8 @@ import {
   example,
   ctaSection,
   resourcesSection,
+  media2Section,
+  statisticsSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -24,9 +26,10 @@ import SectionGroup from "@/components/sections/section-group"
 import LogoGroup from "@/components/logo-group"
 import ButtonGroup from "@/components/button-group"
 import CardIcon from "@/components/cards/card-icon"
-import CardIconGroup from "@/components/cards/card-icon-group"
+import CardGroup from "@/components/cards/card-group"
 import CardColored from "@/components/cards/card-colored"
 import CardArticle from "@/components/cards/card-article"
+import CardCounter from "@/components/cards/card-counter"
 
 export default function Theme() {
   const handleClick = () => {
@@ -51,7 +54,7 @@ export default function Theme() {
         <Text markdown={intro.text} className="grid gap-8" />
       </Intro>
 
-      <Container padding={"start-padding"} id="solutions" background="neutral">
+      <Container id="Solutions" padding={"start-padding"} background="neutral">
         <CardSlider
           title={solutions.title}
           description={solutions.description}
@@ -71,7 +74,7 @@ export default function Theme() {
         </CardSlider>
       </Container>
 
-      <Container background="stone" padding="both-padding">
+      <Container id="Projects" background="stone" padding="both-padding">
         <SectionGroup title={mediaSection.title} text={mediaSection.text}>
           {mediaSection.media.map((item, i) => {
             return (
@@ -91,7 +94,7 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
-      <Container background="white" padding="both-padding">
+      <Container id="Partners" background="white" padding="both-padding">
         <SectionGroup
           title={logoSection.title}
           text={logoSection.text}
@@ -102,14 +105,13 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
-      <Container background="neutral" padding="both-padding">
+      <Container id="Journeys" background="neutral" padding="both-padding">
         <SectionGroup title={journeySection.title}>
-          <CardIconGroup>
-            {/* Only fits 3 cards. */}
+          <CardGroup>
             {journeySection.cards.map((item, i) => {
               return (
                 <CardIcon
-                  icon={item.icon}
+                  imageUrl={item.icon.src}
                   title={item.title}
                   description={item.description}
                   cta={item.cta}
@@ -117,17 +119,17 @@ export default function Theme() {
                 />
               )
             })}
-          </CardIconGroup>
+          </CardGroup>
         </SectionGroup>
       </Container>
 
-      <Container background="sapphire" padding="both-padding">
+      <Container id="JourneyCta" background="sapphire" padding="both-padding">
         <SectionGroup title={ctaSection.title} align={"center"}>
           <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
       </Container>
 
-      <Container padding={"start-padding"} id="resources" background="neutral">
+      <Container id="Resources" padding={"start-padding"} background="neutral">
         <CardSlider
           title={resourcesSection.title}
           description={resourcesSection.description}
@@ -141,6 +143,55 @@ export default function Theme() {
             )
           })}
         </CardSlider>
+      </Container>
+
+      <Container id="WhoWeAre" background="stone" padding="both-padding">
+        <SectionGroup>
+          {media2Section.media.slice(0, 2).map((item, i) => {
+            return (
+              <SectionCardWide
+                reverse={i % 2 === 0}
+                image={item.image}
+                key={i}
+                ctas={item.ctas}
+              >
+                <Title level={3} boldness={"semibold"}>
+                  {item.title}
+                </Title>
+                <Text markdown={item.text} />
+              </SectionCardWide>
+            )
+          })}
+        </SectionGroup>
+      </Container>
+
+      <Container id="Statistics" background="neutral" padding="both-padding">
+        <SectionGroup
+          align="center"
+          title={statisticsSection.title}
+          text={statisticsSection.description}
+        >
+          <CardGroup>
+            {statisticsSection.cards.map((item, i) => (
+              <CardCounter
+                key={i}
+                title={item.title}
+                imageUrl={item.icon.src}
+                description={item.description}
+              />
+            ))}
+          </CardGroup>
+          <LogoGroup
+            logos={[...statisticsSection.logos.slice(0, 7)]}
+            columns="auto"
+          />
+        </SectionGroup>
+      </Container>
+
+      <Container id="CareerCta" background="sapphire" padding="both-padding">
+        <SectionGroup title={ctaSection.title} align={"center"}>
+          <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
+        </SectionGroup>
       </Container>
 
       <div data-scheme="dark" className="container py-8 bg-sapphire">
