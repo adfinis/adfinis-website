@@ -31,7 +31,6 @@ export default function RootLayout({
         className={`bg-neutral ${sourceSans3.variable}`}
         data-scheme="light"
       >
-        <Topbar />
         {children}
       </body>
     </html>

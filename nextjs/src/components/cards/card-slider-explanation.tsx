@@ -1,4 +1,4 @@
-import { CTA } from "@/lib/actions"
+import { CTA } from "@/lib/cta"
 import React from "react"
 import Text from "../text"
 
@@ -18,7 +18,7 @@ const CardSliderExplanation: React.FC<CardExplanationProps> = ({
       <h3 className="text-30 font-semibold leading-none text-biscay">
         {title}
       </h3>
-      <Text markdown={description} className="min-w-96" />
+      <Text markdown={description} className="min-w-96 flex-1" />
       <div className="flex gap-4">{children}</div>
     </div>
   )

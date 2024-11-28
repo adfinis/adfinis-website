@@ -1,5 +1,5 @@
 import { type Card } from "@/components/cards/card"
-import { CTA } from "@/lib/actions"
+import { CTA } from "@/lib/cta"
 
 export const hero = {
   title: `## Potential. **Unlocked.**`,
@@ -65,7 +65,7 @@ export const cards = [
       "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.",
     color: "sunglow",
   },
-] satisfies Card[]
+] as const
 
 const ctas = [
   {
@@ -78,7 +78,7 @@ const ctas = [
     href: "/services",
     variant: "secondary",
   },
-] satisfies CTA[]
+] as CTA[]
 
 export const solutions = {
   title: "Our Solutions",
@@ -91,7 +91,7 @@ export const solutions = {
 }
 
 export const mediaSection = {
-  title: "Our Projects",
+  title: "## Our Projects",
   text: `Lorem ipsum dolor sit amet, [consectetur adipiscing elit](https://example.com), sed do eiusmod tempor incididunt.
 Ut enim ad minim veniam, quis nostrud exercitation [ullamco laboris nisi](https://example.com) ut aliquip ex ea commodo consequat.
 Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu fugiat nulla](https://example.com) pariatur.`,
@@ -142,6 +142,193 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu
       ctas,
     },
   ],
+} as const
+
+export const logoSection = {
+  title: "## Meet our **Partners**",
+  text: `We work together with partners like GitLab, HashiCorp, Red Hat, and SUSE to help our customers from the first step to the optimal solutions. This includes everything from planning to integration, as well as 24/7 monitoring and operation of their systems.`,
+  logos: [
+    {
+      alt: "GitLab logo",
+      src: "/svg/logo/gitlab-white-logo.svg",
+    },
+    {
+      alt: "Red Hat logo",
+      src: "/svg/logo/redhat-white-logo.svg",
+    },
+    {
+      alt: "SUSE logo",
+      src: "/svg/logo/suse-white-logo.svg",
+    },
+    {
+      alt: "HashiCorp logo",
+      src: "/svg/logo/hashicorp-white-logo.svg",
+    },
+  ],
+  ctas: ctas.map((el) => {
+    el.size = "large"
+    return el
+  }),
+} as const
+
+export const journeySection = {
+  title: "## Let's Shape Your Journey **Together**",
+  cards: [
+    {
+      title: "Plan",
+      description:
+        "We create a situation analysis and elicit the best possible solution for your current infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+      cta: {
+        text: "Get your checkup",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Build",
+      description:
+        "We optimally support you in the implementation of your individual infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_build.svg",
+        alt: "Build icon",
+      },
+      cta: {
+        text: "Find your solution",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Run",
+      description:
+        "With our 24/7 SLA, we provide you with all-round support. Benefit from fast and reliable support.",
+      icon: {
+        src: "/svg/icons/icon_run.svg",
+        alt: "Run icon",
+      },
+      cta: {
+        text: "Choose your service",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+  ],
+} as const
+
+export const ctaSection = {
+  title: "## Start your **journey** with Adfinis",
+  cta: {
+    href: "/contact",
+    text: "Get started",
+    variant: "primary",
+    size: "large",
+  },
+} as const
+
+export const resourcesSection = {
+  title: "Our Resources", // no markdown here!
+  description:
+    "Your one-stop hub for the latest industry news, upcoming events, insightful whitepapers, and much more. Stay informed and ahead of the curve with a curated selection of content.",
+  ctas: [ctas[0]],
+  cards: [
+    {
+      title:
+        "Adfinis receives the HashiCorp EMEA Focus Partner of the Year Award",
+      description: "date event: june 20, 2023",
+      imageUrl:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy",
+      categories: [
+        {
+          text: "Events",
+          href: "/events",
+        },
+        {
+          text: "News",
+          href: "/news",
+        },
+      ],
+    },
+    {
+      title: "Swiss Cyber Security Days 2025",
+      description: "date event: june 20, 2023",
+      imageUrl:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy",
+      categories: [
+        {
+          text: "Events",
+          href: "/events",
+        },
+        {
+          text: "News",
+          href: "/news",
+        },
+      ],
+    },
+  ],
+}
+
+export const media2Section = {
+  title: "## Our Projects",
+  text: `Lorem ipsum dolor sit amet, [consectetur adipiscing elit](https://example.com), sed do eiusmod tempor incididunt.
+Ut enim ad minim veniam, quis nostrud exercitation [ullamco laboris nisi](https://example.com) ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse [cillum dolore eu fugiat nulla](https://example.com) pariatur.`,
+  media: [
+    {
+      image: {
+        src: "https://images.unsplash.com/photo-1519014961376-9e3f31b1a812?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Group of people in snow",
+      },
+      title: "Who we are?",
+      text: `Our team is passionate about open source and deeply rooted in technology. As dedicated tech enthusiasts, we thrive on innovation and are committed to leveraging open-source solutions to solve complex problems. Our collective enthusiasm for open source fuels our creativity and dedication, ensuring that we stay at the forefront of the industry while fostering a culture of continuous learning and growth.`,
+      ctas,
+    },
+    {
+      image: {
+        src: "https://images.unsplash.com/photo-1727805174504-3cd54f92b3eb?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Image of an SBB train in Switzerland",
+      },
+      title: "Values and committment",
+      text: `At Adfinis we shape solutions based on Open Source without Vendor lock-in. We believe in openness and transparency and are a part of a worldwide Open Source community`,
+      ctas,
+    },
+  ],
+} as const
+
+export const statisticsSection = {
+  title: "## More on **Adfinis**",
+  description:
+    "Lorem ipsum dolor sit amet consectetur **adfinis** elit litora, cubilia habitant mollis mauris duis eget augue. Viverra curae faucibus fames ante dictum, mi magnis vulputate placerat accumsan vivamus, in nulla lacinia dis.",
+  cards: [
+    {
+      title: "2000",
+      description: "founded",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+    {
+      title: "200+",
+      description: "projects",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+    {
+      title: "150+",
+      description: "employees",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+  ],
+  logos: [...logoSection.logos, ...logoSection.logos],
 } as const
 
 export const example = `

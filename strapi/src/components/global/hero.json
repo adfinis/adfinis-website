@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_global_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "richtext",
+      "required": true
+    },
+    "Description": {
+      "type": "richtext",
+      "required": true
+    },
+    "external_cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.cta-external-url"
+    }
+  }
+}

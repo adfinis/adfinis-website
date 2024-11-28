@@ -1,4 +1,5 @@
 import { type Config } from "tailwindcss"
+import { spacing, maxWidth } from "tailwindcss/defaultTheme"
 import { colors } from "./src/lib/colors"
 
 const config: Config = {
@@ -12,6 +13,7 @@ const config: Config = {
       sans: ["var(--font-source-sans-3)", "sans-serif"],
     },
     fontSize: {
+      12: "0.75rem", // 12px
       14: "0.875rem", // 14px
       18: "1.125rem", // 18px
       20: "1.25rem", // 20px
@@ -32,7 +34,15 @@ const config: Config = {
     },
     extend: {
       spacing: {
+        15: "3.75rem",
         18: "4.5rem",
+      },
+      height: {
+        100: "25rem",
+      },
+      width: {
+        112: "28rem",
+        128: "32rem",
       },
       backgroundColor: {
         "button-primary": "var(--button-bg-primary)",
