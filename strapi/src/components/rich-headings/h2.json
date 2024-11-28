@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_rich_headings_h1s",
+  "collectionName": "components_rich_headings_h2s",
   "info": {
-    "displayName": "H1",
-    "icon": "hashtag",
-    "description": ""
+    "displayName": "H2",
+    "icon": "hashtag"
   },
   "options": {},
   "attributes": {
