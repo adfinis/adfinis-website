@@ -5,6 +5,7 @@ import Text from "@/components/text"
 import Link from "@/components/link"
 import Intro from "@/components/intro"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
+import strapi from "@/lib/strapi"
 
 export default async function Homepage({
   url,
@@ -13,11 +14,7 @@ export default async function Homepage({
   url: string
   activeLocale: LinkedLocale
 }) {
-  const { data } = await (await fetch(url)).json()
-  console.log({
-    data,
-    url,
-  })
+  const { data } = await (await strapi(url)).json()
   const hero = data.hero_image ?? {
     Description: "placeholder",
     Title: "placeholder",
@@ -33,6 +30,7 @@ export default async function Homepage({
       isActive: false,
     }
   })
+
   locales.push(activeLocale)
 
   return (
