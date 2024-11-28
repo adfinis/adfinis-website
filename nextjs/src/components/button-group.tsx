@@ -1,4 +1,4 @@
-import { CTA } from "@/lib/actions"
+import { CTA } from "@/lib/cta"
 import React from "react"
 import Link from "./link"
 import { cva, VariantProps } from "class-variance-authority"

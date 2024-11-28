@@ -1,5 +1,5 @@
 import { type Card } from "@/components/cards/card"
-import { CTA } from "@/lib/actions"
+import { CTA } from "@/lib/cta"
 
 export const hero = {
   title: `## Potential. **Unlocked.**`,
@@ -65,7 +65,7 @@ export const cards = [
       "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris.",
     color: "sunglow",
   },
-] satisfies Card[]
+] as const
 
 const ctas = [
   {
@@ -228,6 +228,48 @@ export const ctaSection = {
     size: "large",
   },
 } as const
+
+export const resourcesSection = {
+  title: "Our Resources", // no markdown here!
+  description:
+    "Your one-stop hub for the latest industry news, upcoming events, insightful whitepapers, and much more. Stay informed and ahead of the curve with a curated selection of content.",
+  ctas: [ctas[0]],
+  cards: [
+    {
+      title:
+        "Adfinis receives the HashiCorp EMEA Focus Partner of the Year Award",
+      description: "date event: june 20, 2023",
+      imageUrl:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy",
+      categories: [
+        {
+          text: "Events",
+          href: "/events",
+        },
+        {
+          text: "News",
+          href: "/news",
+        },
+      ],
+    },
+    {
+      title: "Swiss Cyber Security Days 2025",
+      description: "date event: june 20, 2023",
+      imageUrl:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy",
+      categories: [
+        {
+          text: "Events",
+          href: "/events",
+        },
+        {
+          text: "News",
+          href: "/news",
+        },
+      ],
+    },
+  ],
+}
 
 export const example = `
 # Heading 1 **Example**

@@ -14,15 +14,20 @@ import {
   journeySection,
   example,
   ctaSection,
+  resourcesSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
+import CardSliderElement from "@/components/cards/card-slider-element"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import SectionGroup from "@/components/sections/section-group"
 import LogoGroup from "@/components/logo-group"
 import ButtonGroup from "@/components/button-group"
 import CardIcon from "@/components/cards/card-icon"
 import CardIconGroup from "@/components/cards/card-icon-group"
+import CardColored from "@/components/cards/card-colored"
+import CardArticle from "@/components/cards/card-article"
+
 export default function Theme() {
   const handleClick = () => {
     console.log("Button clicked!")
@@ -50,9 +55,20 @@ export default function Theme() {
         <CardSlider
           title={solutions.title}
           description={solutions.description}
-          cards={solutions.cards}
           ctas={solutions.ctas}
-        />
+        >
+          {solutions.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardColored
+                  color={card.color}
+                  title={card.title}
+                  description={card.description}
+                />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
       </Container>
 
       <Container background="stone" padding="both-padding">
@@ -109,6 +125,22 @@ export default function Theme() {
         <SectionGroup title={ctaSection.title} align={"center"}>
           <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
         </SectionGroup>
+      </Container>
+
+      <Container padding={"start-padding"} id="resources" background="neutral">
+        <CardSlider
+          title={resourcesSection.title}
+          description={resourcesSection.description}
+          ctas={resourcesSection.ctas}
+        >
+          {resourcesSection.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardArticle {...card} />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
       </Container>
 
       <div data-scheme="dark" className="container py-8 bg-sapphire">
