@@ -5,7 +5,7 @@ import { useClickAway } from "@uidotdev/usehooks"
 
 import IconHamburgerMenu from "./icons/icon-hamburger-menu"
 import Link from "next/link"
-import ButtonLink from "./link"
+import ButtonLink from "./link-button"
 import IconChevronRight from "./icons/icon-chevron-right"
 import Logo from "./logo"
 import TopbarActions from "./topbar-actions"

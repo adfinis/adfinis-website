@@ -12,7 +12,7 @@ type linkType = VariantProps<typeof buttonStyles> &
     className?: string
   }
 
-const Button = ({
+const LinkButton = ({
   variant,
   size,
   chevron,
@@ -38,4 +38,4 @@ const Button = ({
   )
 }
 
-export default Button
+export default LinkButton
