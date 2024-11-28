@@ -15,8 +15,27 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-[0.1.0] - 2024-06-10
+# [0.2.0] - 2024-11-28
+ 
+First release on staging environment running on App Platform
+ 
+### Added
+
+- feat: Add Container section
+- feat: Create CardArticle
+- feat: Add cta section example
+- feat: Create Icon Card
+- feat: Add partners example with logos
+- feat: Add additional container properties (bg gradient, spacing fixes)
+- feat: Create button-group wrapper
+- feat: Add section components
+- feat: Create CardImage component
+- feat: Auto deploy to App Platform (staging)
+- feat: Create solutions section with slider
+
+# [0.1.0] - 2024-06-10
 
 ### Added
+
 - chore: add strapi
 - chore: add next with prettier
