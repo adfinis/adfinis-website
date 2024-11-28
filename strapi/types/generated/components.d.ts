@@ -48,11 +48,24 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface RichHeadingsH1 extends Struct.ComponentSchema {
+  collectionName: 'components_rich_headings_h1s';
+  info: {
+    description: '';
+    displayName: 'H1';
+    icon: 'hashtag';
+  };
+  attributes: {
+    title: Schema.Attribute.RichText;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'rich-headings.h1': RichHeadingsH1;
     }
   }
 }
