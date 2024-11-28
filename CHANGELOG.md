@@ -15,6 +15,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+# [0.2.1] - 2024-11-28
+ 
+Update frontend after publishing changes from strapi
+ 
+### Added
+
+- fix: opt-out from default fetch caching (nextjs 14)
+
 # [0.2.0] - 2024-11-28
  
 First release on staging environment running on App Platform
