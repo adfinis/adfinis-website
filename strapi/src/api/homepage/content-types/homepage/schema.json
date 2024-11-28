@@ -23,28 +23,6 @@
       },
       "type": "string",
       "required": true
-    },
-    "hero_image": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.hero",
-      "required": true
-    },
-    "intro_section": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.intro-section",
-      "required": true
     }
   }
 }

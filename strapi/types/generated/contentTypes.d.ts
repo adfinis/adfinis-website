@@ -388,20 +388,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero_image: Schema.Attribute.Component<'global.hero', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    intro_section: Schema.Attribute.Component<'global.intro-section', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -483,26 +469,6 @@ export interface ApiSolutionsPageSolutionsPage
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text &
       Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Hero_image: Schema.Attribute.Component<'global.hero', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Intro_section: Schema.Attribute.Component<'global.intro-section', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    kpi_step_zone: Schema.Attribute.Component<'sections.kpi-step-zone', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
