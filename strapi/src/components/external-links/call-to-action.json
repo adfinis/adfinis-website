@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_external_links_call_to_actions",
+  "info": {
+    "displayName": "Call to action",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "Call to action",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "default": "https://adfinis.com/contact"
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "large",
+        "small"
+      ],
+      "default": "large",
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "cta",
+        "primary",
+        "secondary"
+      ],
+      "default": "cta",
+      "required": true
+    }
+  }
+}
