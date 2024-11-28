@@ -71,6 +71,17 @@ export interface RichHeadingsH2 extends Struct.ComponentSchema {
   };
 }
 
+export interface RichHeadingsH3 extends Struct.ComponentSchema {
+  collectionName: 'components_rich_headings_h3s';
+  info: {
+    displayName: 'H3';
+    icon: 'hashtag';
+  };
+  attributes: {
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -78,6 +89,7 @@ declare module '@strapi/strapi' {
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
+      'rich-headings.h3': RichHeadingsH3;
     }
   }
 }
