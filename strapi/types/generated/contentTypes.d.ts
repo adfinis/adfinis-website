@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
+    description: '';
     displayName: 'Homepage';
     pluralName: 'homepages';
     singularName: 'homepage';
