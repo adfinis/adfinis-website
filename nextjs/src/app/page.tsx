@@ -3,14 +3,10 @@ import { STRAPI } from "@/lib/constants"
 
 export const dynamic = "force-dynamic"
 
-export default function Home({
-  params: { locale },
-}: {
-  params: { locale: string }
-}) {
+export default async function Page() {
   const currentLocale = {
-    href: `/${locale}`,
-    locale: locale,
+    href: "/",
+    locale: "en",
     isActive: true,
   }
   const url = `${STRAPI}/homepage?locale=${currentLocale.locale}&populate=hero_image.external_cta&populate=intro_section&populate=localizations`

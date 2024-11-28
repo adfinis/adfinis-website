@@ -60,7 +60,6 @@ const Title: React.FC<TitleProps> = ({
 
     return (
       <Markdown
-        allowedElements={["h1", "h2", "h3", "b", "strong"]}
         remarkPlugins={[remarkGfm]}
         className={titleStyles({ level: headingLevel, align, boldness })}
       >
