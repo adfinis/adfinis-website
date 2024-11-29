@@ -51,6 +51,42 @@ export interface CardsColorCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsIconCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_icon_cards';
+  info: {
+    displayName: 'Icon Card';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<
+      'cards.project-card-with-external-cta',
+      false
+    >;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<
+      [
+        'icon_build',
+        'icon_calendar',
+        'icon_compliance',
+        'icon_employees',
+        'icon_flexible-hours',
+        'icon_founded',
+        'icon_open-source',
+        'icon_plan',
+        'icon_projects',
+        'icon_remote',
+        'icon_run',
+        'icon_solutions',
+        'icon_training',
+        'icon_workflow',
+        'icon_workspace',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'icon_build'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsProjectCardWithExternalCta
   extends Struct.ComponentSchema {
   collectionName: 'components_cards_project_card_with_external_ctas';
@@ -252,6 +288,25 @@ export interface SectionsHeadingWithLinkContainer
   };
 }
 
+export interface SectionsIconCardSectionWithCta extends Struct.ComponentSchema {
+  collectionName: 'components_sections_icon_card_section_with_ctas';
+  info: {
+    displayName: 'Icon card section with CTA';
+  };
+  attributes: {
+    icon_cards: Schema.Attribute.Component<'cards.icon-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 1;
+        },
+        number
+      >;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsProjectsCardSectionWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_projects_card_section_with_external_links';
@@ -284,6 +339,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
       'cards.color-card': CardsColorCard;
+      'cards.icon-card': CardsIconCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
@@ -296,6 +352,7 @@ declare module '@strapi/strapi' {
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
+      'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
     }
   }
