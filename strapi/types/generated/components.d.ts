@@ -120,6 +120,19 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalHeroWithCta extends Struct.ComponentSchema {
+  collectionName: 'components_global_hero_with_ctas';
+  info: {
+    displayName: 'Hero with CTA';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    image: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.RichText;
+  };
+}
+
 export interface RichHeadingsH1 extends Struct.ComponentSchema {
   collectionName: 'components_rich_headings_h1s';
   info: {
@@ -263,6 +276,7 @@ declare module '@strapi/strapi' {
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'global.hero-with-cta': GlobalHeroWithCta;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
