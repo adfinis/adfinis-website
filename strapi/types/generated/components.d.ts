@@ -1,5 +1,26 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsProjectCardWithExternalCta
+  extends Struct.ComponentSchema {
+  collectionName: 'components_cards_project_card_with_external_ctas';
+  info: {
+    description: '';
+    displayName: 'Project card with external CTA';
+  };
+  attributes: {
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    image: Schema.Attribute.String & Schema.Attribute.Required;
+    intro: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
@@ -97,6 +118,19 @@ export interface SectionsGroupTitleWithExternalLink
   };
 }
 
+export interface SectionsGroupTitleWithRichIntro
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_group_title_with_rich_intros';
+  info: {
+    displayName: 'Group title with rich intro';
+    icon: 'bulletList';
+  };
+  attributes: {
+    intro: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsHeadingWithLinkContainer
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_heading_with_link_containers';
@@ -123,16 +157,46 @@ export interface SectionsHeadingWithLinkContainer
   };
 }
 
+export interface SectionsProjectsCardSectionWithExternalLink
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_projects_card_section_with_external_links';
+  info: {
+    displayName: 'Projects card section with external link';
+  };
+  attributes: {
+    header: Schema.Attribute.Component<
+      'sections.group-title-with-rich-intro',
+      false
+    > &
+      Schema.Attribute.Required;
+    project_cards: Schema.Attribute.Component<
+      'cards.project-card-with-external-cta',
+      true
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
+      'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
+      'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
     }
   }
 }
