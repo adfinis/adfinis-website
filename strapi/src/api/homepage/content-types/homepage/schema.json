@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "metadata_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,6 +24,87 @@
       },
       "type": "string",
       "required": true
+    },
+    "meta_description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.hero-with-cta",
+      "required": true
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.intro",
+      "required": true
+    },
+    "color_slider_cards": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.color-card-slider-section"
+    },
+    "projects_section": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.projects-card-section-with-external-link"
+    },
+    "start_your_journey_section": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
+    },
+    "who_are_we_cards": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.projects-card-section-with-external-link"
+    },
+    "start_your_career_section": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
     }
   }
 }
