@@ -1,5 +1,56 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsCardSliderIntro extends Struct.ComponentSchema {
+  collectionName: 'components_cards_card_slider_intros';
+  info: {
+    displayName: 'Card Slider Intro';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    external_ctas: Schema.Attribute.Component<
+      'external-links.call-to-action',
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CardsColorCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_color_cards';
+  info: {
+    displayName: 'Color Card';
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      [
+        'white',
+        'stone',
+        'biscay',
+        'sapphire',
+        'jumbo',
+        'neutral',
+        'sunglow',
+        'sky',
+        'cinnamon',
+        'green',
+        'razzmatazz',
+        'fuchsia',
+        'manhattan',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'sky'>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsProjectCardWithExternalCta
   extends Struct.ComponentSchema {
   collectionName: 'components_cards_project_card_with_external_ctas';
@@ -103,6 +154,26 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_color_card_slider_sections';
+  info: {
+    displayName: 'Color card slider section';
+  };
+  attributes: {
+    color_cards: Schema.Attribute.Component<'cards.color-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      >;
+    intro: Schema.Attribute.Component<'cards.card-slider-intro', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsGroupTitleWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_group_title_with_external_links';
@@ -187,12 +258,15 @@ export interface SectionsProjectsCardSectionWithExternalLink
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.color-card': CardsColorCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
+      'sections.color-card-slider-section': SectionsColorCardSliderSection;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;

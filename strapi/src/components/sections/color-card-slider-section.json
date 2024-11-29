@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_color_card_slider_sections",
+  "info": {
+    "displayName": "Color card slider section"
+  },
+  "options": {},
+  "attributes": {
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cards.card-slider-intro",
+      "required": true
+    },
+    "color_cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.color-card",
+      "required": true,
+      "max": 6,
+      "min": 1
+    }
+  }
+}

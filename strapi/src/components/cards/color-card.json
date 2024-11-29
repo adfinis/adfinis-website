@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_cards_color_cards",
+  "info": {
+    "displayName": "Color Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "stone",
+        "biscay",
+        "sapphire",
+        "jumbo",
+        "neutral",
+        "sunglow",
+        "sky",
+        "cinnamon",
+        "green",
+        "razzmatazz",
+        "fuchsia",
+        "manhattan"
+      ],
+      "required": true,
+      "default": "sky"
+    }
+  }
+}
