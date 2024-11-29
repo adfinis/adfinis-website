@@ -54,13 +54,17 @@ export interface CardsColorCard extends Struct.ComponentSchema {
 export interface CardsIconCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_icon_cards';
   info: {
+    description: '';
     displayName: 'Icon Card';
   };
   attributes: {
-    cta: Schema.Attribute.Component<
-      'cards.project-card-with-external-cta',
-      false
-    >;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
     description: Schema.Attribute.String & Schema.Attribute.Required;
     icon: Schema.Attribute.Enumeration<
       [

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_cards_icon_cards",
   "info": {
-    "displayName": "Icon Card"
+    "displayName": "Icon Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -35,10 +36,11 @@
       "type": "string",
       "required": true
     },
-    "cta": {
+    "ctas": {
       "type": "component",
-      "repeatable": false,
-      "component": "cards.project-card-with-external-cta"
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "min": 2
     }
   }
 }
