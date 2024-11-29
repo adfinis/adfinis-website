@@ -82,6 +82,47 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsGroupTitleWithExternalLink
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_group_title_with_external_links';
+  info: {
+    displayName: 'Group title with external link';
+  };
+  attributes: {
+    external_cta_link: Schema.Attribute.Component<
+      'external-links.call-to-action',
+      false
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsHeadingWithLinkContainer
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_heading_with_link_containers';
+  info: {
+    description: '';
+    displayName: 'Heading with link container';
+    icon: 'layer';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<
+      ['white', 'neutral', 'sapphire', 'stone']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'neutral'>;
+    padding: Schema.Attribute.Enumeration<
+      ['no-padding', 'both-padding', 'start-padding']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'both-padding'>;
+    section_group_with_external_link: Schema.Attribute.Component<
+      'sections.group-title-with-external-link',
+      false
+    >;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -90,6 +131,8 @@ declare module '@strapi/strapi' {
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
+      'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
+      'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
     }
   }
 }
