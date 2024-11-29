@@ -133,6 +133,17 @@ export interface GlobalHeroWithCta extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalIntro extends Struct.ComponentSchema {
+  collectionName: 'components_global_intros';
+  info: {
+    displayName: 'Intro';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    intro: Schema.Attribute.RichText;
+  };
+}
+
 export interface RichHeadingsH1 extends Struct.ComponentSchema {
   collectionName: 'components_rich_headings_h1s';
   info: {
@@ -277,6 +288,7 @@ declare module '@strapi/strapi' {
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.hero-with-cta': GlobalHeroWithCta;
+      'global.intro': GlobalIntro;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
