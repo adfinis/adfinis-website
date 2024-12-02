@@ -427,7 +427,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         };
       }>;
     intro: Schema.Attribute.Component<'global.intro', false> &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -496,22 +495,14 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'sections.color-card-slider-section',
       false
     > &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 6;
-          min: 1;
-        },
-        number
-      >;
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     shape_your_journey: Schema.Attribute.Component<
-      'sections.icon-card-section-with-cta',
+      'sections.icon-card-section-with-external-ct-as',
       false
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -542,7 +533,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     who_are_we: Schema.Attribute.Component<
       'sections.projects-card-section-with-external-link',
-      true
+      false
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -574,13 +565,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Component<'global.hero-with-cta', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    intro: Schema.Attribute.Component<'global.intro', false> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

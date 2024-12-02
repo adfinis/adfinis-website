@@ -53,8 +53,7 @@
           "localized": true
         }
       },
-      "component": "global.intro",
-      "required": true
+      "component": "global.intro"
     },
     "our_solutions": {
       "type": "component",
@@ -64,10 +63,7 @@
           "localized": true
         }
       },
-      "component": "sections.color-card-slider-section",
-      "required": true,
-      "max": 6,
-      "min": 1
+      "component": "sections.color-card-slider-section"
     },
     "our_projects": {
       "type": "component",
@@ -102,7 +98,7 @@
           "localized": true
         }
       },
-      "component": "sections.icon-card-section-with-cta"
+      "component": "sections.icon-card-section-with-external-ct-as"
     },
     "start_your_journey": {
       "type": "component",
@@ -126,7 +122,7 @@
     },
     "who_are_we": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true

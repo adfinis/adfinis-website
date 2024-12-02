@@ -246,8 +246,8 @@ export interface GlobalIntro extends Struct.ComponentSchema {
     displayName: 'Intro';
   };
   attributes: {
-    body: Schema.Attribute.RichText & Schema.Attribute.Required;
-    intro: Schema.Attribute.RichText;
+    intro_body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    intro_title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
@@ -331,6 +331,7 @@ export interface SectionsGroupTitleWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_group_title_with_external_links';
   info: {
+    description: '';
     displayName: 'Group title with external link';
   };
   attributes: {
@@ -338,7 +339,7 @@ export interface SectionsGroupTitleWithExternalLink
       'external-links.call-to-action',
       false
     >;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
