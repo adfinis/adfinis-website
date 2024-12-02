@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_section_with_richt_heading_intro_and_ctas",
+  "info": {
+    "displayName": "Section with rich heading, intro and CTA",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "intro": {
+      "type": "richtext",
+      "required": true
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action"
+    }
+  }
+}

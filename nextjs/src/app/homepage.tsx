@@ -2,10 +2,10 @@ import NavBar from "@/components/nav-bar/nav-bar"
 import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
-import Link from "@/components/link"
 import Intro from "@/components/intro"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
+import LinkButton from "@/components/link-button"
 
 export default async function Homepage({
   url,
@@ -33,6 +33,8 @@ export default async function Homepage({
 
   locales.push(activeLocale)
 
+  console.log(data)
+
   return (
     <>
       <NavBar items={locales} />
@@ -42,9 +44,9 @@ export default async function Homepage({
       >
         <Title markdown={hero.Title} />
         <Text markdown={hero.Description} />
-        <Link href={hero.external_cta.external_url} size="large">
+        <LinkButton href={hero.external_cta.external_url} size="large">
           {hero.external_cta.label}
-        </Link>
+        </LinkButton>
       </Hero>
       <Intro>
         <Title markdown={intro.Title} align="center" />

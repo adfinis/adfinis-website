@@ -1,19 +1,16 @@
 {
-  "collectionName": "components_cards_kpi_cards",
+  "collectionName": "components_cards_color_cards",
   "info": {
-    "displayName": "KPI card"
+    "displayName": "Color Card"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "description": {
-      "type": "string"
-    },
-    "image": {
-      "type": "string",
+      "type": "richtext",
       "required": true
     },
     "color": {
@@ -33,8 +30,8 @@
         "fuchsia",
         "manhattan"
       ],
-      "default": "sapphire",
-      "required": true
+      "required": true,
+      "default": "sky"
     }
   }
 }

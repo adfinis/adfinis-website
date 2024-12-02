@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_projects_card_section_with_external_links",
+  "info": {
+    "displayName": "Projects card section with external link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.project-card-with-external-cta",
+      "max": 5,
+      "min": 1
+    }
+  }
+}

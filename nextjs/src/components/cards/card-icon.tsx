@@ -3,7 +3,7 @@ import Image from "next/image"
 import React from "react"
 import Title from "../title"
 import Text from "../text"
-import Link from "../link"
+import Link from "../link-button"
 import clsx from "clsx"
 import type { Card } from "./card"
 

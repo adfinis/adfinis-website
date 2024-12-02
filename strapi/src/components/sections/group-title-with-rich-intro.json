@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_group_title_with_rich_intros",
+  "info": {
+    "displayName": "Group title with rich intro",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "richtext"
+    }
+  }
+}

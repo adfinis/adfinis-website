@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_rich_headings_h2s",
+  "info": {
+    "displayName": "H2",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

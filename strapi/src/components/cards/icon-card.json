@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_cards_icon_cards",
+  "info": {
+    "displayName": "Icon Card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "icon_build",
+        "icon_calendar",
+        "icon_compliance",
+        "icon_employees",
+        "icon_flexible-hours",
+        "icon_founded",
+        "icon_open-source",
+        "icon_plan",
+        "icon_projects",
+        "icon_remote",
+        "icon_run",
+        "icon_solutions",
+        "icon_training",
+        "icon_workflow",
+        "icon_workspace"
+      ],
+      "required": true,
+      "default": "icon_build"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "min": 2
+    }
+  }
+}

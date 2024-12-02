@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_rich_headings_h3s",
+  "info": {
+    "displayName": "H3",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

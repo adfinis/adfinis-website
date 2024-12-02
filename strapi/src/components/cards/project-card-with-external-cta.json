@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_cards_project_card_with_external_ctas",
+  "info": {
+    "displayName": "Project card with external CTA",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "max": 2
+    }
+  }
+}

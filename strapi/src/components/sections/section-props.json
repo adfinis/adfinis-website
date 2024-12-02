@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_section_props",
+  "info": {
+    "displayName": "Section props"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "neutral",
+        "sapphire",
+        "stone"
+      ],
+      "default": "neutral",
+      "required": true
+    },
+    "padding": {
+      "type": "enumeration",
+      "enum": [
+        "no-padding",
+        "both-padding",
+        "start-padding"
+      ],
+      "default": "both-padding",
+      "required": true
+    }
+  }
+}

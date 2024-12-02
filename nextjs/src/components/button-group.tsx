@@ -1,6 +1,6 @@
 import { CTA } from "@/lib/cta"
 import React from "react"
-import Link from "./link"
+import Link from "./link-button"
 import { cva, VariantProps } from "class-variance-authority"
 
 const buttonGroupVariants = cva(["flex gap-4"], {

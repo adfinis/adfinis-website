@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_events_section_with_intro_and_ctas",
+  "info": {
+    "displayName": "Events section with intro and CTA"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "section_props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "events": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.event-card",
+      "max": 6,
+      "min": 1
+    }
+  }
+}

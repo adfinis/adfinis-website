@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_global_hero_with_ctas",
+  "info": {
+    "displayName": "Hero with CTA"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    }
+  }
+}

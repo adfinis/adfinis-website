@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_group_title_with_external_links",
+  "info": {
+    "displayName": "Group title with external link"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "external_cta_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    }
+  }
+}
