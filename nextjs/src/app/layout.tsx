@@ -3,6 +3,13 @@ import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 import Logo from "@/components/logo"
 import Topbar from "@/components/topbar"
+import Footer from "@/components/layout/footer"
+import FooterElement from "@/components/layout/footer-element"
+
+import { footer } from "./[locale]/theme/texts"
+import IconSocial from "@/components/icons/icon-social"
+import Link from "next/link"
+import FooterLegal from "@/components/layout/footer-legal"
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -33,6 +40,28 @@ export default function RootLayout({
       >
         <Topbar />
         {children}
+        <Footer>
+          {footer.columns.map((column, index) => (
+            <FooterElement
+              key={index}
+              title={column.title}
+              text={column.text}
+              links={[...column.links]}
+            >
+              {index === 3 && (
+                <div className="flex gap-6">
+                  {footer.icons.map((icon, i) => (
+                    <Link href={icon.href} key={i}>
+                      <IconSocial type={icon.name} />
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </FooterElement>
+          ))}
+          <hr className="border-y-stone/15 col-span-1 md:col-span-2 lg:col-span-4" />
+          <FooterLegal privacyPolicy={footer.privacyPolicy} />
+        </Footer>
       </body>
     </html>
   )
