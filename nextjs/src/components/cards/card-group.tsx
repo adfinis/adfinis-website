@@ -1,19 +1,26 @@
 import clsx from "clsx"
 import React from "react"
+import "./card-group.css"
 
-type CardIconGroupProps = {
+type CardGroupProps = {
   columns?: 1 | 2 | 3 | 4 | 5 | 6
   children: React.ReactNode
+  hasDividers?: boolean
 }
 
 /**
  * @description Wrapper component for a group of max. n CardIcon components
  */
-const CardGroup: React.FC<CardIconGroupProps> = ({ columns = 3, children }) => {
+const CardGroup: React.FC<CardGroupProps> = ({
+  columns = 3,
+  children,
+  hasDividers,
+}) => {
   return (
     <div
       className={clsx([
         "grid grid-cols-1 gap-12 max-w-5xl mx-auto",
+        hasDividers && "card-group-dividers",
         {
           "lg:grid-cols-1": columns === 1,
           "lg:grid-cols-2": columns === 2,

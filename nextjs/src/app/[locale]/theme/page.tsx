@@ -107,7 +107,7 @@ export default function Theme() {
 
       <Container id="Journeys" background="neutral" padding="both-padding">
         <SectionGroup title={journeySection.title}>
-          <CardGroup>
+          <CardGroup hasDividers>
             {journeySection.cards.map((item, i) => {
               return (
                 <CardIcon
