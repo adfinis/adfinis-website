@@ -56,7 +56,7 @@
       "component": "global.intro",
       "required": true
     },
-    "color_slider_cards": {
+    "our_solutions": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -64,9 +64,12 @@
           "localized": true
         }
       },
-      "component": "sections.color-card-slider-section"
+      "component": "sections.color-card-slider-section",
+      "required": true,
+      "max": 6,
+      "min": 1
     },
-    "projects_section": {
+    "our_projects": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -76,7 +79,32 @@
       },
       "component": "sections.projects-card-section-with-external-link"
     },
-    "start_your_journey_section": {
+    "meet_our_partners": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.section-with-richt-heading-intro-and-cta"
+    },
+    "our_partners": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hallmark.hallmark"
+    },
+    "shape_your_journey": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.icon-card-section-with-cta"
+    },
+    "start_your_journey": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -86,7 +114,7 @@
       },
       "component": "sections.heading-with-link-container"
     },
-    "who_are_we_cards": {
+    "our_resources": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -94,9 +122,29 @@
           "localized": true
         }
       },
+      "component": "sections.events-section-with-intro-and-cta"
+    },
+    "who_are_we": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "sections.projects-card-section-with-external-link"
     },
-    "start_your_career_section": {
+    "more_on_adfinis": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.kpi-with-intro-and-hallmarks-section"
+    },
+    "start_your_career": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {

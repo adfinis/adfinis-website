@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_global_event_categories",
+  "info": {
+    "displayName": "Event category"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_cards_kpi_cards",
+  "info": {
+    "displayName": "KPI card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "stone",
+        "biscay",
+        "sapphire",
+        "jumbo",
+        "neutral",
+        "sunglow",
+        "sky",
+        "cinnamon",
+        "green",
+        "razzmatazz",
+        "fuchsia",
+        "manhattan"
+      ],
+      "default": "sapphire",
+      "required": true
+    }
+  }
+}

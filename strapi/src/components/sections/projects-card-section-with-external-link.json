@@ -1,21 +1,21 @@
 {
   "collectionName": "components_sections_projects_card_section_with_external_links",
   "info": {
-    "displayName": "Projects card section with external link"
+    "displayName": "Projects card section with external link",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.group-title-with-rich-intro",
-      "required": true
+    "title": {
+      "type": "string"
     },
-    "project_cards": {
+    "description": {
+      "type": "richtext"
+    },
+    "projects": {
       "type": "component",
       "repeatable": true,
       "component": "cards.project-card-with-external-cta",
-      "required": true,
       "max": 5,
       "min": 1
     }

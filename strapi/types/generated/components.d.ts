@@ -51,6 +51,19 @@ export interface CardsColorCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsEventCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_event_cards';
+  info: {
+    displayName: 'Event Card';
+  };
+  attributes: {
+    categories: Schema.Attribute.Component<'global.event-category', true>;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    event_date: Schema.Attribute.Date;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsIconCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_icon_cards';
   info: {
@@ -88,6 +101,37 @@ export interface CardsIconCard extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'icon_build'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CardsKpiCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_kpi_cards';
+  info: {
+    displayName: 'KPI card';
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      [
+        'white',
+        'stone',
+        'biscay',
+        'sapphire',
+        'jumbo',
+        'neutral',
+        'sunglow',
+        'sky',
+        'cinnamon',
+        'green',
+        'razzmatazz',
+        'fuchsia',
+        'manhattan',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'sapphire'>;
+    description: Schema.Attribute.String;
+    image: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -157,6 +201,29 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
     size: Schema.Attribute.Enumeration<['large', 'small']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'large'>;
+  };
+}
+
+export interface GlobalEventCategory extends Struct.ComponentSchema {
+  collectionName: 'components_global_event_categories';
+  info: {
+    displayName: 'Event category';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface GlobalHallmark extends Struct.ComponentSchema {
+  collectionName: 'components_global_hallmarks';
+  info: {
+    displayName: 'Hallmark';
+    icon: 'picture';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -238,6 +305,28 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsEventsSectionWithIntroAndCta
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_events_section_with_intro_and_ctas';
+  info: {
+    displayName: 'Events section with intro and CTA';
+  };
+  attributes: {
+    body: Schema.Attribute.String;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    events: Schema.Attribute.Component<'cards.event-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 6;
+          min: 1;
+        },
+        number
+      >;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsGroupTitleWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_group_title_with_external_links';
@@ -311,23 +400,61 @@ export interface SectionsIconCardSectionWithCta extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsIconCardSectionWithExternalCtAs
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_icon_card_section_with_external_ct_as';
+  info: {
+    displayName: 'Icon card section with external CTAs';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.icon-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 1;
+        },
+        number
+      >;
+    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface SectionsKpiWithIntroAndHallmarksSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
+  info: {
+    displayName: 'KPI with intro and hallmarks section';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 1;
+        },
+        number
+      >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
 export interface SectionsProjectsCardSectionWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_projects_card_section_with_external_links';
   info: {
+    description: '';
     displayName: 'Projects card section with external link';
   };
   attributes: {
-    header: Schema.Attribute.Component<
-      'sections.group-title-with-rich-intro',
-      false
-    > &
-      Schema.Attribute.Required;
-    project_cards: Schema.Attribute.Component<
+    description: Schema.Attribute.RichText;
+    projects: Schema.Attribute.Component<
       'cards.project-card-with-external-cta',
       true
     > &
-      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           max: 5;
@@ -335,6 +462,40 @@ export interface SectionsProjectsCardSectionWithExternalLink
         },
         number
       >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsSectionProps extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_props';
+  info: {
+    displayName: 'Section props';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<
+      ['white', 'neutral', 'sapphire', 'stone']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'neutral'>;
+    padding: Schema.Attribute.Enumeration<
+      ['no-padding', 'both-padding', 'start-padding']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'both-padding'>;
+  };
+}
+
+export interface SectionsSectionWithRichtHeadingIntroAndCta
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_with_richt_heading_intro_and_ctas';
+  info: {
+    description: '';
+    displayName: 'Section with rich heading, intro and CTA';
+  };
+  attributes: {
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true>;
+    intro: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
@@ -343,21 +504,30 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
       'cards.color-card': CardsColorCard;
+      'cards.event-card': CardsEventCard;
       'cards.icon-card': CardsIconCard;
+      'cards.kpi-card': CardsKpiCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'global.event-category': GlobalEventCategory;
+      'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-slider-section': SectionsColorCardSliderSection;
+      'sections.events-section-with-intro-and-cta': SectionsEventsSectionWithIntroAndCta;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
+      'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
+      'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
+      'sections.section-props': SectionsSectionProps;
+      'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
     }
   }
 }
