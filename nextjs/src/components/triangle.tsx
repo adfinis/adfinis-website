@@ -5,9 +5,10 @@ import { useId } from "react"
 type TriangleProps = {
   color: keyof typeof colors
   className?: string
+  fill?: boolean
 }
 
-const Triangle: React.FC<TriangleProps> = ({ color, className }) => {
+const Triangle: React.FC<TriangleProps> = ({ color, className, fill }) => {
   const id = useId()
   return (
     <svg
@@ -35,7 +36,7 @@ const Triangle: React.FC<TriangleProps> = ({ color, className }) => {
         >
           <stop
             stopColor={colors[color || "neutral"]}
-            stopOpacity={["neutral", "white"].includes(color) ? 1 : 0}
+            stopOpacity={fill || ["neutral", "white"].includes(color) ? 1 : 0}
           />
           <stop offset="1" stopColor={colors[color || "neutral"]} />
         </linearGradient>

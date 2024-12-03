@@ -356,3 +356,119 @@ Small text.
 - This is a very long sentence that is meant to test how well the markdown renderer handles text that spans multiple lines without any line breaks, ensuring that the text wraps correctly and maintains readability across different devices and screen sizes.
 - Another extremely long sentence follows, designed to push the limits of the markdown formatting and see if it can gracefully manage extensive content without breaking the layout or causing any unexpected issues in the display, making sure that everything remains user-friendly and visually appealing.
 `
+
+export const footer = {
+  columns: [
+    {
+      title: "Adfinis",
+      text: `Adfinis is a Swiss IT service provider with a strong focus on open source software. We offer consulting, development, and managed services for a wide range of technologies. 
+
+Our team of experts is dedicated to providing innovative and sustainable solutions to help organizations optimize their IT environments and boost operational efficiency.`,
+      links: [],
+    },
+    {
+      title: "Solutions",
+      text: undefined,
+      links: [
+        {
+          text: "Cloud Journey",
+          href: "/cloud-journey",
+        },
+        {
+          text: "Security Journey",
+          href: "/security-journey",
+        },
+        {
+          text: "System Automation Journey",
+          href: "/system-automation-journey",
+        },
+        {
+          text: "Digital Sovereignty Journey",
+          href: "/digital-sovereignty-journey",
+        },
+        {
+          text: "Form & Workflow Journey",
+          href: "/form-workflow-journey",
+        },
+        {
+          text: "Developer Journey",
+          href: "/developer-journey",
+        },
+        {
+          text: "SLA's",
+          href: "/sla",
+        },
+      ],
+    },
+    {
+      title: "Partners & Products",
+      text: undefined,
+      links: [
+        {
+          text: "HashiCorp",
+          href: "/hashicorp",
+        },
+        {
+          text: "Red Hat",
+          href: "/red-hat",
+        },
+        {
+          text: "SUSE",
+          href: "/suse",
+        },
+        {
+          text: "GitLab",
+          href: "/gitlab",
+        },
+        {
+          text: "Cloud services",
+          href: "/cloud-services",
+        },
+        {
+          text: "Additional partners",
+          href: "/additional-partners",
+        },
+      ],
+    },
+    {
+      title: "About",
+      text: undefined,
+      links: [
+        {
+          text: "About Adfinis",
+          href: "/about",
+        },
+        {
+          text: "Team",
+          href: "/team",
+        },
+        {
+          text: "Vacancies",
+          href: "/vacancies",
+        },
+        {
+          text: "Contact",
+          href: "/contact",
+        },
+      ],
+    },
+  ],
+  icons: [
+    {
+      name: "linkedin",
+      href: "https://www.linkedin.com/company/adfinis/",
+    },
+    {
+      name: "github",
+      href: "https://github.com/adfinis",
+    },
+    {
+      name: "youtube",
+      href: "https://www.youtube.com/@adfinis",
+    },
+  ],
+  privacyPolicy: {
+    text: "Privacy Policy",
+    href: "/privacy-policy",
+  },
+} as const
