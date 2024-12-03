@@ -180,11 +180,15 @@ export default async function Homepage({
               align={"center"}
               ctas={[
                 {
-                  href: start_your_journey.section_group_with_external_link.external_cta_link.href,
-                  size: start_your_journey.section_group_with_external_link.external_cta_link.size,
+                  href: start_your_journey.section_group_with_external_link
+                    .external_cta_link.href,
+                  size: start_your_journey.section_group_with_external_link
+                    .external_cta_link.size,
                   variant:
-                    start_your_journey.section_group_with_external_link.external_cta_link.variant,
-                  text: start_your_journey.section_group_with_external_link.external_cta_link.label,
+                    start_your_journey.section_group_with_external_link
+                      .external_cta_link.variant,
+                  text: start_your_journey.section_group_with_external_link
+                    .external_cta_link.label,
                 },
               ]}
             />
