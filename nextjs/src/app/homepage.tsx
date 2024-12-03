@@ -19,7 +19,7 @@ import CardIcon from "@/components/cards/card-icon"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 
-const mapCta = (cta) => ({
+const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
   text: cta.label,
   ...cta,
@@ -85,7 +85,7 @@ export default async function Homepage({
             description={our_solutions.intro.body}
             ctas={our_solutions.intro.external_ctas.map(mapCta)}
           >
-            {our_solutions.color_cards.map((card, index) => {
+            {our_solutions.color_cards.map((card: any, index: number) => {
               return (
                 <CardSliderElement key={`our_solutions_card_${index}`}>
                   <CardColored
@@ -102,7 +102,7 @@ export default async function Homepage({
       {our_projects && (
         <Container background="stone" padding="both-padding">
           <SectionGroup>
-            {our_projects.projects.map((item, i) => {
+            {our_projects.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
                   reverse={i % 2 === 0}
@@ -145,7 +145,7 @@ export default async function Homepage({
         >
           <SectionGroup title={shape_your_journey.title}>
             <CardGroup>
-              {shape_your_journey.cards.map((item, i) => {
+              {shape_your_journey.cards.map((item: any, i: number) => {
                 const iconMap = {
                   icon_build: "/svg/icons/icon_build.svg",
                   icon_calendar: "/svg/icons/icon_calendar.svg",
@@ -154,6 +154,7 @@ export default async function Homepage({
                 }
                 return (
                   <CardIcon
+                    // @ts-ignore
                     imageUrl={iconMap[item.icon]}
                     title={item.title}
                     description={item.description}
@@ -205,7 +206,7 @@ export default async function Homepage({
             description={our_resources.body}
             ctas={[our_resources.cta].map(mapCta)}
           >
-            {our_resources.events.map((card, index) => {
+            {our_resources.events.map((card: any, index: number) => {
               // TODO our_resources.events is missing images
               return (
                 <CardSliderElement key={index}>
@@ -213,7 +214,7 @@ export default async function Homepage({
                     title={card.title}
                     description={card.description}
                     imageUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy"
-                    categories={card.categories.map((category) => ({
+                    categories={card.categories.map((category: any) => ({
                       text: category.name,
                       href: category.href,
                     }))}
@@ -227,7 +228,7 @@ export default async function Homepage({
       {who_are_we && (
         <Container background="stone" padding="both-padding">
           <SectionGroup>
-            {who_are_we.projects.map((item, i) => {
+            {who_are_we.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
                   reverse={i % 2 === 0}
@@ -253,7 +254,7 @@ export default async function Homepage({
             text={more_on_adfinis.description}
           >
             <CardGroup>
-              {more_on_adfinis.kpis.map((item, i) => (
+              {more_on_adfinis.kpis.map((item: any, i: number) => (
                 <CardCounter
                   key={i}
                   title={item.title}
