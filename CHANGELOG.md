@@ -15,6 +15,15 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.3.0] - 2024-12-06
+
+Frontend homepage and footer component
+
+### Added
+- strapi frontend homepage (#19)
+- digital ocean spaces support for media upload (#22)
+- footer components (#20)
+
 # [0.2.1] - 2024-11-28
  
 Update frontend after publishing changes from strapi
