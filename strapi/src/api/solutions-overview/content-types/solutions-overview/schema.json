@@ -38,6 +38,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::hero.hero"
+    },
+    "shape_your_journey": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.icon-card-section-with-relation"
     }
   }
 }
