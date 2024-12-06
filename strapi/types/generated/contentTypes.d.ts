@@ -705,6 +705,62 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
+  collectionName: 'icon_cards';
+  info: {
+    displayName: 'Icon Card';
+    pluralName: 'icon-cards';
+    singularName: 'icon-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    card_icon_svg: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::card-icon-svg.card-icon-svg'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::icon-card.icon-card'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionsOverviewSolutionsOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'solutions_overviews';
@@ -1321,6 +1377,7 @@ declare module '@strapi/strapi' {
       'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
