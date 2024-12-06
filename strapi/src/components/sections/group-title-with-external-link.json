@@ -1,12 +1,13 @@
 {
   "collectionName": "components_sections_group_title_with_external_links",
   "info": {
-    "displayName": "Group title with external link"
+    "displayName": "Group title with external link",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
+      "type": "richtext",
       "required": true
     },
     "external_cta_link": {

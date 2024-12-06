@@ -5,11 +5,11 @@
   },
   "options": {},
   "attributes": {
-    "intro": {
+    "intro_title": {
       "type": "richtext",
-      "required": false
+      "required": true
     },
-    "body": {
+    "intro_body": {
       "type": "richtext",
       "required": true
     }

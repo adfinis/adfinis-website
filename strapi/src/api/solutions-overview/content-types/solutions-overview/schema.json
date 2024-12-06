@@ -44,17 +44,6 @@
       },
       "component": "global.hero-with-cta",
       "required": true
-    },
-    "intro": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.intro",
-      "required": true
     }
   }
 }

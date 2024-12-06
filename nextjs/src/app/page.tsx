@@ -8,6 +8,5 @@ export default async function Page() {
     locale: "en",
     isActive: true,
   }
-  const url = `homepage?locale=${currentLocale.locale}&populate=hero_image.external_cta&populate=intro_section&populate=localizations`
-  return <Homepage url={url} activeLocale={currentLocale} />
+  return <Homepage activeLocale={currentLocale} />
 }
