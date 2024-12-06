@@ -39,7 +39,6 @@ export default async function Homepage({
       isActive: false,
     }
   })
-
   locales.push(activeLocale)
 
   const {
