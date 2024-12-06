@@ -450,6 +450,22 @@ export interface SectionsIconCardSectionWithExternalCtAs
   };
 }
 
+export interface SectionsIconCardSectionWithRelation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_icon_card_section_with_relations';
+  info: {
+    displayName: 'Icon card section with relation';
+  };
+  attributes: {
+    icon_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::icon-card.icon-card'
+    >;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiWithIntroAndHallmarksSection
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
@@ -554,6 +570,7 @@ declare module '@strapi/strapi' {
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
+      'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
