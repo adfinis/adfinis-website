@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_cards_card_slider_intros",
+  "info": {
+    "displayName": "Card Slider Intro"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    },
+    "external_ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "max": 2
+    }
+  }
+}

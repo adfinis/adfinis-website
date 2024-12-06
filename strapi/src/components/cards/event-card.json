@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_cards_event_cards",
+  "info": {
+    "displayName": "Event Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "event_date": {
+      "type": "date"
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.event-category"
+    }
+  }
+}

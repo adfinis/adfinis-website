@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_heading_with_link_containers",
+  "info": {
+    "displayName": "Heading with link container",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "neutral",
+        "sapphire",
+        "stone"
+      ],
+      "default": "neutral",
+      "required": true
+    },
+    "padding": {
+      "type": "enumeration",
+      "enum": [
+        "no-padding",
+        "both-padding",
+        "start-padding"
+      ],
+      "default": "both-padding",
+      "required": true
+    },
+    "section_group_with_external_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.group-title-with-external-link"
+    }
+  }
+}

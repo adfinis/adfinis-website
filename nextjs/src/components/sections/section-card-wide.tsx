@@ -1,7 +1,7 @@
 import React from "react"
 import CardImage from "../cards/card-image"
 import { CTA } from "@/lib/cta"
-import Link from "../link"
+import Link from "../link-button"
 import ButtonGroup from "../button-group"
 import clsx from "clsx"
 

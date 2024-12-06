@@ -34,28 +34,6 @@
       "type": "text",
       "required": true
     },
-    "Hero_image": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.hero",
-      "required": true
-    },
-    "Intro_section": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.intro-section",
-      "required": true
-    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -65,16 +43,6 @@
       "type": "uid",
       "targetField": "Title",
       "required": true
-    },
-    "kpi_step_zone": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.kpi-step-zone"
     }
   }
 }

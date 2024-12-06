@@ -4,7 +4,8 @@
   "info": {
     "singularName": "solutions-overview",
     "pluralName": "solutions-overviews",
-    "displayName": "Solutions overview"
+    "displayName": "Solutions overview",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,13 +16,33 @@
     }
   },
   "attributes": {
-    "title": {
+    "metadata_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "string",
+      "required": true
+    },
+    "metadata_description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.hero-with-cta",
       "required": true
     }
   }

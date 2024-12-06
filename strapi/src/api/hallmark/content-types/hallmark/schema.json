@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hallmarks",
+  "info": {
+    "singularName": "hallmark",
+    "pluralName": "hallmarks",
+    "displayName": "Hallmarks",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "hallmarks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.hallmark"
+    }
+  }
+}

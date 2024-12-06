@@ -2,7 +2,7 @@
 import Button from "@/components/button"
 import Hero from "@/components/hero"
 import Intro from "@/components/intro"
-import Link from "@/components/link"
+import Link from "@/components/link-button"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import {

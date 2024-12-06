@@ -369,9 +369,40 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
+  collectionName: 'hallmarks';
+  info: {
+    description: '';
+    displayName: 'Hallmarks';
+    pluralName: 'hallmarks';
+    singularName: 'hallmark';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hallmarks: Schema.Attribute.Component<'global.hallmark', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hallmark.hallmark'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
+    description: '';
     displayName: 'Homepage';
     pluralName: 'homepages';
     singularName: 'homepage';
@@ -388,15 +419,14 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero_image: Schema.Attribute.Component<'global.hero', false> &
+    hero: Schema.Attribute.Component<'global.hero-with-cta', false> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    intro_section: Schema.Attribute.Component<'global.intro-section', false> &
-      Schema.Attribute.Required &
+    intro: Schema.Attribute.Component<'global.intro', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -407,9 +437,92 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::homepage.homepage'
     >;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String &
+    meet_our_partners: Schema.Attribute.Component<
+      'sections.section-with-richt-heading-intro-and-cta',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    meta_description: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    more_on_adfinis: Schema.Attribute.Component<
+      'sections.kpi-with-intro-and-hallmarks-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    our_partners: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::hallmark.hallmark'
+    >;
+    our_projects: Schema.Attribute.Component<
+      'sections.projects-card-section-with-external-link',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    our_resources: Schema.Attribute.Component<
+      'sections.events-section-with-intro-and-cta',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    our_solutions: Schema.Attribute.Component<
+      'sections.color-card-slider-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    shape_your_journey: Schema.Attribute.Component<
+      'sections.icon-card-section-with-external-ct-as',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    start_your_career: Schema.Attribute.Component<
+      'sections.heading-with-link-container',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    start_your_journey: Schema.Attribute.Component<
+      'sections.heading-with-link-container',
+      false
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -418,6 +531,15 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    who_are_we: Schema.Attribute.Component<
+      'sections.projects-card-section-with-external-link',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -425,6 +547,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'solutions_overviews';
   info: {
+    description: '';
     displayName: 'Solutions overview';
     pluralName: 'solutions-overviews';
     singularName: 'solutions-overview';
@@ -441,19 +564,33 @@ export interface ApiSolutionsOverviewSolutionsOverview
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::solutions-overview.solutions-overview'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
+    hero: Schema.Attribute.Component<'global.hero-with-cta', false> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::solutions-overview.solutions-overview'
+    >;
+    metadata_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -483,26 +620,6 @@ export interface ApiSolutionsPageSolutionsPage
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text &
       Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Hero_image: Schema.Attribute.Component<'global.hero', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Intro_section: Schema.Attribute.Component<'global.intro-section', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    kpi_step_zone: Schema.Attribute.Component<'sections.kpi-step-zone', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1043,6 +1160,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;

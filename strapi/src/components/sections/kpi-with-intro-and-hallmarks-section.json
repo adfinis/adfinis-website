@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_kpi_with_intro_and_hallmarks_sections",
+  "info": {
+    "displayName": "KPI with intro and hallmarks section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "kpis": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.kpi-card",
+      "max": 3,
+      "min": 1
+    },
+    "hallmark": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hallmark.hallmark"
+    }
+  }
+}

@@ -1,28 +1,39 @@
 {
   "collectionName": "components_cards_kpi_cards",
   "info": {
-    "displayName": "KPI Card",
-    "icon": "bell",
-    "description": ""
+    "displayName": "KPI card"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "unique": true,
+      "type": "text",
       "required": true
     },
     "description": {
-      "type": "richtext",
+      "type": "string"
+    },
+    "image": {
+      "type": "string",
       "required": true
     },
-    "icon": {
+    "color": {
       "type": "enumeration",
       "enum": [
-        "person_with_laptop",
-        "person_with_stars",
-        "puzzle_pieces_with_gear"
+        "white",
+        "stone",
+        "biscay",
+        "sapphire",
+        "jumbo",
+        "neutral",
+        "sunglow",
+        "sky",
+        "cinnamon",
+        "green",
+        "razzmatazz",
+        "fuchsia",
+        "manhattan"
       ],
+      "default": "sapphire",
       "required": true
     }
   }

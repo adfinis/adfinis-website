@@ -1,16 +1,15 @@
 {
-  "collectionName": "components_global_intro_sections",
+  "collectionName": "components_global_intros",
   "info": {
-    "displayName": "Intro Section",
-    "icon": "layer"
+    "displayName": "Intro"
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "intro_title": {
       "type": "richtext",
       "required": true
     },
-    "Paragraph": {
+    "intro_body": {
       "type": "richtext",
       "required": true
     }

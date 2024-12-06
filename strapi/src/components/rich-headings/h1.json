@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_rich_headings_h1s",
+  "info": {
+    "displayName": "H1",
+    "icon": "hashtag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

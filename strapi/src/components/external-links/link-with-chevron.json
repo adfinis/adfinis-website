@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_external_links_link_with_chevrons",
+  "info": {
+    "displayName": "Link with chevron",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "Button text"
+    },
+    "href": {
+      "type": "string",
+      "default": "https://adfinis.com/contact"
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "large",
+        "small"
+      ],
+      "default": "large",
+      "required": true
+    },
+    "chavron": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "left",
+        "right"
+      ],
+      "default": "left",
+      "required": true
+    }
+  }
+}

@@ -15,8 +15,44 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-[0.1.0] - 2024-06-10
+## [0.3.0] - 2024-12-06
+
+Frontend homepage and footer component
 
 ### Added
+- strapi frontend homepage (#19)
+- digital ocean spaces support for media upload (#22)
+- footer components (#20)
+
+# [0.2.1] - 2024-11-28
+ 
+Update frontend after publishing changes from strapi
+ 
+### Added
+
+- fix: opt-out from default fetch caching (nextjs 14)
+
+# [0.2.0] - 2024-11-28
+ 
+First release on staging environment running on App Platform
+ 
+### Added
+
+- feat: Add Container section
+- feat: Create CardArticle
+- feat: Add cta section example
+- feat: Create Icon Card
+- feat: Add partners example with logos
+- feat: Add additional container properties (bg gradient, spacing fixes)
+- feat: Create button-group wrapper
+- feat: Add section components
+- feat: Create CardImage component
+- feat: Auto deploy to App Platform (staging)
+- feat: Create solutions section with slider
+
+# [0.1.0] - 2024-06-10
+
+### Added
+
 - chore: add strapi
 - chore: add next with prettier

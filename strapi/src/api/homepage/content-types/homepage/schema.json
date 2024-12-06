@@ -4,7 +4,8 @@
   "info": {
     "singularName": "homepage",
     "pluralName": "homepages",
-    "displayName": "Homepage"
+    "displayName": "Homepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "metadata_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,18 +25,16 @@
       "type": "string",
       "required": true
     },
-    "hero_image": {
-      "type": "component",
-      "repeatable": false,
+    "meta_description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.hero",
+      "type": "string",
       "required": true
     },
-    "intro_section": {
+    "hero": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -43,8 +42,113 @@
           "localized": true
         }
       },
-      "component": "global.intro-section",
+      "component": "global.hero-with-cta",
       "required": true
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.intro"
+    },
+    "our_solutions": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.color-card-slider-section"
+    },
+    "our_projects": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.projects-card-section-with-external-link"
+    },
+    "meet_our_partners": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.section-with-richt-heading-intro-and-cta"
+    },
+    "our_partners": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hallmark.hallmark"
+    },
+    "shape_your_journey": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.icon-card-section-with-external-ct-as"
+    },
+    "start_your_journey": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
+    },
+    "our_resources": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.events-section-with-intro-and-cta"
+    },
+    "who_are_we": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.projects-card-section-with-external-link"
+    },
+    "more_on_adfinis": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.kpi-with-intro-and-hallmarks-section"
+    },
+    "start_your_career": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
     }
   }
 }
