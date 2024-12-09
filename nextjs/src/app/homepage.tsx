@@ -32,13 +32,15 @@ export default async function Homepage({
 }) {
   const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions.intro&populate=our_solutions.color_cards&populate=our_solutions.intro.external_ctas&populate=our_projects.projects.ctas&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.section_props&populate=our_resources.events.categories&populate=who_are_we.projects.ctas&populate=more_on_adfinis.kpis&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
   const { data } = await (await strapi(url)).json()
-  const locales = data.localizations.map((item: { locale: string }) => {
-    return {
-      href: item.locale === "en" ? "/" : `/${item.locale}`,
-      locale: item.locale,
-      isActive: false,
-    }
-  })
+  const locales = (data?.localizations ?? []).map(
+    (item: { locale: string }) => {
+      return {
+        href: item.locale === "en" ? "/" : `/${item.locale}`,
+        locale: item.locale,
+        isActive: false,
+      }
+    },
+  )
   locales.push(activeLocale)
 
   const {
@@ -54,7 +56,7 @@ export default async function Homepage({
     who_are_we,
     more_on_adfinis,
     start_your_career,
-  } = data
+  } = data ?? {}
 
   return (
     <>

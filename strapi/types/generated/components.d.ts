@@ -204,6 +204,34 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalBrandColors extends Struct.ComponentSchema {
+  collectionName: 'components_global_brand_colors';
+  info: {
+    displayName: 'Brand Colors';
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      [
+        'white',
+        'stone',
+        'biscay',
+        'sapphire',
+        'jumbo',
+        'neutral',
+        'sunglow',
+        'sky',
+        'cinnamon',
+        'green',
+        'razzmatazz',
+        'fuchsia',
+        'manhattan',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'white'>;
+  };
+}
+
 export interface GlobalEventCategory extends Struct.ComponentSchema {
   collectionName: 'components_global_event_categories';
   info: {
@@ -212,18 +240,6 @@ export interface GlobalEventCategory extends Struct.ComponentSchema {
   attributes: {
     href: Schema.Attribute.String & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface GlobalHallmark extends Struct.ComponentSchema {
-  collectionName: 'components_global_hallmarks';
-  info: {
-    displayName: 'Hallmark';
-    icon: 'picture';
-  };
-  attributes: {
-    alt: Schema.Attribute.String & Schema.Attribute.Required;
-    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -422,6 +438,22 @@ export interface SectionsIconCardSectionWithExternalCtAs
   };
 }
 
+export interface SectionsIconCardSectionWithRelation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_icon_card_section_with_relations';
+  info: {
+    displayName: 'Icon card section with relation';
+  };
+  attributes: {
+    icon_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::icon-card.icon-card'
+    >;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiWithIntroAndHallmarksSection
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
@@ -511,8 +543,8 @@ declare module '@strapi/strapi' {
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
-      'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'rich-headings.h1': RichHeadingsH1;
@@ -525,6 +557,7 @@ declare module '@strapi/strapi' {
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
+      'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
