@@ -16,6 +16,7 @@ import {
   resourcesSection,
   media2Section,
   statisticsSection,
+  slaSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -29,6 +30,7 @@ import CardGroup from "@/components/cards/card-group"
 import CardColored from "@/components/cards/card-colored"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
+import CardService from "@/components/cards/card-service"
 
 export default function Theme() {
   return (
@@ -188,17 +190,16 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
-      <Container id="Offerings" background="neutral" padding="both-padding">
-        <SectionGroup title={journeySection.title}>
+      <Container id="SLA" background="neutral" padding="both-padding">
+        <SectionGroup title={slaSection.title}>
           <CardGroup hasDividers>
-            {journeySection.cards.map((item, i) => {
+            {slaSection.cards.map((item, i) => {
               return (
-                <CardIcon
-                  imageUrl={item.icon.src}
-                  title={item.title}
-                  description={item.description}
-                  cta={item.cta}
+                <CardService
                   key={i}
+                  title={item.title}
+                  description=""
+                  usps={[...item.usps]}
                 />
               )
             })}
