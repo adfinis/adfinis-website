@@ -204,6 +204,34 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalBrandColors extends Struct.ComponentSchema {
+  collectionName: 'components_global_brand_colors';
+  info: {
+    displayName: 'Brand Colors';
+  };
+  attributes: {
+    color: Schema.Attribute.Enumeration<
+      [
+        'white',
+        'stone',
+        'biscay',
+        'sapphire',
+        'jumbo',
+        'neutral',
+        'sunglow',
+        'sky',
+        'cinnamon',
+        'green',
+        'razzmatazz',
+        'fuchsia',
+        'manhattan',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'white'>;
+  };
+}
+
 export interface GlobalEventCategory extends Struct.ComponentSchema {
   collectionName: 'components_global_event_categories';
   info: {
@@ -511,6 +539,7 @@ declare module '@strapi/strapi' {
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
