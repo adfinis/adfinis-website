@@ -466,6 +466,54 @@ export interface ApiContactCtaContactCta extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventCatagoryEventCatagory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'event_catagories';
+  info: {
+    displayName: 'Event Catagory';
+    pluralName: 'event-catagories';
+    singularName: 'event-catagory';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::event-catagory.event-catagory'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
 export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
   collectionName: 'hallmarks';
   info: {
@@ -481,7 +529,8 @@ export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hallmark: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    hallmark: Schema.Attribute.Media<'images', true> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1439,6 +1488,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::card-icon-svg.card-icon-svg': ApiCardIconSvgCardIconSvg;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
+      'api::event-catagory.event-catagory': ApiEventCatagoryEventCatagory;
       'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
