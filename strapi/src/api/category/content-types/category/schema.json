@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "event_catagories",
+  "collectionName": "categories",
   "info": {
-    "singularName": "event-catagory",
-    "pluralName": "event-catagories",
-    "displayName": "Event Catagory"
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category"
   },
   "options": {
     "draftAndPublish": false
@@ -32,8 +32,8 @@
         }
       },
       "type": "string",
-      "unique": true,
-      "required": true
+      "required": true,
+      "unique": true
     }
   }
 }
