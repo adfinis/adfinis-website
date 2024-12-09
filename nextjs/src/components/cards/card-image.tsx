@@ -10,7 +10,7 @@ type CardImageProps = {
 const CardImage: React.FC<CardImageProps> = ({ src, alt, className }) => {
   return (
     <Image
-      className={`!relative rounded-xl` + (className ? ` ${className}` : "")}
+      className={`!relative rounded-xl ${className || ""}`}
       src={src}
       alt={alt}
       layout="fill"

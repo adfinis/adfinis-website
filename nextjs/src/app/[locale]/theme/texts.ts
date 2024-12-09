@@ -331,6 +331,99 @@ export const statisticsSection = {
   logos: [...logoSection.logos, ...logoSection.logos],
 } as const
 
+export const slaSection = {
+  title: "## SLA - Our Managed Service Models",
+  cards: [
+    {
+      title: "Basic",
+      usps: [
+        {
+          text: "24/7 up and running service desk with free coffee and tea around the clock",
+          active: true,
+        },
+        {
+          text: "Support",
+          active: false,
+        },
+        {
+          text: "Monitoring",
+          active: false,
+        },
+        {
+          text: "Incident",
+          active: false,
+        },
+        {
+          text: "Management",
+          active: false,
+        },
+        {
+          text: "Service",
+          active: false,
+        },
+      ],
+    },
+    {
+      title: "Advanced",
+      usps: [
+        {
+          text: "24/7 up and running service desk with free coffee and tea around the clock",
+          active: true,
+        },
+        {
+          text: "Support",
+          active: true,
+        },
+        {
+          text: "Monitoring",
+          active: true,
+        },
+        {
+          text: "Incident",
+          active: true,
+        },
+        {
+          text: "Management",
+          active: false,
+        },
+        {
+          text: "Service",
+          active: false,
+        },
+      ],
+    },
+    {
+      title: "Premium",
+      usps: [
+        {
+          text: "24/7 up and running service desk with free coffee and tea around the clock",
+          active: true,
+        },
+        {
+          text: "Support",
+          active: true,
+        },
+        {
+          text: "Monitoring",
+          active: true,
+        },
+        {
+          text: "Incident",
+          active: true,
+        },
+        {
+          text: "Management",
+          active: true,
+        },
+        {
+          text: "Service",
+          active: true,
+        },
+      ],
+    },
+  ],
+} as const
+
 export const example = `
 # Heading 1 **Example**
 ## Heading 2 **Example**

@@ -4,7 +4,7 @@ import React from "react"
 import Title from "../title"
 import Text from "../text"
 import Link from "../link-button"
-import clsx from "clsx"
+
 import type { Card } from "./card"
 
 interface CardIconProps extends Card {
@@ -21,17 +21,7 @@ const CardIcon: React.FC<CardIconProps> = ({
   cta,
 }) => {
   return (
-    <div
-      className={clsx([
-        "rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-center",
-        // Shared CSS for divider between multiple card-icon components:
-        "relative after:content-[''] after:absolute last:after:hidden after:bg-jumbo/30",
-        // Mobile specific
-        "after:top-auto after:-bottom-6 after:right-0 after:left-0 after:w-full after:h-[1px]",
-        // Desktop specific
-        "lg:after:top-0 lg:after:-right-6 lg:after:w-[1px] lg:after:h-full lg:after:left-auto",
-      ])}
-    >
+    <div className="rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-center">
       {imageUrl && (
         <Image
           alt={title}
