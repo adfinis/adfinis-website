@@ -1,4 +1,4 @@
-export const SLUGS = {
+export const SLUGS: { [key: string]: string } = {
   nl: "oplossingen",
   en: "solutions",
   de: "lösungen",
