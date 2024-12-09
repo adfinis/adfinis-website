@@ -1,9 +1,10 @@
 "use client"
+
 import Text from "@/components/text"
 import Title from "@/components/title"
 import Button from "@/components/button"
-import Link from "@/components/link"
 import { example } from "../texts"
+import LinkButton from "@/components/link-button"
 
 export default function Buttons() {
   const handleClick = () => {
@@ -479,66 +480,81 @@ export default function Buttons() {
         data-scheme="light"
         className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3"
       >
-        <Link href="https://google.com" size="large" variant="cta">
+        <LinkButton href="https://google.com" size="large" variant="cta">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="cta">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="cta">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="cta" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="cta"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="primary">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="primary">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="primary"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="secondary">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="secondary">
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="secondary"
           disabled
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
-        <Link href="https://google.com" size="large" variant="text">
+        <LinkButton href="https://google.com" size="large" variant="text">
           text - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="text">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="text">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="text" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="text"
+          disabled
+        >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="left"
         >
           text - large
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="left"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
@@ -546,24 +562,24 @@ export default function Buttons() {
           disabled
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="right"
         >
           text - large
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="right"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
@@ -571,69 +587,84 @@ export default function Buttons() {
           chevron="right"
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
-        <Link href="https://google.com" size="small" variant="cta">
+        <LinkButton href="https://google.com" size="small" variant="cta">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="cta">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="cta">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="cta" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="cta"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="primary">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="primary">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="primary"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="secondary">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="secondary">
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="secondary"
           disabled
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3">
-        <Link href="https://google.com" size="small" variant="text">
+        <LinkButton href="https://google.com" size="small" variant="text">
           text - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="text">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="text">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="text" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="text"
+          disabled
+        >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="left"
         >
           text - small
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="left"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
@@ -641,24 +672,24 @@ export default function Buttons() {
           disabled
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="right"
         >
           text - small
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="right"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
@@ -666,76 +697,91 @@ export default function Buttons() {
           chevron="right"
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       {/* Dark Theme */}
       <div
         className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
         data-scheme="dark"
       >
-        <Link href="https://google.com" size="large" variant="cta">
+        <LinkButton href="https://google.com" size="large" variant="cta">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="cta">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="cta">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="cta" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="cta"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="primary">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="primary">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="primary" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="primary"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="secondary">
           CTA - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="secondary">
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="secondary"
           disabled
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       <div
         data-scheme="dark"
         className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-biscay"
       >
-        <Link href="https://google.com" size="large" variant="text">
+        <LinkButton href="https://google.com" size="large" variant="text">
           text - large
-        </Link>
-        <Link href="https://google.com" size="large" variant="text">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="large" variant="text">
           label
-        </Link>
-        <Link href="https://google.com" size="large" variant="text" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="text"
+          disabled
+        >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="left"
         >
           text - large
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="left"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
@@ -743,24 +789,24 @@ export default function Buttons() {
           disabled
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="right"
         >
           text - large
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
           chevron="right"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="large"
           variant="text"
@@ -768,76 +814,91 @@ export default function Buttons() {
           chevron="right"
         >
           label
-        </Link>
+        </LinkButton>
       </div>
 
       <div
         data-scheme="dark"
         className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
-        <Link href="https://google.com" size="small" variant="cta">
+        <LinkButton href="https://google.com" size="small" variant="cta">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="cta">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="cta">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="cta" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="cta"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="primary">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="primary">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="primary" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="primary"
+          disabled
+        >
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="secondary">
           CTA - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="secondary">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="secondary">
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="secondary"
           disabled
         >
           label
-        </Link>
+        </LinkButton>
       </div>
       <div
         data-scheme="dark"
         className="container py-8 grid place-items-start gap-12 grid-cols-1 lg:grid-cols-3 bg-stone"
       >
-        <Link href="https://google.com" size="small" variant="text">
+        <LinkButton href="https://google.com" size="small" variant="text">
           text - small
-        </Link>
-        <Link href="https://google.com" size="small" variant="text">
+        </LinkButton>
+        <LinkButton href="https://google.com" size="small" variant="text">
           label
-        </Link>
-        <Link href="https://google.com" size="small" variant="text" disabled>
+        </LinkButton>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="text"
+          disabled
+        >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="left"
         >
           text - small
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="left"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
@@ -845,24 +906,24 @@ export default function Buttons() {
           disabled
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="right"
         >
           text - small
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
           chevron="right"
         >
           label
-        </Link>
-        <Link
+        </LinkButton>
+        <LinkButton
           href="https://google.com"
           size="small"
           variant="text"
@@ -870,7 +931,7 @@ export default function Buttons() {
           chevron="right"
         >
           label
-        </Link>
+        </LinkButton>
       </div>
     </main>
   )
