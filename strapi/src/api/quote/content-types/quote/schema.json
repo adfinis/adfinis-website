@@ -4,7 +4,8 @@
   "info": {
     "singularName": "quote",
     "pluralName": "quotes",
-    "displayName": "Quote"
+    "displayName": "Quote",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -41,13 +42,21 @@
       "type": "richtext",
       "required": true
     },
-    "image_url": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "string"
+      "required": false
     }
   }
 }

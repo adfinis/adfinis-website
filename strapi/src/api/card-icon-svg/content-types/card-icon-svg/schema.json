@@ -4,7 +4,8 @@
   "info": {
     "singularName": "card-icon-svg",
     "pluralName": "card-icon-svgs",
-    "displayName": "Card Icon SVG"
+    "displayName": "Card Icon SVG",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -25,13 +26,17 @@
       "required": true,
       "unique": true
     },
-    "image_url": {
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "type": "string",
       "required": true
     }
   }

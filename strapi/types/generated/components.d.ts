@@ -243,18 +243,6 @@ export interface GlobalEventCategory extends Struct.ComponentSchema {
   };
 }
 
-export interface GlobalHallmark extends Struct.ComponentSchema {
-  collectionName: 'components_global_hallmarks';
-  info: {
-    displayName: 'Hallmark';
-    icon: 'picture';
-  };
-  attributes: {
-    alt: Schema.Attribute.String & Schema.Attribute.Required;
-    url: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 export interface GlobalHeroWithCta extends Struct.ComponentSchema {
   collectionName: 'components_global_hero_with_ctas';
   info: {
@@ -450,6 +438,22 @@ export interface SectionsIconCardSectionWithExternalCtAs
   };
 }
 
+export interface SectionsIconCardSectionWithRelation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_icon_card_section_with_relations';
+  info: {
+    displayName: 'Icon card section with relation';
+  };
+  attributes: {
+    icon_cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::icon-card.icon-card'
+    >;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiWithIntroAndHallmarksSection
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
@@ -541,7 +545,6 @@ declare module '@strapi/strapi' {
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
-      'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'rich-headings.h1': RichHeadingsH1;
@@ -554,6 +557,7 @@ declare module '@strapi/strapi' {
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
+      'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
