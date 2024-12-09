@@ -4,7 +4,7 @@ import React from "react"
 import Title from "../title"
 import Text from "../text"
 import Link from "../link-button"
-import clsx from "clsx"
+
 import type { Card } from "./card"
 
 interface CardIconProps extends Card {
