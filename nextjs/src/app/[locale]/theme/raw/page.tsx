@@ -486,7 +486,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="cta">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="cta" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="cta"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="large" variant="primary">
@@ -495,7 +500,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="primary">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="primary" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="primary"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="large" variant="secondary">
@@ -520,7 +530,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="text">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="text" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="text"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton
@@ -581,7 +596,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="cta">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="cta" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="cta"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="small" variant="primary">
@@ -590,7 +610,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="primary">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="primary" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="primary"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="small" variant="secondary">
@@ -615,7 +640,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="text">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="text" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="text"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton
@@ -680,7 +710,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="cta">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="cta" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="cta"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="large" variant="primary">
@@ -689,7 +724,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="primary">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="primary" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="primary"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="large" variant="secondary">
@@ -717,7 +757,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="large" variant="text">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="large" variant="text" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="large"
+          variant="text"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton
@@ -782,7 +827,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="cta">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="cta" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="cta"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="small" variant="primary">
@@ -791,7 +841,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="primary">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="primary" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="primary"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton href="https://google.com" size="small" variant="secondary">
@@ -819,7 +874,12 @@ export default function Buttons() {
         <LinkButton href="https://google.com" size="small" variant="text">
           label
         </LinkButton>
-        <LinkButton href="https://google.com" size="small" variant="text" disabled>
+        <LinkButton
+          href="https://google.com"
+          size="small"
+          variant="text"
+          disabled
+        >
           label
         </LinkButton>
         <LinkButton
