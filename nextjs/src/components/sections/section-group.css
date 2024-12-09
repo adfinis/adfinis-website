@@ -1,0 +1,8 @@
+.section-group-dividers>* {
+    /**
+    * Adds a vertical line between cards that are children.
+    */
+    @apply relative after:content-[''] after:absolute last:after:hidden after:bg-jumbo/35;
+    @apply after:top-auto after:-bottom-6 after:right-0 after:left-0 after:w-full after:h-[1px];
+    @apply after:lg:-bottom-8;
+}
