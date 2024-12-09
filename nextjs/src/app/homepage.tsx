@@ -79,7 +79,7 @@ export default async function Homepage({
         </Intro>
       )}
       {our_solutions && (
-        <Container padding={"start-padding"} background="neutral">
+        <Container background="neutral">
           <CardSlider
             title={our_solutions.intro.title}
             description={our_solutions.intro.body}
