@@ -8,7 +8,7 @@ import Link from "../link-button"
 import type { Card } from "./card"
 
 interface CardIconProps extends Card {
-  cta: CTA
+  cta?: CTA
 }
 
 /**
@@ -35,14 +35,16 @@ const CardIcon: React.FC<CardIconProps> = ({
         {title}
       </Title>
       <Text markdown={description} className="text-center " />
-      <Link
-        href={cta.href}
-        variant={"secondary"}
-        size={"small"}
-        className="px-4"
-      >
-        {cta.text}
-      </Link>
+      {cta && (
+        <Link
+          href={cta.href}
+          variant={"secondary"}
+          size={"small"}
+          className="px-4"
+        >
+          {cta.text}
+        </Link>
+      )}
     </div>
   )
 }

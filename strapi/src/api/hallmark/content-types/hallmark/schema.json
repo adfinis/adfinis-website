@@ -16,10 +16,13 @@
       "type": "string",
       "required": true
     },
-    "hallmarks": {
-      "type": "component",
-      "repeatable": true,
-      "component": "global.hallmark"
+    "hallmark": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
