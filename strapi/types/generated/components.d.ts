@@ -243,6 +243,18 @@ export interface GlobalEventCategory extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalHallmark extends Struct.ComponentSchema {
+  collectionName: 'components_global_hallmarks';
+  info: {
+    displayName: 'Hallmark';
+    icon: 'picture';
+  };
+  attributes: {
+    alt: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface GlobalHeroWithCta extends Struct.ComponentSchema {
   collectionName: 'components_global_hero_with_ctas';
   info: {
@@ -545,6 +557,7 @@ declare module '@strapi/strapi' {
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
+      'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'rich-headings.h1': RichHeadingsH1;
