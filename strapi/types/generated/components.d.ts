@@ -54,12 +54,17 @@ export interface CardsColorCard extends Struct.ComponentSchema {
 export interface CardsEventCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_event_cards';
   info: {
+    description: '';
     displayName: 'Event Card';
   };
   attributes: {
-    categories: Schema.Attribute.Component<'global.event-category', true>;
+    background_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
     description: Schema.Attribute.String & Schema.Attribute.Required;
-    event_date: Schema.Attribute.Date;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
