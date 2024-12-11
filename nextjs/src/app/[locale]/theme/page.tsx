@@ -155,6 +155,7 @@ export default function Theme() {
                 image={item.image}
                 key={i}
                 ctas={item.ctas}
+                color="cinnamon"
               >
                 <Title level={3} boldness={"semibold"}>
                   {item.title}
