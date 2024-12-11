@@ -29,8 +29,6 @@ const LogoGroup: React.FC<LogoGroupProps> = ({ logos, columns = 4 }) => {
           key={key}
           src={logo.src}
           alt={logo.alt}
-          objectPosition="center"
-          objectFit="cover"
         />
       ))}
     </div>

@@ -6,9 +6,9 @@ import remarkGfm from "remark-gfm"
 const titleStyles = cva(["tracking-tight text-title-primary"], {
   variants: {
     level: {
-      1: "text-35 lg:text-50 leading-[30px] lg:leading-[50px]",
-      2: "text-35 lg:text-40 leading-[30px] lg:leading-[45px]",
-      3: "text-30 leading-[25px] lg:leading-[40px]",
+      1: "text-35 lg:text-50 leading-[35px] lg:leading-[50px]",
+      2: "text-35 lg:text-40 leading-[35px] lg:leading-[40px]",
+      3: "text-30 leading-[30px]",
     },
     align: {
       center: "text-center",
