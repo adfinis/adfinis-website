@@ -3,12 +3,16 @@ import Title from "../title"
 import Text from "../text"
 import { cva, VariantProps } from "class-variance-authority"
 import clsx from "clsx"
+import "./section-group.css"
 
-const sectionGroupStyles = cva(["grid gap-10 lg:gap-16"], {
+const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
   variants: {
     align: {
       start: "",
       center: "justify-start lg:justify-center",
+    },
+    hasDividers: {
+      true: "section-group-dividers",
     },
   },
   defaultVariants: {
@@ -33,6 +37,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
   text,
   children,
   align,
+  hasDividers,
 }) => {
   return (
     <div className={sectionGroupStyles({ align })}>
@@ -49,7 +54,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
           <Text markdown={text} className="text-justify lg:text-center" />
         </div>
       )}
-      {children}
+      <div className={sectionGroupStyles({ hasDividers })}>{children}</div>
     </div>
   )
 }

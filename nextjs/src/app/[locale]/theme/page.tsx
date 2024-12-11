@@ -11,12 +11,12 @@ import {
   mediaSection,
   logoSection,
   journeySection,
-  example,
   ctaSection,
   resourcesSection,
   media2Section,
   statisticsSection,
   slaSection,
+  partnerSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -31,6 +31,7 @@ import CardColored from "@/components/cards/card-colored"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import CardService from "@/components/cards/card-service"
+import SectionCardLogo from "@/components/sections/section-card-logo"
 
 export default function Theme() {
   return (
@@ -50,7 +51,7 @@ export default function Theme() {
         <Text markdown={intro.text} className="grid gap-8" />
       </Intro>
 
-      <Container id="Solutions" padding={"start-padding"} background="neutral">
+      <Container id="Solutions" padding="no-padding" background="neutral">
         <CardSlider
           title={solutions.title}
           description={solutions.description}
@@ -71,7 +72,11 @@ export default function Theme() {
       </Container>
 
       <Container id="Projects" background="stone" padding="both-padding">
-        <SectionGroup title={mediaSection.title} text={mediaSection.text}>
+        <SectionGroup
+          title={mediaSection.title}
+          text={mediaSection.text}
+          align={"center"}
+        >
           {mediaSection.media.map((item, i) => {
             return (
               <SectionCardWide
@@ -125,7 +130,7 @@ export default function Theme() {
         </SectionGroup>
       </Container>
 
-      <Container id="Resources" padding={"start-padding"} background="neutral">
+      <Container id="Resources" padding="no-padding" background="neutral">
         <CardSlider
           title={resourcesSection.title}
           description={resourcesSection.description}
@@ -204,6 +209,22 @@ export default function Theme() {
               )
             })}
           </CardGroup>
+        </SectionGroup>
+      </Container>
+
+      <Container id="partners" background="sapphire" padding="both-padding">
+        <SectionGroup title={partnerSection.title} hasDividers>
+          {partnerSection.partners.map((item, i) => {
+            return (
+              <SectionCardLogo
+                key={i}
+                title={item.title}
+                imageUrl={item.imageUrl}
+                description={item.description}
+                ctas={[...item.ctas]}
+              />
+            )
+          })}
         </SectionGroup>
       </Container>
     </main>

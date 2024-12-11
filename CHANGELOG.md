@@ -15,6 +15,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.5.0] - 2024-12-11
+
+- feature (frontend): partner list (#26)
+- fix (strapi): missing components
+
 ## [0.4.1] - 2024-12-09
 
 Fix frontend build (typing, and linter issues)
