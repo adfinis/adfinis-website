@@ -35,6 +35,11 @@
       "required": true
     },
     "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
+    "shape_your_journey": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -42,8 +47,7 @@
           "localized": true
         }
       },
-      "component": "global.hero-with-cta",
-      "required": true
+      "component": "sections.icon-card-section-with-relation"
     }
   }
 }

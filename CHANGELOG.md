@@ -15,6 +15,20 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.4.1] - 2024-12-09
+
+Fix frontend build (typing, and linter issues)
+
+## [0.4.0] - 2024-12-09
+
+Frontend homepage & journeys overview connected to strapi
+
+### Added
+- Journeys overview (#27)
+- Feature/hero collection (#25)
+- Feature/36 sla card (#24)
+- Frontend homepage (#21)
+
 ## [0.3.0] - 2024-12-06
 
 Frontend homepage and footer component

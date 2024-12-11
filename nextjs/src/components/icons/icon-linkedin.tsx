@@ -1,5 +1,5 @@
 import React from "react"
-const IconYoutube: React.FC = () => (
+const IconLinkedIn: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18"
@@ -26,4 +26,4 @@ const IconYoutube: React.FC = () => (
   </svg>
 )
 
-export default IconYoutube
+export default IconLinkedIn
