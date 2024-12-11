@@ -457,10 +457,6 @@ export interface SectionsIconCardSectionWithRelation
     displayName: 'Icon card section with relation';
   };
   attributes: {
-    icon_cards: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::icon-card.icon-card'
-    >;
     section_props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };

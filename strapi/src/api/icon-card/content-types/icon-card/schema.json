@@ -7,7 +7,7 @@
     "displayName": "Icon Card"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -22,13 +22,21 @@
         }
       },
       "type": "string",
-      "required": true,
-      "unique": true
+      "unique": true,
+      "required": true
     },
-    "card_icon_svg": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::card-icon-svg.card-icon-svg"
+    "icon_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
     },
     "description": {
       "pluginOptions": {
@@ -36,7 +44,7 @@
           "localized": true
         }
       },
-      "type": "richtext",
+      "type": "text",
       "required": true
     },
     "cta": {

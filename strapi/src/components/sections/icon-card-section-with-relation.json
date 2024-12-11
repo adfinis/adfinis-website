@@ -13,11 +13,6 @@
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props"
-    },
-    "icon_cards": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::icon-card.icon-card"
     }
   }
 }
