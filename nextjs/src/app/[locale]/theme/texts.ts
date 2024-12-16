@@ -150,19 +150,19 @@ export const logoSection = {
   logos: [
     {
       alt: "GitLab logo",
-      src: "/svg/logo/gitlab-white-logo.svg",
+      src: "/svg/logo/logo-1.svg",
     },
     {
       alt: "Red Hat logo",
-      src: "/svg/logo/redhat-white-logo.svg",
+      src: "/svg/logo/logo-2.svg",
     },
     {
       alt: "SUSE logo",
-      src: "/svg/logo/suse-white-logo.svg",
+      src: "/svg/logo/logo-3.svg",
     },
     {
       alt: "HashiCorp logo",
-      src: "/svg/logo/hashicorp-white-logo.svg",
+      src: "/svg/logo/logo-4.svg",
     },
   ],
   ctas: ctas.map((el) => {
@@ -431,7 +431,7 @@ export const partnerSection = {
       title: "HashiCorp Vault",
       description:
         "HashiCorp Vault is secure software for managing secrets, authentication tokens, and encryption keys. It provides robust access control and audit capabilities.",
-      imageUrl: "/svg/logo/hashicorp-vault-logo.svg",
+      imageUrl: "/svg/logo/logo-1.svg",
       ctas: [
         {
           text: "Get started",
@@ -451,7 +451,7 @@ export const partnerSection = {
       title: "HashiCorp Consul",
       description:
         "HashiCorp Consul is a service networking solution to connect and secure services across any runtime platform and public or private cloud.",
-      imageUrl: "/svg/logo/consul-logo.svg",
+      imageUrl: "/svg/logo/logo-2.svg",
       ctas: [
         {
           text: "Get started",
@@ -471,7 +471,7 @@ export const partnerSection = {
       title: "StackRox",
       description:
         "StackRox is a Kubernetes-native security platform. It protects cloud-native applications across the full life cycle by providing visibility, vulnerability management, compliance, and runtime threat detection.",
-      imageUrl: "/svg/logo/stackrox-logo.svg",
+      imageUrl: "/svg/logo/logo-3.svg",
       ctas: [
         {
           text: "Get started",
