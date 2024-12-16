@@ -34,6 +34,7 @@ import CardCounter from "@/components/cards/card-counter"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
+import GetStartedForm from "@/components/form/get-started-form"
 
 export default function Theme() {
   return (
@@ -239,6 +240,10 @@ export default function Theme() {
             quote={quoteSection.quote}
           />
         </SectionGroup>
+      </Container>
+
+      <Container id="form" background="stone" padding="both-padding">
+        <GetStartedForm />
       </Container>
     </main>
   )

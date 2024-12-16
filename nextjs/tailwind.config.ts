@@ -1,6 +1,6 @@
 import { type Config } from "tailwindcss"
-import { spacing, maxWidth } from "tailwindcss/defaultTheme"
 import { colors } from "./src/lib/colors"
+import tailwindCssFormsPlugin from "@tailwindcss/forms"
 
 const config: Config = {
   content: [
@@ -68,6 +68,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindCssFormsPlugin()],
 }
 export default config
