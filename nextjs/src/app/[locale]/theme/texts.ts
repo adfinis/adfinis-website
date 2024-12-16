@@ -490,6 +490,17 @@ export const partnerSection = {
   ],
 } as const
 
+export const quoteSection = {
+  author: "Marc Karcher | Project Manager | Viollier",
+  quote: `“We can complete major updates within four hours - 84 percent
+    faster. As a result, our systems are protected against new threats
+    much more quickly.”`,
+  image: {
+    url: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww",
+    alt: "Avatar image",
+  },
+} as const
+
 export const footer = {
   columns: [
     {
