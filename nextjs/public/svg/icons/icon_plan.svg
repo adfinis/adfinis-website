@@ -5,7 +5,7 @@
     <style>
       .st0 {
         fill: #1c2e5d;
-        fill-rule: evenodd;
+        fillRule: evenodd;
       }
     </style>
   </defs>
