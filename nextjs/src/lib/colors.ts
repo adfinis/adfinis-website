@@ -12,4 +12,5 @@ export const colors = {
   razzmatazz: "#E30D74",
   fuchsia: "#7E57C2",
   manhattan: "#F7C6A5",
+  error: "#FF0E00",
 } as const
