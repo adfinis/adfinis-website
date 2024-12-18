@@ -2,9 +2,13 @@ import React from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import messages from "./messages"
-import { useRouter } from "next/router"
+import FormText from "./form-text"
+import FormEmail from "./form-email"
 
-const FormExample = ({ locale: routeLocale }) => {
+type GetStartedFormProps = { locale: string }
+const GetStartedForm: React.FC<GetStartedFormProps> = ({
+  locale: routeLocale,
+}) => {
   const getLocale = (input?: string) => {
     switch (input) {
       case "en-US":
@@ -52,10 +56,8 @@ const FormExample = ({ locale: routeLocale }) => {
     company: Yup.string().required(),
     name: Yup.string().required(),
     email: Yup.string().email().required(),
-    phone: Yup.string()
-      .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
-      .required("Phone number is required"),
-    country: Yup.string().required("Country is required"),
+    phone: Yup.string().required(),
+    country: Yup.string().required(),
   })
 
   return (
@@ -65,7 +67,7 @@ const FormExample = ({ locale: routeLocale }) => {
       onSubmit={onSubmit}
     >
       {() => (
-        <Form>
+        <Form className="grid gap-4 max-w-4xl mx-auto">
           {/* Job Dropdown */}
           <div>
             <label htmlFor="job">Job</label>
@@ -79,25 +81,13 @@ const FormExample = ({ locale: routeLocale }) => {
           </div>
 
           {/* Company Input */}
-          <div>
-            <label htmlFor="company">Company</label>
-            <Field id="company" name="company" type="text" />
-            <ErrorMessage name="company" component="p" />
-          </div>
+          <FormText id="company" name="company" label="Company" />
 
           {/* Name Input */}
-          <div>
-            <label htmlFor="name">Name</label>
-            <Field id="name" name="name" type="text" />
-            <ErrorMessage name="name" component="p" />
-          </div>
+          <FormText id="name" name="name" label="Name" />
 
           {/* Email Input */}
-          <div>
-            <label htmlFor="email">Email Address</label>
-            <Field id="email" name="email" type="email" />
-            <ErrorMessage name="email" component="p" />
-          </div>
+          <FormEmail id="email" name="email" label="Email" />
 
           {/* Phone Input */}
           <div>
@@ -126,4 +116,4 @@ const FormExample = ({ locale: routeLocale }) => {
   )
 }
 
-export default FormExample
+export default GetStartedForm
