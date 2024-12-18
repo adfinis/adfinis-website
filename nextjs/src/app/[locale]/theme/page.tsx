@@ -36,7 +36,7 @@ import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import GetStartedForm from "@/components/form/get-started-form"
 
-export default function Theme() {
+export default function Theme({ locale }: { locale: string }) {
   return (
     <main className="bg-white">
       <Hero
@@ -243,7 +243,7 @@ export default function Theme() {
       </Container>
 
       <Container id="form" background="stone" padding="both-padding">
-        <GetStartedForm />
+        <GetStartedForm locale={locale} />
       </Container>
     </main>
   )
