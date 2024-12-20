@@ -17,6 +17,7 @@ import {
   statisticsSection,
   slaSection,
   partnerSection,
+  quoteSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -32,6 +33,7 @@ import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
+import SectionQuote from "@/components/sections/section-quote"
 
 export default function Theme() {
   return (
@@ -226,6 +228,16 @@ export default function Theme() {
               />
             )
           })}
+        </SectionGroup>
+      </Container>
+
+      <Container id="quote" background="white" padding="both-padding">
+        <SectionGroup hasDividers>
+          <SectionQuote
+            author={quoteSection.author}
+            image={quoteSection.image}
+            quote={quoteSection.quote}
+          />
         </SectionGroup>
       </Container>
     </main>

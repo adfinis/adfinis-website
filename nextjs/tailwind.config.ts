@@ -37,6 +37,7 @@ const config: Config = {
       spacing: {
         15: "3.75rem",
         18: "4.5rem",
+        30: "7.5rem",
       },
       height: {
         100: "25rem",
