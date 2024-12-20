@@ -218,7 +218,7 @@ export default async function Homepage({
                     imageUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlb3BsZSUyMGJ1c2luZXNzfGVufDB8fDB8fHwy"
                     categories={card.categories.map((category: any) => ({
                       text: category.name,
-                      href: category.href,
+                      href: category.url,
                     }))}
                   />
                 </CardSliderElement>
