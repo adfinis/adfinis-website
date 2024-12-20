@@ -4,6 +4,7 @@ import { CTA } from "@/lib/cta"
 import Link from "../link-button"
 import ButtonGroup from "../button-group"
 import clsx from "clsx"
+import { colors } from "@/lib/colors"
 
 type SectionMediaWideProps = {
   reverse: boolean
@@ -12,11 +13,13 @@ type SectionMediaWideProps = {
     src: string
     alt: string
   }
+  color?: keyof typeof colors
   ctas: CTA[]
 }
 const SectionCardWide: React.FC<SectionMediaWideProps> = ({
   reverse,
   image,
+  color,
   children,
   ctas,
 }) => {
@@ -32,6 +35,7 @@ const SectionCardWide: React.FC<SectionMediaWideProps> = ({
           className="w-full lg:max-h-[25vw]"
           src={image.src}
           alt={image.alt}
+          color={color}
         />
       </span>
 
