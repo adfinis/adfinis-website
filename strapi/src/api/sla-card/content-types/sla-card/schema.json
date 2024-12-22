@@ -4,8 +4,7 @@
   "info": {
     "singularName": "sla-card",
     "pluralName": "sla-cards",
-    "displayName": "SLA cards",
-    "description": ""
+    "displayName": "SLA cards"
   },
   "options": {
     "draftAndPublish": false
@@ -16,13 +15,14 @@
     }
   },
   "attributes": {
-    "title": {
+    "name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext",
+      "type": "string",
+      "unique": true,
       "required": true
     },
     "items": {

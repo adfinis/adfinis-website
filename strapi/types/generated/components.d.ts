@@ -294,13 +294,14 @@ export interface GlobalIntro extends Struct.ComponentSchema {
 export interface GlobalSlaItem extends Struct.ComponentSchema {
   collectionName: 'components_global_sla_items';
   info: {
+    description: '';
     displayName: 'SLA Item';
   };
   attributes: {
     is_disabled: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
-    name: Schema.Attribute.RichText & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -334,12 +335,13 @@ export interface RelationsSectionSolutionsRelation
 export interface RelationsSlaCardSection extends Struct.ComponentSchema {
   collectionName: 'components_relations_sla_card_sections';
   info: {
+    description: '';
     displayName: 'SLA Card Section';
   };
   attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
     section_props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+    sla_cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }

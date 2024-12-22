@@ -969,7 +969,6 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
 export interface ApiSlaCardSlaCard extends Struct.CollectionTypeSchema {
   collectionName: 'sla_cards';
   info: {
-    description: '';
     displayName: 'SLA cards';
     pluralName: 'sla-cards';
     singularName: 'sla-card';
@@ -997,14 +996,15 @@ export interface ApiSlaCardSlaCard extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::sla-card.sla-card'
     >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.RichText &
+    name: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

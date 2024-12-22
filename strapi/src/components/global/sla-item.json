@@ -1,12 +1,13 @@
 {
   "collectionName": "components_global_sla_items",
   "info": {
-    "displayName": "SLA Item"
+    "displayName": "SLA Item",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
-      "type": "richtext",
+      "type": "string",
       "required": true
     },
     "is_disabled": {

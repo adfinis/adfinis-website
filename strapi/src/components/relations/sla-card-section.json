@@ -1,7 +1,8 @@
 {
   "collectionName": "components_relations_sla_card_sections",
   "info": {
-    "displayName": "SLA Card Section"
+    "displayName": "SLA Card Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,7 +16,7 @@
       "component": "sections.section-props",
       "required": true
     },
-    "cards": {
+    "sla_cards": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sla-card.sla-card"
