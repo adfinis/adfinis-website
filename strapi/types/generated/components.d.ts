@@ -553,6 +553,19 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
+export interface SectionsKpiSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_kpi_sections';
+  info: {
+    displayName: 'KPI Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiWithIntroAndHallmarksSection
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
@@ -577,6 +590,7 @@ export interface SectionsKpiWithIntroAndHallmarksSection
 export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_project_cards_sections';
   info: {
+    description: '';
     displayName: 'Project Cards Section';
   };
   attributes: {
@@ -590,9 +604,7 @@ export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
         },
         number
       >;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    kpis: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
@@ -633,7 +645,6 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'neutral'>;
-    background_color: Schema.Attribute.Component<'global.brand-colors', false>;
     padding: Schema.Attribute.Enumeration<
       ['no-padding', 'both-padding', 'start-padding']
     > &
@@ -689,6 +700,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
+      'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;

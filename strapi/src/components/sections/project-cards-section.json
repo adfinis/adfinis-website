@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_project_cards_sections",
   "info": {
-    "displayName": "Project Cards Section"
+    "displayName": "Project Cards Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,16 +20,6 @@
       "component": "cards.project-card-with-external-cta",
       "required": false,
       "max": 3
-    },
-    "kpis": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.section-props"
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "external-links.call-to-action"
     }
   }
 }

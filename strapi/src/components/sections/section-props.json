@@ -26,11 +26,6 @@
       ],
       "default": "both-padding",
       "required": true
-    },
-    "background_color": {
-      "type": "component",
-      "repeatable": false,
-      "component": "global.brand-colors"
     }
   }
 }

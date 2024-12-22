@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_kpi_sections",
+  "info": {
+    "displayName": "KPI Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "section_props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::icon-card.icon-card"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    }
+  }
+}
