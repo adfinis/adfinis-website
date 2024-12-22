@@ -966,6 +966,51 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSlaCardSlaCard extends Struct.CollectionTypeSchema {
+  collectionName: 'sla_cards';
+  info: {
+    description: '';
+    displayName: 'SLA cards';
+    pluralName: 'sla-cards';
+    singularName: 'sla-card';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    items: Schema.Attribute.Component<'global.sla-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sla-card.sla-card'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionsOverviewSolutionsOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'solutions_overviews';
@@ -984,6 +1029,15 @@ export interface ApiSolutionsOverviewSolutionsOverview
     };
   };
   attributes: {
+    combine_your_yourney: Schema.Attribute.Component<
+      'sections.heading-with-link-container',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1023,6 +1077,15 @@ export interface ApiSolutionsOverviewSolutionsOverview
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    sla_section: Schema.Attribute.Component<
+      'relations.sla-card-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     soutions_section: Schema.Attribute.Component<
       'relations.section-solutions-relation',
       false
@@ -1654,6 +1717,7 @@ declare module '@strapi/strapi' {
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::quote.quote': ApiQuoteQuote;
+      'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;

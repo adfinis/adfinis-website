@@ -78,6 +78,26 @@
         }
       },
       "component": "sections.heading-with-link-container"
+    },
+    "sla_section": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "relations.sla-card-section"
+    },
+    "combine_your_yourney": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
     }
   }
 }

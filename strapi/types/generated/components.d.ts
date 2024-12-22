@@ -296,6 +296,19 @@ export interface GlobalIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalSlaItem extends Struct.ComponentSchema {
+  collectionName: 'components_global_sla_items';
+  info: {
+    displayName: 'SLA Item';
+  };
+  attributes: {
+    is_disabled: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    name: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface RelationsQuotesRelation extends Struct.ComponentSchema {
   collectionName: 'components_relations_quotes_relations';
   info: {
@@ -319,6 +332,19 @@ export interface RelationsSectionSolutionsRelation
       'relations.solutions-relation-with-description',
       true
     >;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface RelationsSlaCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_relations_sla_card_sections';
+  info: {
+    displayName: 'SLA Card Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
+    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
@@ -647,8 +673,10 @@ declare module '@strapi/strapi' {
       'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
+      'global.sla-item': GlobalSlaItem;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
+      'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;

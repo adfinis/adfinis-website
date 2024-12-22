@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_global_sla_items",
+  "info": {
+    "displayName": "SLA Item"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "richtext",
+      "required": true
+    },
+    "is_disabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

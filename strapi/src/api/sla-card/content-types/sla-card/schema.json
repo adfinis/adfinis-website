@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sla_cards",
+  "info": {
+    "singularName": "sla-card",
+    "pluralName": "sla-cards",
+    "displayName": "SLA cards",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.sla-item"
+    }
+  }
+}
