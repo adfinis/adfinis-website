@@ -41,7 +41,8 @@
         }
       },
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "metadata_title"
     },
     "hero": {
       "type": "relation",

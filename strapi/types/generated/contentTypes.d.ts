@@ -769,7 +769,7 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
   collectionName: 'icon_cards';
   info: {
     description: '';
-    displayName: 'Card Icon';
+    displayName: 'Card Image';
     pluralName: 'icon-cards';
     singularName: 'icon-card';
   };
@@ -1177,7 +1177,7 @@ export interface ApiSolutionsPageSolutionsPage
       }>;
     publishedAt: Schema.Attribute.DateTime;
     quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
-    slug: Schema.Attribute.UID &
+    slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
