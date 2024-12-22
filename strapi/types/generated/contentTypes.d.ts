@@ -1072,9 +1072,25 @@ export interface ApiSolutionsPageSolutionsPage
     };
   };
   attributes: {
+    case_studies: Schema.Attribute.Component<
+      'sections.events-section-with-intro-and-cta',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.Component<'global.intro', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1094,9 +1110,28 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
+    project_cards: Schema.Attribute.Component<
+      'sections.project-cards-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
     slug: Schema.Attribute.UID &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    start_your_journey: Schema.Attribute.Component<
+      'sections.heading-with-link-container',
+      false
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

@@ -488,6 +488,29 @@ export interface SectionsKpiWithIntroAndHallmarksSection
   };
 }
 
+export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_project_cards_sections';
+  info: {
+    displayName: 'Project Cards Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<
+      'cards.project-card-with-external-cta',
+      true
+    > &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    kpis: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsProjectsCardSectionWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_projects_card_section_with_external_links';
@@ -515,6 +538,7 @@ export interface SectionsProjectsCardSectionWithExternalLink
 export interface SectionsSectionProps extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_props';
   info: {
+    description: '';
     displayName: 'Section props';
   };
   attributes: {
@@ -523,6 +547,7 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'neutral'>;
+    cards: Schema.Attribute.Relation<'oneToOne', 'api::icon-card.icon-card'>;
     padding: Schema.Attribute.Enumeration<
       ['no-padding', 'both-padding', 'start-padding']
     > &
@@ -573,6 +598,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
+      'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
