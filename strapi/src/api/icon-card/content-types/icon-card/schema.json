@@ -4,7 +4,8 @@
   "info": {
     "singularName": "icon-card",
     "pluralName": "icon-cards",
-    "displayName": "Icon Card"
+    "displayName": "Card Icon",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -26,17 +27,17 @@
       "required": true
     },
     "icon_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "description": {
       "pluginOptions": {

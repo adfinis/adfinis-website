@@ -4,7 +4,8 @@
   "info": {
     "singularName": "logo-card",
     "pluralName": "logo-cards",
-    "displayName": "Logo Card"
+    "displayName": "Card Logo",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -34,17 +35,17 @@
       "required": true
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "cta": {
       "type": "component",

@@ -469,7 +469,8 @@ export interface ApiContactCtaContactCta extends Struct.CollectionTypeSchema {
 export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
   collectionName: 'event_pages';
   info: {
-    displayName: 'Event Page';
+    description: '';
+    displayName: 'Page Event';
     pluralName: 'event-pages';
     singularName: 'event-page';
   };
@@ -767,7 +768,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
 export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
   collectionName: 'icon_cards';
   info: {
-    displayName: 'Icon Card';
+    description: '';
+    displayName: 'Card Icon';
     pluralName: 'icon-cards';
     singularName: 'icon-card';
   };
@@ -826,7 +828,8 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
 export interface ApiLogoCardLogoCard extends Struct.CollectionTypeSchema {
   collectionName: 'logo_cards';
   info: {
-    displayName: 'Logo Card';
+    description: '';
+    displayName: 'Card Logo';
     pluralName: 'logo-cards';
     singularName: 'logo-card';
   };
@@ -884,7 +887,8 @@ export interface ApiLogoCardLogoCard extends Struct.CollectionTypeSchema {
 export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   collectionName: 'news_pages';
   info: {
-    displayName: 'News Page';
+    description: '';
+    displayName: 'Page News';
     pluralName: 'news-pages';
     singularName: 'news-page';
   };
@@ -1055,7 +1059,7 @@ export interface ApiSolutionsPageSolutionsPage
   collectionName: 'solutions_pages';
   info: {
     description: '';
-    displayName: 'Solutions page';
+    displayName: 'Page Solutions';
     pluralName: 'solutions-pages';
     singularName: 'solutions-page';
   };
