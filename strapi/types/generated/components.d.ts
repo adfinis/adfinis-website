@@ -547,7 +547,7 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'neutral'>;
-    cards: Schema.Attribute.Relation<'oneToOne', 'api::icon-card.icon-card'>;
+    background_color: Schema.Attribute.Component<'global.brand-colors', false>;
     padding: Schema.Attribute.Enumeration<
       ['no-padding', 'both-padding', 'start-padding']
     > &

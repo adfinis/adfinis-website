@@ -27,10 +27,10 @@
       "default": "both-padding",
       "required": true
     },
-    "cards": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::icon-card.icon-card"
+    "background_color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.brand-colors"
     }
   }
 }
