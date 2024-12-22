@@ -209,6 +209,18 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalBlogBlock extends Struct.ComponentSchema {
+  collectionName: 'components_global_blog_blocks';
+  info: {
+    description: '';
+    displayName: 'Blog Block';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+  };
+}
+
 export interface GlobalBrandColors extends Struct.ComponentSchema {
   collectionName: 'components_global_brand_colors';
   info: {
@@ -581,6 +593,7 @@ declare module '@strapi/strapi' {
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'global.blog-block': GlobalBlogBlock;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;
