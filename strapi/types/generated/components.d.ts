@@ -296,6 +296,52 @@ export interface GlobalIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface RelationsQuotesRelation extends Struct.ComponentSchema {
+  collectionName: 'components_relations_quotes_relations';
+  info: {
+    displayName: 'Quotes Relation';
+  };
+  attributes: {
+    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
+  };
+}
+
+export interface RelationsSectionSolutionsRelation
+  extends Struct.ComponentSchema {
+  collectionName: 'components_relations_section_solutions_relations';
+  info: {
+    description: '';
+    displayName: 'Section Solutions Relation';
+  };
+  attributes: {
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    solutions: Schema.Attribute.Component<
+      'relations.solutions-relation-with-description',
+      true
+    >;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface RelationsSolutionsRelationWithDescription
+  extends Struct.ComponentSchema {
+  collectionName: 'components_relations_solutions_relation_with_descriptions';
+  info: {
+    description: '';
+    displayName: 'Solutions Relation With Description';
+  };
+  attributes: {
+    card_image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
+    solution_page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::solutions-page.solutions-page'
+    >;
+    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface RichHeadingsH1 extends Struct.ComponentSchema {
   collectionName: 'components_rich_headings_h1s';
   info: {
@@ -471,9 +517,11 @@ export interface SectionsIconCardSectionWithRelation
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_icon_card_section_with_relations';
   info: {
+    description: '';
     displayName: 'Icon card section with relation';
   };
   attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
     section_props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
@@ -599,6 +647,9 @@ declare module '@strapi/strapi' {
       'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
+      'relations.quotes-relation': RelationsQuotesRelation;
+      'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
+      'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;

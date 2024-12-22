@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_relations_quotes_relations",
+  "info": {
+    "displayName": "Quotes Relation"
+  },
+  "options": {},
+  "attributes": {
+    "quotes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quote.quote"
+    }
+  }
+}

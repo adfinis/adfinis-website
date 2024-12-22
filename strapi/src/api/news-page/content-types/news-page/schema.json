@@ -49,6 +49,39 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
+    },
+    "minutes_read": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "main_blog": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks",
+      "required": true
+    },
+    "dynamic_content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.heading-with-link-container",
+        "relations.quotes-relation",
+        "global.blog-block",
+        "sections.events-section-with-intro-and-cta"
+      ]
     }
   }
 }

@@ -39,7 +39,17 @@
       "relation": "oneToOne",
       "target": "api::hero.hero"
     },
-    "shape_your_journey": {
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.intro"
+    },
+    "kpi_sections": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -48,6 +58,26 @@
         }
       },
       "component": "sections.icon-card-section-with-relation"
+    },
+    "soutions_section": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "relations.section-solutions-relation"
+    },
+    "start_your_journey": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.heading-with-link-container"
     }
   }
 }

@@ -849,11 +849,31 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dynamic_content: Schema.Attribute.DynamicZone<
+      [
+        'sections.heading-with-link-container',
+        'relations.quotes-relation',
+        'global.blog-block',
+        'sections.events-section-with-intro-and-cta',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::news-page.news-page'
     >;
+    main_blog: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     metadata_description: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -869,6 +889,14 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    minutes_read: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
@@ -960,6 +988,21 @@ export interface ApiSolutionsOverviewSolutionsOverview
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.Component<'global.intro', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    kpi_sections: Schema.Attribute.Component<
+      'sections.icon-card-section-with-relation',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -980,8 +1023,17 @@ export interface ApiSolutionsOverviewSolutionsOverview
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    shape_your_journey: Schema.Attribute.Component<
-      'sections.icon-card-section-with-relation',
+    soutions_section: Schema.Attribute.Component<
+      'relations.section-solutions-relation',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    start_your_journey: Schema.Attribute.Component<
+      'sections.heading-with-link-container',
       false
     > &
       Schema.Attribute.SetPluginOptions<{
