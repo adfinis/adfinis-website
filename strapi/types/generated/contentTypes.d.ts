@@ -825,65 +825,6 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLogoCardLogoCard extends Struct.CollectionTypeSchema {
-  collectionName: 'logo_cards';
-  info: {
-    description: '';
-    displayName: 'Card Logo';
-    pluralName: 'logo-cards';
-    singularName: 'logo-card';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::logo-card.logo-card'
-    >;
-    logo: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   collectionName: 'news_pages';
   info: {
@@ -1659,7 +1600,6 @@ declare module '@strapi/strapi' {
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
-      'api::logo-card.logo-card': ApiLogoCardLogoCard;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::quote.quote': ApiQuoteQuote;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
