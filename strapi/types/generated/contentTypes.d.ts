@@ -1147,6 +1147,12 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
+    kpis: Schema.Attribute.Component<'sections.kpi-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1161,6 +1167,15 @@ export interface ApiSolutionsPageSolutionsPage
       }>;
     metadata_title: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    products: Schema.Attribute.Component<
+      'sections.icon-card-section-with-relation',
+      false
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

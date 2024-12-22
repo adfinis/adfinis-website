@@ -69,6 +69,16 @@
       },
       "component": "sections.project-cards-section"
     },
+    "kpis": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.kpi-section"
+    },
     "start_your_journey": {
       "type": "component",
       "repeatable": false,
@@ -93,6 +103,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::quote.quote"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.icon-card-section-with-relation"
     }
   }
 }

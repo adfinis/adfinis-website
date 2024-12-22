@@ -148,14 +148,9 @@ export interface CardsProjectCardWithExternalCta
     displayName: 'Project card with external CTA';
   };
   attributes: {
-    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 2;
-        },
-        number
-      >;
-    image: Schema.Attribute.String & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    image: Schema.Attribute.Media<'files' | 'images'> &
+      Schema.Attribute.Required;
     intro: Schema.Attribute.RichText & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
