@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "metadata_title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -25,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "Description": {
+    "metadata_description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -41,7 +41,6 @@
         }
       },
       "type": "uid",
-      "targetField": "Title",
       "required": true
     }
   }
