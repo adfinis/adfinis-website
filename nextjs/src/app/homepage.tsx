@@ -30,7 +30,7 @@ export default async function Homepage({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions.intro&populate=our_solutions.color_cards&populate=our_solutions.intro.external_ctas&populate=our_projects.projects.ctas&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.section_props&populate=our_resources.events.categories&populate=who_are_we.projects.ctas&populate=more_on_adfinis.kpis&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
+  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions.intro&populate=our_solutions.color_cards&populate=our_solutions.intro.external_ctas&populate=our_projects.projects.cta&populate=our_projects.projects.image&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.section_props&populate=our_resources.events.categories&populate=who_are_we.projects.cta&populate=who_are_we.projects.image&populate=more_on_adfinis.kpis&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
   const { data } = await (await strapi(url)).json()
   const locales = (data?.localizations ?? []).map(
     (item: { locale: string }) => {
@@ -105,15 +105,16 @@ export default async function Homepage({
         <Container background="stone" padding="both-padding">
           <SectionGroup>
             {our_projects.projects.map((item: any, i: number) => {
+              console.log(item)
               return (
                 <SectionCardWide
                   reverse={i % 2 === 0}
                   image={
                     // TODO support alt and rename image to src in strap
-                    { src: item.image, alt: "" }
+                    { src: item.image.formats.large.url, alt: "" }
                   }
                   key={i}
-                  ctas={item.ctas.map(mapCta)}
+                  ctas={[item.cta].map(mapCta)}
                 >
                   <Title level={3} boldness={"semibold"}>
                     {item.title}
@@ -154,6 +155,7 @@ export default async function Homepage({
                   icon_compliance: "/svg/icons/icon_compliance.svg",
                   icon_employees: "/svg/icons/icon_employees.svg",
                 }
+                console.log({ item: item.ctas })
                 return (
                   <CardIcon
                     // @ts-ignore
@@ -234,9 +236,9 @@ export default async function Homepage({
               return (
                 <SectionCardWide
                   reverse={i % 2 === 0}
-                  image={{ src: item.image, alt: "" }}
+                  image={{ src: item.image.formats.large.url, alt: "" }}
                   key={i}
-                  ctas={item.ctas.map(mapCta)}
+                  ctas={[item.cta].map(mapCta)}
                 >
                   <Title level={3} boldness={"semibold"}>
                     {item.title}
