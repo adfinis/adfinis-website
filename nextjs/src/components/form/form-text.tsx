@@ -11,16 +11,16 @@ type FormTextProps = {
 
 export const fieldClasses = cva(
   [
-    "bg-neutral/20",
-    "text-neutral/90 text-16 leading-normal font-normal w-full rounded-md px-4 py-2",
+    "bg-input-primary/5",
+    "text-input-primary text-16 leading-normal font-normal w-full rounded-md px-4 py-2",
     "border",
     "ring-0 active:!ring-0 focus:!ring-0", // resets blue border of chrome when active. This is replaced with the active: modifiers below
-    "focus:border-stone active:border-stone focus:active:border-stone",
+    "focus:border-input-primary active:border-input-primary",
   ],
   {
     variants: {
       variant: {
-        default: "border-neutral/20",
+        default: "border-input-primary/20",
         error: "border-error",
       },
     },

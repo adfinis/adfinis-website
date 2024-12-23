@@ -9,7 +9,7 @@ const FormLabel: React.FC<FormLabelProps> = ({ id, label }) => {
   return (
     <label
       htmlFor={id}
-      className="font-bold text-neutral uppercase text-14 tracking-wider"
+      className="font-bold text-input-primary uppercase text-14 tracking-wider"
     >
       {label}
     </label>
