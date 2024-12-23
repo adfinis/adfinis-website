@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_icon_card_section_with_relations",
+  "collectionName": "components_relations_section_solutions_relations",
   "info": {
-    "displayName": "Icon card section with relation",
+    "displayName": "Section Solutions Relation",
     "description": ""
   },
   "options": {},
@@ -15,10 +15,10 @@
       "repeatable": false,
       "component": "sections.section-props"
     },
-    "cards": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::icon-card.icon-card"
+    "solutions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "relations.solutions-relation-with-description"
     }
   }
 }

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_section_props",
   "info": {
-    "displayName": "Section props"
+    "displayName": "Section props",
+    "description": ""
   },
   "options": {},
   "attributes": {

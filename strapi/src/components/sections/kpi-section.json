@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_sections_icon_card_section_with_relations",
+  "collectionName": "components_sections_kpi_sections",
   "info": {
-    "displayName": "Icon card section with relation",
-    "description": ""
+    "displayName": "KPI Section"
   },
   "options": {},
   "attributes": {
@@ -19,6 +18,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::icon-card.icon-card"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
     }
   }
 }

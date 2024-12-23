@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "card_icon_svgs",
+  "collectionName": "sla_cards",
   "info": {
-    "singularName": "card-icon-svg",
-    "pluralName": "card-icon-svgs",
-    "displayName": "Card Icon SVG",
-    "description": ""
+    "singularName": "sla-card",
+    "pluralName": "sla-cards",
+    "displayName": "SLA cards"
   },
   "options": {
     "draftAndPublish": false
@@ -23,21 +22,18 @@
         }
       },
       "type": "string",
-      "required": true,
-      "unique": true
+      "unique": true,
+      "required": true
     },
-    "icon": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
+    "items": {
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
-      "required": true
+      "component": "global.sla-item"
     }
   }
 }

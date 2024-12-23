@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_icon_card_section_with_relations",
+  "collectionName": "components_relations_sla_card_sections",
   "info": {
-    "displayName": "Icon card section with relation",
+    "displayName": "SLA Card Section",
     "description": ""
   },
   "options": {},
@@ -13,12 +13,13 @@
     "section_props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props"
+      "component": "sections.section-props",
+      "required": true
     },
-    "cards": {
+    "sla_cards": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::icon-card.icon-card"
+      "target": "api::sla-card.sla-card"
     }
   }
 }

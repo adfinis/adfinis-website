@@ -1,7 +1,8 @@
 {
   "collectionName": "components_cards_event_cards",
   "info": {
-    "displayName": "Event Card"
+    "displayName": "Event Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,13 +14,18 @@
       "type": "string",
       "required": true
     },
-    "event_date": {
-      "type": "date"
-    },
     "categories": {
-      "type": "component",
-      "repeatable": true,
-      "component": "global.event-category"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "background_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

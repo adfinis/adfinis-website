@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_project_cards_sections",
+  "info": {
+    "displayName": "Project Cards Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.project-card-with-external-cta",
+      "required": false,
+      "max": 3
+    }
+  }
+}

@@ -41,9 +41,11 @@ const SectionCardWide: React.FC<SectionMediaWideProps> = ({
 
       <div className="w-full lg:w-5/12 grid gap-6 pt-8 lg:p-8 xl:p-12">
         {children}
-        <div>
-          <ButtonGroup ctas={ctas} />
-        </div>
+        {ctas.length > 0 && (
+          <div>
+            <ButtonGroup ctas={ctas} />
+          </div>
+        )}
       </div>
     </div>
   )
