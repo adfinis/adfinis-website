@@ -12,15 +12,20 @@ import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import ButtonGroup from "@/components/button-group"
-import Hallmarks from "@/components/stapi/hallmarks"
 import LinkButton from "@/components/link-button"
 import CardService from "@/components/cards/card-service"
 
-const SUB_PAGE = {
+const SUB_PAGE: any = {
   en: "solutions",
   nl: "oplossingen",
   de: "lösungen",
 }
+
+const mapCta = (cta: any) => ({
+  // TODO Decide if we want to change CTA type or rename label to text in strapi
+  text: cta.label,
+  ...cta,
+})
 
 export default async function Solutions({
   activeLocale,
@@ -38,24 +43,6 @@ export default async function Solutions({
     }
   })
   locales.push(activeLocale)
-  /**
-   * populate=localizations&
-   * populate=intro&
-   * populate=hero.backround_image&
-   * populate=hero.color&
-   * populate=kpi_sections.section_props&
-   * populate=kpi_sections.cards&
-   * populate=soutions_section.section_props&
-   * populate=soutions_section.solutions&
-   * populate=soutions_section.solutions.solution_page&
-   * populate=soutions_section.solutions.card_image&
-   * populate=start_your_journey&
-   * populate=start_your_journey.section_group_with_external_link&
-   * populate=start_your_journey.section_group_with_external_link.external_cta_link&
-   * populate=sla_section.section_props&
-   * populate=sla_section.sla_cards&
-   * populate=combine_your_yourney.section_group_with_external_link.external_cta_link
-   */
 
   const {
     hero,
@@ -66,7 +53,7 @@ export default async function Solutions({
     sla_section,
     combine_your_yourney,
   } = data
-  console.log(sla_section)
+
   return (
     <>
       <NavBar items={locales} />
@@ -168,10 +155,10 @@ export default async function Solutions({
         >
           <SectionGroup title={sla_section.title}>
             <CardGroup hasDividers>
-              {sla_section.sla_cards.map((item, i) => {
+              {sla_section.sla_cards.map((item: any, i: number) => {
                 return (
                   <CardService
-                    usps={item.items.map((sla) => {
+                    usps={item.items.map((sla: any) => {
                       return {
                         text: sla.name,
                         active: !sla.is_disabled,
@@ -187,7 +174,7 @@ export default async function Solutions({
           </SectionGroup>
         </Container>
       )}
-      {(combine_your_yourney && console.log(combine_your_yourney)) || (
+      {combine_your_yourney && (
         <Container
           background={combine_your_yourney.background}
           padding={combine_your_yourney.padding}
@@ -218,8 +205,3 @@ export default async function Solutions({
     </>
   )
 }
-const mapCta = (cta: any) => ({
-  // TODO Decide if we want to change CTA type or rename label to text in strapi
-  text: cta.label,
-  ...cta,
-})

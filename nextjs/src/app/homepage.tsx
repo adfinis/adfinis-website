@@ -105,7 +105,6 @@ export default async function Homepage({
         <Container background="stone" padding="both-padding">
           <SectionGroup>
             {our_projects.projects.map((item: any, i: number) => {
-              console.log(item)
               return (
                 <SectionCardWide
                   reverse={i % 2 === 0}
@@ -155,7 +154,6 @@ export default async function Homepage({
                   icon_compliance: "/svg/icons/icon_compliance.svg",
                   icon_employees: "/svg/icons/icon_employees.svg",
                 }
-                console.log({ item: item.ctas })
                 return (
                   <CardIcon
                     // @ts-ignore
