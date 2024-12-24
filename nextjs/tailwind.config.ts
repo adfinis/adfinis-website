@@ -66,15 +66,21 @@ const config: Config = {
         "button-secondary": "rgb(var(--button-text-secondary))",
         "paragraph-primary": "rgb(var(--paragraph-text-primary))",
         "input-primary": "rgb(var(--input-text-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-text-primary))",
       },
       borderColor: {
         "button-primary": "rgb(var(--button-text-primary))",
         "button-secondary": "rgb(var(--button-text-secondary))",
         "quote-primary": "rgb(var(--quote-border-primary))",
         "input-primary": "rgb(var(--input-border-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-border-primary))",
       },
       ringColor: {
         "input-primary": "rgb(var(--input-ring-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-ring-primary))",
+      },
+      ringOffsetColor: {
+        "checkbox-primary": "rgb(var(--checkbox-ring-offset-primary))",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

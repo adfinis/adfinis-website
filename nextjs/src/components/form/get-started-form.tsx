@@ -7,6 +7,7 @@ import FormEmail from "./form-email"
 import FormSelect from "./form-select"
 import Button from "../button"
 import FormTextarea from "./form-textarea"
+import FormCheckbox from "./form-checkbox"
 
 type GetStartedFormProps = { locale: string }
 const GetStartedForm: React.FC<GetStartedFormProps> = ({
@@ -38,6 +39,8 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
     email: "",
     phone: "",
     country: "",
+    date: "",
+    privacy: false,
   }
 
   // Set the locale for required, email, min, max, oneOf
@@ -62,6 +65,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
     phone: Yup.string().required(),
     country: Yup.string().required(),
     date: Yup.date(),
+    privacy: Yup.boolean().required(),
   })
 
   return (
@@ -97,6 +101,8 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
           <FormText id="phone" name="phone" label="Phone Number" />
 
           <FormTextarea id="message" name="message" label="Message" />
+
+          <FormCheckbox id="privacy" name="privacy" label="Privacy Policy" />
 
           {/* Submit Button */}
           <div className="w-full">

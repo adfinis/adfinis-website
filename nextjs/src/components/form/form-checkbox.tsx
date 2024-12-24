@@ -12,16 +12,23 @@ type FormCheckboxProps = {
 
 const fieldClasses = cva(
   [
-    "bg-input-primary",
-    "text-input-primary text-16 leading-normal font-normal rounded-lg w-6 h-6",
-    "border border-input-primary",
-    "ring-0 active:ring-1 ring-offset-1 active:ring-input-primary focus:ring-input-primary",
-    "col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto",
+    "cursor-pointer",
+    "text-16 checked:text-checkbox-primary",
+    "leading-normal font-normal rounded-lg w-6 h-6",
+    "border border-checkbox-primary/20", 
+    "focus:border focus:border-checkbox-primary/20",
+    "active:border-none",
+    "focus:active:border",
+    "checked:border checked:border-checkbox-primary",
+    "ring-0 ring-offset-0",
+    "active:ring-1 active:ring-offset-2 active:ring-offset-checkbox-primary active:ring-checkbox-primary",
+    "focus:ring-1 focus:ring-offset-2 focus:ring-offset-checkbox-primary focus:ring-checkbox-primary",
+    "checked:ring-0 checked:border-0",
   ],
   {
     variants: {
       variant: {
-        default: "border-input-primary/20",
+        default: "",
         error: "border-error",
       },
     },
@@ -41,9 +48,8 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({ id, name, label }) => {
         id={id}
         name={name}
         type="checkbox"
-        checked={meta.value}
       />
-      <label htmlFor={id} className="select-none text-input-primary">
+      <label htmlFor={id} className="select-none text-input-primary cursor-pointer">
         {label}
       </label>
       <ErrorMessage

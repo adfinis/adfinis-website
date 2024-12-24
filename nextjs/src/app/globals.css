@@ -53,6 +53,10 @@ body {
     --input-text-primary: var(--color-stone);
     --input-border-primary: var(--color-stone);
     --input-ring-primary: var(--color-stone);
+    --checkbox-border-primary: var(--color-stone);
+    --checkbox-text-primary: var(--color-stone);
+    --checkbox-ring-primary: var(--color-stone);
+    --checkbox-ring-offset-primary: var(--color-neutral);
   }
 
   [data-scheme="dark"] {
@@ -66,6 +70,10 @@ body {
     --input-text-primary: var(--color-neutral);
     --input-border-primary: var(--color-neutral);
     --input-ring-primary: var(--color-neutral);
+    --checkbox-border-primary: var(--color-neutral);
+    --checkbox-text-primary: var(--color-stone);
+    --checkbox-ring-primary: var(--color-neutral);
+    --checkbox-ring-offset-primary: var(--color-stone);
   }
 }
 

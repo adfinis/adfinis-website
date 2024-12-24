@@ -31,12 +31,12 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
   const locale = getLocale(routeLocale)
 
   const initialValues = {
-    job: "",
-    company: "",
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phone: "",
-    country: "",
+    company: "",
+    job: "",
+    privacyPolicy: false,
   }
 
   const getLabels = (locale: ReturnType<typeof getLocale>) => {
@@ -135,8 +135,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           <FormText id="company" name="company" label={labels.company} />
           <FormEmail id="email" name="email" label={labels.email} />
           <FormCheckbox
-            id="privacy"
-            name="privacy"
+            id="privacyPolicy"
+            name="privacyPolicy"
             label={labels.privacyPolicy}
           />
           <div className="w-full">
