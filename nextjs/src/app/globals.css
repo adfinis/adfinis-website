@@ -52,6 +52,7 @@ body {
     --input-bg-primary: var(--color-stone);
     --input-text-primary: var(--color-stone);
     --input-border-primary: var(--color-stone);
+    --input-ring-primary: var(--color-stone);
   }
 
   [data-scheme="dark"] {
@@ -64,6 +65,7 @@ body {
     --input-bg-primary: var(--color-neutral);
     --input-text-primary: var(--color-neutral);
     --input-border-primary: var(--color-neutral);
+    --input-ring-primary: var(--color-neutral);
   }
 }
 

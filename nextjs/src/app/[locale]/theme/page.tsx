@@ -34,6 +34,7 @@ import CardCounter from "@/components/cards/card-counter"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
+import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
 
 export default function Theme({ locale }: { locale: string }) {
@@ -242,8 +243,20 @@ export default function Theme({ locale }: { locale: string }) {
         </SectionGroup>
       </Container>
 
-      <Container id="form" background="stone" padding="both-padding">
+      <Container
+        id="contact-form-dark"
+        background="stone"
+        padding="both-padding"
+      >
         <GetStartedForm locale={locale} />
+      </Container>
+
+      <Container
+        id="contact-form-light"
+        background="neutral"
+        padding="both-padding"
+      >
+        <StandardForm locale={locale} />
       </Container>
     </main>
   )

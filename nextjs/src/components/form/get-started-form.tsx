@@ -1,9 +1,12 @@
 import React from "react"
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form } from "formik"
 import * as Yup from "yup"
 import messages from "./messages"
 import FormText from "./form-text"
 import FormEmail from "./form-email"
+import FormSelect from "./form-select"
+import Button from "../button"
+import FormTextarea from "./form-textarea"
 
 type GetStartedFormProps = { locale: string }
 const GetStartedForm: React.FC<GetStartedFormProps> = ({
@@ -58,6 +61,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
     email: Yup.string().email().required(),
     phone: Yup.string().required(),
     country: Yup.string().required(),
+    date: Yup.date(),
   })
 
   return (
@@ -69,16 +73,16 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
       {() => (
         <Form className="grid gap-4 max-w-4xl mx-auto">
           {/* Job Dropdown */}
-          <div>
-            <label htmlFor="job">Job</label>
-            <Field as="select" id="job" name="job">
-              <option value="">Select a job</option>
-              <option value="developer">Developer</option>
-              <option value="designer">Designer</option>
-              <option value="manager">Manager</option>
-            </Field>
-            <ErrorMessage name="job" component="p" />
-          </div>
+          <FormSelect
+            id="job"
+            name="job"
+            label="Job"
+            options={[
+              { value: "developer", label: "Developer" },
+              { value: "designer", label: "Designer" },
+              { value: "manager", label: "Manager" },
+            ]}
+          />
 
           {/* Company Input */}
           <FormText id="company" name="company" label="Company" />
@@ -90,26 +94,16 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({
           <FormEmail id="email" name="email" label="Email" />
 
           {/* Phone Input */}
-          <div>
-            <label htmlFor="phone">Phone Number</label>
-            <Field id="phone" name="phone" type="text" />
-            <ErrorMessage name="phone" component="p" />
-          </div>
+          <FormText id="phone" name="phone" label="Phone Number" />
 
-          {/* Country Dropdown */}
-          <div>
-            <label htmlFor="country">Country</label>
-            <Field as="select" id="country" name="country">
-              <option value="">Select a country</option>
-              <option value="usa">USA</option>
-              <option value="canada">Canada</option>
-              <option value="uk">UK</option>
-            </Field>
-            <ErrorMessage name="country" component="p" />
-          </div>
+          <FormTextarea id="message" name="message" label="Message" />
 
           {/* Submit Button */}
-          <button type="submit">Submit</button>
+          <div className="w-full">
+            <Button className="mx-auto" type="submit">
+              Submit
+            </Button>
+          </div>
         </Form>
       )}
     </Formik>

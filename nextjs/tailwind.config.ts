@@ -73,6 +73,9 @@ const config: Config = {
         "quote-primary": "rgb(var(--quote-border-primary))",
         "input-primary": "rgb(var(--input-border-primary))",
       },
+      ringColor: {
+        "input-primary": "rgb(var(--input-ring-primary))",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
