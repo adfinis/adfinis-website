@@ -1,7 +1,6 @@
 import React from "react"
 import { useField, Field, ErrorMessage } from "formik"
 import { getInputVariant, errorMessageClasses } from "./form-text"
-import FormLabel from "./form-label"
 import { cva } from "class-variance-authority"
 
 type FormCheckboxProps = {
@@ -15,7 +14,7 @@ const fieldClasses = cva(
     "cursor-pointer",
     "text-16 checked:text-checkbox-primary",
     "leading-normal font-normal rounded-lg w-6 h-6",
-    "border border-checkbox-primary/20", 
+    "border",
     "focus:border focus:border-checkbox-primary/20",
     "active:border-none",
     "focus:active:border",
@@ -28,7 +27,7 @@ const fieldClasses = cva(
   {
     variants: {
       variant: {
-        default: "",
+        default: "border-checkbox-primary/20",
         error: "border-error",
       },
     },
@@ -49,7 +48,10 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({ id, name, label }) => {
         name={name}
         type="checkbox"
       />
-      <label htmlFor={id} className="select-none text-input-primary cursor-pointer">
+      <label
+        htmlFor={id}
+        className="select-none text-input-primary cursor-pointer"
+      >
         {label}
       </label>
       <ErrorMessage

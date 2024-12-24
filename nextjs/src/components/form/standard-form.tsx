@@ -7,6 +7,7 @@ import FormEmail from "./form-email"
 import Button from "../button"
 import FormTextarea from "./form-textarea"
 import FormCheckbox from "./form-checkbox"
+import FormColumns from "./form-columns"
 
 type StandardFormProps = { locale: string }
 
@@ -30,15 +31,6 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
 
   const locale = getLocale(routeLocale)
 
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    company: "",
-    job: "",
-    privacyPolicy: false,
-  }
-
   const getLabels = (locale: ReturnType<typeof getLocale>) => {
     switch (locale) {
       case "en-US":
@@ -48,7 +40,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "Email",
           company: "Company",
           job: "Job",
-          privacyPolicy: "Privacy Policy",
+          privacyPolicy: "I accept the privacy policy of Adfinis",
+          submit: "Submit",
         }
       case "en-AU":
         return {
@@ -57,7 +50,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "Email",
           company: "Company",
           job: "Job",
-          privacyPolicy: "Privacy Policy",
+          privacyPolicy: "I accept the privacy policy of Adfinis",
+          submit: "Submit",
         }
       case "nl-NL":
         return {
@@ -66,7 +60,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "E-mail",
           company: "Bedrijf",
           job: "Functie",
-          privacyPolicy: "Privacybeleid",
+          privacyPolicy: "Ik accepteer het privacybeleid van Adfinis",
+          submit: "Verzenden",
         }
       case "de-CH":
         return {
@@ -75,7 +70,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "E-Mail",
           company: "Firma",
           job: "Beruf",
-          privacyPolicy: "Datenschutzrichtlinie",
+          privacyPolicy: "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
+          submit: "Absenden",
         }
       case "de-DE":
         return {
@@ -84,7 +80,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "E-Mail",
           company: "Firma",
           job: "Beruf",
-          privacyPolicy: "Datenschutzrichtlinie",
+          privacyPolicy: "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
+          submit: "Absenden",
         }
       default:
         return {
@@ -93,7 +90,8 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           email: "Email",
           company: "Company",
           job: "Job",
-          privacyPolicy: "Privacy Policy",
+          privacyPolicy: "I accept the privacy policy of Adfinis",
+          submit: "Submit",
         }
     }
   }
@@ -111,13 +109,22 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
     console.log("Form Data:", values)
   }
 
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    job: "",
+    privacyPolicy: false,
+  }
+
   const validationSchema = Yup.object({
     firstName: Yup.string().required(),
     lastName: Yup.string().required(),
     email: Yup.string().email().required(),
     company: Yup.string().required(),
     job: Yup.string().required(),
-    privacyPolicy: Yup.boolean(),
+    privacyPolicy: Yup.boolean().oneOf([true], messages[locale].privacyPolicy),
   })
 
   const labels = getLabels(locale)
@@ -130,8 +137,14 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
     >
       {() => (
         <Form className="grid gap-4 max-w-4xl mx-auto">
-          <FormText id="firstName" name="firstName" label={labels.firstName} />
-          <FormText id="lastName" name="lastName" label={labels.lastName} />
+          <FormColumns>
+            <FormText
+              id="firstName"
+              name="firstName"
+              label={labels.firstName}
+            />
+            <FormText id="lastName" name="lastName" label={labels.lastName} />
+          </FormColumns>
           <FormText id="company" name="company" label={labels.company} />
           <FormEmail id="email" name="email" label={labels.email} />
           <FormCheckbox
@@ -141,7 +154,7 @@ const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
           />
           <div className="w-full">
             <Button className="mx-auto" type="submit">
-              Submit
+              {labels.submit}
             </Button>
           </div>
         </Form>
