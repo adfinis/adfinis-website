@@ -1,6 +1,6 @@
 import { type Config } from "tailwindcss"
-import { spacing, maxWidth } from "tailwindcss/defaultTheme"
 import { colors } from "./src/lib/colors"
+import tailwindCssFormsPlugin from "@tailwindcss/forms"
 
 const config: Config = {
   content: [
@@ -25,6 +25,9 @@ const config: Config = {
       40: "2.5rem", // 40px
       50: "3.125rem", // 50px
     },
+    /**
+     * @info colors here are using hex values directly, so we can use tailwind css intellisense color swatches.
+     */
     colors,
     boxShadow: {
       "1": "0px 2px 6px 0px rgba(0, 0, 0, 0.20)",
@@ -46,20 +49,38 @@ const config: Config = {
         112: "28rem",
         128: "32rem",
       },
+
+      /**
+       * @description set of classes with different data-scheme="light" and data-scheme="dark" values
+       * @info references to css variables need to be wrapped in rgb() to work with tailwindcss jit opacity
+       * @example bg-input-primary/5
+       */
       backgroundColor: {
-        "button-primary": "var(--button-bg-primary)",
-        "button-secondary": "var(--button-bg-secondary)",
+        "button-primary": "rgb(var(--button-bg-primary))",
+        "button-secondary": "rgb(var(--button-bg-secondary))",
+        "input-primary": "rgb(var(--input-bg-primary))",
       },
       textColor: {
-        "title-primary": "var(--title-text-primary)",
-        "button-primary": "var(--button-text-primary)",
-        "button-secondary": "var(--button-text-secondary)",
-        "paragraph-primary": "var(--paragraph-text-primary)",
+        "title-primary": "rgb(var(--title-text-primary))",
+        "button-primary": "rgb(var(--button-text-primary))",
+        "button-secondary": "rgb(var(--button-text-secondary))",
+        "paragraph-primary": "rgb(var(--paragraph-text-primary))",
+        "input-primary": "rgb(var(--input-text-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-text-primary))",
       },
       borderColor: {
-        "button-primary": "var(--button-text-primary)",
-        "button-secondary": "var(--button-text-secondary)",
-        "quote-primary": "var(--quote-border-primary)",
+        "button-primary": "rgb(var(--button-text-primary))",
+        "button-secondary": "rgb(var(--button-text-secondary))",
+        "quote-primary": "rgb(var(--quote-border-primary))",
+        "input-primary": "rgb(var(--input-border-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-border-primary))",
+      },
+      ringColor: {
+        "input-primary": "rgb(var(--input-ring-primary))",
+        "checkbox-primary": "rgb(var(--checkbox-ring-primary))",
+      },
+      ringOffsetColor: {
+        "checkbox-primary": "rgb(var(--checkbox-ring-offset-primary))",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -68,6 +89,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindCssFormsPlugin()],
 }
 export default config

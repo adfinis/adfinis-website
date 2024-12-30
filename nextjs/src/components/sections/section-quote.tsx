@@ -43,7 +43,7 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
             <path
               d="m0 0 141.458 62.6-11.73-62.6z"
               fill="currentColor"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               transform="translate(.626 .581)"
             />
           </svg>
