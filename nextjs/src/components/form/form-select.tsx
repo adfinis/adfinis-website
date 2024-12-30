@@ -31,6 +31,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
         className={fieldClasses({ variant: getInputVariant({ meta }) })}
         id={id}
         name={name}
+        data-testid={id}
       >
         <option></option>
         {options.map((option, i) => (
@@ -43,6 +44,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
         name={name}
         component="p"
         className={errorMessageClasses()}
+        data-testid={`${id}-error`}
       />
     </div>
   )

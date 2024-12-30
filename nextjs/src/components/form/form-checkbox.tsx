@@ -47,6 +47,7 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({ id, name, label }) => {
         id={id}
         name={name}
         type="checkbox"
+        data-testid={id}
       />
       <label
         htmlFor={id}
@@ -58,6 +59,7 @@ const FormCheckbox: React.FC<FormCheckboxProps> = ({ id, name, label }) => {
         name={name}
         component="p"
         className={errorMessageClasses()}
+        data-testid={`${id}-error`}
       />
     </div>
   )

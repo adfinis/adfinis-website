@@ -32,6 +32,7 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
         name={name}
         component="p"
         className={errorMessageClasses()}
+        data-testid={`${id}-error`}
       />
     </div>
   )

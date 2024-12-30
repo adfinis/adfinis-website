@@ -20,11 +20,13 @@ const FormEmail: React.FC<FormEmailProps> = ({ id, name, label }) => {
         id={id}
         name={name}
         type="email"
+        data-testid={id}
       />
       <ErrorMessage
         name={name}
         component="p"
         className={errorMessageClasses()}
+        data-testid={`${id}-error`}
       />
     </div>
   )

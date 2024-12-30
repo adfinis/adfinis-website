@@ -50,11 +50,13 @@ const FormText: React.FC<FormTextProps> = ({ id, name, label }) => {
         id={id}
         name={name}
         type="text"
+        data-testid={id}
       />
       <ErrorMessage
         name={name}
         component="p"
         className={errorMessageClasses()}
+        data-testid={`${id}-error`}
       />
     </div>
   )
