@@ -1,0 +1,23 @@
+name: Vitest Test on Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main  # Specify the branch that triggers the workflow
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify Node.js version (adjust as needed)
+
+      - name: Install dependencies
+        run: npm install --prefix /nextjs
+
+      - name: Run Vitest tests
+        run: npm test --prefix /nextjs -- --coverage  # Adjust the path to your Next.js project
