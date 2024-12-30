@@ -8,30 +8,12 @@ import Button from "../button"
 import FormTextarea from "./form-textarea"
 import FormCheckbox from "./form-checkbox"
 import FormColumns from "./form-columns"
+import useLocale from "@/hooks/useLocale"
 
-type StandardFormProps = { locale: string }
+const StandardForm: React.FC = () => {
+  const locale = useLocale()
 
-const StandardForm: React.FC<StandardFormProps> = ({ locale: routeLocale }) => {
-  const getLocale = (input?: string) => {
-    switch (input) {
-      case "en-US":
-        return "en-US"
-      case "en-AU":
-        return "en-AU"
-      case "nl-NL":
-        return "nl-NL"
-      case "de-CH":
-        return "de-CH"
-      case "de-DE":
-        return "de-DE"
-      default:
-        return "en-US"
-    }
-  }
-
-  const locale = getLocale(routeLocale)
-
-  const getLabels = (locale: ReturnType<typeof getLocale>) => {
+  const getLabels = (locale: ReturnType<typeof useLocale>) => {
     switch (locale) {
       case "en-US":
         return {
