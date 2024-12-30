@@ -8,11 +8,9 @@ import FormSelect from "./form-select"
 import Button from "../button"
 import FormTextarea from "./form-textarea"
 import FormCheckbox from "./form-checkbox"
-import useLocale from "@/hooks/useLocale"
+import { type FormProps } from "./form"
 
-const GetStartedForm: React.FC = () => {
-  const locale = useLocale()
-
+const GetStartedForm: React.FC<FormProps> = ({ locale }) => {
   const initialValues = {
     job: "",
     company: "",

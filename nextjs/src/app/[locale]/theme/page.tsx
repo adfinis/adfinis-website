@@ -36,8 +36,13 @@ import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
+import { type Locale } from "@/hooks/useLocale"
 
-export default function Theme({ locale }: { locale: string }) {
+export default function Theme({
+  params: { locale },
+}: {
+  params: { locale: Locale }
+}) {
   return (
     <main className="bg-white">
       <Hero

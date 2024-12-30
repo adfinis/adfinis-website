@@ -8,12 +8,11 @@ import Button from "../button"
 import FormTextarea from "./form-textarea"
 import FormCheckbox from "./form-checkbox"
 import FormColumns from "./form-columns"
-import useLocale from "@/hooks/useLocale"
+import type { FormProps } from "./form"
+import { Locale } from "@/hooks/useLocale"
 
-const StandardForm: React.FC = () => {
-  const locale = useLocale()
-
-  const getLabels = (locale: ReturnType<typeof useLocale>) => {
+const StandardForm: React.FC<FormProps> = ({ locale }) => {
+  const getLabels = (locale: Locale) => {
     switch (locale) {
       case "en-US":
         return {
@@ -118,7 +117,10 @@ const StandardForm: React.FC = () => {
       onSubmit={onSubmit}
     >
       {() => (
-        <Form className="grid gap-4 max-w-4xl mx-auto">
+        <Form
+          className="grid gap-4 max-w-4xl mx-auto"
+          data-testid="standard-form"
+        >
           <FormColumns>
             <FormText
               id="firstName"
@@ -127,7 +129,10 @@ const StandardForm: React.FC = () => {
             />
             <FormText id="lastName" name="lastName" label={labels.lastName} />
           </FormColumns>
-          <FormText id="company" name="company" label={labels.company} />
+          <FormColumns>
+            <FormText id="company" name="company" label={labels.company} />
+            <FormText id="job" name="job" label={labels.job} />
+          </FormColumns>
           <FormEmail id="email" name="email" label={labels.email} />
           <FormCheckbox
             id="privacyPolicy"
@@ -135,7 +140,11 @@ const StandardForm: React.FC = () => {
             label={labels.privacyPolicy}
           />
           <div className="w-full">
-            <Button className="mx-auto" type="submit">
+            <Button
+              className="mx-auto"
+              type="submit"
+              data-testid="standard-form-submit"
+            >
               {labels.submit}
             </Button>
           </div>

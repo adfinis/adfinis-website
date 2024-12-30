@@ -1,5 +1,9 @@
 import { useParams } from "next/navigation"
 
+export const locales = ["en-US", "en-AU", "nl-NL", "de-CH", "de-DE"] as const
+
+export type Locale = (typeof locales)[number]
+
 const getLocale = (input: unknown) => {
   if (typeof input !== "string") return "en-US"
   switch (input) {
@@ -18,7 +22,11 @@ const getLocale = (input: unknown) => {
   }
 }
 
-export default function useLocale() {
+/**
+ *
+ * @returns the current locale based on the URL route param
+ */
+export function useLocale() {
   const { locale } = useParams()
   return getLocale(locale)
 }
