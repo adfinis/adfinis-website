@@ -14,6 +14,10 @@ const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
     hasDividers: {
       true: "section-group-dividers",
     },
+    columns: {
+      2: "max-w-4xl grid-cols-1 md:grid-cols-2 mx-auto",
+      3: "max-w-4xl grid-cols-1 md:grid-cols-3 mx-auto",
+    },
   },
   defaultVariants: {
     align: "start",
@@ -30,6 +34,7 @@ type SectionGroupProps = VariantProps<typeof sectionGroupStyles> & {
   title?: string
   text?: string
   children: React.ReactNode
+  columns?: 2 | 3
 }
 
 const SectionGroup: React.FC<SectionGroupProps> = ({
@@ -38,6 +43,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
   children,
   align,
   hasDividers,
+  columns,
 }) => {
   return (
     <div className={sectionGroupStyles({ align })}>
@@ -54,7 +60,9 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
           <Text markdown={text} className="text-justify lg:text-center" />
         </div>
       )}
-      <div className={sectionGroupStyles({ hasDividers })}>{children}</div>
+      <div className={sectionGroupStyles({ hasDividers, columns })}>
+        {children}
+      </div>
     </div>
   )
 }

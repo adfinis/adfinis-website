@@ -517,6 +517,25 @@ export const whitepaperSection = {
   },
 } as const
 
+export const twoColumnMarkdownSection = {
+  column1: `
+  ### **How it works**
+  - A discovery call will be scheduled to discuss some aspects of your GitLab setup
+  - We will send you a questionnaire to gather information about your GitLab setup
+  - We will analyse the gathered information and document our recommendations in a report
+  - A delivery and Q&A call is scheduled where we go over our findings and recommendations
+  - After the call, you will receive a report with all the recommendations and takeaways
+  `,
+  column2: `
+  ### **What it covers**
+  - GitLab Architecture and Design for Self-Managed Instances
+  - Security configuration in GitLab
+  - GitLab Monitoring and Maintenance
+  - Disaster Recovery and High Availability
+  - Gitlab Runners setup for Gitlab CI/CD
+  `,
+}
+
 export const footer = {
   columns: [
     {

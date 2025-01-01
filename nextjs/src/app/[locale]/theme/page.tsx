@@ -19,6 +19,7 @@ import {
   partnerSection,
   quoteSection,
   whitepaperSection,
+  twoColumnMarkdownSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -265,6 +266,7 @@ export default function Theme({
       >
         <StandardForm locale={locale} />
       </Container>
+
       <Container id="whitepaper" background="sapphire" padding="both-padding">
         <SectionWhitepaper
           title={whitepaperSection.title}
@@ -272,6 +274,17 @@ export default function Theme({
           image={whitepaperSection.image}
           text={whitepaperSection.description}
         />
+      </Container>
+
+      <Container
+        id="two-column-markdown"
+        background="stone"
+        padding="both-padding"
+      >
+        <SectionGroup columns={2}>
+          <Text markdown={twoColumnMarkdownSection.column1} />
+          <Text markdown={twoColumnMarkdownSection.column2} />
+        </SectionGroup>
       </Container>
     </main>
   )
