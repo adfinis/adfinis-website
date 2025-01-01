@@ -18,6 +18,7 @@ import {
   slaSection,
   partnerSection,
   quoteSection,
+  whitepaperSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -37,6 +38,7 @@ import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
+import SectionWhitepaper from "@/components/sections/section-whitepaper"
 
 export default function Theme({
   params: { locale },
@@ -262,6 +264,14 @@ export default function Theme({
         padding="both-padding"
       >
         <StandardForm locale={locale} />
+      </Container>
+      <Container id="whitepaper" background="sapphire" padding="both-padding">
+        <SectionWhitepaper
+          title={whitepaperSection.title}
+          cta={whitepaperSection.cta}
+          image={whitepaperSection.image}
+          text={whitepaperSection.description}
+        />
       </Container>
     </main>
   )
