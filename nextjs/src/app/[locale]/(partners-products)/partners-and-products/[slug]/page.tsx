@@ -3,6 +3,7 @@ import strapi from "@/lib/strapi"
 import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
+import Intro from "@/components/intro"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -32,7 +33,7 @@ export default async function SolutionsDetailPage({
   locales.push(currentLocale)
   // locales.push(activeLocale)
 
-  const { hero } = data
+  const { hero, intro } = data
   console.log({ hero })
   return (
     <>
@@ -41,6 +42,11 @@ export default async function SolutionsDetailPage({
           <Title markdown={hero.title} />
           <Text markdown={hero.body} />
         </Hero>
+      )}
+      {intro && (
+        <Intro>
+          <Text markdown={intro.body} className="grid gap-8" />
+        </Intro>
       )}
     </>
   )
