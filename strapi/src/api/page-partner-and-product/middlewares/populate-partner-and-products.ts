@@ -2,7 +2,9 @@
 
 const populate = {
   localizations: true,
-  hero: true,
+  hero: {
+    populate: '*'
+  },
   intro: {
     populate: true,
   },
