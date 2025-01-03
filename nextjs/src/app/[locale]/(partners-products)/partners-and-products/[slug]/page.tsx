@@ -7,6 +7,8 @@ import Intro from "@/components/intro"
 import SectionGroup from "@/components/sections/section-group"
 import Container from "@/components/container"
 import type { colors } from "@/lib/colors"
+import CardGroup from "@/components/cards/card-group"
+import CardIcon from "@/components/cards/card-icon"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -73,7 +75,33 @@ type TwoColumnSection = {
   right_column: string
 }
 
-type SupportedSections = TwoColumnSection
+type CTA = {
+  label: string
+  url: string
+}
+
+type IconCard = {
+  icon_image: {
+    url: string
+  }
+  title: string
+  description: string
+  cta: CTA
+}
+type IconCardSection = {
+  __component: string
+  section_props: {
+    background: PickStringLiteral<
+      keyof typeof colors,
+      "white" | "neutral" | "sapphire" | "stone"
+    >
+    padding: "no-padding" | "both-padding"
+  }
+  title: string
+  cards: IconCard[]
+}
+
+type SupportedSections = TwoColumnSection | IconCardSection
 
 function dynamicSection(section: SupportedSections, index: number) {
   switch (section.__component) {
@@ -90,7 +118,39 @@ function dynamicSection(section: SupportedSections, index: number) {
           </SectionGroup>
         </Container>
       )
+    case "sections.icon-card-section-with-relation":
+      return (
+        <Container
+          key={`section_icon_card_${index}`}
+          background={section.section_props.background}
+          padding={section.section_props.padding}
+        >
+          <SectionGroup title={section.title}>
+            <CardGroup>
+              {section.cards.map((item: any, i: number) => {
+                return (
+                  <CardIcon
+                    imageUrl={item.icon_image.url}
+                    title={item.title}
+                    description={item.description}
+                    cta={[item.cta].map(mapCta)[0]}
+                    key={`kpi_sections_${i}`}
+                  />
+                )
+              })}
+            </CardGroup>
+          </SectionGroup>
+        </Container>
+      )
     default:
       return <p key={`section_${index}`}>Unknown section</p>
+  }
+}
+
+const mapCta = (cta: any) => {
+  if (!cta) return undefined
+  return {
+    text: cta.label,
+    ...cta,
   }
 }

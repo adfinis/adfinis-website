@@ -9,7 +9,19 @@ const populate = {
     populate: true,
   },
   sections: {
-    populate: '*'
+    on: {
+      'sections.two-column-section': {
+        populate: '*'
+      },
+      'sections.icon-card-section-with-relation': {
+        populate: {
+          cards: {
+            populate: '*'
+          },
+          section_props: true
+        }
+      }
+    },
   }
 };
 
