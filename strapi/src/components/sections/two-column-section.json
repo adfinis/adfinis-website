@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_two_column_sections",
+  "info": {
+    "displayName": "Two Column Section"
+  },
+  "options": {},
+  "attributes": {
+    "left_column": {
+      "type": "richtext",
+      "required": true
+    },
+    "right_column": {
+      "type": "richtext",
+      "required": true
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    }
+  }
+}

@@ -305,6 +305,21 @@ export interface GlobalSlaItem extends Struct.ComponentSchema {
   };
 }
 
+export interface LinkedSectionWhitePaperSection extends Struct.ComponentSchema {
+  collectionName: 'components_linked_section_white_paper_sections';
+  info: {
+    displayName: 'White Paper Section';
+  };
+  attributes: {
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    white_paper: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::white-paper.white-paper'
+    >;
+  };
+}
+
 export interface RelationsQuotesRelation extends Struct.ComponentSchema {
   collectionName: 'components_relations_quotes_relations';
   info: {
@@ -664,6 +679,19 @@ export interface SectionsSectionWithRichtHeadingIntroAndCta
   };
 }
 
+export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_two_column_sections';
+  info: {
+    displayName: 'Two Column Section';
+  };
+  attributes: {
+    left_column: Schema.Attribute.RichText & Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    right_column: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -682,6 +710,7 @@ declare module '@strapi/strapi' {
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'global.sla-item': GlobalSlaItem;
+      'linked-section.white-paper-section': LinkedSectionWhitePaperSection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
@@ -703,6 +732,7 @@ declare module '@strapi/strapi' {
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
+      'sections.two-column-section': SectionsTwoColumnSection;
     }
   }
 }
