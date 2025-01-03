@@ -305,6 +305,21 @@ export interface GlobalSlaItem extends Struct.ComponentSchema {
   };
 }
 
+export interface RelationsCalendlySection extends Struct.ComponentSchema {
+  collectionName: 'components_relations_calendly_sections';
+  info: {
+    displayName: 'Calendly Section';
+  };
+  attributes: {
+    calendly_item: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::calendly-item.calendly-item'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface RelationsQuotesRelation extends Struct.ComponentSchema {
   collectionName: 'components_relations_quotes_relations';
   info: {
@@ -712,6 +727,7 @@ declare module '@strapi/strapi' {
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'global.sla-item': GlobalSlaItem;
+      'relations.calendly-section': RelationsCalendlySection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
