@@ -15,6 +15,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.7.1] - 2025-01-03
+
+- fix: hotfix theme preview page
+
 ## [0.7.0] - 2025-01-03
 
 - feat: calendly section (#39)
