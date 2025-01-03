@@ -965,6 +965,75 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPagePartnerAndProductPagePartnerAndProduct
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'page_partner_and_products';
+  info: {
+    displayName: 'Page Partner & Product';
+    pluralName: 'page-partner-and-products';
+    singularName: 'page-partner-and-product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.Component<'global.intro', false> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-partner-and-product.page-partner-and-product'
+    >;
+    metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.two-column-section',
+        'sections.text-section-with-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.heading-with-link-container',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'relations.calendly-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
   collectionName: 'quotes';
   info: {
@@ -1845,6 +1914,7 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::news-page.news-page': ApiNewsPageNewsPage;
+      'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
       'api::quote.quote': ApiQuoteQuote;
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
