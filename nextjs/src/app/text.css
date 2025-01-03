@@ -20,7 +20,7 @@
         h1,
         h2,
         h3 {
-            @apply font-light tracking-tight text-title-primary;
+            @apply font-light tracking-tight text-title-primary mb-4 lg:mb-8;
 
             b,
             strong {
@@ -69,11 +69,11 @@
 
             ul,
             ol {
-                @apply mt-2;
+                @apply mt-2 lg:mt-4;
             }
 
             &:not(:last-child) {
-                @apply mb-2;
+                @apply mb-2 lg:mb-4;
             }
         }
 
