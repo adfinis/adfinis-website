@@ -32,6 +32,7 @@ export default {
     oneOf: "Dit veld moet een van de volgende waarden zijn: ${values}.",
     privacyPolicy: "U moet het privacybeleid accepteren.",
   },
-  "en-AU": EN_MESSAGE,
   en: EN_MESSAGE,
+  "en-AU": EN_MESSAGE,
+  "en-US": EN_MESSAGE,
 } as const

@@ -16,15 +16,6 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
     switch (locale) {
       case "en":
       case "en-US":
-        return {
-          firstName: "First Name",
-          lastName: "Last Name",
-          email: "Email",
-          company: "Company",
-          job: "Job",
-          privacyPolicy: "I accept the privacy policy of Adfinis",
-          submit: "Submit",
-        }
       case "en-AU":
         return {
           firstName: "First Name",
@@ -99,6 +90,8 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
     job: "",
     privacyPolicy: false,
   }
+
+  console.log({ locale })
 
   const validationSchema = Yup.object({
     firstName: Yup.string().required(),
