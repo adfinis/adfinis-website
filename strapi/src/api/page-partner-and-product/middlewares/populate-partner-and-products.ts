@@ -11,15 +11,23 @@ const populate = {
   sections: {
     on: {
       'sections.two-column-section': {
-        populate: '*'
+        populate: '*',
       },
       'sections.icon-card-section-with-relation': {
         populate: {
           cards: {
-            populate: '*'
+            populate: '*',
           },
-          section_props: true
+          section_props: true,
         }
+      },
+      'relations.white-paper-section': {
+        populate: {
+          props: true,
+          white_paper: {
+            populate: '*'
+          }
+        },
       }
     },
   }

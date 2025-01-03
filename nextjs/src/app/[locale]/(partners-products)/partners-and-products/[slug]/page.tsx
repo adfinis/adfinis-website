@@ -9,6 +9,8 @@ import Container from "@/components/container"
 import type { colors } from "@/lib/colors"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
+import { whitepaperSection } from "@/app/[locale]/theme/texts"
+import SectionWhitepaper from "@/components/sections/section-whitepaper"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -140,6 +142,29 @@ function dynamicSection(section: SupportedSections, index: number) {
               })}
             </CardGroup>
           </SectionGroup>
+        </Container>
+      )
+    case "relations.white-paper-section":
+      return (
+        <Container
+          key={`section_white_paper_${index}`}
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionWhitepaper
+            title={section.white_paper.title}
+            cta={{
+              text: "Download whitepaper",
+              href: section.white_paper.download_file.url,
+              variant: "cta",
+              size: "large",
+            }}
+            image={{
+              src: section.white_paper.cover_image.url,
+              alt: section.white_paper.cover_image.alternativeText ?? "",
+            }}
+            text={section.white_paper.description}
+          />
         </Container>
       )
     default:
