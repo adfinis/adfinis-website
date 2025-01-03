@@ -14,6 +14,7 @@ import { Locale } from "@/hooks/useLocale"
 const StandardForm: React.FC<FormProps> = ({ locale }) => {
   const getLabels = (locale: Locale) => {
     switch (locale) {
+      case "en":
       case "en-US":
         return {
           firstName: "First Name",
