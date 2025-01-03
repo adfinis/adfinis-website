@@ -291,16 +291,6 @@ export interface GlobalIntro extends Struct.ComponentSchema {
   };
 }
 
-export interface GlobalIntroBody extends Struct.ComponentSchema {
-  collectionName: 'components_global_intro_bodies';
-  info: {
-    displayName: 'Intro Body';
-  };
-  attributes: {
-    body: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 export interface GlobalSlaItem extends Struct.ComponentSchema {
   collectionName: 'components_global_sla_items';
   info: {
@@ -312,21 +302,6 @@ export interface GlobalSlaItem extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsCalendlySection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_calendly_sections';
-  info: {
-    displayName: 'Calendly Section';
-  };
-  attributes: {
-    calendly_item: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calendly-item.calendly-item'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
   };
 }
 
@@ -387,21 +362,6 @@ export interface RelationsSolutionsRelationWithDescription
       'api::solutions-page.solutions-page'
     >;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsWhitePaperSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_white_paper_sections';
-  info: {
-    displayName: 'White Paper Section';
-  };
-  attributes: {
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    white_paper: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::white-paper.white-paper'
-    >;
   };
 }
 
@@ -585,9 +545,7 @@ export interface SectionsIconCardSectionWithRelation
   };
   attributes: {
     cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    section_props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
+    section_props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
@@ -706,33 +664,6 @@ export interface SectionsSectionWithRichtHeadingIntroAndCta
   };
 }
 
-export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
-  collectionName: 'components_sections_text_section_with_ctas';
-  info: {
-    displayName: 'Text Section With CTA';
-  };
-  attributes: {
-    body: Schema.Attribute.RichText & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
-export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_two_column_sections';
-  info: {
-    displayName: 'Two Column Section';
-  };
-  attributes: {
-    left_column: Schema.Attribute.RichText & Schema.Attribute.Required;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    right_column: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -750,14 +681,11 @@ declare module '@strapi/strapi' {
       'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
-      'global.intro-body': GlobalIntroBody;
       'global.sla-item': GlobalSlaItem;
-      'relations.calendly-section': RelationsCalendlySection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
-      'relations.white-paper-section': RelationsWhitePaperSection;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
@@ -775,8 +703,6 @@ declare module '@strapi/strapi' {
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
-      'sections.text-section-with-cta': SectionsTextSectionWithCta;
-      'sections.two-column-section': SectionsTwoColumnSection;
     }
   }
 }

@@ -6,7 +6,6 @@ import Text from "@/components/text"
 import Intro from "@/components/intro"
 import SectionGroup from "@/components/sections/section-group"
 import Container from "@/components/container"
-import type { colors } from "@/lib/colors"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
@@ -60,50 +59,7 @@ export default async function PartnersProducts({
   )
 }
 
-type PickStringLiteral<A, B extends A> = B
-
-type TwoColumnSection = {
-  __component: string
-  props: {
-    background: PickStringLiteral<
-      keyof typeof colors,
-      "white" | "neutral" | "sapphire" | "stone"
-    >
-    padding: "no-padding" | "both-padding"
-  }
-  left_column: string
-  right_column: string
-}
-
-type CTA = {
-  label: string
-  url: string
-}
-
-type IconCard = {
-  icon_image: {
-    url: string
-  }
-  title: string
-  description: string
-  cta: CTA
-}
-type IconCardSection = {
-  __component: string
-  section_props: {
-    background: PickStringLiteral<
-      keyof typeof colors,
-      "white" | "neutral" | "sapphire" | "stone"
-    >
-    padding: "no-padding" | "both-padding"
-  }
-  title: string
-  cards: IconCard[]
-}
-
-type SupportedSections = TwoColumnSection | IconCardSection
-
-function dynamicSection(section: SupportedSections, index: number) {
+function dynamicSection(section: any, index: number) {
   switch (section.__component) {
     case "sections.two-column-section":
       return (
@@ -167,7 +123,11 @@ function dynamicSection(section: SupportedSections, index: number) {
       )
     case "relations.quotes-relation":
       return (
-        <Container key={`section_quote_${index}`}>
+        <Container
+          key={`section_quote_${index}`}
+          background={"neutral"}
+          padding={"both-padding"}
+        >
           <SectionGroup hasDividers>
             {section.quotes.length > 0 && section.quotes[0] && (
               <SectionQuote

@@ -369,60 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCalendlyItemCalendlyItem
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'calendly_items';
-  info: {
-    description: '';
-    displayName: 'Calendly Item';
-    pluralName: 'calendly-items';
-    singularName: 'calendly-item';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    body: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    calendly_url: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calendly-item.calendly-item'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -965,82 +911,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPagePartnerAndProductPagePartnerAndProduct
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'page_partner_and_products';
-  info: {
-    displayName: 'Page Partner & Product';
-    pluralName: 'page-partner-and-products';
-    singularName: 'page-partner-and-product';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro-body', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::page-partner-and-product.page-partner-and-product'
-    >;
-    metadata_description: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    metadata_title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.DynamicZone<
-      [
-        'sections.two-column-section',
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
-        'sections.heading-with-link-container',
-        'relations.white-paper-section',
-        'relations.quotes-relation',
-        'relations.calendly-section',
-      ]
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    slug: Schema.Attribute.UID<'metadata_title'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
   collectionName: 'quotes';
   info: {
@@ -1338,65 +1208,6 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiWhitePaperWhitePaper extends Struct.CollectionTypeSchema {
-  collectionName: 'white_papers';
-  info: {
-    description: '';
-    displayName: 'White Paper';
-    pluralName: 'white-papers';
-    singularName: 'white-paper';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    cover_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    download_file: Schema.Attribute.Media<'files'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::white-paper.white-paper'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1912,7 +1723,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
       'api::event-page.event-page': ApiEventPageEventPage;
@@ -1921,12 +1731,10 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::news-page.news-page': ApiNewsPageNewsPage;
-      'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
       'api::quote.quote': ApiQuoteQuote;
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
-      'api::white-paper.white-paper': ApiWhitePaperWhitePaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
