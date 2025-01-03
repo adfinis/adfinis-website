@@ -501,6 +501,22 @@ export const quoteSection = {
   },
 } as const
 
+export const whitepaperSection = {
+  title: "Unlock the full potential of GitLab",
+  description:
+    "Say goodbye to toolchain complexity with GitLab's comprehensive DevSecOps Suite. Our white paper highlights GitLab's integrated capabilities for seamless project management, code testing, and release.",
+  cta: {
+    text: "Download Whitepaper",
+    href: "/",
+    variant: "cta",
+    size: "large",
+  },
+  image: {
+    src: "https://images.unsplash.com/photo-1618822579297-53087e4cd1de?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Whitepaper image of Gitlab in action",
+  },
+} as const
+
 export const footer = {
   columns: [
     {

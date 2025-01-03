@@ -27,6 +27,9 @@ const titleStyles = cva(["tracking-tight text-title-primary"], {
   },
 })
 
+/**
+ * @info either children or markdown can be passed, not both
+ */
 type ChildrenORString =
   | {
       children: React.ReactNode
