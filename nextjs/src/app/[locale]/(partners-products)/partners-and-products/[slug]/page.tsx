@@ -12,6 +12,7 @@ import CardIcon from "@/components/cards/card-icon"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionQuote from "@/components/sections/section-quote"
 import ButtonGroup from "@/components/button-group"
+import NavBar from "@/components/nav-bar/nav-bar"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -45,6 +46,7 @@ export default async function SolutionsDetailPage({
 
   return (
     <>
+      <NavBar items={locales} />
       {hero && (
         <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
           <Title markdown={hero.title} />
