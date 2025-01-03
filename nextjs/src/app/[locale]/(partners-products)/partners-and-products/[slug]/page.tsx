@@ -4,6 +4,9 @@ import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
+import SectionGroup from "@/components/sections/section-group"
+import Container from "@/components/container"
+import type { colors } from "@/lib/colors"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -33,8 +36,8 @@ export default async function SolutionsDetailPage({
   locales.push(currentLocale)
   // locales.push(activeLocale)
 
-  const { hero, intro } = data
-  console.log({ hero })
+  const { hero, intro, sections } = data
+
   return (
     <>
       {hero && (
@@ -48,6 +51,46 @@ export default async function SolutionsDetailPage({
           <Text markdown={intro.body} className="grid gap-8" />
         </Intro>
       )}
+      {sections && sections.length > 0 && (
+        <div>{sections.map(dynamicSection)}</div>
+      )}
     </>
   )
+}
+
+type PickStringLiteral<A, B extends A> = B
+
+type TwoColumnSection = {
+  __component: string
+  props: {
+    background: PickStringLiteral<
+      keyof typeof colors,
+      "white" | "neutral" | "sapphire" | "stone"
+    >
+    padding: "no-padding" | "both-padding"
+  }
+  left_column: string
+  right_column: string
+}
+
+type SupportedSections = TwoColumnSection
+
+function dynamicSection(section: SupportedSections, index: number) {
+  switch (section.__component) {
+    case "sections.two-column-section":
+      return (
+        <Container
+          key={`section_two_column_${index}`}
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup columns={2}>
+            <Text markdown={section.left_column} />
+            <Text markdown={section.right_column} />
+          </SectionGroup>
+        </Container>
+      )
+    default:
+      return <p key={`section_${index}`}>Unknown section</p>
+  }
 }
