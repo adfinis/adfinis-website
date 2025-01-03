@@ -51,6 +51,7 @@ module.exports = (config, {strapi}) => {
   return async (ctx, next) => {
 
     ctx.query = {
+      ...ctx.query,
       populate,
     }
 
