@@ -15,6 +15,13 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.6.0] - 2025-01-03
+
+- feat: Form components (#36)
+- feat: Detail pages (#34)
+- feat: Create responsive SectionQuote (#32)
+- feat: Add color option to CardImage, SectionCardWide components (#31)
+
 ## [0.5.0] - 2024-12-11
 
 - feature (frontend): partner list (#26)
