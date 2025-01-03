@@ -15,6 +15,12 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.7.0] - 2025-01-03
+
+- feat: calendly section (#39)
+- feat: two column markdown (#38)
+- feat: white paper download (#37)
+
 ## [0.6.0] - 2025-01-03
 
 - feat: Form components (#36)
