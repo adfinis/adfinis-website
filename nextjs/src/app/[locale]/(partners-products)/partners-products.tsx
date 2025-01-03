@@ -13,6 +13,7 @@ import SectionQuote from "@/components/sections/section-quote"
 import ButtonGroup from "@/components/button-group"
 import NavBar from "@/components/nav-bar/nav-bar"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
+import { notFound } from "next/navigation"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -22,7 +23,12 @@ export default async function PartnersProducts({
   slug: string
 }) {
   const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}`
-  const { data } = await (await strapi(url)).json()
+  const page = await strapi(url)
+  if (page && page.status === 404) {
+    return notFound()
+  }
+
+  const { data } = await page.json()
 
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {
