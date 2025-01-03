@@ -501,6 +501,46 @@ export const quoteSection = {
   },
 } as const
 
+export const whitepaperSection = {
+  title: "Unlock the full potential of GitLab",
+  description:
+    "Say goodbye to toolchain complexity with GitLab's comprehensive DevSecOps Suite. Our white paper highlights GitLab's integrated capabilities for seamless project management, code testing, and release.",
+  cta: {
+    text: "Download Whitepaper",
+    href: "/",
+    variant: "cta",
+    size: "large",
+  },
+  image: {
+    src: "https://images.unsplash.com/photo-1618822579297-53087e4cd1de?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Whitepaper image of Gitlab in action",
+  },
+} as const
+
+export const twoColumnMarkdownSection = {
+  column1: `
+  ### **How it works**
+  - A discovery call will be scheduled to discuss some aspects of your GitLab setup
+  - We will send you a questionnaire to gather information about your GitLab setup
+  - We will analyse the gathered information and document our recommendations in a report
+  - A delivery and Q&A call is scheduled where we go over our findings and recommendations
+  - After the call, you will receive a report with all the recommendations and takeaways
+  `,
+  column2: `
+  ### **What it covers**
+  - GitLab Architecture and Design for Self-Managed Instances
+  - Security configuration in GitLab
+  - GitLab Monitoring and Maintenance
+  - Disaster Recovery and High Availability
+  - Gitlab Runners setup for Gitlab CI/CD
+  `,
+}
+
+export const calendlySection = {
+  title: "### Schedule a **Free Health Check**",
+  url: "https://calendly.com/embed-demo-sales/discovery-call",
+}
+
 export const footer = {
   columns: [
     {
