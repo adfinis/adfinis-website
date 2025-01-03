@@ -1,3 +1,12 @@
+const EN_MESSAGE = {
+  required: "This field is required.",
+  email: "Please enter a valid email address.",
+  min: "This field must be at least ${min} characters long.",
+  max: "This field must be at most ${max} characters long.",
+  oneOf: "This field must be one of the following values: ${values}.",
+  privacyPolicy: "You must accept the privacy policy.",
+}
+
 export default {
   "de-DE": {
     required: "Dieses Feld muss ausgefüllt werden.",
@@ -23,20 +32,6 @@ export default {
     oneOf: "Dit veld moet een van de volgende waarden zijn: ${values}.",
     privacyPolicy: "U moet het privacybeleid accepteren.",
   },
-  "en-AU": {
-    required: "This field is required.",
-    email: "Please enter a valid email address.",
-    min: "This field must be at least ${min} characters long.",
-    max: "This field must be at most ${max} characters long.",
-    oneOf: "This field must be one of the following values: ${values}.",
-    privacyPolicy: "You must accept the privacy policy.",
-  },
-  "en-US": {
-    required: "This field is required.",
-    email: "Please enter a valid email address.",
-    min: "This field must be at least ${min} characters long.",
-    max: "This field must be at most ${max} characters long.",
-    oneOf: "This field must be one of the following values: ${values}.",
-    privacyPolicy: "You must accept the privacy policy.",
-  },
+  "en-AU": EN_MESSAGE,
+  en: EN_MESSAGE,
 } as const
