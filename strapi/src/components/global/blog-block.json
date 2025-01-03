@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_global_blog_blocks",
+  "info": {
+    "displayName": "Blog Block",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    }
+  }
+}

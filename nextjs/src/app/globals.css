@@ -13,28 +13,68 @@ body {
   }
 }
 
-/*
+@layer base {
+
+  /**
+  * @info these values are raw rgb values for the corresponding hex colors in colors.css
+  */
+  :root {
+    --color-white: 255 255 255;
+    --color-stone: 15 15 15;
+    --color-biscay: 28 46 93;
+    --color-sapphire: 46 75 152;
+    --color-jumbo: 139 139 140;
+    --color-neutral: 245 246 245;
+    --color-sunglow: 255 202 49;
+    --color-sky: 85 192 238;
+    --color-cinnamon: 229 104 32;
+    --color-green: 52 174 107;
+    --color-razzmatazz: 227 13 116;
+    --color-fuchsia: 126 87 194;
+    --color-manhattan: 247 198 165;
+    --color-error: 255 14 0;
+  }
+
+
+  /*
 * @info global css variable declarations
 * These are necessary as we want to use these variables in children of elements with a data-scheme.
 * The default is "light", set in layout.tsx.
 */
-[data-scheme="light"] {
-  --button-text-primary: theme("colors.neutral");
-  --button-bg-primary: theme("colors.sapphire");
-  --button-text-secondary: theme("colors.sapphire");
-  --button-bg-secondary: none;
-  --title-text-primary: theme("colors.biscay");
-  --paragraph-text-primary: theme("colors.stone");
-  --quote-border-primary: theme('colors.biscay');
-}
+  [data-scheme="light"] {
+    --button-text-primary: var(--color-neutral);
+    --button-bg-primary: var(--color-sapphire);
+    --button-text-secondary: var(--color-sapphire);
+    --button-bg-secondary: none;
+    --title-text-primary: var(--color-biscay);
+    --paragraph-text-primary: var(--color-stone);
+    --quote-border-primary: var(--color-biscay);
+    --input-bg-primary: var(--color-stone);
+    --input-text-primary: var(--color-stone);
+    --input-border-primary: var(--color-stone);
+    --input-ring-primary: var(--color-stone);
+    --checkbox-border-primary: var(--color-stone);
+    --checkbox-text-primary: var(--color-stone);
+    --checkbox-ring-primary: var(--color-stone);
+    --checkbox-ring-offset-primary: var(--color-neutral);
+  }
 
-[data-scheme="dark"] {
-  --button-text-primary: theme("colors.sapphire");
-  --button-bg-primary: theme("colors.neutral");
-  --button-text-secondary: theme("colors.neutral");
-  --title-text-primary: theme("colors.neutral");
-  --paragraph-text-primary: theme("colors.neutral");
-  --quote-border-primary: theme('colors.neutral');
+  [data-scheme="dark"] {
+    --button-text-primary: var(--color-sapphire);
+    --button-bg-primary: var(--color-neutral);
+    --button-text-secondary: var(--color-neutral);
+    --title-text-primary: var(--color-neutral);
+    --paragraph-text-primary: var(--color-neutral);
+    --quote-border-primary: var(--color-neutral);
+    --input-bg-primary: var(--color-neutral);
+    --input-text-primary: var(--color-neutral);
+    --input-border-primary: var(--color-neutral);
+    --input-ring-primary: var(--color-neutral);
+    --checkbox-border-primary: var(--color-neutral);
+    --checkbox-text-primary: var(--color-stone);
+    --checkbox-ring-primary: var(--color-neutral);
+    --checkbox-ring-offset-primary: var(--color-stone);
+  }
 }
 
 

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_icon_card_section_with_relations",
   "info": {
-    "displayName": "Icon card section with relation"
+    "displayName": "Icon card section with relation",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,7 +15,7 @@
       "repeatable": false,
       "component": "sections.section-props"
     },
-    "icon_cards": {
+    "cards": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::icon-card.icon-card"

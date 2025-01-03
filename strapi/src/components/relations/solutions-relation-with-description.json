@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_relations_solutions_relation_with_descriptions",
+  "info": {
+    "displayName": "Solutions Relation With Description",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "card_image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "solution_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::solutions-page.solutions-page"
+    }
+  }
+}

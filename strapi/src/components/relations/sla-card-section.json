@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_relations_sla_card_sections",
+  "info": {
+    "displayName": "SLA Card Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "section_props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "sla_cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sla-card.sla-card"
+    }
+  }
+}

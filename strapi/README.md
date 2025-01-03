@@ -59,3 +59,6 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+docker run -d -p 5432:5432 --name adfinis-postgres -e POSTGRES_DB=postgres -e POSTGRES_PASSWORD=supersecret postgres
+

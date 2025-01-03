@@ -17,6 +17,7 @@ import {
   statisticsSection,
   slaSection,
   partnerSection,
+  quoteSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -32,8 +33,16 @@ import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
+import SectionQuote from "@/components/sections/section-quote"
+import StandardForm from "@/components/form/standard-form"
+import GetStartedForm from "@/components/form/get-started-form"
+import { type Locale } from "@/hooks/useLocale"
 
-export default function Theme() {
+export default function Theme({
+  params: { locale },
+}: {
+  params: { locale: Locale }
+}) {
   return (
     <main className="bg-white">
       <Hero
@@ -155,6 +164,7 @@ export default function Theme() {
                 image={item.image}
                 key={i}
                 ctas={item.ctas}
+                color="cinnamon"
               >
                 <Title level={3} boldness={"semibold"}>
                   {item.title}
@@ -226,6 +236,32 @@ export default function Theme() {
             )
           })}
         </SectionGroup>
+      </Container>
+
+      <Container id="quote" background="white" padding="both-padding">
+        <SectionGroup hasDividers>
+          <SectionQuote
+            author={quoteSection.author}
+            image={quoteSection.image}
+            quote={quoteSection.quote}
+          />
+        </SectionGroup>
+      </Container>
+
+      <Container
+        id="contact-form-dark"
+        background="stone"
+        padding="both-padding"
+      >
+        <GetStartedForm locale={locale} />
+      </Container>
+
+      <Container
+        id="contact-form-light"
+        background="neutral"
+        padding="both-padding"
+      >
+        <StandardForm locale={locale} />
       </Container>
     </main>
   )

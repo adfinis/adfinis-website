@@ -1,6 +1,6 @@
 {
   "name": "strapi",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "A Strapi application",
   "scripts": {
@@ -26,8 +26,7 @@
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": ">=18.0.0 <=22.x.x",
-    "npm": ">=6.0.0"
+    "node": "22.x.x"
   },
   "strapi": {
     "uuid": "166c7789-6995-4e2c-b77b-85a4750e24e0"

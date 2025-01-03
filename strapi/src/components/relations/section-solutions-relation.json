@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_relations_section_solutions_relations",
+  "info": {
+    "displayName": "Section Solutions Relation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext",
+      "required": true
+    },
+    "section_props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "solutions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "relations.solutions-relation-with-description"
+    }
+  }
+}

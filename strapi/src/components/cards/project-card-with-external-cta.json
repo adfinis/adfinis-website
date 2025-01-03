@@ -15,14 +15,18 @@
       "required": true
     },
     "image": {
-      "type": "string",
-      "required": true
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
     },
-    "ctas": {
+    "cta": {
       "type": "component",
-      "repeatable": true,
-      "component": "external-links.call-to-action",
-      "max": 2
+      "repeatable": false,
+      "component": "external-links.call-to-action"
     }
   }
 }
