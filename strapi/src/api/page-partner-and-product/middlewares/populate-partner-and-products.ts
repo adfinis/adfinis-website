@@ -19,23 +19,23 @@ const populate = {
             populate: '*',
           },
           section_props: true,
-        }
+        },
       },
       'relations.white-paper-section': {
         populate: {
           props: true,
           white_paper: {
             populate: '*'
-          }
+          },
         },
       },
       'relations.quotes-relation': {
         populate: {
           quotes: {
             populate: '*'
-          }
+          },
         },
-      }
+      },
     },
   }
 };
