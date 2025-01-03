@@ -696,6 +696,20 @@ export interface SectionsSectionWithRichtHeadingIntroAndCta
   };
 }
 
+export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
+  collectionName: 'components_sections_text_section_with_ctas';
+  info: {
+    displayName: 'Text Section With CTA';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
@@ -750,6 +764,7 @@ declare module '@strapi/strapi' {
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
+      'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;
     }
   }
