@@ -9,8 +9,9 @@ import Container from "@/components/container"
 import type { colors } from "@/lib/colors"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
-import { whitepaperSection } from "@/app/[locale]/theme/texts"
+import { quoteSection, whitepaperSection } from "@/app/[locale]/theme/texts"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
+import SectionQuote from "@/components/sections/section-quote"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -165,6 +166,20 @@ function dynamicSection(section: SupportedSections, index: number) {
             }}
             text={section.white_paper.description}
           />
+        </Container>
+      )
+    case "relations.quotes-relation":
+      return (
+        <Container key={`section_quote_${index}`}>
+          <SectionGroup hasDividers>
+            {section.quotes.length > 0 && section.quotes[0] && (
+              <SectionQuote
+                author={`${section.quotes[0].name} | ${section.quotes[0].tagline}`}
+                image={section.quotes[0].image}
+                quote={section.quotes[0].quote}
+              />
+            )}
+          </SectionGroup>
         </Container>
       )
     default:

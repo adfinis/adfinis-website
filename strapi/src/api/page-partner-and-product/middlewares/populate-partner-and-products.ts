@@ -28,6 +28,13 @@ const populate = {
             populate: '*'
           }
         },
+      },
+      'relations.quotes-relation': {
+        populate: {
+          quotes: {
+            populate: '*'
+          }
+        },
       }
     },
   }
