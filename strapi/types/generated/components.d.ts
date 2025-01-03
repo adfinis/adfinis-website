@@ -560,6 +560,7 @@ export interface SectionsIconCardSectionWithRelation
   };
   attributes: {
     cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     section_props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
