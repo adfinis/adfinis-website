@@ -9,9 +9,9 @@ import Container from "@/components/container"
 import type { colors } from "@/lib/colors"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
-import { quoteSection, whitepaperSection } from "@/app/[locale]/theme/texts"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionQuote from "@/components/sections/section-quote"
+import ButtonGroup from "@/components/button-group"
 
 export default async function SolutionsDetailPage({
   params: { locale, slug },
@@ -179,6 +179,36 @@ function dynamicSection(section: SupportedSections, index: number) {
                 quote={section.quotes[0].quote}
               />
             )}
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.heading-with-link-container":
+      return (
+        <Container
+          key={`section_heading_with_link_${index}`}
+          background={section.background}
+          padding={section.padding}
+        >
+          <SectionGroup
+            title={section.section_group_with_external_link.title}
+            align={"center"}
+          >
+            <ButtonGroup
+              align={"center"}
+              ctas={[
+                {
+                  href: section.section_group_with_external_link
+                    .external_cta_link.href,
+                  size: section.section_group_with_external_link
+                    .external_cta_link.size,
+                  variant:
+                    section.section_group_with_external_link.external_cta_link
+                      .variant,
+                  text: section.section_group_with_external_link
+                    .external_cta_link.label,
+                },
+              ]}
+            />
           </SectionGroup>
         </Container>
       )
