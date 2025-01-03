@@ -20,6 +20,7 @@ import {
   quoteSection,
   whitepaperSection,
   twoColumnMarkdownSection,
+  calendlySection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -40,6 +41,7 @@ import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
+import SectionCalendly from "@/components/sections/section-calendly"
 
 export default function Theme({
   params: { locale },
@@ -284,6 +286,22 @@ export default function Theme({
         <SectionGroup columns={2}>
           <Text markdown={twoColumnMarkdownSection.column1} />
           <Text markdown={twoColumnMarkdownSection.column2} />
+        </SectionGroup>
+      </Container>
+
+      <Container
+        id="calendly-example"
+        background="neutral"
+        padding="both-padding"
+      >
+        <SectionGroup title={calendlySection.title}>
+          <SectionCalendly url={calendlySection.url} />
+        </SectionGroup>
+      </Container>
+
+      <Container id="calendly-dark" background="stone" padding="both-padding">
+        <SectionGroup title={calendlySection.title}>
+          <SectionCalendly url={calendlySection.url} />
         </SectionGroup>
       </Container>
     </main>

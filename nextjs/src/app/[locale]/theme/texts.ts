@@ -536,6 +536,11 @@ export const twoColumnMarkdownSection = {
   `,
 }
 
+export const calendlySection = {
+  title: "### Schedule a **Free Health Check**",
+  url: "https://calendly.com/embed-demo-sales/discovery-call",
+}
+
 export const footer = {
   columns: [
     {
