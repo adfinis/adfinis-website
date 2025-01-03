@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_linked_section_white_paper_sections",
+  "info": {
+    "displayName": "White Paper Section"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "white_paper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::white-paper.white-paper"
+    }
+  }
+}
