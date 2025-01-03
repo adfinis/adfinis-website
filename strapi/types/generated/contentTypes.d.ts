@@ -986,8 +986,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro', false> &
-      Schema.Attribute.Required &
+    intro: Schema.Attribute.Component<'global.intro-body', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -999,6 +998,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
       'api::page-partner-and-product.page-partner-and-product'
     >;
     metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1023,6 +1023,13 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.calendly-section',
       ]
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'metadata_title'> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

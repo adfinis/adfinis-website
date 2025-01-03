@@ -291,6 +291,16 @@ export interface GlobalIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalIntroBody extends Struct.ComponentSchema {
+  collectionName: 'components_global_intro_bodies';
+  info: {
+    displayName: 'Intro Body';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface GlobalSlaItem extends Struct.ComponentSchema {
   collectionName: 'components_global_sla_items';
   info: {
@@ -740,6 +750,7 @@ declare module '@strapi/strapi' {
       'global.hallmark': GlobalHallmark;
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
+      'global.intro-body': GlobalIntroBody;
       'global.sla-item': GlobalSlaItem;
       'relations.calendly-section': RelationsCalendlySection;
       'relations.quotes-relation': RelationsQuotesRelation;
