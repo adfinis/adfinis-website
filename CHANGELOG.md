@@ -15,6 +15,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.8.0] - 2025-01-06
+
+- feat: partners and journeys collections (#43)
+- hotfix: build strapi / frontend
+ 
 ## [0.7.1] - 2025-01-03
 
 - fix: hotfix theme preview page
