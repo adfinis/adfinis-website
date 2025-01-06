@@ -12,7 +12,7 @@ type SectionWhitepaperProps = {
    */
   text: string
   cta: CTA
-  image?: {
+  image: {
     src: string
     alt: string
   }
