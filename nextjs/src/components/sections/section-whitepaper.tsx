@@ -12,7 +12,7 @@ type SectionWhitepaperProps = {
    */
   text: string
   cta: CTA
-  image: {
+  image?: {
     src: string
     alt: string
   }
@@ -39,9 +39,11 @@ const SectionWhitepaper: React.FC<SectionWhitepaperProps> = ({
           {title}
         </Title>
         <Text markdown={text} />
-        <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
-          {cta.text}
-        </LinkButton>
+        {cta.href && (
+          <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
+            {cta.text}
+          </LinkButton>
+        )}
       </div>
     </div>
   )
