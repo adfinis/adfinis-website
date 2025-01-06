@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_global_intro_bodies",
+  "info": {
+    "displayName": "Intro Body"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

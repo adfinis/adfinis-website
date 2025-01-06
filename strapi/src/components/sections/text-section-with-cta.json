@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_text_section_with_ctas",
+  "info": {
+    "displayName": "Text Section With CTA"
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext",
+      "required": true
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action",
+      "required": true
+    }
+  }
+}
