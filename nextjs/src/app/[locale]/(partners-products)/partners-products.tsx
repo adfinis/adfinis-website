@@ -120,7 +120,7 @@ function dynamicSection(section: any, index: number) {
               size: "large",
             }}
             image={{
-              src: section.white_paper?.cover_image?.url ?? undefined,
+              src: section.white_paper?.cover_image?.url,
               alt: section.white_paper?.cover_image?.alternativeText ?? "",
             }}
             text={section.white_paper.description}
