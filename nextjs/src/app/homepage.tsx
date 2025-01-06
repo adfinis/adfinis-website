@@ -110,7 +110,7 @@ export default async function Homepage({
                   reverse={i % 2 === 0}
                   image={
                     // TODO support alt and rename image to src in strap
-                    { src: item.image.formats.large.url, alt: "" }
+                    { src: item.image.url, alt: "" }
                   }
                   key={i}
                   ctas={[item.cta].map(mapCta)}
