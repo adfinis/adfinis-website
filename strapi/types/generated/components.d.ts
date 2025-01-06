@@ -348,7 +348,8 @@ export interface RelationsSectionSolutionsRelation
     displayName: 'Section Solutions Relation';
   };
   attributes: {
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
     solutions: Schema.Attribute.Component<
       'relations.solutions-relation-with-description',
       true
