@@ -114,14 +114,14 @@ function dynamicSection(section: any, index: number) {
           <SectionWhitepaper
             title={section.white_paper.title}
             cta={{
-              text: "Download whitepaper",
-              href: section.white_paper.download_file.url,
+              text: "Download white paper",
+              href: section.white_paper.download_file?.url ?? "",
               variant: "cta",
               size: "large",
             }}
             image={{
-              src: section.white_paper.cover_image.url,
-              alt: section.white_paper.cover_image.alternativeText ?? "",
+              src: section.white_paper?.cover_image?.url,
+              alt: section.white_paper?.cover_image?.alternativeText ?? "",
             }}
             text={section.white_paper.description}
           />
