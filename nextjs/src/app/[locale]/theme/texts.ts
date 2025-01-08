@@ -541,6 +541,9 @@ export const calendlySection = {
   url: "https://calendly.com/embed-demo-sales/discovery-call",
 }
 
+/**
+ * @see https://embedresponsively.com/
+ */
 export const youtubeSection = {
   html: `<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//byPYe4Fccww' frameborder='0' allowfullscreen></iframe></div>`,
   title: `Watch our latest video on YouTube`,
