@@ -315,6 +315,23 @@ export default function Theme({
           />
         </SectionGroup>
       </Container>
+      <Container id="youtube" background="neutral" padding="both-padding">
+        <SectionGroup title="Youtube in a SectionCardWide">
+          <SectionCardWide
+            childrenWide={
+              <ExternalScript
+                html={youtubeSection.html}
+                className="w-full h-auto"
+              />
+            }
+          >
+            <Title level={3} boldness={"semibold"}>
+              {youtubeSection.title}
+            </Title>
+            <Text markdown={youtubeSection.text} />
+          </SectionCardWide>
+        </SectionGroup>
+      </Container>
     </main>
   )
 }
