@@ -17,15 +17,16 @@ const SectionCalendly: React.FC<SectionCalendlyProps> = ({
     },
   })
 
-  const [width, setWidth] = useState(window.innerWidth)
+  const browserWindow: any = (typeof window !== "undefined" && window) || {}
+  const [width, setWidth] = useState(browserWindow?.innerWidth || 0) // execute on client-side only
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth)
+      setWidth(window?.innerWidth)
     }
 
-    window.addEventListener("resize", handleResize)
+    window?.addEventListener("resize", handleResize)
     return () => {
-      window.removeEventListener("resize", handleResize)
+      window?.removeEventListener("resize", handleResize)
     }
   }, [])
 
