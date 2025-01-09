@@ -1023,6 +1023,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.quotes-relation',
         'relations.calendly-section',
         'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
