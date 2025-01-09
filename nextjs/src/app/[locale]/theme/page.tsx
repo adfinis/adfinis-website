@@ -103,7 +103,7 @@ export default function Theme({
           {mediaSection.media.map((item, i) => {
             return (
               <SectionCardWide
-                reverse={i % 2 === 0}
+                reverse={i % 2 === 1}
                 image={item.image}
                 key={i}
                 ctas={item.ctas}
@@ -174,7 +174,7 @@ export default function Theme({
           {media2Section.media.slice(0, 2).map((item, i) => {
             return (
               <SectionCardWide
-                reverse={i % 2 === 0}
+                reverse={i % 2 === 1}
                 image={item.image}
                 key={i}
                 ctas={item.ctas}

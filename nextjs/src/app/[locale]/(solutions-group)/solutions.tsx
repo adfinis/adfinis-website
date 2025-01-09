@@ -105,7 +105,7 @@ export default async function Solutions({
                 <SectionCardWide
                   ctas={[]}
                   image={{ src: item.card_image.url, alt: "" }}
-                  reverse={false}
+                  reverse={i % 2 === 1}
                   key={`soutions_section_solutions_${i}`}
                 >
                   <Title level={3} boldness={"semibold"}>
