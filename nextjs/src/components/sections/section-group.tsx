@@ -9,7 +9,7 @@ const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
   variants: {
     align: {
       start: "",
-      center: "justify-start lg:justify-center",
+      center: "justify-start lg:justify-center justify-items-center",
     },
     hasDividers: {
       true: "section-group-dividers",
@@ -44,9 +44,10 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
   align,
   hasDividers,
   columns,
+  ...attrs
 }) => {
   return (
-    <div className={sectionGroupStyles({ align })}>
+    <div className={sectionGroupStyles({ align })} data-component="section-group" {...attrs}>
       {title && <Title align="center" boldness="light" markdown={title} />}
       {text && (
         <div
@@ -60,7 +61,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
           <Text markdown={text} className="text-justify lg:text-center" />
         </div>
       )}
-      <div className={sectionGroupStyles({ hasDividers, columns })}>
+      <div className={sectionGroupStyles({ hasDividers, columns, align })}>
         {children}
       </div>
     </div>
