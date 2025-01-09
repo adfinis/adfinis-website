@@ -43,6 +43,9 @@ const populate = {
           },
         },
       },
+      'sections.video-section': {
+        populate: '*',
+      },
     },
   }
 };

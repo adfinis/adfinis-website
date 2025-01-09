@@ -14,6 +14,7 @@ import ButtonGroup from "@/components/button-group"
 import NavBar from "@/components/nav-bar/nav-bar"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { notFound } from "next/navigation"
+import ExternalScript from "@/components/external-script"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -171,6 +172,21 @@ function dynamicSection(section: any, index: number) {
                     .external_cta_link.label,
                 },
               ]}
+            />
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.video-section":
+      return (
+        <Container
+          key={`section_video-section_${index}`}
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup title={section.section_title}>
+            <ExternalScript
+              html={section.embed_html}
+              className="w-full h-auto"
             />
           </SectionGroup>
         </Container>
