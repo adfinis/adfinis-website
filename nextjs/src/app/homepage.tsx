@@ -18,6 +18,7 @@ import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
@@ -60,20 +61,22 @@ export default async function Homepage({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color="white" imageUrl={hero.image}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.description} />
-          <LinkButton
-            href={hero.cta.href}
-            size={hero.cta.size}
-            variant={hero.cta.variant}
-          >
-            {hero.cta.label}
-          </LinkButton>
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color="white" imageUrl={hero.image}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.description} />
+            <LinkButton
+              href={hero.cta.href}
+              size={hero.cta.size}
+              variant={hero.cta.variant}
+            >
+              {hero.cta.label}
+            </LinkButton>
+          </Hero>
+        )}
+      </NavProvider>
       {intro && (
         <Intro>
           <Title markdown={intro.intro_title} align="center" />

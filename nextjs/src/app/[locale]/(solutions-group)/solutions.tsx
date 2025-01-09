@@ -14,6 +14,7 @@ import SectionCardWide from "@/components/sections/section-card-wide"
 import ButtonGroup from "@/components/button-group"
 import LinkButton from "@/components/link-button"
 import CardService from "@/components/cards/card-service"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 const SUB_PAGE: any = {
   en: "solutions",
@@ -56,13 +57,15 @@ export default async function Solutions({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.body} />
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.body} />
+          </Hero>
+        )}
+      </NavProvider>
       {intro && (
         <Intro>
           <Title markdown={intro.intro_title} align="center" />

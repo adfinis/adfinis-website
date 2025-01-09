@@ -17,6 +17,7 @@ import { notFound } from "next/navigation"
 import ExternalScript from "@/components/external-script"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import { youtubeSection } from "@/app/[locale]/theme/texts"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -49,13 +50,15 @@ export default async function PartnersProducts({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.body} />
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.body} />
+          </Hero>
+        )}
+      </NavProvider>
       {intro && (
         <Intro>
           <Text markdown={intro.body} className="grid gap-8" />

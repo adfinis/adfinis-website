@@ -15,6 +15,7 @@ import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardArticle from "@/components/cards/card-article"
 import NavBar from "@/components/nav-bar/nav-bar"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 const SUB_PAGE = {
   en: "solutions",
@@ -49,13 +50,16 @@ export default async function SolutionsDetailPage({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.body} />
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.body} />
+          </Hero>
+        )}
+      </NavProvider>
+
       {intro && (
         <Intro>
           <Title markdown={intro.intro_title} />
