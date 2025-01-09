@@ -50,7 +50,7 @@ const SectionCardWide: React.FC<SectionMediaWideProps> = ({
           childrenWide}
       </span>
 
-      <div className="w-full lg:w-5/12 grid gap-6 pt-8 lg:p-8 xl:p-12 place-content-start">
+      <div className="w-full lg:w-5/12 grid gap-6 pt-8 lg:p-8 xl:p-12 justify-items-start">
         {children}
         {ctas && ctas.length > 0 && (
           <div>
