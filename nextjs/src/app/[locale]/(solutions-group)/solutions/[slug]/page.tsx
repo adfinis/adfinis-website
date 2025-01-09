@@ -68,7 +68,7 @@ export default async function SolutionsDetailPage({
       )}
       {project_cards && (
         <Container background="stone" padding="both-padding">
-          <SectionGroup title={project_cards.title}>
+          <SectionGroup title={project_cards.title} data-testid="project-cards">
             <Text
               markdown={project_cards.description}
               className="text-center"
@@ -102,7 +102,7 @@ export default async function SolutionsDetailPage({
           background={kpis.section_props.background}
           padding={kpis.section_props.padding}
         >
-          <SectionGroup title={kpis.title}>
+          <SectionGroup title={kpis.title} data-testid="kpis" align={"center"}>
             <CardGroup>
               {kpis.cards.map((item: any, i: number) => {
                 return (
@@ -133,6 +133,7 @@ export default async function SolutionsDetailPage({
           <SectionGroup
             title={start_your_journey.section_group_with_external_link.title}
             align={"center"}
+            data-testid="start-your-journey"
           >
             <ButtonGroup
               align={"center"}
