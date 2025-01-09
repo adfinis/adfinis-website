@@ -3,14 +3,19 @@ import clsx from "clsx"
 import { Transition } from "@headlessui/react"
 import { useClickAway } from "@uidotdev/usehooks"
 
-import IconHamburgerMenu from "./icons/icon-hamburger-menu"
+import IconHamburgerMenu from "../icons/icon-hamburger-menu"
 import Link from "next/link"
-import ButtonLink from "./link-button"
-import IconChevronRight from "./icons/icon-chevron-right"
-import Logo from "./logo"
-import TopbarActions from "./topbar-actions"
+import ButtonLink from "../link-button"
+import IconChevronRight from "../icons/icon-chevron-right"
+import Logo from "../logo"
+import TopbarActions from "../topbar-actions"
+import type { NavItem } from "./nav"
 
-const NavMobile: React.FC = () => {
+type NavMobileProps = {
+  navItems: NavItem[]
+}
+
+const NavMobile: React.FC<NavMobileProps> = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false)
   const ref = useClickAway(() => {
     setIsOpen(false)

@@ -5,6 +5,7 @@ import Link from "@/components/link-button"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import {
+  navItems,
   hero,
   intro,
   solutions,
@@ -44,6 +45,8 @@ import { type Locale } from "@/hooks/useLocale"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
+import Topbar from "@/components/topbar"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 export default function Theme({
   params: { locale },
@@ -52,16 +55,20 @@ export default function Theme({
 }) {
   return (
     <main className="bg-white">
-      <Hero
-        color="white"
-        imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      >
-        <Title markdown={hero.title} />
-        <Text markdown={hero.text} />
-        <Link href="https://www.adfinis.com" size="large">
-          Learn how
-        </Link>
-      </Hero>
+      <NavProvider>
+        <Topbar navItems={navItems} />
+        <Hero
+          color="white"
+          imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        >
+          <Title markdown={hero.title} />
+          <Text markdown={hero.text} />
+          <Link href="https://www.adfinis.com" size="large">
+            Learn how
+          </Link>
+        </Hero>
+      </NavProvider>
+
       <Intro>
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} className="grid gap-8" />

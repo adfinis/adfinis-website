@@ -1,5 +1,61 @@
 import { type Card } from "@/components/cards/card"
+import { NavItem } from "@/components/nav-bar/nav"
 import { CTA } from "@/lib/cta"
+
+export const navItems: NavItem[] = [
+  {
+    title: "Solutions",
+    items: [
+      {
+        title: "HashiCorp",
+        items: [
+          {
+            title: "Vault",
+            url: "/solutions/vault",
+          },
+          {
+            title: "Terraform",
+            url: "/solutions/terraform",
+          },
+          {
+            title: "Consul",
+            url: "/solutions/consul",
+          },
+        ],
+      },
+      {
+        title: "Red Hat",
+        items: [
+          {
+            title: "OpenShift",
+            url: "/solutions/openshift",
+          },
+          {
+            title: "Enterprise Linux & SAP Workloads",
+            url: "/solutions/enterprise-linux-sap-workloads",
+          },
+          {
+            title: "Ansible Automation Platform",
+            url: "/solutions/ansible-automation-platform",
+          },
+          {
+            title: "Red Hat Satellite",
+            url: "/solutions/red-hat-satellite",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Partners & Products",
+    items: [
+      {
+        title: "Github",
+        url: "/partners/github",
+      },
+    ],
+  },
+]
 
 export const hero = {
   title: `## Potential. **Unlocked.**`,
