@@ -969,6 +969,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
   extends Struct.CollectionTypeSchema {
   collectionName: 'page_partner_and_products';
   info: {
+    description: '';
     displayName: 'Page Partner & Product';
     pluralName: 'page-partner-and-products';
     singularName: 'page-partner-and-product';
@@ -1021,6 +1022,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.white-paper-section',
         'relations.quotes-relation',
         'relations.calendly-section',
+        'sections.video-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
