@@ -78,7 +78,7 @@ export default async function SolutionsDetailPage({
                 <SectionCardWide
                   ctas={[]}
                   image={{ src: item.image.url, alt: "" }}
-                  reverse={false}
+                  reverse={i % 2 === 1}
                   key={`project_cards${i}`}
                 >
                   <Title level={3} boldness={"semibold"}>

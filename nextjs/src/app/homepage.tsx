@@ -110,7 +110,7 @@ export default async function Homepage({
             {our_projects.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
-                  reverse={i % 2 === 0}
+                  reverse={i % 2 === 1}
                   image={
                     // TODO support alt and rename image to src in strap
                     { src: item.image.url, alt: "" }
@@ -236,7 +236,7 @@ export default async function Homepage({
             {who_are_we.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
-                  reverse={i % 2 === 0}
+                  reverse={i % 2 === 1}
                   image={{ src: item.image.formats.large.url, alt: "" }}
                   key={i}
                   ctas={[item.cta].map(mapCta)}
