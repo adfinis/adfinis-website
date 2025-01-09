@@ -1,11 +1,18 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
-import Logo from "./logo"
-import TopbarActions from "./topbar-actions"
+import Logo from "../logo"
+import TopbarActions from "../topbar-actions"
+import { NavItem } from "./nav"
+import Link from "next/link"
+import NavDesktopItems from "./nav-desktop-items"
 
-const NavDesktop: React.FC = () => {
-  const [menuExpanded, setMenuExpanded] = React.useState(true)
+type NavDesktopProps = {
+  navItems: NavItem[]
+}
+
+const NavDesktop: React.FC<NavDesktopProps> = ({ navItems }) => {
+  const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
     thr: 20,
     axis: Axis.Y,
@@ -30,19 +37,21 @@ const NavDesktop: React.FC = () => {
   /**
    * @description only collapse the menu when the user has scrolled down
    */
-  const onMouseMenuLeave = () => {
+  const handleMouseMenuLeave = () => {
     if (scrollPosition.top > 200) {
       setMenuExpanded(false)
     }
   }
 
+  const handleMouseEnter = () => {
+    setMenuExpanded(true)
+  }
+
   return (
-    <div
-      className="hidden lg:grid  divide-y divide-jumbo/30 pr-[50px]"
-      onMouseEnter={() => setMenuExpanded(true)}
-      onMouseLeave={() => onMouseMenuLeave()}
-    >
+    <div className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]">
       <section
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseMenuLeave}
         className={clsx([
           "min-h-16 h-16 py-4 transition-all duration-150 flex justify-between items-center",
           {
@@ -55,7 +64,15 @@ const NavDesktop: React.FC = () => {
         <TopbarActions />
       </section>
       {menuExpanded && (
-        <section className="hidden lg:block min-h-12" id="nav-items"></section>
+        <section className="hidden lg:block min-h-12" id="nav-items">
+          <div className="flex justify-start items-center h-full relative">
+            {navItems.map((item, index) => (
+              <div className="" key={index}>
+                {item && <NavDesktopItems navItem={item} />}
+              </div>
+            ))}
+          </div>
+        </section>
       )}
     </div>
   )
