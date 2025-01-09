@@ -43,6 +43,12 @@ const populate = {
           },
         },
       },
+      'sections.video-section': {
+        populate: '*',
+      },
+      'sections.video-with-text-section': {
+        populate: '*',
+      },
     },
   }
 };

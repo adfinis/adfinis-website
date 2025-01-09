@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_video_with_text_sections",
+  "info": {
+    "displayName": "Video With Text Section",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "section_title": {
+      "type": "string",
+      "required": true
+    },
+    "embed_html": {
+      "type": "text",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

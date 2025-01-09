@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_video_sections",
+  "info": {
+    "displayName": "Video Section",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "section_title": {
+      "type": "string",
+      "required": true
+    },
+    "embed_html": {
+      "type": "text",
+      "required": true,
+      "default": "use this tool to embed video https://embedresponsively.com/"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    }
+  }
+}
