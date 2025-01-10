@@ -125,21 +125,21 @@ export default async function Homepage({
                 </SectionCardWide>
               )
             })}
-            {meet_our_partners && (
-              <Container background="white" padding="both-padding">
-                <SectionGroup
-                  title={meet_our_partners.title}
-                  text={meet_our_partners.intro}
-                  align="center"
-                >
-                  <ButtonGroup
-                    ctas={meet_our_partners.ctas.map(mapCta)}
-                    align={"center"}
-                  />
-                  <Hallmarks hallmarksId={our_partners.documentId} />
-                </SectionGroup>
-              </Container>
-            )}
+          </SectionGroup>
+        </Container>
+      )}
+      {meet_our_partners && (
+        <Container background="white" padding="both-padding">
+          <SectionGroup
+            title={meet_our_partners.title}
+            text={meet_our_partners.intro}
+            align="center"
+          >
+            <ButtonGroup
+              ctas={meet_our_partners.ctas.map(mapCta)}
+              align={"center"}
+            />
+            <Hallmarks hallmarksId={our_partners.documentId} />
           </SectionGroup>
         </Container>
       )}
