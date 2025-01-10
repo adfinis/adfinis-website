@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-partner-and-product",
     "pluralName": "page-partner-and-products",
-    "displayName": "Page Partner & Product"
+    "displayName": "Page Partner & Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -73,7 +74,9 @@
         "sections.heading-with-link-container",
         "relations.white-paper-section",
         "relations.quotes-relation",
-        "relations.calendly-section"
+        "relations.calendly-section",
+        "sections.video-section",
+        "sections.video-with-text-section"
       ]
     }
   }

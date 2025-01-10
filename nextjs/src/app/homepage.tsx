@@ -18,6 +18,7 @@ import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
@@ -60,20 +61,22 @@ export default async function Homepage({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color="white" imageUrl={hero.image}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.description} />
-          <LinkButton
-            href={hero.cta.href}
-            size={hero.cta.size}
-            variant={hero.cta.variant}
-          >
-            {hero.cta.label}
-          </LinkButton>
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color="white" imageUrl={hero.image}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.description} />
+            <LinkButton
+              href={hero.cta.href}
+              size={hero.cta.size}
+              variant={hero.cta.variant}
+            >
+              {hero.cta.label}
+            </LinkButton>
+          </Hero>
+        )}
+      </NavProvider>
       {intro && (
         <Intro>
           <Title markdown={intro.intro_title} align="center" />
@@ -107,7 +110,7 @@ export default async function Homepage({
             {our_projects.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
-                  reverse={i % 2 === 0}
+                  reverse={i % 2 === 1}
                   image={
                     // TODO support alt and rename image to src in strap
                     { src: item.image.url, alt: "" }
@@ -122,21 +125,21 @@ export default async function Homepage({
                 </SectionCardWide>
               )
             })}
-            {meet_our_partners && (
-              <Container background="white" padding="both-padding">
-                <SectionGroup
-                  title={meet_our_partners.title}
-                  text={meet_our_partners.intro}
-                  align="center"
-                >
-                  <ButtonGroup
-                    ctas={meet_our_partners.ctas.map(mapCta)}
-                    align={"center"}
-                  />
-                  <Hallmarks hallmarksId={our_partners.documentId} />
-                </SectionGroup>
-              </Container>
-            )}
+          </SectionGroup>
+        </Container>
+      )}
+      {meet_our_partners && (
+        <Container background="white" padding="both-padding">
+          <SectionGroup
+            title={meet_our_partners.title}
+            text={meet_our_partners.intro}
+            align="center"
+          >
+            <ButtonGroup
+              ctas={meet_our_partners.ctas.map(mapCta)}
+              align={"center"}
+            />
+            <Hallmarks hallmarksId={our_partners.documentId} />
           </SectionGroup>
         </Container>
       )}
@@ -233,7 +236,7 @@ export default async function Homepage({
             {who_are_we.projects.map((item: any, i: number) => {
               return (
                 <SectionCardWide
-                  reverse={i % 2 === 0}
+                  reverse={i % 2 === 1}
                   image={{ src: item.image.formats.large.url, alt: "" }}
                   key={i}
                   ctas={[item.cta].map(mapCta)}

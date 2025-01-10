@@ -13,7 +13,8 @@
     "section_props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props"
+      "component": "sections.section-props",
+      "required": true
     },
     "solutions": {
       "type": "component",

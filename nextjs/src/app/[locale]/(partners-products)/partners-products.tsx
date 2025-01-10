@@ -14,6 +14,10 @@ import ButtonGroup from "@/components/button-group"
 import NavBar from "@/components/nav-bar/nav-bar"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { notFound } from "next/navigation"
+import ExternalScript from "@/components/external-script"
+import SectionCardWide from "@/components/sections/section-card-wide"
+import { youtubeSection } from "@/app/[locale]/theme/texts"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -46,13 +50,15 @@ export default async function PartnersProducts({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.body} />
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.body} />
+          </Hero>
+        )}
+      </NavProvider>
       {intro && (
         <Intro>
           <Text markdown={intro.body} className="grid gap-8" />
@@ -114,14 +120,14 @@ function dynamicSection(section: any, index: number) {
           <SectionWhitepaper
             title={section.white_paper.title}
             cta={{
-              text: "Download whitepaper",
-              href: section.white_paper.download_file.url,
+              text: "Download white paper",
+              href: section.white_paper.download_file?.url ?? "",
               variant: "cta",
               size: "large",
             }}
             image={{
-              src: section.white_paper.cover_image.url,
-              alt: section.white_paper.cover_image.alternativeText ?? "",
+              src: section.white_paper?.cover_image?.url,
+              alt: section.white_paper?.cover_image?.alternativeText ?? "",
             }}
             text={section.white_paper.description}
           />
@@ -172,6 +178,42 @@ function dynamicSection(section: any, index: number) {
                 },
               ]}
             />
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.video-section":
+      return (
+        <Container
+          key={`section_video-section_${index}`}
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup title={section.section_title}>
+            <ExternalScript
+              html={section.embed_html}
+              className="w-full h-auto"
+            />
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.video-with-text-section":
+      return (
+        <Container
+          key={`section_video-section_${index}`}
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup title={section.section_title}>
+            <SectionCardWide
+              childrenWide={
+                <ExternalScript
+                  html={section.embed_html}
+                  className="w-full h-auto"
+                />
+              }
+            >
+              <Text markdown={section.body} />
+            </SectionCardWide>
           </SectionGroup>
         </Container>
       )

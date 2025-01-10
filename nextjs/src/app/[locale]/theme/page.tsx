@@ -5,6 +5,7 @@ import Link from "@/components/link-button"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import {
+  navItems,
   hero,
   intro,
   solutions,
@@ -21,6 +22,7 @@ import {
   whitepaperSection,
   twoColumnMarkdownSection,
   calendlySection,
+  youtubeSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -42,6 +44,9 @@ import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
 import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionCalendly from "@/components/sections/section-calendly"
+import ExternalScript from "@/components/external-script"
+import Topbar from "@/components/topbar"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 export default function Theme({
   params: { locale },
@@ -50,16 +55,20 @@ export default function Theme({
 }) {
   return (
     <main className="bg-white">
-      <Hero
-        color="white"
-        imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      >
-        <Title markdown={hero.title} />
-        <Text markdown={hero.text} />
-        <Link href="https://www.adfinis.com" size="large">
-          Learn how
-        </Link>
-      </Hero>
+      <NavProvider>
+        <Topbar navItems={navItems} />
+        <Hero
+          color="white"
+          imageUrl="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        >
+          <Title markdown={hero.title} />
+          <Text markdown={hero.text} />
+          <Link href="https://www.adfinis.com" size="large">
+            Learn how
+          </Link>
+        </Hero>
+      </NavProvider>
+
       <Intro>
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} className="grid gap-8" />
@@ -94,7 +103,7 @@ export default function Theme({
           {mediaSection.media.map((item, i) => {
             return (
               <SectionCardWide
-                reverse={i % 2 === 0}
+                reverse={i % 2 === 1}
                 image={item.image}
                 key={i}
                 ctas={item.ctas}
@@ -165,7 +174,7 @@ export default function Theme({
           {media2Section.media.slice(0, 2).map((item, i) => {
             return (
               <SectionCardWide
-                reverse={i % 2 === 0}
+                reverse={i % 2 === 1}
                 image={item.image}
                 key={i}
                 ctas={item.ctas}
@@ -302,6 +311,32 @@ export default function Theme({
       <Container id="calendly-dark" background="stone" padding="both-padding">
         <SectionGroup title={calendlySection.title}>
           <SectionCalendly url={calendlySection.url} />
+        </SectionGroup>
+      </Container>
+
+      <Container id="youtube" background="neutral" padding="both-padding">
+        <SectionGroup title="Youtube">
+          <ExternalScript
+            html={youtubeSection.html}
+            className="w-full h-auto"
+          />
+        </SectionGroup>
+      </Container>
+      <Container id="youtube" background="neutral" padding="both-padding">
+        <SectionGroup title="Youtube in a SectionCardWide">
+          <SectionCardWide
+            childrenWide={
+              <ExternalScript
+                html={youtubeSection.html}
+                className="w-full h-auto"
+              />
+            }
+          >
+            <Title level={3} boldness={"semibold"}>
+              {youtubeSection.title}
+            </Title>
+            <Text markdown={youtubeSection.text} />
+          </SectionCardWide>
         </SectionGroup>
       </Container>
     </main>

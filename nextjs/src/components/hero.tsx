@@ -1,9 +1,11 @@
+"use client"
 import Image from "next/image"
 
 import Triangle from "./triangle"
 import clsx from "clsx"
 import React from "react"
 import { colors } from "@/lib/colors"
+import { useNavContext } from "./nav-bar/nav-context"
 
 type HeroProps = {
   color: keyof typeof colors
@@ -12,6 +14,7 @@ type HeroProps = {
 }
 
 const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
+  const { navActive } = useNavContext()
   return (
     <div
       className={clsx([
@@ -29,15 +32,33 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
         alt="Hero Image"
         width={1920}
         height={1080}
-        className="absolute inset-0 object-cover object-center z-0 h-full w-full"
+        className={clsx([
+          "absolute inset-0 object-cover object-center z-0 h-full w-full",
+          "transition-all duration-75",
+          {
+            "blur-sm": navActive,
+          },
+        ])}
       />
-      <div className="z-0 absolute inset-0 bg-gradient-to-r from-stone/50 to-stone/0" />
+      <div
+        className={clsx([
+          "z-0 absolute inset-0 bg-gradient-to-r from-stone/50 to-stone/0",
+          "transition-all duration-75",
+          { "bg-stone/60": navActive },
+        ])}
+      />
       <Triangle
         color={color}
         className="w-[50vw] h-auto absolute right-0 bottom-0"
       />
       <section
-        className="relative container px-4 lg:px-0 mt-28 lg:mt-44"
+        className={clsx([
+          "relative container px-4 lg:px-0 mt-28 lg:mt-44",
+          "transition-all duration-75",
+          {
+            "blur-sm": navActive,
+          },
+        ])}
         data-scheme="dark"
       >
         <div className="w-full lg:w-1/2">

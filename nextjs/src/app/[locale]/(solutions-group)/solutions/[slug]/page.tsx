@@ -15,6 +15,7 @@ import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardArticle from "@/components/cards/card-article"
 import NavBar from "@/components/nav-bar/nav-bar"
+import { NavProvider } from "@/components/nav-bar/nav-context"
 
 const SUB_PAGE = {
   en: "solutions",
@@ -49,13 +50,16 @@ export default async function SolutionsDetailPage({
 
   return (
     <>
-      <NavBar items={locales} />
-      {hero && (
-        <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-          <Title markdown={hero.title} />
-          <Text markdown={hero.body} />
-        </Hero>
-      )}
+      <NavProvider>
+        <NavBar items={locales} />
+        {hero && (
+          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+            <Title markdown={hero.title} />
+            <Text markdown={hero.body} />
+          </Hero>
+        )}
+      </NavProvider>
+
       {intro && (
         <Intro>
           <Title markdown={intro.intro_title} />
@@ -64,7 +68,7 @@ export default async function SolutionsDetailPage({
       )}
       {project_cards && (
         <Container background="stone" padding="both-padding">
-          <SectionGroup title={project_cards.title}>
+          <SectionGroup title={project_cards.title} data-testid="project-cards">
             <Text
               markdown={project_cards.description}
               className="text-center"
@@ -74,7 +78,7 @@ export default async function SolutionsDetailPage({
                 <SectionCardWide
                   ctas={[]}
                   image={{ src: item.image.url, alt: "" }}
-                  reverse={false}
+                  reverse={i % 2 === 1}
                   key={`project_cards${i}`}
                 >
                   <Title level={3} boldness={"semibold"}>
@@ -98,8 +102,8 @@ export default async function SolutionsDetailPage({
           background={kpis.section_props.background}
           padding={kpis.section_props.padding}
         >
-          <SectionGroup title={kpis.title}>
-            <CardGroup>
+          <SectionGroup title={kpis.title} data-testid="kpis" align={"center"}>
+            <CardGroup hasDividers>
               {kpis.cards.map((item: any, i: number) => {
                 return (
                   <CardIcon
@@ -129,6 +133,7 @@ export default async function SolutionsDetailPage({
           <SectionGroup
             title={start_your_journey.section_group_with_external_link.title}
             align={"center"}
+            data-testid="start-your-journey"
           >
             <ButtonGroup
               align={"center"}

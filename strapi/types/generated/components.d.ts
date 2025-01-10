@@ -348,7 +348,8 @@ export interface RelationsSectionSolutionsRelation
     displayName: 'Section Solutions Relation';
   };
   attributes: {
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
     solutions: Schema.Attribute.Component<
       'relations.solutions-relation-with-description',
       true
@@ -733,6 +734,38 @@ export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsVideoSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_video_sections';
+  info: {
+    description: '';
+    displayName: 'Video Section';
+    icon: 'play';
+  };
+  attributes: {
+    embed_html: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'use this tool to embed video https://embedresponsively.com/'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    section_title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsVideoWithTextSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_video_with_text_sections';
+  info: {
+    displayName: 'Video With Text Section';
+    icon: 'play';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    embed_html: Schema.Attribute.Text & Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    section_title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -777,6 +810,8 @@ declare module '@strapi/strapi' {
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
       'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;
+      'sections.video-section': SectionsVideoSection;
+      'sections.video-with-text-section': SectionsVideoWithTextSection;
     }
   }
 }

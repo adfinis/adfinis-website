@@ -15,6 +15,18 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.9.0] - 2025-01-10
+
+- Bugfix bundle fix (#54)
+- Bugfix kpi cards should be white and text black (#53)
+- Bugfix cards blocks align index (#52)
+- Bugfix cta stretches (#51)
+- Feature desktop-navigation with example (#50)
+- Feature strapi video component (#49)
+- Feature video embed (#47)
+- Feature/more friendly white label section on failure (#46)
+- fix: make section props required on overview page (#45)
+
 ## [0.8.0] - 2025-01-06
 
 - feat: partners and journeys collections (#43)

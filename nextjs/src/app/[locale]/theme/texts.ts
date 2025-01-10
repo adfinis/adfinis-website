@@ -1,5 +1,61 @@
 import { type Card } from "@/components/cards/card"
+import { NavItem } from "@/components/nav-bar/nav"
 import { CTA } from "@/lib/cta"
+
+export const navItems: NavItem[] = [
+  {
+    title: "Solutions",
+    items: [
+      {
+        title: "HashiCorp",
+        items: [
+          {
+            title: "Vault",
+            url: "/solutions/vault",
+          },
+          {
+            title: "Terraform",
+            url: "/solutions/terraform",
+          },
+          {
+            title: "Consul",
+            url: "/solutions/consul",
+          },
+        ],
+      },
+      {
+        title: "Red Hat",
+        items: [
+          {
+            title: "OpenShift",
+            url: "/solutions/openshift",
+          },
+          {
+            title: "Enterprise Linux & SAP Workloads",
+            url: "/solutions/enterprise-linux-sap-workloads",
+          },
+          {
+            title: "Ansible Automation Platform",
+            url: "/solutions/ansible-automation-platform",
+          },
+          {
+            title: "Red Hat Satellite",
+            url: "/solutions/red-hat-satellite",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Partners & Products",
+    items: [
+      {
+        title: "Github",
+        url: "/partners/github",
+      },
+    ],
+  },
+]
 
 export const hero = {
   title: `## Potential. **Unlocked.**`,
@@ -539,6 +595,15 @@ export const twoColumnMarkdownSection = {
 export const calendlySection = {
   title: "### Schedule a **Free Health Check**",
   url: "https://calendly.com/embed-demo-sales/discovery-call",
+}
+
+/**
+ * @see https://embedresponsively.com/
+ */
+export const youtubeSection = {
+  html: `<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed//byPYe4Fccww' frameborder='0' allowfullscreen></iframe></div>`,
+  title: `Watch our latest video on YouTube`,
+  text: `Adfinis is a Swiss IT service provider specializing in open-source software solutions. With a strong commitment to innovation and sustainability, Adfinis offers consulting, development, and managed services to help organizations optimize their IT environments. Our team of experts is dedicated to delivering cutting-edge technology services that enhance operational efficiency and drive digital transformation. Discover how Adfinis can unlock your organization's potential by watching our latest video on YouTube.`,
 }
 
 export const footer = {
