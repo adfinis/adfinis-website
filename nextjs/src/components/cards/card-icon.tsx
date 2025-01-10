@@ -21,7 +21,11 @@ const CardIcon: React.FC<CardIconProps> = ({
   cta,
 }) => {
   return (
-    <div data-component="CardIcon" className="bg-white rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-center" data-scheme="light">
+    <div
+      data-component="CardIcon"
+      className="bg-white rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-center"
+      data-scheme="light"
+    >
       {imageUrl && (
         <Image
           alt={title}
