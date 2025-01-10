@@ -33,21 +33,21 @@ const titleStyles = cva(["tracking-tight text-title-primary"], {
  */
 type ChildrenORString =
   | {
-    children: React.ReactNode
-    markdown?: never
-    /**
-     * @warning only use className for positioning utilities.
-     */
-    className?: string
-  }
+      children: React.ReactNode
+      markdown?: never
+      /**
+       * @warning only use className for positioning utilities.
+       */
+      className?: string
+    }
   | {
-    markdown: string
-    children?: never
-    /**
-     * @warning only use className for positioning utilities.
-     */
-    className?: string
-  }
+      markdown: string
+      children?: never
+      /**
+       * @warning only use className for positioning utilities.
+       */
+      className?: string
+    }
 type TitleProps = VariantProps<typeof titleStyles> & ChildrenORString
 
 /**
@@ -62,7 +62,7 @@ const Title: React.FC<TitleProps> = ({
   children,
   markdown,
   boldness,
-  className
+  className,
 }) => {
   if (markdown) {
     const headingLevel = markdown.startsWith("###")
@@ -74,7 +74,10 @@ const Title: React.FC<TitleProps> = ({
     return (
       <Markdown
         remarkPlugins={[remarkGfm]}
-        className={clsx([titleStyles({ level: headingLevel, align, boldness }), className])}
+        className={clsx([
+          titleStyles({ level: headingLevel, align, boldness }),
+          className,
+        ])}
       >
         {markdown}
       </Markdown>
@@ -82,7 +85,9 @@ const Title: React.FC<TitleProps> = ({
   }
   const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements
   return (
-    <Tag className={clsx([titleStyles({ level, align, boldness })], className)}>{children}</Tag>
+    <Tag className={clsx([titleStyles({ level, align, boldness })], className)}>
+      {children}
+    </Tag>
   )
 }
 
