@@ -78,7 +78,7 @@ export default async function Solutions({
           padding={kpi_sections.section_props.padding}
         >
           <SectionGroup title={kpi_sections.title}>
-            <CardGroup>
+            <CardGroup hasDividers>
               {kpi_sections.cards.map((item: any, i: number) => {
                 return (
                   <CardIcon

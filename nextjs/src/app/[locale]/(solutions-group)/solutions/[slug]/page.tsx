@@ -103,7 +103,7 @@ export default async function SolutionsDetailPage({
           padding={kpis.section_props.padding}
         >
           <SectionGroup title={kpis.title} data-testid="kpis" align={"center"}>
-            <CardGroup>
+            <CardGroup hasDividers>
               {kpis.cards.map((item: any, i: number) => {
                 return (
                   <CardIcon
