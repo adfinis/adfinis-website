@@ -1024,6 +1024,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.calendly-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
