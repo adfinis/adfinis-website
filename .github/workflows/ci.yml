@@ -1,4 +1,4 @@
-name: Vitest Test on Pull Request
+name: Pull Request Checks
 
 on:
   pull_request:
