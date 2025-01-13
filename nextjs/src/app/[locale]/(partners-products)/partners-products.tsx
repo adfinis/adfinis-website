@@ -86,6 +86,27 @@ function dynamicSection(section: any, index: number) {
           </SectionGroup>
         </Container>
       )
+    case "sections.text-section-with-cta":
+      return (
+        <Container
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup title={section.body} align={"center"}>
+            <ButtonGroup
+              align={"center"}
+              ctas={[
+                {
+                  href: section.cta.href,
+                  size: section.cta.size,
+                  variant: section.cta.variant,
+                  text: section.cta.label,
+                },
+              ]}
+            />
+          </SectionGroup>
+        </Container>
+      )
     case "sections.icon-card-section-with-relation":
       return (
         <Container
