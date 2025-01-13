@@ -19,7 +19,7 @@ const CardColored: React.FC<CardColoredProps> = ({
   description,
 }) => {
   return (
-    <article className="rounded-xl max-w-xs overflow-hidden bg-white h-full">
+    <article className="rounded-xl shadow-2 max-w-xs overflow-hidden bg-white h-full">
       <header
         className="bg-sapphire relative h-[200px] flex items-center px-6 overflow-hidden
         before:content-[''] before:absolute
