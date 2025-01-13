@@ -21,3 +21,6 @@ jobs:
 
       - name: Run Vitest tests
         run: cd ./nextjs && npm run test --coverage
+
+      - name: Build NextJS
+        run: cd ./nextjs && npm run build
