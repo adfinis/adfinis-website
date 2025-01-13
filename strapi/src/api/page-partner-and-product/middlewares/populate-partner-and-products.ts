@@ -13,6 +13,9 @@ const populate = {
       'sections.two-column-section': {
         populate: '*',
       },
+      'sections.text-section-with-cta': {
+        populate: '*',
+      },
       'sections.icon-card-section-with-relation': {
         populate: {
           cards: {
