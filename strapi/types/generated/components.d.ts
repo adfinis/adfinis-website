@@ -112,6 +112,7 @@ export interface CardsIconCard extends Struct.ComponentSchema {
 export interface CardsKpiCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_kpi_cards';
   info: {
+    description: '';
     displayName: 'KPI card';
   };
   attributes: {
@@ -135,7 +136,8 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'sapphire'>;
     description: Schema.Attribute.String;
-    image: Schema.Attribute.String & Schema.Attribute.Required;
+    icon_image: Schema.Attribute.Media<'files' | 'images'> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
@@ -610,15 +612,16 @@ export interface SectionsKpiWithIntroAndHallmarksSection
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
   info: {
+    description: '';
     displayName: 'KPI with intro and hallmarks section';
   };
   attributes: {
     description: Schema.Attribute.RichText;
     hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
     kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
           min: 1;
         },
         number

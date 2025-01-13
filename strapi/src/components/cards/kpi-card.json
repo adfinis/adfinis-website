@@ -1,7 +1,8 @@
 {
   "collectionName": "components_cards_kpi_cards",
   "info": {
-    "displayName": "KPI card"
+    "displayName": "KPI card",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,10 +12,6 @@
     },
     "description": {
       "type": "string"
-    },
-    "image": {
-      "type": "string",
-      "required": true
     },
     "color": {
       "type": "enumeration",
@@ -34,6 +31,15 @@
         "manhattan"
       ],
       "default": "sapphire",
+      "required": true
+    },
+    "icon_image": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "required": true
     }
   }
