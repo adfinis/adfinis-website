@@ -5,6 +5,7 @@ import { useNavContext } from "./nav-context"
 import type { NavItem } from "./nav"
 import Link from "next/link"
 import clsx from "clsx"
+import useDetectScroll from "@smakss/react-scroll-direction"
 
 type NavDesktopItemsProps = {
   navItem: NavItem
@@ -22,6 +23,8 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
     setIsShowing(false)
     setNavActive(false)
   }
+
+  const { scrollPosition } = useDetectScroll()
 
   return (
     <div className="isolate z-50 pr-8" onMouseLeave={hideDesktopItems}>
@@ -45,7 +48,14 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
         leaveFrom="translate-y-0 opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="absolute inset-x-0 top-14 -z-10 py-10 px-16 bg-stone/50">
+        <div
+          className={clsx([
+            "absolute inset-x-0 top-14 -z-10 py-10 px-16",
+            {
+              "bg-stone/50 backdrop-blur-sm": scrollPosition.top > 50,
+            },
+          ])}
+        >
           <div className="flex justify-start items-start gap-x-4 text-neutral">
             {navItem.items?.map((item, index) => (
               <div

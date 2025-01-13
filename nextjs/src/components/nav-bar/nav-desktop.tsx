@@ -4,7 +4,6 @@ import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
 import Logo from "../logo"
 import TopbarActions from "../topbar-actions"
 import { NavItem } from "./nav"
-import Link from "next/link"
 import NavDesktopItems from "./nav-desktop-items"
 
 type NavDesktopProps = {
