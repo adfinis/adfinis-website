@@ -606,6 +606,16 @@ export const youtubeSection = {
   text: `Adfinis is a Swiss IT service provider specializing in open-source software solutions. With a strong commitment to innovation and sustainability, Adfinis offers consulting, development, and managed services to help organizations optimize their IT environments. Our team of experts is dedicated to delivering cutting-edge technology services that enhance operational efficiency and drive digital transformation. Discover how Adfinis can unlock your organization's potential by watching our latest video on YouTube.`,
 }
 
+export const services = {
+  title: "Our Services",
+  description: `
+  As experts in integrating and optimizing GitLab for your unique needs, we offer comprehensive services including implementation, customization, and ongoing support. 
+  
+  Our team ensures seamless collaboration, enhanced productivity, and robust security for your development projects. Partner with Adfinis to transform your IT environment and achieve unparalleled efficiency and innovation. `,
+  cards,
+  ctas,
+}
+
 export const footer = {
   columns: [
     {
