@@ -15,6 +15,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.10.0] - 2025-01-14
+
+- feat AW-12 missing kpi section partners products (#60)
+- fix (text-section-with-cta): add missing component (#59)
+- Fix: Topbar Menu backgrounds on Desktop (#58)
+- feat (ci): Build checks before merge in GitHub actions (#57)
+- feat: Card with Message Icon as Header (#56)
+
 ## [0.9.0] - 2025-01-10
 
 - Bugfix bundle fix (#54)

@@ -89,5 +89,11 @@
         blockquote {
             @apply border-l-4 border-quote-primary pl-4;
         }
+
+        p {
+            &:not(:last-child) {
+                @apply mb-4;
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ import ExternalScript from "@/components/external-script"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import { youtubeSection } from "@/app/[locale]/theme/texts"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import CardCounter from "@/components/cards/card-counter"
+import Hallmarks from "@/components/stapi/hallmarks"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -83,6 +85,27 @@ function dynamicSection(section: any, index: number) {
           <SectionGroup columns={2}>
             <Text markdown={section.left_column} />
             <Text markdown={section.right_column} />
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.text-section-with-cta":
+      return (
+        <Container
+          background={section.props.background}
+          padding={section.props.padding}
+        >
+          <SectionGroup title={section.body} align={"center"}>
+            <ButtonGroup
+              align={"center"}
+              ctas={[
+                {
+                  href: section.cta.href,
+                  size: section.cta.size,
+                  variant: section.cta.variant,
+                  text: section.cta.label,
+                },
+              ]}
+            />
           </SectionGroup>
         </Container>
       )
@@ -214,6 +237,28 @@ function dynamicSection(section: any, index: number) {
             >
               <Text markdown={section.body} />
             </SectionCardWide>
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.kpi-with-intro-and-hallmarks-section":
+      return (
+        <Container background="neutral" padding="both-padding">
+          <SectionGroup
+            align="center"
+            title={section.title}
+            text={section.description}
+          >
+            <CardGroup>
+              {section.kpis.map((item: any, i: number) => (
+                <CardCounter
+                  key={i}
+                  title={item.title}
+                  imageUrl={item.icon_image.url}
+                  description={item.description}
+                />
+              ))}
+            </CardGroup>
+            <Hallmarks hallmarksId={section.hallmark.documentId} />
           </SectionGroup>
         </Container>
       )

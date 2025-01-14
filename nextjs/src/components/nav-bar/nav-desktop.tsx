@@ -4,7 +4,6 @@ import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
 import Logo from "../logo"
 import TopbarActions from "../topbar-actions"
 import { NavItem } from "./nav"
-import Link from "next/link"
 import NavDesktopItems from "./nav-desktop-items"
 
 type NavDesktopProps = {
@@ -48,10 +47,12 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems }) => {
   }
 
   return (
-    <div className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]">
+    <div
+      className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]"
+      onMouseLeave={handleMouseMenuLeave}
+    >
       <section
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseMenuLeave}
         className={clsx([
           "min-h-16 h-16 py-4 transition-all duration-150 flex justify-between items-center",
           {
@@ -64,6 +65,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems }) => {
         <TopbarActions />
       </section>
       {menuExpanded && (
+        // The Sub-bar
         <section className="hidden lg:block min-h-12" id="nav-items">
           <div className="flex justify-start items-center h-full relative">
             {navItems.map((item, index) => (

@@ -23,6 +23,7 @@ import {
   twoColumnMarkdownSection,
   calendlySection,
   youtubeSection,
+  services,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -47,6 +48,7 @@ import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import { CardMessage } from "@/components/cards/card-message"
 
 export default function Theme({
   params: { locale },
@@ -338,6 +340,24 @@ export default function Theme({
             <Text markdown={youtubeSection.text} />
           </SectionCardWide>
         </SectionGroup>
+      </Container>
+      <Container id="our-services" background="white" padding="both-padding">
+        <CardSlider
+          title={services.title}
+          description={services.description}
+          ctas={services.ctas}
+        >
+          {solutions.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardMessage
+                  title={card.title}
+                  description={card.description}
+                />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
       </Container>
     </main>
   )

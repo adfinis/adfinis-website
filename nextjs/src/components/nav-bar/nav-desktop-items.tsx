@@ -4,6 +4,8 @@ import { useNavContext } from "./nav-context"
 
 import type { NavItem } from "./nav"
 import Link from "next/link"
+import clsx from "clsx"
+import useDetectScroll from "@smakss/react-scroll-direction"
 
 type NavDesktopItemsProps = {
   navItem: NavItem
@@ -22,8 +24,11 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
     setNavActive(false)
   }
 
+  const { scrollPosition } = useDetectScroll()
+
   return (
     <div className="isolate z-50 pr-8" onMouseLeave={hideDesktopItems}>
+      {/* title of the menu items */}
       <div className="mx-auto max-w-7xl">
         <div
           onMouseEnter={showDesktopItems}
@@ -33,6 +38,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
         </div>
       </div>
 
+      {/* menu items */}
       <Transition
         show={isShowing}
         enter="transition delay-300 duration-300 ease-out"
@@ -42,11 +48,18 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
         leaveFrom="translate-y-0 opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="absolute inset-x-0 top-14 -z-10 py-10">
+        <div
+          className={clsx([
+            "absolute inset-x-0 top-14 -z-10 py-10 px-16",
+            {
+              "bg-stone/50 backdrop-blur-sm": scrollPosition.top > 50,
+            },
+          ])}
+        >
           <div className="flex justify-start items-start gap-x-4 text-neutral">
             {navItem.items?.map((item, index) => (
               <div
-                className="grid grid-cols-1 content-start gap-4 pr-2 border-r min-h-72 border-neutral/30 w-1/6"
+                className="grid grid-cols-1 content-start gap-4 pr-2 border-r last-of-type:border-r-0 min-h-72 border-neutral/30 w-1/6"
                 key={index}
               >
                 <h3 className="text-16 leading-5 font-semibold">
@@ -56,11 +69,22 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                   (subItem, subIndex) =>
                     subItem.url && (
                       <Link
-                        className="font-normal"
+                        className={clsx([
+                          "font-normal",
+                          "group transition-all duration-300 ease-in-out",
+                        ])}
                         key={subIndex}
                         href={subItem.url}
                       >
-                        {subItem.title}
+                        <span
+                          className={clsx([
+                            "transition-all duration-500 ease-out",
+                            "bg-gradient-to-r from-neutral/60 to-neutral",
+                            "bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
+                          ])}
+                        >
+                          {subItem.title}
+                        </span>
                       </Link>
                     ),
                 )}

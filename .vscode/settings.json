@@ -21,5 +21,16 @@
             "[\"'`]([^\"'`]*).*?[\"'`]"
         ]
     ],
-    "eslint.workingDirectories": ["nextjs", "strapi"]
+    "eslint.workingDirectories": [
+        "nextjs",
+        "strapi"
+    ],
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "GitHub.copilot"
+    },
+    "editor.formatOnSave": true
 }

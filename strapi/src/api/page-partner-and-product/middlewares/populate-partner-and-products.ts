@@ -13,6 +13,9 @@ const populate = {
       'sections.two-column-section': {
         populate: '*',
       },
+      'sections.text-section-with-cta': {
+        populate: '*',
+      },
       'sections.icon-card-section-with-relation': {
         populate: {
           cards: {
@@ -48,6 +51,16 @@ const populate = {
       },
       'sections.video-with-text-section': {
         populate: '*',
+      },
+      'sections.kpi-with-intro-and-hallmarks-section': {
+        populate: {
+          kpis: {
+            populate: '*',
+          },
+          hallmark: {
+            populate: true,
+          },
+        },
       },
     },
   }
