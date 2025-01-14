@@ -445,6 +445,7 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
 export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_color_card_slider_sections';
   info: {
+    description: '';
     displayName: 'Color card slider section';
   };
   attributes: {
@@ -452,7 +453,6 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          max: 6;
           min: 1;
         },
         number
@@ -466,6 +466,7 @@ export interface SectionsEventsSectionWithIntroAndCta
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_events_section_with_intro_and_ctas';
   info: {
+    description: '';
     displayName: 'Events section with intro and CTA';
   };
   attributes: {
@@ -474,7 +475,6 @@ export interface SectionsEventsSectionWithIntroAndCta
     events: Schema.Attribute.Component<'cards.event-card', true> &
       Schema.Attribute.SetMinMax<
         {
-          max: 6;
           min: 1;
         },
         number
@@ -542,6 +542,7 @@ export interface SectionsHeadingWithLinkContainer
 export interface SectionsIconCardSectionWithCta extends Struct.ComponentSchema {
   collectionName: 'components_sections_icon_card_section_with_ctas';
   info: {
+    description: '';
     displayName: 'Icon card section with CTA';
   };
   attributes: {
@@ -549,7 +550,6 @@ export interface SectionsIconCardSectionWithCta extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
           min: 1;
         },
         number
@@ -562,13 +562,13 @@ export interface SectionsIconCardSectionWithExternalCtAs
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_icon_card_section_with_external_ct_as';
   info: {
+    description: '';
     displayName: 'Icon card section with external CTAs';
   };
   attributes: {
     cards: Schema.Attribute.Component<'cards.icon-card', true> &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
           min: 1;
         },
         number
@@ -643,7 +643,7 @@ export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
     > &
       Schema.Attribute.SetMinMax<
         {
-          max: 3;
+          min: 1;
         },
         number
       >;
@@ -667,7 +667,6 @@ export interface SectionsProjectsCardSectionWithExternalLink
     > &
       Schema.Attribute.SetMinMax<
         {
-          max: 5;
           min: 1;
         },
         number

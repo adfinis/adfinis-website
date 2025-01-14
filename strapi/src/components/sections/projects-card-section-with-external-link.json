@@ -16,7 +16,6 @@
       "type": "component",
       "repeatable": true,
       "component": "cards.project-card-with-external-cta",
-      "max": 5,
       "min": 1
     }
   }
