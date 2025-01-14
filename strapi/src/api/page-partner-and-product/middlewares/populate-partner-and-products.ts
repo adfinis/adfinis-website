@@ -52,6 +52,16 @@ const populate = {
       'sections.video-with-text-section': {
         populate: '*',
       },
+      'sections.kpi-with-intro-and-hallmarks-section': {
+        populate: {
+          kpis: {
+            populate: '*',
+          },
+          hallmark: {
+            populate: true,
+          },
+        },
+      },
     },
   }
 };

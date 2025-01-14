@@ -6,15 +6,15 @@ export default async function Hallmarks({
 }: {
   hallmarksId: string
 }) {
-  const url = `hallmarks/${hallmarksId}?populate=hallmarks`
+  const url = `hallmarks/${hallmarksId}?populate=hallmark`
   const { data } = await (await strapi(url)).json()
-  if (!data || !data.hallmarks) {
+  if (!data || !data.hallmark) {
     return
   }
 
   return (
     <LogoGroup
-      logos={data.hallmarks.map((logo: any) => ({
+      logos={data.hallmark.map((logo: any) => ({
         src: logo.url,
         alt: logo.alt,
       }))}

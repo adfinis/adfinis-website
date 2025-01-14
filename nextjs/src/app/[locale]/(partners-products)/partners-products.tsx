@@ -18,6 +18,8 @@ import ExternalScript from "@/components/external-script"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import { youtubeSection } from "@/app/[locale]/theme/texts"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import CardCounter from "@/components/cards/card-counter"
+import Hallmarks from "@/components/stapi/hallmarks"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -235,6 +237,28 @@ function dynamicSection(section: any, index: number) {
             >
               <Text markdown={section.body} />
             </SectionCardWide>
+          </SectionGroup>
+        </Container>
+      )
+    case "sections.kpi-with-intro-and-hallmarks-section":
+      return (
+        <Container background="neutral" padding="both-padding">
+          <SectionGroup
+            align="center"
+            title={section.title}
+            text={section.description}
+          >
+            <CardGroup>
+              {section.kpis.map((item: any, i: number) => (
+                <CardCounter
+                  key={i}
+                  title={item.title}
+                  imageUrl={item.icon_image.url}
+                  description={item.description}
+                />
+              ))}
+            </CardGroup>
+            <Hallmarks hallmarksId={section.hallmark.documentId} />
           </SectionGroup>
         </Container>
       )
