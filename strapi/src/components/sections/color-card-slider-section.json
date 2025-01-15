@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_color_card_slider_sections",
   "info": {
-    "displayName": "Color card slider section"
+    "displayName": "Color card slider section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -16,7 +17,6 @@
       "repeatable": true,
       "component": "cards.color-card",
       "required": true,
-      "max": 6,
       "min": 1
     }
   }

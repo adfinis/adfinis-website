@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_icon_card_section_with_ctas",
   "info": {
-    "displayName": "Icon card section with CTA"
+    "displayName": "Icon card section with CTA",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,7 +15,6 @@
       "repeatable": true,
       "component": "cards.icon-card",
       "required": true,
-      "max": 3,
       "min": 1
     }
   }
