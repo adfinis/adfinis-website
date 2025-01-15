@@ -7,7 +7,9 @@ type CardSliderElementProps = { children: React.ReactNode }
  * Will make sure element will scroll-snap to the center on mobile.
  */
 const CardSliderElement: React.FC<CardSliderElementProps> = ({ children }) => (
-  <div className="flex-shrink-0 snap-center">{children}</div>
+  <div className="flex-shrink-0 snap-center" data-component="CardSliderElement">
+    {children}
+  </div>
 )
 
 export default CardSliderElement
