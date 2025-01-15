@@ -11,6 +11,8 @@ const NavMobileSubItem: React.FC<{ item: NavItem }> = ({ item }) => {
     setExpand(!expand)
   }
   const contentRef = useRef<HTMLUListElement>(null)
+  const hasChildren = (items?: NavItem[]) => items && items.length > 0
+
   const handleBeforeEnter = () => {
     if (contentRef.current) {
       contentRef.current.style.height = `${contentRef.current.scrollHeight}px`
@@ -44,15 +46,22 @@ const NavMobileSubItem: React.FC<{ item: NavItem }> = ({ item }) => {
     >
       {item.title && (
         <div className="flex justify-between items-center w-full h-9">
-          <h3 className="font-semibold">{item.title}</h3>
-          <IconChevronDown
-            className={clsx([
-              "transition-all duration-150",
-              {
-                "transform rotate-180": expand,
-              },
-            ])}
-          />
+          {hasChildren(item?.items) ? (
+            <h3 className="font-semibold">{item.title}</h3>
+          ) : (
+            item?.url && <Link href={item.url}>{item.title}</Link>
+          )}
+
+          {hasChildren(item?.items) && (
+            <IconChevronDown
+              className={clsx([
+                "transition-all duration-150",
+                {
+                  "transform rotate-180": expand,
+                },
+              ])}
+            />
+          )}
         </div>
       )}
       <Transition
