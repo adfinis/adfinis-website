@@ -1,8 +1,9 @@
+import clsx from "clsx"
 import React from "react"
 
-const IconChevronDown: React.FC = ({ className }: { className?: string }) => (
+const IconChevronDown: React.FC<{ className?: string }> = ({ className }) => (
   <svg
-    className="w-2.5 h-auto"
+    className={clsx(["w-2.5 h-auto", className])}
     width="18"
     height="10"
     viewBox="0 0 18 10"

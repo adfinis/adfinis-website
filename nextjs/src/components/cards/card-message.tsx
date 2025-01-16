@@ -36,7 +36,7 @@ export const CardMessage: React.FC<CardMessageProps> = ({
           viewBox="0 0 87 30"
           width="87"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-24 ml-8 h-auto text-sapphire"
+          className="w-24 ml-8 -mt-px h-auto text-sapphire"
         >
           <path
             d="m86.6130148-0-86.42299998 29.962 7.1666-29.962h-34.35661482z"

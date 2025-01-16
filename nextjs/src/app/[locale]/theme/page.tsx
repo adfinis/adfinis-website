@@ -76,7 +76,7 @@ export default function Theme({
         <Text markdown={intro.text} className="grid gap-8" />
       </Intro>
 
-      <Container id="Solutions" padding="no-padding" background="neutral">
+      <Container id="Solutions" padding="both-padding" background="neutral">
         <CardSlider
           title={solutions.title}
           description={solutions.description}
@@ -155,7 +155,7 @@ export default function Theme({
         </SectionGroup>
       </Container>
 
-      <Container id="Resources" padding="no-padding" background="neutral">
+      <Container id="Resources" padding="both-padding" background="neutral">
         <CardSlider
           title={resourcesSection.title}
           description={resourcesSection.description}
@@ -341,7 +341,7 @@ export default function Theme({
           </SectionCardWide>
         </SectionGroup>
       </Container>
-      <Container id="our-services" background="white" padding="both-padding">
+      <Container id="our-services" padding="both-padding" background="white">
         <CardSlider
           title={services.title}
           description={services.description}
