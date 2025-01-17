@@ -15,6 +15,12 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.11.0] - 2025-01-17
+
+- Feature/AW-46 refactor dynamic zone components (#64)
+- Feature/aw 18 mobile menu (#63)
+- feat (card limits): set limit to minimum 1 (#62)
+
 ## [0.10.0] - 2025-01-14
 
 - feat AW-12 missing kpi section partners products (#60)
