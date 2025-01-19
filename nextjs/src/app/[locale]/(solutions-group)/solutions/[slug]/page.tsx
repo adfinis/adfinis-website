@@ -33,7 +33,7 @@ export default async function SolutionsDetailPage({
     locale: locale,
     isActive: true,
   }
-  const url = `solutions-pages/?locale=${locale}&filters[slug]=${slug}&populate=localizations&populate=hero.backround_image&populate=hero.color&populate=intro&populate=project_cards.cards.image&populate=project_cards.cards.cta&populate=kpis.section_props&populate=kpis.cards.icon_image&populate=kpis.cta&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=case_studies.cta&populate=case_studies.section_props&populate=case_studies.events.categories&populate=case_studies.events.background_image`
+  const url = `solutions-pages/?locale=${locale}&filters[slug]=${slug}&populate=localizations&populate=hero.backround_image&populate=hero.color`
   const { data } = await (await strapi(url)).json()
   const page = data[0]
   const locales = page.localizations.map((item: { locale: string }) => {
@@ -62,8 +62,7 @@ export default async function SolutionsDetailPage({
 
       {intro && (
         <Intro>
-          <Title markdown={intro.intro_title} />
-          <Text markdown={intro.intro_body} className="grid gap-8" />
+          <Text markdown={intro} className="grid gap-8" />
         </Intro>
       )}
       {project_cards && (

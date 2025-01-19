@@ -1266,6 +1266,13 @@ export interface ApiSolutionsPageSolutionsPage
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
