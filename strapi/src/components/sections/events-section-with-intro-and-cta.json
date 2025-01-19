@@ -7,26 +7,31 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "body": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "cta": {
       "type": "component",
       "repeatable": false,
-      "component": "external-links.call-to-action"
+      "component": "external-links.call-to-action",
+      "required": true
     },
     "props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props"
+      "component": "sections.section-props",
+      "required": true
     },
     "events": {
       "type": "component",
       "repeatable": true,
       "component": "cards.event-card",
-      "min": 1
+      "min": 1,
+      "required": true
     }
   }
 }

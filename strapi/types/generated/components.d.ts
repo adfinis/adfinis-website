@@ -470,17 +470,20 @@ export interface SectionsEventsSectionWithIntroAndCta
     displayName: 'Events section with intro and CTA';
   };
   attributes: {
-    body: Schema.Attribute.String;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    body: Schema.Attribute.String & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.Required;
     events: Schema.Attribute.Component<'cards.event-card', true> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           min: 1;
         },
         number
       >;
-    props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.String;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
