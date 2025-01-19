@@ -6,18 +6,23 @@
   },
   "options": {},
   "attributes": {
-    "intro": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cards.card-slider-intro",
+    "title": {
+      "type": "string",
       "required": true
     },
-    "color_cards": {
+    "description": {
+      "type": "richtext"
+    },
+    "ctas": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.color-card",
-      "required": true,
-      "min": 1
+      "component": "external-links.call-to-action",
+      "max": 2
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.color-card"
     }
   }
 }

@@ -31,7 +31,7 @@ export default async function Homepage({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions.intro&populate=our_solutions.color_cards&populate=our_solutions.intro.external_ctas&populate=our_projects.projects.cta&populate=our_projects.projects.image&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.section_props&populate=our_resources.events.categories&populate=who_are_we.projects.cta&populate=who_are_we.projects.image&populate=more_on_adfinis.kpis.icon_image&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
+  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions&populate=our_solutions.cards&populate=our_solutions.ctas&populate=our_projects.projects.cta&populate=our_projects.projects.image&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.props&populate=our_resources.events.categories&populate=who_are_we.projects.cta&populate=who_are_we.projects.image&populate=more_on_adfinis.kpis.icon_image&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
   const { data } = await (await strapi(url)).json()
   const locales = (data?.localizations ?? []).map(
     (item: { locale: string }) => {
@@ -86,11 +86,11 @@ export default async function Homepage({
       {our_solutions && (
         <Container background="neutral">
           <CardSlider
-            title={our_solutions.intro.title}
-            description={our_solutions.intro.body}
-            ctas={our_solutions.intro.external_ctas.map(mapCta)}
+            title={our_solutions.title}
+            description={our_solutions.description}
+            ctas={our_solutions.ctas.map(mapCta)}
           >
-            {our_solutions.color_cards.map((card: any, index: number) => {
+            {our_solutions.cards.map((card: any, index: number) => {
               return (
                 <CardSliderElement key={`our_solutions_card_${index}`}>
                   <CardColored

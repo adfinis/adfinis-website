@@ -449,16 +449,16 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
     displayName: 'Color card slider section';
   };
   attributes: {
-    color_cards: Schema.Attribute.Component<'cards.color-card', true> &
-      Schema.Attribute.Required &
+    cards: Schema.Attribute.Component<'cards.color-card', true>;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
       Schema.Attribute.SetMinMax<
         {
-          min: 1;
+          max: 2;
         },
         number
       >;
-    intro: Schema.Attribute.Component<'cards.card-slider-intro', false> &
-      Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
