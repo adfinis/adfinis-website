@@ -21,7 +21,7 @@ const CardIcon: React.FC<CardServicesProps> = ({
   usps,
 }) => {
   return (
-    <div className="rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-stretch max-w-sm">
+    <div className="rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 justify-items-stretch max-w-sm">
       <Title level={3} boldness={"semibold"} align={"center"}>
         {title}
       </Title>
