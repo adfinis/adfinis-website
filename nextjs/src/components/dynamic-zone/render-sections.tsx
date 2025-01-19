@@ -3,7 +3,6 @@ import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
 import WhitePaperSection from "@/components/dynamic-zone/wrapper/relations/white-paper-section"
 import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-relation"
-import HeadingWithLinkContainer from "@/components/dynamic-zone/wrapper/sections/heading-with-link-container"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
@@ -40,13 +39,6 @@ export function renderSections(section: any, index: number) {
       )
     case "relations.quotes-relation":
       return <QuotesRelation key={`section_quote_${index}`} section={section} />
-    case "sections.heading-with-link-container":
-      return (
-        <HeadingWithLinkContainer
-          key={`section_heading_with_link_${index}`}
-          section={section}
-        />
-      )
     case "sections.video-section":
       return (
         <VideoSection

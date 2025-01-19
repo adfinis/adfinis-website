@@ -1019,7 +1019,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.two-column-section',
         'sections.text-section-with-cta',
         'sections.icon-card-section-with-relation',
-        'sections.heading-with-link-container',
         'relations.white-paper-section',
         'relations.quotes-relation',
         'relations.calendly-section',
@@ -1301,7 +1300,6 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.video-section',
         'sections.text-section-with-cta',
         'sections.icon-card-section-with-relation',
-        'sections.heading-with-link-container',
         'relations.white-paper-section',
         'relations.quotes-relation',
       ]

@@ -36,13 +36,6 @@ const populate = {
           },
         },
       },
-      'sections.heading-with-link-container': {
-        populate: {
-          section_group_with_external_link: {
-            populate: '*'
-          },
-        },
-      },
       'sections.video-section': {
         populate: '*',
       },
