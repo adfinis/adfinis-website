@@ -50,15 +50,13 @@
       "target": "api::hero.hero"
     },
     "intro": {
-      "displayName": "Intro Body",
-      "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.intro-body"
+      "type": "richtext",
+      "required": true
     },
     "sections": {
       "pluginOptions": {

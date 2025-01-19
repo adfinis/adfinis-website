@@ -987,7 +987,8 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro-body', false> &
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

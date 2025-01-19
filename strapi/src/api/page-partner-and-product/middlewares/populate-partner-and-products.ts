@@ -5,9 +5,6 @@ const populate = {
   hero: {
     populate: '*'
   },
-  intro: {
-    populate: true,
-  },
   sections: {
     on: {
       'sections.two-column-section': {
