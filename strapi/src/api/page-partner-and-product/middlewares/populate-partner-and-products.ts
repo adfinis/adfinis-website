@@ -52,6 +52,13 @@ const populate = {
           },
         },
       },
+      'sections.projects-card-section-with-external-link': {
+        populate: {
+          projects: {
+            populate: '*',
+          }
+        }
+      }
     },
   }
 };

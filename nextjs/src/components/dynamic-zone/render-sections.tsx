@@ -6,6 +6,8 @@ import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-r
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
+import ProjectsCardSectionWithExternalLink
+  from '@/components/dynamic-zone/wrapper/sections/projects-card-section-with-external-link'
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -57,6 +59,13 @@ export function renderSections(section: any, index: number) {
       return (
         <KpiWithIntroAndHallmarksSection
           key={`section_kpi_with_intro_and_hallmarks_section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.projects-card-section-with-external-link":
+      return (
+        <ProjectsCardSectionWithExternalLink
+          key={`section_projects_card_section_with_external_link_${index}`}
           section={section}
         />
       )
