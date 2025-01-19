@@ -24,6 +24,8 @@ import {
   calendlySection,
   youtubeSection,
   services,
+  cardIconGridExample,
+  cardIconWiderExample,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -358,6 +360,43 @@ export default function Theme({
             )
           })}
         </CardSlider>
+      </Container>
+
+      <Container
+        id="card-icon-grid"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none">
+          {cardIconGridExample.cards.map((item, i) => {
+            return (
+              <CardIcon
+                imageUrl={item.icon.src}
+                title={item.title}
+                description={item.description}
+                cta={item.cta}
+                key={i}
+              />
+            )
+          })}
+        </CardGroup>
+      </Container>
+
+      <Container id="card-icon-grid" padding="both-padding" background="white">
+        <SectionGroup title="Why Adfinis?" align="center">
+          <CardGroup hasDividers columns={3} maxWidth="7xl">
+            {cardIconWiderExample.cards.map((item, i) => {
+              return (
+                <CardIcon
+                  imageUrl={item.icon.src}
+                  title={item.title}
+                  description={item.description}
+                  key={i}
+                />
+              )
+            })}
+          </CardGroup>
+        </SectionGroup>
       </Container>
     </main>
   )

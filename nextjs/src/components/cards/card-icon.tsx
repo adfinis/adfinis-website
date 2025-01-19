@@ -23,7 +23,7 @@ const CardIcon: React.FC<CardIconProps> = ({
   return (
     <div
       data-component="CardIcon"
-      className="bg-white rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 divide-vertical-6 justify-items-center"
+      className="bg-white rounded-xl px-6 pt-6 pb-8 shadow-2 flex flex-col justify-items-center gap-6 content-start"
       data-scheme="light"
     >
       {imageUrl && (
@@ -32,27 +32,22 @@ const CardIcon: React.FC<CardIconProps> = ({
           src={imageUrl}
           width={300}
           height={300}
-          className="h-20 mb-6 mx-auto"
+          className="h-18 mx-auto"
         />
       )}
-      <Title
-        level={3}
-        boldness={"semibold"}
-        align={"center"}
-        className="mb-6 lg:mb-1 lg:min-h-[2lh]"
-      >
+      <Title level={3} boldness={"semibold"} align={"center"}>
         {title}
       </Title>
       <Text
         markdown={description}
-        className="text-center self-start lg:flex-grow mb-6"
+        className="text-center self-start flex-grow"
       />
       {cta && (
         <Link
           href={cta.href}
           variant={"secondary"}
           size={"small"}
-          className="px-4 self-center"
+          className="px-4 self-center place-self-end"
         >
           {cta.text}
         </Link>
