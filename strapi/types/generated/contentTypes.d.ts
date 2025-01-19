@@ -1293,6 +1293,23 @@ export interface ApiSolutionsPageSolutionsPage
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.two-column-section',
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.text-section-with-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.heading-with-link-container',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

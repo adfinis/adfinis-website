@@ -57,6 +57,24 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.two-column-section",
+        "sections.video-with-text-section",
+        "sections.video-section",
+        "sections.text-section-with-cta",
+        "sections.icon-card-section-with-relation",
+        "sections.heading-with-link-container",
+        "relations.white-paper-section",
+        "relations.quotes-relation"
+      ]
     }
   }
 }
