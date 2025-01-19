@@ -470,9 +470,9 @@ export interface SectionsEventsSectionWithIntroAndCta
     displayName: 'Events section with intro and CTA';
   };
   attributes: {
-    body: Schema.Attribute.String & Schema.Attribute.Required;
     cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
       Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
     events: Schema.Attribute.Component<'cards.event-card', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<

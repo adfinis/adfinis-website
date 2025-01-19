@@ -23,7 +23,7 @@ type EventCard = {
 type Props = {
   props: SectionProps
   title: string
-  body: string
+  description: string
   cta: CTA
   events: EventCard[]
 }
@@ -40,7 +40,7 @@ export default function EventsSectionWithIntroAndCta({
     >
       <CardSlider
         title={section.title}
-        description={section.body}
+        description={section.description}
         ctas={[section.cta].map(mapCta)}
       >
         {section.events.map((card, index: number) => {
