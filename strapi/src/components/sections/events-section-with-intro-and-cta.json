@@ -17,7 +17,7 @@
       "repeatable": false,
       "component": "external-links.call-to-action"
     },
-    "section_props": {
+    "props": {
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props"

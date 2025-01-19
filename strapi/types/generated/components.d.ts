@@ -479,7 +479,7 @@ export interface SectionsEventsSectionWithIntroAndCta
         },
         number
       >;
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.String;
   };
 }
