@@ -58,6 +58,15 @@ const populate = {
             populate: '*',
           }
         }
+      },
+      'sections.events-section-with-intro-and-cta': {
+        populate: {
+          props: true,
+          cta: true,
+          events: {
+            populate: '*',
+          }
+        }
       }
     },
   }

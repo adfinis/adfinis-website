@@ -1026,6 +1026,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.video-with-text-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
+        'sections.events-section-with-intro-and-cta',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
