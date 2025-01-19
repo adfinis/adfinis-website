@@ -247,7 +247,7 @@ export const journeySection = {
     {
       title: "Build",
       description:
-        "We optimally support you in the implementation of your individual infrastructure.",
+        "We optimally support you in the implementation of your individual infrastructure. Extra sentence for more spacial diversity.",
       icon: {
         src: "/svg/icons/icon_build.svg",
         alt: "Build icon",
@@ -615,6 +615,129 @@ export const services = {
   cards,
   ctas,
 }
+
+export const cardIconWiderExample = {
+  title: "## Regulation and Compliance",
+  cards: [
+    {
+      title: "Regulation and Compliance",
+      description:
+        "At Adfinis, we’re first-class expert techies: meaning you’ll never encounter an Adfinis employee who doesn’t know what you’re talking about. This is essential when we’re assessing your needs and it will enable us to only offer what you currently need most.",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+    },
+    {
+      title: "Multi-Vendor Solutions",
+      description:
+        "We support you in meeting regulatory requirements and achieving compliance with the proper tooling, ensuring your operations adhere to industry standards.",
+      icon: {
+        src: "/svg/icons/icon_build.svg",
+        alt: "Build icon",
+      },
+    },
+    {
+      title: "Workflow Simplification",
+      description:
+        "We support you in meeting regulatory requirements and achieving compliance with the proper tooling, ensuring your operations adhere to industry standards.",
+      icon: {
+        src: "/svg/icons/icon_run.svg",
+        alt: "Run icon",
+      },
+    },
+  ],
+} as const
+
+export const cardIconGridExample = {
+  title: "## Let's Shape Your Journey **Together**",
+  cards: [
+    {
+      title: "Plan",
+      description:
+        "We create a situation analysis and elicit the best possible solution for your current infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+      cta: {
+        text: "Get your checkup",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Build",
+      description:
+        "We optimally support you in the implementation of your individual infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_build.svg",
+        alt: "Build icon",
+      },
+      cta: {
+        text: "Find your solution",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Run",
+      description:
+        "With our 24/7 SLA, we provide you with all-round support. Benefit from fast and reliable support.",
+      icon: {
+        src: "/svg/icons/icon_run.svg",
+        alt: "Run icon",
+      },
+      cta: {
+        text: "Choose your service",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Create",
+      description:
+        "We create a situation analysis and elicit the best possible solution for your current infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_plan.svg",
+        alt: "Plan icon",
+      },
+      cta: {
+        text: "Get your checkup",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Manage",
+      description:
+        "We optimally support you in the implementation of your individual infrastructure.",
+      icon: {
+        src: "/svg/icons/icon_build.svg",
+        alt: "Build icon",
+      },
+      cta: {
+        text: "Find your solution",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+    {
+      title: "Lead",
+      description:
+        "With our 24/7 SLA, we provide you with all-round support. Benefit from fast and reliable support.",
+      icon: {
+        src: "/svg/icons/icon_run.svg",
+        alt: "Run icon",
+      },
+      cta: {
+        text: "Choose your service",
+        href: "/contact",
+        variant: "secondary",
+      },
+    },
+  ],
+} as const
 
 export const footer = {
   columns: [
