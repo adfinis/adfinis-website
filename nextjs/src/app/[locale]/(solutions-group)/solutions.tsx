@@ -1,7 +1,6 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
-import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
@@ -15,6 +14,7 @@ import ButtonGroup from "@/components/button-group"
 import LinkButton from "@/components/link-button"
 import CardService from "@/components/cards/card-service"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import HeroWrapper from "@/components/stapi/hero-wrapper"
 
 const SUB_PAGE: any = {
   en: "solutions",
@@ -59,21 +59,7 @@ export default async function Solutions({
     <>
       <NavProvider>
         <NavBar items={locales} />
-        {hero && (
-          <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
-            <Title markdown={hero.title} />
-            <Text markdown={hero.body} />
-            {hero.cta && (
-              <LinkButton
-                href={hero.cta.href}
-                variant={hero.cta.variant}
-                size={hero.cta.size}
-              >
-                {hero.cta.label}
-              </LinkButton>
-            )}
-          </Hero>
-        )}
+        {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       {intro && (
         <Intro>

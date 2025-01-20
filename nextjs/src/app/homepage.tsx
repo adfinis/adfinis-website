@@ -1,11 +1,9 @@
 import NavBar from "@/components/nav-bar/nav-bar"
-import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
-import LinkButton from "@/components/link-button"
 import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardColored from "@/components/cards/card-colored"
@@ -19,6 +17,7 @@ import CardIcon from "@/components/cards/card-icon"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import HeroWrapper from "@/components/stapi/hero-wrapper"
 
 const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
@@ -63,21 +62,7 @@ export default async function Homepage({
     <>
       <NavProvider>
         <NavBar items={locales} />
-        {hero && (
-          <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
-            <Title markdown={hero.title} />
-            <Text markdown={hero.body} />
-            {hero.cta && (
-              <LinkButton
-                href={hero.cta.href}
-                variant={hero.cta.variant}
-                size={hero.cta.size}
-              >
-                {hero.cta.label}
-              </LinkButton>
-            )}
-          </Hero>
-        )}
+        {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       {intro && (
         <Intro>
