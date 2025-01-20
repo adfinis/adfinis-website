@@ -756,6 +756,87 @@ Don’t miss this unique opportunity to gain insights, network with industry pro
   `,
 }
 
+export const eventGrid = [
+  {
+    title: "Swiss Cyber Security Days 2025",
+    location: "The BernExpo",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+  {
+    title: "Gitlab Roadshow ",
+    location: "Bern, Switzerland",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+  {
+    title: "Red Hat Summit: Connect Zurich 2025",
+    location: "The Hall Zurich",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+  {
+    title: "Dev Secops World Tour",
+    location: "Berlin",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+  {
+    title: "Talk: Software Supply Chain Security – SLSA assessment for Argo CD",
+    location: "13:00-13:45 / Online",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+  {
+    title: "Let’s talk technical: SUSE Manager & Security",
+    location: "Online",
+    date: "Date Event: February 20, 2025",
+    logo: {
+      src: "/svg/logo/logo-1.svg",
+      alt: "Logo of Event",
+    },
+    image: {
+      src: "https://images.unsplash.com/photo-1655121075517-a20eb4e6fe8f?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a train in Switzerland",
+    },
+  },
+]
+
 export const eventSection = {
   title: "Event Details",
   date: "January 31, 2025",

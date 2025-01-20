@@ -28,6 +28,7 @@ import {
   cardIconWiderExample,
   eventDetails,
   eventSection,
+  eventGrid,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -402,6 +403,25 @@ export default function Theme({
             })}
           </CardGroup>
         </SectionGroup>
+      </Container>
+
+      <Container
+        id="event-grid-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none">
+          {eventGrid.map((event, index) => (
+            <CardArticle
+              key={index}
+              title={event.title}
+              subtitle={event.location}
+              description={event.date}
+              imageUrl={event.image.src}
+              logoUrl={event.logo.src}
+            />
+          ))}
+        </CardGroup>
       </Container>
 
       <Container id="event-info" padding="both-padding" background="stone">
