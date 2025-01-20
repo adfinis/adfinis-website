@@ -21,7 +21,9 @@ type Props = {
   description: string
   projects: ProjectCard[]
 }
-export default function ProjectsCardSectionWithExternalLink({section}: {
+export default function ProjectsCardSectionWithExternalLink({
+  section,
+}: {
   section: Props
 }) {
   return (
