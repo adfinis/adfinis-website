@@ -40,14 +40,13 @@
       "target": "api::hero.hero"
     },
     "intro": {
-      "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.intro"
+      "type": "richtext",
+      "required": true
     },
     "kpi_sections": {
       "type": "component",
