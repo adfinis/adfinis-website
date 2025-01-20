@@ -1159,30 +1159,12 @@ export interface ApiSolutionsOverviewSolutionsOverview
     };
   };
   attributes: {
-    combine_your_yourney: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.RichText &
       Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    kpi_sections: Schema.Attribute.Component<
-      'sections.icon-card-section-with-relation',
-      false
-    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1208,33 +1190,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    sla_section: Schema.Attribute.Component<
-      'relations.sla-card-section',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    soutions_section: Schema.Attribute.Component<
-      'relations.section-solutions-relation',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    start_your_journey: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
