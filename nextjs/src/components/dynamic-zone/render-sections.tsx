@@ -10,6 +10,7 @@ import ProjectsCardSectionWithExternalLink from "@/components/dynamic-zone/wrapp
 import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
+import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -89,6 +90,13 @@ export function renderSections(section: any, index: number) {
       return (
         <SectionSolutionsRelation
           key={`relations.section-solutions-relation_${index}`}
+          section={section}
+        />
+      )
+    case "relations.sla-card-section":
+      return (
+        <SlaCardSection
+          key={`relations.sla-card-section_${index}`}
           section={section}
         />
       )

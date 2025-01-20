@@ -378,9 +378,9 @@ export interface RelationsSlaCardSection extends Struct.ComponentSchema {
     displayName: 'SLA Card Section';
   };
   attributes: {
-    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
-    sla_cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }

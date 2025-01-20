@@ -20,12 +20,14 @@ module.exports = (config, {strapi}) => {
                 }
               },
             },
-            // 'relations.sla-card-section': {
-            //   populate: '*',
-            // },
-
-
-
+            'relations.sla-card-section': {
+              populate: {
+                props: true,
+                cards: {
+                  populate: '*'
+                }
+              },
+            },
             // 'sections.two-column-section': {
             //   populate: '*',
             // },

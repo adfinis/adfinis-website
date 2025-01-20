@@ -1195,6 +1195,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.text-section-with-cta',
         'sections.icon-card-section-with-relation',
         'relations.section-solutions-relation',
+        'relations.sla-card-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

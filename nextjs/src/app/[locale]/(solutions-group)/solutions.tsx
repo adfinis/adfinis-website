@@ -8,12 +8,6 @@ import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 
-const mapCta = (cta: any) => ({
-  // TODO Decide if we want to change CTA type or rename label to text in strapi
-  text: cta.label,
-  ...cta,
-})
-
 export default async function Solutions({
   activeLocale,
 }: {
@@ -45,32 +39,6 @@ export default async function Solutions({
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
-      {/*{sla_section && (*/}
-      {/*  <Container*/}
-      {/*    background={sla_section.section_props.background}*/}
-      {/*    padding={sla_section.section_props.padding}*/}
-      {/*  >*/}
-      {/*    <SectionGroup title={sla_section.title}>*/}
-      {/*      <CardGroup hasDividers>*/}
-      {/*        {sla_section.sla_cards.map((item: any, i: number) => {*/}
-      {/*          return (*/}
-      {/*            <CardService*/}
-      {/*              usps={item.items.map((sla: any) => {*/}
-      {/*                return {*/}
-      {/*                  text: sla.name,*/}
-      {/*                  active: !sla.is_disabled,*/}
-      {/*                }*/}
-      {/*              })}*/}
-      {/*              title={item.name}*/}
-      {/*              description=""*/}
-      {/*              key={`sla_${i}`}*/}
-      {/*            />*/}
-      {/*          )*/}
-      {/*        })}*/}
-      {/*      </CardGroup>*/}
-      {/*    </SectionGroup>*/}
-      {/*  </Container>*/}
-      {/*)}*/}
     </>
   )
 }
