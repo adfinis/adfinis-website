@@ -701,13 +701,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero: Schema.Attribute.Component<'global.hero-with-cta', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.Component<'global.intro', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
