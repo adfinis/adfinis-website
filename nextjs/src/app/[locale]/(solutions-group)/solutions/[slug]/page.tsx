@@ -7,6 +7,7 @@ import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
+import LinkButton from '@/components/link-button'
 
 const SUB_PAGE = {
   en: "solutions",
@@ -45,6 +46,15 @@ export default async function SolutionsDetailPage({
           <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
             <Title markdown={hero.title} />
             <Text markdown={hero.body} />
+            {hero.cta && (
+              <LinkButton
+                href={hero.cta.href}
+                variant={hero.cta.variant}
+                size={hero.cta.size}
+              >
+                {hero.cta.label}
+              </LinkButton>
+            )}
           </Hero>
         )}
       </NavProvider>

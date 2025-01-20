@@ -33,7 +33,7 @@ export default async function Solutions({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `solutions-overview?locale=${activeLocale.locale}&populate=localizations&populate=intro&populate=hero.backround_image&populate=hero.color&populate=kpi_sections.section_props&populate=kpi_sections.cards.icon_image&populate=kpi_sections.cards.cta&populate=soutions_section.section_props&populate=soutions_section.solutions&populate=soutions_section.solutions.solution_page&populate=soutions_section.solutions.card_image&populate=start_your_journey&populate=start_your_journey.section_group_with_external_link&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=sla_section.section_props&populate=sla_section.sla_cards.items&populate=combine_your_yourney.section_group_with_external_link.external_cta_link`
+  const url = `solutions-overview?locale=${activeLocale.locale}&populate=localizations&populate=intro&populate=hero.backround_image&populate=hero.cta&populate=hero.color&populate=kpi_sections.section_props&populate=kpi_sections.cards.icon_image&populate=kpi_sections.cards.cta&populate=soutions_section.section_props&populate=soutions_section.solutions&populate=soutions_section.solutions.solution_page&populate=soutions_section.solutions.card_image&populate=start_your_journey&populate=start_your_journey.section_group_with_external_link&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=sla_section.section_props&populate=sla_section.sla_cards.items&populate=combine_your_yourney.section_group_with_external_link.external_cta_link`
 
   const { data } = await (await strapi(url)).json()
   const locales = data.localizations.map((item: { locale: string }) => {
@@ -63,6 +63,15 @@ export default async function Solutions({
           <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
             <Title markdown={hero.title} />
             <Text markdown={hero.body} />
+            {hero.cta && (
+              <LinkButton
+                href={hero.cta.href}
+                variant={hero.cta.variant}
+                size={hero.cta.size}
+              >
+                {hero.cta.label}
+              </LinkButton>
+            )}
           </Hero>
         )}
       </NavProvider>

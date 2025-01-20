@@ -9,6 +9,7 @@ import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { notFound } from "next/navigation"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
+import LinkButton from '@/components/link-button'
 
 export default async function PartnersProducts({
   activeLocale,
@@ -47,6 +48,15 @@ export default async function PartnersProducts({
           <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
             <Title markdown={hero.title} />
             <Text markdown={hero.body} />
+            {hero.cta && (
+              <LinkButton
+                href={hero.cta.href}
+                variant={hero.cta.variant}
+                size={hero.cta.size}
+              >
+                {hero.cta.label}
+              </LinkButton>
+            )}
           </Hero>
         )}
       </NavProvider>

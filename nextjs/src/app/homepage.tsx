@@ -67,13 +67,15 @@ export default async function Homepage({
           <Hero color="white" imageUrl={hero.image}>
             <Title markdown={hero.title} />
             <Text markdown={hero.description} />
-            <LinkButton
-              href={hero.cta.href}
-              size={hero.cta.size}
-              variant={hero.cta.variant}
-            >
-              {hero.cta.label}
-            </LinkButton>
+            {hero.cta && (
+              <LinkButton
+                href={hero.cta.href}
+                variant={hero.cta.variant}
+                size={hero.cta.size}
+              >
+                {hero.cta.label}
+              </LinkButton>
+            )}
           </Hero>
         )}
       </NavProvider>
