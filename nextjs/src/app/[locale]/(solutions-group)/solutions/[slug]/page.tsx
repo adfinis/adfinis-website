@@ -7,7 +7,7 @@ import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
-import LinkButton from '@/components/link-button'
+import LinkButton from "@/components/link-button"
 
 const SUB_PAGE = {
   en: "solutions",

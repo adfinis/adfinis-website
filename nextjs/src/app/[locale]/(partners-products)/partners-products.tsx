@@ -9,7 +9,7 @@ import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { notFound } from "next/navigation"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
-import LinkButton from '@/components/link-button'
+import LinkButton from "@/components/link-button"
 
 export default async function PartnersProducts({
   activeLocale,
