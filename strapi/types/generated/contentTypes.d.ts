@@ -626,7 +626,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    backround_image: Schema.Attribute.Media<'images'> &
+    background_image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -668,13 +668,6 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.RichText &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -701,13 +694,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero: Schema.Attribute.Component<'global.hero-with-cta', false> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.Component<'global.intro', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

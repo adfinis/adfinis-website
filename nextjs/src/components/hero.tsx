@@ -1,6 +1,6 @@
 "use client"
-import Image from "next/image"
 
+import Image from "next/image"
 import Triangle from "./triangle"
 import clsx from "clsx"
 import React from "react"

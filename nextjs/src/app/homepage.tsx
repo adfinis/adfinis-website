@@ -1,11 +1,9 @@
 import NavBar from "@/components/nav-bar/nav-bar"
-import Hero from "@/components/hero"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
-import LinkButton from "@/components/link-button"
 import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardColored from "@/components/cards/card-colored"
@@ -19,6 +17,7 @@ import CardIcon from "@/components/cards/card-icon"
 import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import { NavProvider } from "@/components/nav-bar/nav-context"
+import HeroWrapper from "@/components/stapi/hero-wrapper"
 
 const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
@@ -31,7 +30,7 @@ export default async function Homepage({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.cta&populate=intro&populate=our_solutions&populate=our_solutions.cards&populate=our_solutions.ctas&populate=our_projects.projects.cta&populate=our_projects.projects.image&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.props&populate=our_resources.events.categories&populate=who_are_we.projects.cta&populate=who_are_we.projects.image&populate=more_on_adfinis.kpis.icon_image&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
+  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.background_image&populate=hero.cta&populate=hero.color&populate=intro&populate=our_solutions&populate=our_solutions.cards&populate=our_solutions.ctas&populate=our_projects.projects.cta&populate=our_projects.projects.image&populate=meet_our_partners.ctas&populate=our_partners&populate=shape_your_journey.section_props&populate=shape_your_journey.cards.ctas&populate=start_your_journey.section_group_with_external_link.external_cta_link&populate=our_resources.cta&populate=our_resources.props&populate=our_resources.events.categories&populate=who_are_we.projects.cta&populate=who_are_we.projects.image&populate=more_on_adfinis.kpis.icon_image&populate=more_on_adfinis.hallmark&populate=start_your_career.section_group_with_external_link.external_cta_link`
   const { data } = await (await strapi(url)).json()
   const locales = (data?.localizations ?? []).map(
     (item: { locale: string }) => {
@@ -63,21 +62,7 @@ export default async function Homepage({
     <>
       <NavProvider>
         <NavBar items={locales} />
-        {hero && (
-          <Hero color="white" imageUrl={hero.image}>
-            <Title markdown={hero.title} />
-            <Text markdown={hero.description} />
-            {hero.cta && (
-              <LinkButton
-                href={hero.cta.href}
-                variant={hero.cta.variant}
-                size={hero.cta.size}
-              >
-                {hero.cta.label}
-              </LinkButton>
-            )}
-          </Hero>
-        )}
+        {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       {intro && (
         <Intro>

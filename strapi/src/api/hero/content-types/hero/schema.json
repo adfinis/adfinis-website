@@ -38,7 +38,7 @@
       "component": "global.brand-colors",
       "required": true
     },
-    "backround_image": {
+    "background_image": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -50,15 +50,6 @@
           "localized": false
         }
       }
-    },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
     },
     "body": {
       "pluginOptions": {

@@ -35,15 +35,9 @@
       "required": true
     },
     "hero": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.hero-with-cta",
-      "required": true
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
     },
     "intro": {
       "type": "component",

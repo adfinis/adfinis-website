@@ -1,7 +1,5 @@
 import { SLUGS } from "@/app/[locale]/(partners-products)/slugs"
 import strapi from "@/lib/strapi"
-import Hero from "@/components/hero"
-import Title from "@/components/title"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
@@ -9,7 +7,7 @@ import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { notFound } from "next/navigation"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
-import LinkButton from "@/components/link-button"
+import HeroWrapper from "@/components/stapi/hero-wrapper"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -44,21 +42,7 @@ export default async function PartnersProducts({
     <>
       <NavProvider>
         <NavBar items={locales} />
-        {hero && (
-          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
-            <Title markdown={hero.title} />
-            <Text markdown={hero.body} />
-            {hero.cta && (
-              <LinkButton
-                href={hero.cta.href}
-                variant={hero.cta.variant}
-                size={hero.cta.size}
-              >
-                {hero.cta.label}
-              </LinkButton>
-            )}
-          </Hero>
-        )}
+        {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       {intro && (
         <Intro>
