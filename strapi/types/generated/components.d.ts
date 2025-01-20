@@ -158,6 +158,17 @@ export interface CardsProjectCardWithExternalCta
   };
 }
 
+export interface CardsSimpleCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_simple_cards';
+  info: {
+    displayName: 'Simple card';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
@@ -712,6 +723,33 @@ export interface SectionsSectionWithRichtHeadingIntroAndCta
   };
 }
 
+export interface SectionsServicesSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_services_sections';
+  info: {
+    displayName: 'Services Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.simple-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_section_with_ctas';
   info: {
@@ -780,6 +818,7 @@ declare module '@strapi/strapi' {
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
+      'cards.simple-card': CardsSimpleCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.blog-block': GlobalBlogBlock;
@@ -813,6 +852,7 @@ declare module '@strapi/strapi' {
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
+      'sections.services-section': SectionsServicesSection;
       'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;

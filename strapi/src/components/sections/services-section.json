@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_services_sections",
+  "info": {
+    "displayName": "Services Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "max": 2
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.simple-card",
+      "min": 1
+    }
+  }
+}

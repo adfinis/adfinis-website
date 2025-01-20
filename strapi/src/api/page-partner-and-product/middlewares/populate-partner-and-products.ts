@@ -67,6 +67,9 @@ const populate = {
             populate: '*',
           }
         }
+      },
+      'sections.services-section': {
+        populate: '*'
       }
     },
   }
