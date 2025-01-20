@@ -1159,29 +1159,12 @@ export interface ApiSolutionsOverviewSolutionsOverview
     };
   };
   attributes: {
-    combine_your_yourney: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    kpi_sections: Schema.Attribute.Component<
-      'sections.icon-card-section-with-relation',
-      false
-    > &
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1207,27 +1190,20 @@ export interface ApiSolutionsOverviewSolutionsOverview
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    sla_section: Schema.Attribute.Component<
-      'relations.sla-card-section',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    soutions_section: Schema.Attribute.Component<
-      'relations.section-solutions-relation',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    start_your_journey: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.text-section-with-cta',
+        'sections.icon-card-section-with-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'sections.two-column-section',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'sections.video-section',
+        'sections.video-with-text-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.services-section',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

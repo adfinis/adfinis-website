@@ -13,14 +13,14 @@
     "description": {
       "type": "richtext"
     },
-    "card_image": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "solution_page": {
       "type": "relation",
