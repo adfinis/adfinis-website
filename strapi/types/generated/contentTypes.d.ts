@@ -1196,6 +1196,13 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.icon-card-section-with-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
+        'sections.two-column-section',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'sections.video-section',
+        'sections.video-with-text-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.services-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

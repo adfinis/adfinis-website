@@ -28,9 +28,9 @@ module.exports = (config, {strapi}) => {
                 }
               },
             },
-            // 'sections.two-column-section': {
-            //   populate: '*',
-            // },
+            'sections.two-column-section': {
+              populate: '*',
+            },
             'sections.text-section-with-cta': {
               populate: '*',
             },
@@ -42,40 +42,40 @@ module.exports = (config, {strapi}) => {
                 section_props: true,
               },
             },
-            // 'relations.white-paper-section': {
-            //   populate: {
-            //     props: true,
-            //     white_paper: {
-            //       populate: '*'
-            //     },
-            //   },
-            // },
-            // 'relations.quotes-relation': {
-            //   populate: {
-            //     quotes: {
-            //       populate: '*'
-            //     },
-            //   },
-            // },
-            // 'sections.video-section': {
-            //   populate: '*',
-            // },
-            // 'sections.video-with-text-section': {
-            //   populate: '*',
-            // },
-            // 'sections.kpi-with-intro-and-hallmarks-section': {
-            //   populate: {
-            //     kpis: {
-            //       populate: '*',
-            //     },
-            //     hallmark: {
-            //       populate: true,
-            //     },
-            //   },
-            // },
-            // 'sections.services-section': {
-            //   populate: '*'
-            // }
+            'relations.white-paper-section': {
+              populate: {
+                props: true,
+                white_paper: {
+                  populate: '*'
+                },
+              },
+            },
+            'relations.quotes-relation': {
+              populate: {
+                quotes: {
+                  populate: '*'
+                },
+              },
+            },
+            'sections.video-section': {
+              populate: '*',
+            },
+            'sections.video-with-text-section': {
+              populate: '*',
+            },
+            'sections.kpi-with-intro-and-hallmarks-section': {
+              populate: {
+                kpis: {
+                  populate: '*',
+                },
+                hallmark: {
+                  populate: true,
+                },
+              },
+            },
+            'sections.services-section': {
+              populate: '*'
+            }
           },
         }
       },
