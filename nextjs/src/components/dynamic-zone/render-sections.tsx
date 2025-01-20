@@ -11,6 +11,7 @@ import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sect
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
+import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -97,6 +98,13 @@ export function renderSections(section: any, index: number) {
       return (
         <SlaCardSection
           key={`relations.sla-card-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.color-card-slider-section":
+      return (
+        <ColorCardSliderSection
+          key={`sections.color-card-slider-section_${index}`}
           section={section}
         />
       )

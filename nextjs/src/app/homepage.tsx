@@ -18,13 +18,14 @@ import CardArticle from "@/components/cards/card-article"
 import CardCounter from "@/components/cards/card-counter"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
+import { renderSections } from "@/components/dynamic-zone/render-sections"
 
 export default async function Homepage({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${activeLocale.locale}&populate=localizations&populate=hero.background_image&populate=hero.cta&populate=hero.color`
+  const url = `homepage?locale=${activeLocale.locale}`
   const { data } = await (await strapi(url)).json()
   const locales = (data?.localizations ?? []).map(
     (item: { locale: string }) => {
@@ -37,7 +38,7 @@ export default async function Homepage({
   )
   locales.push(activeLocale)
 
-  const { hero, intro } = data ?? {}
+  const { hero, intro, sections } = data ?? {}
 
   return (
     <>
@@ -50,27 +51,8 @@ export default async function Homepage({
           <Text markdown={intro} className="grid gap-8" />
         </Intro>
       )}
-      {/*{our_solutions && (*/}
-      {/*  <Container background="neutral">*/}
-      {/*    <CardSlider*/}
-      {/*      title={our_solutions.title}*/}
-      {/*      description={our_solutions.description}*/}
-      {/*      ctas={our_solutions.ctas.map(mapCta)}*/}
-      {/*    >*/}
-      {/*      {our_solutions.cards.map((card: any, index: number) => {*/}
-      {/*        return (*/}
-      {/*          <CardSliderElement key={`our_solutions_card_${index}`}>*/}
-      {/*            <CardColored*/}
-      {/*              color={card.color}*/}
-      {/*              title={card.title}*/}
-      {/*              description={card.description}*/}
-      {/*            />*/}
-      {/*          </CardSliderElement>*/}
-      {/*        )*/}
-      {/*      })}*/}
-      {/*    </CardSlider>*/}
-      {/*  </Container>*/}
-      {/*)}*/}
+      {sections && sections.length > 0 && sections.map(renderSections)}
+
       {/*{our_projects && (*/}
       {/*  <Container background="stone" padding="both-padding">*/}
       {/*    <SectionGroup>*/}

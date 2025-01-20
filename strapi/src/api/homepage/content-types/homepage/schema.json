@@ -47,6 +47,17 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.color-card-slider-section"
+      ]
     }
   }
 }
