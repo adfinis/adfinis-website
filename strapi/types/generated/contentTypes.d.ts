@@ -723,7 +723,10 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['sections.color-card-slider-section']
+      [
+        'sections.color-card-slider-section',
+        'sections.projects-card-section-with-external-link',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

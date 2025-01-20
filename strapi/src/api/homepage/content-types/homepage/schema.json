@@ -56,7 +56,8 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.color-card-slider-section"
+        "sections.color-card-slider-section",
+        "sections.projects-card-section-with-external-link"
       ]
     }
   }
