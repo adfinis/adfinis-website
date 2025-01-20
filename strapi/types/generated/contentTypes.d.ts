@@ -626,7 +626,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    backround_image: Schema.Attribute.Media<'images'> &
+    background_image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

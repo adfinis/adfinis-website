@@ -45,7 +45,7 @@ export default async function PartnersProducts({
       <NavProvider>
         <NavBar items={locales} />
         {hero && (
-          <Hero color={hero.color.color} imageUrl={hero.backround_image.url}>
+          <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
             <Title markdown={hero.title} />
             <Text markdown={hero.body} />
             {hero.cta && (

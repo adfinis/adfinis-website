@@ -38,7 +38,7 @@
       "component": "global.brand-colors",
       "required": true
     },
-    "backround_image": {
+    "background_image": {
       "type": "media",
       "multiple": false,
       "required": true,
