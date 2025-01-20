@@ -26,6 +26,8 @@ import {
   services,
   cardIconGridExample,
   cardIconWiderExample,
+  eventDetails,
+  eventSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -51,6 +53,9 @@ import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { CardMessage } from "@/components/cards/card-message"
+import SectionEvent from "@/components/sections/section-event"
+import InfoLabel from "@/components/info-label"
+import LinkButton from "@/components/link-button"
 
 export default function Theme({
   params: { locale },
@@ -397,6 +402,25 @@ export default function Theme({
             })}
           </CardGroup>
         </SectionGroup>
+      </Container>
+
+      <Container id="event-info" padding="both-padding" background="stone">
+        <SectionGroup>
+          <SectionEvent
+            title={eventSection.title}
+            date={eventSection.date}
+            location={eventSection.location}
+            time={eventSection.time}
+            html={eventSection.html}
+            cta={eventSection.cta}
+          />
+        </SectionGroup>
+      </Container>
+
+      <Container id="event-example" background="white" padding="both-padding">
+        <InfoLabel text={eventDetails.info} className="block mb-4" />
+        <Text markdown={eventDetails.description} className="mb-8 max-w-4xl" />
+        <LinkButton {...eventSection.cta}>{eventSection.cta.text}</LinkButton>
       </Container>
     </main>
   )

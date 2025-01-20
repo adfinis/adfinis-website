@@ -739,6 +739,37 @@ export const cardIconGridExample = {
   ],
 } as const
 
+export const eventDetails = {
+  info: "Date event: January 23, 2024",
+  description: `
+  ## **Gitlab Roadshow - Stop in Bern**
+  At this event, you’ll have the opportunity to:
+- Learn about GitLab Ultimate and DORA Metrics: Discover how to analyze and improve your DevOps Supply Chain performance with GitLab.
+- Software Bill of Materials (SBOM): Understand the significance of an SBOM and how it can enhance the security of your DevOps Supply Chain.
+- Partner Insights: Adfinis will share valuable insights on securing your software lifecycle with GitLab.
+- Customer Stories: Hear firsthand from GitLab & Adfinis customers as they share their use cases and experiences on the open stage.
+- Pasta Class and Tasting: Join us for a fun pasta-making class and savor the delicious results!
+
+You are encouraged to take the stage and share your own experiences and use cases. Don’t hesitate to reach out if you have any questions or want to be part of the discussion.
+
+Don’t miss this unique opportunity to gain insights, network with industry professionals, and enjoy a delightful pasta experience. Sign up now and secure your spot!
+  `,
+}
+
+export const eventSection = {
+  title: "Event Details",
+  date: "January 31, 2025",
+  time: "14:00 - 18:00 CET + get-together",
+  location: "Parkterrasse 10, 3012 Bern, Switzerland",
+  cta: {
+    href: "/contact",
+    text: "Get started",
+    variant: "primary",
+    size: "large",
+  } as CTA,
+  html: `<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2723.593419958105!2d7.436106476816756!3d46.950029533085306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39bee413c419%3A0x91033410f606279d!2sParkterrasse%2010%2C%203012%20Bern%2C%20Switzerland!5e0!3m2!1sen!2snl!4v1737378430185!5m2!1sen!2snl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>`,
+}
+
 export const footer = {
   columns: [
     {
