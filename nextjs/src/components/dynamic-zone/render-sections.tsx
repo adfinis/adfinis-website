@@ -3,10 +3,12 @@ import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
 import WhitePaperSection from "@/components/dynamic-zone/wrapper/relations/white-paper-section"
 import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-relation"
-import HeadingWithLinkContainer from "@/components/dynamic-zone/wrapper/sections/heading-with-link-container"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
+import ProjectsCardSectionWithExternalLink from "@/components/dynamic-zone/wrapper/sections/projects-card-section-with-external-link"
+import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
+import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -40,13 +42,6 @@ export function renderSections(section: any, index: number) {
       )
     case "relations.quotes-relation":
       return <QuotesRelation key={`section_quote_${index}`} section={section} />
-    case "sections.heading-with-link-container":
-      return (
-        <HeadingWithLinkContainer
-          key={`section_heading_with_link_${index}`}
-          section={section}
-        />
-      )
     case "sections.video-section":
       return (
         <VideoSection
@@ -65,6 +60,27 @@ export function renderSections(section: any, index: number) {
       return (
         <KpiWithIntroAndHallmarksSection
           key={`section_kpi_with_intro_and_hallmarks_section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.projects-card-section-with-external-link":
+      return (
+        <ProjectsCardSectionWithExternalLink
+          key={`section_projects_card_section_with_external_link_${index}`}
+          section={section}
+        />
+      )
+    case "sections.events-section-with-intro-and-cta":
+      return (
+        <EventsSectionWithIntroAndCta
+          key={`section_events-section-with-intro-and-cta_${index}`}
+          section={section}
+        />
+      )
+    case "sections.services-section":
+      return (
+        <ServicesSection
+          key={`section_services-section_${index}`}
           section={section}
         />
       )

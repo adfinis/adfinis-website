@@ -50,69 +50,31 @@
       "target": "api::hero.hero"
     },
     "intro": {
-      "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.intro"
+      "type": "richtext",
+      "required": true
     },
-    "project_cards": {
-      "type": "component",
-      "repeatable": false,
+    "sections": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.project-cards-section"
-    },
-    "kpis": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.kpi-section"
-    },
-    "start_your_journey": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.heading-with-link-container"
-    },
-    "case_studies": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.events-section-with-intro-and-cta"
-    },
-    "quotes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::quote.quote"
-    },
-    "products": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.icon-card-section-with-relation"
+      "type": "dynamiczone",
+      "components": [
+        "sections.two-column-section",
+        "sections.video-with-text-section",
+        "sections.video-section",
+        "sections.text-section-with-cta",
+        "sections.icon-card-section-with-relation",
+        "relations.white-paper-section",
+        "relations.quotes-relation",
+        "sections.services-section"
+      ]
     }
   }
 }

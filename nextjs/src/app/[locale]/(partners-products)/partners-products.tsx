@@ -52,7 +52,7 @@ export default async function PartnersProducts({
       </NavProvider>
       {intro && (
         <Intro>
-          <Text markdown={intro.body} className="grid gap-8" />
+          <Text markdown={intro} className="grid gap-8" />
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}

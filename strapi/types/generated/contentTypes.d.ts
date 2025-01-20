@@ -987,7 +987,8 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro-body', false> &
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1018,13 +1019,15 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.two-column-section',
         'sections.text-section-with-cta',
         'sections.icon-card-section-with-relation',
-        'sections.heading-with-link-container',
         'relations.white-paper-section',
         'relations.quotes-relation',
         'relations.calendly-section',
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.events-section-with-intro-and-cta',
+        'sections.services-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1262,26 +1265,12 @@ export interface ApiSolutionsPageSolutionsPage
     };
   };
   attributes: {
-    case_studies: Schema.Attribute.Component<
-      'sections.events-section-with-intro-and-cta',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    kpis: Schema.Attribute.Component<'sections.kpi-section', false> &
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1306,37 +1295,26 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
-    products: Schema.Attribute.Component<
-      'sections.icon-card-section-with-relation',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    project_cards: Schema.Attribute.Component<
-      'sections.project-cards-section',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     publishedAt: Schema.Attribute.DateTime;
-    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.two-column-section',
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.text-section-with-cta',
+        'sections.icon-card-section-with-relation',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'sections.services-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    start_your_journey: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
-    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
