@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
         className={clsx([
           "z-0 absolute inset-0 bg-gradient-to-r from-stone/50 to-stone/0",
           "transition-all duration-75",
-          { "bg-stone/60": navActive },
+          { "bg-stone/90": navActive },
         ])}
       />
       <Triangle
