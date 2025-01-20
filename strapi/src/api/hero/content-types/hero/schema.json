@@ -51,15 +51,6 @@
         }
       }
     },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
-    },
     "body": {
       "pluginOptions": {
         "i18n": {

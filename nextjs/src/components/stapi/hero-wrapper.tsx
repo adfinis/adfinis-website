@@ -1,4 +1,3 @@
-import Title from "@/components/title"
 import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Hero from "@/components/hero"
@@ -12,7 +11,6 @@ type Props = {
   background_image: {
     url: string
   }
-  title: string
   body: string
   cta: CTA
 }
@@ -20,7 +18,6 @@ type Props = {
 export default function HeroWrapper({ hero }: { hero: Props }) {
   return (
     <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
-      <Title markdown={hero.title} />
       <Text markdown={hero.body} />
       {hero.cta && (
         <LinkButton
