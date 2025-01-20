@@ -8,12 +8,6 @@ import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 
-const SUB_PAGE: any = {
-  en: "solutions",
-  nl: "oplossingen",
-  de: "lösungen",
-}
-
 const mapCta = (cta: any) => ({
   // TODO Decide if we want to change CTA type or rename label to text in strapi
   text: cta.label,
@@ -51,35 +45,6 @@ export default async function Solutions({
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
-      {/*{soutions_section && (*/}
-      {/*  <Container*/}
-      {/*    background={soutions_section.section_props.background}*/}
-      {/*    padding={soutions_section.section_props.padding}*/}
-      {/*  >*/}
-      {/*    <SectionGroup title={soutions_section.title}>*/}
-      {/*      {soutions_section.solutions.map((item: any, i: number) => {*/}
-      {/*        return (*/}
-      {/*          <SectionCardWide*/}
-      {/*            ctas={[]}*/}
-      {/*            image={{ src: item.card_image.url, alt: "" }}*/}
-      {/*            reverse={i % 2 === 1}*/}
-      {/*            key={`soutions_section_solutions_${i}`}*/}
-      {/*          >*/}
-      {/*            <Title level={3} boldness={"semibold"}>*/}
-      {/*              {item.title}*/}
-      {/*            </Title>*/}
-      {/*            <Text markdown={item.description} />*/}
-      {/*            <LinkButton*/}
-      {/*              href={`/${activeLocale.locale}/${SUB_PAGE[activeLocale.locale]}/${item.solution_page.slug}`}*/}
-      {/*            >*/}
-      {/*              Read more*/}
-      {/*            </LinkButton>*/}
-      {/*          </SectionCardWide>*/}
-      {/*        )*/}
-      {/*      })}*/}
-      {/*    </SectionGroup>*/}
-      {/*  </Container>*/}
-      {/*)}*/}
       {/*{sla_section && (*/}
       {/*  <Container*/}
       {/*    background={sla_section.section_props.background}*/}

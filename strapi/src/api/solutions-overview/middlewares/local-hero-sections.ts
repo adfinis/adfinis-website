@@ -12,9 +12,14 @@ module.exports = (config, {strapi}) => {
         },
         sections: {
           on: {
-            // 'relations.section-solutions-relation': {
-            //   populate: '*',
-            // },
+            'relations.section-solutions-relation': {
+              populate: {
+                props: true,
+                solutions: {
+                  populate: '*'
+                }
+              },
+            },
             // 'relations.sla-card-section': {
             //   populate: '*',
             // },

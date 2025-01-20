@@ -10,7 +10,7 @@
       "type": "richtext",
       "required": true
     },
-    "section_props": {
+    "props": {
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props",

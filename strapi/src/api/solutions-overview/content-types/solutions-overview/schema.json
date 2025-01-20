@@ -57,7 +57,8 @@
       "type": "dynamiczone",
       "components": [
         "sections.text-section-with-cta",
-        "sections.icon-card-section-with-relation"
+        "sections.icon-card-section-with-relation",
+        "relations.section-solutions-relation"
       ]
     }
   }

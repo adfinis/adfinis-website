@@ -9,6 +9,7 @@ import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/s
 import ProjectsCardSectionWithExternalLink from "@/components/dynamic-zone/wrapper/sections/projects-card-section-with-external-link"
 import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
+import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -81,6 +82,13 @@ export function renderSections(section: any, index: number) {
       return (
         <ServicesSection
           key={`section_services-section_${index}`}
+          section={section}
+        />
+      )
+    case "relations.section-solutions-relation":
+      return (
+        <SectionSolutionsRelation
+          key={`relations.section-solutions-relation_${index}`}
           section={section}
         />
       )
