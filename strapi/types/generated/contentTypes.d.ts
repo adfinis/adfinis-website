@@ -1305,6 +1305,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.icon-card-section-with-relation',
         'relations.white-paper-section',
         'relations.quotes-relation',
+        'sections.services-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

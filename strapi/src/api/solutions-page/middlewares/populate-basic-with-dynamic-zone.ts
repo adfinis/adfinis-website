@@ -57,6 +57,9 @@ module.exports = (config, {strapi}) => {
                 },
               },
             },
+            'sections.services-section': {
+              populate: '*'
+            }
           },
         }
       },
