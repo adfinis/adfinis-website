@@ -15,6 +15,18 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.12.0] - 2025-01-21
+
+- Feature/aw 27 events overview grid overview (#73) 
+- AW-70 migrate home page to dynamic zone (#74)
+- AW-69 migrate solutions overview page to dynamic zone (#72)
+- AW-72 strapi hero collection refactor and fix typo (#71)
+- AW-53 strapi frontend add optional cta to hero collection (#70)
+- Feature/aw 24 event date (#69)
+- Feature/aw 50 51 darker menu fullwidth background (#68)
+- Feature/add dynamic zones to existing pages (#67)
+- Feature/aw 54 wider icon cards section (#66)
+
 ## [0.11.0] - 2025-01-17
 
 - Feature/AW-46 refactor dynamic zone components (#64)
