@@ -726,6 +726,17 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       [
         'sections.color-card-slider-section',
         'sections.projects-card-section-with-external-link',
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.two-column-section',
+        'sections.text-section-with-cta',
+        'sections.services-section',
+        'sections.events-section-with-intro-and-cta',
+        'relations.sla-card-section',
+        'sections.icon-card-section-with-relation',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'sections.kpi-with-intro-and-hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
