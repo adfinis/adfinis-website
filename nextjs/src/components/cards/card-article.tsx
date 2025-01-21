@@ -23,7 +23,7 @@ const CardArticle: React.FC<CardArticleProps> = ({
   categories,
 }) => (
   <article
-    className="relative rounded-xl w-80 lg:w-112 overflow-hidden bg-white h-100 shadow-2"
+    className="relative rounded-xl min-w-80 lg:min-w-112 overflow-hidden bg-white h-100 shadow-2"
     data-component="CardArticle"
   >
     {imageUrl && (
