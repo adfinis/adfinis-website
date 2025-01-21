@@ -10,13 +10,13 @@
       "type": "richtext",
       "required": true
     },
-    "section_props": {
+    "props": {
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props",
       "required": true
     },
-    "sla_cards": {
+    "cards": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sla-card.sla-card"

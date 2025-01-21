@@ -27,18 +27,16 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
   const { scrollPosition } = useDetectScroll()
 
   return (
-    <div className="isolate z-50 pr-8" onMouseLeave={hideDesktopItems}>
-      {/* title of the menu items */}
-      <div className="mx-auto max-w-7xl">
-        <div
-          onMouseEnter={showDesktopItems}
-          className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4"
-        >
-          {navItem.title}
-        </div>
+    <div onMouseLeave={hideDesktopItems}>
+      {/* title of the menu items (always visible, in topbar) */}
+      <div
+        onMouseEnter={showDesktopItems}
+        className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8"
+      >
+        {navItem.title}
       </div>
 
-      {/* menu items */}
+      {/* the menu items */}
       <Transition
         show={isShowing}
         enter="transition delay-300 duration-300 ease-out"
@@ -52,7 +50,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
           className={clsx([
             "absolute inset-x-0 top-14 -z-10 py-10 px-16",
             {
-              "bg-stone/50 backdrop-blur-sm": scrollPosition.top > 50,
+              "bg-stone/80 backdrop-blur-sm": scrollPosition.top > 50,
             },
           ])}
         >
@@ -76,6 +74,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                         key={subIndex}
                         href={subItem.url}
                       >
+                        {/* the hover link underline bar animation  */}
                         <span
                           className={clsx([
                             "transition-all duration-500 ease-out",

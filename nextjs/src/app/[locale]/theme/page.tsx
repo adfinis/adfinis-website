@@ -24,6 +24,11 @@ import {
   calendlySection,
   youtubeSection,
   services,
+  cardIconGridExample,
+  cardIconWiderExample,
+  eventDetails,
+  eventSection,
+  eventGrid,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -49,6 +54,9 @@ import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { CardMessage } from "@/components/cards/card-message"
+import SectionEvent from "@/components/sections/section-event"
+import InfoLabel from "@/components/info-label"
+import LinkButton from "@/components/link-button"
 
 export default function Theme({
   params: { locale },
@@ -358,6 +366,81 @@ export default function Theme({
             )
           })}
         </CardSlider>
+      </Container>
+
+      <Container
+        id="card-icon-grid"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none">
+          {cardIconGridExample.cards.map((item, i) => {
+            return (
+              <CardIcon
+                imageUrl={item.icon.src}
+                title={item.title}
+                description={item.description}
+                cta={item.cta}
+                key={i}
+              />
+            )
+          })}
+        </CardGroup>
+      </Container>
+
+      <Container id="card-icon-grid" padding="both-padding" background="white">
+        <SectionGroup title="Why Adfinis?" align="center">
+          <CardGroup hasDividers columns={3} maxWidth="7xl">
+            {cardIconWiderExample.cards.map((item, i) => {
+              return (
+                <CardIcon
+                  imageUrl={item.icon.src}
+                  title={item.title}
+                  description={item.description}
+                  key={i}
+                />
+              )
+            })}
+          </CardGroup>
+        </SectionGroup>
+      </Container>
+
+      <Container
+        id="event-grid-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none">
+          {eventGrid.map((event, index) => (
+            <CardArticle
+              key={index}
+              title={event.title}
+              subtitle={event.location}
+              description={event.date}
+              imageUrl={event.image.src}
+              logoUrl={event.logo.src}
+            />
+          ))}
+        </CardGroup>
+      </Container>
+
+      <Container id="event-info" padding="both-padding" background="stone">
+        <SectionGroup>
+          <SectionEvent
+            title={eventSection.title}
+            date={eventSection.date}
+            location={eventSection.location}
+            time={eventSection.time}
+            html={eventSection.html}
+            cta={eventSection.cta}
+          />
+        </SectionGroup>
+      </Container>
+
+      <Container id="event-example" background="white" padding="both-padding">
+        <InfoLabel text={eventDetails.info} className="block mb-4" />
+        <Text markdown={eventDetails.description} className="mb-8 max-w-4xl" />
+        <LinkButton {...eventSection.cta}>{eventSection.cta.text}</LinkButton>
       </Container>
     </main>
   )

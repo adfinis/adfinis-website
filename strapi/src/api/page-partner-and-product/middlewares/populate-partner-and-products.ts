@@ -5,9 +5,6 @@ const populate = {
   hero: {
     populate: '*'
   },
-  intro: {
-    populate: true,
-  },
   sections: {
     on: {
       'sections.two-column-section': {
@@ -39,13 +36,6 @@ const populate = {
           },
         },
       },
-      'sections.heading-with-link-container': {
-        populate: {
-          section_group_with_external_link: {
-            populate: '*'
-          },
-        },
-      },
       'sections.video-section': {
         populate: '*',
       },
@@ -62,6 +52,25 @@ const populate = {
           },
         },
       },
+      'sections.projects-card-section-with-external-link': {
+        populate: {
+          projects: {
+            populate: '*',
+          }
+        }
+      },
+      'sections.events-section-with-intro-and-cta': {
+        populate: {
+          props: true,
+          cta: true,
+          events: {
+            populate: '*',
+          }
+        }
+      },
+      'sections.services-section': {
+        populate: '*'
+      }
     },
   }
 };

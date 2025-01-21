@@ -38,7 +38,7 @@
       "component": "global.brand-colors",
       "required": true
     },
-    "backround_image": {
+    "background_image": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -51,15 +51,6 @@
         }
       }
     },
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
-    },
     "body": {
       "pluginOptions": {
         "i18n": {
@@ -68,6 +59,16 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "external-links.call-to-action"
     }
   }
 }

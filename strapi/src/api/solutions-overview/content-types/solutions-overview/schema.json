@@ -40,64 +40,34 @@
       "target": "api::hero.hero"
     },
     "intro": {
-      "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.intro"
+      "type": "richtext",
+      "required": true
     },
-    "kpi_sections": {
-      "type": "component",
-      "repeatable": false,
+    "sections": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.icon-card-section-with-relation"
-    },
-    "soutions_section": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "relations.section-solutions-relation"
-    },
-    "start_your_journey": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.heading-with-link-container"
-    },
-    "sla_section": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "relations.sla-card-section"
-    },
-    "combine_your_yourney": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.heading-with-link-container"
+      "type": "dynamiczone",
+      "components": [
+        "sections.text-section-with-cta",
+        "sections.icon-card-section-with-relation",
+        "relations.section-solutions-relation",
+        "relations.sla-card-section",
+        "sections.two-column-section",
+        "relations.white-paper-section",
+        "relations.quotes-relation",
+        "sections.video-section",
+        "sections.video-with-text-section",
+        "sections.kpi-with-intro-and-hallmarks-section",
+        "sections.services-section"
+      ]
     }
   }
 }

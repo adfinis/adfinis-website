@@ -158,6 +158,17 @@ export interface CardsProjectCardWithExternalCta
   };
 }
 
+export interface CardsSimpleCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_simple_cards';
+  info: {
+    displayName: 'Simple card';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
@@ -350,7 +361,7 @@ export interface RelationsSectionSolutionsRelation
     displayName: 'Section Solutions Relation';
   };
   attributes: {
-    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+    props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     solutions: Schema.Attribute.Component<
       'relations.solutions-relation-with-description',
@@ -367,9 +378,9 @@ export interface RelationsSlaCardSection extends Struct.ComponentSchema {
     displayName: 'SLA Card Section';
   };
   attributes: {
-    section_props: Schema.Attribute.Component<'sections.section-props', false> &
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
-    sla_cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
@@ -382,9 +393,9 @@ export interface RelationsSolutionsRelationWithDescription
     displayName: 'Solutions Relation With Description';
   };
   attributes: {
-    card_image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
     description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     solution_page: Schema.Attribute.Relation<
       'oneToOne',
       'api::solutions-page.solutions-page'
@@ -449,16 +460,16 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
     displayName: 'Color card slider section';
   };
   attributes: {
-    color_cards: Schema.Attribute.Component<'cards.color-card', true> &
-      Schema.Attribute.Required &
+    cards: Schema.Attribute.Component<'cards.color-card', true>;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
       Schema.Attribute.SetMinMax<
         {
-          min: 1;
+          max: 2;
         },
         number
       >;
-    intro: Schema.Attribute.Component<'cards.card-slider-intro', false> &
-      Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -470,17 +481,20 @@ export interface SectionsEventsSectionWithIntroAndCta
     displayName: 'Events section with intro and CTA';
   };
   attributes: {
-    body: Schema.Attribute.String;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.Required;
+    description: Schema.Attribute.RichText;
     events: Schema.Attribute.Component<'cards.event-card', true> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           min: 1;
         },
         number
       >;
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.String;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -695,9 +709,9 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsSectionWithRichtHeadingIntroAndCta
+export interface SectionsSectionWithRichHeadingIntroAndCta
   extends Struct.ComponentSchema {
-  collectionName: 'components_sections_section_with_richt_heading_intro_and_ctas';
+  collectionName: 'components_sections_section_with_rich_heading_intro_and_ctas';
   info: {
     description: '';
     displayName: 'Section with rich heading, intro and CTA';
@@ -706,6 +720,33 @@ export interface SectionsSectionWithRichtHeadingIntroAndCta
     ctas: Schema.Attribute.Component<'external-links.call-to-action', true>;
     intro: Schema.Attribute.RichText & Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsServicesSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_services_sections';
+  info: {
+    displayName: 'Services Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.simple-card', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -777,6 +818,7 @@ declare module '@strapi/strapi' {
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
+      'cards.simple-card': CardsSimpleCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.blog-block': GlobalBlogBlock;
@@ -809,7 +851,8 @@ declare module '@strapi/strapi' {
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
-      'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
+      'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
+      'sections.services-section': SectionsServicesSection;
       'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;

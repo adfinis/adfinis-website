@@ -50,15 +50,13 @@
       "target": "api::hero.hero"
     },
     "intro": {
-      "displayName": "Intro Body",
-      "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "global.intro-body"
+      "type": "richtext",
+      "required": true
     },
     "sections": {
       "pluginOptions": {
@@ -71,13 +69,15 @@
         "sections.two-column-section",
         "sections.text-section-with-cta",
         "sections.icon-card-section-with-relation",
-        "sections.heading-with-link-container",
         "relations.white-paper-section",
         "relations.quotes-relation",
         "relations.calendly-section",
         "sections.video-section",
         "sections.video-with-text-section",
-        "sections.kpi-with-intro-and-hallmarks-section"
+        "sections.kpi-with-intro-and-hallmarks-section",
+        "sections.projects-card-section-with-external-link",
+        "sections.events-section-with-intro-and-cta",
+        "sections.services-section"
       ]
     }
   }

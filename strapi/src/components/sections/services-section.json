@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_sections_events_section_with_intro_and_ctas",
+  "collectionName": "components_sections_services_sections",
   "info": {
-    "displayName": "Events section with intro and CTA",
-    "description": ""
+    "displayName": "Services Section"
   },
   "options": {},
   "attributes": {
@@ -11,13 +10,14 @@
       "required": true
     },
     "description": {
-      "type": "richtext"
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "external-links.call-to-action",
+      "type": "richtext",
       "required": true
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "max": 2
     },
     "props": {
       "type": "component",
@@ -25,12 +25,11 @@
       "component": "sections.section-props",
       "required": true
     },
-    "events": {
+    "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.event-card",
-      "min": 1,
-      "required": true
+      "component": "cards.simple-card",
+      "min": 1
     }
   }
 }
