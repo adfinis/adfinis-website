@@ -709,9 +709,9 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsSectionWithRichtHeadingIntroAndCta
+export interface SectionsSectionWithRichHeadingIntroAndCta
   extends Struct.ComponentSchema {
-  collectionName: 'components_sections_section_with_richt_heading_intro_and_ctas';
+  collectionName: 'components_sections_section_with_rich_heading_intro_and_ctas';
   info: {
     description: '';
     displayName: 'Section with rich heading, intro and CTA';
@@ -851,7 +851,7 @@ declare module '@strapi/strapi' {
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.section-props': SectionsSectionProps;
-      'sections.section-with-richt-heading-intro-and-cta': SectionsSectionWithRichtHeadingIntroAndCta;
+      'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
       'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;

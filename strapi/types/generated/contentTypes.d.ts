@@ -695,7 +695,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
-    intro: Schema.Attribute.Component<'global.intro', false> &
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -706,15 +707,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::homepage.homepage'
     >;
-    meet_our_partners: Schema.Attribute.Component<
-      'sections.section-with-richt-heading-intro-and-cta',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     meta_description: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -729,68 +721,23 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    more_on_adfinis: Schema.Attribute.Component<
-      'sections.kpi-with-intro-and-hallmarks-section',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    our_partners: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::hallmark.hallmark'
-    >;
-    our_projects: Schema.Attribute.Component<
-      'sections.projects-card-section-with-external-link',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    our_resources: Schema.Attribute.Component<
-      'sections.events-section-with-intro-and-cta',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    our_solutions: Schema.Attribute.Component<
-      'sections.color-card-slider-section',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     publishedAt: Schema.Attribute.DateTime;
-    shape_your_journey: Schema.Attribute.Component<
-      'sections.icon-card-section-with-external-ct-as',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    start_your_career: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    start_your_journey: Schema.Attribute.Component<
-      'sections.heading-with-link-container',
-      false
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.color-card-slider-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.two-column-section',
+        'sections.text-section-with-cta',
+        'sections.services-section',
+        'sections.events-section-with-intro-and-cta',
+        'relations.sla-card-section',
+        'sections.icon-card-section-with-relation',
+        'relations.white-paper-section',
+        'relations.quotes-relation',
+        'sections.kpi-with-intro-and-hallmarks-section',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -800,15 +747,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    who_are_we: Schema.Attribute.Component<
-      'sections.projects-card-section-with-external-link',
-      false
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
   };
 }
 
