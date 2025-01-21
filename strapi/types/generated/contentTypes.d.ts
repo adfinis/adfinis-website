@@ -795,6 +795,14 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::icon-card.icon-card'
     >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
