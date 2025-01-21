@@ -16,6 +16,16 @@
     }
   },
   "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
     "title": {
       "pluginOptions": {
         "i18n": {
