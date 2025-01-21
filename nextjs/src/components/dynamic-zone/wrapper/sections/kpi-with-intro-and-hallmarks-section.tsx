@@ -3,10 +3,22 @@ import SectionGroup from "@/components/sections/section-group"
 import CardGroup from "@/components/cards/card-group"
 import CardCounter from "@/components/cards/card-counter"
 import Hallmarks from "@/components/stapi/hallmarks"
-import { colors } from "@/lib/colors"
 
 type Kpi = {
-  color: keyof typeof colors
+  color:
+    | "white"
+    | "stone"
+    | "biscay"
+    | "sapphire"
+    | "jumbo"
+    | "neutral"
+    | "sunglow"
+    | "sky"
+    | "cinnamon"
+    | "green"
+    | "razzmatazz"
+    | "fuchsia"
+    | "manhattan"
   title: string
   description: string
   icon_image: {
@@ -46,7 +58,9 @@ export default function KpiWithIntroAndHallmarksSection({
             />
           ))}
         </CardGroup>
-        <Hallmarks hallmarksId={section.hallmark.documentId} />
+        {section.hallmark && (
+          <Hallmarks hallmarksId={section.hallmark.documentId} />
+        )}
       </SectionGroup>
     </Container>
   )
