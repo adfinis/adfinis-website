@@ -36,6 +36,14 @@ const populate = {
           },
         },
       },
+      'relations.product-cards-section': {
+        populate: {
+          props: true,
+          cards: {
+            populate: '*',
+          },
+        },
+      },
       'sections.video-section': {
         populate: '*',
       },
