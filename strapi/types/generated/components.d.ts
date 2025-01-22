@@ -343,6 +343,22 @@ export interface RelationsCalendlySection extends Struct.ComponentSchema {
   };
 }
 
+export interface RelationsProductCardsSection extends Struct.ComponentSchema {
+  collectionName: 'components_relations_product_cards_sections';
+  info: {
+    displayName: 'Product Cards Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface RelationsQuotesRelation extends Struct.ComponentSchema {
   collectionName: 'components_relations_quotes_relations';
   info: {
@@ -830,6 +846,7 @@ declare module '@strapi/strapi' {
       'global.intro-body': GlobalIntroBody;
       'global.sla-item': GlobalSlaItem;
       'relations.calendly-section': RelationsCalendlySection;
+      'relations.product-cards-section': RelationsProductCardsSection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
