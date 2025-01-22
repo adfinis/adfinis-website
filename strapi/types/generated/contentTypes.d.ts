@@ -809,6 +809,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'relations.white-paper-section',
         'relations.quotes-relation',
         'sections.kpi-with-intro-and-hallmarks-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1039,6 +1040,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.projects-card-section-with-external-link',
         'sections.events-section-with-intro-and-cta',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1221,6 +1223,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.video-with-text-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1293,6 +1296,7 @@ export interface ApiSolutionsPageSolutionsPage
         'relations.white-paper-section',
         'relations.quotes-relation',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
