@@ -102,6 +102,9 @@ module.exports = (config, {strapi}) => {
             },
             'sections.services-section': {
               populate: '*'
+            },
+            'sections.info-details-section': {
+              populate: '*'
             }
           },
         }
