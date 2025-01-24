@@ -56,18 +56,23 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.text-section-with-cta",
-        "sections.icon-card-section-with-relation",
+        "relations.calendly-section",
+        "relations.product-cards-section",
+        "relations.quotes-relation",
         "relations.section-solutions-relation",
         "relations.sla-card-section",
-        "sections.two-column-section",
         "relations.white-paper-section",
-        "relations.quotes-relation",
-        "sections.video-section",
-        "sections.video-with-text-section",
+        "sections.color-card-slider-section",
+        "sections.events-section-with-intro-and-cta",
+        "sections.icon-card-section-with-relation",
+        "sections.info-details-section",
         "sections.kpi-with-intro-and-hallmarks-section",
+        "sections.projects-card-section-with-external-link",
         "sections.services-section",
-        "relations.product-cards-section"
+        "sections.text-section-with-cta",
+        "sections.two-column-section",
+        "sections.video-section",
+        "sections.video-with-text-section"
       ]
     }
   }
