@@ -68,7 +68,8 @@
         "sections.icon-card-section-with-relation",
         "relations.white-paper-section",
         "relations.quotes-relation",
-        "sections.kpi-with-intro-and-hallmarks-section"
+        "sections.kpi-with-intro-and-hallmarks-section",
+        "relations.product-cards-section"
       ]
     }
   }

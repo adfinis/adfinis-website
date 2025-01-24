@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_relations_product_cards_sections",
+  "info": {
+    "displayName": "Product Cards Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card-product.card-product"
+    }
+  }
+}

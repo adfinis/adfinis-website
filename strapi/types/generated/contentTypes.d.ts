@@ -423,6 +423,78 @@ export interface ApiCalendlyItemCalendlyItem
   };
 }
 
+export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'card_products';
+  info: {
+    displayName: 'Card Product';
+    pluralName: 'card-products';
+    singularName: 'card-product';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -737,6 +809,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'relations.white-paper-section',
         'relations.quotes-relation',
         'sections.kpi-with-intro-and-hallmarks-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -967,6 +1040,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.projects-card-section-with-external-link',
         'sections.events-section-with-intro-and-cta',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1149,6 +1223,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.video-with-text-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1221,6 +1296,7 @@ export interface ApiSolutionsPageSolutionsPage
         'relations.white-paper-section',
         'relations.quotes-relation',
         'sections.services-section',
+        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1810,6 +1886,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
+      'api::card-product.card-product': ApiCardProductCardProduct;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
       'api::event-page.event-page': ApiEventPageEventPage;

@@ -73,7 +73,8 @@
         "sections.icon-card-section-with-relation",
         "relations.white-paper-section",
         "relations.quotes-relation",
-        "sections.services-section"
+        "sections.services-section",
+        "relations.product-cards-section"
       ]
     }
   }

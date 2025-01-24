@@ -26,6 +26,14 @@ module.exports = (config, {strapi}) => {
                 section_props: true,
               },
             },
+            'relations.product-cards-section': {
+              populate: {
+                props: true,
+                cards: {
+                  populate: '*',
+                },
+              },
+            },
             'relations.white-paper-section': {
               populate: {
                 props: true,

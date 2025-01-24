@@ -66,7 +66,8 @@
         "sections.video-section",
         "sections.video-with-text-section",
         "sections.kpi-with-intro-and-hallmarks-section",
-        "sections.services-section"
+        "sections.services-section",
+        "relations.product-cards-section"
       ]
     }
   }
