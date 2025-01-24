@@ -8,8 +8,8 @@ export default factories.createCoreRouter('api::solutions-overview.solutions-ove
   config: {
     find: {
       middlewares: [
-        'api::solutions-overview.local-hero-sections'
-      ]
-    }
-  }
+        'global::populate-sections-with-intro-and-localizations',
+      ],
+    },
+  },
 });
