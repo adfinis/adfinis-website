@@ -625,6 +625,23 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
+export interface SectionsInfoDetailsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_info_details_sections';
+  info: {
+    displayName: 'Info Details Section';
+    icon: 'bulletList';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    info: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
@@ -863,6 +880,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
+      'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.project-cards-section': SectionsProjectCardsSection;

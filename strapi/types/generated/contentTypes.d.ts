@@ -810,6 +810,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'relations.quotes-relation',
         'sections.kpi-with-intro-and-hallmarks-section',
         'relations.product-cards-section',
+        'sections.info-details-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
