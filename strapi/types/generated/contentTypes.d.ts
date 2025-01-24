@@ -796,21 +796,23 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.color-card-slider-section',
-        'sections.projects-card-section-with-external-link',
-        'sections.video-with-text-section',
-        'sections.video-section',
-        'sections.two-column-section',
-        'sections.text-section-with-cta',
-        'sections.services-section',
-        'sections.events-section-with-intro-and-cta',
-        'relations.sla-card-section',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
-        'relations.quotes-relation',
-        'sections.kpi-with-intro-and-hallmarks-section',
+        'relations.calendly-section',
         'relations.product-cards-section',
+        'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
         'sections.info-details-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1029,19 +1031,23 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.two-column-section',
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
-        'relations.quotes-relation',
         'relations.calendly-section',
-        'sections.video-section',
-        'sections.video-with-text-section',
+        'relations.product-cards-section',
+        'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
-        'sections.events-section-with-intro-and-cta',
         'sections.services-section',
-        'relations.product-cards-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1213,18 +1219,23 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
+        'relations.calendly-section',
+        'relations.product-cards-section',
+        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.two-column-section',
         'relations.white-paper-section',
-        'relations.quotes-relation',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
-        'sections.services-section',
-        'relations.product-cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1289,15 +1300,23 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.two-column-section',
-        'sections.video-with-text-section',
-        'sections.video-section',
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
-        'relations.quotes-relation',
-        'sections.services-section',
+        'relations.calendly-section',
         'relations.product-cards-section',
+        'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
