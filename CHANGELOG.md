@@ -15,6 +15,17 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.13.0] - 2025-01-27
+
+- AW-39 404 page (#82)
+- AW-42 footer menu mapping strapi (#83)
+- AW-76 & AW-71streamline dynamic zone components across strapi collections (#81)
+- AW-22 image doesnt change on quote when updated (#80)
+- AW-23 info details section (#79)
+- AW-18 missing component solutions products (#78)
+- AW-68 make hallmark optional (#77)
+- AW-49 Add name to card collection (#76)
+
 ## [0.12.0] - 2025-01-21
 
 - Feature/aw 27 events overview grid overview (#73) 

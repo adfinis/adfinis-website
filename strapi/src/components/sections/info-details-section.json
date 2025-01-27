@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_info_details_sections",
+  "info": {
+    "displayName": "Info Details Section",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "info": {
+      "type": "string",
+      "required": true,
+      "default": "Date event: January 23, 2024"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    }
+  }
+}

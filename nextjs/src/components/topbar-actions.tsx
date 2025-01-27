@@ -5,7 +5,7 @@ import Search from "./search"
 const TopbarActions: React.FC = () => {
   return (
     <div className="flex justify-end items-center gap-4 lg:gap-6 text-neutral">
-      <Search />
+      {/*<Search />*/}
       <LocaleSwitcher />
     </div>
   )

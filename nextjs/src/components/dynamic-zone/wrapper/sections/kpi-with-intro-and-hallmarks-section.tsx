@@ -5,6 +5,20 @@ import CardCounter from "@/components/cards/card-counter"
 import Hallmarks from "@/components/stapi/hallmarks"
 
 type Kpi = {
+  color:
+    | "white"
+    | "stone"
+    | "biscay"
+    | "sapphire"
+    | "jumbo"
+    | "neutral"
+    | "sunglow"
+    | "sky"
+    | "cinnamon"
+    | "green"
+    | "razzmatazz"
+    | "fuchsia"
+    | "manhattan"
   title: string
   description: string
   icon_image: {
@@ -40,10 +54,13 @@ export default function KpiWithIntroAndHallmarksSection({
               title={item.title}
               imageUrl={item.icon_image.url}
               description={item.description}
+              color={item.color}
             />
           ))}
         </CardGroup>
-        <Hallmarks hallmarksId={section.hallmark.documentId} />
+        {section.hallmark && (
+          <Hallmarks hallmarksId={section.hallmark.documentId} />
+        )}
       </SectionGroup>
     </Container>
   )

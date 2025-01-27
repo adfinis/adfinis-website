@@ -1,7 +1,13 @@
+import { notFound } from "next/navigation"
 const STRAPI = process.env.STRAPI_API || ""
 
-export default function strapi(query: string) {
-  return fetch(`${STRAPI}/${query}`, {
+export default async function strapi(query: string) {
+  const page = await fetch(`${STRAPI}/${query}`, {
     cache: "no-cache",
   })
+  if (page && page.status === 404) {
+    return notFound()
+  }
+  const { data } = await page.json()
+  return data
 }

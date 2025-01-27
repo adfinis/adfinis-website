@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_menu_menu_segments",
+  "info": {
+    "displayName": "Menu Segment"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "displayName": "Menu Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-link"
+    }
+  }
+}

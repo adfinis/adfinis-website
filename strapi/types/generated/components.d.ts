@@ -328,6 +328,40 @@ export interface GlobalSlaItem extends Struct.ComponentSchema {
   };
 }
 
+export interface MenuMenuLink extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_links';
+  info: {
+    displayName: 'Menu Link';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface MenuMenuSection extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_sections';
+  info: {
+    displayName: 'Menu Section';
+  };
+  attributes: {
+    menu_segment: Schema.Attribute.Component<'menu.menu-segment', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface MenuMenuSegment extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_segments';
+  info: {
+    displayName: 'Menu Segment';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'menu.menu-link', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface RelationsCalendlySection extends Struct.ComponentSchema {
   collectionName: 'components_relations_calendly_sections';
   info: {
@@ -340,6 +374,22 @@ export interface RelationsCalendlySection extends Struct.ComponentSchema {
     >;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface RelationsProductCardsSection extends Struct.ComponentSchema {
+  collectionName: 'components_relations_product_cards_sections';
+  info: {
+    displayName: 'Product Cards Section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -609,6 +659,23 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
+export interface SectionsInfoDetailsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_info_details_sections';
+  info: {
+    displayName: 'Info Details Section';
+    icon: 'bulletList';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    info: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
@@ -829,7 +896,11 @@ declare module '@strapi/strapi' {
       'global.intro': GlobalIntro;
       'global.intro-body': GlobalIntroBody;
       'global.sla-item': GlobalSlaItem;
+      'menu.menu-link': MenuMenuLink;
+      'menu.menu-section': MenuMenuSection;
+      'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
+      'relations.product-cards-section': RelationsProductCardsSection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
@@ -846,6 +917,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
+      'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.project-cards-section': SectionsProjectCardsSection;

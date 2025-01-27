@@ -22,6 +22,14 @@ module.exports = (config, {strapi}) => {
                 }
               }
             },
+            'relations.product-cards-section': {
+              populate: {
+                props: true,
+                cards: {
+                  populate: '*',
+                },
+              },
+            },
             'sections.events-section-with-intro-and-cta': {
               populate: {
                 props: true,
@@ -93,6 +101,9 @@ module.exports = (config, {strapi}) => {
               },
             },
             'sections.services-section': {
+              populate: '*'
+            },
+            'sections.info-details-section': {
               populate: '*'
             }
           },

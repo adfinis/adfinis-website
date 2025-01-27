@@ -423,6 +423,78 @@ export interface ApiCalendlyItemCalendlyItem
   };
 }
 
+export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'card_products';
+  info: {
+    displayName: 'Card Product';
+    pluralName: 'card-products';
+    singularName: 'card-product';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -578,6 +650,67 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footers';
+  info: {
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    github_url: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    linkedin_url: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::footer.footer'>;
+    partner_and_products: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-partner-and-product.page-partner-and-product'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    solutions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::solutions-page.solutions-page'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtube_url: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
 export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
   collectionName: 'hallmarks';
   info: {
@@ -724,19 +857,23 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.color-card-slider-section',
-        'sections.projects-card-section-with-external-link',
-        'sections.video-with-text-section',
-        'sections.video-section',
-        'sections.two-column-section',
-        'sections.text-section-with-cta',
-        'sections.services-section',
-        'sections.events-section-with-intro-and-cta',
-        'relations.sla-card-section',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
+        'relations.calendly-section',
+        'relations.product-cards-section',
         'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -795,6 +932,14 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::icon-card.icon-card'
     >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -804,6 +949,74 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNavigationMenuNavigationMenu
+  extends Struct.SingleTypeSchema {
+  collectionName: 'navigation_menus';
+  info: {
+    description: '';
+    displayName: 'Navigation menu';
+    pluralName: 'navigation-menus';
+    singularName: 'navigation-menu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::navigation-menu.navigation-menu'
+    >;
+    logo_desktop: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo_mobile: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Component<'menu.menu-section', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Navigation menu'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -947,18 +1160,23 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.two-column-section',
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
-        'relations.quotes-relation',
         'relations.calendly-section',
-        'sections.video-section',
-        'sections.video-with-text-section',
+        'relations.product-cards-section',
+        'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
-        'sections.events-section-with-intro-and-cta',
         'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1130,17 +1348,23 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
+        'relations.calendly-section',
+        'relations.product-cards-section',
+        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.two-column-section',
         'relations.white-paper-section',
-        'relations.quotes-relation',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
-        'sections.services-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1205,14 +1429,23 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'sections.two-column-section',
-        'sections.video-with-text-section',
-        'sections.video-section',
-        'sections.text-section-with-cta',
-        'sections.icon-card-section-with-relation',
-        'relations.white-paper-section',
+        'relations.calendly-section',
+        'relations.product-cards-section',
         'relations.quotes-relation',
+        'relations.section-solutions-relation',
+        'relations.sla-card-section',
+        'relations.white-paper-section',
+        'sections.color-card-slider-section',
+        'sections.events-section-with-intro-and-cta',
+        'sections.icon-card-section-with-relation',
+        'sections.info-details-section',
+        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.projects-card-section-with-external-link',
         'sections.services-section',
+        'sections.text-section-with-cta',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1802,13 +2035,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
+      'api::card-product.card-product': ApiCardProductCardProduct;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
       'api::event-page.event-page': ApiEventPageEventPage;
+      'api::footer.footer': ApiFooterFooter;
       'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
+      'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
       'api::quote.quote': ApiQuoteQuote;

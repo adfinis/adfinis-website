@@ -3,3 +3,5 @@ export const SLUGS: { [key: string]: string } = {
   en: "partners-and-products",
   de: "partner-und-produkte",
 }
+
+export const PARTNER_PRODUCTS_SLUGS = SLUGS

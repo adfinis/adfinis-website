@@ -8,6 +8,7 @@ import { notFound } from "next/navigation"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
+import Footer from "@/components/stapi/footer"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -17,12 +18,7 @@ export default async function PartnersProducts({
   slug: string
 }) {
   const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}`
-  const page = await strapi(url)
-  if (page && page.status === 404) {
-    return notFound()
-  }
-
-  const { data } = await page.json()
+  const data = await strapi(url)
 
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {
@@ -50,6 +46,7 @@ export default async function PartnersProducts({
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
+      <Footer locale={activeLocale.locale} />
     </>
   )
 }
