@@ -114,6 +114,18 @@
       },
       "type": "richtext"
     },
+    "card_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "sections": {
       "pluginOptions": {
         "i18n": {
