@@ -79,11 +79,13 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
                 {item && <NavDesktopItems navItem={item} />}
               </div>
             ))}
-          </div>
-          {/* TODO Nathan */}
-          <div>
             {cta && (
-              <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
+              <LinkButton
+                className="ml-auto"
+                href={cta.href}
+                variant={cta.variant}
+                size={cta.size}
+              >
                 {cta.label}
               </LinkButton>
             )}
