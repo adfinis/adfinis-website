@@ -7,6 +7,7 @@ import Intro from "@/components/intro"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
+import Footer from "@/components/stapi/footer"
 
 export default async function Solutions({
   activeLocale,
@@ -39,6 +40,7 @@ export default async function Solutions({
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
+      <Footer locale={activeLocale.locale} />
     </>
   )
 }
