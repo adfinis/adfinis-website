@@ -981,6 +981,20 @@ export interface ApiNavigationMenuNavigationMenu
       'oneToMany',
       'api::navigation-menu.navigation-menu'
     >;
+    logo_desktop: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo_mobile: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     section: Schema.Attribute.Component<'menu.menu-section', true> &
       Schema.Attribute.Required &

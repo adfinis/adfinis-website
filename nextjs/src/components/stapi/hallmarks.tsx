@@ -16,7 +16,7 @@ export default async function Hallmarks({
     <LogoGroup
       logos={data.hallmark.map((logo: any) => ({
         src: logo.url,
-        alt: logo.alt,
+        alt: logo.alt ?? "",
       }))}
     />
   )

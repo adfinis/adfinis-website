@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
@@ -5,12 +7,15 @@ import Logo from "../logo"
 import TopbarActions from "../topbar-actions"
 import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
+import ActionWrappers from "@/components/nav-bar/action-wrappers"
+import Image from "next/image"
 
 type NavDesktopProps = {
   navItems: NavItem[]
+  logoUrl: string
 }
 
-const NavDesktop: React.FC<NavDesktopProps> = ({ navItems }) => {
+const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl }) => {
   const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
     thr: 20,
@@ -61,8 +66,8 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems }) => {
         ])}
         id="nav-header"
       >
-        <Logo color="biscay" variant="horizontal" />
-        <TopbarActions />
+        <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />
+        <ActionWrappers />
       </section>
       {menuExpanded && (
         // The Sub-bar

@@ -10,15 +10,13 @@ type TopbarProps = {
 
 const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
   return (
-    <div>
-      <div
-        className="fixed top-8 left-0 w-topbar bg-sapphire z-50 shadow-2"
-        id="navbar"
-      >
-        <div className="container mr-0">
-          <NavMobile navItems={navItems} />
-          <NavDesktop navItems={navItems} />
-        </div>
+    <div
+      className="fixed top-8 left-0 w-topbar bg-sapphire z-50 shadow-2"
+      id="navbar"
+    >
+      <div className="container mr-0">
+        <NavMobile navItems={navItems} />
+        <NavDesktop navItems={navItems} />
       </div>
     </div>
   )

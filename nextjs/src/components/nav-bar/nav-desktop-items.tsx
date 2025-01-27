@@ -55,7 +55,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
           ])}
         >
           <div className="flex justify-start items-start gap-x-4 text-neutral">
-            {navItem.items?.map((item, index) => (
+            {navItem.menu_segment?.map((item, index) => (
               <div
                 className="grid grid-cols-1 content-start gap-4 pr-2 border-r last-of-type:border-r-0 min-h-72 border-neutral/30 w-1/6"
                 key={index}
