@@ -678,6 +678,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
         'relations.quotes-relation',
         'relations.section-solutions-relation',
@@ -1006,6 +1007,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
         'relations.quotes-relation',
         'relations.section-solutions-relation',
@@ -1022,7 +1024,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'relations.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1310,6 +1311,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
         'relations.quotes-relation',
         'relations.section-solutions-relation',
@@ -1498,6 +1500,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
         'relations.quotes-relation',
         'relations.section-solutions-relation',
@@ -1579,6 +1582,7 @@ export interface ApiSolutionsPageSolutionsPage
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
         'relations.quotes-relation',
         'relations.section-solutions-relation',
