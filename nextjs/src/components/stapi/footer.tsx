@@ -8,11 +8,9 @@ import IconSocial from "@/components/icons/icon-social"
 import FooterLegal from "@/components/layout/footer-legal"
 
 export default async function Footer({ locale }: { locale: string }) {
-  const { data } = await (
-    await strapi(
-      `footer/?locale=${locale}&populate=solutions&populate=partner_and_products`,
-    )
-  ).json()
+  const data = await strapi(
+    `footer/?locale=${locale}&populate=solutions&populate=partner_and_products`,
+  )
   if (!data) {
     return null
   }
