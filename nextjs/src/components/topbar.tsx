@@ -26,8 +26,18 @@ const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
             },
           ]}
         >
-          <NavMobile navItems={navItems} />
-          <NavDesktop navItems={navItems} />
+          <NavMobile
+            navItems={navItems}
+            logoUrl={
+              "https://adfinis.com/wp-content/uploads/sites/9/2021/01/Adfinis_Quer_Black.png.webp"
+            }
+          />
+          <NavDesktop
+            navItems={navItems}
+            logoUrl={
+              "https://adfinis.com/wp-content/uploads/sites/9/2021/01/Adfinis_Quer_Black.png.webp"
+            }
+          />
         </LinkedLocalesProvider>
       </div>
     </div>
