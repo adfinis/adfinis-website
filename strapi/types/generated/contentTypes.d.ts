@@ -976,19 +976,25 @@ export interface ApiNavigationMenuNavigationMenu
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::navigation-menu.navigation-menu'
     >;
-    logo_desktop: Schema.Attribute.Media<'images' | 'files'> &
+    logo_desktop: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    logo_mobile: Schema.Attribute.Media<'images' | 'files'> &
+    logo_mobile: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

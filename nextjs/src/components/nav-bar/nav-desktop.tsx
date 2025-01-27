@@ -3,19 +3,20 @@
 import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
-import Logo from "../logo"
-import TopbarActions from "../topbar-actions"
 import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import Image from "next/image"
+import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import LinkButton from "@/components/link-button"
 
 type NavDesktopProps = {
   navItems: NavItem[]
   logoUrl: string
+  cta?: CTA
 }
 
-const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl }) => {
+const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
   const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
     thr: 20,
@@ -74,10 +75,18 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl }) => {
         <section className="hidden lg:block min-h-12" id="nav-items">
           <div className="flex justify-start items-center h-full relative">
             {navItems.map((item, index) => (
-              <div className="" key={index}>
+              <div key={index}>
                 {item && <NavDesktopItems navItem={item} />}
               </div>
             ))}
+          </div>
+          {/* TODO Nathan */}
+          <div>
+            {cta && (
+              <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
+                {cta.label}
+              </LinkButton>
+            )}
           </div>
         </section>
       )}

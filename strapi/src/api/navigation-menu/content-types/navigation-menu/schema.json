@@ -27,32 +27,40 @@
       "default": "Navigation menu"
     },
     "logo_desktop": {
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "logo_mobile": {
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "required": true
+      "component": "external-links.call-to-action"
     },
     "section": {
       "displayName": "Menu Section",
