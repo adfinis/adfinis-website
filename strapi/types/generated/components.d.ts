@@ -377,6 +377,22 @@ export interface RelationsCalendlySection extends Struct.ComponentSchema {
   };
 }
 
+export interface RelationsExtraWideIconCardsGridSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
+  info: {
+    displayName: 'Extra Wide Icon Cards Grid Section';
+    icon: 'dashboard';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface RelationsProductCardsSection extends Struct.ComponentSchema {
   collectionName: 'components_relations_product_cards_sections';
   info: {
@@ -900,6 +916,7 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
+      'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.product-cards-section': RelationsProductCardsSection;
       'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;

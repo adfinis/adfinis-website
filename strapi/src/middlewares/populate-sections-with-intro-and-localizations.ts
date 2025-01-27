@@ -15,6 +15,15 @@ module.exports = (config, {strapi}) => {
             'sections.color-card-slider-section': {
               populate: '*'
             },
+            'relations.extra-wide-icon-cards-grid-section': {
+              populate: {
+                cards: {
+                  populate: '*',
+                },
+                props: true,
+                cta: true,
+              },
+            },
             'sections.projects-card-section-with-external-link': {
               populate: {
                 projects: {

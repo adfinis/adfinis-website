@@ -57,6 +57,7 @@
       "type": "dynamiczone",
       "components": [
         "relations.calendly-section",
+        "relations.extra-wide-icon-cards-grid-section",
         "relations.product-cards-section",
         "relations.quotes-relation",
         "relations.section-solutions-relation",

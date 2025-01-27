@@ -373,19 +373,22 @@ export default function Theme({
         padding="both-padding"
         background="neutral"
       >
-        <CardGroup maxWidth="none">
-          {cardIconGridExample.cards.map((item, i) => {
-            return (
-              <CardIcon
-                imageUrl={item.icon.src}
-                title={item.title}
-                description={item.description}
-                cta={item.cta}
-                key={i}
-              />
-            )
-          })}
-        </CardGroup>
+        <SectionGroup title="Why Adfinis?" align="center">
+          <CardGroup maxWidth="none">
+            {cardIconGridExample.cards.map((item, i) => {
+              return (
+                <CardIcon
+                  imageUrl={item.icon.src}
+                  title={item.title}
+                  description={item.description}
+                  cta={item.cta}
+                  key={i}
+                />
+              )
+            })}
+          </CardGroup>
+          <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
+        </SectionGroup>
       </Container>
 
       <Container id="card-icon-grid" padding="both-padding" background="white">

@@ -14,6 +14,7 @@ import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card
 import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
 import ProductCardsSection from "@/components/dynamic-zone/wrapper/relations/product-cards-section"
 import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
+import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -120,6 +121,13 @@ export function renderSections(section: any, index: number) {
     case "sections.info-details-section":
       return (
         <InfoDetailsSection
+          key={`sections.info-details-section_${index}`}
+          section={section}
+        />
+      )
+    case "relations.extra-wide-icon-cards-grid-section":
+      return (
+        <ExtraWideIconCardsGridSection
           key={`sections.info-details-section_${index}`}
           section={section}
         />
