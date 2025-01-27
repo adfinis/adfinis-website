@@ -35,6 +35,11 @@
       "type": "text",
       "required": true
     },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -45,10 +50,96 @@
       "targetField": "metadata_title",
       "required": true
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
+    "date_event": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "map_embed_html": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "sign_up_button": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "external-links.call-to-action"
+    },
+    "is_past_event": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "details": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "relations.calendly-section",
+        "relations.product-cards-section",
+        "relations.quotes-relation",
+        "relations.section-solutions-relation",
+        "relations.sla-card-section",
+        "relations.white-paper-section",
+        "sections.color-card-slider-section",
+        "sections.events-section-with-intro-and-cta",
+        "sections.icon-card-section-with-relation",
+        "sections.info-details-section",
+        "sections.kpi-with-intro-and-hallmarks-section",
+        "sections.projects-card-section-with-external-link",
+        "sections.services-section",
+        "sections.text-section-with-cta",
+        "sections.two-column-section",
+        "sections.video-section",
+        "sections.video-with-text-section"
+      ]
     }
   }
 }
