@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { type NavItem } from "./nav"
 import IconChevronRight from "../icons/icon-chevron-right"
 import clsx from "clsx"

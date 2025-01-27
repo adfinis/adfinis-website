@@ -18,12 +18,7 @@ export default async function PartnersProducts({
   slug: string
 }) {
   const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}`
-  const page = await strapi(url)
-  if (page && page.status === 404) {
-    return notFound()
-  }
-
-  const { data } = await page.json()
+  const data = await strapi(url)
 
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {

@@ -14,7 +14,7 @@ export default async function Homepage({
   activeLocale: LinkedLocale
 }) {
   const url = `homepage?locale=${activeLocale.locale}`
-  const { data } = await (await strapi(url)).json()
+  const data = await strapi(url)
   const locales = (data?.localizations ?? []).map(
     (item: { locale: string }) => {
       return {
