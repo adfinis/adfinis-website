@@ -1,22 +1,26 @@
+"use client"
+
 import React, { useState, type Ref } from "react"
 import clsx from "clsx"
 import { Transition } from "@headlessui/react"
 import { useClickAway } from "@uidotdev/usehooks"
-
 import IconHamburgerMenu from "../icons/icon-hamburger-menu"
 import Link from "next/link"
-import ButtonLink from "../link-button"
-import Logo from "../logo"
-import TopbarActions from "../topbar-actions"
+import LinkButton from "../link-button"
 import type { NavItem } from "./nav"
 import NavMobileItem from "./nav-mobile-item"
 import IconChevronLeft from "../icons/icon-chevron-left"
+import Image from "next/image"
+import ActionWrappers from "@/components/nav-bar/action-wrappers"
+import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 
 type NavMobileProps = {
   navItems: NavItem[]
+  logoUrl: string
+  cta?: CTA
 }
 
-const NavMobile: React.FC<NavMobileProps> = ({ navItems }) => {
+const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [expand, setExpand] = useState<number | undefined>(undefined)
   const ref = useClickAway(() => {
@@ -36,12 +40,11 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems }) => {
             <IconChevronLeft className="text-white w-6 h-6" />
           </button>
         )}
-        <Link href="/theme" className="h-20 flex justify-center">
-          <Logo color="biscay" variant="icon" />
+        <Link href="/" className="h-20 flex justify-center">
+          <Image src={logoUrl} alt={"Adfinis logo"} width={150} height={150} />
         </Link>
-        <TopbarActions />
+        <ActionWrappers />
       </nav>
-
       <Transition show={isOpen}>
         <ul
           className={clsx([
@@ -72,11 +75,12 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems }) => {
               />
             </li>
           ))}
-
           <li className="mt-8">
-            <ButtonLink href={"/theme"} variant={"cta"}>
-              Get started!
-            </ButtonLink>
+            {cta && (
+              <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
+                {cta.label}
+              </LinkButton>
+            )}
           </li>
         </ul>
       </Transition>

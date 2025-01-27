@@ -5,7 +5,7 @@ import { CTA } from "@/lib/cta"
 export const navItems: NavItem[] = [
   {
     title: "Solutions",
-    items: [
+    menu_segment: [
       {
         title: "HashiCorp",
         items: [
@@ -48,10 +48,15 @@ export const navItems: NavItem[] = [
   },
   {
     title: "Partners & Products",
-    items: [
+    menu_segment: [
       {
         title: "Github",
-        url: "/partners/github",
+        items: [
+          {
+            title: "Github",
+            url: "/partners/github",
+          },
+        ],
       },
     ],
   },

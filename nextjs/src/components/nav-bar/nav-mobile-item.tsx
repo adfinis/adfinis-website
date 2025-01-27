@@ -44,8 +44,8 @@ const NavMobileItem: React.FC<{
               </h3>
             </li>
 
-            {item.items &&
-              item.items.map((subItem, subIndex) => (
+            {item.menu_segment &&
+              item.menu_segment.map((subItem, subIndex) => (
                 <NavMobileSubItem key={subIndex} item={subItem} />
               ))}
           </ul>

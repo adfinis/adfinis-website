@@ -328,6 +328,40 @@ export interface GlobalSlaItem extends Struct.ComponentSchema {
   };
 }
 
+export interface MenuMenuLink extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_links';
+  info: {
+    displayName: 'Menu Link';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface MenuMenuSection extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_sections';
+  info: {
+    displayName: 'Menu Section';
+  };
+  attributes: {
+    menu_segment: Schema.Attribute.Component<'menu.menu-segment', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface MenuMenuSegment extends Struct.ComponentSchema {
+  collectionName: 'components_menu_menu_segments';
+  info: {
+    displayName: 'Menu Segment';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'menu.menu-link', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface RelationsCalendlySection extends Struct.ComponentSchema {
   collectionName: 'components_relations_calendly_sections';
   info: {
@@ -862,6 +896,9 @@ declare module '@strapi/strapi' {
       'global.intro': GlobalIntro;
       'global.intro-body': GlobalIntroBody;
       'global.sla-item': GlobalSlaItem;
+      'menu.menu-link': MenuMenuLink;
+      'menu.menu-section': MenuMenuSection;
+      'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
       'relations.product-cards-section': RelationsProductCardsSection;
       'relations.quotes-relation': RelationsQuotesRelation;

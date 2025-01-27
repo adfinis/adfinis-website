@@ -5,7 +5,7 @@ import Link from "next/link"
 import IconChevronDown from "../icons/icon-chevron-down"
 import { Transition } from "@headlessui/react"
 
-const NavMobileSubItem: React.FC<{ item: NavItem }> = ({ item }) => {
+const NavMobileSubItem: React.FC<{ item: any }> = ({ item }) => {
   const [expand, setExpand] = useState(false)
   const toggle = () => {
     setExpand(!expand)
@@ -81,7 +81,7 @@ const NavMobileSubItem: React.FC<{ item: NavItem }> = ({ item }) => {
           ref={contentRef}
           style={{ height: "0px" }}
         >
-          {item.items?.map((subItem, subIndex) => (
+          {item.items?.map((subItem: any, subIndex: number) => (
             <li key={subIndex} className="h-9 flex items-center">
               {subItem.url && <Link href={subItem.url}>{subItem.title}</Link>}
             </li>
