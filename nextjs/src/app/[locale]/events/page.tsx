@@ -10,7 +10,11 @@ import CardGroup from "@/components/cards/card-group"
 import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
 
-export default async function EventsOverviewPage({ params: { locale } }) {
+export default async function EventsOverviewPage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
   const url = `events-overview/?locale=${locale}`
   const data = await strapi(url)
   const currentLocale = {
@@ -55,7 +59,7 @@ export default async function EventsOverviewPage({ params: { locale } }) {
           background="neutral"
         >
           <CardGroup maxWidth="none">
-            {cards.map((event, index) => (
+            {cards.map((event: any) => (
               <CardArticle
                 key={event.documentId.slice(-4)}
                 title={event.metadata_title}
