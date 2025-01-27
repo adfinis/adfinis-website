@@ -25,7 +25,7 @@ export default async function SolutionsDetailPage({
     isActive: true,
   }
   const url = `solutions-pages/${slug}`
-  const { data } = await (await strapi(url)).json()
+  const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: string }) => {
     return {
       href: `/${item.locale}/${SLUGS[item.locale]}`,

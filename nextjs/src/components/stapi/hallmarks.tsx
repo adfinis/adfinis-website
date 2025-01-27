@@ -7,7 +7,7 @@ export default async function Hallmarks({
   hallmarksId: string
 }) {
   const url = `hallmarks/${hallmarksId}?populate=hallmark`
-  const { data } = await (await strapi(url)).json()
+  const data = await strapi(url)
   if (!data || !data.hallmark) {
     return
   }
