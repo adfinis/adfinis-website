@@ -1,8 +1,9 @@
 "use client"
-import React, { useEffect } from "react"
+
 import NavMobile from "./nav-bar/nav-mobile"
 import NavDesktop from "./nav-bar/nav-desktop"
 import { NavItem } from "./nav-bar/nav"
+import { LinkedLocalesProvider } from "@/components/nav-bar/linked-locales-provider"
 
 type TopbarProps = {
   navItems: NavItem[]
@@ -15,8 +16,19 @@ const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
       id="navbar"
     >
       <div className="container mr-0">
-        <NavMobile navItems={navItems} />
-        <NavDesktop navItems={navItems} />
+        <LinkedLocalesProvider
+          locales={[
+            { locale: "en", isActive: true, href: "/en/theme" },
+            {
+              locale: "nl",
+              isActive: false,
+              href: "/nl/theme",
+            },
+          ]}
+        >
+          <NavMobile navItems={navItems} />
+          <NavDesktop navItems={navItems} />
+        </LinkedLocalesProvider>
       </div>
     </div>
   )
