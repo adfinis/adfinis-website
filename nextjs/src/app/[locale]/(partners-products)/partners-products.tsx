@@ -8,6 +8,7 @@ import { notFound } from "next/navigation"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
+import Footer from "@/components/stapi/footer"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -50,6 +51,7 @@ export default async function PartnersProducts({
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
+      <Footer locale={activeLocale.locale} />
     </>
   )
 }
