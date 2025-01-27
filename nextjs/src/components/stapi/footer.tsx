@@ -25,14 +25,14 @@ export default async function Footer({ locale }: { locale: string }) {
       <FooterElement title="Adfinis" text={data.description} />
       <FooterElement
         title={`Solutions`}
-        links={data.solutions.map((item) => ({
+        links={data.solutions.map((item: any) => ({
           text: item.metadata_title,
           href: `${SOLUTIONS_SLUG}/${item.slug}`,
         }))}
       />
       <FooterElement
         title={`Partners & Products`}
-        links={data.partner_and_products.map((item) => ({
+        links={data.partner_and_products.map((item: any) => ({
           text: item.metadata_title,
           href: `${PARTNER_PRODUCTS_SLUG}/${item.slug}`,
         }))}
