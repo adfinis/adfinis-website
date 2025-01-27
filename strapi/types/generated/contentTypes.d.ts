@@ -955,6 +955,54 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNavigationMenuNavigationMenu
+  extends Struct.SingleTypeSchema {
+  collectionName: 'navigation_menus';
+  info: {
+    description: '';
+    displayName: 'Navigation menu';
+    pluralName: 'navigation-menus';
+    singularName: 'navigation-menu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::navigation-menu.navigation-menu'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Component<'menu.menu-section', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'Navigation menu'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   collectionName: 'news_pages';
   info: {
@@ -1976,6 +2024,7 @@ declare module '@strapi/strapi' {
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
+      'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
       'api::quote.quote': ApiQuoteQuote;

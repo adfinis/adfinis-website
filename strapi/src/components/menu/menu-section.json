@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_menu_menu_sections",
+  "info": {
+    "displayName": "Menu Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "menu_segment": {
+      "displayName": "Menu Segment",
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-segment"
+    }
+  }
+}

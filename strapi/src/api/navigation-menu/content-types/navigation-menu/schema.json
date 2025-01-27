@@ -1,0 +1,42 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation_menus",
+  "info": {
+    "singularName": "navigation-menu",
+    "pluralName": "navigation-menus",
+    "displayName": "Navigation menu",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "Navigation menu"
+    },
+    "section": {
+      "displayName": "Menu Section",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "menu.menu-section",
+      "required": true
+    }
+  }
+}
