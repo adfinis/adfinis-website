@@ -35,6 +35,11 @@
       "type": "text",
       "required": true
     },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
     "slug": {
       "pluginOptions": {
         "i18n": {

@@ -632,6 +632,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     is_past_event: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

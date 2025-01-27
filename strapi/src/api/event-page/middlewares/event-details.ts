@@ -7,6 +7,9 @@ module.exports = (config, {strapi}) => {
       ...ctx.query,
       populate: {
         localizations: true,
+        hero: {
+          populate: '*'
+        },
         sign_up_button: {
           populate: true
         },
