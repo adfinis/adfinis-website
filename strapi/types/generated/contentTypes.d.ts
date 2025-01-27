@@ -1022,6 +1022,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'relations.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

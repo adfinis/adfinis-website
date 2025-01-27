@@ -72,7 +72,8 @@
         "sections.text-section-with-cta",
         "sections.two-column-section",
         "sections.video-section",
-        "sections.video-with-text-section"
+        "sections.video-with-text-section",
+        "relations.extra-wide-icon-cards-grid-section"
       ]
     }
   }
