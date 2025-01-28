@@ -44,7 +44,17 @@ const Container: React.FC<ContainerProps> = ({
       className={containerStyles({ background, padding })}
       data-scheme={isDark ? "dark" : "light"}
     >
-      <div className={clsx([padding === "both-padding" && "container"])}>
+      {/* 
+      /**
+       * @info sm:px-2 is an additional whitespace for the case that the device width has exactly the same
+       * width as one of the tailwind CSS screens. This is to prevent the text from touching the edge of the screen.
+       * 
+       * @see tailwind.config.ts for the screen sizes
+       * @see CardSlider.tsx for additional corrections
+       */}
+      <div
+        className={clsx([padding === "both-padding" && "container sm:px-2"])}
+      >
         {children}
       </div>
     </section>
