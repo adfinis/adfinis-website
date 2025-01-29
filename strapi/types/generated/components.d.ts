@@ -541,6 +541,7 @@ export interface SectionsCtaBanner extends Struct.ComponentSchema {
 export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_event_details_sections';
   info: {
+    description: '';
     displayName: 'Event details section';
     icon: 'calendar';
   };
@@ -550,7 +551,8 @@ export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
     info: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
-    props: Schema.Attribute.Component<'sections.section-props', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
