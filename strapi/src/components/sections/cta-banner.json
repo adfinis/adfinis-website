@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_text_section_with_ctas",
+  "collectionName": "components_sections_cta_banners",
   "info": {
-    "displayName": "Text Section With CTA"
+    "displayName": "CTA banner"
   },
   "options": {},
   "attributes": {

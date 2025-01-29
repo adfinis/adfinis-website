@@ -744,7 +744,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -753,6 +752,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -843,9 +843,9 @@ export interface ApiEventsOverviewEventsOverview
         'sections.video-with-text-section',
         'sections.video-section',
         'sections.two-column-section',
-        'sections.text-section-with-cta',
         'sections.feature-cards',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1074,7 +1074,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1083,6 +1082,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1264,6 +1264,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.quote-section',
         'sections.content-carousel',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1380,7 +1381,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1389,6 +1389,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1576,7 +1577,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1585,6 +1585,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1658,7 +1659,6 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.kpi-with-intro-and-hallmarks-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1667,6 +1667,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

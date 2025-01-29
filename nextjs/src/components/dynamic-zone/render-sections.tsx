@@ -1,5 +1,4 @@
 import TwoColumnSection from "@/components/dynamic-zone/wrapper/sections/two-column-section"
-import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-section-with-cta"
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
 import QuoteSection from "@/components/dynamic-zone/wrapper/sections/quote-section"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
@@ -14,6 +13,7 @@ import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/rel
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
+import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -24,9 +24,9 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.text-section-with-cta":
+    case "sections.cta-banner":
       return (
-        <TextSectionWithCta
+        <CtaBanner
           key={`section_text_section_with_cta_${index}`}
           section={section}
         />

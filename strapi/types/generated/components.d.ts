@@ -524,6 +524,20 @@ export interface SectionsContentHighlightSection
   };
 }
 
+export interface SectionsCtaBanner extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cta_banners';
+  info: {
+    displayName: 'CTA banner';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
+      Schema.Attribute.Required;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsFeatureCards extends Struct.ComponentSchema {
   collectionName: 'components_sections_feature_cards';
   info: {
@@ -816,20 +830,6 @@ export interface SectionsServicesSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
-  collectionName: 'components_sections_text_section_with_ctas';
-  info: {
-    displayName: 'Text Section With CTA';
-  };
-  attributes: {
-    body: Schema.Attribute.RichText & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
@@ -908,6 +908,7 @@ declare module '@strapi/strapi' {
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
+      'sections.cta-banner': SectionsCtaBanner;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
@@ -925,7 +926,6 @@ declare module '@strapi/strapi' {
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
-      'sections.text-section-with-cta': SectionsTextSectionWithCta;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
       'sections.video-with-text-section': SectionsVideoWithTextSection;
