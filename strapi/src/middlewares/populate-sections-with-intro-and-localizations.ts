@@ -41,14 +41,6 @@ module.exports = (config, {strapi}) => {
                 }
               }
             },
-            'relations.section-solutions-relation': {
-              populate: {
-                props: true,
-                solutions: {
-                  populate: '*'
-                }
-              },
-            },
             'relations.sla-card-section': {
               populate: {
                 props: true,

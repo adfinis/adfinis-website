@@ -7,7 +7,6 @@ import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/vid
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
-import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
 import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
 import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
@@ -82,13 +81,6 @@ export function renderSections(section: any, index: number) {
       return (
         <ServicesSection
           key={`section_services-section_${index}`}
-          section={section}
-        />
-      )
-    case "relations.section-solutions-relation":
-      return (
-        <SectionSolutionsRelation
-          key={`relations.section-solutions-relation_${index}`}
           section={section}
         />
       )
