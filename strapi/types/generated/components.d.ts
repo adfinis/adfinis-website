@@ -391,24 +391,6 @@ export interface RelationsExtraWideIconCardsGridSection
   };
 }
 
-export interface RelationsSectionSolutionsRelation
-  extends Struct.ComponentSchema {
-  collectionName: 'components_relations_section_solutions_relations';
-  info: {
-    description: '';
-    displayName: 'Section Solutions Relation';
-  };
-  attributes: {
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    solutions: Schema.Attribute.Component<
-      'relations.solutions-relation-with-description',
-      true
-    >;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsSlaCardSection extends Struct.ComponentSchema {
   collectionName: 'components_relations_sla_card_sections';
   info: {
@@ -910,7 +892,6 @@ declare module '@strapi/strapi' {
       'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
-      'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
