@@ -21,6 +21,23 @@ export interface CardsCardSliderIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCategoryCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_category_cards';
+  info: {
+    displayName: 'Category card';
+  };
+  attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    description: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsColorCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_color_cards';
   info: {
@@ -47,24 +64,6 @@ export interface CardsColorCard extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'sky'>;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface CardsEventCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_event_cards';
-  info: {
-    description: '';
-    displayName: 'Event Card';
-  };
-  attributes: {
-    background_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required;
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    >;
-    description: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -544,25 +543,22 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsEventsSectionWithIntroAndCta
-  extends Struct.ComponentSchema {
-  collectionName: 'components_sections_events_section_with_intro_and_ctas';
+export interface SectionsContentCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_content_carousels';
   info: {
-    description: '';
-    displayName: 'Events section with intro and CTA';
+    displayName: 'Content carousel';
   };
   attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
-    description: Schema.Attribute.RichText;
-    events: Schema.Attribute.Component<'cards.event-card', true> &
+    cards: Schema.Attribute.Component<'cards.category-card', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          min: 1;
+          max: 1;
         },
         number
       >;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -928,8 +924,8 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.category-card': CardsCategoryCard;
       'cards.color-card': CardsColorCard;
-      'cards.event-card': CardsEventCard;
       'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
@@ -959,7 +955,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-slider-section': SectionsColorCardSliderSection;
-      'sections.events-section-with-intro-and-cta': SectionsEventsSectionWithIntroAndCta;
+      'sections.content-carousel': SectionsContentCarousel;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;

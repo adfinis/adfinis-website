@@ -684,7 +684,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'relations.sla-card-section',
         'relations.white-paper-section',
         'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -695,6 +694,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.content-carousel',
         'sections.quote-section',
       ]
     > &
@@ -1015,7 +1015,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'relations.sla-card-section',
         'relations.white-paper-section',
         'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1026,6 +1025,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.video-with-text-section',
         'sections.feature-cards',
         'sections.quote-section',
+        'sections.content-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1203,9 +1203,9 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       [
         'sections.heading-with-link-container',
         'global.blog-block',
-        'sections.events-section-with-intro-and-cta',
         'sections.feature-cards',
         'sections.quote-section',
+        'sections.content-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1320,7 +1320,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.sla-card-section',
         'relations.white-paper-section',
         'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1331,6 +1330,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.content-carousel',
         'sections.quote-section',
       ]
     > &
@@ -1517,7 +1517,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'relations.sla-card-section',
         'relations.white-paper-section',
         'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1528,6 +1527,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.content-carousel',
         'sections.quote-section',
       ]
     > &
@@ -1600,7 +1600,6 @@ export interface ApiSolutionsPageSolutionsPage
         'relations.sla-card-section',
         'relations.white-paper-section',
         'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1611,6 +1610,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.content-carousel',
         'sections.quote-section',
       ]
     > &

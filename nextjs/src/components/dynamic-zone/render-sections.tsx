@@ -7,7 +7,6 @@ import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-secti
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
-import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
@@ -15,6 +14,7 @@ import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/c
 import ProductCardsSection from "@/components/dynamic-zone/wrapper/relations/product-cards-section"
 import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
+import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -71,10 +71,10 @@ export function renderSections(section: any, index: number) {
       )
     case "sections.feature-cards":
       return <FeatureCards key={`feature_cards_${index}`} section={section} />
-    case "sections.events-section-with-intro-and-cta":
+    case "sections.content-carousel":
       return (
-        <EventsSectionWithIntroAndCta
-          key={`section_events-section-with-intro-and-cta_${index}`}
+        <ContentCarousel
+          key={`sections.content-carousel_${index}`}
           section={section}
         />
       )

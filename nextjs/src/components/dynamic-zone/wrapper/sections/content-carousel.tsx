@@ -1,23 +1,24 @@
-import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardArticle from "@/components/cards/card-article"
+import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
+import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 
-type CardCategory = {
+type Category = {
   name: string
   url: string
 }
 
-type EventCard = {
+type CategoryCard = {
   title: string
   description: string
-  background_image: {
+  subtitle: string
+  image: {
     url: string
     alternativeText: string | null
   }
-  categories: CardCategory[]
+  categories: Category[]
 }
 
 type Props = {
@@ -25,14 +26,10 @@ type Props = {
   title: string
   description: string
   cta: CTA
-  events: EventCard[]
+  cards: CategoryCard[]
 }
 
-export default function EventsSectionWithIntroAndCta({
-  section,
-}: {
-  section: Props
-}) {
+export default function ContentCarousel({ section }: { section: Props }) {
   return (
     <Container
       padding={section.props.padding}
@@ -43,13 +40,14 @@ export default function EventsSectionWithIntroAndCta({
         description={section.description}
         ctas={[section.cta].map(mapCta)}
       >
-        {section.events.map((card, index: number) => {
+        {section.cards.map((card, index: number) => {
           return (
             <CardSliderElement key={index}>
               <CardArticle
                 title={card.title}
+                subtitle={card.subtitle}
                 description={card.description}
-                imageUrl={card.background_image.url}
+                imageUrl={card.image.url}
                 categories={card.categories.map((category) => ({
                   text: category.name,
                   href: category.url,

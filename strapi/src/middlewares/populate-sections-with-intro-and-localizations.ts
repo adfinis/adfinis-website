@@ -39,11 +39,11 @@ module.exports = (config, {strapi}) => {
                 },
               },
             },
-            'sections.events-section-with-intro-and-cta': {
+            'sections.content-carousel': {
               populate: {
                 props: true,
                 cta: true,
-                events: {
+                cards: {
                   populate: '*',
                 }
               }
