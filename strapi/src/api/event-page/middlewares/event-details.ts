@@ -114,7 +114,7 @@ module.exports = (config, {strapi}) => {
                 props: {
                   populate: '*',
                 },
-                featureCards: {
+                cards: {
                   populate: '*',
                 },
               }

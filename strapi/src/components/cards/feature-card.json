@@ -1,7 +1,7 @@
 {
   "collectionName": "components_cards_feature_cards",
   "info": {
-    "displayName": "Feature Card",
+    "displayName": "Feature card",
     "icon": "picture"
   },
   "options": {},
@@ -14,10 +14,7 @@
     },
     "image": {
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ],
       "type": "media",
       "multiple": false

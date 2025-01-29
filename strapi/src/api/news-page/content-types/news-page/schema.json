@@ -80,7 +80,8 @@
         "sections.heading-with-link-container",
         "relations.quotes-relation",
         "global.blog-block",
-        "sections.events-section-with-intro-and-cta"
+        "sections.events-section-with-intro-and-cta",
+        "sections.feature-cards"
       ]
     }
   }

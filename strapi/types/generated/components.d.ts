@@ -72,12 +72,12 @@ export interface CardsEventCard extends Struct.ComponentSchema {
 export interface CardsFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_feature_cards';
   info: {
-    displayName: 'Feature Card';
+    displayName: 'Feature card';
     icon: 'picture';
   };
   attributes: {
     cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image: Schema.Attribute.Media<'images'>;
     intro: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
@@ -586,8 +586,8 @@ export interface SectionsFeatureCards extends Struct.ComponentSchema {
     icon: 'landscape';
   };
   attributes: {
+    cards: Schema.Attribute.Component<'cards.feature-card', true>;
     description: Schema.Attribute.RichText;
-    featureCards: Schema.Attribute.Component<'cards.feature-card', true>;
     props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.String;
   };
