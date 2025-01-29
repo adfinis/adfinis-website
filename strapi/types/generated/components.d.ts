@@ -69,6 +69,20 @@ export interface CardsEventCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_feature_cards';
+  info: {
+    displayName: 'Feature Card';
+    icon: 'picture';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    intro: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CardsIconCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_icon_cards';
   info: {
@@ -564,6 +578,21 @@ export interface SectionsEventsSectionWithIntroAndCta
   };
 }
 
+export interface SectionsFeatureCards extends Struct.ComponentSchema {
+  collectionName: 'components_sections_feature_cards';
+  info: {
+    description: '';
+    displayName: 'Feature cards';
+    icon: 'landscape';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    featureCards: Schema.Attribute.Component<'cards.feature-card', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsGroupTitleWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_group_title_with_external_links';
@@ -898,6 +927,7 @@ declare module '@strapi/strapi' {
       'cards.card-slider-intro': CardsCardSliderIntro;
       'cards.color-card': CardsColorCard;
       'cards.event-card': CardsEventCard;
+      'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
       'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
@@ -928,6 +958,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-slider-section': SectionsColorCardSliderSection;
       'sections.events-section-with-intro-and-cta': SectionsEventsSectionWithIntroAndCta;
+      'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
