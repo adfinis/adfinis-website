@@ -152,7 +152,8 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
+    internal_name: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
