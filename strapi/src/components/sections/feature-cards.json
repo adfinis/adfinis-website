@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_feature_cards",
+  "info": {
+    "displayName": "Feature cards",
+    "icon": "landscape",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.feature-card"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    }
+  }
+}

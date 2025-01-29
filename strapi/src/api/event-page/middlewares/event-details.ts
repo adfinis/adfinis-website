@@ -108,6 +108,16 @@ module.exports = (config, {strapi}) => {
             },
             'sections.info-details-section': {
               populate: '*'
+            },
+            'sections.feature-cards': {
+              populate: {
+                props: {
+                  populate: '*',
+                },
+                cards: {
+                  populate: '*',
+                },
+              }
             }
           },
         }

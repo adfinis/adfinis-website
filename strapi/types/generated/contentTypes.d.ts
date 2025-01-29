@@ -695,6 +695,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -786,6 +787,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.video-section',
         'sections.two-column-section',
         'sections.text-section-with-cta',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1018,12 +1020,12 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
-        'sections.projects-card-section-with-external-link',
         'sections.services-section',
         'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1203,6 +1205,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'relations.quotes-relation',
         'global.blog-block',
         'sections.events-section-with-intro-and-cta',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1328,6 +1331,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1517,6 +1521,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1599,6 +1604,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

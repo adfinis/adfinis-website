@@ -115,11 +115,12 @@
       "type": "richtext"
     },
     "card_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -151,7 +152,8 @@
         "sections.text-section-with-cta",
         "sections.two-column-section",
         "sections.video-section",
-        "sections.video-with-text-section"
+        "sections.video-with-text-section",
+        "sections.feature-cards"
       ]
     }
   }
