@@ -1,19 +1,18 @@
 {
-  "collectionName": "components_sections_info_details_sections",
+  "collectionName": "components_sections_event_details_sections",
   "info": {
-    "displayName": "Info Details Section",
-    "icon": "bulletList"
+    "displayName": "Event details section",
+    "icon": "calendar"
   },
   "options": {},
   "attributes": {
     "info": {
       "type": "string",
-      "required": true,
-      "default": "Date event: January 23, 2024"
+      "default": "Date event: January 23, 2024",
+      "required": true
     },
     "description": {
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
     },
     "cta": {
       "type": "component",
@@ -23,8 +22,7 @@
     "props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props",
-      "required": true
+      "component": "sections.section-props"
     }
   }
 }

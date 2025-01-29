@@ -91,7 +91,7 @@ module.exports = (config, {strapi}) => {
             'sections.services-section': {
               populate: '*'
             },
-            'sections.info-details-section': {
+            'sections.event-details-section': {
               populate: '*'
             },
             'sections.feature-cards': {
