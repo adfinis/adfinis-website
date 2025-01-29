@@ -12,7 +12,7 @@ type Props = {
   props: SectionProps
 }
 
-export default function InfoDetailsSection({ section }: { section: Props }) {
+export default function EventDetailsSection({ section }: { section: Props }) {
   return (
     <Container background={section.props.background} padding="both-padding">
       <InfoLabel text={section.info} className="block mb-4" />

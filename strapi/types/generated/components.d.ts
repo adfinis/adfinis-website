@@ -538,6 +538,24 @@ export interface SectionsCtaBanner extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_event_details_sections';
+  info: {
+    description: '';
+    displayName: 'Event details section';
+    icon: 'calendar';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
+    info: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsFeatureCards extends Struct.ComponentSchema {
   collectionName: 'components_sections_feature_cards';
   info: {
@@ -661,23 +679,6 @@ export interface SectionsIconCardSectionWithRelation
     section_props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
-export interface SectionsInfoDetailsSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_info_details_sections';
-  info: {
-    displayName: 'Info Details Section';
-    icon: 'bulletList';
-  };
-  attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    info: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
   };
 }
 
@@ -909,6 +910,7 @@ declare module '@strapi/strapi' {
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.cta-banner': SectionsCtaBanner;
+      'sections.event-details-section': SectionsEventDetailsSection;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
@@ -916,7 +918,6 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
-      'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.product-feature-card': SectionsProductFeatureCard;

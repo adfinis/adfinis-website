@@ -8,7 +8,7 @@ import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-car
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
 import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
-import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
+import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/event-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
@@ -105,17 +105,17 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.info-details-section":
+    case "sections.event-details-section":
       return (
-        <InfoDetailsSection
-          key={`sections.info-details-section_${index}`}
+        <EventDetailsSection
+          key={`sections.event-details-section_${index}`}
           section={section}
         />
       )
     case "relations.extra-wide-icon-cards-grid-section":
       return (
         <ExtraWideIconCardsGridSection
-          key={`sections.info-details-section_${index}`}
+          key={`relations.extra-wide-icon-cards-grid-section_${index}`}
           section={section}
         />
       )
