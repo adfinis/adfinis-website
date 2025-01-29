@@ -1084,6 +1084,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.quote-section',
         'sections.feature-cards',
         'sections.content-carousel',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

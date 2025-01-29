@@ -72,10 +72,10 @@ module.exports = (config, {strapi}) => {
                 section_props: true,
               },
             },
-            'relations.white-paper-section': {
+            'sections.content-highlight-section': {
               populate: {
                 props: true,
-                white_paper: {
+                content_offer: {
                   populate: '*'
                 },
               },

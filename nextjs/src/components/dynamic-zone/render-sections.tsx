@@ -1,7 +1,6 @@
 import TwoColumnSection from "@/components/dynamic-zone/wrapper/sections/two-column-section"
 import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-section-with-cta"
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
-import WhitePaperSection from "@/components/dynamic-zone/wrapper/relations/white-paper-section"
 import QuoteSection from "@/components/dynamic-zone/wrapper/sections/quote-section"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
@@ -15,6 +14,7 @@ import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/prod
 import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
+import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -39,10 +39,10 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.white-paper-section":
+    case "sections.content-highlight-section":
       return (
-        <WhitePaperSection
-          key={`section_white_paper_${index}`}
+        <ContentHighlightSection
+          key={`sections.content-highlight-section_${index}`}
           section={section}
         />
       )
