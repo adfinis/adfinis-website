@@ -60,7 +60,6 @@
         "relations.extra-wide-icon-cards-grid-section",
         "sections.product-feature-card",
         "relations.sla-card-section",
-        "sections.color-card-slider-section",
         "sections.icon-card-section-with-relation",
         "sections.info-details-section",
         "sections.kpi-with-intro-and-hallmarks-section",
@@ -72,7 +71,8 @@
         "sections.quote-section",
         "sections.feature-cards",
         "sections.content-carousel",
-        "sections.content-highlight-section"
+        "sections.content-highlight-section",
+        "sections.color-card-carousel"
       ]
     }
   }

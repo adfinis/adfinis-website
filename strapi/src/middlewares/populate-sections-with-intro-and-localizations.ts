@@ -12,7 +12,7 @@ module.exports = (config, {strapi}) => {
         },
         sections: {
           on: {
-            'sections.color-card-slider-section': {
+            'sections.color-card-carousel': {
               populate: '*'
             },
             'relations.extra-wide-icon-cards-grid-section': {

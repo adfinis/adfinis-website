@@ -458,14 +458,20 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_color_card_slider_sections';
+export interface SectionsColorCardCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_color_card_carousels';
   info: {
-    description: '';
-    displayName: 'Color card slider section';
+    displayName: 'Color card carousel';
   };
   attributes: {
-    cards: Schema.Attribute.Component<'cards.color-card', true>;
+    cards: Schema.Attribute.Component<'cards.color-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
       Schema.Attribute.SetMinMax<
         {
@@ -474,6 +480,8 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
         number
       >;
     description: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -897,7 +905,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
-      'sections.color-card-slider-section': SectionsColorCardSliderSection;
+      'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.feature-cards': SectionsFeatureCards;

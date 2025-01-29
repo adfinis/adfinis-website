@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_sections_color_card_slider_sections",
+  "collectionName": "components_sections_color_card_carousels",
   "info": {
-    "displayName": "Color card slider section",
-    "description": ""
+    "displayName": "Color card carousel"
   },
   "options": {},
   "attributes": {
@@ -22,7 +21,15 @@
     "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.color-card"
+      "component": "cards.color-card",
+      "required": true,
+      "min": 1
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
     }
   }
 }

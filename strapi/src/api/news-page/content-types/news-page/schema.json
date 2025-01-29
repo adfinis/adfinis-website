@@ -81,7 +81,8 @@
         "global.blog-block",
         "sections.feature-cards",
         "sections.quote-section",
-        "sections.content-carousel"
+        "sections.content-carousel",
+        "sections.color-card-carousel"
       ]
     }
   }

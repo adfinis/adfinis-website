@@ -8,12 +8,12 @@ import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/s
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
-import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
 import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
 import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
+import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -91,9 +91,9 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.color-card-slider-section":
+    case "sections.color-card-carousel":
       return (
-        <ColorCardSliderSection
+        <ColorCardCarousel
           key={`sections.color-card-slider-section_${index}`}
           section={section}
         />
