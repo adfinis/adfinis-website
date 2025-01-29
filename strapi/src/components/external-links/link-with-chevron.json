@@ -2,7 +2,8 @@
   "collectionName": "components_external_links_link_with_chevrons",
   "info": {
     "displayName": "Link with chevron",
-    "icon": "link"
+    "icon": "link",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,11 +15,6 @@
     "href": {
       "type": "string",
       "default": "https://adfinis.com/contact"
-    },
-    "is_disabled": {
-      "type": "boolean",
-      "default": false,
-      "required": true
     },
     "size": {
       "type": "enumeration",
