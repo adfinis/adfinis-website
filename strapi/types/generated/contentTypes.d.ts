@@ -1023,8 +1023,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.feature-cards',
         'sections.quote-section',
+        'sections.feature-cards',
         'sections.content-carousel',
       ]
     > &
@@ -1203,6 +1203,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       [
         'sections.heading-with-link-container',
         'global.blog-block',
+        'sections.events-section-with-intro-and-cta',
         'sections.feature-cards',
         'sections.quote-section',
         'sections.content-carousel',
@@ -1526,9 +1527,9 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.quote-section',
         'sections.feature-cards',
         'sections.content-carousel',
-        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
