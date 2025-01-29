@@ -63,7 +63,6 @@
         "relations.sla-card-section",
         "relations.white-paper-section",
         "sections.color-card-slider-section",
-        "sections.events-section-with-intro-and-cta",
         "sections.icon-card-section-with-relation",
         "sections.info-details-section",
         "sections.kpi-with-intro-and-hallmarks-section",
@@ -73,8 +72,9 @@
         "sections.two-column-section",
         "sections.video-section",
         "sections.video-with-text-section",
+        "sections.quote-section",
         "sections.feature-cards",
-        "sections.quote-section"
+        "sections.content-carousel"
       ]
     }
   }

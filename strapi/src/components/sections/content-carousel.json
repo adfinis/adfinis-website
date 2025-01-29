@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_events_section_with_intro_and_ctas",
+  "collectionName": "components_sections_content_carousels",
   "info": {
-    "displayName": "Events section with intro and CTA",
+    "displayName": "Content carousel",
     "description": ""
   },
   "options": {},
@@ -16,8 +16,7 @@
     "cta": {
       "type": "component",
       "repeatable": false,
-      "component": "external-links.call-to-action",
-      "required": true
+      "component": "external-links.call-to-action"
     },
     "props": {
       "type": "component",
@@ -25,12 +24,12 @@
       "component": "sections.section-props",
       "required": true
     },
-    "events": {
+    "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.event-card",
-      "min": 1,
-      "required": true
+      "component": "cards.category-card",
+      "required": true,
+      "min": 1
     }
   }
 }
