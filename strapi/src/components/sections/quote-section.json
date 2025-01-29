@@ -1,7 +1,9 @@
 {
-  "collectionName": "components_relations_quotes_relations",
+  "collectionName": "components_sections_quote_sections",
   "info": {
-    "displayName": "Quotes Relation"
+    "displayName": "Quote section",
+    "icon": "quote",
+    "description": ""
   },
   "options": {},
   "attributes": {

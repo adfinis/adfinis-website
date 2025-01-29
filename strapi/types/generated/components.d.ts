@@ -152,7 +152,8 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
+    internal_name: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -420,16 +421,6 @@ export interface RelationsProductCardsSection extends Struct.ComponentSchema {
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsQuotesRelation extends Struct.ComponentSchema {
-  collectionName: 'components_relations_quotes_relations';
-  info: {
-    displayName: 'Quotes Relation';
-  };
-  attributes: {
-    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
   };
 }
 
@@ -801,6 +792,18 @@ export interface SectionsProjectsCardSectionWithExternalLink
   };
 }
 
+export interface SectionsQuoteSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_quote_sections';
+  info: {
+    description: '';
+    displayName: 'Quote section';
+    icon: 'quote';
+  };
+  attributes: {
+    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
+  };
+}
+
 export interface SectionsSectionProps extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_props';
   info: {
@@ -948,7 +951,6 @@ declare module '@strapi/strapi' {
       'relations.calendly-section': RelationsCalendlySection;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.product-cards-section': RelationsProductCardsSection;
-      'relations.quotes-relation': RelationsQuotesRelation;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
@@ -970,6 +972,7 @@ declare module '@strapi/strapi' {
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
+      'sections.quote-section': SectionsQuoteSection;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;

@@ -680,7 +680,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
-        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -696,6 +695,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1011,7 +1011,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
-        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1026,6 +1025,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1202,10 +1202,10 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     dynamic_content: Schema.Attribute.DynamicZone<
       [
         'sections.heading-with-link-container',
-        'relations.quotes-relation',
         'global.blog-block',
         'sections.events-section-with-intro-and-cta',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1316,7 +1316,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
-        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1332,6 +1331,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1376,6 +1376,13 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     locale: Schema.Attribute.String;
@@ -1506,7 +1513,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
-        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1522,6 +1528,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1589,7 +1596,6 @@ export interface ApiSolutionsPageSolutionsPage
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.product-cards-section',
-        'relations.quotes-relation',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1605,6 +1611,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.feature-cards',
+        'sections.quote-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

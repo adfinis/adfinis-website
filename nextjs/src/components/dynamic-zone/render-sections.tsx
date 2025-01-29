@@ -2,7 +2,7 @@ import TwoColumnSection from "@/components/dynamic-zone/wrapper/sections/two-col
 import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-section-with-cta"
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
 import WhitePaperSection from "@/components/dynamic-zone/wrapper/relations/white-paper-section"
-import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-relation"
+import QuoteSection from "@/components/dynamic-zone/wrapper/sections/quote-section"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
@@ -46,8 +46,8 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.quotes-relation":
-      return <QuotesRelation key={`section_quote_${index}`} section={section} />
+    case "sections.quote-section":
+      return <QuoteSection key={`section_quote_${index}`} section={section} />
     case "sections.video-section":
       return (
         <VideoSection
@@ -128,6 +128,10 @@ export function renderSections(section: any, index: number) {
         />
       )
     default:
-      return <p key={`section_${index}`}>Unknown section</p>
+      return (
+        <p key={`section_${index}`}>
+          Unknown section {JSON.stringify(section)}
+        </p>
+      )
   }
 }

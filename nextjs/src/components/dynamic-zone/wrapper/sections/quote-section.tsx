@@ -14,7 +14,7 @@ type Quote = {
 type Props = {
   quotes: Quote[]
 }
-export default function QuotesRelation({ section }: { section: Props }) {
+export default function QuoteSection({ section }: { section: Props }) {
   return (
     <Container background={"neutral"} padding={"both-padding"}>
       <SectionGroup hasDividers>
