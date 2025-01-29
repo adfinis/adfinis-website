@@ -15,7 +15,7 @@ module.exports = (config, {strapi}) => {
         },
         sections: {
           on: {
-            'sections.color-card-slider-section': {
+            'sections.color-card-carousel': {
               populate: '*'
             },
             'sections.product-feature-card': {

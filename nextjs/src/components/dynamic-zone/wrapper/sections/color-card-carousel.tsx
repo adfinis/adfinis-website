@@ -4,6 +4,7 @@ import CardSliderElement from "@/components/cards/card-slider-element"
 import CardColored from "@/components/cards/card-colored"
 import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 import { colors } from "@/lib/colors"
+import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 
 type ColorCard = {
   color: keyof typeof colors
@@ -14,16 +15,16 @@ type ColorCard = {
 type Props = {
   title: string
   description: string
+  props: SectionProps
   ctas: CTA[]
   cards: ColorCard[]
 }
-export default function ColorCardSliderSection({
-  section,
-}: {
-  section: Props
-}) {
+export default function ColorCardCarousel({ section }: { section: Props }) {
   return (
-    <Container background="neutral">
+    <Container
+      background={section.props.background}
+      padding={section.props.padding}
+    >
       <CardSlider
         title={section.title}
         description={section.description}
@@ -31,7 +32,7 @@ export default function ColorCardSliderSection({
       >
         {section.cards.map((card, index: number) => {
           return (
-            <CardSliderElement key={`ColorCardSliderSection_card_${index}`}>
+            <CardSliderElement key={`ColorCardCarousel_card_${index}`}>
               <CardColored
                 color={card.color}
                 title={card.title}
