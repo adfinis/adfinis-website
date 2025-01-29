@@ -10,7 +10,7 @@ type Props = {
   body: string | undefined
 }
 
-export default function TextSectionWithCta({ section }: { section: Props }) {
+export default function CtaBanner({ section }: { section: Props }) {
   return (
     <Container
       background={section.props.background}
