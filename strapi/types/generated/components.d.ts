@@ -442,21 +442,6 @@ export interface RelationsSolutionsRelationWithDescription
   };
 }
 
-export interface RelationsWhitePaperSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_white_paper_sections';
-  info: {
-    displayName: 'White Paper Section';
-  };
-  attributes: {
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    white_paper: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::white-paper.white-paper'
-    >;
-  };
-}
-
 export interface RichHeadingsH1 extends Struct.ComponentSchema {
   collectionName: 'components_rich_headings_h1s';
   info: {
@@ -928,7 +913,6 @@ declare module '@strapi/strapi' {
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
-      'relations.white-paper-section': RelationsWhitePaperSection;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
