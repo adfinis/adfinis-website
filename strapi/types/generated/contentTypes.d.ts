@@ -679,7 +679,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
       [
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.product-cards-section',
+        'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1010,7 +1010,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       [
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.product-cards-section',
+        'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1315,7 +1315,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
       [
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.product-cards-section',
+        'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1512,7 +1512,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
       [
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.product-cards-section',
+        'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',
@@ -1595,7 +1595,7 @@ export interface ApiSolutionsPageSolutionsPage
       [
         'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.product-cards-section',
+        'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
         'relations.white-paper-section',

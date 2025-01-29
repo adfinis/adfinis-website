@@ -13,13 +13,6 @@
     "description": {
       "type": "richtext",
       "required": true
-    },
-    "cards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cards.project-card-with-external-cta",
-      "required": false,
-      "min": 1
     }
   }
 }

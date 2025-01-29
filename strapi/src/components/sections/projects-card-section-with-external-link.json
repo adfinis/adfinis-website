@@ -11,12 +11,6 @@
     },
     "description": {
       "type": "richtext"
-    },
-    "projects": {
-      "type": "component",
-      "repeatable": true,
-      "component": "cards.project-card-with-external-cta",
-      "min": 1
     }
   }
 }

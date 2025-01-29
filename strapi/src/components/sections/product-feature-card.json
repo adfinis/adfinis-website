@@ -1,19 +1,18 @@
 {
-  "collectionName": "components_relations_product_cards_sections",
+  "collectionName": "components_sections_product_feature_cards",
   "info": {
-    "displayName": "Product Cards Section"
+    "displayName": "Product feature card",
+    "icon": "stack"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props",
-      "required": true
+      "component": "sections.section-props"
     },
     "cards": {
       "type": "relation",

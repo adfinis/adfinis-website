@@ -157,22 +157,6 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
   };
 }
 
-export interface CardsProjectCardWithExternalCta
-  extends Struct.ComponentSchema {
-  collectionName: 'components_cards_project_card_with_external_ctas';
-  info: {
-    description: '';
-    displayName: 'Project card with external CTA';
-  };
-  attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    image: Schema.Attribute.Media<'files' | 'images'> &
-      Schema.Attribute.Required;
-    intro: Schema.Attribute.RichText & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 export interface CardsSimpleCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_simple_cards';
   info: {
@@ -405,22 +389,6 @@ export interface RelationsExtraWideIconCardsGridSection
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String;
-  };
-}
-
-export interface RelationsProductCardsSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_product_cards_sections';
-  info: {
-    displayName: 'Product Cards Section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::card-product.card-product'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -747,6 +715,22 @@ export interface SectionsKpiWithIntroAndHallmarksSection
   };
 }
 
+export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_product_feature_cards';
+  info: {
+    displayName: 'Product feature card';
+    icon: 'stack';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_project_cards_sections';
   info: {
@@ -754,16 +738,6 @@ export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
     displayName: 'Project Cards Section';
   };
   attributes: {
-    cards: Schema.Attribute.Component<
-      'cards.project-card-with-external-cta',
-      true
-    > &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
@@ -778,16 +752,6 @@ export interface SectionsProjectsCardSectionWithExternalLink
   };
   attributes: {
     description: Schema.Attribute.RichText;
-    projects: Schema.Attribute.Component<
-      'cards.project-card-with-external-cta',
-      true
-    > &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     title: Schema.Attribute.String;
   };
 }
@@ -933,7 +897,6 @@ declare module '@strapi/strapi' {
       'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
-      'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'cards.simple-card': CardsSimpleCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
@@ -950,7 +913,6 @@ declare module '@strapi/strapi' {
       'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
-      'relations.product-cards-section': RelationsProductCardsSection;
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
@@ -970,6 +932,7 @@ declare module '@strapi/strapi' {
       'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
+      'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.quote-section': SectionsQuoteSection;

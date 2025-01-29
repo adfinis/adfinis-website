@@ -12,7 +12,7 @@ import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services
 import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
 import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
-import ProductCardsSection from "@/components/dynamic-zone/wrapper/relations/product-cards-section"
+import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
 import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
 
@@ -106,10 +106,10 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.product-cards-section":
+    case "sections.product-feature-card":
       return (
-        <ProductCardsSection
-          key={`relations.product-cards-section_${index}`}
+        <ProductFeatureCard
+          key={`sections.product-feature-card_${index}`}
           section={section}
         />
       )

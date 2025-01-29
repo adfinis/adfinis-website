@@ -137,7 +137,7 @@
       "components": [
         "relations.calendly-section",
         "relations.extra-wide-icon-cards-grid-section",
-        "relations.product-cards-section",
+        "sections.product-feature-card",
         "relations.section-solutions-relation",
         "relations.sla-card-section",
         "relations.white-paper-section",
