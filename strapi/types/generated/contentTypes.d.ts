@@ -753,6 +753,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1260,7 +1261,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       [
         'sections.heading-with-link-container',
         'global.blog-block',
-        'sections.events-section-with-intro-and-cta',
         'sections.feature-cards',
         'sections.quote-section',
         'sections.content-carousel',

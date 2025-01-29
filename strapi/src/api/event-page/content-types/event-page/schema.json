@@ -152,7 +152,8 @@
         "sections.video-with-text-section",
         "sections.feature-cards",
         "sections.content-carousel",
-        "sections.quote-section"
+        "sections.quote-section",
+        "sections.content-highlight-section"
       ]
     }
   }
