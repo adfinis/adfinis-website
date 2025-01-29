@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_content_carousels",
   "info": {
-    "displayName": "Content carousel"
+    "displayName": "Content carousel",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -28,7 +29,7 @@
       "repeatable": true,
       "component": "cards.category-card",
       "required": true,
-      "max": 1
+      "min": 1
     }
   }
 }

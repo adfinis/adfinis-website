@@ -546,6 +546,7 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
 export interface SectionsContentCarousel extends Struct.ComponentSchema {
   collectionName: 'components_sections_content_carousels';
   info: {
+    description: '';
     displayName: 'Content carousel';
   };
   attributes: {
@@ -553,7 +554,7 @@ export interface SectionsContentCarousel extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          max: 1;
+          min: 1;
         },
         number
       >;
