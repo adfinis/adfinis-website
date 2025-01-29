@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_color_card_carousels",
+  "info": {
+    "displayName": "Color card carousel"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "ctas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "external-links.call-to-action",
+      "max": 2
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.color-card",
+      "required": true,
+      "min": 1
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    }
+  }
+}
