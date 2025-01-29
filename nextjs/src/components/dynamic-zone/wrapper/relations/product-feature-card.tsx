@@ -20,7 +20,7 @@ type Props = {
   cards: ProductCard[]
 }
 
-export default function ProductCardsSection({ section }: { section: Props }) {
+export default function ProductFeatureCard({ section }: { section: Props }) {
   return (
     <Container
       background={section.props.background}

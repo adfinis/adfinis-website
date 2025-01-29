@@ -31,7 +31,7 @@ module.exports = (config, {strapi}) => {
                 }
               }
             },
-            'relations.product-cards-section': {
+            'sections.product-feature-card': {
               populate: {
                 props: true,
                 cards: {

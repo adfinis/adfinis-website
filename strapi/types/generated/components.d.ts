@@ -747,6 +747,22 @@ export interface SectionsKpiWithIntroAndHallmarksSection
   };
 }
 
+export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_product_feature_cards';
+  info: {
+    displayName: 'Product feature card';
+    icon: 'stack';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_project_cards_sections';
   info: {
@@ -970,6 +986,7 @@ declare module '@strapi/strapi' {
       'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
       'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
+      'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.quote-section': SectionsQuoteSection;
