@@ -20,8 +20,13 @@ const CardSlider: React.FC<CardSliderProps> = ({
   ctas,
   children,
 }) => {
+  /**
+   * @info -mx-8 is a correction for the Container.tsx component (sm:px-2), in order to prevent a scrollbar from appearing
+   * The reason is w-topbar's calculation, in some edge cases slightly being bigger than the container.
+   * @see Container.tsx for additional details
+   */
   return (
-    <div className="w-topbar">
+    <div className="w-topbar sm:-mx-8">
       <div className="flex flex-col items-start gap-8 flex-1 self-stretch pb-8 sm:hidden">
         <h3 className="text-30 font-semibold text-biscay">{title}</h3>
         <Text markdown={description} />
@@ -29,8 +34,8 @@ const CardSlider: React.FC<CardSliderProps> = ({
 
       <div
         className={clsx([
-          "flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none  overscroll-x-none",
-          "pt-2 pb-4 px-4 -ml-4 sm:ml-0 sm:px-2",
+          "flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none overscroll-x-none",
+          "pt-2 pb-4 px-2 2xl:-mr-6",
         ])}
       >
         <CardSliderExplanation title={title} description={description}>

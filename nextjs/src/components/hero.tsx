@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
   return (
     <div
       className={clsx([
-        "relative min-h-[600px] lg:min-h-[max(75vh,700px)] overflow-hidden",
+        "relative min-h-[600px] lg:min-h-[650px] xl:min-h-[750px] 2xl:min-h-[800px] overflow-hidden",
         'before:content-[""] before:absolute',
         "before:left-0 before:right-0",
         "before:bottom-[-15vw] before:h-[15vw] ",
@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
       />
       <section
         className={clsx([
-          "relative container px-4 lg:px-0 mt-28 lg:mt-44",
+          "relative container px-4 mt-28 lg:mt-44",
           "transition-all duration-75",
           {
             "blur-sm": navActive,
