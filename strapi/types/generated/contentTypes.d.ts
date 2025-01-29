@@ -1378,6 +1378,13 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
     name: Schema.Attribute.String &
