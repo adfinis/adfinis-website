@@ -24,13 +24,6 @@ module.exports = (config, {strapi}) => {
                 cta: true,
               },
             },
-            'sections.projects-card-section-with-external-link': {
-              populate: {
-                projects: {
-                  populate: '*',
-                }
-              }
-            },
             'sections.product-feature-card': {
               populate: {
                 props: true,
