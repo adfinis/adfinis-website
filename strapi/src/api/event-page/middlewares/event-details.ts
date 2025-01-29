@@ -46,7 +46,7 @@ module.exports = (config, {strapi}) => {
             'sections.two-column-section': {
               populate: '*',
             },
-            'sections.text-section-with-cta': {
+            'sections.cta-banner': {
               populate: '*',
             },
             'sections.icon-card-section-with-relation': {

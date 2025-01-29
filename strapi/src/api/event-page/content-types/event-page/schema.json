@@ -151,7 +151,8 @@
         "sections.content-carousel",
         "sections.quote-section",
         "sections.content-highlight-section",
-        "sections.color-card-carousel"
+        "sections.color-card-carousel",
+        "sections.cta-banner"
       ]
     }
   }

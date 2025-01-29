@@ -752,6 +752,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -844,6 +845,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.two-column-section',
         'sections.feature-cards',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1080,6 +1082,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1261,6 +1264,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.quote-section',
         'sections.content-carousel',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1385,6 +1389,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1580,6 +1585,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1661,6 +1667,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.quote-section',
         'sections.content-highlight-section',
         'sections.color-card-carousel',
+        'sections.cta-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
