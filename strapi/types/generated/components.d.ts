@@ -504,26 +504,6 @@ export interface SectionsColorCardCarousel extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_color_card_slider_sections';
-  info: {
-    description: '';
-    displayName: 'Color card slider section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Component<'cards.color-card', true>;
-    ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 2;
-        },
-        number
-      >;
-    description: Schema.Attribute.RichText;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 export interface SectionsContentCarousel extends Struct.ComponentSchema {
   collectionName: 'components_sections_content_carousels';
   info: {
@@ -945,7 +925,6 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-carousel': SectionsColorCardCarousel;
-      'sections.color-card-slider-section': SectionsColorCardSliderSection;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.feature-cards': SectionsFeatureCards;

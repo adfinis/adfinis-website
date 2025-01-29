@@ -60,7 +60,8 @@
         "sections.video-section",
         "sections.two-column-section",
         "sections.text-section-with-cta",
-        "sections.feature-cards"
+        "sections.feature-cards",
+        "sections.color-card-carousel"
       ]
     }
   }

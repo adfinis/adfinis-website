@@ -740,7 +740,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -754,6 +753,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.content-carousel',
         'sections.quote-section',
         'sections.content-highlight-section',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -846,6 +846,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.two-column-section',
         'sections.text-section-with-cta',
         'sections.feature-cards',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1071,7 +1072,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1084,6 +1084,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.content-highlight-section',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1264,6 +1265,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.feature-cards',
         'sections.quote-section',
         'sections.content-carousel',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1376,7 +1378,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1390,6 +1391,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.content-carousel',
         'sections.quote-section',
         'sections.content-highlight-section',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1573,7 +1575,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1587,6 +1588,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.content-highlight-section',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1656,7 +1658,6 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
         'sections.kpi-with-intro-and-hallmarks-section',
@@ -1670,6 +1671,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.content-carousel',
         'sections.quote-section',
         'sections.content-highlight-section',
+        'sections.color-card-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
