@@ -19,7 +19,7 @@ type FeatureCard = {
 type Props = {
   title: string
   description: string
-  cards: FeatureCard[]
+  features: FeatureCard[]
 }
 export default function FeatureCards({ section }: { section: Props }) {
   return (
@@ -29,7 +29,7 @@ export default function FeatureCards({ section }: { section: Props }) {
           markdown={section.description}
           className="text-center max-w-4xl mx-auto"
         />
-        {section.cards.map((item, i: number) => {
+        {section.features.map((item, i: number) => {
           return (
             <SectionCardWide
               ctas={[]}
