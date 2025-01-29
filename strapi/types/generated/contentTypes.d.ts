@@ -592,6 +592,64 @@ export interface ApiContactCtaContactCta extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContentOfferContentOffer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_offers';
+  info: {
+    displayName: 'Content Offer';
+    pluralName: 'content-offers';
+    singularName: 'content-offer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    cover_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    download_file: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-offer.content-offer'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
   collectionName: 'event_pages';
   info: {
@@ -2205,6 +2263,7 @@ declare module '@strapi/strapi' {
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
+      'api::content-offer.content-offer': ApiContentOfferContentOffer;
       'api::event-page.event-page': ApiEventPageEventPage;
       'api::events-overview.events-overview': ApiEventsOverviewEventsOverview;
       'api::footer.footer': ApiFooterFooter;
