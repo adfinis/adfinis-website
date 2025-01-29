@@ -534,6 +534,21 @@ export interface SectionsContentCarousel extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsContentHighlightSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_content_highlight_sections';
+  info: {
+    displayName: 'Content highlight section';
+  };
+  attributes: {
+    content_offer: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::content-offer.content-offer'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+  };
+}
+
 export interface SectionsFeatureCards extends Struct.ComponentSchema {
   collectionName: 'components_sections_feature_cards';
   info: {
@@ -919,6 +934,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-slider-section': SectionsColorCardSliderSection;
       'sections.content-carousel': SectionsContentCarousel;
+      'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
