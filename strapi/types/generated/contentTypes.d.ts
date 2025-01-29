@@ -1389,6 +1389,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1585,6 +1586,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.quote-section',
         'sections.feature-cards',
         'sections.content-carousel',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1667,6 +1669,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
