@@ -1,14 +1,13 @@
 {
   "kind": "collectionType",
-  "collectionName": "white_papers",
+  "collectionName": "content_offers",
   "info": {
-    "singularName": "white-paper",
-    "pluralName": "white-papers",
-    "displayName": "White Paper",
-    "description": ""
+    "singularName": "content-offer",
+    "pluralName": "content-offers",
+    "displayName": "Content Offer"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "i18n": {
@@ -34,30 +33,30 @@
       "type": "richtext"
     },
     "cover_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
       ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": false
     },
     "download_file": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "files"
       ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     }
   }
 }

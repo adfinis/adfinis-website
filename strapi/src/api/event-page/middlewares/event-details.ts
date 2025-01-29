@@ -18,13 +18,6 @@ module.exports = (config, {strapi}) => {
             'sections.color-card-slider-section': {
               populate: '*'
             },
-            'sections.projects-card-section-with-external-link': {
-              populate: {
-                projects: {
-                  populate: '*',
-                }
-              }
-            },
             'sections.product-feature-card': {
               populate: {
                 props: true,
@@ -72,10 +65,10 @@ module.exports = (config, {strapi}) => {
                 section_props: true,
               },
             },
-            'relations.white-paper-section': {
+            'sections.content-highlight-section': {
               populate: {
                 props: true,
-                white_paper: {
+                content_offer: {
                   populate: '*'
                 },
               },

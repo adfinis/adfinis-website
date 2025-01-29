@@ -19,7 +19,6 @@ import {
   slaSection,
   partnerSection,
   quoteSection,
-  whitepaperSection,
   twoColumnMarkdownSection,
   calendlySection,
   youtubeSection,
@@ -48,7 +47,6 @@ import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
-import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
@@ -286,15 +284,6 @@ export default function Theme({
         padding="both-padding"
       >
         <StandardForm locale={locale} />
-      </Container>
-
-      <Container id="whitepaper" background="sapphire" padding="both-padding">
-        <SectionWhitepaper
-          title={whitepaperSection.title}
-          cta={whitepaperSection.cta}
-          image={whitepaperSection.image}
-          text={whitepaperSection.description}
-        />
       </Container>
 
       <Container

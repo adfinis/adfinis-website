@@ -442,21 +442,6 @@ export interface RelationsSolutionsRelationWithDescription
   };
 }
 
-export interface RelationsWhitePaperSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_white_paper_sections';
-  info: {
-    displayName: 'White Paper Section';
-  };
-  attributes: {
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    white_paper: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::white-paper.white-paper'
-    >;
-  };
-}
-
 export interface RichHeadingsH1 extends Struct.ComponentSchema {
   collectionName: 'components_rich_headings_h1s';
   info: {
@@ -531,6 +516,21 @@ export interface SectionsContentCarousel extends Struct.ComponentSchema {
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsContentHighlightSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_content_highlight_sections';
+  info: {
+    displayName: 'Content highlight section';
+  };
+  attributes: {
+    content_offer: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::content-offer.content-offer'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
   };
 }
 
@@ -913,12 +913,12 @@ declare module '@strapi/strapi' {
       'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
-      'relations.white-paper-section': RelationsWhitePaperSection;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.color-card-slider-section': SectionsColorCardSliderSection;
       'sections.content-carousel': SectionsContentCarousel;
+      'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;

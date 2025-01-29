@@ -592,6 +592,64 @@ export interface ApiContactCtaContactCta extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContentOfferContentOffer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_offers';
+  info: {
+    displayName: 'Content Offer';
+    pluralName: 'content-offers';
+    singularName: 'content-offer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    cover_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    download_file: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-offer.content-offer'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
   collectionName: 'event_pages';
   info: {
@@ -682,7 +740,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'relations.white-paper-section',
         'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
@@ -696,6 +753,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1013,7 +1071,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'relations.white-paper-section',
         'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
@@ -1026,6 +1083,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.quote-section',
         'sections.feature-cards',
         'sections.content-carousel',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1203,7 +1261,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       [
         'sections.heading-with-link-container',
         'global.blog-block',
-        'sections.events-section-with-intro-and-cta',
         'sections.feature-cards',
         'sections.quote-section',
         'sections.content-carousel',
@@ -1319,7 +1376,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'relations.white-paper-section',
         'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
@@ -1333,6 +1389,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1516,7 +1573,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'relations.white-paper-section',
         'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
@@ -1530,6 +1586,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.quote-section',
         'sections.feature-cards',
         'sections.content-carousel',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1599,7 +1656,6 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.product-feature-card',
         'relations.section-solutions-relation',
         'relations.sla-card-section',
-        'relations.white-paper-section',
         'sections.color-card-slider-section',
         'sections.icon-card-section-with-relation',
         'sections.info-details-section',
@@ -1613,6 +1669,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.feature-cards',
         'sections.content-carousel',
         'sections.quote-section',
+        'sections.content-highlight-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1627,65 +1684,6 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiWhitePaperWhitePaper extends Struct.CollectionTypeSchema {
-  collectionName: 'white_papers';
-  info: {
-    description: '';
-    displayName: 'White Paper';
-    pluralName: 'white-papers';
-    singularName: 'white-paper';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    cover_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    download_file: Schema.Attribute.Media<'files'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::white-paper.white-paper'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2205,6 +2203,7 @@ declare module '@strapi/strapi' {
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
+      'api::content-offer.content-offer': ApiContentOfferContentOffer;
       'api::event-page.event-page': ApiEventPageEventPage;
       'api::events-overview.events-overview': ApiEventsOverviewEventsOverview;
       'api::footer.footer': ApiFooterFooter;
@@ -2219,7 +2218,6 @@ declare module '@strapi/strapi' {
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
-      'api::white-paper.white-paper': ApiWhitePaperWhitePaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
