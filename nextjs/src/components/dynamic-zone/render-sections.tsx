@@ -6,7 +6,7 @@ import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-r
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
-import ProjectsCardSectionWithExternalLink from "@/components/dynamic-zone/wrapper/sections/projects-card-section-with-external-link"
+import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
@@ -69,13 +69,8 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.projects-card-section-with-external-link":
-      return (
-        <ProjectsCardSectionWithExternalLink
-          key={`section_projects_card_section_with_external_link_${index}`}
-          section={section}
-        />
-      )
+    case "sections.feature-cards":
+      return <FeatureCards key={`feature_cards_${index}`} section={section} />
     case "sections.events-section-with-intro-and-cta":
       return (
         <EventsSectionWithIntroAndCta

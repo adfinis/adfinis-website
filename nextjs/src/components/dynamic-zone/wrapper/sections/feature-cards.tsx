@@ -6,7 +6,7 @@ import SectionCardWide from "@/components/sections/section-card-wide"
 import Title from "@/components/title"
 import LinkButton from "@/components/link-button"
 
-type ProjectCard = {
+type FeatureCard = {
   title: string
   intro: string
   cta: CTA
@@ -19,18 +19,14 @@ type ProjectCard = {
 type Props = {
   title: string
   description: string
-  projects: ProjectCard[]
+  featureCards: FeatureCard[]
 }
-export default function ProjectsCardSectionWithExternalLink({
-  section,
-}: {
-  section: Props
-}) {
+export default function FeatureCards({ section }: { section: Props }) {
   return (
     <Container background="stone" padding="both-padding">
       <SectionGroup title={section.title} data-testid="project-cards">
         <Text markdown={section.description} className="text-center" />
-        {section.projects.map((item, i: number) => {
+        {section.featureCards.map((item, i: number) => {
           return (
             <SectionCardWide
               ctas={[]}
