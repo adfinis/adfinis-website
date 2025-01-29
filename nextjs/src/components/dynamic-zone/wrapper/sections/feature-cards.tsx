@@ -19,14 +19,17 @@ type FeatureCard = {
 type Props = {
   title: string
   description: string
-  featureCards: FeatureCard[]
+  cards: FeatureCard[]
 }
 export default function FeatureCards({ section }: { section: Props }) {
   return (
     <Container background="stone" padding="both-padding">
       <SectionGroup title={section.title} data-testid="project-cards">
-        <Text markdown={section.description} className="text-center" />
-        {section.featureCards.map((item, i: number) => {
+        <Text
+          markdown={section.description}
+          className="text-center max-w-4xl mx-auto"
+        />
+        {section.cards.map((item, i: number) => {
           return (
             <SectionCardWide
               ctas={[]}
