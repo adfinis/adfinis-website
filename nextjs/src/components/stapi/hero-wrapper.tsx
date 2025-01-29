@@ -12,7 +12,7 @@ type Props = {
     url: string
   }
   body: string
-  cta: CTA
+  cta?: CTA
 }
 
 export default function HeroWrapper({ hero }: { hero: Props }) {

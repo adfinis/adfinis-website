@@ -170,15 +170,13 @@ export interface CardsSimpleCard extends Struct.ComponentSchema {
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
+    description: '';
     displayName: 'Call to action';
     icon: 'link';
   };
   attributes: {
     href: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'https://adfinis.com/contact'>;
-    is_disabled: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Call to action'>;
@@ -194,6 +192,7 @@ export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
 export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   collectionName: 'components_external_links_link_with_chevrons';
   info: {
+    description: '';
     displayName: 'Link with chevron';
     icon: 'link';
   };
@@ -203,9 +202,6 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'left'>;
     href: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'https://adfinis.com/contact'>;
-    is_disabled: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Button text'>;

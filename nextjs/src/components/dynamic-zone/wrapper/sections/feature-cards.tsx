@@ -41,7 +41,11 @@ export default function FeatureCards({ section }: { section: Props }) {
                 {item.title}
               </Title>
               <Text markdown={item.intro} />
-              <LinkButton href={`${item.cta.href}`} variant={item.cta.variant}>
+              <LinkButton
+                href={`${item.cta.href}`}
+                variant={item.cta.variant}
+                size={item.cta.size}
+              >
                 {item.cta.label}
               </LinkButton>
             </SectionCardWide>
