@@ -69,7 +69,6 @@
         "relations.calendly-section",
         "relations.extra-wide-icon-cards-grid-section",
         "relations.product-cards-section",
-        "relations.quotes-relation",
         "relations.section-solutions-relation",
         "relations.sla-card-section",
         "relations.white-paper-section",
@@ -84,7 +83,8 @@
         "sections.two-column-section",
         "sections.video-section",
         "sections.video-with-text-section",
-        "sections.feature-cards"
+        "sections.feature-cards",
+        "sections.quote-section"
       ]
     }
   }

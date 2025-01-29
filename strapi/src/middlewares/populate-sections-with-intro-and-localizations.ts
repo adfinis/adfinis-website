@@ -86,7 +86,7 @@ module.exports = (config, {strapi}) => {
                 },
               },
             },
-            'relations.quotes-relation': {
+            'sections.quote-section': {
               populate: {
                 quotes: {
                   populate: '*'
