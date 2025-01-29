@@ -577,8 +577,8 @@ export interface SectionsFeatureCards extends Struct.ComponentSchema {
     icon: 'landscape';
   };
   attributes: {
-    cards: Schema.Attribute.Component<'cards.feature-card', true>;
     description: Schema.Attribute.RichText;
+    features: Schema.Attribute.Component<'cards.feature-card', true>;
     props: Schema.Attribute.Component<'sections.section-props', false>;
     title: Schema.Attribute.String;
   };

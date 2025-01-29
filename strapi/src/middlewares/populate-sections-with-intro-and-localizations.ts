@@ -120,7 +120,7 @@ module.exports = (config, {strapi}) => {
                 props: {
                   populate: '*',
                 },
-                cards: {
+                features: {
                   populate: '*',
                 },
               }
