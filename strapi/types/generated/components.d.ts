@@ -794,11 +794,12 @@ export interface SectionsProjectsCardSectionWithExternalLink
 export interface SectionsQuoteSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_quote_sections';
   info: {
+    description: '';
     displayName: 'Quote section';
     icon: 'quote';
   };
   attributes: {
-    quotes: Schema.Attribute.Relation<'oneToOne', 'api::quote.quote'>;
+    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
   };
 }
 

@@ -46,7 +46,7 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.quote-section":
+    case "sections.quote-section":
       return <QuoteSection key={`section_quote_${index}`} section={section} />
     case "sections.video-section":
       return (
@@ -128,6 +128,10 @@ export function renderSections(section: any, index: number) {
         />
       )
     default:
-      return <p key={`section_${index}`}>Unknown section</p>
+      return (
+        <p key={`section_${index}`}>
+          Unknown section {JSON.stringify(section)}
+        </p>
+      )
   }
 }
