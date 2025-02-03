@@ -13,11 +13,18 @@ type Props = {
   }
   body: string
   cta?: CTA
+  logo?: {
+    url: string
+  }
 }
 
 export default function HeroWrapper({ hero }: { hero: Props }) {
   return (
-    <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
+    <Hero
+      color={hero.color.color}
+      imageUrl={hero.background_image.url}
+      logoUrl={hero.logo?.url}
+    >
       <Text markdown={hero.body} />
       {hero.cta && (
         <LinkButton

@@ -11,9 +11,13 @@ type HeroProps = {
   color: keyof typeof colors
   imageUrl: string
   children: React.ReactNode
+  /**
+   * @info when a logoUrl is passed, the triangle will turn always black with the logo on top.
+   */
+  logoUrl?: string
 }
 
-const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
+const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
   const { navActive } = useNavContext()
   return (
     <div
@@ -48,9 +52,27 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color }) => {
         ])}
       />
       <Triangle
-        color={color}
+        color={logoUrl ? "stone" : color}
         className="w-[50vw] h-auto absolute right-0 bottom-0"
+        fill={logoUrl ? true : undefined}
       />
+      {logoUrl && (
+        <div className="w-[50vw] h-max absolute right-0 bottom-0 block">
+          <Triangle
+            color="neutral"
+            className="w-[50vw] h-auto opacity-0 pointer-events-none"
+          />
+          <Image
+            src={logoUrl}
+            alt=""
+            aria-hidden="true"
+            width={150}
+            height={100}
+            className="hidden md:block absolute top-0 right-0 bottom-0 w-auto h-full"
+          />
+        </div>
+      )}
+
       <section
         className={clsx([
           "relative container px-4 mt-28 lg:mt-44",
