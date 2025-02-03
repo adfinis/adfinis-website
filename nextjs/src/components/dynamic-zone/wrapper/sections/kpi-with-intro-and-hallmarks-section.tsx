@@ -1,7 +1,7 @@
 import Container from "@/components/container"
 import SectionGroup from "@/components/sections/section-group"
 import CardGroup from "@/components/cards/card-group"
-import CardCounter from "@/components/cards/card-kpi"
+import CardKpi from "@/components/cards/card-kpi"
 import Hallmarks from "@/components/stapi/hallmarks"
 
 type Kpi = {
@@ -49,7 +49,7 @@ export default function KpiWithIntroAndHallmarksSection({
       >
         <CardGroup>
           {section.kpis.map((item, i: number) => (
-            <CardCounter
+            <CardKpi
               key={i}
               title={item.title}
               imageUrl={item.icon_image.url}
