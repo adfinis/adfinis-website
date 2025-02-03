@@ -18,15 +18,17 @@ export default function SingleColumnSection({ section }: { section: Props }) {
       background={section.props.background}
       padding={section.props.padding}
     >
-      {section.infolabel && (
-        <InfoLabel text={section.infolabel} className="block mb-4" />
-      )}
-      {section.body && (
-        <Text markdown={section.body} className="mb-8 max-w-4xl" />
-      )}
-      {section.cta && (
-        <LinkButton {...section.cta}>{section.cta.label}</LinkButton>
-      )}
+      <div className="mx-auto max-w-4xl">
+        {section.infolabel && (
+          <InfoLabel text={section.infolabel} className="block mb-4" />
+        )}
+        {section.body && (
+          <Text markdown={section.body} className="mb-8 max-w-4xl" />
+        )}
+        {section.cta && (
+          <LinkButton {...section.cta}>{section.cta.label}</LinkButton>
+        )}
+      </div>
     </Container>
   )
 }
