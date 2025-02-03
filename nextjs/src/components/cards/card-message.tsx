@@ -16,7 +16,10 @@ export const CardMessage: React.FC<CardMessageProps> = ({
   description,
 }) => {
   return (
-    <article className="rounded-xl shadow-2 overflow-hidden max-w-xs bg-white h-full grid gap-6 content-start">
+    <article
+      className="rounded-xl shadow-2 overflow-hidden max-w-xs bg-white h-full grid gap-6 content-start"
+      data-scheme="light"
+    >
       <header>
         {/* Square that represents the speech bubble rectangle */}
         <div className="w-full p-6 bg-sapphire">
