@@ -29,15 +29,15 @@
         }
 
         h1 {
-            @apply text-35 lg:text-50 leading-[30px] lg:leading-[50px];
+            @apply text-35 lg:text-50 leading-[35px] lg:leading-[50px];
         }
 
         h2 {
-            @apply text-35 lg:text-40 leading-[30px] lg:leading-[45px];
+            @apply text-35 lg:text-40 leading-[35px] lg:leading-[45px];
         }
 
         h3 {
-            @apply text-30 leading-[25px] lg:leading-[40px];
+            @apply text-30 leading-[30px] lg:leading-[40px];
         }
 
         ol {

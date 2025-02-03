@@ -55,6 +55,9 @@ module.exports = (config, {strapi}) => {
             'sections.cta-banner': {
               populate: '*',
             },
+            'sections.single-column-section': {
+              populate: '*',
+            },
             'sections.icon-card-section-with-relation': {
               populate: {
                 cards: {

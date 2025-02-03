@@ -753,6 +753,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.content-highlight-section',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -846,6 +847,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.feature-cards',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1083,6 +1085,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.content-highlight-section',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1265,6 +1268,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.content-carousel',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1390,6 +1394,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.content-highlight-section',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1586,6 +1591,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.content-highlight-section',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1668,6 +1674,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.content-highlight-section',
         'sections.color-card-carousel',
         'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

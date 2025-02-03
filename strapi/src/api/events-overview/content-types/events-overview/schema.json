@@ -61,7 +61,8 @@
         "sections.two-column-section",
         "sections.feature-cards",
         "sections.color-card-carousel",
-        "sections.cta-banner"
+        "sections.cta-banner",
+        "sections.single-column-section"
       ]
     }
   }

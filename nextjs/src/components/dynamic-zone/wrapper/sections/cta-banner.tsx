@@ -7,7 +7,7 @@ import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 type Props = {
   props: SectionProps
   cta: CTA
-  body: string | undefined
+  body?: string
 }
 
 export default function CtaBanner({ section }: { section: Props }) {
@@ -16,7 +16,7 @@ export default function CtaBanner({ section }: { section: Props }) {
       background={section.props.background}
       padding={section.props.padding}
     >
-      <SectionGroup title={section.body} align={"center"}>
+      <SectionGroup text={section.body} align={"center"}>
         <ButtonGroup
           align={"center"}
           ctas={[
