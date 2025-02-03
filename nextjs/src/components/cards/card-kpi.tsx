@@ -4,10 +4,8 @@ import Image from "next/image"
 import { colors } from "@/lib/colors"
 import { cva, VariantProps } from "class-variance-authority"
 
-const cardCounterStyles = cva(
-  [
-    "rounded-full h-48 lg:h-64 w-48 lg:w-64 grid gap-3 lg:gap-6 place-content-center",
-  ],
+const cardKpiStyles = cva(
+  ["rounded-full h-56 w-56 lg:h-64 lg:w-64 grid lg:gap-6 place-content-center"],
   {
     variants: {
       color: {
@@ -32,16 +30,16 @@ const cardCounterStyles = cva(
   },
 )
 
-type CardCounterProps = VariantProps<typeof cardCounterStyles> & Card
+type CardKpiProps = VariantProps<typeof cardKpiStyles> & Card
 
-const CardCounter: React.FC<CardCounterProps> = ({
+const CardKpi: React.FC<CardKpiProps> = ({
   title,
   description,
   imageUrl,
   color,
 }) => {
   return (
-    <div className={cardCounterStyles({ color })}>
+    <div className={cardKpiStyles({ color })}>
       {imageUrl && (
         <Image
           className="w-15 h-15 mx-auto"
@@ -59,4 +57,4 @@ const CardCounter: React.FC<CardCounterProps> = ({
   )
 }
 
-export default CardCounter
+export default CardKpi
