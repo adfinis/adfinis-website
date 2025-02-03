@@ -5,9 +5,7 @@ import { colors } from "@/lib/colors"
 import { cva, VariantProps } from "class-variance-authority"
 
 const cardKpiStyles = cva(
-  [
-    "rounded-full h-48 lg:h-64 w-48 lg:w-64 grid gap-3 lg:gap-6 place-content-center",
-  ],
+  ["rounded-full h-56 w-56 lg:h-64 lg:w-64 grid lg:gap-6 place-content-center"],
   {
     variants: {
       color: {

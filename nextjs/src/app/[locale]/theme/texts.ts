@@ -374,7 +374,7 @@ export const statisticsSection = {
     },
     {
       title: "200+",
-      description: "projects",
+      description: "Successful projects",
       icon: {
         src: "/svg/icons/icon_plan.svg",
         alt: "Plan icon",
@@ -382,7 +382,7 @@ export const statisticsSection = {
     },
     {
       title: "150+",
-      description: "employees",
+      description: "Red Hat Certifications",
       icon: {
         src: "/svg/icons/icon_plan.svg",
         alt: "Plan icon",
