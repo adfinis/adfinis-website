@@ -27,7 +27,7 @@ const SectionCardLogo: React.FC<SectionCardLogoProps> = ({
           {title}
         </Title>
         {description && <Text markdown={description} />}
-        {ctas?.length && <ButtonGroup ctas={ctas} />}
+        {(ctas?.length && <ButtonGroup ctas={ctas} />) || ""}
       </div>
     </div>
   )
