@@ -7,7 +7,7 @@ import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 type Props = {
   props: SectionProps
   cta: CTA
-  body: string | undefined
+  body?: string
 }
 
 export default function CtaBanner({ section }: { section: Props }) {

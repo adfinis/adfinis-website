@@ -827,6 +827,22 @@ export interface SectionsServicesSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_single_column_sections';
+  info: {
+    description: '';
+    displayName: 'Single column section';
+    icon: 'layer';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    infolabel: Schema.Attribute.String;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
@@ -923,6 +939,7 @@ declare module '@strapi/strapi' {
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
+      'sections.single-column-section': SectionsSingleColumnSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
       'sections.video-with-text-section': SectionsVideoWithTextSection;

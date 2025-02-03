@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_single_column_sections",
+  "info": {
+    "displayName": "Single column section",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "infolabel": {
+      "type": "string"
+    }
+  }
+}

@@ -14,6 +14,7 @@ import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
 import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
+import SingleColumnSection from "./wrapper/sections/single-column-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -116,6 +117,13 @@ export function renderSections(section: any, index: number) {
       return (
         <ExtraWideIconCardsGridSection
           key={`relations.extra-wide-icon-cards-grid-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.single-column-section":
+      return (
+        <SingleColumnSection
+          key={`sections.single-column-section_${index}`}
           section={section}
         />
       )
