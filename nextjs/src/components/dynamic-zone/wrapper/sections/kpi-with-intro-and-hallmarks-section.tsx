@@ -1,7 +1,7 @@
 import Container from "@/components/container"
 import SectionGroup from "@/components/sections/section-group"
 import CardGroup from "@/components/cards/card-group"
-import CardCounter from "@/components/cards/card-counter"
+import CardCounter from "@/components/cards/card-kpi"
 import Hallmarks from "@/components/stapi/hallmarks"
 
 type Kpi = {
