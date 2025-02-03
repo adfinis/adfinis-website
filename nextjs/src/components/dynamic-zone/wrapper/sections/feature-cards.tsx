@@ -9,7 +9,7 @@ import LinkButton from "@/components/link-button"
 type FeatureCard = {
   title: string
   intro: string
-  cta: CTA
+  cta?: CTA
   image: {
     url: string
     alternativeText: string | null
@@ -41,13 +41,15 @@ export default function FeatureCards({ section }: { section: Props }) {
                 {item.title}
               </Title>
               <Text markdown={item.intro} />
-              <LinkButton
-                href={`${item.cta.href}`}
-                variant={item.cta.variant}
-                size={item.cta.size}
-              >
-                {item.cta.label}
-              </LinkButton>
+              {item.cta && (
+                <LinkButton
+                  href={`${item.cta.href}`}
+                  variant={item.cta.variant}
+                  size={item.cta.size}
+                >
+                  {item.cta.label}
+                </LinkButton>
+              )}
             </SectionCardWide>
           )
         })}
