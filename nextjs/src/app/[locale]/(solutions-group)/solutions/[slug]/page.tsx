@@ -46,7 +46,7 @@ export default async function SolutionsDetailPage({
 
       {intro && (
         <Intro>
-          <Text markdown={intro} className="grid gap-8" />
+          <Text markdown={intro} />
         </Intro>
       )}
       {sections && sections.length > 0 && sections.map(renderSections)}
