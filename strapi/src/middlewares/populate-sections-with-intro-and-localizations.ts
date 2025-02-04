@@ -84,18 +84,19 @@ module.exports = (config, {strapi}) => {
             'sections.video-section': {
               populate: '*',
             },
-            'sections.video-with-text-section': {
+            'sections.hallmarks-section': {
               populate: '*',
             },
-            'sections.kpi-with-intro-and-hallmarks-section': {
+            'sections.kpi-section': {
               populate: {
+                props: true,
                 kpis: {
                   populate: '*',
                 },
-                hallmark: {
-                  populate: true,
-                },
               },
+            },
+            'sections.video-with-text-section': {
+              populate: '*',
             },
             'sections.services-section': {
               populate: '*'

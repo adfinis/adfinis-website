@@ -151,7 +151,7 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
-    internal_name: Schema.Attribute.String;
+    internal_name: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -596,6 +596,19 @@ export interface SectionsGroupTitleWithRichIntro
   };
 }
 
+export interface SectionsHallmarksSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_hallmarks_sections';
+  info: {
+    displayName: 'Hallmarks section';
+    icon: 'crown';
+  };
+  attributes: {
+    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsHeadingWithLinkContainer
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_heading_with_link_containers';
@@ -681,26 +694,11 @@ export interface SectionsIconCardSectionWithRelation
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
+    description: '';
     displayName: 'KPI Section';
   };
   attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
-export interface SectionsKpiWithIntroAndHallmarksSection
-  extends Struct.ComponentSchema {
-  collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
-  info: {
-    description: '';
-    displayName: 'KPI with intro and hallmarks section';
-  };
-  attributes: {
-    description: Schema.Attribute.RichText;
-    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
     kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -709,7 +707,8 @@ export interface SectionsKpiWithIntroAndHallmarksSection
         },
         number
       >;
-    title: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -926,12 +925,12 @@ declare module '@strapi/strapi' {
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
+      'sections.hallmarks-section': SectionsHallmarksSection;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-section': SectionsKpiSection;
-      'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;

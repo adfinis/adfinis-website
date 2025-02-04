@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_hallmarks_sections",
+  "info": {
+    "displayName": "Hallmarks section",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "hallmark": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hallmark.hallmark"
+    }
+  }
+}

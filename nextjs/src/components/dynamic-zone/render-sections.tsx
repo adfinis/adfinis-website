@@ -3,7 +3,6 @@ import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/secti
 import QuoteSection from "@/components/dynamic-zone/wrapper/sections/quote-section"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
-import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
@@ -15,6 +14,8 @@ import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
 import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
 import SingleColumnSection from "./wrapper/sections/single-column-section"
+import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmarks-section"
+import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -62,12 +63,16 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.kpi-with-intro-and-hallmarks-section":
+    case "sections.hallmarks-section":
       return (
-        <KpiWithIntroAndHallmarksSection
-          key={`section_kpi_with_intro_and_hallmarks_section_${index}`}
+        <HallmarksSection
+          key={`sections.hallmarks-section_${index}`}
           section={section}
         />
+      )
+    case "sections.kpi-section":
+      return (
+        <KpiSection key={`sections.kpi-section_${index}`} section={section} />
       )
     case "sections.feature-cards":
       return <FeatureCards key={`feature_cards_${index}`} section={section} />
