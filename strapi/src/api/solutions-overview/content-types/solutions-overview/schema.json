@@ -73,7 +73,9 @@
         "sections.content-highlight-section",
         "sections.color-card-carousel",
         "sections.cta-banner",
-        "sections.single-column-section"
+        "sections.single-column-section",
+        "sections.kpi-section",
+        "sections.hallmarks-section"
       ]
     }
   }

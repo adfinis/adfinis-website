@@ -753,6 +753,8 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -847,6 +849,8 @@ export interface ApiEventsOverviewEventsOverview
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1090,6 +1094,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1398,6 +1404,8 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1594,6 +1602,8 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1676,6 +1686,8 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.color-card-carousel',
         'sections.cta-banner',
         'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
