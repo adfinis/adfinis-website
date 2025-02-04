@@ -711,28 +711,6 @@ export interface SectionsKpiSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsKpiWithIntroAndHallmarksSection
-  extends Struct.ComponentSchema {
-  collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
-  info: {
-    description: '';
-    displayName: 'KPI with intro and hallmarks section';
-  };
-  attributes: {
-    description: Schema.Attribute.RichText;
-    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
-    kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
-    title: Schema.Attribute.RichText;
-  };
-}
-
 export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_sections_product_feature_cards';
   info: {
@@ -952,7 +930,6 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.kpi-section': SectionsKpiSection;
-      'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;

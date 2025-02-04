@@ -98,16 +98,6 @@ module.exports = (config, {strapi}) => {
             'sections.video-with-text-section': {
               populate: '*',
             },
-            'sections.kpi-with-intro-and-hallmarks-section': {
-              populate: {
-                kpis: {
-                  populate: '*',
-                },
-                hallmark: {
-                  populate: true,
-                },
-              },
-            },
             'sections.services-section': {
               populate: '*'
             },
