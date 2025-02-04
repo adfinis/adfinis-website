@@ -151,7 +151,7 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
-    internal_name: Schema.Attribute.String;
+    internal_name: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -694,13 +694,20 @@ export interface SectionsIconCardSectionWithRelation
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
+    description: '';
     displayName: 'KPI Section';
   };
   attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
   };
 }
 
