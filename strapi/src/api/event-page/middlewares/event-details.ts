@@ -84,6 +84,14 @@ module.exports = (config, {strapi}) => {
             'sections.hallmarks-section': {
               populate: '*',
             },
+            'sections.kpi-section': {
+              populate: {
+                props: true,
+                kpis: {
+                  populate: '*',
+                },
+              },
+            },
             'sections.kpi-with-intro-and-hallmarks-section': {
               populate: {
                 kpis: {
