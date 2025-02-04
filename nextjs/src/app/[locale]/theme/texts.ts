@@ -312,6 +312,7 @@ export const resourcesSection = {
           href: "/news",
         },
       ],
+      href: "/news",
     },
     {
       title: "Swiss Cyber Security Days 2025",
