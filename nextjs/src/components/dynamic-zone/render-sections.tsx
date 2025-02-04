@@ -15,6 +15,7 @@ import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
 import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
 import SingleColumnSection from "./wrapper/sections/single-column-section"
+import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmarks-section"
 
 export function renderSections(section: any, index: number) {
   switch (section.__component) {
@@ -66,6 +67,13 @@ export function renderSections(section: any, index: number) {
       return (
         <KpiWithIntroAndHallmarksSection
           key={`section_kpi_with_intro_and_hallmarks_section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.hallmarks-section":
+      return (
+        <HallmarksSection
+          key={`sections.hallmarks-section_${index}`}
           section={section}
         />
       )
