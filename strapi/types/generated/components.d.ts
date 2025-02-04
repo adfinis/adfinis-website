@@ -596,6 +596,19 @@ export interface SectionsGroupTitleWithRichIntro
   };
 }
 
+export interface SectionsHallmarksSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_hallmarks_sections';
+  info: {
+    displayName: 'Hallmarks section';
+    icon: 'crown';
+  };
+  attributes: {
+    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsHeadingWithLinkContainer
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_heading_with_link_containers';
@@ -926,6 +939,7 @@ declare module '@strapi/strapi' {
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
+      'sections.hallmarks-section': SectionsHallmarksSection;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
