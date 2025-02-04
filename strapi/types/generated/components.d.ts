@@ -707,7 +707,8 @@ export interface SectionsKpiSection extends Struct.ComponentSchema {
         },
         number
       >;
-    props: Schema.Attribute.Component<'sections.section-props', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
