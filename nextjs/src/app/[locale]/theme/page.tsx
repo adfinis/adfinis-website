@@ -79,7 +79,7 @@ export default function Theme({
 
       <Intro>
         <Title markdown={intro.title} align="center" />
-        <Text markdown={intro.text} className="grid gap-8" />
+        <Text markdown={intro.text} />
       </Intro>
 
       <Container id="Solutions" padding="both-padding" background="neutral">

@@ -49,7 +49,7 @@ export default async function EventsOverviewPage({
       </NavProvider>
       {intro && (
         <Intro>
-          <Text markdown={intro} className="grid gap-8" />
+          <Text markdown={intro} />
         </Intro>
       )}
       {cards.length > 0 && (
