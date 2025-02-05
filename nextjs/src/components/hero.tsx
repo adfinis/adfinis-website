@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         'before:content-[""] before:absolute',
         "before:left-0 before:right-0",
         "before:bottom-[-15vw] before:h-[15vw] ",
-        "before:z-10 before:bg-white",
+        "before:z-20 before:bg-white",
         "before:skew-y-6",
         "before:origin-bottom-right",
       ])}
@@ -38,22 +38,23 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         height={1080}
         className={clsx([
           "absolute inset-0 object-cover object-center z-0 h-full w-full",
-          "transition-all duration-75",
-          {
-            "blur-sm": navActive,
-          },
         ])}
       />
+      {navActive && (
+        <div className="absolute inset-0 backdrop-blur-sm z-10 transition-all duration-150" />
+      )}
       <div
         className={clsx([
-          "z-0 absolute inset-0 bg-gradient-to-r from-stone/50 to-stone/0",
-          "transition-all duration-75",
-          { "bg-stone/90": navActive },
+          "absolute inset-0",
+          "transition-all duration-150",
+          "bg-stone",
+          { "opacity-80 z-10": navActive },
+          { "opacity-50": !navActive },
         ])}
       />
       <Triangle
         color={logoUrl ? "stone" : color}
-        className="w-[50vw] h-auto absolute right-0 bottom-0"
+        className="w-[50vw] h-auto absolute right-0 bottom-0 z-10"
         fill={logoUrl ? true : undefined}
       />
       {logoUrl && (
@@ -76,7 +77,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
       <section
         className={clsx([
           "relative container px-4 mt-28 lg:mt-44",
-          "transition-all duration-75",
+          "transition-all duration-150",
           {
             "blur-sm": navActive,
           },
