@@ -39,12 +39,9 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
       {/* the menu items */}
       <Transition
         show={isShowing}
-        enter="transition delay-300 duration-300 ease-out"
+        enter="transition delay-150 duration-150 ease-out"
         enterFrom="opacity-0"
         enterTo="translate-y-0 opacity-100"
-        leave="transition duration-75 ease-in"
-        leaveFrom="translate-y-0 opacity-100"
-        leaveTo="opacity-0"
       >
         <div
           className={clsx([
@@ -69,7 +66,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                       <Link
                         className={clsx([
                           "font-normal",
-                          "group transition-all duration-300 ease-in-out",
+                          "group transition-all duration-150 ease-in-out",
                         ])}
                         key={subIndex}
                         href={subItem.url}
@@ -77,7 +74,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                         {/* the hover link underline bar animation  */}
                         <span
                           className={clsx([
-                            "transition-all duration-500 ease-out",
+                            "transition-all duration-300 ease-out",
                             "bg-gradient-to-r from-neutral/60 to-neutral",
                             "bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
                           ])}
