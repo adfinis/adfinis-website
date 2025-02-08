@@ -64,10 +64,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                   (subItem, subIndex) =>
                     subItem.url && (
                       <Link
-                        className={clsx([
-                          "font-normal",
-                          "group transition-all duration-150 ease-in-out",
-                        ])}
+                        className="font-normal group"
                         key={subIndex}
                         href={subItem.url}
                       >

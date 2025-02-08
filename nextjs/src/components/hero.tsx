@@ -40,16 +40,15 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           "absolute inset-0 object-cover object-center z-0 h-full w-full",
         ])}
       />
-      {navActive && (
-        <div className="absolute inset-0 backdrop-blur-sm z-10 transition-all duration-150" />
-      )}
+      {
+        navActive && <div className="absolute inset-0 backdrop-blur-sm z-10" /> // blur everything behind when nav is active
+      }
+
       <div
         className={clsx([
           "absolute inset-0",
-          "transition-all duration-150",
-          "bg-stone",
-          { "opacity-80 z-10": navActive },
-          { "opacity-50": !navActive },
+          "transition-all duration-150 bg-gradient-to-r from-stone/50 to-stone/0",
+          { "bg-stone/80 z-10": navActive }, // darkens elements behind as overlay when nav active
         ])}
       />
       <Triangle
@@ -75,13 +74,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
       )}
 
       <section
-        className={clsx([
-          "relative container px-4 mt-28 lg:mt-44",
-          "transition-all duration-150",
-          {
-            "blur-sm": navActive,
-          },
-        ])}
+        className="relative container px-4 mt-28 lg:mt-44"
         data-scheme="dark"
       >
         <div className="w-full lg:w-1/2">
