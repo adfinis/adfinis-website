@@ -244,7 +244,7 @@ export const journeySection = {
         alt: "Plan icon",
       },
       cta: {
-        text: "Get your checkup",
+        label: "Get your checkup",
         href: "/contact",
         variant: "secondary",
       },
@@ -258,7 +258,7 @@ export const journeySection = {
         alt: "Build icon",
       },
       cta: {
-        text: "Find your solution",
+        label: "Find your solution",
         href: "/contact",
         variant: "secondary",
       },
@@ -272,7 +272,7 @@ export const journeySection = {
         alt: "Run icon",
       },
       cta: {
-        text: "Choose your service",
+        label: "Choose your service",
         href: "/contact",
         variant: "secondary",
       },
@@ -284,7 +284,7 @@ export const ctaSection = {
   title: "## Start your **journey** with Adfinis",
   cta: {
     href: "/contact",
-    text: "Get started",
+    label: "Get started",
     variant: "primary",
     size: "large",
   },
@@ -496,13 +496,13 @@ export const partnerSection = {
       imageUrl: "/svg/logo/logo-1.svg",
       ctas: [
         {
-          text: "Get started",
+          label: "Get started",
           href: "/contact",
           variant: "primary",
           size: "small",
         },
         {
-          text: "More info",
+          label: "More info",
           href: "/services",
           variant: "secondary",
           size: "small",
@@ -516,13 +516,13 @@ export const partnerSection = {
       imageUrl: "/svg/logo/logo-2.svg",
       ctas: [
         {
-          text: "Get started",
+          label: "Get started",
           href: "/contact",
           variant: "primary",
           size: "small",
         },
         {
-          text: "More info",
+          label: "More info",
           href: "/services",
           variant: "secondary",
           size: "small",
@@ -536,13 +536,13 @@ export const partnerSection = {
       imageUrl: "/svg/logo/logo-3.svg",
       ctas: [
         {
-          text: "Get started",
+          label: "Get started",
           href: "/contact",
           variant: "primary",
           size: "small",
         },
         {
-          text: "More info",
+          label: "More info",
           href: "/services",
           variant: "secondary",
           size: "small",
@@ -667,7 +667,7 @@ export const cardIconGridExample = {
         alt: "Plan icon",
       },
       cta: {
-        text: "Get your checkup",
+        label: "Get your checkup",
         href: "/contact",
         variant: "secondary",
       },
@@ -681,7 +681,7 @@ export const cardIconGridExample = {
         alt: "Build icon",
       },
       cta: {
-        text: "Find your solution",
+        label: "Find your solution",
         href: "/contact",
         variant: "secondary",
       },
@@ -695,7 +695,7 @@ export const cardIconGridExample = {
         alt: "Run icon",
       },
       cta: {
-        text: "Choose your service",
+        label: "Choose your service",
         href: "/contact",
         variant: "secondary",
       },
@@ -709,7 +709,7 @@ export const cardIconGridExample = {
         alt: "Plan icon",
       },
       cta: {
-        text: "Get your checkup",
+        label: "Get your checkup",
         href: "/contact",
         variant: "secondary",
       },
@@ -723,7 +723,7 @@ export const cardIconGridExample = {
         alt: "Build icon",
       },
       cta: {
-        text: "Find your solution",
+        label: "Find your solution",
         href: "/contact",
         variant: "secondary",
       },
@@ -737,7 +737,7 @@ export const cardIconGridExample = {
         alt: "Run icon",
       },
       cta: {
-        text: "Choose your service",
+        label: "Choose your service",
         href: "/contact",
         variant: "secondary",
       },
