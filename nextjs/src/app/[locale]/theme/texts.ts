@@ -857,6 +857,87 @@ export const eventSection = {
   html: `<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2723.593419958105!2d7.436106476816756!3d46.950029533085306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39bee413c419%3A0x91033410f606279d!2sParkterrasse%2010%2C%203012%20Bern%2C%20Switzerland!5e0!3m2!1sen!2snl!4v1737378430185!5m2!1sen!2snl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>`,
 }
 
+export const careerGrid = [
+  {
+    title: "Multimedia Producer",
+    description:
+      "Do you like filming and create digital content with ease? Then apply now to join our communications team as a Multimedia Producer.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+  {
+    title: "Multimedia Producer",
+    description:
+      "Ea exercitation ex commodo incididunt est adipiscing esse ut commodo labore. Ut elit tempor mollit qui ad nostrud nisi consequat velit id elit. Tempor ullamco incididunt sint labore et eu ipsum laboris dolor nostrud. Labore aute velit deserunt ad nostrud aute excepteur lorem pariatur enim. Aliqua irure duis nisi esse nisi adipiscing incididunt sunt incididunt eu id in velit officia commodo.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+  {
+    title: "Multimedia Producer",
+    description:
+      "Do you like filming and create digital content with ease? Then apply now to join our communications team as a Multimedia Producer.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+  {
+    title: "Multimedia Producer",
+    description:
+      "Do you like filming and create digital content with ease? Then apply now to join our communications team as a Multimedia Producer.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+  {
+    title: "Multimedia Producer",
+    description:
+      "Ea exercitation ex commodo incididunt est adipiscing esse ut commodo labore. Ut elit tempor mollit qui ad nostrud nisi consequat velit id elit. Tempor ullamco incididunt sint labore et eu ipsum laboris dolor nostrud. Labore aute velit deserunt ad nostrud aute excepteur lorem pariatur enim. Aliqua irure duis nisi esse nisi adipiscing incididunt sunt incididunt eu id in velit officia commodo.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+  {
+    title: "Multimedia Producer",
+    description:
+      "Do you like filming and create digital content with ease? Then apply now to join our communications team as a Multimedia Producer.",
+    location: "Switzerland | Remote-first",
+    workload: "50%",
+    country: "ch",
+    image: {
+      url: "https://images.unsplash.com/photo-1622676666769-1a0407cf10a7?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Image of a meeting with laptops",
+    },
+    href: "/",
+  },
+]
+
 export const footer = {
   columns: [
     {

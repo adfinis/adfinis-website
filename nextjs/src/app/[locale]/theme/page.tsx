@@ -28,6 +28,7 @@ import {
   eventDetails,
   eventSection,
   eventGrid,
+  careerGrid,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -55,6 +56,7 @@ import { CardMessage } from "@/components/cards/card-message"
 import SectionEvent from "@/components/sections/section-event"
 import InfoLabel from "@/components/info-label"
 import LinkButton from "@/components/link-button"
+import CardCareer from "@/components/cards/card-career"
 
 export default function Theme({
   params: { locale },
@@ -433,6 +435,29 @@ export default function Theme({
         <InfoLabel text={eventDetails.info} className="block mb-4" />
         <Text markdown={eventDetails.description} className="mb-8 max-w-4xl" />
         <LinkButton {...eventSection.cta}>{eventSection.cta.text}</LinkButton>
+      </Container>
+
+      <Container
+        id="career-grid-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none" columns={3}>
+          {careerGrid.map((career, index) => (
+            <CardCareer
+              key={index}
+              title={career.title}
+              description={career.description}
+              imageUrl={career.image.url}
+              workload={career.workload}
+              location={career.location}
+              country={
+                career.country as "ch" | "de" | "nl" | "au" | "us" | "uk"
+              }
+              href={career.href}
+            />
+          ))}
+        </CardGroup>
       </Container>
     </main>
   )
