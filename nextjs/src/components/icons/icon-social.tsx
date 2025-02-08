@@ -6,16 +6,17 @@ import IconYoutube from "./icon-youtube"
 
 type IconSocialProps = {
   type: "linkedin" | "github" | "youtube"
+  className?: string
 }
 
-const IconSocial: React.FC<IconSocialProps> = ({ type }) => {
+const IconSocial: React.FC<IconSocialProps> = ({ type, className }) => {
   switch (type) {
     case "linkedin":
-      return <IconLinked />
+      return <IconLinked className={className} />
     case "github":
-      return <IconGithub />
+      return <IconGithub className={className} />
     case "youtube":
-      return <IconYoutube />
+      return <IconYoutube className={className} />
   }
 }
 
