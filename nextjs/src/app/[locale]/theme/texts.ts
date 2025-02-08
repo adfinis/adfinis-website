@@ -130,12 +130,12 @@ export const cards = [
 
 const ctas = [
   {
-    text: "Get started",
+    label: "Get started",
     href: "/contact",
     variant: "primary",
   },
   {
-    text: "More info",
+    label: "More info",
     href: "/services",
     variant: "secondary",
   },
