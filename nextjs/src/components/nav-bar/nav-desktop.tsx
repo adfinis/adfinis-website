@@ -9,6 +9,7 @@ import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import Image from "next/image"
 import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 import LinkButton from "@/components/link-button"
+import { useNavContext } from "./nav-context"
 
 type NavDesktopProps = {
   navItems: NavItem[]
@@ -17,6 +18,7 @@ type NavDesktopProps = {
 }
 
 const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
+  const { setNavActive } = useNavContext()
   const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
     thr: 20,
@@ -33,11 +35,12 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
         break
       case scrollDir === "down":
         setMenuExpanded(false)
+        setNavActive(false)
         break
       default:
         break
     }
-  }, [scrollDir, scrollPosition.top])
+  }, [scrollDir, scrollPosition.top, setNavActive])
 
   /**
    * @description only collapse the menu when the user has scrolled down
