@@ -1,5 +1,5 @@
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import { CardMessage } from "@/components/cards/card-message"
@@ -26,7 +26,7 @@ export default function ServicesSection({ section }: { section: Props }) {
       <CardSlider
         title={section.title}
         description={section.description}
-        ctas={section.ctas.map(mapCta)}
+        ctas={section.ctas}
       >
         {section.cards.map((card, index) => {
           return (
@@ -39,8 +39,3 @@ export default function ServicesSection({ section }: { section: Props }) {
     </Container>
   )
 }
-const mapCta = (cta: any) => ({
-  // TODO Decide if we want to change CTA type or rename label to text in strapi
-  text: cta.label,
-  ...cta,
-})

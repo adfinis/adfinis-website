@@ -3,7 +3,7 @@ import { partnerSection } from "@/app/[locale]/theme/texts"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type ProductCard = {
   title: string
@@ -34,7 +34,7 @@ export default function ProductFeatureCard({ section }: { section: Props }) {
               title={item.title}
               imageUrl={item.image.url}
               description={item.description}
-              ctas={item.ctas.map(mapCta)}
+              ctas={item.ctas}
             />
           )
         })}
@@ -42,9 +42,3 @@ export default function ProductFeatureCard({ section }: { section: Props }) {
     </Container>
   )
 }
-
-const mapCta = (cta: any) => ({
-  // TODO Decide if we want to change CTA type or rename label to text in strapi
-  text: cta.label,
-  ...cta,
-})

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_cta_banners",
   "info": {
-    "displayName": "CTA banner"
+    "displayName": "CTA banner",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,7 +20,11 @@
       "type": "component",
       "repeatable": false,
       "component": "external-links.call-to-action",
-      "required": true
+      "required": false
+    },
+    "socials": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

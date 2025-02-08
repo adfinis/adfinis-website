@@ -23,7 +23,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ ctas, align }) => {
     <div className={buttonGroupVariants({ align })}>
       {ctas.map((cta, index) => (
         <Link key={index} href={cta.href} variant={cta.variant} size={cta.size}>
-          {cta.text}
+          {cta.label}
         </Link>
       ))}
     </div>

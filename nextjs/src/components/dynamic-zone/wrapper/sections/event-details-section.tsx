@@ -1,4 +1,4 @@
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import InfoLabel from "@/components/info-label"
 import Text from "@/components/text"

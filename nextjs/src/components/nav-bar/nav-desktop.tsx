@@ -7,7 +7,7 @@ import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import Image from "next/image"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 
 type NavDesktopProps = {

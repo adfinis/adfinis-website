@@ -1,13 +1,14 @@
 import Container from "@/components/container"
 import SectionGroup from "@/components/sections/section-group"
-import ButtonGroup from "@/components/button-group"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
+import SectionCTA from "@/components/sections/section-cta"
 
 type Props = {
   props: SectionProps
-  cta: CTA
+  cta?: CTA
   body?: string
+  socials?: boolean
 }
 
 export default function CtaBanner({ section }: { section: Props }) {
@@ -16,17 +17,11 @@ export default function CtaBanner({ section }: { section: Props }) {
       background={section.props.background}
       padding={section.props.padding}
     >
-      <SectionGroup text={section.body} align={"center"}>
-        <ButtonGroup
-          align={"center"}
-          ctas={[
-            {
-              href: section.cta.href,
-              size: section.cta.size,
-              variant: section.cta.variant,
-              text: section.cta.label,
-            },
-          ]}
+      <SectionGroup align={"center"}>
+        <SectionCTA
+          body={section.body}
+          cta={section.cta}
+          socials={section.socials}
         />
       </SectionGroup>
     </Container>
