@@ -6,7 +6,7 @@ import { CTA } from "@/components/dynamic-zone/wrapper/cta"
 
 type Props = {
   props: SectionProps
-  cta: CTA
+  cta?: CTA
   body?: string
 }
 
@@ -19,14 +19,18 @@ export default function CtaBanner({ section }: { section: Props }) {
       <SectionGroup text={section.body} align={"center"}>
         <ButtonGroup
           align={"center"}
-          ctas={[
-            {
-              href: section.cta.href,
-              size: section.cta.size,
-              variant: section.cta.variant,
-              text: section.cta.label,
-            },
-          ]}
+          ctas={
+            section.cta
+              ? [
+                  {
+                    href: section.cta.href,
+                    size: section.cta.size,
+                    variant: section.cta.variant,
+                    text: section.cta.label,
+                  },
+                ]
+              : []
+          }
         />
       </SectionGroup>
     </Container>

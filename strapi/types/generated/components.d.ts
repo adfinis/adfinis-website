@@ -523,12 +523,12 @@ export interface SectionsContentHighlightSection
 export interface SectionsCtaBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_cta_banners';
   info: {
+    description: '';
     displayName: 'CTA banner';
   };
   attributes: {
     body: Schema.Attribute.RichText & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
   };
