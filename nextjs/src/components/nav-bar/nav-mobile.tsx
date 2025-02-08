@@ -12,7 +12,7 @@ import NavMobileItem from "./nav-mobile-item"
 import IconChevronLeft from "../icons/icon-chevron-left"
 import Image from "next/image"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type NavMobileProps = {
   navItems: NavItem[]

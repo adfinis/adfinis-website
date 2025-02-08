@@ -2,7 +2,7 @@ import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Hero from "@/components/hero"
 import { colors } from "@/lib/colors"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type Props = {
   color: {

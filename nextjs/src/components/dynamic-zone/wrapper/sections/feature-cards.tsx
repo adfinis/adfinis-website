@@ -1,4 +1,4 @@
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import Container from "@/components/container"
 import SectionGroup from "@/components/sections/section-group"
 import Text from "@/components/text"

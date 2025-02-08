@@ -1,7 +1,7 @@
 import Container from "@/components/container"
 import SectionGroup from "@/components/sections/section-group"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import SectionCTA from "@/components/sections/section-cta"
 
 type Props = {

@@ -1,5 +1,5 @@
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import SectionGroup from "@/components/sections/section-group"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
@@ -39,25 +39,14 @@ export default function ExtraWideIconCardsGridSection({
                 imageUrl={item.icon_image.url}
                 title={item.title}
                 description={item.description}
-                cta={item.cta ? [item.cta].map(mapCta)[0] : undefined}
+                cta={item.cta}
                 key={i}
               />
             )
           })}
         </CardGroup>
-        {section.cta && (
-          <ButtonGroup align={"center"} ctas={[section.cta].map(mapCta)} />
-        )}
+        {section.cta && <ButtonGroup align={"center"} ctas={[section.cta]} />}
       </SectionGroup>
     </Container>
   )
-}
-
-// TODO move to lib/ or refactor components
-const mapCta = (cta: any) => {
-  if (!cta) return undefined
-  return {
-    text: cta.label,
-    ...cta,
-  }
 }

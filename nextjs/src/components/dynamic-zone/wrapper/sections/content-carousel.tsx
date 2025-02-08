@@ -3,7 +3,7 @@ import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import CardArticle from "@/components/cards/card-article"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type Category = {
   name: string
@@ -38,7 +38,7 @@ export default function ContentCarousel({ section }: { section: Props }) {
       <CardSlider
         title={section.title}
         description={section.description}
-        ctas={[section.cta].map(mapCta)}
+        ctas={[section.cta]}
       >
         {section.cards.map((card, index: number) => {
           return (
@@ -60,8 +60,3 @@ export default function ContentCarousel({ section }: { section: Props }) {
     </Container>
   )
 }
-const mapCta = (cta: any) => ({
-  // TODO Decide if we want to change CTA type or rename label to text in strapi
-  text: cta.label,
-  ...cta,
-})

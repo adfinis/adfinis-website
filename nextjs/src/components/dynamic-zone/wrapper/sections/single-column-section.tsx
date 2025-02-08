@@ -1,6 +1,6 @@
 import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import Text from "@/components/text"
 import InfoLabel from "@/components/info-label"

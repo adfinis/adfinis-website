@@ -3,7 +3,7 @@ import SectionGroup from "@/components/sections/section-group"
 import CardGroup from "@/components/cards/card-group"
 import CardIcon from "@/components/cards/card-icon"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type Card = {
   icon_image: {
@@ -38,7 +38,7 @@ export default function IconCardSectionWithRelation({
                 imageUrl={item.icon_image.url}
                 title={item.title}
                 description={item.description}
-                cta={[item.cta].map(mapCta)[0]}
+                cta={item.cta}
                 key={`kpi_sections_${i}`}
               />
             )
@@ -47,13 +47,4 @@ export default function IconCardSectionWithRelation({
       </SectionGroup>
     </Container>
   )
-}
-
-// TODO move to lib/ or refactor components
-const mapCta = (cta: any) => {
-  if (!cta) return undefined
-  return {
-    text: cta.label,
-    ...cta,
-  }
 }
