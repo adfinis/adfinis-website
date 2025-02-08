@@ -531,6 +531,7 @@ export interface SectionsCtaBanner extends Struct.ComponentSchema {
     cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+    socials: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 

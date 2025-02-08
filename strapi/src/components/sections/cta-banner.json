@@ -21,6 +21,10 @@
       "repeatable": false,
       "component": "external-links.call-to-action",
       "required": false
+    },
+    "socials": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
