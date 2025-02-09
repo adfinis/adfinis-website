@@ -1131,6 +1131,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.single-column-section',
         'sections.kpi-section',
         'sections.hallmarks-section',
+        'sections.regular-form-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
