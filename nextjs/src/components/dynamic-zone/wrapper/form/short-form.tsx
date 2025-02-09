@@ -31,12 +31,12 @@ export default function ShortForm({ submitLabel, locale }: Props) {
           <InputField
             name={"firstName"}
             label={"First name"}
-            errorMessage={state?.errors?.firstName ?? []}
+            errorMessage={state?.errors?.first_name ?? []}
           />
           <InputField
             name={"lastName"}
             label={"Last name"}
-            errorMessage={state?.errors?.lastName ?? []}
+            errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
         <EmailField
