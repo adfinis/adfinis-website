@@ -18,7 +18,7 @@ import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmar
 import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
 import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 
-export function renderSections(section: any, index: number) {
+export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
     case "sections.two-column-section":
       return (
@@ -61,6 +61,7 @@ export function renderSections(section: any, index: number) {
       return (
         <RegularFormSection
           key={`sections.regular-form_${index}`}
+          locale={locale}
           section={section}
         />
       )
