@@ -45,7 +45,7 @@ export default function InputField({ name, label, errorMessage }: Props) {
         })}
       />
       {errorMessage.length > 0 && (
-        <p className={errorMessageClasses}>Field is required</p>
+        <p className={errorMessageClasses}>{errorMessage[0]}</p>
       )}
     </div>
   )
