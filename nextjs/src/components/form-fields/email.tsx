@@ -31,13 +31,13 @@ type Props = {
   label: string
   errorMessage: string[]
 }
-export default function InputField({ name, label, errorMessage }: Props) {
+export default function Email({ name, label, errorMessage }: Props) {
   const id = useId()
   return (
     <div className="grid gap-2 relative">
       <FormLabel id={id} label={label} />
       <input
-        type="text"
+        type="email"
         name={name}
         id={id}
         className={fieldClasses({

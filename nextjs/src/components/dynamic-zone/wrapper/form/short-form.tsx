@@ -1,13 +1,13 @@
 "use client"
 
 import FormColumns from "@/components/form/form-columns"
-import InputField from "@/components/form-fields/input-field"
-import EmailField from "@/components/form-fields/email-field"
+import Input from "@/components/form-fields/input"
+import Email from "@/components/form-fields/email"
 import Button from "@/components/button"
 import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
-import CheckboxField from "@/components/form-fields/checkbox-field"
+import Checkbox from "@/components/form-fields/checkbox"
 
 type Props = {
   locale?: string
@@ -29,23 +29,23 @@ export default function ShortForm({ submitLabel, locale }: Props) {
     <form action={formAction} ref={formRef}>
       <div className="grid gap-4 max-w-4xl mx-auto mt-8">
         <FormColumns>
-          <InputField
+          <Input
             name={"firstName"}
             label={"First name"}
             errorMessage={state?.errors?.first_name ?? []}
           />
-          <InputField
+          <Input
             name={"lastName"}
             label={"Last name"}
             errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
-        <EmailField
+        <Email
           label={"e-mail"}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
         />
-        <CheckboxField
+        <Checkbox
           name="privacy_policy"
           label={"I accept the privacy policy of Adfinis"}
           errorMessage={state?.errors?.privacy_policy ?? []}

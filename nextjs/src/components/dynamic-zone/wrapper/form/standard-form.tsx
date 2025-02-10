@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react"
 import FormColumns from "@/components/form/form-columns"
-import InputField from "@/components/form-fields/input-field"
-import EmailField from "@/components/form-fields/email-field"
-import CheckboxField from "@/components/form-fields/checkbox-field"
+import Input from "@/components/form-fields/input"
+import Email from "@/components/form-fields/email"
+import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import { saveStandardForm } from "@/app/actions"
 import { useFormState } from "react-dom"
@@ -28,33 +28,33 @@ export default function StandardForm({ submitLabel, locale }: Props) {
     <form action={formAction} ref={formRef}>
       <div className="grid gap-4 max-w-4xl mx-auto mt-8">
         <FormColumns>
-          <InputField
+          <Input
             name={"firstName"}
             label={"First name"}
             errorMessage={state?.errors?.first_name ?? []}
           />
-          <InputField
+          <Input
             name={"lastName"}
             label={"Last name"}
             errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
-        <EmailField
+        <Email
           label={"e-mail"}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
         />
-        <InputField
+        <Input
           name={"company_name"}
           label={"Company Name"}
           errorMessage={state?.errors?.company_name ?? []}
         />
-        <InputField
+        <Input
           name={"job_function"}
           label={"Job Function"}
           errorMessage={state?.errors?.job_function ?? []}
         />
-        <CheckboxField
+        <Checkbox
           name="privacy_policy"
           label={"I accept the privacy policy of Adfinis"}
           errorMessage={state?.errors?.privacy_policy ?? []}

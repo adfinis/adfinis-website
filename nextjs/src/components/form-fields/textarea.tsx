@@ -1,6 +1,13 @@
 import FormLabel from "@/components/form/form-label"
-import { useId } from "react"
+import React, { useId } from "react"
 import { cva } from "class-variance-authority"
+
+type Props = {
+  name: string
+  label: string
+  rows?: number
+  errorMessage: string[]
+}
 
 const fieldClasses = cva(
   [
@@ -22,27 +29,26 @@ const fieldClasses = cva(
     },
   },
 )
-
 const errorMessageClasses =
   "absolute top-0 right-0 text-error text-14 text-right"
-
-type Props = {
-  name: string
-  label: string
-  errorMessage: string[]
-}
-export default function EmailField({ name, label, errorMessage }: Props) {
+export default function Textarea({
+  name,
+  label,
+  errorMessage,
+  rows = 5,
+}: Props) {
   const id = useId()
+
   return (
     <div className="grid gap-2 relative">
       <FormLabel id={id} label={label} />
-      <input
-        type="email"
-        name={name}
-        id={id}
+      <textarea
         className={fieldClasses({
           variant: errorMessage.length > 0 ? "error" : "default",
         })}
+        id={id}
+        name={name}
+        rows={rows}
       />
       {errorMessage.length > 0 && (
         <p className={errorMessageClasses}>{errorMessage[0]}</p>

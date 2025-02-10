@@ -31,7 +31,7 @@ const fieldClasses = cva(
   },
 )
 
-export default function CheckboxField({ name, label, errorMessage }) {
+export default function Checkbox({ name, label, errorMessage }) {
   const id = useId()
 
   return (
