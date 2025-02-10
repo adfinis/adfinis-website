@@ -846,9 +846,11 @@ export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
+    description: '';
     displayName: 'Two Column Section';
   };
   attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     left_column: Schema.Attribute.RichText & Schema.Attribute.Required;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;

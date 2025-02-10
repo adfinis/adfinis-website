@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_two_column_sections",
   "info": {
-    "displayName": "Two Column Section"
+    "displayName": "Two Column Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,6 +19,11 @@
       "repeatable": false,
       "component": "sections.section-props",
       "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
     }
   }
 }
