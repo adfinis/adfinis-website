@@ -2,10 +2,10 @@ import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import Container from "@/components/container"
 import Title from "@/components/title"
 import React from "react"
-import ShortForm from "@/components/dynamic-zone/wrapper/form/short-form"
-import StandardForm from "@/components/dynamic-zone/wrapper/form/standard-form"
-import ContactForm from "@/components/dynamic-zone/wrapper/form/contact-form"
-import EventForm from "@/components/dynamic-zone/wrapper/form/event-form"
+import ShortForm from "@/components/dynamic-zone/forms/short-form"
+import StandardForm from "@/components/dynamic-zone/forms/standard-form"
+import ContactForm from "@/components/dynamic-zone/forms/contact-form"
+import EventForm from "@/components/dynamic-zone/forms/event-form"
 
 type Props = {
   props: SectionProps
