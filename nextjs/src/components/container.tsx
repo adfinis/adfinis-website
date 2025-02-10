@@ -11,7 +11,7 @@ const containerStyles = cva(["py-18 lg:py-24"], {
   variants: {
     padding: {
       "no-padding": "px-0", // edge-to-edge
-      "both-padding": "px-4 lg:px-0", // padding on both sides
+      "both-padding": "px-4 lg:px-0 relative", // padding on both sides
     },
     background: {
       white: "bg-white border-t border-b border-jumbo/30",
