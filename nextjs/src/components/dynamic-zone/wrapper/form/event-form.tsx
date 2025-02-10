@@ -4,11 +4,11 @@ import { saveContactForm, saveEventForm } from "@/app/actions"
 import { useFormState } from "react-dom"
 import { useEffect, useRef } from "react"
 import FormColumns from "@/components/form/form-columns"
-import InputField from "@/components/dynamic-zone/wrapper/form/input-field"
-import EmailField from "@/components/dynamic-zone/wrapper/form/email-field"
-import CheckboxField from "@/components/dynamic-zone/wrapper/form/checkbox-field"
+import InputField from "@/components/form-fields/input-field"
+import EmailField from "@/components/form-fields/email-field"
+import CheckboxField from "@/components/form-fields/checkbox-field"
 import Button from "@/components/button"
-import TextareaField from "@/components/dynamic-zone/wrapper/form/textarea-field"
+import TextareaField from "@/components/form-fields/textarea-field"
 
 type Props = {
   locale?: string

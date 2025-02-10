@@ -1,13 +1,13 @@
 "use client"
 
 import FormColumns from "@/components/form/form-columns"
-import InputField from "@/components/dynamic-zone/wrapper/form/input-field"
-import EmailField from "@/components/dynamic-zone/wrapper/form/email-field"
+import InputField from "@/components/form-fields/input-field"
+import EmailField from "@/components/form-fields/email-field"
 import Button from "@/components/button"
 import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
-import CheckboxField from "@/components/dynamic-zone/wrapper/form/checkbox-field"
+import CheckboxField from "@/components/form-fields/checkbox-field"
 
 type Props = {
   locale?: string
