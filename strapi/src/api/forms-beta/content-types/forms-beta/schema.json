@@ -28,27 +28,27 @@
       "type": "string",
       "required": true
     },
+    "phone_number": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
     "job_function": {
       "type": "string"
     },
     "privacy_policy": {
       "type": "string"
     },
-    "message": {
-      "type": "text"
-    },
     "captcha": {
       "type": "string"
+    },
+    "message": {
+      "type": "text"
     },
     "is_created_at": {
       "type": "datetime",
       "required": true
-    },
-    "company_name": {
-      "type": "string"
-    },
-    "phone_number": {
-      "type": "string"
     }
   }
 }
