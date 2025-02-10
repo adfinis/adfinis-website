@@ -103,3 +103,47 @@ export async function saveStandardForm(
     errors: validation.error.flatten().fieldErrors,
   }
 }
+
+type ContactFormStateErrors = {
+  message?: string[]
+} & StandardFormStateErrors
+
+type ContactFormState = {
+  success: boolean
+  errors?: ContactFormStateErrors
+}
+export async function saveContactForm(
+  locale: string,
+  state: ContactFormState,
+  formData: FormData,
+): Promise<ContactFormState> {
+  const schema = z.object({
+    ...shape(locale),
+    message: z.string().trim().min(1, messages[locale].required),
+  })
+  const validation = schema.safeParse({
+    first_name: formData.get("firstName"),
+    last_name: formData.get("lastName"),
+    email: formData.get("email"),
+    privacy_policy: formData.get("privacy_policy"),
+    message: formData.get("message"),
+  })
+
+  if (validation.success) {
+    await formSubmit({
+      data: {
+        type: "short",
+        ...validation.data,
+        ...{ privacy_policy: "yes", is_created_at: new Date() },
+        company_name: formData.get("company_name"),
+        job_function: formData.get("job_function"),
+      },
+    })
+    return { success: true }
+  }
+
+  return {
+    success: false,
+    errors: validation.error.flatten().fieldErrors,
+  }
+}

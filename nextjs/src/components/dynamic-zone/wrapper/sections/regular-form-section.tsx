@@ -4,12 +4,13 @@ import Title from "@/components/title"
 import React from "react"
 import ShortForm from "@/components/dynamic-zone/wrapper/form/short-form"
 import StandardForm from "@/components/dynamic-zone/wrapper/form/standard-form"
+import ContactForm from "@/components/dynamic-zone/wrapper/form/contact-form"
 
 type Props = {
   props: SectionProps
   submit_label: string
   title: string | null
-  form_type: "short" | "standard"
+  form_type: "short" | "standard" | "contact"
 }
 
 export default function RegularFormSection({
@@ -30,6 +31,9 @@ export default function RegularFormSection({
       )}
       {section.form_type === "standard" && (
         <StandardForm locale={locale} submitLabel={section.submit_label} />
+      )}
+      {section.form_type === "contact" && (
+        <ContactForm locale={locale} submitLabel={section.submit_label} />
       )}
     </Container>
   )
