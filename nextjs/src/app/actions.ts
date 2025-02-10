@@ -16,12 +16,8 @@ type SaveSimpleFormState = {
   errors?: SaveSimpleFormStateErrors
 }
 
-export async function saveSimpleForm(
-  locale: string,
-  state: SaveSimpleFormState,
-  formData: FormData,
-): Promise<SaveSimpleFormState> {
-  const saveSimpleFormSchema = z.object({
+const shape = (locale: string) => {
+  return {
     first_name: z.string().trim().min(1, messages[locale].required),
     last_name: z.string().trim().min(1, messages[locale].required),
     email: z.string().email(messages[locale].email),
@@ -31,20 +27,27 @@ export async function saveSimpleForm(
         message: messages[locale].privacyPolicy,
       }),
     ),
-  })
+  }
+}
 
-  const result = saveSimpleFormSchema.safeParse({
+export async function saveSimpleForm(
+  locale: string,
+  state: SaveSimpleFormState,
+  formData: FormData,
+): Promise<SaveSimpleFormState> {
+  const schema = z.object(shape(locale))
+  const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
     email: formData.get("email"),
     privacy_policy: formData.get("privacy_policy"),
   })
 
-  if (result.success) {
-    const response = await formSubmit({
+  if (validation.success) {
+    await formSubmit({
       data: {
         type: "short",
-        ...result.data,
+        ...validation.data,
         ...{ privacy_policy: "yes", is_created_at: new Date() },
       },
     })
@@ -56,7 +59,7 @@ export async function saveSimpleForm(
 
   return {
     success: false,
-    errors: result.error.flatten().fieldErrors,
+    errors: validation.error.flatten().fieldErrors,
   }
 }
 
@@ -74,18 +77,7 @@ export async function saveStandardForm(
   state: StandardFormState,
   formData: FormData,
 ): Promise<StandardFormState> {
-  const schema = z.object({
-    first_name: z.string().trim().min(1, messages[locale].required),
-    last_name: z.string().trim().min(1, messages[locale].required),
-    email: z.string().email(messages[locale].email),
-    privacy_policy: z.preprocess(
-      (val) => val === "on",
-      z.boolean().refine((val) => val, {
-        message: messages[locale].privacyPolicy,
-      }),
-    ),
-  })
-
+  const schema = z.object(shape(locale))
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
