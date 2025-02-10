@@ -1,21 +1,20 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
-import Button from "@/components/button"
-import { useFormState } from "react-dom"
-import { saveSimpleForm } from "@/app/actions"
-import { useEffect, useRef } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
+import Button from "@/components/button"
+import { saveStandardForm } from "@/app/actions"
+import { useFormState } from "react-dom"
 
 type Props = {
   locale?: string
   submitLabel: string
 }
-
-export default function ShortForm({ submitLabel, locale }: Props) {
-  const action = saveSimpleForm.bind(null, locale ?? "en")
+export default function Standard({ submitLabel, locale }: Props) {
+  const action = saveStandardForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef(null)
 
@@ -44,6 +43,16 @@ export default function ShortForm({ submitLabel, locale }: Props) {
           label={"e-mail"}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
+        />
+        <Input
+          name={"company_name"}
+          label={"Company Name"}
+          errorMessage={state?.errors?.company_name ?? []}
+        />
+        <Input
+          name={"job_function"}
+          label={"Job Function"}
+          errorMessage={state?.errors?.job_function ?? []}
         />
         <Checkbox
           name="privacy_policy"

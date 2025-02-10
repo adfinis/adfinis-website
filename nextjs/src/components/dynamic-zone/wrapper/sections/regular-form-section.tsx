@@ -2,9 +2,9 @@ import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import Container from "@/components/container"
 import Title from "@/components/title"
 import React from "react"
-import ShortForm from "@/components/dynamic-zone/forms/short-form"
-import StandardForm from "@/components/dynamic-zone/forms/standard-form"
-import ContactForm from "@/components/dynamic-zone/forms/contact-form"
+import Short from "@/components/dynamic-zone/forms/short"
+import Standard from "@/components/dynamic-zone/forms/standard"
+import Contact from "@/components/dynamic-zone/forms/contact"
 import EventForm from "@/components/dynamic-zone/forms/event-form"
 
 type Props = {
@@ -28,13 +28,13 @@ export default function RegularFormSection({
     >
       <Title align="center" boldness="light" markdown={section.title ?? ""} />
       {section.form_type === "short" && (
-        <ShortForm locale={locale} submitLabel={section.submit_label} />
+        <Short locale={locale} submitLabel={section.submit_label} />
       )}
       {section.form_type === "standard" && (
-        <StandardForm locale={locale} submitLabel={section.submit_label} />
+        <Standard locale={locale} submitLabel={section.submit_label} />
       )}
       {section.form_type === "contact" && (
-        <ContactForm locale={locale} submitLabel={section.submit_label} />
+        <Contact locale={locale} submitLabel={section.submit_label} />
       )}
       {section.form_type === "event" && (
         <EventForm locale={locale} submitLabel={section.submit_label} />

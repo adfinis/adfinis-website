@@ -1,20 +1,21 @@
 "use client"
 
+import { saveContactForm } from "@/app/actions"
+import { useFormState } from "react-dom"
 import { useEffect, useRef } from "react"
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
-import { saveStandardForm } from "@/app/actions"
-import { useFormState } from "react-dom"
+import Textarea from "@/components/form-fields/textarea"
 
 type Props = {
   locale?: string
   submitLabel: string
 }
-export default function StandardForm({ submitLabel, locale }: Props) {
-  const action = saveStandardForm.bind(null, locale ?? "en")
+export default function Contact({ submitLabel, locale }: Props) {
+  const action = saveContactForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef(null)
 
@@ -53,6 +54,11 @@ export default function StandardForm({ submitLabel, locale }: Props) {
           name={"job_function"}
           label={"Job Function"}
           errorMessage={state?.errors?.job_function ?? []}
+        />
+        <Textarea
+          label={"Message"}
+          name={"message"}
+          errorMessage={state?.errors?.message ?? []}
         />
         <Checkbox
           name="privacy_policy"
