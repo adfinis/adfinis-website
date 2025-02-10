@@ -954,6 +954,7 @@ export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     message: Schema.Attribute.Text;
+    phone_number: Schema.Attribute.String;
     privacy_policy: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.String & Schema.Attribute.Required;

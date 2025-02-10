@@ -88,7 +88,7 @@ export async function saveStandardForm(
   if (validation.success) {
     await formSubmit({
       data: {
-        type: "short",
+        type: "standard",
         ...validation.data,
         ...{ privacy_policy: "yes", is_created_at: new Date() },
         company_name: formData.get("company_name"),
@@ -132,7 +132,64 @@ export async function saveContactForm(
   if (validation.success) {
     await formSubmit({
       data: {
-        type: "short",
+        type: "contact",
+        ...validation.data,
+        ...{ privacy_policy: "yes", is_created_at: new Date() },
+        company_name: formData.get("company_name"),
+        job_function: formData.get("job_function"),
+      },
+    })
+    return { success: true }
+  }
+
+  return {
+    success: false,
+    errors: validation.error.flatten().fieldErrors,
+  }
+}
+
+type EventFormStateErrors = {
+  phone_number?: string[]
+} & ContactFormStateErrors
+
+type EventFormState = {
+  success: boolean
+  errors?: EventFormStateErrors
+}
+export async function saveEventForm(
+  locale: string,
+  state: EventFormState,
+  formData: FormData,
+): Promise<EventFormState> {
+  const schema = z.object({
+    ...shape(locale),
+    message: z.string().trim().min(1, messages[locale].required),
+    phone_number: z
+      .string()
+      .optional()
+      .refine((val) => !val || /^\+?[0-9]+$/.test(val), {
+        message: "Invalid phone number format.",
+      })
+      .refine((val) => !val || val.length >= 8, {
+        message: "Phone number is too short.",
+      })
+      .refine((val) => !val || val.length <= 15, {
+        message: "Phone number is too long.",
+      }),
+  })
+  const validation = schema.safeParse({
+    first_name: formData.get("firstName"),
+    last_name: formData.get("lastName"),
+    email: formData.get("email"),
+    privacy_policy: formData.get("privacy_policy"),
+    message: formData.get("message"),
+    phone_number: formData.get("phone_number"),
+  })
+
+  if (validation.success) {
+    await formSubmit({
+      data: {
+        type: "event",
         ...validation.data,
         ...{ privacy_policy: "yes", is_created_at: new Date() },
         company_name: formData.get("company_name"),
