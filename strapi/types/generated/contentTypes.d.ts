@@ -928,6 +928,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
 export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
   collectionName: 'forms_betas';
   info: {
+    description: '';
     displayName: 'Forms (beta)';
     pluralName: 'forms-betas';
     singularName: 'forms-beta';
@@ -942,6 +943,7 @@ export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    is_created_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
     job_function: Schema.Attribute.String;
     last_name: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

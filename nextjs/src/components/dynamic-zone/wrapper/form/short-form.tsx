@@ -7,6 +7,7 @@ import Button from "@/components/button"
 import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
+import CheckboxField from "@/components/dynamic-zone/wrapper/form/checkbox-field"
 
 type Props = {
   locale?: string
@@ -43,6 +44,11 @@ export default function ShortForm({ submitLabel, locale }: Props) {
           label={"e-mail"}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
+        />
+        <CheckboxField
+          name="privacy_policy"
+          label={"I accept the privacy policy of Adfinis"}
+          errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">
           {state.success && (

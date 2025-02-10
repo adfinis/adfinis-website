@@ -8,6 +8,7 @@ type SaveSimpleFormStateErrors = {
   first_name?: string[]
   last_name?: string[]
   email?: string[]
+  privacy_policy?: string[]
 }
 
 type SaveSimpleFormState = {
@@ -24,12 +25,19 @@ export async function saveSimpleForm(
     first_name: z.string().trim().min(1, messages[locale].required),
     last_name: z.string().trim().min(1, messages[locale].required),
     email: z.string().email(messages[locale].email),
+    privacy_policy: z.preprocess(
+      (val) => val === "on",
+      z.boolean().refine((val) => val, {
+        message: messages[locale].privacyPolicy,
+      }),
+    ),
   })
 
   const result = saveSimpleFormSchema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
     email: formData.get("email"),
+    privacy_policy: formData.get("privacy_policy"),
   })
 
   if (result.success) {
@@ -37,6 +45,7 @@ export async function saveSimpleForm(
       data: {
         type: "short",
         ...result.data,
+        ...{ privacy_policy: "yes", is_created_at: new Date() },
       },
     })
 

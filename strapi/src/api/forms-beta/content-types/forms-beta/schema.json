@@ -4,7 +4,8 @@
   "info": {
     "singularName": "forms-beta",
     "pluralName": "forms-betas",
-    "displayName": "Forms (beta)"
+    "displayName": "Forms (beta)",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -38,6 +39,10 @@
     },
     "captcha": {
       "type": "string"
+    },
+    "is_created_at": {
+      "type": "datetime",
+      "required": true
     }
   }
 }
