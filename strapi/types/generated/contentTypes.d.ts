@@ -938,6 +938,7 @@ export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
   };
   attributes: {
     captcha: Schema.Attribute.String;
+    company_name: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

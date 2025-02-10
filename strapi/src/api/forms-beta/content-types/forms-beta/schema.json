@@ -43,6 +43,9 @@
     "is_created_at": {
       "type": "datetime",
       "required": true
+    },
+    "company_name": {
+      "type": "string"
     }
   }
 }
