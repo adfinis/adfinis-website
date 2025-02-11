@@ -31,9 +31,9 @@ const LinkButton = ({
       tabIndex={disabled ? -1 : 0}
       aria-disabled={Boolean(disabled)}
     >
-      {chevron === "left" && <IconChevronLeft />}
+      {chevron === "left" && <IconChevronLeft className="h-2.5 w-auto" />}
       {children}
-      {chevron === "right" && <IconChevronRight />}
+      {chevron === "right" && <IconChevronRight className="h-2.5 w-auto" />}
     </Link>
   )
 }
