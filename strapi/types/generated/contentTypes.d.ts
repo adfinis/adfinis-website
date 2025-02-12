@@ -925,6 +925,45 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
+  collectionName: 'forms_betas';
+  info: {
+    description: '';
+    displayName: 'Forms (beta)';
+    pluralName: 'forms-betas';
+    singularName: 'forms-beta';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    captcha: Schema.Attribute.String;
+    company_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    is_created_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    job_function: Schema.Attribute.String;
+    last_name: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forms-beta.forms-beta'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    phone_number: Schema.Attribute.String;
+    privacy_policy: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
   collectionName: 'hallmarks';
   info: {
@@ -1096,6 +1135,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.single-column-section',
         'sections.kpi-section',
         'sections.hallmarks-section',
+        'sections.regular-form-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2225,6 +2265,7 @@ declare module '@strapi/strapi' {
       'api::event-page.event-page': ApiEventPageEventPage;
       'api::events-overview.events-overview': ApiEventsOverviewEventsOverview;
       'api::footer.footer': ApiFooterFooter;
+      'api::forms-beta.forms-beta': ApiFormsBetaFormsBeta;
       'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;

@@ -16,8 +16,9 @@ import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
 import SingleColumnSection from "./wrapper/sections/single-column-section"
 import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmarks-section"
 import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
+import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 
-export function renderSections(section: any, index: number) {
+export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
     case "sections.two-column-section":
       return (
@@ -53,6 +54,14 @@ export function renderSections(section: any, index: number) {
       return (
         <VideoSection
           key={`section_video_section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.regular-form-section":
+      return (
+        <RegularFormSection
+          key={`sections.regular-form_${index}`}
+          locale={locale}
           section={section}
         />
       )

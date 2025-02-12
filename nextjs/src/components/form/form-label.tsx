@@ -1,11 +1,11 @@
-import React from "react"
+import { FC } from "react"
 
 type FormLabelProps = {
   id: string
   label: string
 }
 
-const FormLabel: React.FC<FormLabelProps> = ({ id, label }) => {
+const FormLabel: FC<FormLabelProps> = ({ id, label }) => {
   return (
     <label
       htmlFor={id}

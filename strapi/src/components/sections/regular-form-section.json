@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_sections_regular_form_sections",
+  "info": {
+    "displayName": "Regular form section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "form_type": {
+      "type": "enumeration",
+      "enum": [
+        "standard",
+        "contact",
+        "event",
+        "short"
+      ],
+      "required": true,
+      "default": "short"
+    },
+    "submit_label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

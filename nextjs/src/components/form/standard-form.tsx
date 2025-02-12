@@ -91,8 +91,6 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
     privacyPolicy: false,
   }
 
-  console.log({ locale })
-
   const validationSchema = Yup.object({
     firstName: Yup.string().required(),
     lastName: Yup.string().required(),

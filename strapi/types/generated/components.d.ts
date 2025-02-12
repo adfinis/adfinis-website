@@ -766,6 +766,24 @@ export interface SectionsQuoteSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsRegularFormSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_regular_form_sections';
+  info: {
+    displayName: 'Regular form section';
+  };
+  attributes: {
+    form_type: Schema.Attribute.Enumeration<
+      ['standard', 'contact', 'event', 'short']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'short'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    submit_label: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsSectionProps extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_props';
   info: {
@@ -938,6 +956,7 @@ declare module '@strapi/strapi' {
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
       'sections.quote-section': SectionsQuoteSection;
+      'sections.regular-form-section': SectionsRegularFormSection;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
