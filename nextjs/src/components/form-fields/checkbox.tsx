@@ -4,7 +4,12 @@ import {
   errorMessageClasses,
 } from "@/components/form-fields/class-names"
 
-export default function Checkbox({ name, label, errorMessage }) {
+type Props = {
+  name: string
+  label: string
+  errorMessage: string[]
+}
+export default function Checkbox({ name, label, errorMessage }: Props) {
   const id = useId()
   return (
     <div className="flex gap-2 relative">

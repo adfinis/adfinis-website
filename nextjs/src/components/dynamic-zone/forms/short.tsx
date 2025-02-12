@@ -17,7 +17,7 @@ type Props = {
 export default function Short({ submitLabel, locale }: Props) {
   const action = saveSimpleForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
-  const formRef = useRef(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
     if (formRef.current && state.success) {

@@ -17,7 +17,7 @@ type Props = {
 export default function EventForm({ submitLabel, locale }: Props) {
   const action = saveEventForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
-  const formRef = useRef(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
     if (formRef.current && state.success) {

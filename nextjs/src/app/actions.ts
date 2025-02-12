@@ -18,12 +18,16 @@ type SaveSimpleFormState = {
 
 const shape = (locale: string) => {
   return {
+    //@ts-ignore
     first_name: z.string().trim().min(1, messages[locale].required),
+    //@ts-ignore
     last_name: z.string().trim().min(1, messages[locale].required),
+    //@ts-ignore
     email: z.string().email(messages[locale].email),
     privacy_policy: z.preprocess(
       (val) => val === "on",
       z.boolean().refine((val) => val, {
+        //@ts-ignore
         message: messages[locale].privacyPolicy,
       }),
     ),
@@ -119,6 +123,7 @@ export async function saveContactForm(
 ): Promise<ContactFormState> {
   const schema = z.object({
     ...shape(locale),
+    //@ts-ignore
     message: z.string().trim().min(1, messages[locale].required),
   })
   const validation = schema.safeParse({
@@ -163,6 +168,7 @@ export async function saveEventForm(
 ): Promise<EventFormState> {
   const schema = z.object({
     ...shape(locale),
+    // @ts-ignore
     message: z.string().trim().min(1, messages[locale].required),
     phone_number: z
       .string()
