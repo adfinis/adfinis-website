@@ -40,7 +40,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
             <IconChevronLeft className="text-white w-6 h-6" />
           </button>
         )}
-        <Link href="/" className="h-20 flex justify-center">
+        <Link href={`/en`} className="h-20 flex justify-center">
           <Image src={logoUrl} alt={"Adfinis logo"} width={150} height={150} />
         </Link>
         <ActionWrappers />

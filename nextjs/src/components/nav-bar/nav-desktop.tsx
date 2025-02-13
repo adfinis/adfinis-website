@@ -10,6 +10,7 @@ import Image from "next/image"
 import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
+import Link from "next/link"
 
 type NavDesktopProps = {
   navItems: NavItem[]
@@ -70,7 +71,10 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
         ])}
         id="nav-header"
       >
-        <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />
+        <Link href={`/en`}>
+          <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />{" "}
+        </Link>
+
         <ActionWrappers />
       </section>
       {menuExpanded && (
