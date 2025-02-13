@@ -14,6 +14,7 @@ export default async function Hallmarks({
 
   return (
     <LogoGroup
+      columns={"auto"}
       logos={data.hallmark.map((logo: any) => ({
         src: logo.url,
         alt: logo.alt ?? "",
