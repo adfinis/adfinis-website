@@ -6,8 +6,12 @@
   },
   "options": {},
   "attributes": {
+    "internal_name": {
+      "type": "string",
+      "required": true
+    },
     "title": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "description": {
@@ -34,13 +38,13 @@
       "required": true
     },
     "icon_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "files",
         "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     }
   }
 }

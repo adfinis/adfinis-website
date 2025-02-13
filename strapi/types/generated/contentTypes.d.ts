@@ -592,6 +592,64 @@ export interface ApiContactCtaContactCta extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContentOfferContentOffer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'content_offers';
+  info: {
+    displayName: 'Content Offer';
+    pluralName: 'content-offers';
+    singularName: 'content-offer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    cover_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    download_file: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::content-offer.content-offer'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
   collectionName: 'event_pages';
   info: {
@@ -609,18 +667,56 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    >;
+    address: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    card_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date_event: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    details: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    is_past_event: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::event-page.event-page'
     >;
+    map_embed_html: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     metadata_description: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -637,8 +733,126 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'relations.calendly-section',
+        'relations.extra-wide-icon-cards-grid-section',
+        'sections.product-feature-card',
+        'relations.sla-card-section',
+        'sections.icon-card-section-with-relation',
+        'sections.event-details-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.quote-section',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sign_up_button: Schema.Attribute.Component<
+      'external-links.call-to-action',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    time: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventsOverviewEventsOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'events_overviews';
+  info: {
+    description: '';
+    displayName: 'Events Overview';
+    pluralName: 'events-overviews';
+    singularName: 'events-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::events-overview.events-overview'
+    >;
+    meta_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.two-column-section',
+        'sections.feature-cards',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
+      ]
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -708,6 +922,45 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
+  collectionName: 'forms_betas';
+  info: {
+    description: '';
+    displayName: 'Forms (beta)';
+    pluralName: 'forms-betas';
+    singularName: 'forms-beta';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    captcha: Schema.Attribute.String;
+    company_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    is_created_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    job_function: Schema.Attribute.String;
+    last_name: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::forms-beta.forms-beta'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    phone_number: Schema.Attribute.String;
+    privacy_policy: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -791,6 +1044,12 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'>;
+    logo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Private &
@@ -858,22 +1117,25 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
-        'relations.product-cards-section',
-        'relations.quotes-relation',
-        'relations.section-solutions-relation',
+        'relations.extra-wide-icon-cards-grid-section',
+        'sections.product-feature-card',
         'relations.sla-card-section',
-        'relations.white-paper-section',
-        'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
-        'sections.info-details-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
-        'sections.projects-card-section-with-external-link',
+        'sections.event-details-section',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.quote-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
+        'sections.regular-form-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -943,7 +1205,6 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1050,9 +1311,13 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     dynamic_content: Schema.Attribute.DynamicZone<
       [
         'sections.heading-with-link-container',
-        'relations.quotes-relation',
         'global.blog-block',
-        'sections.events-section-with-intro-and-cta',
+        'sections.feature-cards',
+        'sections.quote-section',
+        'sections.content-carousel',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1161,22 +1426,25 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
-        'relations.product-cards-section',
-        'relations.quotes-relation',
-        'relations.section-solutions-relation',
+        'relations.extra-wide-icon-cards-grid-section',
+        'sections.product-feature-card',
         'relations.sla-card-section',
-        'relations.white-paper-section',
-        'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
-        'sections.info-details-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.event-details-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.quote-section',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1221,6 +1489,13 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     locale: Schema.Attribute.String;
@@ -1349,22 +1624,25 @@ export interface ApiSolutionsOverviewSolutionsOverview
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
-        'relations.product-cards-section',
-        'relations.quotes-relation',
-        'relations.section-solutions-relation',
+        'relations.extra-wide-icon-cards-grid-section',
+        'sections.product-feature-card',
         'relations.sla-card-section',
-        'relations.white-paper-section',
-        'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
-        'sections.info-details-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.event-details-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.quote-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1430,22 +1708,25 @@ export interface ApiSolutionsPageSolutionsPage
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.calendly-section',
-        'relations.product-cards-section',
-        'relations.quotes-relation',
-        'relations.section-solutions-relation',
+        'relations.extra-wide-icon-cards-grid-section',
+        'sections.product-feature-card',
         'relations.sla-card-section',
-        'relations.white-paper-section',
-        'sections.color-card-slider-section',
-        'sections.events-section-with-intro-and-cta',
         'sections.icon-card-section-with-relation',
-        'sections.info-details-section',
-        'sections.kpi-with-intro-and-hallmarks-section',
+        'sections.event-details-section',
         'sections.projects-card-section-with-external-link',
         'sections.services-section',
-        'sections.text-section-with-cta',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.quote-section',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1460,65 +1741,6 @@ export interface ApiSolutionsPageSolutionsPage
           localized: true;
         };
       }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiWhitePaperWhitePaper extends Struct.CollectionTypeSchema {
-  collectionName: 'white_papers';
-  info: {
-    description: '';
-    displayName: 'White Paper';
-    pluralName: 'white-papers';
-    singularName: 'white-paper';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    cover_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    download_file: Schema.Attribute.Media<'files'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::white-paper.white-paper'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2038,8 +2260,11 @@ declare module '@strapi/strapi' {
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
+      'api::content-offer.content-offer': ApiContentOfferContentOffer;
       'api::event-page.event-page': ApiEventPageEventPage;
+      'api::events-overview.events-overview': ApiEventsOverviewEventsOverview;
       'api::footer.footer': ApiFooterFooter;
+      'api::forms-beta.forms-beta': ApiFormsBetaFormsBeta;
       'api::hallmark.hallmark': ApiHallmarkHallmark;
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
@@ -2051,7 +2276,6 @@ declare module '@strapi/strapi' {
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;
       'api::solutions-page.solutions-page': ApiSolutionsPageSolutionsPage;
-      'api::white-paper.white-paper': ApiWhitePaperWhitePaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

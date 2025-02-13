@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_cta_banners",
+  "info": {
+    "displayName": "CTA banner",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "body": {
+      "type": "richtext",
+      "required": true
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action",
+      "required": false
+    },
+    "socials": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

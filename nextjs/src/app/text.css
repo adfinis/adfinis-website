@@ -1,3 +1,4 @@
+@tailwind base;
 @tailwind components;
 
 /**
@@ -29,15 +30,15 @@
         }
 
         h1 {
-            @apply text-35 lg:text-50 leading-[30px] lg:leading-[50px];
+            @apply text-35 lg:text-50 leading-[35px] lg:leading-[50px];
         }
 
         h2 {
-            @apply text-35 lg:text-40 leading-[30px] lg:leading-[45px];
+            @apply text-35 lg:text-40 leading-[35px] lg:leading-[45px];
         }
 
         h3 {
-            @apply text-30 leading-[25px] lg:leading-[40px];
+            @apply text-30 leading-[30px] lg:leading-[40px];
         }
 
         ol {
@@ -54,11 +55,11 @@
             li {
                 /*specific for ol*/
                 @apply pl-3;
-                list-style-image: url('/svg/chevron-right-light.svg');
+            }
 
-                [data-scheme='dark'] & {
-                    list-style-image: url('/svg/chevron-right-dark.svg');
-                }
+            li {
+                /** on light backgrounds, chevron itself is darker */
+                list-style-image: url('/svg/chevron-right-light.svg');
             }
         }
 
@@ -98,6 +99,13 @@
             &:not(:last-child) {
                 @apply mb-4;
             }
+        }
+    }
+
+    /** on dark backgrounds, chevron itself is lighter */
+    [data-scheme='dark'] {
+        .markdown-text ul li {
+            list-style-image: url('/svg/chevron-right-dark.svg');
         }
     }
 }

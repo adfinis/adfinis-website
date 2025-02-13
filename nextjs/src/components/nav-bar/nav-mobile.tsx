@@ -12,7 +12,7 @@ import NavMobileItem from "./nav-mobile-item"
 import IconChevronLeft from "../icons/icon-chevron-left"
 import Image from "next/image"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type NavMobileProps = {
   navItems: NavItem[]
@@ -40,7 +40,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
             <IconChevronLeft className="text-white w-6 h-6" />
           </button>
         )}
-        <Link href="/" className="h-20 flex justify-center">
+        <Link href={`/en`} className="h-20 flex justify-center">
           <Image src={logoUrl} alt={"Adfinis logo"} width={150} height={150} />
         </Link>
         <ActionWrappers />

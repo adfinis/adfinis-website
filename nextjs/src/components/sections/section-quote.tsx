@@ -17,7 +17,7 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
 }) => {
   return (
     <div className="pr-12 sm:px-16 lg:px-32">
-      <div className="relative max-w-4xl mx-auto mb-30">
+      <div className="relative max-w-4xl mx-auto mb-14 lg:mb-30">
         <blockquote
           className={clsx([
             "bg-sapphire font-extralight italic text-neutral leading-tight",

@@ -14,16 +14,16 @@ const LogoGroup: React.FC<LogoGroupProps> = ({ logos, columns = 4 }) => {
   return (
     <div
       className={clsx([
-        "flex pb-4 lg:pb-0 overflow-x-auto gap-6 lg:gap-12 justify-items-center items-center",
+        "flex pb-4 lg:pb-0 overflow-x-auto gap-6 justify-items-center items-center",
         {
           "lg:grid lg:grid-cols-4": columns === 4,
-          "lg:flex-wrap": columns === "auto",
+          "lg:grid lg:grid-flow-col": columns === "auto",
         },
       ])}
     >
       {logos.map((logo, key) => (
         <Image
-          className="max-h-8"
+          className="max-h-8 w-auto"
           width={150}
           height={128}
           key={key}

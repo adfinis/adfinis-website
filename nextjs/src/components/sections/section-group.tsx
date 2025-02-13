@@ -49,7 +49,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
   return (
     <div
       className={sectionGroupStyles({ align })}
-      data-component="section-group"
+      data-component="SectionGroup"
       {...attrs}
     >
       {title && <Title align="center" boldness="light" markdown={title} />}

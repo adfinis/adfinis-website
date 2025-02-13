@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_quote_sections",
+  "info": {
+    "displayName": "Quote section",
+    "icon": "quote",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "quotes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quote.quote"
+    }
+  }
+}

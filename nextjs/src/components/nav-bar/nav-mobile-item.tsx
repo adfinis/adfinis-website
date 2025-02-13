@@ -16,7 +16,7 @@ const NavMobileItem: React.FC<{
           {item.title}
           <IconChevronRight
             className={clsx([
-              "transition-all duration-150",
+              "transition-all duration-150 h-2.5 w-auto",
               {
                 "transform rotate-90": expand,
               },

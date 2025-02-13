@@ -7,8 +7,10 @@ import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import Image from "next/image"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
+import { useNavContext } from "./nav-context"
+import Link from "next/link"
 
 type NavDesktopProps = {
   navItems: NavItem[]
@@ -17,6 +19,7 @@ type NavDesktopProps = {
 }
 
 const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
+  const { setNavActive } = useNavContext()
   const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
     thr: 20,
@@ -33,11 +36,12 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
         break
       case scrollDir === "down":
         setMenuExpanded(false)
+        setNavActive(false)
         break
       default:
         break
     }
-  }, [scrollDir, scrollPosition.top])
+  }, [scrollDir, scrollPosition.top, setNavActive])
 
   /**
    * @description only collapse the menu when the user has scrolled down
@@ -67,7 +71,10 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
         ])}
         id="nav-header"
       >
-        <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />
+        <Link href={`/en`}>
+          <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />{" "}
+        </Link>
+
         <ActionWrappers />
       </section>
       {menuExpanded && (

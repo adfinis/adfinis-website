@@ -1,21 +1,24 @@
 import TwoColumnSection from "@/components/dynamic-zone/wrapper/sections/two-column-section"
-import TextSectionWithCta from "@/components/dynamic-zone/wrapper/sections/text-section-with-cta"
 import IconCardSectionWithRelation from "@/components/dynamic-zone/wrapper/sections/icon-card-section-with-relation"
-import WhitePaperSection from "@/components/dynamic-zone/wrapper/relations/white-paper-section"
-import QuotesRelation from "@/components/dynamic-zone/wrapper/relations/quotes-relation"
+import QuoteSection from "@/components/dynamic-zone/wrapper/sections/quote-section"
 import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-section"
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
-import KpiWithIntroAndHallmarksSection from "@/components/dynamic-zone/wrapper/sections/kpi-with-intro-and-hallmarks-section"
-import ProjectsCardSectionWithExternalLink from "@/components/dynamic-zone/wrapper/sections/projects-card-section-with-external-link"
-import EventsSectionWithIntroAndCta from "@/components/dynamic-zone/wrapper/sections/events-section-with-intro-and-cta"
+import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
-import SectionSolutionsRelation from "@/components/dynamic-zone/wrapper/relations/section-solutions-relation"
 import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
-import ColorCardSliderSection from "@/components/dynamic-zone/wrapper/sections/color-card-slider-section"
-import ProductCardsSection from "@/components/dynamic-zone/wrapper/relations/product-cards-section"
-import InfoDetailsSection from "@/components/dynamic-zone/wrapper/sections/info-details-section"
+import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
+import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/event-details-section"
+import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
+import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
+import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
+import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
+import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
+import SingleColumnSection from "./wrapper/sections/single-column-section"
+import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmarks-section"
+import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
+import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 
-export function renderSections(section: any, index: number) {
+export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
     case "sections.two-column-section":
       return (
@@ -24,9 +27,9 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.text-section-with-cta":
+    case "sections.cta-banner":
       return (
-        <TextSectionWithCta
+        <CtaBanner
           key={`section_text_section_with_cta_${index}`}
           section={section}
         />
@@ -38,19 +41,27 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.white-paper-section":
+    case "sections.content-highlight-section":
       return (
-        <WhitePaperSection
-          key={`section_white_paper_${index}`}
+        <ContentHighlightSection
+          key={`sections.content-highlight-section_${index}`}
           section={section}
         />
       )
-    case "relations.quotes-relation":
-      return <QuotesRelation key={`section_quote_${index}`} section={section} />
+    case "sections.quote-section":
+      return <QuoteSection key={`section_quote_${index}`} section={section} />
     case "sections.video-section":
       return (
         <VideoSection
           key={`section_video_section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.regular-form-section":
+      return (
+        <RegularFormSection
+          key={`sections.regular-form_${index}`}
+          locale={locale}
           section={section}
         />
       )
@@ -61,24 +72,23 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.kpi-with-intro-and-hallmarks-section":
+    case "sections.hallmarks-section":
       return (
-        <KpiWithIntroAndHallmarksSection
-          key={`section_kpi_with_intro_and_hallmarks_section_${index}`}
+        <HallmarksSection
+          key={`sections.hallmarks-section_${index}`}
           section={section}
         />
       )
-    case "sections.projects-card-section-with-external-link":
+    case "sections.kpi-section":
       return (
-        <ProjectsCardSectionWithExternalLink
-          key={`section_projects_card_section_with_external_link_${index}`}
-          section={section}
-        />
+        <KpiSection key={`sections.kpi-section_${index}`} section={section} />
       )
-    case "sections.events-section-with-intro-and-cta":
+    case "sections.feature-cards":
+      return <FeatureCards key={`feature_cards_${index}`} section={section} />
+    case "sections.content-carousel":
       return (
-        <EventsSectionWithIntroAndCta
-          key={`section_events-section-with-intro-and-cta_${index}`}
+        <ContentCarousel
+          key={`sections.content-carousel_${index}`}
           section={section}
         />
       )
@@ -89,13 +99,6 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "relations.section-solutions-relation":
-      return (
-        <SectionSolutionsRelation
-          key={`relations.section-solutions-relation_${index}`}
-          section={section}
-        />
-      )
     case "relations.sla-card-section":
       return (
         <SlaCardSection
@@ -103,28 +106,46 @@ export function renderSections(section: any, index: number) {
           section={section}
         />
       )
-    case "sections.color-card-slider-section":
+    case "sections.color-card-carousel":
       return (
-        <ColorCardSliderSection
+        <ColorCardCarousel
           key={`sections.color-card-slider-section_${index}`}
           section={section}
         />
       )
-    case "relations.product-cards-section":
+    case "sections.product-feature-card":
       return (
-        <ProductCardsSection
-          key={`relations.product-cards-section_${index}`}
+        <ProductFeatureCard
+          key={`sections.product-feature-card_${index}`}
           section={section}
         />
       )
-    case "sections.info-details-section":
+    case "sections.event-details-section":
       return (
-        <InfoDetailsSection
-          key={`sections.info-details-section_${index}`}
+        <EventDetailsSection
+          key={`sections.event-details-section_${index}`}
+          section={section}
+        />
+      )
+    case "relations.extra-wide-icon-cards-grid-section":
+      return (
+        <ExtraWideIconCardsGridSection
+          key={`relations.extra-wide-icon-cards-grid-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.single-column-section":
+      return (
+        <SingleColumnSection
+          key={`sections.single-column-section_${index}`}
           section={section}
         />
       )
     default:
-      return <p key={`section_${index}`}>Unknown section</p>
+      return (
+        <p key={`section_${index}`}>
+          Unknown section {JSON.stringify(section)}
+        </p>
+      )
   }
 }

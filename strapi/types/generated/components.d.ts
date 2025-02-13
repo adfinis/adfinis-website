@@ -21,6 +21,23 @@ export interface CardsCardSliderIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCategoryCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_category_cards';
+  info: {
+    displayName: 'Category card';
+  };
+  attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    description: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsColorCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_color_cards';
   info: {
@@ -51,21 +68,17 @@ export interface CardsColorCard extends Struct.ComponentSchema {
   };
 }
 
-export interface CardsEventCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_event_cards';
+export interface CardsFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_feature_cards';
   info: {
-    description: '';
-    displayName: 'Event Card';
+    displayName: 'Feature card';
+    icon: 'picture';
   };
   attributes: {
-    background_image: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.Required;
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    >;
-    description: Schema.Attribute.String & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    image: Schema.Attribute.Media<'images'>;
+    intro: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -138,22 +151,7 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
-  };
-}
-
-export interface CardsProjectCardWithExternalCta
-  extends Struct.ComponentSchema {
-  collectionName: 'components_cards_project_card_with_external_ctas';
-  info: {
-    description: '';
-    displayName: 'Project card with external CTA';
-  };
-  attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    image: Schema.Attribute.Media<'files' | 'images'> &
-      Schema.Attribute.Required;
-    intro: Schema.Attribute.RichText & Schema.Attribute.Required;
+    internal_name: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -172,15 +170,13 @@ export interface CardsSimpleCard extends Struct.ComponentSchema {
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
+    description: '';
     displayName: 'Call to action';
     icon: 'link';
   };
   attributes: {
     href: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'https://adfinis.com/contact'>;
-    is_disabled: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Call to action'>;
@@ -196,6 +192,7 @@ export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
 export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   collectionName: 'components_external_links_link_with_chevrons';
   info: {
+    description: '';
     displayName: 'Link with chevron';
     icon: 'link';
   };
@@ -205,9 +202,6 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'left'>;
     href: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'https://adfinis.com/contact'>;
-    is_disabled: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Button text'>;
@@ -377,47 +371,19 @@ export interface RelationsCalendlySection extends Struct.ComponentSchema {
   };
 }
 
-export interface RelationsProductCardsSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_product_cards_sections';
-  info: {
-    displayName: 'Product Cards Section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::card-product.card-product'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsQuotesRelation extends Struct.ComponentSchema {
-  collectionName: 'components_relations_quotes_relations';
-  info: {
-    displayName: 'Quotes Relation';
-  };
-  attributes: {
-    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
-  };
-}
-
-export interface RelationsSectionSolutionsRelation
+export interface RelationsExtraWideIconCardsGridSection
   extends Struct.ComponentSchema {
-  collectionName: 'components_relations_section_solutions_relations';
+  collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
   info: {
-    description: '';
-    displayName: 'Section Solutions Relation';
+    displayName: 'Extra Wide Icon Cards Grid Section';
+    icon: 'dashboard';
   };
   attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
-    solutions: Schema.Attribute.Component<
-      'relations.solutions-relation-with-description',
-      true
-    >;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -451,21 +417,6 @@ export interface RelationsSolutionsRelationWithDescription
       'api::solutions-page.solutions-page'
     >;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsWhitePaperSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_white_paper_sections';
-  info: {
-    displayName: 'White Paper Section';
-  };
-  attributes: {
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    white_paper: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::white-paper.white-paper'
-    >;
   };
 }
 
@@ -503,14 +454,20 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_color_card_slider_sections';
+export interface SectionsColorCardCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_color_card_carousels';
   info: {
-    description: '';
-    displayName: 'Color card slider section';
+    displayName: 'Color card carousel';
   };
   attributes: {
-    cards: Schema.Attribute.Component<'cards.color-card', true>;
+    cards: Schema.Attribute.Component<'cards.color-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     ctas: Schema.Attribute.Component<'external-links.call-to-action', true> &
       Schema.Attribute.SetMinMax<
         {
@@ -519,22 +476,20 @@ export interface SectionsColorCardSliderSection extends Struct.ComponentSchema {
         number
       >;
     description: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface SectionsEventsSectionWithIntroAndCta
-  extends Struct.ComponentSchema {
-  collectionName: 'components_sections_events_section_with_intro_and_ctas';
+export interface SectionsContentCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_content_carousels';
   info: {
     description: '';
-    displayName: 'Events section with intro and CTA';
+    displayName: 'Content carousel';
   };
   attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
-    description: Schema.Attribute.RichText;
-    events: Schema.Attribute.Component<'cards.event-card', true> &
+    cards: Schema.Attribute.Component<'cards.category-card', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
@@ -542,9 +497,74 @@ export interface SectionsEventsSectionWithIntroAndCta
         },
         number
       >;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsContentHighlightSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_content_highlight_sections';
+  info: {
+    displayName: 'Content highlight section';
+  };
+  attributes: {
+    content_offer: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::content-offer.content-offer'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+  };
+}
+
+export interface SectionsCtaBanner extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cta_banners';
+  info: {
+    description: '';
+    displayName: 'CTA banner';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    socials: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
+export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_event_details_sections';
+  info: {
+    description: '';
+    displayName: 'Event details section';
+    icon: 'calendar';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
+    info: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsFeatureCards extends Struct.ComponentSchema {
+  collectionName: 'components_sections_feature_cards';
+  info: {
+    description: '';
+    displayName: 'Feature cards';
+    icon: 'landscape';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    features: Schema.Attribute.Component<'cards.feature-card', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -574,6 +594,19 @@ export interface SectionsGroupTitleWithRichIntro
   attributes: {
     intro: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsHallmarksSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_hallmarks_sections';
+  info: {
+    displayName: 'Hallmarks section';
+    icon: 'crown';
+  };
+  attributes: {
+    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -659,46 +692,14 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
-export interface SectionsInfoDetailsSection extends Struct.ComponentSchema {
-  collectionName: 'components_sections_info_details_sections';
-  info: {
-    displayName: 'Info Details Section';
-    icon: 'bulletList';
-  };
-  attributes: {
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    info: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
+    description: '';
     displayName: 'KPI Section';
   };
   attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    section_props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
-export interface SectionsKpiWithIntroAndHallmarksSection
-  extends Struct.ComponentSchema {
-  collectionName: 'components_sections_kpi_with_intro_and_hallmarks_sections';
-  info: {
-    description: '';
-    displayName: 'KPI with intro and hallmarks section';
-  };
-  attributes: {
-    description: Schema.Attribute.RichText;
-    hallmark: Schema.Attribute.Relation<'oneToOne', 'api::hallmark.hallmark'>;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
     kpis: Schema.Attribute.Component<'cards.kpi-card', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
@@ -707,7 +708,24 @@ export interface SectionsKpiWithIntroAndHallmarksSection
         },
         number
       >;
-    title: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_product_feature_cards';
+  info: {
+    displayName: 'Product feature card';
+    icon: 'stack';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::card-product.card-product'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -718,16 +736,6 @@ export interface SectionsProjectCardsSection extends Struct.ComponentSchema {
     displayName: 'Project Cards Section';
   };
   attributes: {
-    cards: Schema.Attribute.Component<
-      'cards.project-card-with-external-cta',
-      true
-    > &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
@@ -742,16 +750,36 @@ export interface SectionsProjectsCardSectionWithExternalLink
   };
   attributes: {
     description: Schema.Attribute.RichText;
-    projects: Schema.Attribute.Component<
-      'cards.project-card-with-external-cta',
-      true
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsQuoteSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_quote_sections';
+  info: {
+    description: '';
+    displayName: 'Quote section';
+    icon: 'quote';
+  };
+  attributes: {
+    quotes: Schema.Attribute.Relation<'oneToMany', 'api::quote.quote'>;
+  };
+}
+
+export interface SectionsRegularFormSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_regular_form_sections';
+  info: {
+    displayName: 'Regular form section';
+  };
+  attributes: {
+    form_type: Schema.Attribute.Enumeration<
+      ['standard', 'contact', 'event', 'short']
     > &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'short'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    submit_label: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String;
   };
 }
@@ -817,15 +845,17 @@ export interface SectionsServicesSection extends Struct.ComponentSchema {
   };
 }
 
-export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
-  collectionName: 'components_sections_text_section_with_ctas';
+export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_single_column_sections';
   info: {
-    displayName: 'Text Section With CTA';
+    description: '';
+    displayName: 'Single column section';
+    icon: 'layer';
   };
   attributes: {
-    body: Schema.Attribute.RichText & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false> &
-      Schema.Attribute.Required;
+    body: Schema.Attribute.RichText;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    infolabel: Schema.Attribute.String;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
   };
@@ -834,9 +864,11 @@ export interface SectionsTextSectionWithCta extends Struct.ComponentSchema {
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
+    description: '';
     displayName: 'Two Column Section';
   };
   attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
     left_column: Schema.Attribute.RichText & Schema.Attribute.Required;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
@@ -880,11 +912,11 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.category-card': CardsCategoryCard;
       'cards.color-card': CardsColorCard;
-      'cards.event-card': CardsEventCard;
+      'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
-      'cards.project-card-with-external-cta': CardsProjectCardWithExternalCta;
       'cards.simple-card': CardsSimpleCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
@@ -900,32 +932,35 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
       'relations.calendly-section': RelationsCalendlySection;
-      'relations.product-cards-section': RelationsProductCardsSection;
-      'relations.quotes-relation': RelationsQuotesRelation;
-      'relations.section-solutions-relation': RelationsSectionSolutionsRelation;
+      'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
-      'relations.white-paper-section': RelationsWhitePaperSection;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
-      'sections.color-card-slider-section': SectionsColorCardSliderSection;
-      'sections.events-section-with-intro-and-cta': SectionsEventsSectionWithIntroAndCta;
+      'sections.color-card-carousel': SectionsColorCardCarousel;
+      'sections.content-carousel': SectionsContentCarousel;
+      'sections.content-highlight-section': SectionsContentHighlightSection;
+      'sections.cta-banner': SectionsCtaBanner;
+      'sections.event-details-section': SectionsEventDetailsSection;
+      'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
+      'sections.hallmarks-section': SectionsHallmarksSection;
       'sections.heading-with-link-container': SectionsHeadingWithLinkContainer;
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
-      'sections.info-details-section': SectionsInfoDetailsSection;
       'sections.kpi-section': SectionsKpiSection;
-      'sections.kpi-with-intro-and-hallmarks-section': SectionsKpiWithIntroAndHallmarksSection;
+      'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
+      'sections.quote-section': SectionsQuoteSection;
+      'sections.regular-form-section': SectionsRegularFormSection;
       'sections.section-props': SectionsSectionProps;
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
-      'sections.text-section-with-cta': SectionsTextSectionWithCta;
+      'sections.single-column-section': SectionsSingleColumnSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
       'sections.video-with-text-section': SectionsVideoWithTextSection;

@@ -78,9 +78,13 @@
       "type": "dynamiczone",
       "components": [
         "sections.heading-with-link-container",
-        "relations.quotes-relation",
         "global.blog-block",
-        "sections.events-section-with-intro-and-cta"
+        "sections.feature-cards",
+        "sections.quote-section",
+        "sections.content-carousel",
+        "sections.color-card-carousel",
+        "sections.cta-banner",
+        "sections.single-column-section"
       ]
     }
   }

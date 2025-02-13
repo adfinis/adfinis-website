@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_product_feature_cards",
+  "info": {
+    "displayName": "Product feature card",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::card-product.card-product"
+    }
+  }
+}

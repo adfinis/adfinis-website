@@ -12,17 +12,19 @@ module.exports = (config, {strapi}) => {
         },
         sections: {
           on: {
-            'sections.color-card-slider-section': {
+            'sections.color-card-carousel': {
               populate: '*'
             },
-            'sections.projects-card-section-with-external-link': {
+            'relations.extra-wide-icon-cards-grid-section': {
               populate: {
-                projects: {
+                cards: {
                   populate: '*',
-                }
-              }
+                },
+                props: true,
+                cta: true,
+              },
             },
-            'relations.product-cards-section': {
+            'sections.product-feature-card': {
               populate: {
                 props: true,
                 cards: {
@@ -30,22 +32,14 @@ module.exports = (config, {strapi}) => {
                 },
               },
             },
-            'sections.events-section-with-intro-and-cta': {
+            'sections.content-carousel': {
               populate: {
                 props: true,
                 cta: true,
-                events: {
+                cards: {
                   populate: '*',
                 }
               }
-            },
-            'relations.section-solutions-relation': {
-              populate: {
-                props: true,
-                solutions: {
-                  populate: '*'
-                }
-              },
             },
             'relations.sla-card-section': {
               populate: {
@@ -58,7 +52,10 @@ module.exports = (config, {strapi}) => {
             'sections.two-column-section': {
               populate: '*',
             },
-            'sections.text-section-with-cta': {
+            'sections.cta-banner': {
+              populate: '*',
+            },
+            'sections.single-column-section': {
               populate: '*',
             },
             'sections.icon-card-section-with-relation': {
@@ -69,15 +66,15 @@ module.exports = (config, {strapi}) => {
                 section_props: true,
               },
             },
-            'relations.white-paper-section': {
+            'sections.content-highlight-section': {
               populate: {
                 props: true,
-                white_paper: {
+                content_offer: {
                   populate: '*'
                 },
               },
             },
-            'relations.quotes-relation': {
+            'sections.quote-section': {
               populate: {
                 quotes: {
                   populate: '*'
@@ -87,24 +84,38 @@ module.exports = (config, {strapi}) => {
             'sections.video-section': {
               populate: '*',
             },
-            'sections.video-with-text-section': {
+            'sections.hallmarks-section': {
               populate: '*',
             },
-            'sections.kpi-with-intro-and-hallmarks-section': {
+            'sections.kpi-section': {
               populate: {
+                props: true,
                 kpis: {
                   populate: '*',
                 },
-                hallmark: {
-                  populate: true,
-                },
               },
+            },
+            'sections.video-with-text-section': {
+              populate: '*',
+            },
+            'sections.regular-form-section': {
+              populate: '*',
             },
             'sections.services-section': {
               populate: '*'
             },
-            'sections.info-details-section': {
+            'sections.event-details-section': {
               populate: '*'
+            },
+            'sections.feature-cards': {
+              populate: {
+                props: {
+                  populate: '*',
+                },
+                features: {
+                  populate: '*',
+                },
+              }
             }
           },
         }

@@ -57,22 +57,25 @@
       "type": "dynamiczone",
       "components": [
         "relations.calendly-section",
-        "relations.product-cards-section",
-        "relations.quotes-relation",
-        "relations.section-solutions-relation",
+        "relations.extra-wide-icon-cards-grid-section",
+        "sections.product-feature-card",
         "relations.sla-card-section",
-        "relations.white-paper-section",
-        "sections.color-card-slider-section",
-        "sections.events-section-with-intro-and-cta",
         "sections.icon-card-section-with-relation",
-        "sections.info-details-section",
-        "sections.kpi-with-intro-and-hallmarks-section",
+        "sections.event-details-section",
         "sections.projects-card-section-with-external-link",
         "sections.services-section",
-        "sections.text-section-with-cta",
         "sections.two-column-section",
         "sections.video-section",
-        "sections.video-with-text-section"
+        "sections.video-with-text-section",
+        "sections.quote-section",
+        "sections.feature-cards",
+        "sections.content-carousel",
+        "sections.content-highlight-section",
+        "sections.color-card-carousel",
+        "sections.cta-banner",
+        "sections.single-column-section",
+        "sections.kpi-section",
+        "sections.hallmarks-section"
       ]
     }
   }

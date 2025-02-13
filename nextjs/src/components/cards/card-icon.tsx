@@ -8,7 +8,7 @@ import Link from "../link-button"
 import type { Card } from "./card"
 
 interface CardIconProps extends Card {
-  cta?: CTA
+  cta?: CTA | null
 }
 
 /**
@@ -49,7 +49,7 @@ const CardIcon: React.FC<CardIconProps> = ({
           size={"small"}
           className="px-4 self-center place-self-end"
         >
-          {cta.text}
+          {cta.label}
         </Link>
       )}
     </div>

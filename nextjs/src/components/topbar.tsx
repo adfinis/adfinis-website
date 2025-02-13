@@ -15,7 +15,7 @@ const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
       className="fixed top-8 left-0 w-topbar bg-sapphire z-50 shadow-2"
       id="navbar"
     >
-      <div className="container mr-0">
+      <div className="container lg:px-4 mr-0">
         <LinkedLocalesProvider
           locales={[
             { locale: "en", isActive: true, href: "/en/theme" },

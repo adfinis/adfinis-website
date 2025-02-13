@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms_betas",
+  "info": {
+    "singularName": "forms-beta",
+    "pluralName": "forms-betas",
+    "displayName": "Forms (beta)",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "job_function": {
+      "type": "string"
+    },
+    "privacy_policy": {
+      "type": "string"
+    },
+    "captcha": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "is_created_at": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

@@ -2,7 +2,7 @@ import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Hero from "@/components/hero"
 import { colors } from "@/lib/colors"
-import { CTA } from "@/components/dynamic-zone/wrapper/cta"
+import { CTA } from "@/lib/cta"
 
 type Props = {
   color: {
@@ -12,12 +12,19 @@ type Props = {
     url: string
   }
   body: string
-  cta: CTA
+  cta?: CTA
+  logo?: {
+    url: string
+  }
 }
 
 export default function HeroWrapper({ hero }: { hero: Props }) {
   return (
-    <Hero color={hero.color.color} imageUrl={hero.background_image.url}>
+    <Hero
+      color={hero.color.color}
+      imageUrl={hero.background_image.url}
+      logoUrl={hero.logo?.url}
+    >
       <Text markdown={hero.body} />
       {hero.cta && (
         <LinkButton

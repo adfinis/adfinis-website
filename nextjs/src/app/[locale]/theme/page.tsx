@@ -19,7 +19,6 @@ import {
   slaSection,
   partnerSection,
   quoteSection,
-  whitepaperSection,
   twoColumnMarkdownSection,
   calendlySection,
   youtubeSection,
@@ -29,6 +28,7 @@ import {
   eventDetails,
   eventSection,
   eventGrid,
+  careerGrid,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -41,14 +41,13 @@ import CardIcon from "@/components/cards/card-icon"
 import CardGroup from "@/components/cards/card-group"
 import CardColored from "@/components/cards/card-colored"
 import CardArticle from "@/components/cards/card-article"
-import CardCounter from "@/components/cards/card-counter"
+import CardKpi from "@/components/cards/card-kpi"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
 import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
-import SectionWhitepaper from "@/components/sections/section-whitepaper"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
@@ -57,6 +56,7 @@ import { CardMessage } from "@/components/cards/card-message"
 import SectionEvent from "@/components/sections/section-event"
 import InfoLabel from "@/components/info-label"
 import LinkButton from "@/components/link-button"
+import CardCareer from "@/components/cards/card-career"
 
 export default function Theme({
   params: { locale },
@@ -81,7 +81,7 @@ export default function Theme({
 
       <Intro>
         <Title markdown={intro.title} align="center" />
-        <Text markdown={intro.text} className="grid gap-8" />
+        <Text markdown={intro.text} />
       </Intro>
 
       <Container id="Solutions" padding="both-padding" background="neutral">
@@ -208,7 +208,7 @@ export default function Theme({
         >
           <CardGroup>
             {statisticsSection.cards.map((item, i) => (
-              <CardCounter
+              <CardKpi
                 key={i}
                 title={item.title}
                 imageUrl={item.icon.src}
@@ -288,15 +288,6 @@ export default function Theme({
         <StandardForm locale={locale} />
       </Container>
 
-      <Container id="whitepaper" background="sapphire" padding="both-padding">
-        <SectionWhitepaper
-          title={whitepaperSection.title}
-          cta={whitepaperSection.cta}
-          image={whitepaperSection.image}
-          text={whitepaperSection.description}
-        />
-      </Container>
-
       <Container
         id="two-column-markdown"
         background="stone"
@@ -373,19 +364,22 @@ export default function Theme({
         padding="both-padding"
         background="neutral"
       >
-        <CardGroup maxWidth="none">
-          {cardIconGridExample.cards.map((item, i) => {
-            return (
-              <CardIcon
-                imageUrl={item.icon.src}
-                title={item.title}
-                description={item.description}
-                cta={item.cta}
-                key={i}
-              />
-            )
-          })}
-        </CardGroup>
+        <SectionGroup title="Why Adfinis?" align="center">
+          <CardGroup maxWidth="none">
+            {cardIconGridExample.cards.map((item, i) => {
+              return (
+                <CardIcon
+                  imageUrl={item.icon.src}
+                  title={item.title}
+                  description={item.description}
+                  cta={item.cta}
+                  key={i}
+                />
+              )
+            })}
+          </CardGroup>
+          <ButtonGroup align={"center"} ctas={[ctaSection.cta]} />
+        </SectionGroup>
       </Container>
 
       <Container id="card-icon-grid" padding="both-padding" background="white">
@@ -441,6 +435,29 @@ export default function Theme({
         <InfoLabel text={eventDetails.info} className="block mb-4" />
         <Text markdown={eventDetails.description} className="mb-8 max-w-4xl" />
         <LinkButton {...eventSection.cta}>{eventSection.cta.text}</LinkButton>
+      </Container>
+
+      <Container
+        id="career-grid-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup maxWidth="none" columns={3}>
+          {careerGrid.map((career, index) => (
+            <CardCareer
+              key={index}
+              title={career.title}
+              description={career.description}
+              imageUrl={career.image.url}
+              workload={career.workload}
+              location={career.location}
+              country={
+                career.country as "ch" | "de" | "nl" | "au" | "us" | "uk"
+              }
+              href={career.href}
+            />
+          ))}
+        </CardGroup>
       </Container>
     </main>
   )

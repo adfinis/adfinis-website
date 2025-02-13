@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_content_highlight_sections",
+  "info": {
+    "displayName": "Content highlight section"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "content_offer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-offer.content-offer"
+    }
+  }
+}

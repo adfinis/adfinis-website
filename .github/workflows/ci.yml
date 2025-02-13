@@ -6,11 +6,10 @@ on:
       - develop
 
 jobs:
-  test:
+  nextjs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,3 +23,20 @@ jobs:
 
       - name: Build NextJS
         run: cd ./nextjs && npm run build
+
+
+  strapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+  
+      - name: Install dependencies
+        run: cd ./strapi && npm install
+
+      - name: Build Strapi Application
+        run: cd ./strapi && npm run build

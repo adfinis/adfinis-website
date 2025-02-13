@@ -35,6 +35,11 @@
       "type": "text",
       "required": true
     },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -45,10 +50,112 @@
       "targetField": "metadata_title",
       "required": true
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
+    "date_event": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "map_embed_html": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "sign_up_button": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "external-links.call-to-action"
+    },
+    "is_past_event": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "details": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
+    },
+    "card_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "sections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "relations.calendly-section",
+        "relations.extra-wide-icon-cards-grid-section",
+        "sections.product-feature-card",
+        "relations.sla-card-section",
+        "sections.icon-card-section-with-relation",
+        "sections.event-details-section",
+        "sections.projects-card-section-with-external-link",
+        "sections.services-section",
+        "sections.two-column-section",
+        "sections.video-section",
+        "sections.video-with-text-section",
+        "sections.feature-cards",
+        "sections.content-carousel",
+        "sections.quote-section",
+        "sections.content-highlight-section",
+        "sections.color-card-carousel",
+        "sections.cta-banner",
+        "sections.single-column-section",
+        "sections.kpi-section",
+        "sections.hallmarks-section"
+      ]
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_content_carousels",
+  "info": {
+    "displayName": "Content carousel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.category-card",
+      "required": true,
+      "min": 1
+    }
+  }
+}

@@ -33,7 +33,7 @@
         }
       },
       "type": "string",
-      "unique": true,
+      "unique": false,
       "required": true
     },
     "icon_image": {

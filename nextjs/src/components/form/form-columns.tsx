@@ -1,11 +1,11 @@
 import clsx from "clsx"
-import React from "react"
+import { ReactNode, FC } from "react"
 
 interface FormColumnsProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
-const FormColumns: React.FC<FormColumnsProps> = ({ children }) => {
+const FormColumns: FC<FormColumnsProps> = ({ children }) => {
   return <div className={clsx(["grid lg:grid-flow-col gap-4"])}>{children}</div>
 }
 

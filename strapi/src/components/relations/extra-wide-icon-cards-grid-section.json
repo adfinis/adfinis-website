@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_relations_extra_wide_icon_cards_grid_sections",
+  "info": {
+    "displayName": "Extra Wide Icon Cards Grid Section",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::icon-card.icon-card"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    }
+  }
+}
