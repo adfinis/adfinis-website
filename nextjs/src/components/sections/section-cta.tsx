@@ -17,7 +17,12 @@ const SectionCTA: React.FC<SectionCTAProps> = ({ body, cta, socials }) => {
     <div className="max-w-4xl mx-auto grid gap-4 lg:gap-8">
       {body && <Text markdown={body} className="text-justify lg:text-center" />}
       {cta && !socials && (
-        <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
+        <LinkButton
+          href={cta.href}
+          variant={cta.variant}
+          size={cta.size}
+          className="place-self-center"
+        >
           {cta.label}
         </LinkButton>
       )}
