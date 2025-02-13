@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
             aria-hidden="true"
             width={150}
             height={100}
-            className="hidden md:block absolute top-0 right-0 bottom-0 w-auto h-full"
+            className="hidden md:block absolute top-0 right-0 bottom-0 w-auto h-full z-10"
           />
         </div>
       )}
