@@ -81,6 +81,9 @@ module.exports = (config, {strapi}) => {
             'sections.video-with-text-section': {
               populate: '*',
             },
+            'sections.regular-form-section': {
+              populate: '*',
+            },
             'sections.hallmarks-section': {
               populate: '*',
             },
