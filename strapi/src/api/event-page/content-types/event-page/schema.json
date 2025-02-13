@@ -154,7 +154,8 @@
         "sections.cta-banner",
         "sections.single-column-section",
         "sections.kpi-section",
-        "sections.hallmarks-section"
+        "sections.hallmarks-section",
+        "sections.regular-form-section"
       ]
     }
   }

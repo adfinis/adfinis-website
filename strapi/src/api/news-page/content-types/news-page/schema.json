@@ -84,7 +84,8 @@
         "sections.content-carousel",
         "sections.color-card-carousel",
         "sections.cta-banner",
-        "sections.single-column-section"
+        "sections.single-column-section",
+        "sections.regular-form-section"
       ]
     }
   }
