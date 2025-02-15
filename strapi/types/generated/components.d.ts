@@ -71,12 +71,13 @@ export interface CardsColorCard extends Struct.ComponentSchema {
 export interface CardsFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_feature_cards';
   info: {
+    description: '';
     displayName: 'Feature card';
     icon: 'picture';
   };
   attributes: {
     cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    image: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     intro: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
