@@ -114,10 +114,10 @@ module.exports = (config, { strapi }) => {
             'sections.image-carousel': {
               populate: {
                 props: {
-                  populate: '*',
+                  populate: true,
                 },
                 images: {
-                  populate: '*',
+                  populate: true,
                 },
                 cta: true,
               }
