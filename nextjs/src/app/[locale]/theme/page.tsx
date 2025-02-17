@@ -29,6 +29,7 @@ import {
   eventSection,
   eventGrid,
   careerGrid,
+  imageSlider,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -57,6 +58,7 @@ import SectionEvent from "@/components/sections/section-event"
 import InfoLabel from "@/components/info-label"
 import LinkButton from "@/components/link-button"
 import CardCareer from "@/components/cards/card-career"
+import CardImage from "@/components/cards/card-image"
 
 export default function Theme({
   params: { locale },
@@ -458,6 +460,30 @@ export default function Theme({
             />
           ))}
         </CardGroup>
+      </Container>
+
+      <Container
+        id="image-slider-example"
+        padding="both-padding"
+        background="white"
+      >
+        <CardSlider
+          title={imageSlider.title}
+          description={imageSlider.description}
+          ctas={imageSlider.ctas}
+        >
+          {imageSlider.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardImage
+                  alt={card.alt}
+                  src={card.src}
+                  className="h-48 sm:h-96 w-auto"
+                />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
       </Container>
     </main>
   )

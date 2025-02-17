@@ -693,6 +693,22 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
+export interface SectionsImageCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_image_carousels';
+  info: {
+    description: '';
+    displayName: 'Image carousel';
+    icon: 'landscape';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
+    images: Schema.Attribute.Media<'images', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
@@ -952,6 +968,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
+      'sections.image-carousel': SectionsImageCarousel;
       'sections.kpi-section': SectionsKpiSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;

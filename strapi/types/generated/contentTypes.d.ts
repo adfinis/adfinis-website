@@ -756,6 +756,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.kpi-section',
         'sections.hallmarks-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1138,6 +1139,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.kpi-section',
         'sections.hallmarks-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1321,6 +1323,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.cta-banner',
         'sections.single-column-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1449,6 +1452,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.kpi-section',
         'sections.hallmarks-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1648,6 +1652,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.kpi-section',
         'sections.hallmarks-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1733,6 +1738,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.kpi-section',
         'sections.hallmarks-section',
         'sections.regular-form-section',
+        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
