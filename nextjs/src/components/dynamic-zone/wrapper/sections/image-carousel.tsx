@@ -1,4 +1,3 @@
-import React from "react"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import { CTA } from "@/lib/cta"
 import Container from "@/components/container"
