@@ -41,6 +41,7 @@ export interface CardsCategoryCard extends Struct.ComponentSchema {
 export interface CardsColorCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_color_cards';
   info: {
+    description: '';
     displayName: 'Color Card';
   };
   attributes: {
@@ -64,6 +65,7 @@ export interface CardsColorCard extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'sky'>;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    href: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
