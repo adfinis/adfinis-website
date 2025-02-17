@@ -17,6 +17,7 @@ type Props = {
   }[]
 }
 export default function ImageCarousel({ section }: { section: Props }) {
+  const ctas = section.cta ? [section.cta] : []
   return (
     <Container
       background={section.props.background}
@@ -25,7 +26,7 @@ export default function ImageCarousel({ section }: { section: Props }) {
       <CardSlider
         title={section.title}
         description={section.description}
-        ctas={[section.cta]}
+        ctas={ctas}
       >
         {section.images.map((card, index) => {
           return (
