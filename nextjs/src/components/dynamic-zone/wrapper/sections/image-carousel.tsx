@@ -31,7 +31,7 @@ export default function ImageCarousel({ section }: { section: Props }) {
           return (
             <CardSliderElement key={index}>
               <CardImage
-                alt={card.alternativeText}
+                alt={card.alternativeText ?? ""}
                 src={card.url}
                 className="h-48 sm:h-96 w-auto"
               />
