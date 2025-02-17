@@ -25,11 +25,12 @@ type Props = {
   props: SectionProps
   title: string
   description: string
-  cta: CTA
+  cta?: CTA
   cards: CategoryCard[]
 }
 
 export default function ContentCarousel({ section }: { section: Props }) {
+  const ctas = section.cta ? [section.cta] : []
   return (
     <Container
       padding={section.props.padding}
@@ -38,7 +39,7 @@ export default function ContentCarousel({ section }: { section: Props }) {
       <CardSlider
         title={section.title}
         description={section.description}
-        ctas={[section.cta]}
+        ctas={ctas}
       >
         {section.cards.map((card, index: number) => {
           return (

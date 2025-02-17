@@ -9,7 +9,7 @@ type Props = {
   title: string
   description: string
   props: SectionProps
-  cta: CTA
+  cta?: CTA
   images: {
     url: string
     alternativeText: string
