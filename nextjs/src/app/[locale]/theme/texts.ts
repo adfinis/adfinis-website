@@ -938,6 +938,39 @@ export const careerGrid = [
   },
 ]
 
+export const imageSlider = {
+  title: "Our Projects",
+  description:
+    "Lorem ipsum dolor sit amet accusam et dolor erat aliquyam congue et. Ut commodo velit sed justo minim. Ipsum takimata est ut lorem dolor sanctus justo eirmod. Dolor dolore at nam eirmod ipsum.",
+  ctas,
+  cards: [
+    {
+      src: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Rocket launch",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1546546274-1703737efede?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Rocket launch 2",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Rocket launch 3",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1541873676-a18131494184?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Man on the moon 1",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=3880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Flying astronaut",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1454789415558-bdda08f4eabb?q=80&w=3879&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      alt: "Rocket launch at night",
+    },
+  ],
+} as const
+
 export const footer = {
   columns: [
     {
