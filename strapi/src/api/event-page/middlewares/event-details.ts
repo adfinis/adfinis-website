@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = (config, {strapi}) => {
+module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
 
     ctx.query = {
@@ -110,7 +110,18 @@ module.exports = (config, {strapi}) => {
                   populate: '*',
                 },
               }
+            },
+            'sections.image-carousel': {
+              populate: {
+                props: {
+                  populate: '*',
+                },
+                images: {
+                  populate: '*',
+                },
+              }
             }
+
           },
         }
       },

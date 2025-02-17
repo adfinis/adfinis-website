@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_image_carousels",
+  "info": {
+    "displayName": "Image carousel",
+    "icon": "landscape",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

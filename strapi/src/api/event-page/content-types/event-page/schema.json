@@ -155,7 +155,8 @@
         "sections.single-column-section",
         "sections.kpi-section",
         "sections.hallmarks-section",
-        "sections.regular-form-section"
+        "sections.regular-form-section",
+        "sections.image-carousel"
       ]
     }
   }
