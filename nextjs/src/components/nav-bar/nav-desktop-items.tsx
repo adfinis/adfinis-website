@@ -72,7 +72,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                         <span
                           className={clsx([
                             "transition-all duration-300 ease-out",
-                            "bg-gradient-to-r from-neutral/60 to-neutral",
+                            "bg-gradient-to-r from-sunglow/60 to-sunglow hover:text-sunglow",
                             "bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
                           ])}
                         >
