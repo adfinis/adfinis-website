@@ -119,6 +119,7 @@ module.exports = (config, { strapi }) => {
                 images: {
                   populate: '*',
                 },
+                cta: true,
               }
             }
 
