@@ -11,6 +11,7 @@ import clsx from "clsx"
 import IconChevronRight from "../icons/icon-chevron-right"
 import IconChevronLeft from "../icons/icon-chevron-left"
 import { useWindowSize } from "@uidotdev/usehooks"
+import Title from "../title"
 
 type CardSliderProps = {
   title: string
@@ -43,7 +44,9 @@ const CardSlider: React.FC<CardSliderProps> = ({
   return (
     <div className="w-topbar sm:-mx-8">
       <div className="flex flex-col items-start gap-8 flex-1 self-stretch pb-8 sm:hidden">
-        <h3 className="text-30 font-semibold text-biscay">{title}</h3>
+        <Title level={3} boldness={"semibold"}>
+          {title}
+        </Title>
         <Text markdown={description} />
       </div>
 
@@ -65,6 +68,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
       </div>
 
       <div
+        data-scheme="light"
         className={clsx([
           "flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none overscroll-x-none scroll-smooth",
           "pt-2 pb-4 px-2 2xl:-mr-6",
