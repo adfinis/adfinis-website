@@ -60,7 +60,9 @@ const CardColored: React.FC<CardColoredProps> = ({
       {href && (
         <>
           <IconArrowLongRight className="absolute size-6 right-4 bottom-2 text-sapphire transform transition-all group-hover:translate-x-2" />
-          <Link href={href} className="absolute inset-0 z-10" />
+          <Link href={href} className="absolute inset-0 z-10">
+            <span className="sr-only">{title}</span>
+          </Link>
         </>
       )}
     </article>
