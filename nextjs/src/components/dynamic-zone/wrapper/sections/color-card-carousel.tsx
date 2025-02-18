@@ -10,6 +10,7 @@ type ColorCard = {
   color: keyof typeof colors
   title: string
   description: string
+  href?: string
 }
 
 type Props = {
@@ -37,6 +38,7 @@ export default function ColorCardCarousel({ section }: { section: Props }) {
                 color={card.color}
                 title={card.title}
                 description={card.description}
+                href={card.href}
               />
             </CardSliderElement>
           )

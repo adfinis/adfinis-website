@@ -1,7 +1,8 @@
 {
   "collectionName": "components_cards_color_cards",
   "info": {
-    "displayName": "Color Card"
+    "displayName": "Color Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -32,6 +33,10 @@
       ],
       "required": true,
       "default": "sky"
+    },
+    "href": {
+      "type": "string",
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
     }
   }
 }
