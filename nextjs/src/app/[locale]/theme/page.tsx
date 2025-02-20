@@ -30,6 +30,7 @@ import {
   eventGrid,
   careerGrid,
   imageSlider,
+  teamMembers,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -59,6 +60,7 @@ import InfoLabel from "@/components/info-label"
 import LinkButton from "@/components/link-button"
 import CardCareer from "@/components/cards/card-career"
 import CardImage from "@/components/cards/card-image"
+import CardMember from "@/components/cards/card-member"
 
 export default function Theme({
   params: { locale },
@@ -386,7 +388,7 @@ export default function Theme({
 
       <Container id="card-icon-grid" padding="both-padding" background="white">
         <SectionGroup title="Why Adfinis?" align="center">
-          <CardGroup hasDividers columns={3} maxWidth="7xl">
+          <CardGroup hasDividers lgColumns={3} maxWidth="7xl">
             {cardIconWiderExample.cards.map((item, i) => {
               return (
                 <CardIcon
@@ -444,7 +446,7 @@ export default function Theme({
         padding="both-padding"
         background="neutral"
       >
-        <CardGroup maxWidth="none" columns={3}>
+        <CardGroup maxWidth="none" lgColumns={3}>
           {careerGrid.map((career, index) => (
             <CardCareer
               key={index}
@@ -484,6 +486,18 @@ export default function Theme({
             )
           })}
         </CardSlider>
+      </Container>
+
+      <Container
+        id="team-members-example"
+        padding="both-padding"
+        background="white"
+      >
+        <CardGroup columns={2} lgColumns={4}>
+          {teamMembers.map((member, index) => (
+            <CardMember key={index} {...member} />
+          ))}
+        </CardGroup>
       </Container>
     </main>
   )
