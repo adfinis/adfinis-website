@@ -493,7 +493,12 @@ export default function Theme({
         padding="both-padding"
         background="white"
       >
-        <CardGroup columns={2} lgColumns={4}>
+        <CardGroup
+          columns={2}
+          smColumns={3}
+          lgColumns={4}
+          className="gap-4 sm:gap-6 lg:gap-8"
+        >
           {teamMembers.map((member, index) => (
             <CardMember key={index} {...member} />
           ))}
