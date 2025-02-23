@@ -1054,6 +1054,40 @@ export const teamMembers = [
   },
 ]
 
+export const speakersSection = {
+  title: "Our Speakers",
+  speakers: [
+    {
+      title: "Alex Johnson",
+      image: {
+        src: "https://images.unsplash.com/photo-1596075780750-81249df16d19?q=80&w=2667&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      },
+      description: `**Alex Johnson | Sales Engineer | TechCorp**
+
+In addition to many years of experience as a cloud solution architect and driving force in the open source scene, Alex has been working on the topic of DevSecOps for several years and is an enthusiastic DevOps evangelist.
+
+The DevOps platform as a single source of truth is THE solution for mastering the path to the cloud and the associated security issues. Alex will show how TechCorp can accompany customers on this path with their solutions.`,
+    },
+    {
+      title: "Peter Smith",
+      image: {
+        src: "https://images.unsplash.com/photo-1665397858112-06e206f9e5ae?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      },
+      description: `**Peter Smith | Systems Engineer | TechCorp**
+
+Peter Smith is a systems engineer who designs and optimizes complex technological infrastructures for large-scale enterprises.  
+
+He specializes in automation, cloud computing, and cybersecurity, ensuring efficient and secure system operations. With a background in software development and network architecture, Peter integrates innovative solutions to enhance system performance.`,
+    },
+  ],
+  cta: {
+    href: "/contact",
+    label: "Contact us",
+    variant: "primary",
+    size: "large",
+  },
+} as const
+
 export const footer = {
   columns: [
     {

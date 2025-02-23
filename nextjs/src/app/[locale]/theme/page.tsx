@@ -31,6 +31,7 @@ import {
   careerGrid,
   imageSlider,
   teamMembers,
+  speakersSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -61,6 +62,7 @@ import LinkButton from "@/components/link-button"
 import CardCareer from "@/components/cards/card-career"
 import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
+import CardPortrait from "@/components/cards/card-portrait"
 
 export default function Theme({
   params: { locale },
@@ -502,6 +504,29 @@ export default function Theme({
           {teamMembers.map((member, index) => (
             <CardMember key={index} {...member} />
           ))}
+        </CardGroup>
+      </Container>
+
+      <Container
+        id="speakers-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup columns={1} smColumns={1} mdColumns={1} lgColumns={1}>
+          <Title level={3} boldness="semibold" align={"left"}>
+            {speakersSection.title}
+          </Title>
+          {speakersSection.speakers.map((speaker, index) => {
+            return (
+              <CardPortrait
+                title={speaker.title}
+                imageUrl={speaker.image.src}
+                description={speaker.description}
+                key={index}
+              />
+            )
+          })}
+          <ButtonGroup ctas={[speakersSection.cta]} />
         </CardGroup>
       </Container>
     </main>
