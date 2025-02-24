@@ -6,12 +6,13 @@ import Image from "next/image"
 import IconFlag from "../icons/icon-flag"
 import Title from "../title"
 import Link from "next/link"
+import { type Country } from "../icons/icon-flag"
 
 interface CardCareer extends Card {
   workload?: string
   location?: string
-  country?: "ch" | "de" | "nl" | "au" | "us" | "uk"
   href: string
+  country: Country
 }
 
 /**
