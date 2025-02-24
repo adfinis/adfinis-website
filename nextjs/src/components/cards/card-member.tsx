@@ -60,16 +60,16 @@ const CardMember: React.FC<CardMemberProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-auto z-30 absolute top-0 left-0 right-0 bottom-auto -translate-y-3/4"
         >
-          <g clip-path="url(#clip-member-shape)">
+          <g clipPath="url(#clip-member-shape)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M0 150V0L1440 150H0Z"
               fill={colors.sapphire}
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M1440 150.067V0.0665283L744 150.067H1440Z"
               fill={colors.sapphire}
             />

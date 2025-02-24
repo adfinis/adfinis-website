@@ -1,10 +1,8 @@
 .image-reveal {
-    /* clip-path: inset(0 0 100% 0); */
     animation: wipe-in-top-left 0.4s forwards cubic-bezier(0.77, 0.9, 0.175, 1);
 }
 
 .image-hide {
-    /* clip-path: inset(0 0 0 0); */
     animation: wipe-in-bottom-right 0.4s forwards cubic-bezier(0.77, 0, 0.175, 1);
 
 }
