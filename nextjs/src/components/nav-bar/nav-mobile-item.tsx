@@ -4,6 +4,8 @@ import IconChevronRight from "../icons/icon-chevron-right"
 import clsx from "clsx"
 import NavMobileSubItem from "./nav-mobile-sub-item"
 import { Transition } from "@headlessui/react"
+import Link from "next/link"
+import IconArrowTurnDownRightIcon from "../icons/icon-arrow-turn-down-right"
 
 const NavMobileItem: React.FC<{
   item: NavItem
@@ -42,6 +44,15 @@ const NavMobileItem: React.FC<{
               <h3 className="text-sunglow font-semibold text-25">
                 {item.title}
               </h3>
+              {item.url && (
+                <Link
+                  href={item.url}
+                  className="flex items-center justify-start gap-2 text-white"
+                >
+                  <IconArrowTurnDownRightIcon className="size-4" />
+                  {item.title}
+                </Link>
+              )}
             </li>
 
             {item.menu_segment &&

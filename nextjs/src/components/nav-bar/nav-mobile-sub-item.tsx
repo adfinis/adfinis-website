@@ -4,6 +4,8 @@ import clsx from "clsx"
 import Link from "next/link"
 import IconChevronDown from "../icons/icon-chevron-down"
 import { Transition } from "@headlessui/react"
+import IconArrowLongRight from "../icons/icon-arrow-long-right"
+import IconArrowTurnDownRightIcon from "../icons/icon-arrow-turn-down-right"
 
 const NavMobileSubItem: React.FC<{ item: any }> = ({ item }) => {
   const [expand, setExpand] = useState(false)
@@ -42,22 +44,18 @@ const NavMobileSubItem: React.FC<{ item: any }> = ({ item }) => {
     <li
       data-component="NavMobileSubItem"
       className="grid text-neutral"
-      onClick={toggle}
+      onClick={() => setExpand(true)}
     >
       {item.title && (
         <div className="flex justify-between items-center w-full h-9">
-          {hasChildren(item?.items) ? (
-            <h3 className="font-semibold">{item.title}</h3>
-          ) : (
-            item?.url && <Link href={item.url}>{item.title}</Link>
-          )}
+          {<h3 className="font-semibold">{item.title}</h3>}
 
           {hasChildren(item?.items) && (
             <IconChevronDown
               className={clsx([
                 "transition-all duration-150",
                 {
-                  "transform rotate-180": expand,
+                  "transform rotate-180 opacity-0": expand,
                 },
               ])}
             />
@@ -81,6 +79,14 @@ const NavMobileSubItem: React.FC<{ item: any }> = ({ item }) => {
           ref={contentRef}
           style={{ height: "0px" }}
         >
+          {item.url && (
+            <li className="h-9 flex items-center">
+              <Link href={item.url} className="flex items-center gap-2">
+                <IconArrowTurnDownRightIcon className="size-4" />
+                {item.title}
+              </Link>
+            </li>
+          )}
           {item.items?.map((subItem: any, subIndex: number) => (
             <li key={subIndex} className="h-9 flex items-center">
               {subItem.url && <Link href={subItem.url}>{subItem.title}</Link>}
