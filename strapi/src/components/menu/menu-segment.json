@@ -1,13 +1,17 @@
 {
   "collectionName": "components_menu_menu_segments",
   "info": {
-    "displayName": "Menu Segment"
+    "displayName": "Menu Segment",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
       "required": true
+    },
+    "url": {
+      "type": "string"
     },
     "items": {
       "displayName": "Menu Link",

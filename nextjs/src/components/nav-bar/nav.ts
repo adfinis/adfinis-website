@@ -5,6 +5,7 @@ type Item = {
 
 type Segment = {
   title: string
+  url?: string
   items: Item[]
 }
 

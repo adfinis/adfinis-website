@@ -351,11 +351,13 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
 export interface MenuMenuSegment extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_segments';
   info: {
+    description: '';
     displayName: 'Menu Segment';
   };
   attributes: {
     items: Schema.Attribute.Component<'menu.menu-link', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
   };
 }
 
