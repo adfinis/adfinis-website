@@ -63,6 +63,7 @@ import CardCareer from "@/components/cards/card-career"
 import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
+import { Country as CareerCountry } from "@/components/icons/icon-flag"
 
 export default function Theme({
   params: { locale },
@@ -457,9 +458,7 @@ export default function Theme({
               imageUrl={career.image.url}
               workload={career.workload}
               location={career.location}
-              country={
-                career.country as "ch" | "de" | "nl" | "au" | "us" | "uk"
-              }
+              country={career.country as CareerCountry}
               href={career.href}
             />
           ))}
