@@ -1380,6 +1380,103 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPageCaseStudyPageCaseStudy
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'page_case_studies';
+  info: {
+    displayName: 'Page case study';
+    pluralName: 'page-case-studies';
+    singularName: 'page-case-study';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    card_subtitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    card_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    client_image: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::page-case-study.page-case-study'
+    >;
+    metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.two-column-section',
+        'sections.quote-section',
+        'sections.heading-with-link-container',
+        'sections.hallmarks-section',
+        'sections.feature-cards',
+        'sections.color-card-carousel',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'metadata_title'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePartnerAndProductPagePartnerAndProduct
   extends Struct.CollectionTypeSchema {
   collectionName: 'page_partner_and_products';
@@ -2283,6 +2380,7 @@ declare module '@strapi/strapi' {
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
       'api::news-page.news-page': ApiNewsPageNewsPage;
+      'api::page-case-study.page-case-study': ApiPageCaseStudyPageCaseStudy;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
       'api::quote.quote': ApiQuoteQuote;
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
