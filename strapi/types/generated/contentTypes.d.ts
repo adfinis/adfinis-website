@@ -495,6 +495,73 @@ export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCaseStudiesOverviewCaseStudiesOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'case_studies_overviews';
+  info: {
+    displayName: 'Case studies overview';
+    pluralName: 'case-studies-overviews';
+    singularName: 'case-studies-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::case-studies-overview.case-studies-overview'
+    >;
+    meta_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.video-with-text-section',
+        'sections.video-section',
+        'sections.two-column-section',
+        'sections.quote-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -2369,6 +2436,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
       'api::card-product.card-product': ApiCardProductCardProduct;
+      'api::case-studies-overview.case-studies-overview': ApiCaseStudiesOverviewCaseStudiesOverview;
       'api::category.category': ApiCategoryCategory;
       'api::contact-cta.contact-cta': ApiContactCtaContactCta;
       'api::content-offer.content-offer': ApiContentOfferContentOffer;
