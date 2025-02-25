@@ -75,6 +75,11 @@
       "type": "string",
       "required": true
     },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
     "intro": {
       "pluginOptions": {
         "i18n": {

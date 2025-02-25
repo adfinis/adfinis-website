@@ -1421,6 +1421,7 @@ export interface ApiPageCaseStudyPageCaseStudy
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
