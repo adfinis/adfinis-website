@@ -1384,7 +1384,8 @@ export interface ApiPageCaseStudyPageCaseStudy
   extends Struct.CollectionTypeSchema {
   collectionName: 'page_case_studies';
   info: {
-    displayName: 'Page case study';
+    description: '';
+    displayName: 'Page Case Study';
     pluralName: 'page-case-studies';
     singularName: 'page-case-study';
   };

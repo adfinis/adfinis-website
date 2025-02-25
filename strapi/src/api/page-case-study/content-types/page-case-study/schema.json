@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page-case-study",
     "pluralName": "page-case-studies",
-    "displayName": "Page case study"
+    "displayName": "Page Case Study",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -44,17 +45,17 @@
       "required": true
     },
     "client_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": false
+      }
     },
     "card_title": {
       "pluginOptions": {
