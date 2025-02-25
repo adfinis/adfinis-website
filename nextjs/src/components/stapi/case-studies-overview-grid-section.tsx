@@ -11,7 +11,7 @@ export default async function CaseStudiesOverviewGridSection({
 }) {
   const url = `page-case-studies?locale=${locale}&populate=hero.background_image&populate=client_image`
   const data = await strapi(url)
-  const cards = data.map((item) => {
+  const cards = data.map((item: any) => {
     return {
       key: `case_study_${item.id}`,
       title: item.card_title,
@@ -25,7 +25,7 @@ export default async function CaseStudiesOverviewGridSection({
   return (
     <Container padding="both-padding" background="neutral">
       <CardGroup maxWidth="none">
-        {cards.map((card, index) => (
+        {cards.map((card: any) => (
           <CardArticle {...card} key={card.key} />
         ))}
       </CardGroup>
