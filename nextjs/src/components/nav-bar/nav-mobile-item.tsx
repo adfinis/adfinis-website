@@ -4,6 +4,9 @@ import IconChevronRight from "../icons/icon-chevron-right"
 import clsx from "clsx"
 import NavMobileSubItem from "./nav-mobile-sub-item"
 import { Transition } from "@headlessui/react"
+import Link from "next/link"
+import IconArrowTurnDownRightIcon from "../icons/icon-arrow-turn-down-right"
+import NavMobileTitle from "./nav-mobile-title"
 
 const NavMobileItem: React.FC<{
   item: NavItem
@@ -12,7 +15,7 @@ const NavMobileItem: React.FC<{
   return (
     <span data-component="NavMobileItem">
       {!expand && (
-        <span className="flex justify-between items-center w-full h-12 text-neutral">
+        <span className="flex justify-between items-center w-full h-12 text-neutral text-20">
           {item.title}
           <IconChevronRight
             className={clsx([
@@ -39,9 +42,16 @@ const NavMobileItem: React.FC<{
             ])}
           >
             <li>
-              <h3 className="text-sunglow font-semibold text-25">
+              <NavMobileTitle
+                title={item.title}
+                url={item.url}
+                className={clsx([
+                  "text-neutral font-semibold text-25",
+                  "flex justify-between items-center",
+                ])}
+              >
                 {item.title}
-              </h3>
+              </NavMobileTitle>
             </li>
 
             {item.menu_segment &&
