@@ -23,6 +23,7 @@ export default function RegularFormSection({
 }) {
   return (
     <Container
+      id={`${section.form_type}-form`}
       background={section.props.background}
       padding={section.props.padding}
     >
