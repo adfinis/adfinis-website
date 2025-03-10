@@ -15,6 +15,21 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.15.0] - 2025-03-10
+
+- Feature/140 improve menu flat structure (#139)
+- (AW-37-news-overview-page) AW-34 case study detail & overview page (#138)
+- chore: Add countries (#137)
+- fix: Make missing imageUrl not breaking the site (#136)
+- Feature/aw 63 landingpage speaker (#135)
+- Feature/aw 58 team photo component with two (#133)
+- Feature/aw 154 arrow on colored cards with link (#132)
+- Feature/aw 65 add support for card image in (#131)
+- feat: Add support for images in TwoColumnSection (#130)
+- chore: Make feature card image required (#129)
+- chore: Add hover color for desktop menu items (#128)
+- feat (AW-153): enable regular form section on all pages (#127)
+
 ## [0.14.0] - 2025-02-14
 
 - fix: Change gap + grid lg (#125)
