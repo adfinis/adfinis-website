@@ -32,6 +32,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
    */
 
   const { width } = useWindowSize()
+  const distance = width || 1500
   const sliderRef = useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
 
@@ -40,6 +41,33 @@ const CardSlider: React.FC<CardSliderProps> = ({
     sliderRef.current.scrollLeft += offset
     setScrollPosition(sliderRef.current.scrollLeft)
   }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          scrollHorizontal(-distance)
+        }
+      },
+      {
+        root: null, // Uses the viewport as the root
+        rootMargin: "50px",
+        threshold: 0.5, // Element is considered visible when at least 50% is in view
+      },
+    )
+
+    if (sliderRef.current) {
+      console.log("current")
+      sliderRef.current.scrollLeft = distance // Adjust this value as needed
+      observer.observe(sliderRef.current)
+    }
+
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef?.current)
+      }
+    }
+  }, [])
 
   return (
     <div className="w-topbar sm:-mx-8">
@@ -53,14 +81,14 @@ const CardSlider: React.FC<CardSliderProps> = ({
       <div className="hidden lg:block">
         {scrollPosition > 0 && (
           <button
-            onClick={() => scrollHorizontal(-(width || 500))}
+            onClick={() => scrollHorizontal(-distance)}
             className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 left-6  flex items-center justify-center z-20"
           >
             <IconChevronLeft className="w-3.5 h-3.5 text-white" />
           </button>
         )}
         <button
-          onClick={() => scrollHorizontal(width || 500)}
+          onClick={() => scrollHorizontal(distance)}
           className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center z-20"
         >
           <IconChevronRight className="w-3.5 h-3.5 text-white" />
