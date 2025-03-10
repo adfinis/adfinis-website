@@ -9,7 +9,7 @@ import { useNavContext } from "./nav-bar/nav-context"
 
 type HeroProps = {
   color: keyof typeof colors
-  imageUrl: string
+  imageUrl?: string
   children: React.ReactNode
   /**
    * @info when a logoUrl is passed, the triangle will turn always black with the logo on top.
@@ -31,15 +31,17 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         "before:origin-bottom-right",
       ])}
     >
-      <Image
-        src={imageUrl}
-        alt="Hero Image"
-        width={1920}
-        height={1080}
-        className={clsx([
-          "absolute inset-0 object-cover object-center z-0 h-full w-full",
-        ])}
-      />
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt="Hero Image"
+          width={1920}
+          height={1080}
+          className={clsx([
+            "absolute inset-0 object-cover object-center z-0 h-full w-full",
+          ])}
+        />
+      )}
       {
         navActive && <div className="absolute inset-0 backdrop-blur-sm z-10" /> // blur everything behind when nav is active
       }

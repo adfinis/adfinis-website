@@ -41,6 +41,7 @@ export interface CardsCategoryCard extends Struct.ComponentSchema {
 export interface CardsColorCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_color_cards';
   info: {
+    description: '';
     displayName: 'Color Card';
   };
   attributes: {
@@ -64,6 +65,7 @@ export interface CardsColorCard extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'sky'>;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    href: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -71,12 +73,13 @@ export interface CardsColorCard extends Struct.ComponentSchema {
 export interface CardsFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_feature_cards';
   info: {
+    description: '';
     displayName: 'Feature card';
     icon: 'picture';
   };
   attributes: {
     cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    image: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     intro: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
@@ -348,11 +351,13 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
 export interface MenuMenuSegment extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_segments';
   info: {
+    description: '';
     displayName: 'Menu Segment';
   };
   attributes: {
     items: Schema.Attribute.Component<'menu.menu-link', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -692,6 +697,22 @@ export interface SectionsIconCardSectionWithRelation
   };
 }
 
+export interface SectionsImageCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_image_carousels';
+  info: {
+    description: '';
+    displayName: 'Image carousel';
+    icon: 'landscape';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
+    images: Schema.Attribute.Media<'images', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsKpiSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_kpi_sections';
   info: {
@@ -951,6 +972,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-cta': SectionsIconCardSectionWithCta;
       'sections.icon-card-section-with-external-ct-as': SectionsIconCardSectionWithExternalCtAs;
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
+      'sections.image-carousel': SectionsImageCarousel;
       'sections.kpi-section': SectionsKpiSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;

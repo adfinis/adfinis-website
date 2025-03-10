@@ -1,9 +1,9 @@
 import SectionGroup from "@/components/sections/section-group"
-import Text from "@/components/text"
 import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import LinkButton from "@/components/link-button"
 import { CTA } from "@/lib/cta"
+import TextImage from "@/components/text-image"
 
 type Props = {
   props: SectionProps
@@ -19,8 +19,8 @@ export default function TwoColumnSection({ section }: { section: Props }) {
       padding={section.props.padding}
     >
       <SectionGroup columns={2}>
-        <Text markdown={section.left_column} />
-        <Text markdown={section.right_column} />
+        <TextImage markdown={section.left_column} />
+        <TextImage markdown={section.right_column} />
         {section.cta && (
           <LinkButton {...section.cta} className="place-self-start">
             {section.cta.label}

@@ -6,6 +6,7 @@ import type { NavItem } from "./nav"
 import Link from "next/link"
 import clsx from "clsx"
 import useDetectScroll from "@smakss/react-scroll-direction"
+import LinkAnimation from "./link-animation"
 
 type NavDesktopItemsProps = {
   navItem: NavItem
@@ -29,12 +30,22 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
   return (
     <div onMouseLeave={hideDesktopItems}>
       {/* title of the menu items (always visible, in topbar) */}
-      <div
-        onMouseEnter={showDesktopItems}
-        className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8"
-      >
-        {navItem.title}
-      </div>
+      {navItem.url ? (
+        <Link
+          className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8 group"
+          href={navItem.url}
+          onMouseEnter={showDesktopItems}
+        >
+          <LinkAnimation>{navItem.title}</LinkAnimation>
+        </Link>
+      ) : (
+        <h2
+          onMouseEnter={showDesktopItems}
+          className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8"
+        >
+          {navItem.title}
+        </h2>
+      )}
 
       {/* the menu items */}
       <Transition
@@ -57,9 +68,20 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                 className="grid grid-cols-1 content-start gap-4 pr-2 border-r last-of-type:border-r-0 min-h-72 border-neutral/30 w-1/6"
                 key={index}
               >
-                <h3 className="text-16 leading-5 font-semibold">
-                  {item.title}
-                </h3>
+                {item.url ? (
+                  <Link
+                    className="text-16 leading-5 font-semibold group"
+                    key={index}
+                    href={item.url}
+                  >
+                    <LinkAnimation>{item.title}</LinkAnimation>
+                  </Link>
+                ) : (
+                  <h3 className="text-16 leading-5 font-semibold">
+                    {item.title}
+                  </h3>
+                )}
+
                 {item.items?.map(
                   (subItem, subIndex) =>
                     subItem.url && (
@@ -68,16 +90,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                         key={subIndex}
                         href={subItem.url}
                       >
-                        {/* the hover link underline bar animation  */}
-                        <span
-                          className={clsx([
-                            "transition-all duration-300 ease-out",
-                            "bg-gradient-to-r from-neutral/60 to-neutral",
-                            "bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
-                          ])}
-                        >
-                          {subItem.title}
-                        </span>
+                        <LinkAnimation>{subItem.title}</LinkAnimation>
                       </Link>
                     ),
                 )}

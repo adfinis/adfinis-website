@@ -49,7 +49,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
         <ul
           className={clsx([
             // Base styles
-            "absolute px-4 pt-4 pb-6 left-0 right-0 top-20  w-full grid bg-sapphire",
+            "absolute px-4 pt-4 pb-6 left-0 right-0 top-20 h-[calc(100vh-8.25rem)] grid gap-8 content-start bg-sapphire overflow-y-auto",
             // Shared transition styles
             "transition ease-out -translate-y-1",
             // Shared closed styles
@@ -75,7 +75,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
               />
             </li>
           ))}
-          <li className="mt-8">
+          <li>
             {cta && (
               <LinkButton href={cta.href} variant={cta.variant} size={cta.size}>
                 {cta.label}

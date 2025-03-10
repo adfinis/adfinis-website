@@ -9,7 +9,7 @@ type Props = {
     color: keyof typeof colors
   }
   background_image: {
-    url: string
+    url?: string
   }
   body: string
   cta?: CTA
@@ -22,7 +22,7 @@ export default function HeroWrapper({ hero }: { hero: Props }) {
   return (
     <Hero
       color={hero.color.color}
-      imageUrl={hero.background_image.url}
+      imageUrl={hero.background_image?.url || ""}
       logoUrl={hero.logo?.url}
     >
       <Text markdown={hero.body} />

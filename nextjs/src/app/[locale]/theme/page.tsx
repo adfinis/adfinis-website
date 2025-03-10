@@ -29,6 +29,9 @@ import {
   eventSection,
   eventGrid,
   careerGrid,
+  imageSlider,
+  teamMembers,
+  speakersSection,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -57,6 +60,10 @@ import SectionEvent from "@/components/sections/section-event"
 import InfoLabel from "@/components/info-label"
 import LinkButton from "@/components/link-button"
 import CardCareer from "@/components/cards/card-career"
+import CardImage from "@/components/cards/card-image"
+import CardMember from "@/components/cards/card-member"
+import CardPortrait from "@/components/cards/card-portrait"
+import { Country as CareerCountry } from "@/components/icons/icon-flag"
 
 export default function Theme({
   params: { locale },
@@ -384,7 +391,7 @@ export default function Theme({
 
       <Container id="card-icon-grid" padding="both-padding" background="white">
         <SectionGroup title="Why Adfinis?" align="center">
-          <CardGroup hasDividers columns={3} maxWidth="7xl">
+          <CardGroup hasDividers lgColumns={3} maxWidth="7xl">
             {cardIconWiderExample.cards.map((item, i) => {
               return (
                 <CardIcon
@@ -442,7 +449,7 @@ export default function Theme({
         padding="both-padding"
         background="neutral"
       >
-        <CardGroup maxWidth="none" columns={3}>
+        <CardGroup maxWidth="none" lgColumns={3}>
           {careerGrid.map((career, index) => (
             <CardCareer
               key={index}
@@ -451,12 +458,74 @@ export default function Theme({
               imageUrl={career.image.url}
               workload={career.workload}
               location={career.location}
-              country={
-                career.country as "ch" | "de" | "nl" | "au" | "us" | "uk"
-              }
+              country={career.country as CareerCountry}
               href={career.href}
             />
           ))}
+        </CardGroup>
+      </Container>
+
+      <Container
+        id="image-slider-example"
+        padding="both-padding"
+        background="white"
+      >
+        <CardSlider
+          title={imageSlider.title}
+          description={imageSlider.description}
+          ctas={imageSlider.ctas}
+        >
+          {imageSlider.cards.map((card, index) => {
+            return (
+              <CardSliderElement key={index}>
+                <CardImage
+                  alt={card.alt}
+                  src={card.src}
+                  className="h-48 sm:h-96 w-auto"
+                />
+              </CardSliderElement>
+            )
+          })}
+        </CardSlider>
+      </Container>
+
+      <Container
+        id="team-members-example"
+        padding="both-padding"
+        background="white"
+      >
+        <CardGroup
+          columns={2}
+          smColumns={3}
+          lgColumns={4}
+          className="gap-4 sm:gap-6 lg:gap-8"
+        >
+          {teamMembers.map((member, index) => (
+            <CardMember key={index} {...member} />
+          ))}
+        </CardGroup>
+      </Container>
+
+      <Container
+        id="speakers-example"
+        padding="both-padding"
+        background="neutral"
+      >
+        <CardGroup columns={1} smColumns={1} mdColumns={1} lgColumns={1}>
+          <Title level={3} boldness="semibold" align={"left"}>
+            {speakersSection.title}
+          </Title>
+          {speakersSection.speakers.map((speaker, index) => {
+            return (
+              <CardPortrait
+                title={speaker.title}
+                imageUrl={speaker.image.src}
+                description={speaker.description}
+                key={index}
+              />
+            )
+          })}
+          <ButtonGroup ctas={[speakersSection.cta]} />
         </CardGroup>
       </Container>
     </main>

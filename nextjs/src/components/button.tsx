@@ -7,7 +7,7 @@ import IconChevronRight from "./icons/icon-chevron-right"
 
 export const buttonStyles = cva(
   [
-    "cursor-pointer",
+    "cursor-pointer transition-all duration-150 ease-in-out transform",
     "hover:shadow-2",
     "inline-flex justify-center items-center rounded-full",
     "text-14 leading-none uppercase font-bold",

@@ -108,4 +108,10 @@
             list-style-image: url('/svg/chevron-right-dark.svg');
         }
     }
+
+    .markdown-text-image {
+        img {
+            @apply w-full h-auto;
+        }
+    }
 }
