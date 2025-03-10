@@ -1682,7 +1682,29 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    sections: Schema.Attribute.DynamicZone<['sections.two-column-section']> &
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.product-feature-card',
+        'sections.icon-card-section-with-relation',
+        'sections.event-details-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.quote-section',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
+        'sections.regular-form-section',
+        'sections.image-carousel',
+      ]
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
