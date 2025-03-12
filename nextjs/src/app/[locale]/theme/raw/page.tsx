@@ -38,6 +38,28 @@ export default function Buttons() {
 
   return (
     <main>
+      <div className="container min-h-20 grid">
+        <span className="w-full sm:hidden bg-sunglow">Display MOBILE</span>
+        <span className="w-full hidden sm:block md:hidden bg-razzmatazz">
+          Display SM
+        </span>
+        <span className="w-full hidden md:block lg:hidden bg-cinnamon">
+          Display MD
+        </span>
+        <span className="w-full hidden lg:block xl:hidden bg-green">
+          Display LG
+        </span>
+        <span className="w-full hidden xl:block 2xl:hidden bg-sky">
+          Display XL
+        </span>
+        <span className="w-full hidden 2xl:block 3xl:hidden bg-fuchsia">
+          Display 2XL
+        </span>
+        <span className="w-full hidden 3xl:block 4xl:hidden bg-manhattan">
+          Display 3XL
+        </span>
+        <span className="w-full hidden 4xl:block bg-jumbo">Display 4XL</span>
+      </div>
       <div data-scheme="dark" className="container py-8 bg-sapphire">
         <Text markdown={example} />
       </div>

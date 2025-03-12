@@ -111,6 +111,14 @@ body {
     @media (min-width: theme("screens.2xl")) {
       width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
     }
+
+    @media (min-width: theme("screens.3xl")) {
+      width: calc(100vw - (100vw - theme("screens.3xl")) / 2);
+    }
+
+    @media (min-width: theme("screens.4xl")) {
+      width: calc(100vw - (100vw - theme("screens.4xl")) / 2);
+    }
   }
 
   b,

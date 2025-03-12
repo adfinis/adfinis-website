@@ -37,6 +37,10 @@ const config: Config = {
       center: true,
     },
     extend: {
+      screens: {
+        "3xl": "1920px",
+        "4xl": "2300px",
+      },
       spacing: {
         15: "3.75rem",
         18: "4.5rem",
