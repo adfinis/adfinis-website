@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
       <div
         className={clsx([
           "absolute inset-0",
-          "transition-all duration-150 bg-gradient-to-r from-stone/50 to-stone/0",
+          "transition-all duration-150 bg-gradient-to-r from-stone/65 to-stone/10",
           { "bg-stone/80 z-10": navActive }, // darkens elements behind as overlay when nav active
         ])}
       />
