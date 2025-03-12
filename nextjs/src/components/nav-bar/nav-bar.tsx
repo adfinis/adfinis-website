@@ -13,21 +13,17 @@ export default async function NavBar({ items }: { items: LinkedLocale[] }) {
   )
 
   return (
-    <div className="fixed top-8 left-0 w-topbar bg-sapphire z-50 shadow-2">
-      <div className="container mr-0">
-        <LinkedLocalesProvider locales={items}>
-          <NavMobile
-            navItems={data.section}
-            logoUrl={data.logo_mobile.url}
-            cta={data.cta}
-          />
-          <NavDesktop
-            navItems={data.section}
-            logoUrl={data.logo_desktop.url}
-            cta={data.cta}
-          />
-        </LinkedLocalesProvider>
-      </div>
-    </div>
+    <LinkedLocalesProvider locales={items}>
+      <NavMobile
+        navItems={data.section}
+        logoUrl={data.logo_mobile.url}
+        cta={data.cta}
+      />
+      <NavDesktop
+        navItems={data.section}
+        logoUrl={data.logo_desktop.url}
+        cta={data.cta}
+      />
+    </LinkedLocalesProvider>
   )
 }
