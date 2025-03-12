@@ -4,7 +4,7 @@ import React, { useState, type Ref } from "react"
 import clsx from "clsx"
 import { Transition } from "@headlessui/react"
 import { useClickAway } from "@uidotdev/usehooks"
-import IconHamburgerMenu from "../icons/icon-hamburger-menu"
+import { Sling as Hamburger } from "hamburger-react"
 import Link from "next/link"
 import LinkButton from "../link-button"
 import type { NavItem } from "./nav"
@@ -13,6 +13,7 @@ import IconChevronLeft from "../icons/icon-chevron-left"
 import Image from "next/image"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import { CTA } from "@/lib/cta"
+import { colors } from "@/lib/colors"
 
 type NavMobileProps = {
   navItems: NavItem[]
@@ -34,8 +35,21 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
         <div className="lg:hidden relative" ref={ref}>
           <nav className="grid grid-cols-3 justify-between h-20 px-4 ">
             {expand === undefined ? (
-              <button onClick={() => setIsOpen(!isOpen)}>
-                <IconHamburgerMenu />
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={clsx({
+                  "hamburger--open": isOpen,
+                  "hamburger--closed": !isOpen,
+                })}
+              >
+                <Hamburger
+                  size={28}
+                  rounded
+                  toggled={isOpen}
+                  color={colors.white}
+                  distance="lg"
+                  easing="ease-in"
+                />
               </button>
             ) : (
               <button onClick={() => setExpand(undefined)}>
