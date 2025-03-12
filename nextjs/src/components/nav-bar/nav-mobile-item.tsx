@@ -46,7 +46,7 @@ const NavMobileItem: React.FC<{
                 title={item.title}
                 url={item.url}
                 className={clsx([
-                  "text-neutral font-semibold text-25",
+                  "text-sunglow font-semibold text-25",
                   "flex justify-between items-center",
                 ])}
               >
