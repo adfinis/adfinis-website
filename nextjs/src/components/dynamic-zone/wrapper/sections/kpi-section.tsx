@@ -19,6 +19,10 @@ type Kpi = {
     | "razzmatazz"
     | "fuchsia"
     | "manhattan"
+    | "grass"
+    | "salmon"
+    | "pink"
+    | "purple"
   title: string
   description: string
   icon_image: {
