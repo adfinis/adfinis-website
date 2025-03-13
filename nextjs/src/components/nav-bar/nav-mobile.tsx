@@ -34,28 +34,46 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
       <div className="container mr-0">
         <div className="lg:hidden relative" ref={ref}>
           <nav className="grid grid-cols-3 justify-between h-20 px-4 ">
-            {expand === undefined ? (
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className={clsx({
-                  "hamburger--open": isOpen,
-                  "hamburger--closed": !isOpen,
-                })}
+            <span className="relative">
+              {expand === undefined && (
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className={clsx([
+                    "absolute inset-0",
+                    {
+                      "hamburger--open": isOpen,
+                      "hamburger--closed": !isOpen,
+                    },
+                  ])}
+                >
+                  <Hamburger
+                    size={28}
+                    rounded
+                    toggled={isOpen}
+                    color={colors.white}
+                    distance="lg"
+                    easing="ease-in"
+                  />
+                </button>
+              )}
+              <Transition
+                show={expand !== undefined}
+                enter="transition-all duration-150 ease-in"
+                enterFrom="scale-75"
+                enterTo="scale-100"
+                leave="transition-all duration-75"
+                leaveFrom="opacity-0"
+                leaveTo="opacity-0"
               >
-                <Hamburger
-                  size={28}
-                  rounded
-                  toggled={isOpen}
-                  color={colors.white}
-                  distance="lg"
-                  easing="ease-in"
-                />
-              </button>
-            ) : (
-              <button onClick={() => setExpand(undefined)}>
-                <IconChevronLeft className="text-white w-6 h-6" />
-              </button>
-            )}
+                <button
+                  onClick={() => setExpand(undefined)}
+                  className="w-8 pl-3 absolute inset-0"
+                >
+                  <IconChevronLeft className="text-white size-5" />
+                </button>
+              </Transition>
+            </span>
+
             <Link href={`/en`} className="h-20 flex items-center mx-auto">
               <Image
                 src={logoUrl}
@@ -70,7 +88,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
             <ul
               className={clsx([
                 // Base styles
-                "absolute px-4 pt-4 pb-6 left-0 right-0 top-20 h-[calc(100dvh-8.25rem)] grid gap-8 content-start bg-sapphire overflow-y-auto",
+                "absolute px-4 pt-4 pb-6 left-0 right-0 top-20 h-[calc(100dvh-6.75rem)] grid gap-8 content-start bg-sapphire overflow-y-auto",
                 // Shared transition styles
                 "transition ease-out -translate-y-1",
                 // Shared closed styles
