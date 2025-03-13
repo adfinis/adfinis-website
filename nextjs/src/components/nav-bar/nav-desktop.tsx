@@ -62,7 +62,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
       className={clsx([
         "fixed top-0 transform transition-all duration-300 left-0 z-50 w-topbar",
         {
-          "translate-y-8": scrollDir === "up",
+          "translate-y-8": scrollDir === "up" || scrollPosition.top < 10,
           "translate-y-0": scrollDir === "down",
         },
       ])}
