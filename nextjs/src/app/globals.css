@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply 3xl:text-18;
+}
 
 body {
   @apply font-sans;
@@ -114,6 +117,10 @@ body {
 
     @media (min-width: theme("screens.2xl")) {
       width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
+    }
+
+    @media (min-width: theme("screens.3xl")) {
+      width: calc(100vw - (100vw - theme("screens.3xl")) / 2);
     }
   }
 
