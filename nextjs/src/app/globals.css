@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply 3xl:text-18;
+  @apply 3xl:text-20;
 }
 
 body {

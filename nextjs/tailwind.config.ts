@@ -37,6 +37,13 @@ const config: Config = {
       center: true,
     },
     extend: {
+      lineHeight: {
+        "6.5": "1.625rem", // 26px
+        "7.5": "1.875rem", // 30px
+        11: "2.75rem", // 44px
+        12: "3rem", // 48px
+        13: "3.25rem", // 52px
+      },
       screens: {
         "3xl": "2160px",
       },
@@ -46,6 +53,7 @@ const config: Config = {
         30: "7.5rem",
       },
       height: {
+        "12.5": "3.125rem", // 50px
         100: "25rem",
       },
       width: {
