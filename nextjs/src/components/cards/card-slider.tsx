@@ -52,7 +52,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
       {
         root: null, // Uses the viewport as the root
         rootMargin: "50px",
-        threshold: 0.5, // Element is considered visible when at least 50% is in view
+        threshold: 0.8, // Element is considered visible when at least 80% is in view
       },
     )
 
