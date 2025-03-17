@@ -12,7 +12,7 @@
     .markdown-text {
         @apply font-sans font-normal;
         @apply text-20 lg:text-18;
-        @apply leading-[30px] lg:leading-[26px];
+        @apply leading-7.5 lg:leading-6.5;
         @apply text-paragraph-primary;
 
         /**
@@ -30,15 +30,15 @@
         }
 
         h1 {
-            @apply text-35 lg:text-50 leading-[35px] lg:leading-[50px];
+            @apply text-35 lg:text-50 leading-9 lg:leading-13;
         }
 
         h2 {
-            @apply text-35 lg:text-40 leading-[35px] lg:leading-[45px];
+            @apply text-35 lg:text-40 leading-9 lg:leading-11;
         }
 
         h3 {
-            @apply text-30 leading-[30px] lg:leading-[40px];
+            @apply text-30 leading-7.5 lg:leading-10;
         }
 
         ol {

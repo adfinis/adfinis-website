@@ -16,8 +16,8 @@ export const buttonStyles = cva(
   {
     variants: {
       size: {
-        small: "h-[40px]",
-        large: "h-[50px]",
+        small: "h-10",
+        large: "h-12.5",
       },
       variant: {
         cta: "min-w-40 px-10 bg-sunglow text-stone hover:bg-gradient-to-r hover:from-stone/10 hover:to-stone/10",
