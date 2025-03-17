@@ -62,7 +62,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
             },
           ])}
         >
-          <Text markdown={text} className="text-justify lg:text-center" />
+          <Text markdown={text} className="text-left lg:text-center" />
         </div>
       )}
       <div className={sectionGroupStyles({ hasDividers, columns, align })}>
