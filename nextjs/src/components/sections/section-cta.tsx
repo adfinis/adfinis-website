@@ -15,7 +15,7 @@ type SectionCTAProps = {
 const SectionCTA: React.FC<SectionCTAProps> = ({ body, cta, socials }) => {
   return (
     <div className="max-w-4xl mx-auto grid gap-4 lg:gap-8">
-      {body && <Text markdown={body} className="text-justify lg:text-center" />}
+      {body && <Text markdown={body} className="text-left lg:text-center" />}
       {cta && !socials && (
         <LinkButton
           href={cta.href}
