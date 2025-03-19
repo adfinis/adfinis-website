@@ -11,5 +11,6 @@ export default function SolutionsPage({
     locale: locale,
     isActive: true,
   }
+
   return <Solutions activeLocale={currentLocale} />
 }
