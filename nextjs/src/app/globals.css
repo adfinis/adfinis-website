@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply 3xl:text-20;
+}
 
 body {
   @apply font-sans;
@@ -33,6 +36,10 @@ body {
     --color-fuchsia: 126 87 194;
     --color-manhattan: 247 198 165;
     --color-error: 255 14 0;
+    --color-grass: 126 150 0;
+    --color-salmon: 247 198 165;
+    --color-pink: 227 13 116;
+    --color-purple: 110 0 105;
   }
 
 
@@ -111,6 +118,10 @@ body {
     @media (min-width: theme("screens.2xl")) {
       width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
     }
+
+    @media (min-width: theme("screens.3xl")) {
+      width: calc(100vw - (100vw - theme("screens.3xl")) / 2);
+    }
   }
 
   b,
@@ -120,3 +131,4 @@ body {
 }
 
 @import './text.css';
+@import './hamburger-react.css';

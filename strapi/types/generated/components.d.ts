@@ -60,6 +60,10 @@ export interface CardsColorCard extends Struct.ComponentSchema {
         'razzmatazz',
         'fuchsia',
         'manhattan',
+        'grass',
+        'salmon',
+        'pink',
+        'purple',
       ]
     > &
       Schema.Attribute.Required &
@@ -147,6 +151,10 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
         'razzmatazz',
         'fuchsia',
         'manhattan',
+        'grass',
+        'salmon',
+        'pink',
+        'purple',
       ]
     > &
       Schema.Attribute.Required &
@@ -247,6 +255,10 @@ export interface GlobalBrandColors extends Struct.ComponentSchema {
         'razzmatazz',
         'fuchsia',
         'manhattan',
+        'grass',
+        'salmon',
+        'pink',
+        'purple',
       ]
     > &
       Schema.Attribute.Required &

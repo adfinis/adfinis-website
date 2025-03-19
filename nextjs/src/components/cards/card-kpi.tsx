@@ -22,6 +22,10 @@ const cardKpiStyles = cva(
         razzmatazz: "bg-razzmatazz",
         fuchsia: "bg-fuchsia",
         manhattan: "bg-manhattan",
+        grass: "bg-grass",
+        salmon: "bg-salmon",
+        pink: "bg-pink",
+        purple: "bg-purple",
       },
     },
     defaultVariants: {

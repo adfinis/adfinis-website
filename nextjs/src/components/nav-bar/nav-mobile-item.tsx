@@ -15,7 +15,7 @@ const NavMobileItem: React.FC<{
   return (
     <span data-component="NavMobileItem">
       {!expand && (
-        <span className="flex justify-between items-center w-full h-12 text-neutral text-20">
+        <span className="flex justify-between items-center w-full h-12 text-neutral text-20 cursor-pointer">
           {item.title}
           <IconChevronRight
             className={clsx([
@@ -46,7 +46,7 @@ const NavMobileItem: React.FC<{
                 title={item.title}
                 url={item.url}
                 className={clsx([
-                  "text-neutral font-semibold text-25",
+                  "text-sunglow font-semibold text-25",
                   "flex justify-between items-center",
                 ])}
               >

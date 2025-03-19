@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
   return (
     <div
       className={clsx([
-        "relative min-h-[600px] lg:min-h-[650px] xl:min-h-[750px] 2xl:min-h-[800px] overflow-hidden",
+        "relative min-h-[600px] lg:min-h-[650px] xl:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
         'before:content-[""] before:absolute',
         "before:left-0 before:right-0",
         "before:bottom-[-15vw] before:h-[15vw] ",
@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
       <div
         className={clsx([
           "absolute inset-0",
-          "transition-all duration-150 bg-gradient-to-r from-stone/50 to-stone/0",
+          "transition-all duration-150 bg-gradient-to-r from-stone/65 to-stone/10",
           { "bg-stone/80 z-10": navActive }, // darkens elements behind as overlay when nav active
         ])}
       />

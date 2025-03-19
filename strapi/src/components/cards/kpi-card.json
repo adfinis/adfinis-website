@@ -32,7 +32,11 @@
         "green",
         "razzmatazz",
         "fuchsia",
-        "manhattan"
+        "manhattan",
+        "grass",
+        "salmon",
+        "pink",
+        "purple"
       ],
       "default": "sapphire",
       "required": true

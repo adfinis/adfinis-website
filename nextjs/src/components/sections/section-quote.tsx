@@ -37,7 +37,7 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
               "text-sapphire absolute",
               "right-6 -bottom-7 h-8",
               "md:h-12 md:right-20 md:-bottom-10",
-              "lg:h-16 lg:right-40 lg:-bottom-15",
+              "lg:h-16 lg:right-40 lg:-bottom-14",
             ])}
           >
             <path

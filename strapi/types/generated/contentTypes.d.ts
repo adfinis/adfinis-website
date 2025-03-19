@@ -1639,6 +1639,90 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
   };
 }
 
+export interface ApiPagePage extends Struct.CollectionTypeSchema {
+  collectionName: 'pages';
+  info: {
+    displayName: 'Page';
+    pluralName: 'pages';
+    singularName: 'page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>;
+    metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.product-feature-card',
+        'sections.icon-card-section-with-relation',
+        'sections.event-details-section',
+        'sections.projects-card-section-with-external-link',
+        'sections.services-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+        'sections.feature-cards',
+        'sections.content-carousel',
+        'sections.quote-section',
+        'sections.content-highlight-section',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.kpi-section',
+        'sections.hallmarks-section',
+        'sections.regular-form-section',
+        'sections.image-carousel',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'metadata_title'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
   collectionName: 'quotes';
   info: {
@@ -2452,6 +2536,7 @@ declare module '@strapi/strapi' {
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::page-case-study.page-case-study': ApiPageCaseStudyPageCaseStudy;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
+      'api::page.page': ApiPagePage;
       'api::quote.quote': ApiQuoteQuote;
       'api::sla-card.sla-card': ApiSlaCardSlaCard;
       'api::solutions-overview.solutions-overview': ApiSolutionsOverviewSolutionsOverview;

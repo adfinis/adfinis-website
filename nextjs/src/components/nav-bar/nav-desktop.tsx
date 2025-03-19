@@ -11,6 +11,7 @@ import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
 import Link from "next/link"
+import { useWindowSize } from "@uidotdev/usehooks"
 
 type NavDesktopProps = {
   navItems: NavItem[]
@@ -58,47 +59,64 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
 
   return (
     <div
-      className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]"
+      className={clsx([
+        "fixed top-0 transform transition-all duration-300 left-0 z-50 w-topbar",
+        {
+          "translate-y-8": scrollDir === "up" || scrollPosition.top < 10,
+          "translate-y-0": scrollDir === "down",
+        },
+      ])}
       onMouseLeave={handleMouseMenuLeave}
     >
-      <section
-        onMouseEnter={handleMouseEnter}
-        className={clsx([
-          "min-h-16 h-16 py-4 transition-all duration-150 flex justify-between items-center",
-          {
-            "min-h-[90px]": menuExpanded,
-          },
-        ])}
-        id="nav-header"
-      >
-        <Link href={`/en`}>
-          <Image src={logoUrl} alt={"Adfinis logo"} width={160} height={40} />{" "}
-        </Link>
+      <div className="bg-sapphire shadow-2">
+        <div className="container mr-0">
+          <div className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]">
+            <section
+              onMouseEnter={handleMouseEnter}
+              className={clsx([
+                "min-h-16 h-16 py-4 transition-all duration-150 flex justify-between items-center",
+                {
+                  "min-h-[90px]": menuExpanded,
+                },
+              ])}
+              id="nav-header"
+            >
+              <Link href={`/en`}>
+                <Image
+                  src={logoUrl}
+                  alt={"Adfinis logo"}
+                  width={160}
+                  height={40}
+                />{" "}
+              </Link>
 
-        <ActionWrappers />
-      </section>
-      {menuExpanded && (
-        // The Sub-bar
-        <section className="hidden lg:block min-h-12" id="nav-items">
-          <div className="flex justify-start items-center h-full relative">
-            {navItems.map((item, index) => (
-              <div key={index}>
-                {item && <NavDesktopItems navItem={item} />}
-              </div>
-            ))}
-            {cta && (
-              <LinkButton
-                className="ml-auto"
-                href={cta.href}
-                variant={cta.variant}
-                size={cta.size}
-              >
-                {cta.label}
-              </LinkButton>
+              <ActionWrappers />
+            </section>
+            {menuExpanded && (
+              // The Sub-bar
+              <section className="hidden lg:block min-h-12" id="nav-items">
+                <div className="flex justify-start items-center h-full relative">
+                  {navItems.map((item, index) => (
+                    <div key={index}>
+                      {item && <NavDesktopItems navItem={item} />}
+                    </div>
+                  ))}
+                  {cta && (
+                    <LinkButton
+                      className="ml-auto"
+                      href={cta.href}
+                      variant={cta.variant}
+                      size={cta.size}
+                    >
+                      {cta.label}
+                    </LinkButton>
+                  )}
+                </div>
+              </section>
             )}
           </div>
-        </section>
-      )}
+        </div>
+      </div>
     </div>
   )
 }
