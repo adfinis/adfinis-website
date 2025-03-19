@@ -15,6 +15,20 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.16.0] - 2025-03-19
+
+- Feature/aw 161 extra display size 2550 (#148)
+- Feature/aw 165 fix justify issue (#150)
+- fix: Make sure nav-desktop bar starts with spacing on top
+- Feature/aw 164 menu with close button and (#147)
+- chore: Add new colors to set (#142)
+- chore: Add id of form type to form container (#143)
+- feat: Add animation on cards on appear (#144)
+- fix: Improve readability of Hero banner (#145)
+- feat: Move navbar up on scroll down for more space
+- fix: Change 100vh to dynamic viewport height
+- Feature/aw 57 landing pages (#141)
+
 ## [0.15.0] - 2025-03-10
 
 - Feature/140 improve menu flat structure (#139)
