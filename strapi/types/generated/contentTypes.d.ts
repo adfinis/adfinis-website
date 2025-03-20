@@ -1086,7 +1086,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     body: Schema.Attribute.RichText &
