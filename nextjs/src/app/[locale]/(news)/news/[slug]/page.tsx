@@ -3,6 +3,9 @@ import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
+import RichBlocks from "@/components/stapi/rich-blocks"
+import InfoLabel from "@/components/info-label"
+import { eventDetails } from "@/app/[locale]/theme/texts"
 
 export default async function NewsDetailPage({
   params: { locale, slug },
@@ -11,7 +14,7 @@ export default async function NewsDetailPage({
 }) {
   const url = `news-pages/xwdeo28mwb53lzvhw8vleaus?populate=categories&populate=sections&populate=hero.background_image&populate=hero.color&populate=localizations`
   const data = await strapi(url)
-  const { hero } = data
+  const { hero, main_blog, publishedAt } = data
 
   const currentLocale = {
     href: `/${locale}/oplossingen`,
@@ -34,7 +37,15 @@ export default async function NewsDetailPage({
         <NavBar items={locales} />
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
-      Dingen
+      <section className={"px-4 lg:px-0 relative bg-white"}>
+        <div className="container sm:px-2">
+          <InfoLabel
+            text={`Published at ${publishedAt}`}
+            className="block mb-4"
+          />
+          <RichBlocks content={main_blog} />
+        </div>
+      </section>
     </>
   )
 }
