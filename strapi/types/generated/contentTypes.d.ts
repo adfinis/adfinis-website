@@ -1399,7 +1399,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::news-page.news-page'
     >;
-    main_blog: Schema.Attribute.Blocks &
+    main_blog: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

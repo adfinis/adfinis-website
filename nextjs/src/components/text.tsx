@@ -46,6 +46,7 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
           "ol",
           "p",
           "pre",
+          "code",
           "strong",
           "ul",
           "del",
