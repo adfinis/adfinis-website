@@ -1372,6 +1372,20 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    card_subtitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    card_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
@@ -1379,25 +1393,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dynamic_content: Schema.Attribute.DynamicZone<
-      [
-        'sections.heading-with-link-container',
-        'global.blog-block',
-        'sections.feature-cards',
-        'sections.quote-section',
-        'sections.content-carousel',
-        'sections.color-card-carousel',
-        'sections.cta-banner',
-        'sections.single-column-section',
-        'sections.regular-form-section',
-        'sections.image-carousel',
-      ]
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1434,6 +1430,25 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.heading-with-link-container',
+        'global.blog-block',
+        'sections.feature-cards',
+        'sections.quote-section',
+        'sections.content-carousel',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.regular-form-section',
+        'sections.image-carousel',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
