@@ -8,6 +8,7 @@ import Intro from "@/components/intro"
 import Text from "@/components/text"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import NewsOverviewGridSection from "@/components/stapi/news-overview-grid-section"
 
 export default async function NewsOverview({
   activeLocale,
@@ -37,6 +38,7 @@ export default async function NewsOverview({
           <Text markdown={intro} />
         </Intro>
       )}
+      <NewsOverviewGridSection locale={activeLocale.locale} />
       {sections && sections.length > 0 && sections.map(renderSections)}
       <Footer locale={activeLocale.locale} />
     </>
