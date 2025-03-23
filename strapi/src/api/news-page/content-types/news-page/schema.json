@@ -101,7 +101,6 @@
       "type": "dynamiczone",
       "components": [
         "sections.heading-with-link-container",
-        "global.blog-block",
         "sections.feature-cards",
         "sections.quote-section",
         "sections.content-carousel",

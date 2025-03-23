@@ -1433,7 +1433,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     sections: Schema.Attribute.DynamicZone<
       [
         'sections.heading-with-link-container',
-        'global.blog-block',
         'sections.feature-cards',
         'sections.quote-section',
         'sections.content-carousel',
