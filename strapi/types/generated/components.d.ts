@@ -222,18 +222,6 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
-export interface GlobalBlogBlock extends Struct.ComponentSchema {
-  collectionName: 'components_global_blog_blocks';
-  info: {
-    description: '';
-    displayName: 'Blog Block';
-  };
-  attributes: {
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-  };
-}
-
 export interface GlobalBrandColors extends Struct.ComponentSchema {
   collectionName: 'components_global_brand_colors';
   info: {
@@ -468,6 +456,18 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
   attributes: {
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsBlogContentSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_blog_content_sections';
+  info: {
+    displayName: 'Blog content section';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -953,7 +953,6 @@ declare module '@strapi/strapi' {
       'cards.simple-card': CardsSimpleCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
-      'global.blog-block': GlobalBlogBlock;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;
@@ -971,6 +970,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
+      'sections.blog-content-section': SectionsBlogContentSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;

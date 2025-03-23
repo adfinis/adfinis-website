@@ -1355,6 +1355,64 @@ export interface ApiNavigationMenuNavigationMenu
   };
 }
 
+export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
+  collectionName: 'news_overviews';
+  info: {
+    displayName: 'News overview';
+    pluralName: 'news-overviews';
+    singularName: 'news-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-overview.news-overview'
+    >;
+    metadata_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<['sections.video-section']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   collectionName: 'news_pages';
   info: {
@@ -1372,6 +1430,20 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    card_subtitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    card_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
@@ -1379,31 +1451,13 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dynamic_content: Schema.Attribute.DynamicZone<
-      [
-        'sections.heading-with-link-container',
-        'global.blog-block',
-        'sections.feature-cards',
-        'sections.quote-section',
-        'sections.content-carousel',
-        'sections.color-card-carousel',
-        'sections.cta-banner',
-        'sections.single-column-section',
-        'sections.regular-form-section',
-        'sections.image-carousel',
-      ]
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::news-page.news-page'
     >;
-    main_blog: Schema.Attribute.Blocks &
+    main_blog: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1434,6 +1488,25 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.heading-with-link-container',
+        'sections.feature-cards',
+        'sections.quote-section',
+        'sections.content-carousel',
+        'sections.color-card-carousel',
+        'sections.cta-banner',
+        'sections.single-column-section',
+        'sections.regular-form-section',
+        'sections.image-carousel',
+        'sections.blog-content-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -2533,6 +2606,7 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
+      'api::news-overview.news-overview': ApiNewsOverviewNewsOverview;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::page-case-study.page-case-study': ApiPageCaseStudyPageCaseStudy;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;

@@ -48,6 +48,7 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
           "ol",
           "p",
           "pre",
+          "code",
           "strong",
           "ul",
           "del",

@@ -45,6 +45,29 @@
       "targetField": "metadata_title",
       "required": true
     },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
+    "card_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "card_subtitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
@@ -66,10 +89,10 @@
           "localized": true
         }
       },
-      "type": "blocks",
+      "type": "richtext",
       "required": true
     },
-    "dynamic_content": {
+    "sections": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -78,7 +101,6 @@
       "type": "dynamiczone",
       "components": [
         "sections.heading-with-link-container",
-        "global.blog-block",
         "sections.feature-cards",
         "sections.quote-section",
         "sections.content-carousel",
@@ -86,7 +108,8 @@
         "sections.cta-banner",
         "sections.single-column-section",
         "sections.regular-form-section",
-        "sections.image-carousel"
+        "sections.image-carousel",
+        "sections.blog-content-section"
       ]
     }
   }
