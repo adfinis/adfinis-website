@@ -53,4 +53,5 @@ export const colors = {
   salmon: "#F7C6A5",
   pink: "#E30D74",
   purple: "#6E0069",
+  full_white: "",
 } as const

@@ -27,7 +27,7 @@ type ContainerProps = VariantProps<typeof containerStyles> & {
   id?: string
   background: PickStringLiteral<
     BackgroundOptions,
-    "white" | "neutral" | "sapphire" | "stone"
+    "white" | "neutral" | "sapphire" | "stone" | "full_white"
   >
 }
 

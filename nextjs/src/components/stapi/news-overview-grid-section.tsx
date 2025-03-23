@@ -18,7 +18,7 @@ export default async function NewsOverviewGridSection({
       subtitle: item.card_subtitle,
       description: `${item.publishedAt} / ${item.minutes_read} min read`,
       imageUrl: item.hero?.background_image?.url,
-      categories: item.categories?.map((cat) => {
+      categories: item.categories?.map((cat: any) => {
         return {
           text: cat.name,
           href: cat.url,
