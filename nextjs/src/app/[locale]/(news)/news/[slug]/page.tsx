@@ -2,35 +2,36 @@ import strapi from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { NavProvider } from "@/components/nav-bar/nav-context"
-import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
 import InfoLabel from "@/components/info-label"
 import TextImage from "@/components/text-image"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
 
 export default async function NewsDetailPage({
   params: { locale, slug },
 }: {
   params: { locale: string; slug: string[] }
 }) {
-  const page = slug.at(-1)
-  const url = `news-pages/${slug}?locale=${locale}`
+  const url = `news-pages/${slug}?locale=${locale}&status=published`
   const data = await strapi(url)
   const { hero, main_blog, sections, publishedAt, createdAt } = data
 
   const currentLocale = {
-    href: `/${locale}/oplossingen`,
+    href: `/${locale}/${NEWS_SLUGS[locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }
 
-  const locales = data.localizations.map((item: { locale: string }) => {
-    return {
-      href: `/${item.locale}/${SLUGS[item.locale]}`,
-      locale: item.locale,
-      isActive: false,
-    }
-  })
+  const locales = data.localizations.map(
+    (item: { locale: string; slug: string }) => {
+      return {
+        href: `/${item.locale}/${NEWS_SLUGS[locale]}/${item.slug}`,
+        locale: item.locale,
+        isActive: false,
+      }
+    },
+  )
   locales.push(currentLocale)
 
   return (
