@@ -16,7 +16,7 @@ export default async function CaseStudyDetailPage({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-case-studies/${slug}?locale=${activeLocale.locale}`
+  const url = `page-case-studies/${slug}?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(

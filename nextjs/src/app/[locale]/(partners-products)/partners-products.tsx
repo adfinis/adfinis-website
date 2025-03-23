@@ -17,7 +17,7 @@ export default async function PartnersProducts({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}`
+  const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(

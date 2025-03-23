@@ -16,7 +16,7 @@ export default async function SolutionDetail({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `solutions-pages/${slug}?locale=${activeLocale.locale}`
+  const url = `solutions-pages/${slug}?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {
