@@ -1442,6 +1442,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.single-column-section',
         'sections.regular-form-section',
         'sections.image-carousel',
+        'sections.blog-content-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

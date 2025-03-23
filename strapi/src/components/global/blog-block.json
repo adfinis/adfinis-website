@@ -7,13 +7,8 @@
   "options": {},
   "attributes": {
     "content": {
-      "type": "blocks",
+      "type": "richtext",
       "required": true
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "external-links.call-to-action"
     }
   }
 }

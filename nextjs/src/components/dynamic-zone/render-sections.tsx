@@ -18,6 +18,7 @@ import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmar
 import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
 import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-carousel"
+import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -146,6 +147,13 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <ImageCarousel
           key={`sections.image-carousel_${index}`}
+          section={section}
+        />
+      )
+    case "sections.blog-content-section":
+      return (
+        <BlogContentSection
+          key={`sections.blog-content-section_${index}`}
           section={section}
         />
       )
