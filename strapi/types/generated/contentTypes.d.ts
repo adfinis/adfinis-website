@@ -1355,6 +1355,64 @@ export interface ApiNavigationMenuNavigationMenu
   };
 }
 
+export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
+  collectionName: 'news_overviews';
+  info: {
+    displayName: 'News overview';
+    pluralName: 'news-overviews';
+    singularName: 'news-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-overview.news-overview'
+    >;
+    metadata_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<['sections.video-section']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   collectionName: 'news_pages';
   info: {
@@ -2548,6 +2606,7 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
       'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
+      'api::news-overview.news-overview': ApiNewsOverviewNewsOverview;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::page-case-study.page-case-study': ApiPageCaseStudyPageCaseStudy;
       'api::page-partner-and-product.page-partner-and-product': ApiPagePartnerAndProductPagePartnerAndProduct;
