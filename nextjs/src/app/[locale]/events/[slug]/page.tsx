@@ -25,7 +25,7 @@ export default async function EventsDetailPage({
     isActive: true,
   }
 
-  const url = `event-pages/${slug}?locale=${activeLocale.locale}`
+  const url = `event-pages/${slug}?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(

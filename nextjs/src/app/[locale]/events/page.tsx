@@ -15,7 +15,7 @@ export default async function EventsOverviewPage({
 }: {
   params: { locale: string }
 }) {
-  const url = `events-overview/?locale=${locale}`
+  const url = `events-overview/?locale=${locale}&status=published`
   const data = await strapi(url)
   const currentLocale = {
     href: `/${locale}/events`,
