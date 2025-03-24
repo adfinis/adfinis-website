@@ -30,7 +30,7 @@ module.exports = (config, { strapi }) => {
               populate: {
                 props: true,
                 cta: true,
-                events: {
+                cards: {
                   populate: '*',
                 }
               }
