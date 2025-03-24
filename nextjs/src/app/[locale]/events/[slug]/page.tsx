@@ -53,7 +53,11 @@ export default async function EventsDetailPage({
   } = data
 
   const tester = is_past_event === false && sign_up_button !== undefined
-  sign_up_button.text = sign_up_button.label
+
+  if (sign_up_button) {
+    sign_up_button.text = sign_up_button?.label
+  }
+
   return (
     <>
       <NavProvider>
@@ -63,7 +67,7 @@ export default async function EventsDetailPage({
       <Container background="white" padding="both-padding">
         <InfoLabel text={date_event} className="block mb-4" />
         <Text markdown={details} className="mb-8 max-w-4xl" />
-        {tester && (
+        {tester && sign_up_button && (
           <LinkButton
             href={sign_up_button.href}
             size={sign_up_button.size}
