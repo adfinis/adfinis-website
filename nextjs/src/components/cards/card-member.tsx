@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react"
 import { Card } from "./card"
 import Image from "next/image"
