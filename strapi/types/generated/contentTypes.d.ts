@@ -1781,6 +1781,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
+    description: '';
     displayName: 'Page';
     pluralName: 'pages';
     singularName: 'page';
@@ -1842,6 +1843,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.team-member-card-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

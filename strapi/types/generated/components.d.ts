@@ -178,6 +178,19 @@ export interface CardsSimpleCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsTeamMemberCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_team_member_cards';
+  info: {
+    displayName: 'Team member card';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    full_name: Schema.Attribute.String & Schema.Attribute.Required;
+    photo_hover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    photo_main: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
@@ -894,6 +907,19 @@ export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTeamMemberCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_team_member_card_sections';
+  info: {
+    displayName: 'Team member card section';
+  };
+  attributes: {
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    team_members: Schema.Attribute.Component<'cards.team-member-card', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
@@ -951,6 +977,7 @@ declare module '@strapi/strapi' {
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
       'cards.simple-card': CardsSimpleCard;
+      'cards.team-member-card': CardsTeamMemberCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'global.brand-colors': GlobalBrandColors;
@@ -995,6 +1022,7 @@ declare module '@strapi/strapi' {
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
       'sections.single-column-section': SectionsSingleColumnSection;
+      'sections.team-member-card-section': SectionsTeamMemberCardSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
       'sections.video-with-text-section': SectionsVideoWithTextSection;

@@ -19,6 +19,7 @@ import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
 import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-carousel"
 import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
+import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -147,6 +148,13 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <ImageCarousel
           key={`sections.image-carousel_${index}`}
+          section={section}
+        />
+      )
+    case "sections.team-member-card-section":
+      return (
+        <TeamMemberCardSection
+          key={`sections.team-member-card-section_${index}`}
           section={section}
         />
       )
