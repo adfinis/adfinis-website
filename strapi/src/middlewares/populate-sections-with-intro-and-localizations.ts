@@ -101,6 +101,14 @@ module.exports = (config, { strapi }) => {
             'sections.video-with-text-section': {
               populate: '*',
             },
+            'sections.team-member-card-section': {
+              populate: {
+                team_members: {
+                  populate: '*',
+                },
+                props: true,
+              },
+            },
             'sections.regular-form-section': {
               populate: '*',
             },
