@@ -21,6 +21,25 @@ export interface CardsCardSliderIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCareerCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_career_cards';
+  info: {
+    displayName: 'Career card';
+  };
+  attributes: {
+    country: Schema.Attribute.Enumeration<
+      ['au', 'ch', 'de', 'eg', 'nl', 'nz', 'uk', 'us']
+    > &
+      Schema.Attribute.DefaultTo<'ch'>;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    location: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    workload: Schema.Attribute.String;
+  };
+}
+
 export interface CardsCategoryCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_category_cards';
   info: {
@@ -971,6 +990,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.career-card': CardsCareerCard;
       'cards.category-card': CardsCategoryCard;
       'cards.color-card': CardsColorCard;
       'cards.feature-card': CardsFeatureCard;

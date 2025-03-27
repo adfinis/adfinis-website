@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_cards_career_cards",
+  "info": {
+    "displayName": "Career card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "workload": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "enumeration",
+      "enum": [
+        "au",
+        "ch",
+        "de",
+        "eg",
+        "nl",
+        "nz",
+        "uk",
+        "us"
+      ],
+      "default": "ch"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
