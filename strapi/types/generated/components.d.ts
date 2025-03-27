@@ -21,6 +21,25 @@ export interface CardsCardSliderIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCareerCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_career_cards';
+  info: {
+    displayName: 'Career card';
+  };
+  attributes: {
+    country: Schema.Attribute.Enumeration<
+      ['au', 'ch', 'de', 'eg', 'nl', 'nz', 'uk', 'us']
+    > &
+      Schema.Attribute.DefaultTo<'ch'>;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    location: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    workload: Schema.Attribute.String;
+  };
+}
+
 export interface CardsCategoryCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_category_cards';
   info: {
@@ -479,6 +498,25 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsCareerCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_career_card_sections';
+  info: {
+    displayName: 'Career card section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.career-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
   };
@@ -971,6 +1009,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.career-card': CardsCareerCard;
       'cards.category-card': CardsCategoryCard;
       'cards.color-card': CardsColorCard;
       'cards.feature-card': CardsFeatureCard;
@@ -998,6 +1037,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;

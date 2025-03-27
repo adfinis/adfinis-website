@@ -84,7 +84,8 @@
         "sections.two-column-section",
         "sections.video-section",
         "sections.video-with-text-section",
-        "sections.team-member-card-section"
+        "sections.team-member-card-section",
+        "sections.career-card-section"
       ]
     }
   }

@@ -112,6 +112,14 @@ module.exports = (config, { strapi }) => {
             'sections.regular-form-section': {
               populate: '*',
             },
+            'sections.career-card-section': {
+              populate: {
+                cards: {
+                  populate: '*',
+                },
+                props: true,
+              },
+            },
             'sections.services-section': {
               populate: '*'
             },
