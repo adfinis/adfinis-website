@@ -515,6 +515,22 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsCalendlySection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_calendly_sections';
+  info: {
+    displayName: 'Calendly section';
+    icon: 'calendar';
+  };
+  attributes: {
+    calendly_item: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::calendly-item.calendly-item'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsCareerCardSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_career_card_sections';
   info: {
@@ -1064,6 +1080,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.calendly-section': SectionsCalendlySection;
       'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_calendly_sections",
+  "info": {
+    "displayName": "Calendly section",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "calendly_item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::calendly-item.calendly-item"
+    }
+  }
+}
