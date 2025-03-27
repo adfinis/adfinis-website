@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_career_card_sections",
+  "info": {
+    "displayName": "Career card section"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.career-card",
+      "required": true,
+      "min": 1
+    }
+  }
+}

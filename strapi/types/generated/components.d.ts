@@ -503,6 +503,25 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsCareerCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_career_card_sections';
+  info: {
+    displayName: 'Career card section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.career-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsColorCardCarousel extends Struct.ComponentSchema {
   collectionName: 'components_sections_color_card_carousels';
   info: {
@@ -1018,6 +1037,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
