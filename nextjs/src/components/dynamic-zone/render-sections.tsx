@@ -20,6 +20,7 @@ import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regul
 import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-carousel"
 import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
 import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
+import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -162,6 +163,13 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <BlogContentSection
           key={`sections.blog-content-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.career-card-section":
+      return (
+        <CareerCardSection
+          key={`sections.career-card-section_${index}`}
           section={section}
         />
       )
