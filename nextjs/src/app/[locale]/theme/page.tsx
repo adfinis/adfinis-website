@@ -1,4 +1,3 @@
-"use client"
 import Hero from "@/components/hero"
 import Intro from "@/components/intro"
 import Link from "@/components/link-button"
@@ -85,7 +84,6 @@ export default function Theme({
           </Link>
         </Hero>
       </NavProvider>
-
       <Intro>
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} />
