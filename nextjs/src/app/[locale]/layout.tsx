@@ -1,5 +1,18 @@
+import CookieNotice from "@/components/cookie-notice"
+import { Locale } from "@/hooks/useLocale"
 import { ReactNode } from "react"
 
-export default function Layout({ children }: { children: ReactNode }) {
-  return <>{children}</>
+export default function Layout({
+  children,
+  params: { locale },
+}: {
+  children: ReactNode
+  params: { locale: string }
+}) {
+  return (
+    <>
+      {children}
+      <CookieNotice locale={(locale as Locale) || "en"} />
+    </>
+  )
 }
