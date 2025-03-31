@@ -4,5 +4,16 @@
         "accept": "Accept all",
         "reject": "Reject all",
         "personalize": "Personalize"
+    },
+    "forms": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "companyName": "Company Name",
+        "jobFunction": "Job Function",
+        "message": "Message",
+        "acceptPrivacyPolicy": "I accept the privacy policy of Adfinis",
+        "submitSuccessful": "Form successfully submitted"
     }
 }

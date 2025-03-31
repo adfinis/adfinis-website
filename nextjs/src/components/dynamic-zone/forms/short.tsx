@@ -8,13 +8,15 @@ import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
+import { Dictionary } from "@/hooks/useDictionary"
 
 type Props = {
   locale?: string
   submitLabel: string
+  dictionary: Dictionary
 }
 
-export default function Short({ submitLabel, locale }: Props) {
+export default function Short({ submitLabel, locale, dictionary }: Props) {
   const action = saveSimpleForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
@@ -31,28 +33,30 @@ export default function Short({ submitLabel, locale }: Props) {
         <FormColumns>
           <Input
             name={"firstName"}
-            label={"First name"}
+            label={dictionary.forms.firstName}
             errorMessage={state?.errors?.first_name ?? []}
           />
           <Input
             name={"lastName"}
-            label={"Last name"}
+            label={dictionary.forms.lastName}
             errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
         <Email
-          label={"e-mail"}
+          label={dictionary.forms.email}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
         />
         <Checkbox
           name="privacy_policy"
-          label={"I accept the privacy policy of Adfinis"}
+          label={dictionary.forms.acceptPrivacyPolicy}
           errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">
           {state.success && (
-            <p className="text-input-primary">Form successfully submitted</p>
+            <p className="text-input-primary">
+              {dictionary.forms.submitSuccessful}
+            </p>
           )}
           <Button variant={"cta"} name={"submit"} type="submit">
             {submitLabel}

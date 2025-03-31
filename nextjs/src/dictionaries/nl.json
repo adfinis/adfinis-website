@@ -4,5 +4,16 @@
         "accept": "Alles accepteren",
         "reject": "Alles weigeren",
         "personalize": "Personaliseren"
+    },
+    "forms": {
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "email": "E-mail",
+        "phone": "Telefoonnummer",
+        "companyName": "Bedrijfsnaam",
+        "jobFunction": "Functie",
+        "message": "Bericht",
+        "acceptPrivacyPolicy": "Ik accepteer het privacybeleid van Adfinis",
+        "submitSuccessful": "Formulier succesvol verzonden"
     }
 }

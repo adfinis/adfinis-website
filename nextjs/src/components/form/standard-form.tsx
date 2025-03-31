@@ -18,12 +18,12 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
       case "en-US":
       case "en-AU":
         return {
-          firstName: "First Name",
-          lastName: "Last Name",
+          firstName: dictionary.forms.firstName,
+          lastName: dictionary.forms.lastName,
           email: "Email",
           company: "Company",
           job: "Job",
-          privacyPolicy: "I accept the privacy policy of Adfinis",
+          privacyPolicy: dictionary.forms.acceptPrivacyPolicy,
           submit: "Submit",
         }
       case "nl-NL":
@@ -58,12 +58,12 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
         }
       default:
         return {
-          firstName: "First Name",
-          lastName: "Last Name",
+          firstName: dictionary.forms.firstName,
+          lastName: dictionary.forms.lastName,
           email: "Email",
           company: "Company",
           job: "Job",
-          privacyPolicy: "I accept the privacy policy of Adfinis",
+          privacyPolicy: dictionary.forms.acceptPrivacyPolicy,
           submit: "Submit",
         }
     }
