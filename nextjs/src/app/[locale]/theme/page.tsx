@@ -1,4 +1,3 @@
-"use client"
 import Hero from "@/components/hero"
 import Intro from "@/components/intro"
 import Link from "@/components/link-button"
@@ -32,7 +31,6 @@ import {
   imageSlider,
   teamMembers,
   speakersSection,
-  cookieSettings,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -65,7 +63,6 @@ import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
-import CookieNotice from "@/components/cookie-notice"
 
 export default function Theme({
   params: { locale },
@@ -74,12 +71,6 @@ export default function Theme({
 }) {
   return (
     <main className="bg-white">
-      <CookieNotice
-        description={cookieSettings.text}
-        accept={cookieSettings.accept}
-        reject={cookieSettings.reject}
-        personalize={cookieSettings.personalize}
-      />
       <NavProvider>
         <Topbar navItems={navItems} />
         <Hero

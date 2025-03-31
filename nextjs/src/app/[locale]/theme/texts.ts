@@ -2,13 +2,6 @@ import { type Card } from "@/components/cards/card"
 import { NavItem } from "@/components/nav-bar/nav"
 import { CTA } from "@/lib/cta"
 
-export const cookieSettings = {
-  text: `We use cookies to ensure you get the best experience on our website. By using our site, you agree to our [cookie policy](/cookie-policy).`,
-  accept: "Accept all",
-  reject: "Reject all",
-  personalize: "Personalize",
-} as const
-
 export const navItems: NavItem[] = [
   {
     title: "Solutions",
