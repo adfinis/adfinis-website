@@ -1,6 +1,27 @@
-import { getDictionary } from "@/app/[locale]/dictionaries"
-import { Locale } from "./useLocale"
+import { type Locale } from "@/hooks/useLocale"
+import "server-only"
 
-export async function dictionary(locale: Locale) {
-  return await getDictionary(locale)
+const dictionaries = {
+  en: () => import("@/dictionaries/en.json").then((module) => module.default),
+  nl: () => import("@/dictionaries/nl.json").then((module) => module.default),
+  de: () => import("@/dictionaries/de.json").then((module) => module.default),
+  //   "en-US": () =>
+  //     import("@/dictionaries/en-US.json").then((module) => module.default),
+  //   "en-AU": () =>
+  //     import("@/dictionaries/en-AU.json").then((module) => module.default),
+  //   "nl-NL": () =>
+  //     import("@/dictionaries/nl-NL.json").then((module) => module.default),
+  //   "de-CH": () =>
+  //     import("@/dictionaries/de-CH.json").then((module) => module.default),
+  //   "de-DE": () =>
+  //     import("@/dictionaries/de-DE.json").then((module) => module.default),
 }
+
+export const fetchDictionary = async (locale: Locale) =>
+  (dictionaries[locale as keyof typeof dictionaries] || dictionaries.en)()
+
+export async function getDictionary(locale: Locale) {
+  return await fetchDictionary(locale)
+}
+
+export type Dictionary = Awaited<ReturnType<typeof getDictionary>>
