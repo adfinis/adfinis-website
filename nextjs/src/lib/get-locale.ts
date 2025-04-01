@@ -17,12 +17,7 @@ const dictionaries = {
   //     import("@/dictionaries/de-DE.json").then((module) => module.default),
 }
 
-export const fetchDictionary = async (locale: Locale) =>
+export const getDictionary = async (locale: Locale) =>
   (dictionaries[locale as keyof typeof dictionaries] || dictionaries.en)()
-
-export async function getDictionary(locale: Locale) {
-  console.log({ locale })
-  return await fetchDictionary(locale)
-}
 
 export type Dictionary = Awaited<ReturnType<typeof getDictionary>>

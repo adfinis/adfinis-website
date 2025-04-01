@@ -8,15 +8,17 @@ import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
-import { Dictionary } from "@/hooks/useDictionary"
+import { Dictionary } from "@/lib/get-locale"
+import { Locale } from "@/hooks/useLocale"
 
 type Props = {
   submitLabel: string
   dictionary: Dictionary
+  locale: Locale
 }
 
-export default function Short({ submitLabel, dictionary }: Props) {
-  const action = saveSimpleForm.bind(null, dictionary)
+export default function Short({ submitLabel, dictionary, locale }: Props) {
+  const action = saveSimpleForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 

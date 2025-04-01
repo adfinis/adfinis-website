@@ -2,7 +2,9 @@
 
 import { z } from "zod"
 import formSubmit from "@/lib/form-submit"
-import { type Dictionary } from "@/hooks/useDictionary"
+import { type Dictionary } from "@/lib/get-locale"
+import { Locale } from "@/hooks/useLocale"
+import { getDictionary } from "@/lib/get-locale"
 
 type SaveSimpleFormStateErrors = {
   first_name?: string[]
@@ -31,10 +33,11 @@ const shape = (dictionary: Dictionary) => {
 }
 
 export async function saveSimpleForm(
-  dictionary: Dictionary,
+  locale: Locale,
   state: SaveSimpleFormState,
   formData: FormData,
 ): Promise<SaveSimpleFormState> {
+  const dictionary = await getDictionary(locale)
   const schema = z.object(shape(dictionary))
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -73,10 +76,11 @@ type StandardFormState = {
   errors?: StandardFormStateErrors
 }
 export async function saveStandardForm(
-  dictionary: Dictionary,
+  locale: Locale,
   state: StandardFormState,
   formData: FormData,
 ): Promise<StandardFormState> {
+  const dictionary = await getDictionary(locale)
   const schema = z.object(shape(dictionary))
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -113,10 +117,11 @@ type ContactFormState = {
   errors?: ContactFormStateErrors
 }
 export async function saveContactForm(
-  dictionary: Dictionary,
+  locale: Locale,
   state: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
+  const dictionary = await getDictionary(locale)
   const schema = z.object({
     ...shape(dictionary),
     //@ts-ignore
@@ -158,10 +163,11 @@ type EventFormState = {
   errors?: EventFormStateErrors
 }
 export async function saveEventForm(
-  dictionary: Dictionary,
+  locale: Locale,
   state: EventFormState,
   formData: FormData,
 ): Promise<EventFormState> {
+  const dictionary = await getDictionary(locale)
   const schema = z.object({
     ...shape(dictionary),
     // @ts-ignore

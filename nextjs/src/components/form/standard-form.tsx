@@ -7,7 +7,7 @@ import FormEmail from "./form-email"
 import Button from "../button"
 import FormCheckbox from "./form-checkbox"
 import FormColumns from "./form-columns"
-import { type Dictionary } from "@/hooks/useDictionary"
+import { type Dictionary } from "@/lib/get-locale"
 
 const StandardForm: React.FC<{ dictionary: Dictionary }> = ({ dictionary }) => {
   Yup.setLocale({

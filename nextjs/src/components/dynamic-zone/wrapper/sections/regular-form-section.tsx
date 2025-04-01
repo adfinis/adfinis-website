@@ -6,7 +6,7 @@ import Short from "@/components/dynamic-zone/forms/short"
 import Standard from "@/components/dynamic-zone/forms/standard"
 import Contact from "@/components/dynamic-zone/forms/contact"
 import EventForm from "@/components/dynamic-zone/forms/event-form"
-import { getDictionary } from "@/hooks/useDictionary"
+import { getDictionary } from "@/lib/get-locale"
 import { Locale } from "@/hooks/useLocale"
 
 type Props = {
@@ -32,16 +32,32 @@ export default async function RegularFormSection({
     >
       <Title align="center" boldness="light" markdown={section.title ?? ""} />
       {section.form_type === "short" && (
-        <Short submitLabel={section.submit_label} dictionary={dictionary} />
+        <Short
+          locale={locale}
+          submitLabel={section.submit_label}
+          dictionary={dictionary}
+        />
       )}
       {section.form_type === "standard" && (
-        <Standard dictionary={dictionary} submitLabel={section.submit_label} />
+        <Standard
+          locale={locale}
+          dictionary={dictionary}
+          submitLabel={section.submit_label}
+        />
       )}
       {section.form_type === "contact" && (
-        <Contact dictionary={dictionary} submitLabel={section.submit_label} />
+        <Contact
+          locale={locale}
+          dictionary={dictionary}
+          submitLabel={section.submit_label}
+        />
       )}
       {section.form_type === "event" && (
-        <EventForm dictionary={dictionary} submitLabel={section.submit_label} />
+        <EventForm
+          locale={locale}
+          dictionary={dictionary}
+          submitLabel={section.submit_label}
+        />
       )}
     </Container>
   )
