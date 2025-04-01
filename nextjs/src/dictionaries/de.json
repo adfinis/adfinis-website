@@ -11,9 +11,9 @@
         "email": "E-Mail",
         "phone": "Telefonnummer",
         "companyName": "Firmenname",
-        "jobFunction": "Berufsfunktion",
+        "jobFunction": "Berufsbezeichnung",
         "message": "Nachricht",
-        "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
+        "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzbestimmungen von Adfinis.",
         "submitSuccessful": "Formular erfolgreich übermittelt"
     },
     "validation": {

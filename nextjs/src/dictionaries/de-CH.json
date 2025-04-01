@@ -9,11 +9,11 @@
         "firstName": "Vorname",
         "lastName": "Nachname",
         "email": "E-Mail",
-        "phone": "Telefonnummer",
-        "companyName": "Firmenname",
-        "jobFunction": "Berufsfunktion",
+        "phone": "Telefon",
+        "companyName": "Firma",
+        "jobFunction": "Funktion",
         "message": "Nachricht",
-        "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
+        "acceptPrivacyPolicy": "Ich bin einverstanden mit der Datenschutzerklärung von Adfinis.",
         "submitSuccessful": "Formular erfolgreich übermittelt"
     },
     "validation": {
