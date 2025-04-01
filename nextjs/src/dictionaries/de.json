@@ -1,0 +1,38 @@
+{
+    "cookieBanner": {
+        "text": "Wir verwenden Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website machen. Durch die Nutzung unserer Seite stimmen Sie unserer [Cookie-Richtlinie](/cookie-policy) zu.",
+        "accept": "Alle akzeptieren",
+        "reject": "Alle ablehnen",
+        "personalize": "Personalisieren"
+    },
+    "forms": {
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "email": "E-Mail",
+        "phone": "Telefonnummer",
+        "companyName": "Firmenname",
+        "jobFunction": "Berufsbezeichnung",
+        "message": "Nachricht",
+        "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzbestimmungen von Adfinis.",
+        "submitSuccessful": "Formular erfolgreich übermittelt"
+    },
+    "validation": {
+        "required": "Dieses Feld ist erforderlich.",
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+        "min": "Dieses Feld muss mindestens ${min} Zeichen lang sein.",
+        "max": "Dieses Feld darf maximal ${max} Zeichen lang sein.",
+        "oneOf": "Dieses Feld muss einen der folgenden Werte haben: ${values}.",
+        "privacyPolicy": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
+        "phone": {
+            "format": "Ungültiges Telefonnummernformat.",
+            "short": "Die Telefonnummer ist zu kurz.",
+            "long": "Die Telefonnummer ist zu lang."
+        }
+    },
+    "pages": {
+        "events": {
+            "title": "Event Details",
+            "cta": "Jetzt anmelden"
+        }
+    }
+}

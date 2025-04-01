@@ -8,8 +8,11 @@ import NavDesktop from "@/components/nav-bar/nav-desktop"
 import NavMobile from "@/components/nav-bar/nav-mobile"
 
 export default async function NavBar({ items }: { items: LinkedLocale[] }) {
+  const activeLocale = items.at(-1)
+
   const data = await strapi(
-    "navigation-menu?populate=section.menu_segment.items&populate=logo_desktop&populate=logo_mobile&populate=cta",
+    "navigation-menu?populate=section.menu_segment.items&populate=logo_desktop&populate=logo_mobile&populate=cta" +
+      `&locale=${activeLocale?.locale}`,
   )
 
   return (

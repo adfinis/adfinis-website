@@ -15,6 +15,22 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.17.0] - 2025-04-01
+
+- feature/aw 171 form fields labels vertalen (#164)
+- Feature/aw 172 cookie banner (#163)
+- AW-169 overview for join items grid cards with flags (#162)
+- AW-179 team page components (#161)
+- feat AW-178: make CTA on events optional (#160)
+- hotfix: forgot to rename component in events middleware
+- AW-170 overzicht paginas doornemen en voorstellen hoe de opbouw is (#159)
+- fix AW-163: add filter on published content (#158)
+- AW-157 paths and slugs on frontend (#156)
+- AW-37 news overview pages (#155)
+- AW-176 fix i18n menu (#154)
+- AW-175 fix i 18 n on solutions page (#153)
+- fix (AW-147): enable localisation on hero resource (#152)
+
 ## [0.16.0] - 2025-03-19
 
 - Feature/aw 161 extra display size 2550 (#148)

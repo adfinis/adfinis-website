@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_team_member_card_sections",
+  "info": {
+    "displayName": "Team member card section"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "team_members": {
+      "displayName": "Team member card",
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.team-member-card",
+      "required": true
+    }
+  }
+}

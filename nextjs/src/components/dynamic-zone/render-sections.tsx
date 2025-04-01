@@ -18,6 +18,10 @@ import HallmarksSection from "@/components/dynamic-zone/wrapper/sections/hallmar
 import KpiSection from "@/components/dynamic-zone/wrapper/sections/kpi-section"
 import RegularFormSection from "@/components/dynamic-zone/wrapper/sections/regular-form-section"
 import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-carousel"
+import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
+import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
+import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
+import { type Locale } from "@/hooks/useLocale"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -62,8 +66,8 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <RegularFormSection
           key={`sections.regular-form_${index}`}
-          locale={locale}
           section={section}
+          locale={locale as Locale}
         />
       )
     case "sections.video-with-text-section":
@@ -146,6 +150,27 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <ImageCarousel
           key={`sections.image-carousel_${index}`}
+          section={section}
+        />
+      )
+    case "sections.team-member-card-section":
+      return (
+        <TeamMemberCardSection
+          key={`sections.team-member-card-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.blog-content-section":
+      return (
+        <BlogContentSection
+          key={`sections.blog-content-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.career-card-section":
+      return (
+        <CareerCardSection
+          key={`sections.career-card-section_${index}`}
           section={section}
         />
       )

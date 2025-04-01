@@ -13,12 +13,12 @@ export default async function LandingPage({
   params: { locale: string; slug: string[] }
 }) {
   const URI_PATH = slug.join("/")
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}/${URI_PATH}`,
     locale: locale,
     isActive: true,
   }
-  const url = `pages/${slug}`
+  const url = `pages/${slug}?status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {
@@ -29,7 +29,7 @@ export default async function LandingPage({
       }
     },
   )
-  locales.push(currentLocale)
+  locales.push(activeLocale)
 
   const { hero, intro, sections } = data
 
@@ -39,14 +39,17 @@ export default async function LandingPage({
         <NavBar items={locales} />
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
-
       {intro && (
         <Intro>
           <Text markdown={intro} />
         </Intro>
       )}
-      {sections && sections.length > 0 && sections.map(renderSections)}
-      <Footer locale={currentLocale.locale} />
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+      <Footer locale={activeLocale.locale} />
     </>
   )
 }

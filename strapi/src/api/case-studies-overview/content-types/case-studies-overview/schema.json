@@ -55,10 +55,25 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.video-with-text-section",
-        "sections.video-section",
+        "sections.color-card-carousel",
+        "sections.content-carousel",
+        "sections.content-highlight-section",
+        "sections.cta-banner",
+        "sections.event-details-section",
+        "sections.feature-cards",
+        "sections.hallmarks-section",
+        "sections.icon-card-section-with-relation",
+        "sections.image-carousel",
+        "sections.kpi-section",
+        "sections.product-feature-card",
+        "sections.projects-card-section-with-external-link",
+        "sections.quote-section",
+        "sections.regular-form-section",
+        "sections.services-section",
+        "sections.single-column-section",
         "sections.two-column-section",
-        "sections.quote-section"
+        "sections.video-section",
+        "sections.video-with-text-section"
       ],
       "required": false
     }

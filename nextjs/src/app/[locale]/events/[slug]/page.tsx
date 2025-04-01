@@ -10,6 +10,8 @@ import SectionGroup from "@/components/sections/section-group"
 import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { getDictionary } from "@/lib/get-dictionary"
+import { Locale } from "@/hooks/useLocale"
 
 export default async function EventsDetailPage({
   params: { locale, slug },
@@ -19,13 +21,14 @@ export default async function EventsDetailPage({
     slug: string
   }
 }) {
+  const dictionary = await getDictionary(locale as Locale)
   const activeLocale = {
     href: `/${locale}/events/${slug}`,
     locale: locale,
     isActive: true,
   }
 
-  const url = `event-pages/${slug}?locale=${activeLocale.locale}`
+  const url = `event-pages/${slug}?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(
@@ -53,7 +56,11 @@ export default async function EventsDetailPage({
   } = data
 
   const tester = is_past_event === false && sign_up_button !== undefined
-  sign_up_button.text = sign_up_button.label
+
+  if (sign_up_button) {
+    sign_up_button.text = sign_up_button?.label
+  }
+
   return (
     <>
       <NavProvider>
@@ -63,7 +70,7 @@ export default async function EventsDetailPage({
       <Container background="white" padding="both-padding">
         <InfoLabel text={date_event} className="block mb-4" />
         <Text markdown={details} className="mb-8 max-w-4xl" />
-        {tester && (
+        {tester && sign_up_button && (
           <LinkButton
             href={sign_up_button.href}
             size={sign_up_button.size}
@@ -73,14 +80,19 @@ export default async function EventsDetailPage({
           </LinkButton>
         )}
       </Container>
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+
       <Container
         padding="both-padding"
         background={is_past_event ? "sapphire" : "stone"}
       >
         <SectionGroup>
           <SectionEvent
-            title={`Event details`}
+            title={dictionary.pages.events.title}
             date={date_event}
             location={address}
             time={time}

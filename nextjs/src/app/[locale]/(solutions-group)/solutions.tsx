@@ -14,7 +14,7 @@ export default async function Solutions({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `solutions-overview?locale=${activeLocale.locale}`
+  const url = `solutions-overview?locale=${activeLocale.locale}&status=published`
 
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: string }) => {
@@ -39,7 +39,12 @@ export default async function Solutions({
           <Text markdown={intro} />
         </Intro>
       )}
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+
       <Footer locale={activeLocale.locale} />
     </>
   )

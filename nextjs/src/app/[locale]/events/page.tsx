@@ -15,9 +15,9 @@ export default async function EventsOverviewPage({
 }: {
   params: { locale: string }
 }) {
-  const url = `events-overview/?locale=${locale}`
+  const url = `events-overview/?locale=${locale}&status=published`
   const data = await strapi(url)
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}/events`,
     locale: locale,
     isActive: true,
@@ -33,7 +33,7 @@ export default async function EventsOverviewPage({
     },
   )
 
-  locales.push(currentLocale)
+  locales.push(activeLocale)
 
   const { hero, intro, sections } = data
 
@@ -72,7 +72,12 @@ export default async function EventsOverviewPage({
           </CardGroup>
         </Container>
       )}
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, locale),
+        )}
+
       <Footer locale={locale} />
     </>
   )

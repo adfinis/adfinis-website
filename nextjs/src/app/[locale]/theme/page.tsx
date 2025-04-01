@@ -1,4 +1,3 @@
-"use client"
 import Hero from "@/components/hero"
 import Intro from "@/components/intro"
 import Link from "@/components/link-button"
@@ -49,7 +48,6 @@ import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
-import GetStartedForm from "@/components/form/get-started-form"
 import { type Locale } from "@/hooks/useLocale"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
@@ -64,12 +62,14 @@ import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
+import { getDictionary } from "@/lib/get-dictionary"
 
-export default function Theme({
+export default async function Theme({
   params: { locale },
 }: {
   params: { locale: Locale }
 }) {
+  const dictionary = await getDictionary(locale)
   return (
     <main className="bg-white">
       <NavProvider>
@@ -85,7 +85,6 @@ export default function Theme({
           </Link>
         </Hero>
       </NavProvider>
-
       <Intro>
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} />
@@ -284,7 +283,7 @@ export default function Theme({
         background="stone"
         padding="both-padding"
       >
-        <GetStartedForm locale={locale} />
+        <StandardForm dictionary={dictionary} />
       </Container>
 
       <Container
@@ -292,7 +291,7 @@ export default function Theme({
         background="neutral"
         padding="both-padding"
       >
-        <StandardForm locale={locale} />
+        <StandardForm dictionary={dictionary} />
       </Container>
 
       <Container

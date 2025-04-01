@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Page"
+    "displayName": "Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -64,25 +65,27 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.product-feature-card",
-        "sections.icon-card-section-with-relation",
+        "sections.color-card-carousel",
+        "sections.content-carousel",
+        "sections.content-highlight-section",
+        "sections.cta-banner",
         "sections.event-details-section",
+        "sections.feature-cards",
+        "sections.hallmarks-section",
+        "sections.icon-card-section-with-relation",
+        "sections.image-carousel",
+        "sections.kpi-section",
+        "sections.product-feature-card",
         "sections.projects-card-section-with-external-link",
+        "sections.quote-section",
+        "sections.regular-form-section",
         "sections.services-section",
+        "sections.single-column-section",
         "sections.two-column-section",
         "sections.video-section",
         "sections.video-with-text-section",
-        "sections.feature-cards",
-        "sections.content-carousel",
-        "sections.quote-section",
-        "sections.content-highlight-section",
-        "sections.color-card-carousel",
-        "sections.cta-banner",
-        "sections.single-column-section",
-        "sections.kpi-section",
-        "sections.hallmarks-section",
-        "sections.regular-form-section",
-        "sections.image-carousel"
+        "sections.team-member-card-section",
+        "sections.career-card-section"
       ]
     }
   }

@@ -21,6 +21,25 @@ export interface CardsCardSliderIntro extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsCareerCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_career_cards';
+  info: {
+    displayName: 'Career card';
+  };
+  attributes: {
+    country: Schema.Attribute.Enumeration<
+      ['au', 'ch', 'de', 'eg', 'nl', 'nz', 'uk', 'us']
+    > &
+      Schema.Attribute.DefaultTo<'ch'>;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    location: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    workload: Schema.Attribute.String;
+  };
+}
+
 export interface CardsCategoryCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_category_cards';
   info: {
@@ -178,6 +197,19 @@ export interface CardsSimpleCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsTeamMemberCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_team_member_cards';
+  info: {
+    displayName: 'Team member card';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    full_name: Schema.Attribute.String & Schema.Attribute.Required;
+    photo_hover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    photo_main: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
 export interface ExternalLinksCallToAction extends Struct.ComponentSchema {
   collectionName: 'components_external_links_call_to_actions';
   info: {
@@ -219,18 +251,6 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
     size: Schema.Attribute.Enumeration<['large', 'small']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'large'>;
-  };
-}
-
-export interface GlobalBlogBlock extends Struct.ComponentSchema {
-  collectionName: 'components_global_blog_blocks';
-  info: {
-    description: '';
-    displayName: 'Blog Block';
-  };
-  attributes: {
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
   };
 }
 
@@ -468,6 +488,37 @@ export interface RichHeadingsH3 extends Struct.ComponentSchema {
   };
   attributes: {
     title: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsBlogContentSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_blog_content_sections';
+  info: {
+    displayName: 'Blog content section';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsCareerCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_career_card_sections';
+  info: {
+    displayName: 'Career card section';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.career-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -894,6 +945,19 @@ export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTeamMemberCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_team_member_card_sections';
+  info: {
+    displayName: 'Team member card section';
+  };
+  attributes: {
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    team_members: Schema.Attribute.Component<'cards.team-member-card', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsTwoColumnSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_two_column_sections';
   info: {
@@ -945,15 +1009,16 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'cards.card-slider-intro': CardsCardSliderIntro;
+      'cards.career-card': CardsCareerCard;
       'cards.category-card': CardsCategoryCard;
       'cards.color-card': CardsColorCard;
       'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
       'cards.simple-card': CardsSimpleCard;
+      'cards.team-member-card': CardsTeamMemberCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
-      'global.blog-block': GlobalBlogBlock;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;
@@ -971,6 +1036,8 @@ declare module '@strapi/strapi' {
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
+      'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
@@ -995,6 +1062,7 @@ declare module '@strapi/strapi' {
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
       'sections.single-column-section': SectionsSingleColumnSection;
+      'sections.team-member-card-section': SectionsTeamMemberCardSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
       'sections.video-with-text-section': SectionsVideoWithTextSection;

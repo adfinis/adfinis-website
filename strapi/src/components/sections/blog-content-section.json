@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_blog_content_sections",
+  "info": {
+    "displayName": "Blog content section"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

@@ -15,7 +15,7 @@ export default async function CaseStudiesOverviewPage({
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `case-studies-overview?locale=${activeLocale.locale}`
+  const url = `case-studies-overview?locale=${activeLocale.locale}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: string }) => {
     return {
@@ -40,7 +40,12 @@ export default async function CaseStudiesOverviewPage({
         </Intro>
       )}
       <CaseStudiesOverviewGridSection locale={activeLocale.locale} />
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+
       <Footer locale={activeLocale.locale} />
     </>
   )

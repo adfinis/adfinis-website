@@ -30,7 +30,7 @@
         "source.fixAll.eslint": "always"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "GitHub.copilot"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true
 }

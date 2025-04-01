@@ -58,6 +58,9 @@ module.exports = (config, { strapi }) => {
             'sections.single-column-section': {
               populate: '*',
             },
+            'sections.blog-content-section': {
+              populate: '*',
+            },
             'sections.icon-card-section-with-relation': {
               populate: {
                 cards: {
@@ -98,8 +101,24 @@ module.exports = (config, { strapi }) => {
             'sections.video-with-text-section': {
               populate: '*',
             },
+            'sections.team-member-card-section': {
+              populate: {
+                team_members: {
+                  populate: '*',
+                },
+                props: true,
+              },
+            },
             'sections.regular-form-section': {
               populate: '*',
+            },
+            'sections.career-card-section': {
+              populate: {
+                cards: {
+                  populate: '*',
+                },
+                props: true,
+              },
             },
             'sections.services-section': {
               populate: '*'

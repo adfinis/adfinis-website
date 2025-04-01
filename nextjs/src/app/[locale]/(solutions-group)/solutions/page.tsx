@@ -6,10 +6,11 @@ export default function SolutionsPage({
 }: {
   params: { locale: string }
 }) {
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}/${SLUGS[locale]}`,
     locale: locale,
     isActive: true,
   }
-  return <Solutions activeLocale={currentLocale} />
+
+  return <Solutions activeLocale={activeLocale} />
 }
