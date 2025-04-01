@@ -9,12 +9,15 @@ import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import Textarea from "@/components/form-fields/textarea"
+import { Dictionary } from "@/lib/get-dictionary"
+import { Locale } from "@/hooks/useLocale"
 
 type Props = {
-  locale?: string
+  locale: Locale
   submitLabel: string
+  dictionary: Dictionary
 }
-export default function EventForm({ submitLabel, locale }: Props) {
+export default function EventForm({ submitLabel, dictionary, locale }: Props) {
   const action = saveEventForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
@@ -31,23 +34,23 @@ export default function EventForm({ submitLabel, locale }: Props) {
         <FormColumns>
           <Input
             name={"firstName"}
-            label={"First name"}
+            label={dictionary.forms.firstName}
             errorMessage={state?.errors?.first_name ?? []}
           />
           <Input
             name={"lastName"}
-            label={"Last name"}
+            label={dictionary.forms.lastName}
             errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
         <FormColumns>
           <Email
-            label={"e-mail"}
+            label={dictionary.forms.email}
             name={"email"}
             errorMessage={state?.errors?.email ?? []}
           />
           <Input
-            label={"Phone number"}
+            label={dictionary.forms.phone}
             name={"phone_number"}
             errorMessage={state?.errors?.phone_number ?? []}
           />
@@ -55,23 +58,23 @@ export default function EventForm({ submitLabel, locale }: Props) {
         <FormColumns>
           <Input
             name={"company_name"}
-            label={"Company Name"}
+            label={dictionary.forms.companyName}
             errorMessage={state?.errors?.company_name ?? []}
           />
           <Input
             name={"job_function"}
-            label={"Job Function"}
+            label={dictionary.forms.jobFunction}
             errorMessage={state?.errors?.job_function ?? []}
           />
         </FormColumns>
         <Textarea
-          label={"Message"}
+          label={dictionary.forms.message}
           name={"message"}
           errorMessage={state?.errors?.message ?? []}
         />
         <Checkbox
           name="privacy_policy"
-          label={"I accept the privacy policy of Adfinis"}
+          label={dictionary.forms.acceptPrivacyPolicy}
           errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">

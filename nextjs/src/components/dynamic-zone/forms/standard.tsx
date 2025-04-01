@@ -8,12 +8,15 @@ import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import { saveStandardForm } from "@/app/actions"
 import { useFormState } from "react-dom"
+import { type Dictionary } from "@/lib/get-dictionary"
+import { Locale } from "@/hooks/useLocale"
 
 type Props = {
-  locale?: string
+  locale: Locale
   submitLabel: string
+  dictionary: Dictionary
 }
-export default function Standard({ submitLabel, locale }: Props) {
+export default function Standard({ submitLabel, dictionary, locale }: Props) {
   const action = saveStandardForm.bind(null, locale ?? "en")
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
@@ -30,33 +33,33 @@ export default function Standard({ submitLabel, locale }: Props) {
         <FormColumns>
           <Input
             name={"firstName"}
-            label={"First name"}
+            label={dictionary.forms.firstName}
             errorMessage={state?.errors?.first_name ?? []}
           />
           <Input
             name={"lastName"}
-            label={"Last name"}
+            label={dictionary.forms.lastName}
             errorMessage={state?.errors?.last_name ?? []}
           />
         </FormColumns>
         <Email
-          label={"e-mail"}
+          label={dictionary.forms.email}
           name={"email"}
           errorMessage={state?.errors?.email ?? []}
         />
         <Input
           name={"company_name"}
-          label={"Company Name"}
+          label={dictionary.forms.companyName}
           errorMessage={state?.errors?.company_name ?? []}
         />
         <Input
           name={"job_function"}
-          label={"Job Function"}
+          label={dictionary.forms.jobFunction}
           errorMessage={state?.errors?.job_function ?? []}
         />
         <Checkbox
           name="privacy_policy"
-          label={"I accept the privacy policy of Adfinis"}
+          label={dictionary.forms.acceptPrivacyPolicy}
           errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">

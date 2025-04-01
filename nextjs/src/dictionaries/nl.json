@@ -4,5 +4,35 @@
         "accept": "Alles accepteren",
         "reject": "Alles weigeren",
         "personalize": "Personaliseren"
+    },
+    "forms": {
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "email": "E-mail",
+        "phone": "Telefoonnummer",
+        "companyName": "Bedrijfsnaam",
+        "jobFunction": "Functie",
+        "message": "Bericht",
+        "acceptPrivacyPolicy": "Ik accepteer het privacybeleid van Adfinis",
+        "submitSuccessful": "Formulier succesvol verzonden"
+    },
+    "validation": {
+        "required": "Dit veld is verplicht.",
+        "email": "Voer een geldig e-mailadres in.",
+        "min": "Dit veld moet minimaal ${min} tekens lang zijn.",
+        "max": "Dit veld mag maximaal ${max} tekens lang zijn.",
+        "oneOf": "Dit veld moet een van de volgende waarden zijn: ${values}.",
+        "privacyPolicy": "Je moet het privacybeleid accepteren.",
+        "phone": {
+            "format": "Ongeldig telefoonnummerformaat.",
+            "short": "Telefoonnummer is te kort.",
+            "long": "Telefoonnummer is te lang."
+        }
+    },
+    "pages": {
+        "events": {
+            "title": "Evenement details",
+            "cta": "Meld je nu aan"
+        }
     }
 }

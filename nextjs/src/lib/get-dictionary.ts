@@ -1,4 +1,4 @@
-import { Locale } from "@/hooks/useLocale"
+import { type Locale } from "@/hooks/useLocale"
 import "server-only"
 
 const dictionaries = {
@@ -11,11 +11,13 @@ const dictionaries = {
   //     import("@/dictionaries/en-AU.json").then((module) => module.default),
   //   "nl-NL": () =>
   //     import("@/dictionaries/nl-NL.json").then((module) => module.default),
-  //   "de-CH": () =>
-  //     import("@/dictionaries/de-CH.json").then((module) => module.default),
+  "de-CH": () =>
+    import("@/dictionaries/de-CH.json").then((module) => module.default),
   //   "de-DE": () =>
   //     import("@/dictionaries/de-DE.json").then((module) => module.default),
 }
 
 export const getDictionary = async (locale: Locale) =>
   (dictionaries[locale as keyof typeof dictionaries] || dictionaries.en)()
+
+export type Dictionary = Awaited<ReturnType<typeof getDictionary>>
