@@ -4,7 +4,42 @@ import StandardForm from "./standard-form"
 
 test("should render the StandardForm with basic validation", async () => {
   // act
-  render(<StandardForm locale="en-US" />)
+  render(
+    <StandardForm
+      dictionary={{
+        cookieBanner: {
+          text: "We use cookies to ensure you get the best experience on our website. By using our site, you agree to our [cookie policy](/cookie-policy).",
+          accept: "Accept all",
+          reject: "Reject all",
+          personalize: "Personalize",
+        },
+        forms: {
+          firstName: "First Name",
+          lastName: "Last Name",
+          email: "Email",
+          phone: "Phone",
+          companyName: "Company Name",
+          jobFunction: "Job Function",
+          message: "Message",
+          acceptPrivacyPolicy: "I accept the privacy policy of Adfinis",
+          submitSuccessful: "Form successfully submitted",
+        },
+        validation: {
+          required: "This field is required.",
+          email: "Please enter a valid email address.",
+          min: "This field must be at least ${min} characters long.",
+          max: "This field must be at most ${max} characters long.",
+          oneOf: "This field must be one of the following values: ${values}.",
+          privacyPolicy: "You must accept the privacy policy.",
+          phone: {
+            format: "Invalid phone number format.",
+            short: "Phone number is too short.",
+            long: "Phone number is too long.",
+          },
+        },
+      }}
+    />,
+  )
 
   // assert
   expect(screen.getByTestId("firstName")).toBeDefined()
