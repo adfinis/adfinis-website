@@ -1,8 +1,8 @@
 "use server"
 
 import { z } from "zod"
-import messages from "@/components/form/messages"
 import formSubmit from "@/lib/form-submit"
+import { type Dictionary } from "@/hooks/useDictionary"
 
 type SaveSimpleFormStateErrors = {
   first_name?: string[]
@@ -16,30 +16,26 @@ type SaveSimpleFormState = {
   errors?: SaveSimpleFormStateErrors
 }
 
-const shape = (locale: string) => {
+const shape = (dictionary: Dictionary) => {
   return {
-    //@ts-ignore
-    first_name: z.string().trim().min(1, messages[locale].required),
-    //@ts-ignore
-    last_name: z.string().trim().min(1, messages[locale].required),
-    //@ts-ignore
-    email: z.string().email(messages[locale].email),
+    first_name: z.string().trim().min(1, dictionary.validation.required),
+    last_name: z.string().trim().min(1, dictionary.validation.required),
+    email: z.string().email(dictionary.validation.email),
     privacy_policy: z.preprocess(
       (val) => val === "on",
       z.boolean().refine((val) => val, {
-        //@ts-ignore
-        message: messages[locale].privacyPolicy,
+        message: dictionary.validation.privacyPolicy,
       }),
     ),
   }
 }
 
 export async function saveSimpleForm(
-  locale: string,
+  dictionary: Dictionary,
   state: SaveSimpleFormState,
   formData: FormData,
 ): Promise<SaveSimpleFormState> {
-  const schema = z.object(shape(locale))
+  const schema = z.object(shape(dictionary))
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -77,11 +73,11 @@ type StandardFormState = {
   errors?: StandardFormStateErrors
 }
 export async function saveStandardForm(
-  locale: string,
+  dictionary: Dictionary,
   state: StandardFormState,
   formData: FormData,
 ): Promise<StandardFormState> {
-  const schema = z.object(shape(locale))
+  const schema = z.object(shape(dictionary))
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -117,14 +113,14 @@ type ContactFormState = {
   errors?: ContactFormStateErrors
 }
 export async function saveContactForm(
-  locale: string,
+  dictionary: Dictionary,
   state: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
   const schema = z.object({
-    ...shape(locale),
+    ...shape(dictionary),
     //@ts-ignore
-    message: z.string().trim().min(1, messages[locale].required),
+    message: z.string().trim().min(1, dictionary.validation.required),
   })
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -162,25 +158,25 @@ type EventFormState = {
   errors?: EventFormStateErrors
 }
 export async function saveEventForm(
-  locale: string,
+  dictionary: Dictionary,
   state: EventFormState,
   formData: FormData,
 ): Promise<EventFormState> {
   const schema = z.object({
-    ...shape(locale),
+    ...shape(dictionary),
     // @ts-ignore
-    message: z.string().trim().min(1, messages[locale].required),
+    message: z.string().trim().min(1, dictionary.validation.required),
     phone_number: z
       .string()
       .optional()
       .refine((val) => !val || /^\+?[0-9]+$/.test(val), {
-        message: "Invalid phone number format.",
+        message: dictionary.validation.phone.format,
       })
       .refine((val) => !val || val.length >= 8, {
-        message: "Phone number is too short.",
+        message: dictionary.validation.phone.short,
       })
       .refine((val) => !val || val.length <= 15, {
-        message: "Phone number is too long.",
+        message: dictionary.validation.phone.long,
       }),
   })
   const validation = schema.safeParse({

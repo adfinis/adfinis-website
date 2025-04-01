@@ -11,8 +11,8 @@ const dictionaries = {
   //     import("@/dictionaries/en-AU.json").then((module) => module.default),
   //   "nl-NL": () =>
   //     import("@/dictionaries/nl-NL.json").then((module) => module.default),
-  //   "de-CH": () =>
-  //     import("@/dictionaries/de-CH.json").then((module) => module.default),
+  "de-CH": () =>
+    import("@/dictionaries/de-CH.json").then((module) => module.default),
   //   "de-DE": () =>
   //     import("@/dictionaries/de-DE.json").then((module) => module.default),
 }
@@ -21,6 +21,7 @@ export const fetchDictionary = async (locale: Locale) =>
   (dictionaries[locale as keyof typeof dictionaries] || dictionaries.en)()
 
 export async function getDictionary(locale: Locale) {
+  console.log({ locale })
   return await fetchDictionary(locale)
 }
 

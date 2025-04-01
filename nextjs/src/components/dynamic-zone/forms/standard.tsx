@@ -15,8 +15,8 @@ type Props = {
   submitLabel: string
   dictionary: Dictionary
 }
-export default function Standard({ submitLabel, locale, dictionary }: Props) {
-  const action = saveStandardForm.bind(null, locale ?? "en")
+export default function Standard({ submitLabel, dictionary }: Props) {
+  const action = saveStandardForm.bind(null, dictionary)
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 

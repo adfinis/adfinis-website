@@ -15,5 +15,18 @@
         "message": "Message",
         "acceptPrivacyPolicy": "I accept the privacy policy of Adfinis",
         "submitSuccessful": "Form successfully submitted"
+    },
+    "validation": {
+        "required": "This field is required.",
+        "email": "Please enter a valid email address.",
+        "min": "This field must be at least ${min} characters long.",
+        "max": "This field must be at most ${max} characters long.",
+        "oneOf": "This field must be one of the following values: ${values}.",
+        "privacyPolicy": "You must accept the privacy policy.",
+        "phone": {
+            "format": "Invalid phone number format.",
+            "short": "Phone number is too short.",
+            "long": "Phone number is too long."
+        }
     }
 }

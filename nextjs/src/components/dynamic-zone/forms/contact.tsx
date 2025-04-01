@@ -12,12 +12,11 @@ import Textarea from "@/components/form-fields/textarea"
 import { Dictionary } from "@/hooks/useDictionary"
 
 type Props = {
-  locale?: string
   submitLabel: string
   dictionary: Dictionary
 }
-export default function Contact({ submitLabel, locale, dictionary }: Props) {
-  const action = saveContactForm.bind(null, locale ?? "en")
+export default function Contact({ submitLabel, dictionary }: Props) {
+  const action = saveContactForm.bind(null, dictionary)
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 

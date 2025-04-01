@@ -39,13 +39,16 @@ export default async function LandingPage({
         <NavBar items={locales} />
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
-
       {intro && (
         <Intro>
           <Text markdown={intro} />
         </Intro>
       )}
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) => {
+          return renderSections(section, index, currentLocale.locale)
+        })}
       <Footer locale={currentLocale.locale} />
     </>
   )

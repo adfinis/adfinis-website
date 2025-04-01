@@ -11,13 +11,12 @@ import Checkbox from "@/components/form-fields/checkbox"
 import { Dictionary } from "@/hooks/useDictionary"
 
 type Props = {
-  locale?: string
   submitLabel: string
   dictionary: Dictionary
 }
 
-export default function Short({ submitLabel, locale, dictionary }: Props) {
-  const action = saveSimpleForm.bind(null, locale ?? "en")
+export default function Short({ submitLabel, dictionary }: Props) {
+  const action = saveSimpleForm.bind(null, dictionary)
   const [state, formAction] = useFormState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 

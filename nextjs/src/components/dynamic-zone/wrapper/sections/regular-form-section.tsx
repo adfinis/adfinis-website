@@ -32,32 +32,16 @@ export default async function RegularFormSection({
     >
       <Title align="center" boldness="light" markdown={section.title ?? ""} />
       {section.form_type === "short" && (
-        <Short
-          locale={locale}
-          submitLabel={section.submit_label}
-          dictionary={dictionary}
-        />
+        <Short submitLabel={section.submit_label} dictionary={dictionary} />
       )}
       {section.form_type === "standard" && (
-        <Standard
-          dictionary={dictionary}
-          locale={locale}
-          submitLabel={section.submit_label}
-        />
+        <Standard dictionary={dictionary} submitLabel={section.submit_label} />
       )}
       {section.form_type === "contact" && (
-        <Contact
-          dictionary={dictionary}
-          locale={locale}
-          submitLabel={section.submit_label}
-        />
+        <Contact dictionary={dictionary} submitLabel={section.submit_label} />
       )}
       {section.form_type === "event" && (
-        <EventForm
-          dictionary={dictionary}
-          locale={locale}
-          submitLabel={section.submit_label}
-        />
+        <EventForm dictionary={dictionary} submitLabel={section.submit_label} />
       )}
     </Container>
   )

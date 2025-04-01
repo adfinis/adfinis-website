@@ -2,79 +2,20 @@
 import React from "react"
 import { Formik, Form } from "formik"
 import * as Yup from "yup"
-import messages from "./messages"
 import FormText from "./form-text"
 import FormEmail from "./form-email"
 import Button from "../button"
 import FormCheckbox from "./form-checkbox"
 import FormColumns from "./form-columns"
-import type { FormProps } from "./form"
-import { Locale } from "@/hooks/useLocale"
+import { type Dictionary } from "@/hooks/useDictionary"
 
-const StandardForm: React.FC<FormProps> = ({ locale }) => {
-  const getLabels = (locale: Locale) => {
-    switch (locale) {
-      case "en":
-      case "en-US":
-      case "en-AU":
-        return {
-          firstName: dictionary.forms.firstName,
-          lastName: dictionary.forms.lastName,
-          email: "Email",
-          company: "Company",
-          job: "Job",
-          privacyPolicy: dictionary.forms.acceptPrivacyPolicy,
-          submit: "Submit",
-        }
-      case "nl-NL":
-        return {
-          firstName: "Voornaam",
-          lastName: "Achternaam",
-          email: "E-mail",
-          company: "Bedrijf",
-          job: "Functie",
-          privacyPolicy: "Ik accepteer het privacybeleid van Adfinis",
-          submit: "Verzenden",
-        }
-      case "de-CH":
-        return {
-          firstName: "Vorname",
-          lastName: "Nachname",
-          email: "E-Mail",
-          company: "Firma",
-          job: "Beruf",
-          privacyPolicy: "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
-          submit: "Absenden",
-        }
-      case "de-DE":
-        return {
-          firstName: "Vorname",
-          lastName: "Nachname",
-          email: "E-Mail",
-          company: "Firma",
-          job: "Beruf",
-          privacyPolicy: "Ich akzeptiere die Datenschutzrichtlinie von Adfinis",
-          submit: "Absenden",
-        }
-      default:
-        return {
-          firstName: dictionary.forms.firstName,
-          lastName: dictionary.forms.lastName,
-          email: "Email",
-          company: "Company",
-          job: "Job",
-          privacyPolicy: dictionary.forms.acceptPrivacyPolicy,
-          submit: "Submit",
-        }
-    }
-  }
-
+const StandardForm: React.FC<{ dictionary: Dictionary }> = ({ dictionary }) => {
   Yup.setLocale({
     mixed: {
-      required: ({ path }) => messages[locale].required,
+      required: ({ path }) => dictionary.validation.required,
     },
     string: {
-      email: ({ path }) => messages[locale].email,
+      email: ({ path }) => dictionary.validation.email,
     },
   })
 
@@ -97,10 +38,21 @@ const StandardForm: React.FC<FormProps> = ({ locale }) => {
     email: Yup.string().email().required(),
     company: Yup.string().required(),
     job: Yup.string().required(),
-    privacyPolicy: Yup.boolean().oneOf([true], messages[locale].privacyPolicy),
+    privacyPolicy: Yup.boolean().oneOf(
+      [true],
+      dictionary.validation.privacyPolicy,
+    ),
   })
 
-  const labels = getLabels(locale)
+  const labels = {
+    firstName: dictionary.forms.firstName,
+    lastName: dictionary.forms.lastName,
+    email: dictionary.forms.email,
+    company: dictionary.forms.companyName,
+    job: dictionary.forms.jobFunction,
+    privacyPolicy: dictionary.forms.acceptPrivacyPolicy,
+    submit: dictionary.forms.submitSuccessful,
+  }
 
   return (
     <Formik

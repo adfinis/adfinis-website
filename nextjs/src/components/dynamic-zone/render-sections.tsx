@@ -21,6 +21,7 @@ import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-caro
 import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
 import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
 import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
+import { type Locale } from "@/hooks/useLocale"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -65,8 +66,8 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <RegularFormSection
           key={`sections.regular-form_${index}`}
-          locale={locale}
           section={section}
+          locale={locale as Locale}
         />
       )
     case "sections.video-with-text-section":

@@ -17,11 +17,11 @@
         "submitSuccessful": "Formular erfolgreich übermittelt"
     },
     "validation": {
-        "required": "Dieses Feld ist erforderlich.",
+        "required": "Dieses Feld muss ausgefüllt werden.",
         "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
         "min": "Dieses Feld muss mindestens ${min} Zeichen lang sein.",
-        "max": "Dieses Feld darf maximal ${max} Zeichen lang sein.",
-        "oneOf": "Dieses Feld muss einen der folgenden Werte haben: ${values}.",
+        "max": "Dieses Feld darf höchstens ${max} Zeichen lang sein.",
+        "oneOf": "Dieses Feld muss einen der folgenden Werte enthalten: ${values}.",
         "privacyPolicy": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
         "phone": {
             "format": "Ungültiges Telefonnummernformat.",
