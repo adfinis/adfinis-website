@@ -40,6 +40,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           className={clsx([
             "absolute inset-0 object-cover object-center z-0 h-full w-full",
           ])}
+          priority
         />
       )}
       {
