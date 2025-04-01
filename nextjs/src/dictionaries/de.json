@@ -28,5 +28,11 @@
             "short": "Die Telefonnummer ist zu kurz.",
             "long": "Die Telefonnummer ist zu lang."
         }
+    },
+    "pages": {
+        "events": {
+            "title": "Event Details",
+            "cta": "Jetzt anmelden"
+        }
     }
 }

@@ -28,5 +28,11 @@
             "short": "Phone number is too short.",
             "long": "Phone number is too long."
         }
+    },
+    "pages": {
+        "events": {
+            "title": "Event details",
+            "cta": "Sign up now"
+        }
     }
 }

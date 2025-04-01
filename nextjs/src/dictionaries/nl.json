@@ -28,5 +28,11 @@
             "short": "Telefoonnummer is te kort.",
             "long": "Telefoonnummer is te lang."
         }
+    },
+    "pages": {
+        "events": {
+            "title": "Evenement details",
+            "cta": "Meld je nu aan"
+        }
     }
 }

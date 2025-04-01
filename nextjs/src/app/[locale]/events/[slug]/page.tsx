@@ -10,6 +10,8 @@ import SectionGroup from "@/components/sections/section-group"
 import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { getDictionary } from "@/lib/get-dictionary"
+import { Locale } from "@/hooks/useLocale"
 
 export default async function EventsDetailPage({
   params: { locale, slug },
@@ -19,6 +21,7 @@ export default async function EventsDetailPage({
     slug: string
   }
 }) {
+  const dictionary = await getDictionary(locale as Locale)
   const activeLocale = {
     href: `/${locale}/events/${slug}`,
     locale: locale,
@@ -84,7 +87,7 @@ export default async function EventsDetailPage({
       >
         <SectionGroup>
           <SectionEvent
-            title={`Event details`}
+            title={dictionary.pages.events.title}
             date={date_event}
             location={address}
             time={time}
