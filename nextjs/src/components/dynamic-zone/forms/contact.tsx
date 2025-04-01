@@ -9,7 +9,7 @@ import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import Textarea from "@/components/form-fields/textarea"
-import { Dictionary } from "@/lib/get-locale"
+import { Dictionary } from "@/lib/get-dictionary"
 import { Locale } from "@/hooks/useLocale"
 
 type Props = {

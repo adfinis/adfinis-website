@@ -3,7 +3,7 @@ import Button from "./button"
 import Text from "./text"
 import { hasCookie, setCookieAction } from "@/app/cookie-actions"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
-import { getDictionary } from "@/lib/get-locale"
+import { getDictionary } from "@/lib/get-dictionary"
 
 const CookieNotice: React.FC<{ locale: Locale }> = async ({ locale }) => {
   const hasConsent = await hasCookie(COOKIE_CONSENT_KEY)

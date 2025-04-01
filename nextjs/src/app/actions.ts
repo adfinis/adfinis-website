@@ -2,9 +2,9 @@
 
 import { z } from "zod"
 import formSubmit from "@/lib/form-submit"
-import { type Dictionary } from "@/lib/get-locale"
+import { type Dictionary } from "@/lib/get-dictionary"
 import { Locale } from "@/hooks/useLocale"
-import { getDictionary } from "@/lib/get-locale"
+import { getDictionary } from "@/lib/get-dictionary"
 
 type SaveSimpleFormStateErrors = {
   first_name?: string[]
