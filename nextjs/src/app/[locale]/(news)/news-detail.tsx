@@ -47,7 +47,11 @@ export default async function NewsDetail({
           </div>
         </div>
       </section>
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
       <Footer locale={activeLocale.locale} />
     </>
   )

@@ -39,7 +39,12 @@ export default async function Solutions({
           <Text markdown={intro} />
         </Intro>
       )}
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+
       <Footer locale={activeLocale.locale} />
     </>
   )

@@ -8,13 +8,13 @@ import { useLinkedLocales } from "@/components/nav-bar/linked-locales-provider"
 
 export default function ActionWrappers() {
   const linkedLocales = useLinkedLocales()
-  const currentLocale = linkedLocales.filter((value) => value.isActive)[0]
+  const activeLocale = linkedLocales.filter((value) => value.isActive)[0]
   return (
     <div className="flex justify-end items-center gap-4 lg:gap-6 text-neutral">
       <Menu>
         <MenuButton className="inline-flex items-center gap-3 rounded-md bg-gray-800 py-1.5 px-3 text-14 uppercase font-semibold focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-stone/70 data-[focus]:outline-1 data-[focus]:outline-neutral">
           <IconGlobe />
-          <span className="hidden lg:block">{currentLocale.locale}</span>
+          <span className="hidden lg:block">{activeLocale.locale}</span>
           <IconChevronDown />
         </MenuButton>
         <MenuItems

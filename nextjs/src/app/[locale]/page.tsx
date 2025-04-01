@@ -7,10 +7,10 @@ export default function Home({
 }: {
   params: { locale: string }
 }) {
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}`,
     locale: locale,
     isActive: true,
   }
-  return <Homepage activeLocale={currentLocale} />
+  return <Homepage activeLocale={activeLocale} />
 }

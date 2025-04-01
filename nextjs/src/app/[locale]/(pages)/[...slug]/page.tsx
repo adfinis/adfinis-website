@@ -13,7 +13,7 @@ export default async function LandingPage({
   params: { locale: string; slug: string[] }
 }) {
   const URI_PATH = slug.join("/")
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}/${URI_PATH}`,
     locale: locale,
     isActive: true,
@@ -29,7 +29,7 @@ export default async function LandingPage({
       }
     },
   )
-  locales.push(currentLocale)
+  locales.push(activeLocale)
 
   const { hero, intro, sections } = data
 
@@ -46,10 +46,10 @@ export default async function LandingPage({
       )}
       {sections &&
         sections.length > 0 &&
-        sections.map((section: any, index: number) => {
-          return renderSections(section, index, currentLocale.locale)
-        })}
-      <Footer locale={currentLocale.locale} />
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+      <Footer locale={activeLocale.locale} />
     </>
   )
 }

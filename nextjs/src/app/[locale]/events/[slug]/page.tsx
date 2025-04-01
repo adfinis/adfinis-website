@@ -80,7 +80,12 @@ export default async function EventsDetailPage({
           </LinkButton>
         )}
       </Container>
-      {sections && sections.length > 0 && sections.map(renderSections)}
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
+
       <Container
         padding="both-padding"
         background={is_past_event ? "sapphire" : "stone"}

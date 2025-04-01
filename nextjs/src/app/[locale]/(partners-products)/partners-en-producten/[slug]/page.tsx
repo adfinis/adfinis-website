@@ -9,11 +9,11 @@ export default async function PartnerAndProductsPage({
     slug: string
   }
 }) {
-  const currentLocale = {
+  const activeLocale = {
     href: `/${locale}/${SLUGS[locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }
 
-  return <PartnersProducts activeLocale={currentLocale} slug={slug} />
+  return <PartnersProducts activeLocale={activeLocale} slug={slug} />
 }
