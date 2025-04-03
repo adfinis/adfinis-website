@@ -16,6 +16,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
   const { navActive, setNavActive } = useNavContext()
 
   const showDesktopItems = () => {
+    if (!navItem.menu_segment?.length) return
     setIsShowing(true)
     setNavActive(true)
   }
@@ -32,7 +33,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
       {/* title of the menu items (always visible, in topbar) */}
       {navItem.url ? (
         <Link
-          className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8 group"
+          className="cursor-pointer inline-flex text-sm/6 font-semibold text-neutral group pr-8 py-4"
           href={navItem.url}
           onMouseEnter={showDesktopItems}
         >
@@ -41,7 +42,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
       ) : (
         <h2
           onMouseEnter={showDesktopItems}
-          className="cursor-pointer inline-flex items-center gap-x-1 text-sm/6 font-semibold text-neutral py-4 pr-8"
+          className="cursor-pointer text-sm/6 font-semibold text-neutral"
         >
           {navItem.title}
         </h2>
@@ -62,7 +63,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
             },
           ])}
         >
-          <div className="flex justify-start items-start gap-x-4 text-neutral">
+          <div className="flex justify-start items-start gap-x-4">
             {navItem.menu_segment?.map((item, index) => (
               <div
                 className="grid grid-cols-1 content-start gap-4 pr-2 border-r last-of-type:border-r-0 min-h-72 border-neutral/30 w-1/6"
