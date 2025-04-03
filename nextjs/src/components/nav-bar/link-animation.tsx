@@ -10,7 +10,7 @@ const LinkAnimation: React.FC<LinkAnimationProps> = ({ children }) => {
     <span
       className={clsx([
         "transition-all duration-300 ease-out",
-        "bg-gradient-to-r from-sunglow/60 to-sunglow hover:text-sunglow",
+        "text-white bg-gradient-to-r from-sunglow/60 to-sunglow group-hover:text-sunglow",
         "bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
       ])}
     >

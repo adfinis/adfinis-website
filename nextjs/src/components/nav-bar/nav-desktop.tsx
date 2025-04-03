@@ -94,7 +94,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
             </section>
             {menuExpanded && (
               // The Sub-bar
-              <section className="hidden lg:block min-h-12" id="nav-items">
+              <section className="hidden lg:block" id="nav-items">
                 <div className="flex justify-start items-center h-full relative">
                   {navItems.map((item, index) => (
                     <div key={index}>
