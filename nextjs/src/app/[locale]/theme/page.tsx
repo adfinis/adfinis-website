@@ -454,7 +454,7 @@ export default async function Theme({
               key={index}
               title={career.title}
               description={career.description}
-              imageUrl={career.image.url}
+              imageUrl={career.image?.url || ""}
               workload={career.workload}
               location={career.location}
               country={career.country as CareerCountry}

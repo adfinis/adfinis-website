@@ -65,7 +65,7 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
                 "md:w-40 md:h-40",
                 "lg:w-60 lg:h-60",
               ])}
-              src={image.url}
+              src={image?.url || ""}
               alt={image.alt || author || ""}
               width={240}
               height={240}
