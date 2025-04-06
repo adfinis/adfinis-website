@@ -11,7 +11,7 @@ import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary"
-import { Locale } from "@/hooks/useLocale"
+import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 
 export default async function EventsDetailPage({
   params: { locale, slug },

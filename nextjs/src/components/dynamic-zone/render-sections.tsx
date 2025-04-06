@@ -21,7 +21,7 @@ import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-caro
 import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
 import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
 import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
-import { type Locale } from "@/hooks/useLocale"
+import { type Locale } from "@/lib/locale"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {

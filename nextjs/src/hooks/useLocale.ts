@@ -1,18 +1,5 @@
 import { useParams } from "next/navigation"
 
-export const locales = [
-  "en",
-  "en-US",
-  "en-AU",
-  "nl",
-  "nl-NL",
-  "de",
-  "de-CH",
-  "de-DE",
-] as const
-
-export type Locale = (typeof locales)[number]
-
 const getLocale = (input: unknown) => {
   if (typeof input !== "string") return "en-US"
   switch (input) {

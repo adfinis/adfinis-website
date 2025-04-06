@@ -1,4 +1,4 @@
-import { type Locale } from "@/hooks/useLocale"
+import { type Locale } from "@/lib/locale"
 import "server-only"
 
 const dictionaries = {

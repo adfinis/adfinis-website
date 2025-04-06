@@ -3,7 +3,7 @@
 import { z } from "zod"
 import formSubmit from "@/lib/form-submit"
 import { type Dictionary } from "@/lib/get-dictionary"
-import { Locale } from "@/hooks/useLocale"
+import { Locale } from "@/lib/locale"
 import { getDictionary } from "@/lib/get-dictionary"
 
 type SaveSimpleFormStateErrors = {

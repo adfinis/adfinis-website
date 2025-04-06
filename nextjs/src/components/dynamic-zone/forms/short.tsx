@@ -9,7 +9,7 @@ import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
 import { Dictionary } from "@/lib/get-dictionary"
-import { Locale } from "@/hooks/useLocale"
+import { Locale } from "@/lib/locale"
 
 type Props = {
   submitLabel: string
