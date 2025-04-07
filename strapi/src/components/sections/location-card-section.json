@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_location_card_sections",
+  "info": {
+    "displayName": "Location card section",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props"
+    },
+    "title": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.location-card"
+    }
+  }
+}

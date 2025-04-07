@@ -186,6 +186,18 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsLocationCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_location_cards';
+  info: {
+    displayName: 'Location card';
+    icon: 'pinMap';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CardsSimpleCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_simple_cards';
   info: {
@@ -797,6 +809,19 @@ export interface SectionsKpiSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsLocationCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_location_card_sections';
+  info: {
+    displayName: 'Location card section';
+    icon: 'pinMap';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.location-card', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_sections_product_feature_cards';
   info: {
@@ -1015,6 +1040,7 @@ declare module '@strapi/strapi' {
       'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
+      'cards.location-card': CardsLocationCard;
       'cards.simple-card': CardsSimpleCard;
       'cards.team-member-card': CardsTeamMemberCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
@@ -1053,6 +1079,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.image-carousel': SectionsImageCarousel;
       'sections.kpi-section': SectionsKpiSection;
+      'sections.location-card-section': SectionsLocationCardSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;

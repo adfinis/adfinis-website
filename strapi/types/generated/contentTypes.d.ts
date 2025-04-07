@@ -1845,6 +1845,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.video-with-text-section',
         'sections.team-member-card-section',
         'sections.career-card-section',
+        'sections.location-card-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
