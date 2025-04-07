@@ -130,5 +130,14 @@ body {
   }
 }
 
+@layer components {
+  .external-script {
+      @apply w-full;
+      iframe {
+          @apply w-full;
+      }
+  }
+}
+
 @import './text.css';
 @import './hamburger-react.css';
