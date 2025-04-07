@@ -1,20 +1,19 @@
 {
-  "collectionName": "components_relations_extra_wide_icon_cards_grid_sections",
+  "collectionName": "components_sections_extra_wide_icon_cards_grid_sections",
   "info": {
-    "displayName": "Extra Wide Icon Cards Grid Section",
-    "icon": "emotionUnhappy",
-    "description": ""
+    "displayName": "Extra wide icon cards grid section",
+    "icon": "star"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "props": {
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props",
       "required": true
+    },
+    "title": {
+      "type": "string"
     },
     "cards": {
       "type": "relation",

@@ -77,7 +77,8 @@
         "sections.two-column-section",
         "sections.video-section",
         "sections.video-with-text-section",
-        "sections.calendly-section"
+        "sections.calendly-section",
+        "sections.extra-wide-icon-cards-grid-section"
       ]
     }
   }

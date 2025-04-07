@@ -23,6 +23,15 @@ module.exports = (config, { strapi }) => {
                 cta: true,
               },
             },
+            "sections.extra-wide-icon-cards-grid-section": {
+              populate: {
+                cards: {
+                  populate: "*",
+                },
+                props: true,
+                cta: true,
+              },
+            },
             "sections.product-feature-card": {
               populate: {
                 props: true,
