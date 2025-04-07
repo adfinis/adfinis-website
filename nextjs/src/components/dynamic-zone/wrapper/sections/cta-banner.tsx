@@ -17,7 +17,7 @@ export default function CtaBanner({ section }: { section: Props }) {
       background={section.props.background}
       padding={section.props.padding}
     >
-      <SectionGroup align={"center"}>
+      <SectionGroup>
         <SectionCTA
           body={section.body}
           cta={section.cta}
