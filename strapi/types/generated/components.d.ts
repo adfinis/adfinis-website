@@ -421,20 +421,6 @@ export interface RelationsExtraWideIconCardsGridSection
   };
 }
 
-export interface RelationsSlaCardSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_sla_card_sections';
-  info: {
-    description: '';
-    displayName: 'SLA Card Section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsSolutionsRelationWithDescription
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_solutions_relation_with_descriptions';
@@ -975,6 +961,21 @@ export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSlaCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_sla_card_sections';
+  info: {
+    displayName: 'SLA Card Section';
+    icon: 'phone';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'## SLA - Our Managed Service Models'>;
+  };
+}
+
 export interface SectionsTeamMemberCardSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_team_member_card_sections';
   info: {
@@ -1061,7 +1062,6 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
-      'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
@@ -1094,6 +1094,7 @@ declare module '@strapi/strapi' {
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
       'sections.single-column-section': SectionsSingleColumnSection;
+      'sections.sla-card-section': SectionsSlaCardSection;
       'sections.team-member-card-section': SectionsTeamMemberCardSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;

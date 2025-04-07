@@ -57,7 +57,7 @@
       "type": "dynamiczone",
       "components": [
         "relations.extra-wide-icon-cards-grid-section",
-        "relations.sla-card-section",
+        "sections.sla-card-section",
         "sections.color-card-carousel",
         "sections.content-carousel",
         "sections.content-highlight-section",

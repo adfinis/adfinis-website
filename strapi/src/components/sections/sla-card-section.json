@@ -1,20 +1,21 @@
 {
-  "collectionName": "components_relations_sla_card_sections",
+  "collectionName": "components_sections_sla_card_sections",
   "info": {
     "displayName": "SLA Card Section",
-    "description": ""
+    "icon": "phone"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "richtext",
-      "required": true
-    },
     "props": {
       "type": "component",
       "repeatable": false,
       "component": "sections.section-props",
       "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": false,
+      "default": "## SLA - Our Managed Service Models"
     },
     "cards": {
       "type": "relation",
