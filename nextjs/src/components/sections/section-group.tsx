@@ -8,8 +8,7 @@ import "./section-group.css"
 const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
   variants: {
     align: {
-      start: "",
-      center: "justify-start lg:justify-center justify-items-center",
+      center: "justify-center justify-items-center",
     },
     hasDividers: {
       true: "section-group-dividers",
@@ -20,7 +19,7 @@ const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
     },
   },
   defaultVariants: {
-    align: "start",
+    align: "center",
   },
 })
 type SectionGroupProps = VariantProps<typeof sectionGroupStyles> & {
@@ -41,6 +40,10 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
   title,
   text,
   children,
+  /**
+   * @deprecated this property will most likely be removed in the future.
+   * we already align by default to center now.
+   */
   align,
   hasDividers,
   columns,
@@ -62,7 +65,7 @@ const SectionGroup: React.FC<SectionGroupProps> = ({
             },
           ])}
         >
-          <Text markdown={text} className="text-left lg:text-center" />
+          <Text markdown={text} className="text-center" />
         </div>
       )}
       <div className={sectionGroupStyles({ hasDividers, columns, align })}>

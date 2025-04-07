@@ -57,7 +57,6 @@ const CardSlider: React.FC<CardSliderProps> = ({
     )
 
     if (sliderRef.current) {
-      console.log("current")
       sliderRef.current.scrollLeft = distance // Adjust this value as needed
       observer.observe(sliderRef.current)
     }
