@@ -135,7 +135,6 @@ export function renderSections(section: any, index: number, locale?: string) {
         />
       )
     case "sections.extra-wide-icon-cards-grid-section":
-    case "relations.extra-wide-icon-cards-grid-section":
       return (
         <ExtraWideIconCardsGridSection
           key={`sections.extra-wide-icon-cards-grid-section_${index}`}
