@@ -31,6 +31,7 @@ import {
   imageSlider,
   teamMembers,
   speakersSection,
+  locations,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -63,6 +64,7 @@ import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
 import { getDictionary } from "@/lib/get-dictionary"
+import CardLocation from "@/components/cards/card-location"
 
 export default async function Theme({
   params: { locale },
@@ -89,6 +91,23 @@ export default async function Theme({
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} />
       </Intro>
+
+      <Container id="Locations" background="white" padding="both-padding">
+        <CardGroup
+          smColumns={2}
+          lgColumns={3}
+          maxWidth="none"
+          className="gap-6"
+        >
+          {locations.map((location, index) => (
+            <CardLocation
+              key={index}
+              title={location.title}
+              description={location.description}
+            />
+          ))}
+        </CardGroup>
+      </Container>
 
       <Container id="Solutions" padding="both-padding" background="neutral">
         <CardSlider

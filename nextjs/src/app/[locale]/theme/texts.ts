@@ -1088,6 +1088,17 @@ He specializes in automation, cloud computing, and cybersecurity, ensuring effic
   },
 } as const
 
+export const locations = [
+  {
+    title: "Lorem Ipsum",
+    description: `Lorem Ipsum\\
+    Dummy Street 123\\
+    CH-1234 Ipsum City\\
+    [+41 00 000 00 00](tel:+4100000000)
+    `,
+  },
+] as const
+
 export const footer = {
   columns: [
     {

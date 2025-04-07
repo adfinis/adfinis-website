@@ -7,6 +7,12 @@ import "./section-group.css"
 
 const sectionGroupStyles = cva(["grid gap-12 lg:gap-16"], {
   variants: {
+    /**
+     * @deprecated this property will most likely be removed in the future.
+     * we already align by default to center now.
+     * These classes will be moved to the shared section styles when we don't
+     * want to add back support for other align values.
+     */
     align: {
       center: "justify-center justify-items-center",
     },
