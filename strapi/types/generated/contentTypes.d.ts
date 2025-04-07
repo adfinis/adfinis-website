@@ -369,60 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCalendlyItemCalendlyItem
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'calendly_items';
-  info: {
-    description: '';
-    displayName: 'Calendly Item';
-    pluralName: 'calendly-items';
-    singularName: 'calendly-item';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    body: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    calendly_url: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calendly-item.calendly-item'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
   collectionName: 'card_products';
   info: {
@@ -499,6 +445,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'case_studies_overviews';
   info: {
+    description: '';
     displayName: 'Case studies overview';
     pluralName: 'case-studies-overviews';
     singularName: 'case-studies-overview';
@@ -564,6 +511,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -817,7 +765,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'relations.sla-card-section',
@@ -839,6 +786,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.hallmarks-section',
         'sections.regular-form-section',
         'sections.image-carousel',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -945,6 +893,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1210,7 +1159,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'relations.sla-card-section',
@@ -1231,6 +1179,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.hallmarks-section',
         'sections.regular-form-section',
         'sections.image-carousel',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1382,6 +1331,7 @@ export interface ApiNavigationMenuNavigationMenu
 export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
   collectionName: 'news_overviews';
   info: {
+    description: '';
     displayName: 'News overview';
     pluralName: 'news-overviews';
     singularName: 'news-overview';
@@ -1446,6 +1396,7 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1555,6 +1506,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1665,6 +1617,7 @@ export interface ApiPageCaseStudyPageCaseStudy
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1736,7 +1689,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',
@@ -1758,6 +1710,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1845,6 +1798,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.video-with-text-section',
         'sections.team-member-card-section',
         'sections.career-card-section',
+        'sections.calendly-section',
         'sections.location-card-section',
       ]
     > &
@@ -2024,7 +1978,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',
@@ -2046,6 +1999,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2110,7 +2064,6 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',
@@ -2132,6 +2085,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2661,7 +2615,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::case-studies-overview.case-studies-overview': ApiCaseStudiesOverviewCaseStudiesOverview;
       'api::category.category': ApiCategoryCategory;

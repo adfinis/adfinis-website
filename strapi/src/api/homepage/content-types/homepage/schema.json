@@ -56,7 +56,6 @@
       },
       "type": "dynamiczone",
       "components": [
-        "relations.calendly-section",
         "relations.extra-wide-icon-cards-grid-section",
         "sections.product-feature-card",
         "relations.sla-card-section",
@@ -76,7 +75,8 @@
         "sections.kpi-section",
         "sections.hallmarks-section",
         "sections.regular-form-section",
-        "sections.image-carousel"
+        "sections.image-carousel",
+        "sections.calendly-section"
       ]
     }
   }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "news-overview",
     "pluralName": "news-overviews",
-    "displayName": "News overview"
+    "displayName": "News overview",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -72,7 +73,8 @@
         "sections.single-column-section",
         "sections.two-column-section",
         "sections.video-section",
-        "sections.video-with-text-section"
+        "sections.video-with-text-section",
+        "sections.calendly-section"
       ]
     }
   }

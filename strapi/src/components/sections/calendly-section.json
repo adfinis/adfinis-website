@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_calendly_sections",
+  "info": {
+    "displayName": "Calendly section",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "default": "### Schedule a **Free Health Check**",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "default": "https://calendly.com/embed-demo-sales/discovery-call",
+      "required": true
+    }
+  }
+}

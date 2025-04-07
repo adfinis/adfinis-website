@@ -405,21 +405,6 @@ export interface MenuMenuSegment extends Struct.ComponentSchema {
   };
 }
 
-export interface RelationsCalendlySection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_calendly_sections';
-  info: {
-    displayName: 'Calendly Section';
-  };
-  attributes: {
-    calendly_item: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calendly-item.calendly-item'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsExtraWideIconCardsGridSection
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
@@ -512,6 +497,25 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
     content: Schema.Attribute.RichText;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsCalendlySection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_calendly_sections';
+  info: {
+    description: '';
+    displayName: 'Calendly section';
+    icon: 'calendar';
+  };
+  attributes: {
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'### Schedule a **Free Health Check**'>;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://calendly.com/embed-demo-sales/discovery-call'>;
   };
 }
 
@@ -1056,7 +1060,6 @@ declare module '@strapi/strapi' {
       'menu.menu-link': MenuMenuLink;
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
-      'relations.calendly-section': RelationsCalendlySection;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
@@ -1064,6 +1067,7 @@ declare module '@strapi/strapi' {
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.calendly-section': SectionsCalendlySection;
       'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
