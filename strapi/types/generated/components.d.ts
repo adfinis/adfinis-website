@@ -612,7 +612,7 @@ export interface SectionsExtraWideIconCardsGridSection
   collectionName: 'components_sections_extra_wide_icon_cards_grid_sections';
   info: {
     displayName: 'Extra wide icon cards grid section';
-    icon: 'star';
+    icon: 'dashboard';
   };
   attributes: {
     cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
