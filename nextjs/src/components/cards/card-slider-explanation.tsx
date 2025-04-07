@@ -1,6 +1,7 @@
 import { CTA } from "@/lib/cta"
 import React from "react"
 import Text from "../text"
+import Title from "../title"
 
 type CardExplanationProps = {
   title: string
@@ -18,9 +19,9 @@ const CardSliderExplanation: React.FC<CardExplanationProps> = ({
       data-component="CardSliderExplanation"
       className="snap-center hidden sm:flex flex-col items-start gap-8 pt-6 self-stretch px-6 pb-8 rounded-xl bg-white shadow-2 max-w-md"
     >
-      <h3 className="text-30 font-semibold leading-none text-biscay">
+      <Title level={3} boldness={"semibold"}>
         {title}
-      </h3>
+      </Title>
       <Text markdown={description} className="min-w-96 flex-1" />
       <div className="flex gap-4">{children}</div>
     </div>
