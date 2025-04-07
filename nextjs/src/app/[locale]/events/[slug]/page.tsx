@@ -11,7 +11,7 @@ import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary"
-import { Locale } from "@/hooks/useLocale"
+import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 
 export default async function EventsDetailPage({
   params: { locale, slug },
@@ -61,6 +61,11 @@ export default async function EventsDetailPage({
     sign_up_button.text = sign_up_button?.label
   }
 
+  const formattedDate = getLocaleDateFormatted({
+    date: date_event,
+    locale: activeLocale.locale as Locale,
+  })
+
   return (
     <>
       <NavProvider>
@@ -68,7 +73,7 @@ export default async function EventsDetailPage({
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       <Container background="white" padding="both-padding">
-        <InfoLabel text={date_event} className="block mb-4" />
+        <InfoLabel text={formattedDate} className="block mb-4" />
         <Text markdown={details} className="mb-8 max-w-4xl" />
         {tester && sign_up_button && (
           <LinkButton

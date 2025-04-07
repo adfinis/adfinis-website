@@ -48,7 +48,7 @@ import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
-import { type Locale } from "@/hooks/useLocale"
+import { type Locale } from "@/lib/locale"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
@@ -454,7 +454,7 @@ export default async function Theme({
               key={index}
               title={career.title}
               description={career.description}
-              imageUrl={career.image.url}
+              imageUrl={career.image?.url || ""}
               workload={career.workload}
               location={career.location}
               country={career.country as CareerCountry}

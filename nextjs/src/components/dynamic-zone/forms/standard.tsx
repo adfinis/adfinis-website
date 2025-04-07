@@ -9,7 +9,7 @@ import Button from "@/components/button"
 import { saveStandardForm } from "@/app/actions"
 import { useFormState } from "react-dom"
 import { type Dictionary } from "@/lib/get-dictionary"
-import { Locale } from "@/hooks/useLocale"
+import { Locale } from "@/lib/locale"
 
 type Props = {
   locale: Locale
