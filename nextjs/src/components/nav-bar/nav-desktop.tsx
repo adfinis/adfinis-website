@@ -11,7 +11,6 @@ import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
 import Link from "next/link"
-import { useWindowSize } from "@uidotdev/usehooks"
 
 type NavDesktopProps = {
   navItems: NavItem[]
