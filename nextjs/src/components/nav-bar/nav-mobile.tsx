@@ -102,7 +102,6 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
             >
               {navItems.map((item, index) => (
                 <li
-                  onClick={() => setExpand(index)}
                   key={index}
                   className={clsx([
                     { hidden: expand !== index && expand !== undefined },
@@ -112,6 +111,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
                     key={index}
                     item={item}
                     expand={expand === index}
+                    onClick={() => setExpand(index)}
                   />
                 </li>
               ))}
