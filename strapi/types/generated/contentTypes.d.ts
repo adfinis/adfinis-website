@@ -1180,6 +1180,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.regular-form-section',
         'sections.image-carousel',
         'sections.calendly-section',
+        'sections.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1711,6 +1712,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.calendly-section',
+        'sections.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2000,6 +2002,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.calendly-section',
+        'sections.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2086,6 +2089,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.video-section',
         'sections.video-with-text-section',
         'sections.calendly-section',
+        'sections.extra-wide-icon-cards-grid-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

@@ -76,7 +76,8 @@
         "sections.hallmarks-section",
         "sections.regular-form-section",
         "sections.image-carousel",
-        "sections.calendly-section"
+        "sections.calendly-section",
+        "sections.extra-wide-icon-cards-grid-section"
       ]
     }
   }

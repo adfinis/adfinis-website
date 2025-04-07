@@ -409,8 +409,9 @@ export interface RelationsExtraWideIconCardsGridSection
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
   info: {
+    description: '';
     displayName: 'Extra Wide Icon Cards Grid Section';
-    icon: 'dashboard';
+    icon: 'emotionUnhappy';
   };
   attributes: {
     cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
@@ -620,6 +621,22 @@ export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsExtraWideIconCardsGridSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_extra_wide_icon_cards_grid_sections';
+  info: {
+    displayName: 'Extra wide icon cards grid section';
+    icon: 'star';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -1074,6 +1091,7 @@ declare module '@strapi/strapi' {
       'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.cta-banner': SectionsCtaBanner;
       'sections.event-details-section': SectionsEventDetailsSection;
+      'sections.extra-wide-icon-cards-grid-section': SectionsExtraWideIconCardsGridSection;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
