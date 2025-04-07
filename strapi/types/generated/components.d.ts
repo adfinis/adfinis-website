@@ -421,20 +421,6 @@ export interface RelationsExtraWideIconCardsGridSection
   };
 }
 
-export interface RelationsSlaCardSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_sla_card_sections';
-  info: {
-    description: '';
-    displayName: 'SLA Card Section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsSolutionsRelationWithDescription
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_solutions_relation_with_descriptions';
@@ -1076,7 +1062,6 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
-      'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;

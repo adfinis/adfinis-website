@@ -767,7 +767,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
       [
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
-        'relations.sla-card-section',
+        'sections.sla-card-section',
         'sections.icon-card-section-with-relation',
         'sections.event-details-section',
         'sections.projects-card-section-with-external-link',
@@ -1161,7 +1161,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       [
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
-        'relations.sla-card-section',
+        'sections.sla-card-section',
         'sections.icon-card-section-with-relation',
         'sections.event-details-section',
         'sections.services-section',
@@ -1690,7 +1690,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
@@ -1979,7 +1979,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
@@ -2065,7 +2065,7 @@ export interface ApiSolutionsPageSolutionsPage
     sections: Schema.Attribute.DynamicZone<
       [
         'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',

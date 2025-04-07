@@ -137,7 +137,7 @@
       "components": [
         "relations.extra-wide-icon-cards-grid-section",
         "sections.product-feature-card",
-        "relations.sla-card-section",
+        "sections.sla-card-section",
         "sections.icon-card-section-with-relation",
         "sections.event-details-section",
         "sections.projects-card-section-with-external-link",
