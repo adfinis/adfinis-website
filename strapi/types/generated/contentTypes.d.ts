@@ -499,6 +499,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'case_studies_overviews';
   info: {
+    description: '';
     displayName: 'Case studies overview';
     pluralName: 'case-studies-overviews';
     singularName: 'case-studies-overview';
@@ -564,6 +565,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -838,6 +840,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.hallmarks-section',
         'sections.regular-form-section',
         'sections.image-carousel',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -944,6 +947,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1381,6 +1385,7 @@ export interface ApiNavigationMenuNavigationMenu
 export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
   collectionName: 'news_overviews';
   info: {
+    description: '';
     displayName: 'News overview';
     pluralName: 'news-overviews';
     singularName: 'news-overview';
@@ -1445,6 +1450,7 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1554,6 +1560,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1664,6 +1671,7 @@ export interface ApiPageCaseStudyPageCaseStudy
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1756,6 +1764,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1844,6 +1853,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.team-member-card-section',
         'sections.career-card-section',
         'sections.location-card-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2043,6 +2053,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2128,6 +2139,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
