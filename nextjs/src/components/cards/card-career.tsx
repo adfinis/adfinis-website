@@ -67,11 +67,11 @@ const CardCareer: React.FC<CardCareer> = ({
           <footer className="bg-sapphire text-neutral text-14 uppercase font-semibold tracking-wider px-6 py-3 flex justify-between items-center">
             <span>{workload}</span>
             <span className="flex items-center gap-4">
-              {location}{" "}
+              <span>{location}</span>
               {country && (
                 <IconFlag
                   country={country}
-                  className="w-8 h-8 lg:w-10 lg:h-10 flex-1 border border-white rounded-full"
+                  className="w-8 h-8 lg:w-10 lg:h-10 border border-white rounded-full flex-shrink-0"
                 />
               )}
             </span>
