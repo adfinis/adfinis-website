@@ -765,7 +765,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'sections.sla-card-section',
         'sections.icon-card-section-with-relation',
@@ -1159,7 +1158,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'sections.sla-card-section',
         'sections.icon-card-section-with-relation',
@@ -1690,7 +1688,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.extra-wide-icon-cards-grid-section',
         'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
@@ -1980,7 +1977,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.extra-wide-icon-cards-grid-section',
         'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
@@ -2067,7 +2063,6 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.extra-wide-icon-cards-grid-section',
         'sections.sla-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
