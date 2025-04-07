@@ -503,16 +503,19 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
 export interface SectionsCalendlySection extends Struct.ComponentSchema {
   collectionName: 'components_sections_calendly_sections';
   info: {
+    description: '';
     displayName: 'Calendly section';
     icon: 'calendar';
   };
   attributes: {
-    calendly_item: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calendly-item.calendly-item'
-    >;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'### Schedule a **Free Health Check**'>;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://calendly.com/embed-demo-sales/discovery-call'>;
   };
 }
 

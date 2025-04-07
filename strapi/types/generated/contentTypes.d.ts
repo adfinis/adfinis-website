@@ -1229,6 +1229,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.hallmarks-section',
         'sections.regular-form-section',
         'sections.image-carousel',
+        'sections.calendly-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

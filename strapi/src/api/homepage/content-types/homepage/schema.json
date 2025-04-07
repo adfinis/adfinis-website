@@ -75,7 +75,8 @@
         "sections.kpi-section",
         "sections.hallmarks-section",
         "sections.regular-form-section",
-        "sections.image-carousel"
+        "sections.image-carousel",
+        "sections.calendly-section"
       ]
     }
   }

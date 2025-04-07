@@ -89,6 +89,9 @@ module.exports = (config, { strapi }) => {
             "sections.hallmarks-section": {
               populate: "*",
             },
+            'sections.calendly-section': {
+              populate: '*',
+            },
             "sections.kpi-section": {
               populate: {
                 props: true,

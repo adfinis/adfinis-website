@@ -23,6 +23,7 @@ import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/te
 import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
 import LocationCardSection from "@/components/dynamic-zone/wrapper/sections/location-card-section"
 import { type Locale } from "@/lib/locale"
+import CalendlySection from "@/components/dynamic-zone/wrapper/sections/calendly-section"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -179,6 +180,13 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <LocationCardSection
           key={`sections.location-card-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.calendly-section":
+      return (
+        <CalendlySection
+          key={`sections.calendly-section_${index}`}
           section={section}
         />
       )
