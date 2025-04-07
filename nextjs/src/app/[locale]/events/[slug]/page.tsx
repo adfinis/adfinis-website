@@ -95,16 +95,14 @@ export default async function EventsDetailPage({
         padding="both-padding"
         background={is_past_event ? "sapphire" : "stone"}
       >
-        <SectionGroup>
-          <SectionEvent
-            title={dictionary.pages.events.title}
-            date={date_event}
-            location={address}
-            time={time}
-            html={map_embed_html}
-            cta={is_past_event === true ? undefined : sign_up_button}
-          />
-        </SectionGroup>
+        <SectionEvent
+          title={dictionary.pages.events.title}
+          date={date_event}
+          location={address}
+          time={time}
+          html={map_embed_html}
+          cta={is_past_event === true ? undefined : sign_up_button}
+        />
       </Container>
       <Footer locale={activeLocale.locale} />
     </>
