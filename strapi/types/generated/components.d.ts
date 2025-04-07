@@ -405,23 +405,6 @@ export interface MenuMenuSegment extends Struct.ComponentSchema {
   };
 }
 
-export interface RelationsExtraWideIconCardsGridSection
-  extends Struct.ComponentSchema {
-  collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
-  info: {
-    description: '';
-    displayName: 'Extra Wide Icon Cards Grid Section';
-    icon: 'emotionUnhappy';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface RelationsSolutionsRelationWithDescription
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_solutions_relation_with_descriptions';
@@ -629,7 +612,7 @@ export interface SectionsExtraWideIconCardsGridSection
   collectionName: 'components_sections_extra_wide_icon_cards_grid_sections';
   info: {
     displayName: 'Extra wide icon cards grid section';
-    icon: 'star';
+    icon: 'dashboard';
   };
   attributes: {
     cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
@@ -1078,7 +1061,6 @@ declare module '@strapi/strapi' {
       'menu.menu-link': MenuMenuLink;
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
-      'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;

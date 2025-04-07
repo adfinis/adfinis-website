@@ -14,15 +14,6 @@ module.exports = (config, { strapi }) => {
             "sections.color-card-carousel": {
               populate: "*",
             },
-            "relations.extra-wide-icon-cards-grid-section": {
-              populate: {
-                cards: {
-                  populate: "*",
-                },
-                props: true,
-                cta: true,
-              },
-            },
             "sections.extra-wide-icon-cards-grid-section": {
               populate: {
                 cards: {
