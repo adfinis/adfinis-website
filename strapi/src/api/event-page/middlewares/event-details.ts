@@ -35,7 +35,7 @@ module.exports = (config, { strapi }) => {
                 }
               }
             },
-            'relations.sla-card-section': {
+            'sections.sla-card-section': {
               populate: {
                 props: true,
                 cards: {

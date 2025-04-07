@@ -5,7 +5,7 @@ import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-secti
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
-import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
+import SlaCardSection from "@/components/dynamic-zone/wrapper/sections/sla-card-section"
 import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
 import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/event-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
@@ -106,10 +106,10 @@ export function renderSections(section: any, index: number, locale?: string) {
           section={section}
         />
       )
-    case "relations.sla-card-section":
+    case "sections.sla-card-section":
       return (
         <SlaCardSection
-          key={`relations.sla-card-section_${index}`}
+          key={`sections.sla-card-section_${index}`}
           section={section}
         />
       )
