@@ -817,7 +817,6 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'relations.sla-card-section',
@@ -1210,7 +1209,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'sections.product-feature-card',
         'relations.sla-card-section',
@@ -1736,7 +1734,6 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',
@@ -2024,7 +2021,6 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',
@@ -2110,7 +2106,6 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
         'relations.extra-wide-icon-cards-grid-section',
         'relations.sla-card-section',
         'sections.color-card-carousel',

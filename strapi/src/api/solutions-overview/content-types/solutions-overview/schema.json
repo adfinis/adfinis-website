@@ -56,7 +56,6 @@
       },
       "type": "dynamiczone",
       "components": [
-        "relations.calendly-section",
         "relations.extra-wide-icon-cards-grid-section",
         "relations.sla-card-section",
         "sections.color-card-carousel",

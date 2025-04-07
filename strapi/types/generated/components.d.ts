@@ -405,21 +405,6 @@ export interface MenuMenuSegment extends Struct.ComponentSchema {
   };
 }
 
-export interface RelationsCalendlySection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_calendly_sections';
-  info: {
-    displayName: 'Calendly Section';
-  };
-  attributes: {
-    calendly_item: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calendly-item.calendly-item'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsExtraWideIconCardsGridSection
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
@@ -1072,7 +1057,6 @@ declare module '@strapi/strapi' {
       'menu.menu-link': MenuMenuLink;
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
-      'relations.calendly-section': RelationsCalendlySection;
       'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
       'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
