@@ -9,10 +9,12 @@
     "props": {
       "type": "component",
       "repeatable": false,
-      "component": "sections.section-props"
+      "component": "sections.section-props",
+      "required": true
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "cards": {
       "type": "component",

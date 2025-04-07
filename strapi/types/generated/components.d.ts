@@ -817,8 +817,9 @@ export interface SectionsLocationCardSection extends Struct.ComponentSchema {
   };
   attributes: {
     cards: Schema.Attribute.Component<'cards.location-card', true>;
-    props: Schema.Attribute.Component<'sections.section-props', false>;
-    title: Schema.Attribute.String;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
