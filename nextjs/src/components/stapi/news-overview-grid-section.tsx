@@ -28,7 +28,7 @@ export default async function NewsOverviewGridSection({
     }
   })
   return (
-    <Container padding="both-padding" background="full_white">
+    <Container padding="both-padding" background="white">
       <CardGroup maxWidth="none">
         {cards.map((card: any) => (
           <CardArticle {...card} key={card.key} />
