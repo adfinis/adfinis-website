@@ -13,6 +13,7 @@ type Category = {
 type CategoryCard = {
   title: string
   description: string
+  href?: string
   subtitle: string
   image?: {
     url?: string
@@ -49,6 +50,7 @@ export default function ContentCarousel({ section }: { section: Props }) {
                 subtitle={card.subtitle}
                 description={card.description}
                 imageUrl={card.image?.url || ""}
+                href={card.href}
                 categories={card.categories.map((category) => ({
                   text: category.name,
                   href: category.url,

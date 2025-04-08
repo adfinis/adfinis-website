@@ -18,9 +18,9 @@ const CardSliderExplanation: React.FC<CardExplanationProps> = ({
       data-component="CardSliderExplanation"
       className="snap-center hidden sm:flex flex-col items-start gap-8 pt-6 self-stretch px-6 pb-8 rounded-xl bg-white shadow-2 max-w-md"
     >
-      <h3 className="text-30 font-semibold leading-none text-biscay">
+      <h2 className="text-30 font-semibold leading-none text-biscay">
         {title}
-      </h3>
+      </h2>
       <Text markdown={description} className="min-w-96 flex-1" />
       <div className="flex gap-4">{children}</div>
     </div>

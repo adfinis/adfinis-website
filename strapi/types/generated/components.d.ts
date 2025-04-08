@@ -51,6 +51,7 @@ export interface CardsCategoryCard extends Struct.ComponentSchema {
       'api::category.category'
     >;
     description: Schema.Attribute.String;
+    href: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
