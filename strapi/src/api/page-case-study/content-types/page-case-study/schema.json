@@ -97,26 +97,31 @@
       },
       "type": "dynamiczone",
       "components": [
+        "sections.blog-content-section",
+        "sections.calendly-section",
+        "sections.career-card-section",
         "sections.color-card-carousel",
         "sections.content-carousel",
         "sections.content-highlight-section",
         "sections.cta-banner",
         "sections.event-details-section",
+        "sections.extra-wide-icon-cards-grid-section",
         "sections.feature-cards",
         "sections.hallmarks-section",
         "sections.icon-card-section-with-relation",
         "sections.image-carousel",
         "sections.kpi-section",
+        "sections.location-card-section",
         "sections.product-feature-card",
-        "sections.projects-card-section-with-external-link",
         "sections.quote-section",
         "sections.regular-form-section",
         "sections.services-section",
         "sections.single-column-section",
+        "sections.sla-card-section",
+        "sections.team-member-card-section",
         "sections.two-column-section",
         "sections.video-section",
-        "sections.video-with-text-section",
-        "sections.calendly-section"
+        "sections.video-with-text-section"
       ]
     }
   }
