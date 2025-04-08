@@ -85,12 +85,6 @@ export default async function EventsDetailPage({
           </LinkButton>
         )}
       </Container>
-      {sections &&
-        sections.length > 0 &&
-        sections.map((section: any, index: number) =>
-          renderSections(section, index, activeLocale.locale),
-        )}
-
       <Container
         padding="both-padding"
         background={is_past_event ? "sapphire" : "stone"}
@@ -104,6 +98,11 @@ export default async function EventsDetailPage({
           cta={is_past_event === true ? undefined : sign_up_button}
         />
       </Container>
+      {sections &&
+        sections.length > 0 &&
+        sections.map((section: any, index: number) =>
+          renderSections(section, index, activeLocale.locale),
+        )}
       <Footer locale={activeLocale.locale} />
     </>
   )
