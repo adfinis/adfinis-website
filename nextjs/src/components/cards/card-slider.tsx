@@ -57,7 +57,6 @@ const CardSlider: React.FC<CardSliderProps> = ({
     )
 
     if (sliderRef.current) {
-      console.log("current")
       sliderRef.current.scrollLeft = distance // Adjust this value as needed
       observer.observe(sliderRef.current)
     }
@@ -72,7 +71,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
   return (
     <div className="w-topbar sm:-mx-8">
       <div className="flex flex-col items-start gap-8 flex-1 self-stretch pb-8 sm:hidden">
-        <Title level={3} boldness={"semibold"}>
+        <Title level={2} boldness={"semibold"}>
           {title}
         </Title>
         <Text markdown={description} />

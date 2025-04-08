@@ -31,7 +31,7 @@ export default function ExtraWideIconCardsGridSection({
       padding={section.props.padding}
       background={section.props.background}
     >
-      <SectionGroup title={section.title ?? undefined} align="center">
+      <SectionGroup title={section.title ?? undefined}>
         <CardGroup maxWidth="none">
           {section.cards.map((item, i) => {
             return (

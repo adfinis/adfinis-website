@@ -1,5 +1,5 @@
 import React from "react"
-import Markdown from "react-markdown"
+import Markdown, { defaultUrlTransform } from "react-markdown"
 import remarkGfm from "remark-gfm"
 
 interface TextProps {
@@ -40,6 +40,7 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
           "h1",
           "h2",
           "h3",
+          "br",
           "hr",
           "i",
           "li",
@@ -52,6 +53,9 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
           "del",
         ]}
         remarkPlugins={[remarkGfm]}
+        urlTransform={(url) =>
+          url.startsWith("tel:") ? url : defaultUrlTransform(url)
+        }
       >
         {markdown}
       </Markdown>

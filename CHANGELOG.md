@@ -15,6 +15,29 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.18.0] - 2025-04-08
+
+- feat AW-208: move dynamic zone components below fixed details (#186)
+- AW-204 sommige componenten niet beschikbaar in page builder (#185)
+- AW-192 links in events cards werken niet (#184)
+- AW-190 optimalisaties van content carousel component latest on (#183)
+- AW-183 breakline in events pagina (#182)
+- AW-168 move wide card section relation pt2 (#181)
+- AW-168 move wide card section relation pt1 (#180)
+- AW-168 move sla card section relation (#179)
+- AW-168 move calendly relation to sections (#178)
+- Feature/aw 194 Add location cards (#177)
+- fix: Prevent country flag from shrinking (#174)
+- chore: Update typo's (#175)
+- chore: Improve visibility (#176)
+- feat: Hide mobile nav visibility on scrolldown (#173)
+- fix: Always align center on section-cta, section-group (#172)
+- fix: Improve and simplify spacing of section-event (#171)
+- fix: Improve submenu and hover handling (#167)
+- feat: Add basic styling for external-script (#168)
+- Feature/aw 201 security updates next 14 (#169)
+- Feature/aw 182 dd mm yyyy formaat moet (#170)
+ 
 ## [0.17.0] - 2025-04-01
 
 - feature/aw 171 form fields labels vertalen (#164)

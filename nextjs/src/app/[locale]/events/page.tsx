@@ -67,6 +67,7 @@ export default async function EventsOverviewPage({
                 description={event.date_event}
                 imageUrl={event.hero?.background_image.url}
                 logoUrl={event.card_image?.url}
+                href={`/${locale}/events/${event.slug}`}
               />
             ))}
           </CardGroup>

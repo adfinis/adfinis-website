@@ -130,5 +130,24 @@ body {
   }
 }
 
+@layer components {
+  .external-script {
+      @apply w-full;
+      iframe {
+          @apply w-full;
+      }
+  }
+}
+
+  /* 
+  * Simulates tailwind 4.10+ text-shadow utility.
+  */
+@layer utilities {
+  .text-shadow-md\/10 {
+    text-shadow: 0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
+  }
+}
+
+
 @import './text.css';
 @import './hamburger-react.css';

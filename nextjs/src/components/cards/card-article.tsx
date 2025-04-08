@@ -4,6 +4,7 @@ import type { Card } from "./card"
 import Link from "next/link"
 import Image from "next/image"
 import clsx from "clsx"
+import IconArrowLongRight from "@/components/icons/icon-arrow-long-right"
 
 interface CardArticleProps extends Card {
   subtitle?: string
@@ -92,8 +93,10 @@ const CardArticle: React.FC<CardArticleProps> = ({
                 <span className="font-light">{subtitle}</span>
               </>
             )}
+            {href && (
+              <IconArrowLongRight className="absolute size-6 right-4 bottom-2 text-white transform transition-all group-hover:translate-x-2" />
+            )}
           </CardTitleTag>
-
           <span className="text-12 uppercase text-white font-semibold tracking-wider">
             {description}
           </span>

@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
   return (
     <div
       className={clsx([
-        "relative min-h-[600px] lg:min-h-[650px] xl:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
+        "relative min-h-[600px] lg:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
         'before:content-[""] before:absolute',
         "before:left-0 before:right-0",
         "before:bottom-[-15vw] before:h-[15vw] ",
@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         data-scheme="dark"
       >
         <div className="w-full lg:w-1/2">
-          <div className="inline-grid gap-8 py-24 lg:py-16 items-center place-items-start">
+          <div className="inline-grid gap-8 py-24 lg:py-16 items-center place-items-start text-shadow-md/10">
             {children}
           </div>
         </div>

@@ -11,9 +11,24 @@ import NavMobileTitle from "./nav-mobile-title"
 const NavMobileItem: React.FC<{
   item: NavItem
   expand: boolean
-}> = ({ item, expand }) => {
+  onClick?: () => void
+}> = ({ item, expand, onClick }) => {
+  const hasNoSubItems = item.menu_segment?.length === 0
+
+  if (hasNoSubItems && item.url) {
+    return (
+      <Link
+        href={item.url}
+        className="flex justify-between items-center w-full h-12 text-neutral text-20 cursor-pointer"
+      >
+        {item.title}
+        <IconChevronRight className={clsx([" h-2.5 w-auto"])} />
+      </Link>
+    )
+  }
+
   return (
-    <span data-component="NavMobileItem">
+    <span data-component="NavMobileItem" onClick={onClick}>
       {!expand && (
         <span className="flex justify-between items-center w-full h-12 text-neutral text-20 cursor-pointer">
           {item.title}

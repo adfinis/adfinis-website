@@ -8,8 +8,8 @@ import { CTA } from "@/lib/cta"
 type ProductCard = {
   title: string
   description: string
-  image: {
-    url: string
+  image?: {
+    url?: string
   }
   ctas: CTA[]
 }
@@ -32,7 +32,7 @@ export default function ProductFeatureCard({ section }: { section: Props }) {
             <SectionCardLogo
               key={i}
               title={item.title}
-              imageUrl={item.image.url}
+              imageUrl={item.image?.url || ""}
               description={item.description}
               ctas={item.ctas}
             />

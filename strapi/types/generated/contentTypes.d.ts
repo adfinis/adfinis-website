@@ -369,60 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCalendlyItemCalendlyItem
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'calendly_items';
-  info: {
-    description: '';
-    displayName: 'Calendly Item';
-    pluralName: 'calendly-items';
-    singularName: 'calendly-item';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    body: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    calendly_url: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::calendly-item.calendly-item'
-    >;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
   collectionName: 'card_products';
   info: {
@@ -499,6 +445,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'case_studies_overviews';
   info: {
+    description: '';
     displayName: 'Case studies overview';
     pluralName: 'case-studies-overviews';
     singularName: 'case-studies-overview';
@@ -545,22 +492,28 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -817,28 +770,31 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
-        'relations.extra-wide-icon-cards-grid-section',
-        'sections.product-feature-card',
-        'relations.sla-card-section',
-        'sections.icon-card-section-with-relation',
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
+        'sections.color-card-carousel',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.cta-banner',
         'sections.event-details-section',
-        'sections.projects-card-section-with-external-link',
+        'sections.extra-wide-icon-cards-grid-section',
+        'sections.feature-cards',
+        'sections.hallmarks-section',
+        'sections.icon-card-section-with-relation',
+        'sections.image-carousel',
+        'sections.kpi-section',
+        'sections.location-card-section',
+        'sections.product-feature-card',
+        'sections.quote-section',
+        'sections.regular-form-section',
         'sections.services-section',
+        'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.feature-cards',
-        'sections.content-carousel',
-        'sections.quote-section',
-        'sections.content-highlight-section',
-        'sections.color-card-carousel',
-        'sections.cta-banner',
-        'sections.single-column-section',
-        'sections.kpi-section',
-        'sections.hallmarks-section',
-        'sections.regular-form-section',
-        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -926,22 +882,28 @@ export interface ApiEventsOverviewEventsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1210,27 +1172,31 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
-        'relations.extra-wide-icon-cards-grid-section',
-        'sections.product-feature-card',
-        'relations.sla-card-section',
-        'sections.icon-card-section-with-relation',
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
+        'sections.color-card-carousel',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
+        'sections.feature-cards',
+        'sections.hallmarks-section',
+        'sections.icon-card-section-with-relation',
+        'sections.image-carousel',
+        'sections.kpi-section',
+        'sections.location-card-section',
+        'sections.product-feature-card',
+        'sections.quote-section',
+        'sections.regular-form-section',
         'sections.services-section',
+        'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.quote-section',
-        'sections.feature-cards',
-        'sections.content-carousel',
-        'sections.content-highlight-section',
-        'sections.color-card-carousel',
-        'sections.cta-banner',
-        'sections.single-column-section',
-        'sections.kpi-section',
-        'sections.hallmarks-section',
-        'sections.regular-form-section',
-        'sections.image-carousel',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1382,6 +1348,7 @@ export interface ApiNavigationMenuNavigationMenu
 export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
   collectionName: 'news_overviews';
   info: {
+    description: '';
     displayName: 'News overview';
     pluralName: 'news-overviews';
     singularName: 'news-overview';
@@ -1427,22 +1394,28 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1536,22 +1509,28 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1646,22 +1625,28 @@ export interface ApiPageCaseStudyPageCaseStudy
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1736,25 +1721,28 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
-        'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -1824,27 +1812,31 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
-        'sections.team-member-card-section',
-        'sections.career-card-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -2023,25 +2015,28 @@ export interface ApiSolutionsOverviewSolutionsOverview
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
-        'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -2109,25 +2104,28 @@ export interface ApiSolutionsPageSolutionsPage
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
-        'relations.calendly-section',
-        'relations.extra-wide-icon-cards-grid-section',
-        'relations.sla-card-section',
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
         'sections.color-card-carousel',
         'sections.content-carousel',
         'sections.content-highlight-section',
         'sections.cta-banner',
         'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
         'sections.kpi-section',
+        'sections.location-card-section',
         'sections.product-feature-card',
-        'sections.projects-card-section-with-external-link',
         'sections.quote-section',
         'sections.regular-form-section',
         'sections.services-section',
         'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
         'sections.two-column-section',
         'sections.video-section',
         'sections.video-with-text-section',
@@ -2660,7 +2658,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::calendly-item.calendly-item': ApiCalendlyItemCalendlyItem;
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::case-studies-overview.case-studies-overview': ApiCaseStudiesOverviewCaseStudiesOverview;
       'api::category.category': ApiCategoryCategory;

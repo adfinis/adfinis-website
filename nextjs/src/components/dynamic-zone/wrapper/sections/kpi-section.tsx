@@ -42,7 +42,7 @@ export default function KpiSection({ section }: { section: Props }) {
       background={section.props.background}
       padding={section.props.padding}
     >
-      <SectionGroup align="center" text={section.description}>
+      <SectionGroup text={section.description}>
         <CardGroup>
           {section.kpis.map((item, i: number) => (
             <CardKpi

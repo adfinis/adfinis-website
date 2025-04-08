@@ -2,141 +2,151 @@
 
 module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
-
     ctx.query = {
       ...ctx.query,
       populate: {
         localizations: true,
         hero: {
-          populate: '*'
+          populate: "*",
         },
         sections: {
           on: {
-            'sections.color-card-carousel': {
-              populate: '*'
+            "sections.color-card-carousel": {
+              populate: "*",
             },
-            'relations.extra-wide-icon-cards-grid-section': {
+            "sections.extra-wide-icon-cards-grid-section": {
               populate: {
                 cards: {
-                  populate: '*',
+                  populate: "*",
                 },
                 props: true,
                 cta: true,
               },
             },
-            'sections.product-feature-card': {
+            "sections.product-feature-card": {
               populate: {
                 props: true,
                 cards: {
-                  populate: '*',
+                  populate: "*",
                 },
               },
             },
-            'sections.content-carousel': {
+            "sections.content-carousel": {
               populate: {
                 props: true,
                 cta: true,
                 cards: {
-                  populate: '*',
-                }
-              }
+                  populate: "*",
+                },
+              },
             },
-            'relations.sla-card-section': {
+            "sections.sla-card-section": {
               populate: {
                 props: true,
                 cards: {
-                  populate: '*'
-                }
+                  populate: "*",
+                },
               },
             },
-            'sections.two-column-section': {
-              populate: '*',
+            "sections.two-column-section": {
+              populate: "*",
             },
-            'sections.cta-banner': {
-              populate: '*',
+            "sections.cta-banner": {
+              populate: "*",
             },
-            'sections.single-column-section': {
-              populate: '*',
+            "sections.single-column-section": {
+              populate: "*",
             },
-            'sections.blog-content-section': {
-              populate: '*',
+            "sections.blog-content-section": {
+              populate: "*",
             },
-            'sections.icon-card-section-with-relation': {
+            "sections.icon-card-section-with-relation": {
               populate: {
                 cards: {
-                  populate: '*',
+                  populate: "*",
                 },
                 section_props: true,
               },
             },
-            'sections.content-highlight-section': {
+            "sections.content-highlight-section": {
               populate: {
                 props: true,
                 content_offer: {
-                  populate: '*'
+                  populate: "*",
                 },
               },
             },
-            'sections.quote-section': {
+            "sections.quote-section": {
               populate: {
                 quotes: {
-                  populate: '*'
+                  populate: "*",
                 },
               },
             },
-            'sections.video-section': {
+            "sections.video-section": {
+              populate: "*",
+            },
+            "sections.hallmarks-section": {
+              populate: "*",
+            },
+            'sections.calendly-section': {
               populate: '*',
             },
-            'sections.hallmarks-section': {
-              populate: '*',
-            },
-            'sections.kpi-section': {
+            "sections.kpi-section": {
               populate: {
                 props: true,
                 kpis: {
-                  populate: '*',
+                  populate: "*",
                 },
               },
             },
-            'sections.video-with-text-section': {
-              populate: '*',
+            "sections.video-with-text-section": {
+              populate: "*",
             },
-            'sections.team-member-card-section': {
+            "sections.team-member-card-section": {
               populate: {
                 team_members: {
-                  populate: '*',
+                  populate: "*",
                 },
                 props: true,
               },
             },
-            'sections.regular-form-section': {
-              populate: '*',
+            "sections.regular-form-section": {
+              populate: "*",
             },
-            'sections.career-card-section': {
+            "sections.career-card-section": {
               populate: {
                 cards: {
-                  populate: '*',
+                  populate: "*",
                 },
                 props: true,
               },
             },
-            'sections.services-section': {
-              populate: '*'
+            "sections.location-card-section": {
+              populate: {
+                cards: {
+                  populate: "*",
+                },
+                props: true,
+              },
             },
-            'sections.event-details-section': {
-              populate: '*'
+            "sections.services-section": {
+              populate: "*",
             },
-            'sections.feature-cards': {
+            "sections.event-details-section": {
+              populate: "*",
+            },
+            "sections.feature-cards": {
               populate: {
                 props: {
-                  populate: '*',
+                  populate: "*",
                 },
                 features: {
-                  populate: '*',
+                  populate: "*",
                 },
-              }
+              },
             },
-            'sections.image-carousel': {
+            "sections.image-carousel": {
               populate: {
                 props: {
                   populate: true,
@@ -145,12 +155,12 @@ module.exports = (config, { strapi }) => {
                   populate: true,
                 },
                 cta: true,
-              }
-            }
+              },
+            },
           },
-        }
+        },
       },
-    }
+    };
 
     return next();
   };

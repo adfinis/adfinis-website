@@ -10,9 +10,9 @@ type FeatureCard = {
   title: string
   intro: string
   cta?: CTA
-  image: {
-    url: string
-    alternativeText: string | null
+  image?: {
+    url?: string
+    alternativeText?: string | null
   }
 }
 
@@ -33,7 +33,7 @@ export default function FeatureCards({ section }: { section: Props }) {
           return (
             <SectionCardWide
               ctas={[]}
-              image={{ src: item.image.url, alt: "" }}
+              image={{ src: item.image?.url || "", alt: "" }}
               reverse={i % 2 === 1}
               key={`project_cards${i}`}
             >

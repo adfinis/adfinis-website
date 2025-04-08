@@ -13,8 +13,8 @@ type Props = {
     location: string
     url: string
     country: CareerCountry
-    image: {
-      url: string
+    image?: {
+      url?: string
     }
   }[]
 }
@@ -30,7 +30,7 @@ export default function CareerCardSection({ section }: { section: Props }) {
             key={index}
             title={career.title}
             description={career.description}
-            imageUrl={career.image.url}
+            imageUrl={career.image?.url || ""}
             workload={career.workload}
             location={career.location}
             country={career.country}

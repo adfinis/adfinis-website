@@ -31,6 +31,7 @@ import {
   imageSlider,
   teamMembers,
   speakersSection,
+  locations,
 } from "./texts"
 import Container from "@/components/container"
 import CardSlider from "@/components/cards/card-slider"
@@ -48,7 +49,7 @@ import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
 import StandardForm from "@/components/form/standard-form"
-import { type Locale } from "@/hooks/useLocale"
+import { type Locale } from "@/lib/locale"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
@@ -63,6 +64,7 @@ import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
 import { getDictionary } from "@/lib/get-dictionary"
+import CardLocation from "@/components/cards/card-location"
 
 export default async function Theme({
   params: { locale },
@@ -89,6 +91,23 @@ export default async function Theme({
         <Title markdown={intro.title} align="center" />
         <Text markdown={intro.text} />
       </Intro>
+
+      <Container id="Locations" background="white" padding="both-padding">
+        <CardGroup
+          smColumns={2}
+          lgColumns={3}
+          maxWidth="none"
+          className="gap-6"
+        >
+          {locations.map((location, index) => (
+            <CardLocation
+              key={index}
+              title={location.title}
+              description={location.description}
+            />
+          ))}
+        </CardGroup>
+      </Container>
 
       <Container id="Solutions" padding="both-padding" background="neutral">
         <CardSlider
@@ -454,7 +473,7 @@ export default async function Theme({
               key={index}
               title={career.title}
               description={career.description}
-              imageUrl={career.image.url}
+              imageUrl={career.image?.url || ""}
               workload={career.workload}
               location={career.location}
               country={career.country as CareerCountry}

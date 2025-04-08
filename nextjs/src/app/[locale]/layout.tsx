@@ -1,5 +1,5 @@
 import CookieNotice from "@/components/cookie-notice"
-import { Locale } from "@/hooks/useLocale"
+import { Locale } from "@/lib/locale"
 import { ReactNode } from "react"
 
 export default function Layout({

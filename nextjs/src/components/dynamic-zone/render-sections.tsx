@@ -5,10 +5,10 @@ import VideoSection from "@/components/dynamic-zone/wrapper/sections/video-secti
 import VideoWithTextSection from "@/components/dynamic-zone/wrapper/sections/video-with-text-section"
 import FeatureCards from "@/components/dynamic-zone/wrapper/sections/feature-cards"
 import ServicesSection from "@/components/dynamic-zone/wrapper/sections/services-section"
-import SlaCardSection from "@/components/dynamic-zone/wrapper/relations/sla-card-section"
+import SlaCardSection from "@/components/dynamic-zone/wrapper/sections/sla-card-section"
 import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/product-feature-card"
 import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/event-details-section"
-import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/relations/extra-wide-icon-cards-grid-section"
+import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/sections/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
@@ -21,7 +21,9 @@ import ImageCarousel from "@/components/dynamic-zone/wrapper/sections/image-caro
 import BlogContentSection from "@/components/dynamic-zone/wrapper/sections/blog-content-section"
 import TeamMemberCardSection from "@/components/dynamic-zone/wrapper/sections/team-member-card-section"
 import CareerCardSection from "@/components/dynamic-zone/wrapper/sections/career-card-section"
-import { type Locale } from "@/hooks/useLocale"
+import LocationCardSection from "@/components/dynamic-zone/wrapper/sections/location-card-section"
+import { type Locale } from "@/lib/locale"
+import CalendlySection from "@/components/dynamic-zone/wrapper/sections/calendly-section"
 
 export function renderSections(section: any, index: number, locale?: string) {
   switch (section.__component) {
@@ -104,10 +106,10 @@ export function renderSections(section: any, index: number, locale?: string) {
           section={section}
         />
       )
-    case "relations.sla-card-section":
+    case "sections.sla-card-section":
       return (
         <SlaCardSection
-          key={`relations.sla-card-section_${index}`}
+          key={`sections.sla-card-section_${index}`}
           section={section}
         />
       )
@@ -132,10 +134,10 @@ export function renderSections(section: any, index: number, locale?: string) {
           section={section}
         />
       )
-    case "relations.extra-wide-icon-cards-grid-section":
+    case "sections.extra-wide-icon-cards-grid-section":
       return (
         <ExtraWideIconCardsGridSection
-          key={`relations.extra-wide-icon-cards-grid-section_${index}`}
+          key={`sections.extra-wide-icon-cards-grid-section_${index}`}
           section={section}
         />
       )
@@ -171,6 +173,20 @@ export function renderSections(section: any, index: number, locale?: string) {
       return (
         <CareerCardSection
           key={`sections.career-card-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.location-card-section":
+      return (
+        <LocationCardSection
+          key={`sections.location-card-section_${index}`}
+          section={section}
+        />
+      )
+    case "sections.calendly-section":
+      return (
+        <CalendlySection
+          key={`sections.calendly-section_${index}`}
           section={section}
         />
       )

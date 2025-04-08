@@ -51,6 +51,7 @@ export interface CardsCategoryCard extends Struct.ComponentSchema {
       'api::category.category'
     >;
     description: Schema.Attribute.String;
+    href: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -182,6 +183,18 @@ export interface CardsKpiCard extends Struct.ComponentSchema {
     icon_image: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
     internal_name: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CardsLocationCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_location_cards';
+  info: {
+    displayName: 'Location card';
+    icon: 'pinMap';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -393,51 +406,6 @@ export interface MenuMenuSegment extends Struct.ComponentSchema {
   };
 }
 
-export interface RelationsCalendlySection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_calendly_sections';
-  info: {
-    displayName: 'Calendly Section';
-  };
-  attributes: {
-    calendly_item: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::calendly-item.calendly-item'
-    >;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-  };
-}
-
-export interface RelationsExtraWideIconCardsGridSection
-  extends Struct.ComponentSchema {
-  collectionName: 'components_relations_extra_wide_icon_cards_grid_sections';
-  info: {
-    displayName: 'Extra Wide Icon Cards Grid Section';
-    icon: 'dashboard';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
-    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface RelationsSlaCardSection extends Struct.ComponentSchema {
-  collectionName: 'components_relations_sla_card_sections';
-  info: {
-    description: '';
-    displayName: 'SLA Card Section';
-  };
-  attributes: {
-    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
-    props: Schema.Attribute.Component<'sections.section-props', false> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 export interface RelationsSolutionsRelationWithDescription
   extends Struct.ComponentSchema {
   collectionName: 'components_relations_solutions_relation_with_descriptions';
@@ -500,6 +468,25 @@ export interface SectionsBlogContentSection extends Struct.ComponentSchema {
     content: Schema.Attribute.RichText;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsCalendlySection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_calendly_sections';
+  info: {
+    description: '';
+    displayName: 'Calendly section';
+    icon: 'calendar';
+  };
+  attributes: {
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'### Schedule a **Free Health Check**'>;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://calendly.com/embed-demo-sales/discovery-call'>;
   };
 }
 
@@ -618,6 +605,22 @@ export interface SectionsEventDetailsSection extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Date event: January 23, 2024'>;
     props: Schema.Attribute.Component<'sections.section-props', false> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface SectionsExtraWideIconCardsGridSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_extra_wide_icon_cards_grid_sections';
+  info: {
+    displayName: 'Extra wide icon cards grid section';
+    icon: 'dashboard';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::icon-card.icon-card'>;
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -797,6 +800,20 @@ export interface SectionsKpiSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsLocationCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_location_card_sections';
+  info: {
+    displayName: 'Location card section';
+    icon: 'pinMap';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.location-card', true>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsProductFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_sections_product_feature_cards';
   info: {
@@ -945,6 +962,21 @@ export interface SectionsSingleColumnSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSlaCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_sla_card_sections';
+  info: {
+    displayName: 'SLA Card Section';
+    icon: 'phone';
+  };
+  attributes: {
+    cards: Schema.Attribute.Relation<'oneToMany', 'api::sla-card.sla-card'>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'## SLA - Our Managed Service Models'>;
+  };
+}
+
 export interface SectionsTeamMemberCardSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_team_member_card_sections';
   info: {
@@ -1015,6 +1047,7 @@ declare module '@strapi/strapi' {
       'cards.feature-card': CardsFeatureCard;
       'cards.icon-card': CardsIconCard;
       'cards.kpi-card': CardsKpiCard;
+      'cards.location-card': CardsLocationCard;
       'cards.simple-card': CardsSimpleCard;
       'cards.team-member-card': CardsTeamMemberCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
@@ -1029,20 +1062,19 @@ declare module '@strapi/strapi' {
       'menu.menu-link': MenuMenuLink;
       'menu.menu-section': MenuMenuSection;
       'menu.menu-segment': MenuMenuSegment;
-      'relations.calendly-section': RelationsCalendlySection;
-      'relations.extra-wide-icon-cards-grid-section': RelationsExtraWideIconCardsGridSection;
-      'relations.sla-card-section': RelationsSlaCardSection;
       'relations.solutions-relation-with-description': RelationsSolutionsRelationWithDescription;
       'rich-headings.h1': RichHeadingsH1;
       'rich-headings.h2': RichHeadingsH2;
       'rich-headings.h3': RichHeadingsH3;
       'sections.blog-content-section': SectionsBlogContentSection;
+      'sections.calendly-section': SectionsCalendlySection;
       'sections.career-card-section': SectionsCareerCardSection;
       'sections.color-card-carousel': SectionsColorCardCarousel;
       'sections.content-carousel': SectionsContentCarousel;
       'sections.content-highlight-section': SectionsContentHighlightSection;
       'sections.cta-banner': SectionsCtaBanner;
       'sections.event-details-section': SectionsEventDetailsSection;
+      'sections.extra-wide-icon-cards-grid-section': SectionsExtraWideIconCardsGridSection;
       'sections.feature-cards': SectionsFeatureCards;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
@@ -1053,6 +1085,7 @@ declare module '@strapi/strapi' {
       'sections.icon-card-section-with-relation': SectionsIconCardSectionWithRelation;
       'sections.image-carousel': SectionsImageCarousel;
       'sections.kpi-section': SectionsKpiSection;
+      'sections.location-card-section': SectionsLocationCardSection;
       'sections.product-feature-card': SectionsProductFeatureCard;
       'sections.project-cards-section': SectionsProjectCardsSection;
       'sections.projects-card-section-with-external-link': SectionsProjectsCardSectionWithExternalLink;
@@ -1062,6 +1095,7 @@ declare module '@strapi/strapi' {
       'sections.section-with-rich-heading-intro-and-cta': SectionsSectionWithRichHeadingIntroAndCta;
       'sections.services-section': SectionsServicesSection;
       'sections.single-column-section': SectionsSingleColumnSection;
+      'sections.sla-card-section': SectionsSlaCardSection;
       'sections.team-member-card-section': SectionsTeamMemberCardSection;
       'sections.two-column-section': SectionsTwoColumnSection;
       'sections.video-section': SectionsVideoSection;
