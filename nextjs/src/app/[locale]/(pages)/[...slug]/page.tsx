@@ -18,7 +18,7 @@ export default async function LandingPage({
     locale: locale,
     isActive: true,
   }
-  const url = `pages/${slug}?status=published`
+  const url = `pages/${slug}?locale=${locale}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
     (item: { locale: string; slug: string }) => {
