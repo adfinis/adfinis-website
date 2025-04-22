@@ -73,7 +73,10 @@ export default async function EventsDetailPage({
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       <Container background="white" padding="both-padding">
-        <InfoLabel text={formattedDate} className="block mb-4" />
+        <InfoLabel
+          text={`${dictionary.pages.events.dateEvent}: ${formattedDate}`}
+          className="block mb-4"
+        />
         <Text markdown={details} className="mb-8 max-w-4xl" />
         {tester && sign_up_button && (
           <LinkButton

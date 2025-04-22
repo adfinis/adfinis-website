@@ -32,7 +32,8 @@
     "pages": {
         "events": {
             "title": "Evenement Details",
-            "cta": "Meld je nu aan"
+            "cta": "Meld je nu aan",
+            "dateEvent": "Datum evenement"
         }
     }
 }

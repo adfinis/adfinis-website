@@ -32,7 +32,8 @@
     "pages": {
         "events": {
             "title": "Event Details",
-            "cta": "Jetzt anmelden"
+            "cta": "Jetzt anmelden",
+            "dateEvent": "Datum Event"
         }
     }
 }

@@ -21,7 +21,7 @@ export function getLocaleDateFormatted({
   const dateObj = new Date(date)
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
-    month: "short",
+    month: "long",
     day: "2-digit",
   }
   return dateObj.toLocaleDateString(locale, options)
