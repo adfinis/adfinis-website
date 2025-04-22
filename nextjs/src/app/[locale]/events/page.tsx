@@ -9,6 +9,8 @@ import Footer from "@/components/stapi/footer"
 import CardGroup from "@/components/cards/card-group"
 import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
+import { getDictionary } from "@/lib/get-dictionary"
+import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 
 export default async function EventsOverviewPage({
   params: { locale },
@@ -22,6 +24,7 @@ export default async function EventsOverviewPage({
     locale: locale,
     isActive: true,
   }
+  const dictionary = await getDictionary(locale as Locale)
 
   const locales = (data.localizations ?? []).map(
     (item: { locale: string; slug: string }) => {
@@ -40,6 +43,10 @@ export default async function EventsOverviewPage({
   const cards = await strapi(
     `event-pages/?locale=${locale}&populate=card_image&populate=hero.background_image`,
   )
+
+  function formatDate(date: string) {
+    return getLocaleDateFormatted({ date, locale: locale as Locale })
+  }
 
   return (
     <>
@@ -64,7 +71,7 @@ export default async function EventsOverviewPage({
                 key={event.documentId.slice(-4)}
                 title={event.metadata_title}
                 subtitle={event.address}
-                description={event.date_event}
+                description={`${formatDate(event.date_event)}`}
                 imageUrl={event.hero?.background_image.url}
                 logoUrl={event.card_image?.url}
                 href={`/${locale}/events/${event.slug}`}
