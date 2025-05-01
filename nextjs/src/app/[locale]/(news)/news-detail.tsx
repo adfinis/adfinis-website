@@ -7,6 +7,7 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
+import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
 
 export default async function NewsDetail({
@@ -40,7 +41,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`Published at ${publishedAt ?? createdAt}`}
+              text={`Published at ${getLocaleDateFormatted({ date: publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />
