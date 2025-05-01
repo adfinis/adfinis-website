@@ -3,6 +3,7 @@ import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
 import CardGroup from "@/components/cards/card-group"
 import CardArticle from "@/components/cards/card-article"
 import Container from "@/components/container"
+import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 
 export default async function NewsOverviewGridSection({
   locale,
@@ -16,7 +17,7 @@ export default async function NewsOverviewGridSection({
       key: `news_item_${item.id}`,
       title: item.card_title,
       subtitle: item.card_subtitle,
-      description: `${item.publishedAt} / ${item.minutes_read} min read`,
+      description: `${getLocaleDateFormatted({ date: item.publishedAt, locale: locale as Locale })} / ${item.minutes_read} min read`,
       imageUrl: item.hero?.background_image?.url,
       categories: item.categories?.map((cat: any) => {
         return {
