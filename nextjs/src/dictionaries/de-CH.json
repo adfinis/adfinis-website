@@ -14,7 +14,7 @@
         "jobFunction": "Funktion",
         "message": "Nachricht",
         "acceptPrivacyPolicy": "Ich bin einverstanden mit der Datenschutzerklärung von Adfinis.",
-        "submitSuccessful": "Formular erfolgreich übermittelt"
+        "submitSuccessful": "Danke, Ihre Eingabe wurde erfolgreich übermittelt"
     },
     "validation": {
         "required": "Dieses Feld muss ausgefüllt werden.",

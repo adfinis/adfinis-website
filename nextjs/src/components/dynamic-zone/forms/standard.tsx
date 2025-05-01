@@ -63,12 +63,15 @@ export default function Standard({ submitLabel, dictionary, locale }: Props) {
           errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">
-          {state.success && (
-            <p className="text-input-primary">Form successfully submitted</p>
+          {state.success ? (
+            <p className="text-input-primary">
+              {dictionary.forms.submitSuccessful}
+            </p>
+          ) : (
+            <Button variant={"cta"} name={"submit"} type="submit">
+              {submitLabel}
+            </Button>
           )}
-          <Button variant={"cta"} name={"submit"} type="submit">
-            {submitLabel}
-          </Button>
         </div>
       </div>
     </form>

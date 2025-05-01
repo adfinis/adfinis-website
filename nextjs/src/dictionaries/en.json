@@ -14,7 +14,7 @@
         "jobFunction": "Job Function",
         "message": "Message",
         "acceptPrivacyPolicy": "I accept the privacy policy of Adfinis",
-        "submitSuccessful": "Form successfully submitted"
+        "submitSuccessful": "Thank you! Your response has been submitted."
     },
     "validation": {
         "required": "This field is required.",

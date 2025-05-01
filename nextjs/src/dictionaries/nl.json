@@ -14,7 +14,7 @@
         "jobFunction": "Functie",
         "message": "Bericht",
         "acceptPrivacyPolicy": "Ik accepteer het privacybeleid van Adfinis",
-        "submitSuccessful": "Formulier succesvol verzonden"
+        "submitSuccessful": "Uw formuliergegevens zijn succesvol verstuurd."
     },
     "validation": {
         "required": "Dit veld is verplicht.",
