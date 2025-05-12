@@ -1,6 +1,6 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
-import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
+import { NEWS_SLUGS } from "./news-slugs"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -19,7 +19,7 @@ export default async function NewsOverview({
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: string }) => {
     return {
-      href: `/${item.locale}/${SLUGS[item.locale]}`,
+      href: `/${item.locale}/${NEWS_SLUGS[item.locale]}`,
       locale: item.locale,
       isActive: false,
     }
