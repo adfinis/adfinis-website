@@ -11,3 +11,10 @@ export default async function strapi(query: string) {
   const { data } = await page.json()
   return data
 }
+export async function strapiWithoutRedirect(query: string) {
+  const page = await fetch(`${STRAPI}/${query}`, {
+    cache: "no-cache",
+  })
+  const { data } = await page.json()
+  return data
+}

@@ -34,6 +34,11 @@
             "title": "Evenement Details",
             "cta": "Meld je nu aan",
             "dateEvent": "Datum evenement"
+        },
+        "notFound": {
+            "body": "## 404\nSpace Invaders hebben deze pagina vernietigd! Neem wraak op hen! \n Gebruik `spatie` om te schieten en `←` en `→` om te bewegen!",
+            "cta": "Neem contact op",
+            "stayInTouch": "## Blijf in contact"
         }
     }
 }

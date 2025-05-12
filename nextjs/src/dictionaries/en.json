@@ -34,6 +34,11 @@
             "title": "Event Details",
             "cta": "Sign up now",
             "dateEvent": "Date event"
+        },
+        "notFound": {
+            "body": "## 404\nSpace invaders destroyed this page! Take revenge on them!\nUse `space` to shoot and `←` and `→` to move!",
+            "cta": "Get in touch",
+            "stayInTouch": "## Stay in touch"
         }
     }
 }

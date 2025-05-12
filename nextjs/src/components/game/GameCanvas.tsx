@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import { Game } from "./Game"
+import Button from "../button"
 
 export const GameCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -42,11 +43,9 @@ export const GameCanvas = () => {
   }
 
   return (
-    <div>
-      <button className="btn" onClick={handleRestart}>
-        Restart
-      </button>
+    <div className="hidden xl:grid place-items-center gap-12 pb-16">
       <canvas ref={canvasRef} id="space-invaders" />
+      <Button onClick={handleRestart}>Restart</Button>
     </div>
   )
 }

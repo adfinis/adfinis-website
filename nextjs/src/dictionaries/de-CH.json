@@ -34,6 +34,11 @@
             "title": "Event Details",
             "cta": "Jetzt anmelden",
             "dateEvent": "Datum Event"
+        },
+        "notFound": {
+            "body": "## 404\nOh nein, diese Seite wurde von Space Invaders angegriffen! Zeig ihnen, was du drauf hast!\nVerwende `Leertaste` zum Schiessen und `←` und `→` zum Bewegen!",
+            "cta": "Kontaktiere uns",
+            "stayInTouch": "## Bleib in Kontakt"
         }
     }
 }
