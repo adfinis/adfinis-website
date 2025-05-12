@@ -25,6 +25,19 @@ const nextConfig = {
   eslint: {
     dirs: ["src"],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=600, must-revalidate", // 10 minutes
+          },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig
