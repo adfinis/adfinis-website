@@ -10,7 +10,7 @@ import SectionGroup from "@/components/sections/section-group"
 import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
-import { getDictionary } from "@/lib/get-dictionary"
+import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 
 export default async function EventsDetailPage({

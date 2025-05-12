@@ -8,7 +8,7 @@ import { useFormState } from "react-dom"
 import { saveSimpleForm } from "@/app/actions"
 import { useEffect, useRef } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
-import { Dictionary } from "@/lib/get-dictionary"
+import { Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 
 type Props = {

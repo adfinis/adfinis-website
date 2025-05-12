@@ -9,7 +9,7 @@ import Footer from "@/components/stapi/footer"
 import CardGroup from "@/components/cards/card-group"
 import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
-import { getDictionary } from "@/lib/get-dictionary"
+import { getDictionary } from "@/lib/get-dictionary.server"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 
 export default async function EventsOverviewPage({

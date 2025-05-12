@@ -63,7 +63,7 @@ import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
-import { getDictionary } from "@/lib/get-dictionary"
+import { getDictionary } from "@/lib/get-dictionary.server"
 import CardLocation from "@/components/cards/card-location"
 
 export default async function Theme({
