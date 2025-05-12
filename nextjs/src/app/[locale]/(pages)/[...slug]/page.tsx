@@ -6,11 +6,12 @@ import Intro from "@/components/intro"
 import Text from "@/components/text"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { Locale } from "@/lib/locale"
 
 export default async function LandingPage({
   params: { locale, slug },
 }: {
-  params: { locale: string; slug: string[] }
+  params: { locale: Locale; slug: string[] }
 }) {
   const URI_PATH = slug.join("/")
   const activeLocale = {
@@ -21,7 +22,7 @@ export default async function LandingPage({
   const url = `pages/${slug}?locale=${locale}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
         href: `/${item.locale}/${item.slug}`,
         locale: item.locale,

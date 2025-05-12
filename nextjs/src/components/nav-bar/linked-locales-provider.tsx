@@ -1,9 +1,10 @@
 "use client"
 
+import { type Locale } from "@/lib/locale"
 import { createContext, ReactNode, useContext } from "react"
 
 export type LinkedLocale = {
-  locale: string
+  locale: Locale
   isActive: boolean
   href: string
 }

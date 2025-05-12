@@ -1,13 +1,14 @@
-import { SLUGS } from "@/app/[locale]/(case-studies)/case-studies-slugs"
+import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import CaseStudyDetailPage from "@/app/[locale]/(case-studies)/case-study-detail-page"
+import { Locale } from "@/lib/locale"
 
 export default async function DetailPage({
   params: { locale, slug },
 }: {
-  params: { locale: string; slug: string }
+  params: { locale: Locale; slug: string }
 }) {
   const activeLocale = {
-    href: `/${locale}/${SLUGS[locale]}/${slug}`,
+    href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }

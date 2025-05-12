@@ -8,7 +8,7 @@ import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import strapi from "@/lib/strapi"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
-import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
+import { NEWS_SLUGS } from "@/lib/slugs"
 
 export default async function NewsDetail({
   activeLocale,
@@ -21,7 +21,7 @@ export default async function NewsDetail({
   const data = await strapi(url)
   const { hero, main_blog, sections, publishedAt, createdAt } = data
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
         href: `/${item.locale}/${NEWS_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,

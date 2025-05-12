@@ -15,7 +15,7 @@ import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 export default async function EventsOverviewPage({
   params: { locale },
 }: {
-  params: { locale: string }
+  params: { locale: Locale }
 }) {
   const url = `events-overview/?locale=${locale}&status=published`
   const data = await strapi(url)
@@ -27,7 +27,7 @@ export default async function EventsOverviewPage({
   const dictionary = await getDictionary(locale as Locale)
 
   const locales = (data.localizations ?? []).map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
         href: `/${item.locale}/events`,
         locale: item.locale,

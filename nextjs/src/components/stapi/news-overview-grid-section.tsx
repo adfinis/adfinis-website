@@ -1,5 +1,5 @@
 import strapi from "@/lib/strapi"
-import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
+import { NEWS_SLUGS } from "@/lib/slugs"
 import CardGroup from "@/components/cards/card-group"
 import CardArticle from "@/components/cards/card-article"
 import Container from "@/components/container"
@@ -8,7 +8,7 @@ import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 export default async function NewsOverviewGridSection({
   locale,
 }: {
-  locale: string
+  locale: Locale
 }) {
   const url = `news-pages?locale=${locale}&populate=hero.background_image&populate=categories&status=published`
   const data = await strapi(url)
