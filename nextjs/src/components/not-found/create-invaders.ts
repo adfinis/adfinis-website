@@ -1,5 +1,5 @@
-import { Invader } from "./Invader"
-import { blocks } from "./invaderLayout"
+import { Invader } from "./invader"
+import { blocks } from "./invader-layout"
 
 export function createInvaders(
   invaderSize: number,

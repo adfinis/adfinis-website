@@ -1,6 +1,6 @@
-import { Projectile } from "./Projectile"
-import { KeyController } from "./KeyController"
-import { Game } from "./Game"
+import { Projectile } from "./projectile"
+import { KeyController } from "./key-controller"
+import { Game } from "./game"
 
 export class Player {
   x: number

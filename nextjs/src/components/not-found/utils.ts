@@ -1,6 +1,6 @@
 export function collides(
   a: { x: number; y: number; width: number; height: number },
-  b: { x: number; y: number; width: number; height: number }
+  b: { x: number; y: number; width: number; height: number },
 ): boolean {
   return (
     a.x < b.x + b.width &&

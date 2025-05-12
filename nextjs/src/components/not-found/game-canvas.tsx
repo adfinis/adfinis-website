@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import { Game } from "./Game"
+import { Game } from "./game"
 import Button from "../button"
 
 export const GameCanvas = () => {

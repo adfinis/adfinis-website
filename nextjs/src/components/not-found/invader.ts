@@ -1,5 +1,5 @@
-import { Game } from "./Game"
-import { Projectile } from "./Projectile"
+import { Game } from "./game"
+import { Projectile } from "./projectile"
 
 export class Invader {
   x: number

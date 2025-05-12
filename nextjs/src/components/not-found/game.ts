@@ -1,7 +1,7 @@
-import { Player } from "./Player"
-import { Invader } from "./Invader"
-import { Projectile } from "./Projectile"
-import { createInvaders } from "./createInvaders"
+import { Player } from "./player"
+import { Invader } from "./invader"
+import { Projectile } from "./projectile"
+import { createInvaders } from "./create-invaders"
 import { collides } from "./utils"
 
 export class Game {

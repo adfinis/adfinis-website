@@ -1,6 +1,6 @@
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
-import NotFoundWrapper from "@/components/not-found-wrapper"
+import NotFoundWrapper from "@/components/not-found/not-found-wrapper"
 import { strapiWithoutRedirect } from "@/lib/strapi"
 import Footer from "@/components/stapi/footer"
 
