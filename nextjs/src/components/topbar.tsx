@@ -9,6 +9,10 @@ type TopbarProps = {
   navItems: NavItem[]
 }
 
+/**
+ *
+ * @info this component is only used in the theme page.
+ */
 const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
   return (
     <div
@@ -27,12 +31,14 @@ const Topbar: React.FC<TopbarProps> = ({ navItems }) => {
           ]}
         >
           <NavMobile
+            locale="en"
             navItems={navItems}
             logoUrl={
               "https://adfinis.com/wp-content/uploads/sites/9/2021/01/Adfinis_Quer_Black.png.webp"
             }
           />
           <NavDesktop
+            locale="en"
             navItems={navItems}
             logoUrl={
               "https://adfinis.com/wp-content/uploads/sites/9/2021/01/Adfinis_Quer_Black.png.webp"

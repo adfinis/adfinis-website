@@ -15,14 +15,21 @@ import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import { CTA } from "@/lib/cta"
 import { colors } from "@/lib/colors"
 import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
+import { Locale } from "@/lib/locale"
 
 type NavMobileProps = {
   navItems: NavItem[]
   logoUrl: string
   cta?: CTA
+  locale: Locale
 }
 
-const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
+const NavMobile: React.FC<NavMobileProps> = ({
+  navItems,
+  logoUrl,
+  cta,
+  locale,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [expand, setExpand] = useState<number | undefined>(undefined)
   const [navbarVisible, setNavbarVisible] = useState(true)
@@ -99,7 +106,10 @@ const NavMobile: React.FC<NavMobileProps> = ({ navItems, logoUrl, cta }) => {
                 </Transition>
               </span>
 
-              <Link href={`/en`} className="h-20 flex items-center mx-auto">
+              <Link
+                href={`/${locale}`}
+                className="h-20 flex items-center mx-auto"
+              >
                 <Image
                   className="max-h-20"
                   src={logoUrl}
