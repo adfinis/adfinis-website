@@ -6,7 +6,7 @@ import Short from "@/components/dynamic-zone/forms/short"
 import Standard from "@/components/dynamic-zone/forms/standard"
 import Contact from "@/components/dynamic-zone/forms/contact"
 import EventForm from "@/components/dynamic-zone/forms/event-form"
-import { getDictionary } from "@/lib/get-dictionary"
+import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 
 type Props = {
