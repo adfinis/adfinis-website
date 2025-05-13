@@ -7,6 +7,7 @@ import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { Locale } from "@/lib/locale"
 
 export default async function Homepage({
   activeLocale,
@@ -16,7 +17,7 @@ export default async function Homepage({
   const url = `homepage?locale=${activeLocale.locale}`
   const data = await strapi(url)
   const locales = (data?.localizations ?? []).map(
-    (item: { locale: string }) => {
+    (item: { locale: Locale }) => {
       return {
         href: item.locale === "en" ? "/" : `/${item.locale}`,
         locale: item.locale,

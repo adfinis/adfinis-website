@@ -1,13 +1,14 @@
-import { SLUGS } from "@/app/[locale]/(case-studies)/case-studies-slugs"
 import CaseStudiesOverviewPage from "@/app/[locale]/(case-studies)/case-studies-overview-page"
+import { Locale } from "@/lib/locale"
+import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 
 export default function OverviewPage({
   params: { locale },
 }: {
-  params: { locale: string }
+  params: { locale: Locale }
 }) {
   const activeLocale = {
-    href: `/${locale}/${SLUGS[locale]}`,
+    href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}`,
     locale,
     isActive: true,
   }

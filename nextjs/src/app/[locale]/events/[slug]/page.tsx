@@ -17,7 +17,7 @@ export default async function EventsDetailPage({
   params: { locale, slug },
 }: {
   params: {
-    locale: string
+    locale: Locale
     slug: string
   }
 }) {
@@ -32,7 +32,7 @@ export default async function EventsDetailPage({
   const data = await strapi(url)
 
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
         href: `/${item.locale}/events/${item.slug}`,
         locale: item.locale,

@@ -1,13 +1,13 @@
 import strapi from "@/lib/strapi"
 import { default as FooterWrapper } from "@/components/layout/footer"
 import FooterElement from "@/components/layout/footer-element"
-import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
-import { PARTNER_PRODUCTS_SLUGS } from "@/app/[locale]/(partners-products)/slugs"
+import { PARTNER_PRODUCTS_SLUGS, SOLUTIONS_SLUGS } from "@/lib/slugs"
 import Link from "next/link"
 import IconSocial from "@/components/icons/icon-social"
 import FooterLegal from "@/components/layout/footer-legal"
+import { Locale } from "@/lib/locale"
 
-export default async function Footer({ locale }: { locale: string }) {
+export default async function Footer({ locale }: { locale: Locale }) {
   const data = await strapi(
     `footer/?locale=${locale}&populate=solutions&populate=partner_and_products`,
   )
@@ -15,7 +15,7 @@ export default async function Footer({ locale }: { locale: string }) {
     return null
   }
 
-  const SOLUTIONS_SLUG = `/${locale}/${SLUGS[locale]}`
+  const SOLUTIONS_SLUG = `/${locale}/${SOLUTIONS_SLUGS[locale]}`
   const PARTNER_PRODUCTS_SLUG = `/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}`
 
   return (

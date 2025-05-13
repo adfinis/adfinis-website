@@ -7,7 +7,8 @@ import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import Footer from "@/components/stapi/footer"
-import { SLUGS } from "@/app/[locale]/(case-studies)/case-studies-slugs"
+import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
+import { Locale } from "@/lib/locale"
 
 export default async function CaseStudyDetailPage({
   activeLocale,
@@ -20,9 +21,9 @@ export default async function CaseStudyDetailPage({
   const data = await strapi(url)
 
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale}/${CASE_STUDIES_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }
