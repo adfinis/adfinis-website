@@ -3,18 +3,19 @@ import NavBar from "@/components/nav-bar/nav-bar"
 import NotFoundWrapper from "@/components/not-found/not-found-wrapper"
 import { strapiWithoutRedirect } from "@/lib/strapi"
 import Footer from "@/components/stapi/footer"
+import { type Locale } from "@/lib/locale"
 
 export default async function NotFound() {
   try {
     const activeLocale = {
       href: "/",
-      locale: "en",
+      locale: "en" as Locale,
       isActive: true,
     }
     const url = `homepage?locale=${activeLocale.locale}`
     const data = await strapiWithoutRedirect(url)
     const locales = (data?.localizations ?? []).map(
-      (item: { locale: string }) => {
+      (item: { locale: Locale }) => {
         return {
           href: item.locale === "en" ? "/" : `/${item.locale}`,
           locale: item.locale,
