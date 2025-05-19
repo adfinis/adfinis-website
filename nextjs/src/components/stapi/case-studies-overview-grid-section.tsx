@@ -10,7 +10,7 @@ export default async function CaseStudiesOverviewGridSection({
 }: {
   locale: Locale
 }) {
-  const url = `page-case-studies?locale=${locale}&populate=hero.background_image&populate=client_image`
+  const url = `page-case-studies?locale=${locale}&populate=hero.background_image&populate=client_image&sort=publication_date:desc`
   const data = await strapi(url)
   const cards = data.map((item: any) => {
     return {
