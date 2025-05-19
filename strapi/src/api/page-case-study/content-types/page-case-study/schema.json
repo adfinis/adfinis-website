@@ -16,6 +16,14 @@
     }
   },
   "attributes": {
+    "publication_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
     "metadata_title": {
       "pluginOptions": {
         "i18n": {

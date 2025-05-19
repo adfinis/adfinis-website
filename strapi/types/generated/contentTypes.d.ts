@@ -1622,6 +1622,12 @@ export interface ApiPageCaseStudyPageCaseStudy
           localized: true;
         };
       }>;
+    publication_date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
