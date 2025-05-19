@@ -4,7 +4,7 @@ const STRAPI = process.env.STRAPI_API || ""
 export default async function strapi(query: string) {
   const page = await fetch(`${STRAPI}/${query}`, {
     next: {
-      revalidate: 600,
+      revalidate: 1800,
     },
   })
   if (page && page.status === 404) {
