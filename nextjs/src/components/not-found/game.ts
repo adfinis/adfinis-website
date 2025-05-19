@@ -11,7 +11,7 @@ export class Game {
   player: Player
   invaders: Invader[] = []
   invaderShots: Projectile[] = []
-  invaderAttackRate = 0.995
+  invaderAttackRate = 0.9985
   invaderSpeed = 1
   kills = 0
   lost = false
@@ -28,7 +28,7 @@ export class Game {
 
   spawnInvaders() {
     const multiplier = this.width > 1000 ? 3 : this.width > 700 ? 2 : 1
-    const invaderSize = 20
+    const invaderSize = 15
 
     this.invaders = createInvaders(invaderSize, multiplier, this.invaderSpeed)
   }
