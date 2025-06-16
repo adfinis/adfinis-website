@@ -24,4 +24,8 @@ export default ({ env }) => ({
       },
     },
   },
+  'slug-control': {
+    enabled: true,
+    resolve: './src/plugins/slug-control'
+  },
 });
