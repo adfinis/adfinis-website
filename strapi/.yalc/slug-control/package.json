@@ -1,0 +1,57 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
+    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0-rc.26",
+    "@strapi/icons": "^2.0.0-rc.26",
+    "react-intl": "^7.1.11"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.8.0",
+    "@strapi/sdk-plugin": "^5.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1",
+    "styled-components": "^6.1.19"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "slug-control",
+    "displayName": "Slug control",
+    "description": "Custom component to generate slugs with basepath and locale as prefix"
+  },
+  "name": "slug-control",
+  "description": "Custom component to generate slugs with basepath and locale as prefix",
+  "license": "MIT",
+  "author": "Mauricio Kruijer <mauricio.kruijer@gmail.com>",
+  "yalcSig": "14cc5551a8084e2ca549b5d8a147876e"
+}
