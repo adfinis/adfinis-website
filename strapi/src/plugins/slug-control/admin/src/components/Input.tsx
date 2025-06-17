@@ -62,15 +62,15 @@ function makeSlug(
   title: string,
   locale: Locale
 ): string {
-  const modelConfig = pathMapping[model];
+  const modelConfig = pathMapping[model] ?? null;
+  const basePath = modelConfig?.[locale] ?? '';
   if (title.startsWith(`/${locale}/`)) {
     return title;
   }
-  if (modelConfig && modelConfig[locale]) {
-    const basePath = modelConfig[locale];
+  if (modelConfig && basePath) {
     return `/${locale}/${basePath}/${title}`;
   }
-  if (modelConfig[locale] === "") {
+  if (basePath === "") {
     return `/${locale}/${title}`;
   }
   return title;
