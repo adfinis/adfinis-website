@@ -22,7 +22,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "slug-control": "file:.yalc/slug-control",
     "styled-components": "^6.0.0",
     "typescript": "^5.2.2"
   },
