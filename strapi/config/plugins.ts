@@ -3,8 +3,9 @@ export default ({ env }) => ({
     config: {
       provider: "aws-s3",
       providerOptions: {
+        baseUrl: env("DO_SPACE_CDN_URL", "https://cdn.adfinis-staging.0x2.nl"),
+        rootPath: env("DO_SPACE_DIRECTORY", "strapi-assets"),
         s3Options: {
-          rootPath: env("DO_SPACE_DIRECTORY"),
           credentials: {
             accessKeyId: env("DO_SPACE_ACCESS_KEY"),
             secretAccessKey: env("DO_SPACE_SECRET_KEY"),
