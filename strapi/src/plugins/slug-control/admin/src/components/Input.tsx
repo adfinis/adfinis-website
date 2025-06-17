@@ -3,7 +3,6 @@ import * as React from "react";
 import { unstable_useContentManagerContext as useContentManagerContext } from "@strapi/strapi/admin";
 import {useEffect, useMemo} from 'react'
 
-
 type InputProps = {
   attribute: {
     type: string;
@@ -87,7 +86,6 @@ const slugify = (str: string) =>
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { attribute, name, label, onChange, required, value, labelAction } = props;
   const { model, id, form } = useContentManagerContext();
-  console.log({id})
   const currentLocale = (new URLSearchParams(location?.search))?.get("plugins[i18n][locale]") as Locale;
 
   //@ts-ignore
@@ -105,14 +103,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   }, [slugged, value, name, attribute.type, onChange]);
 
   return (
-    <Field.Root hint={"Managed by custom field"}>
+    <Field.Root hint={"Managed by custom field"} required={required}>
       <Field.Label action={labelAction}>{label}</Field.Label>
       <Field.Input
         ref={ref}
         name={name}
         type="text"
         disabled={true}
-        required={required}
         value={slugged}
       />
       <Field.Hint/>

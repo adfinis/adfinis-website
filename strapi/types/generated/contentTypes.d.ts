@@ -1851,6 +1851,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         };
       }>;
     slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.CustomField<
         'plugin::slug-control.slug-control',
         {

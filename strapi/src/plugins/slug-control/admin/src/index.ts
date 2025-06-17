@@ -91,7 +91,30 @@ export default {
               },
             ],
           }
-        ]
+        ],
+        advanced: [
+          {
+            sectionTitle: {
+              id: `${PLUGIN_ID}.form.advanced`,
+              defaultMessage: "Advanced Settings",
+            },
+            items: [
+              {
+                name: "required",
+                type: "checkbox",
+                intlLabel: {
+                  id: `${PLUGIN_ID}.form.required.label`,
+                  defaultMessage: "Required field",
+                },
+                description: {
+                  id: `${PLUGIN_ID}.form.required.description`,
+                  defaultMessage: "You won't be able to create an entry if this field is empty",
+                },
+                defaultValue: true,
+              },
+            ],
+          },
+        ],
       }
     })
 
