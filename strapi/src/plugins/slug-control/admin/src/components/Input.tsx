@@ -55,6 +55,15 @@ const pathMapping: PathMapping = {
     ['en']: 'case-studies',
     ['en-AU']: 'case-studies',
   },
+  'api::event-page.event-page': {
+    ['nl']: 'events',
+    ['nl-NL']: 'events',
+    ['de']: 'events',
+    ['de-DE']: 'events',
+    ['de-CH']: 'events',
+    ['en']: 'events',
+    ['en-AU']: 'events',
+  },
 };
 
 function makeSlug(
