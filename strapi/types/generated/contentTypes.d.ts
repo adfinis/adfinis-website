@@ -1663,12 +1663,30 @@ export interface ApiPageCaseStudyPageCaseStudy
           localized: true;
         };
       }>;
-    slug: Schema.Attribute.UID<'metadata_title'> &
+    slug: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.CustomField<
+        'plugin::slug-control.slug-control',
+        {
+          override: 'unique_slug';
+          pattern: 'title';
+        }
+      > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
+      }>;
+    unique_slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
       }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
