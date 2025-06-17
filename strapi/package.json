@@ -4,8 +4,9 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "preinstall": "cd ./src/plugins/slug-control; npm install && npm run build",
-    "build": "strapi build",
+    "preinstall": "cd ./src/plugins/slug-control && npm install",
+    "build:slug-control": "cd ./src/plugins/slug-control && npm run build && cd ../..",
+    "build": "npm run build:slug-control && strapi build",
     "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
