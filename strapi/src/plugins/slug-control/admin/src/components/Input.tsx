@@ -64,6 +64,15 @@ const pathMapping: PathMapping = {
     ['en']: 'events',
     ['en-AU']: 'events',
   },
+  'api::news-page.news-page': {
+    ['nl']: 'nieuws',
+    ['nl-NL']: 'nieuws',
+    ['de']: 'news',
+    ['de-DE']: 'news',
+    ['de-CH']: 'news',
+    ['en']: 'news',
+    ['en-AU']: 'news',
+  },
 };
 
 function makeSlug(

@@ -35,14 +35,30 @@
       "type": "text",
       "required": true
     },
+    "unique_slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "unique": true,
+      "regex": "^[A-Za-z0-9\\-_\\/]+$"
+    },
     "slug": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
-      "targetField": "metadata_title",
+      "type": "customField",
+      "options": {
+        "pattern": "title",
+        "override": "unique_slug"
+      },
+      "customField": "plugin::slug-control.slug-control",
       "required": true
     },
     "hero": {
