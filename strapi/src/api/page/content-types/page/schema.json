@@ -57,7 +57,8 @@
         "pattern": "title",
         "override": "unique_slug"
       },
-      "customField": "plugin::slug-control.slug-control"
+      "customField": "plugin::slug-control.slug-control",
+      "required": true
     },
     "hero": {
       "type": "relation",
