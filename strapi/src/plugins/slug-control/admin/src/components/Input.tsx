@@ -73,6 +73,15 @@ const pathMapping: PathMapping = {
     ['en']: 'news',
     ['en-AU']: 'news',
   },
+  'api::page-partner-and-product.page-partner-and-product': {
+    ['nl']: 'partners-en-producten',
+    ['nl-NL']: 'partners-en-producten',
+    ['de']: 'partner-und-produkte',
+    ['de-DE']: 'partner-und-produkte',
+    ['de-CH']: 'partner-und-produkte',
+    ['en']: 'partners-and-products',
+    ['en-AU']: 'partners-and-products',
+  },
 };
 
 function makeSlug(
