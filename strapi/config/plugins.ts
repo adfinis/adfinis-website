@@ -14,14 +14,16 @@ export default ({ env }) => ({
           endpoint: env("DO_SPACE_ENDPOINT"),
           params: {
             Bucket: env("DO_SPACE_BUCKET"),
-            CacheControl: "public, max-age=31536000", // 1 year: 60*60*24*365 = 31536000
-            ['Cache-Control']: "public, max-age=31536000", // 1 year: 60*60*24*365 = 31536000
           },
         },
       },
       actionOptions: {
-        upload: {},
-        uploadStream: {},
+        upload: {
+          CacheControl: "public, max-age=31536000", // 1 year: 60*60*24*365 = 31536000
+        },
+        uploadStream: {
+          CacheControl: "public, max-age=31536000", // 1 year: 60*60*24*365 = 31536000
+        },
         delete: {},
       },
     },
