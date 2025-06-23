@@ -13,6 +13,7 @@ export default [
             'data:',
             'blob:',
             '.digitaloceanspaces.com',
+            'adfinis-assets.ams3.digitaloceanspaces.com',
             'cdn.adfinis-staging.0x2.nl',
           ],
           'media-src': [
@@ -20,6 +21,7 @@ export default [
             'data:',
             'blob:',
             '.digitaloceanspaces.com',
+            'adfinis-assets.ams3.digitaloceanspaces.com',
             'cdn.adfinis-staging.0x2.nl',
           ],
           upgradeInsecureRequests: null,
