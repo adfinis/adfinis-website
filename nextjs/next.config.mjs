@@ -32,7 +32,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=1800, must-revalidate", // 30 minutes
+            value: "public, max-age=0, must-revalidate", // 30 minutes
           },
         ],
       },
