@@ -11,6 +11,24 @@ import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
+import { Metadata } from "next"
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: {
+    locale: Locale
+    slug: string
+  }
+}): Promise<Metadata> {
+  const url = `events-overview/?locale=${locale}&status=published`
+  const data = await strapi(url)
+
+  return {
+    title: data.metadata_title,
+    description: data.metadata_description,
+  }
+}
 
 export default async function EventsOverviewPage({
   params: { locale },
