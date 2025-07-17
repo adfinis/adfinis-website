@@ -21,30 +21,6 @@ export default {
    */
   bootstrap({ strapi }: { strapi: Core.Strapi }) {
     console.log('bbb')
-    async function things() {
-      const customCollectionTypes = Object.keys(strapi.contentTypes).filter(key => key.startsWith('api::'));
-      const countDocumentsByLocale = {
-        'en': {name: '', count: 0},
-        'en-AU': {name: '', count: 0},
-        'de': {name: '', count: 0},
-        'de-DE': {name: '', count: 0},
-        'de-CH': {name: '', count: 0},
-        'nl': {name: '', count: 0},
-      }
 
-      for (const key of customCollectionTypes) {
-        const counts = Object.assign({}, countDocumentsByLocale);
-        const locales = Object.keys(counts)
-        for (const locale of locales) {
-          counts[locale].count = await strapi.documents(key as ContentType).count({ locale })
-          counts[locale].name = key.replace('api::', '')
-        }
-        console.table(counts)
-      }
-    }
-    things().then(() => {
-      console.log('done')
-    });
-    // console.log(countDocumentsByLocale);
   },
 };
