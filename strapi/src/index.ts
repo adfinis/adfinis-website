@@ -55,3 +55,29 @@ async function oneOffCopyHerosToEnAu() {
     console.log(res)
   }
 }
+
+async function oneOffCopyIconCardsToEnAu() {
+  const target = 'api::icon-card.icon-card';
+  const count = await strapi.documents(target).count({locale: 'en'});
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: ["icon_image", "cta"]
+  });
+  console.log(docs.length, count, docs[0])
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+      cta: doc.cta
+        ? (({ id, ...rest }) => rest)(doc.cta)
+        : null,
+    };
+
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
