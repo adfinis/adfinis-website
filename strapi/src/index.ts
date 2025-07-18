@@ -132,3 +132,26 @@ async function oneOffCopyCategoriesToEnAu() {
     console.log(res)
   }
 }
+
+async function oneOffCopyContentOfferToEnAu() {
+  const target = 'api::content-offer.content-offer';
+  const count = await strapi.documents(target).count({locale: 'en'});
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: ["cover_image", "download_file"]
+  });
+  console.log(docs.length, count, docs[0])
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+    };
+
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
