@@ -51,3 +51,29 @@ export default {
     });
   },
 };
+
+async function oneOffCopyHerosToEnAu() {
+  const customCollectionTypes = Object.keys(strapi.contentTypes).filter(key => key.startsWith('api::'));
+  const count = await strapi.documents('api::hero.hero').count({locale: 'en'});
+  const docs = await strapi.documents('api::hero.hero').findMany({
+    locale: 'en',
+    populate: ["color", "background_image", "cta", "logo"]
+  });
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+      color: (({ id, ...rest }) => rest)(doc.color),
+      cta: doc.cta
+        ? (({ id, ...rest }) => rest)(doc.cta)
+        : null,
+    };
+
+    const res = await strapi.documents('api::hero.hero').update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
