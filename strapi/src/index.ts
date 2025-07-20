@@ -202,6 +202,35 @@ async function oneOffCopySLACardToEnAu() {
   }
 }
 
+async function oneOffCopyCaseStudyOverviewToEnAu() {
+  const target = 'api::case-studies-overview.case-studies-overview';
+  const count = await strapi.documents(target).count({locale: 'en'});
+  const singleType = await strapi.documents(target).findFirst({
+    locale: 'en',
+    populate: ["hero", "sections"]
+  })
+
+  const {id, locale, documentId, updatedAt, createdAt, ...rest} = singleType;
+  const copyDoc = {
+    ...rest,
+    hero: (({ id, locale, ...rest }) => rest)(singleType.hero),
+  }
+
+  console.log({copyDoc})
+
+  const res = await strapi.documents(target).update({
+    documentId,
+    locale: 'en-AU',
+    data: copyDoc as any,
+  })
+  console.log(res)
+  const publish = await strapi.documents(target).publish({
+    documentId,
+    locale: 'en-AU',
+  })
+  console.log(publish)
+}
+
 async function oneOffCopyPageWIP() {
   const target = 'api::page.page';
   const count = await strapi.documents(target).count({locale: 'en'});
