@@ -323,6 +323,53 @@ async function oneOffCopyCaseStudyOverviewToEnAu() {
   console.log(publish)
 }
 
+
+async function oneOffEventsOverviewToEnAu() {
+  const target = 'api::events-overview.events-overview';
+  const singleType = await strapi.documents(target).findFirst({
+    locale: 'en',
+    populate: {
+      hero: true,
+      sections,
+    }
+  })
+
+  const {id, locale, documentId, updatedAt, createdAt, ...rest} = singleType;
+  const copyDoc = {
+    ...rest,
+    hero: (({ id, locale, ...rest }) => rest)(singleType.hero),
+    sections: ((sections) => {
+      return sections.map(({id, ...section}) => {
+        if (section.__component === 'sections.content-carousel') {
+          return {
+            ...section,
+            cards: section.cards.map(card => ({
+              ...card,
+              href: card.href.replace('/en/', '/en-AU/'),
+              categories: card.categories.map(({id, locale, ...rest}) => rest),
+            }))
+          };
+        }
+        return section;
+      });
+    })(singleType.sections),
+  }
+
+  console.log(copyDoc)
+  // console.log(copyDoc.sections[0])
+
+  const res = await strapi.documents(target).update({
+    documentId,
+    locale: 'en-AU',
+    data: copyDoc as any,
+  })
+  console.log(res)
+  const publish = await strapi.documents(target).publish({
+    documentId,
+    locale: 'en-AU',
+  })
+  console.log(publish)
+}
 async function oneOffCopyPageWIP() {
   const target = 'api::page.page';
   const count = await strapi.documents(target).count({locale: 'en'});
