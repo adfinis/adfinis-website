@@ -323,6 +323,35 @@ async function oneOffCopyCaseStudyOverviewToEnAu() {
   console.log(publish)
 }
 
+async function oneOffFooterToEnAu() {
+  const target = 'api::footer.footer';
+  const singleType = await strapi.documents(target).findFirst({
+    locale: 'en',
+    populate: '*'
+  })
+
+  const {id, locale, documentId, updatedAt, createdAt, updatedBy, createdBy, localizations, ...rest} = singleType;
+  const copyDoc = {
+    ...rest,
+    solutions: singleType.solutions.map(({id, locale, ...rest}) => rest),
+    partner_and_products: singleType.partner_and_products.map(({id, locale, ...rest}) => rest),
+  }
+
+  console.log(copyDoc)
+  // // console.log(copyDoc.sections[0])
+  //
+  // const res = await strapi.documents(target).update({
+  //   documentId,
+  //   locale: 'en-AU',
+  //   data: copyDoc as any,
+  // })
+  // console.log(res)
+  // const publish = await strapi.documents(target).publish({
+  //   documentId,
+  //   locale: 'en-AU',
+  // })
+  // console.log(publish)
+}
 
 async function oneOffEventsOverviewToEnAu() {
   const target = 'api::events-overview.events-overview';
