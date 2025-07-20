@@ -3,6 +3,98 @@
 import {Core} from '@strapi/strapi'
 import {ContentType} from '@strapi/types/dist/uid'
 
+const sections = {
+  on: {
+    'sections.blog-content-section': {
+      populate: '*',
+    },
+    'sections.calendly-section': {
+      populate: '*',
+    },
+    'sections.content-carousel': {
+      populate: {
+        'props': true,
+        'cards': {
+          populate: '*',
+        },
+      }
+    },
+    'sections.color-card-carousel': {
+      populate: '*',
+    },
+    'sections.career-card-section': {
+      populate: {
+        'props': true,
+          'cards': {
+          populate: '*',
+        },
+      }
+    },
+    'sections.content-highlight-section': {
+      populate: '*',
+    },
+    'sections.cta-banner': {
+      populate: '*',
+    },
+    'sections.event-details-section': {
+      populate: '*',
+    },
+    'sections.extra-wide-icon-cards-grid-section': {
+      populate: '*',
+    },
+    'sections.feature-cards': {
+      populate: {
+        'props': true,
+          'features': {
+          populate: '*',
+        }
+      },
+    },
+    'sections.hallmarks-section': {
+      populate: '*',
+    },
+    'sections.icon-card-section-with-relation': {
+      populate: '*',
+    },
+    'sections.image-carousel': {
+      populate: '*',
+    },
+    'sections.kpi-section': {
+      populate: '*',
+    },
+    'sections.location-card-section': {
+      populate: '*',
+    },
+    'sections.product-feature-card': {
+      populate: '*',
+    },
+    'sections.quote-section': {
+      populate: '*',
+    },
+    'sections.regular-form-section': {
+      populate: '*',
+    },
+    'sections.services-section': {
+      populate: '*',
+    },
+    'sections.single-column-section': {
+      populate: '*',
+    },
+    'sections.team-member-card-section': {
+      populate: '*',
+    },
+    'sections.video-section': {
+      populate: '*',
+    },
+    'sections.video-with-text-section': {
+      populate: '*',
+    },
+    'sections.sla-card-section': {
+      populate: '*',
+    }
+  }
+}
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -240,96 +332,7 @@ async function oneOffCopyPageWIP() {
       "hero": {
         populate: ["color"],
       },
-      sections: {
-        on: {
-          'sections.blog-content-section': {
-            populate: '*',
-          },
-          'sections.calendly-section': {
-            populate: '*',
-          },
-          'sections.content-carousel': {
-            populate: {
-              'cards': {
-                populate: '*',
-              },
-            }
-          },
-          'sections.color-card-carousel': {
-            populate: '*',
-          },
-          'sections.career-card-section': {
-            populate: {
-              'props': true,
-              'cards': {
-                populate: '*',
-              },
-            }
-          },
-          'sections.content-highlight-section': {
-            populate: '*',
-          },
-          'sections.cta-banner': {
-            populate: '*',
-          },
-          'sections.event-details-section': {
-            populate: '*',
-          },
-          'sections.extra-wide-icon-cards-grid-section': {
-            populate: '*',
-          },
-          'sections.feature-cards': {
-            populate: {
-              'props': true,
-              'features': {
-                populate: '*',
-              }
-            },
-          },
-          'sections.hallmarks-section': {
-            populate: '*',
-          },
-          'sections.icon-card-section-with-relation': {
-            populate: '*',
-          },
-          'sections.image-carousel': {
-            populate: '*',
-          },
-          'sections.kpi-section': {
-            populate: '*',
-          },
-          'sections.location-card-section': {
-            populate: '*',
-          },
-          'sections.product-feature-card': {
-            populate: '*',
-          },
-          'sections.quote-section': {
-            populate: '*',
-          },
-          'sections.regular-form-section': {
-            populate: '*',
-          },
-          'sections.services-section': {
-            populate: '*',
-          },
-          'sections.single-column-section': {
-            populate: '*',
-          },
-          'sections.team-member-card-section': {
-            populate: '*',
-          },
-          'sections.video-section': {
-            populate: '*',
-          },
-          'sections.video-with-text-section': {
-            populate: '*',
-          },
-          'sections.sla-card-section': {
-            populate: '*',
-          }
-        }
-      }
+      sections
     }
   });
   // console.log(docs.length, count, docs[0], docs[0].sections[0])
