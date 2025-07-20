@@ -399,6 +399,33 @@ async function oneOffEventsOverviewToEnAu() {
   })
   console.log(publish)
 }
+
+async function oneOffCopyNewsToEnAu() {
+  const target = 'api::news-page.news-page';
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: {
+      "categories": true,
+      "hero": {
+        populate: ["color"],
+      },
+      sections
+    }
+  });
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+    };
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
+
 async function oneOffCopyPageWIP() {
   const target = 'api::page.page';
   const count = await strapi.documents(target).count({locale: 'en'});
