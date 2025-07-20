@@ -178,6 +178,7 @@ async function oneOffCopyQutoesToEnAu() {
     console.log(res)
   }
 }
+
 async function oneOffCopySLACardToEnAu() {
   const target = 'api::sla-card.sla-card';
   const docs = await strapi.documents(target).findMany({
@@ -198,5 +199,126 @@ async function oneOffCopySLACardToEnAu() {
       data: copyDoc as any,
     })
     console.log(res)
+  }
+}
+
+async function oneOffCopyPageWIP() {
+  const target = 'api::page.page';
+  const count = await strapi.documents(target).count({locale: 'en'});
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: {
+      "hero": {
+        populate: ["color"],
+      },
+      sections: {
+        on: {
+          'sections.blog-content-section': {
+            populate: '*',
+          },
+          'sections.calendly-section': {
+            populate: '*',
+          },
+          'sections.content-carousel': {
+            populate: {
+              'cards': {
+                populate: '*',
+              },
+            }
+          },
+          'sections.color-card-carousel': {
+            populate: '*',
+          },
+          'sections.career-card-section': {
+            populate: {
+              'props': true,
+              'cards': {
+                populate: '*',
+              },
+            }
+          },
+          'sections.content-highlight-section': {
+            populate: '*',
+          },
+          'sections.cta-banner': {
+            populate: '*',
+          },
+          'sections.event-details-section': {
+            populate: '*',
+          },
+          'sections.extra-wide-icon-cards-grid-section': {
+            populate: '*',
+          },
+          'sections.feature-cards': {
+            populate: {
+              'props': true,
+              'features': {
+                populate: '*',
+              }
+            },
+          },
+          'sections.hallmarks-section': {
+            populate: '*',
+          },
+          'sections.icon-card-section-with-relation': {
+            populate: '*',
+          },
+          'sections.image-carousel': {
+            populate: '*',
+          },
+          'sections.kpi-section': {
+            populate: '*',
+          },
+          'sections.location-card-section': {
+            populate: '*',
+          },
+          'sections.product-feature-card': {
+            populate: '*',
+          },
+          'sections.quote-section': {
+            populate: '*',
+          },
+          'sections.regular-form-section': {
+            populate: '*',
+          },
+          'sections.services-section': {
+            populate: '*',
+          },
+          'sections.single-column-section': {
+            populate: '*',
+          },
+          'sections.team-member-card-section': {
+            populate: '*',
+          },
+          'sections.video-section': {
+            populate: '*',
+          },
+          'sections.video-with-text-section': {
+            populate: '*',
+          },
+          'sections.sla-card-section': {
+            populate: '*',
+          }
+        }
+      }
+    }
+  });
+  // console.log(docs.length, count, docs[0], docs[0].sections[0])
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+    };
+
+    if (id === 9) {
+      console.log(copyDoc, {id})
+    }
+
+    // const res = await strapi.documents(target).update({
+    //   documentId,
+    //   locale: 'en-AU',
+    //   data: copyDoc as any,
+    // })
+    // console.log(res)
   }
 }
