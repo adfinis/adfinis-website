@@ -178,3 +178,25 @@ async function oneOffCopyQutoesToEnAu() {
     console.log(res)
   }
 }
+async function oneOffCopySLACardToEnAu() {
+  const target = 'api::sla-card.sla-card';
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: '*'
+  })
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, createdBy, updatedBy, localizations, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+    };
+
+    console.log(copyDoc, {id})
+
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
