@@ -480,6 +480,31 @@ async function oneOffCopyPageWIP() {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
       ...rest,
+      sections: ((sections) => {
+        return sections.map(({id, ...section}) => {
+          if (section.__component === 'sections.content-carousel') {
+            return {
+              ...section,
+              cards: section.cards.map(card => ({
+                ...card,
+                href: card.href.replace('/en/', '/en-AU/'),
+                categories: card.categories.map(({id, locale, ...rest}) => rest),
+              }))
+            };
+          }
+          if (section.__component === 'sections.cta-banner') {
+            console.log({section})
+            return {
+              ...section,
+              cta: section.cta && {
+                ...section.cta,
+                href: (section.cta.href ?? '').replace('/en/', '/en-AU/'),
+              },
+            };
+          }
+          return section;
+        });
+      })(doc.sections),
     };
 
     if (id === 9) {
