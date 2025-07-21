@@ -192,6 +192,7 @@ async function oneOffCopyCardProductToEnAu() {
       ctas: doc.ctas
         ? doc.ctas.map(({id, ...rest}) => ({
           ...rest,
+          href: rest.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
         }))
         : [],
     };
@@ -482,23 +483,83 @@ async function oneOffCopyPageWIP() {
       ...rest,
       sections: ((sections) => {
         return sections.map(({id, ...section}) => {
+          if (section.__component === 'sections.two-column-section') {
+            return {
+              ...section,
+              cta: section.cta && {
+                ...section.cta,
+                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+              }
+            }
+          }
+          if (section.__component === 'sections.single-column-section') {
+            return {
+              ...section,
+              cta: section.cta && {
+                ...section.cta,
+                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+              }
+            }
+          }
+          if (section.__component === 'sections.services-section') {
+            return {
+              ...section,
+              ctas: section.ctas
+                ? section.ctas.map(({id, ...rest}) => ({
+                  ...rest,
+                  href: rest.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+                }))
+                : [],
+            }
+          }
+          if (section.__component === 'sections.image-carousel') {
+            return {
+              ...section,
+              cta: section.cta && {
+                ...section.cta,
+                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+              }
+            }
+          }
+          if (section.__component === 'sections.icon-card-section-with-relation') {
+            return {
+              ...section,
+              cta: section.cta && {
+                ...section.cta,
+                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+              }
+            }
+          }
+          if (section.__component === 'sections.feature-cards') {
+            return {
+              ...section,
+              features: section.features.map((item) => {
+                return {
+                  ...item,
+                  cta: item.cta && {
+                    ...item.cta,
+                    href: item.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
+                  }
+                }
+              }),
+            }
+          }
           if (section.__component === 'sections.content-carousel') {
             return {
               ...section,
               cards: section.cards.map(card => ({
                 ...card,
-                href: card.href.replace('/en/', '/en-AU/'),
+                href: card.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
                 categories: card.categories.map(({id, locale, ...rest}) => rest),
               }))
             };
           }
           if (section.__component === 'sections.cta-banner') {
-            console.log({section})
             return {
               ...section,
               cta: section.cta && {
                 ...section.cta,
-                href: (section.cta.href ?? '').replace('/en/', '/en-AU/'),
+                href: (section.cta.href ?? '').replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
               },
             };
           }
@@ -507,15 +568,12 @@ async function oneOffCopyPageWIP() {
       })(doc.sections),
     };
 
-    if (id === 9) {
-      console.log(copyDoc, {id})
-    }
 
-    // const res = await strapi.documents(target).update({
-    //   documentId,
-    //   locale: 'en-AU',
-    //   data: copyDoc as any,
-    // })
-    // console.log(res)
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
   }
 }
