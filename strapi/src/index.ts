@@ -466,7 +466,6 @@ async function oneOffCopyNewsToEnAu() {
 
 async function oneOffCopyPageWIP() {
   const target = 'api::page.page';
-  const count = await strapi.documents(target).count({locale: 'en'});
   const docs = await strapi.documents(target).findMany({
     locale: 'en',
     populate: {
@@ -476,99 +475,67 @@ async function oneOffCopyPageWIP() {
       sections
     }
   });
-  // console.log(docs.length, count, docs[0], docs[0].sections[0])
+
+  const replaceEnWithAu = href => href?.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/')
+  const transformCta = cta => cta ? { ...cta, href: replaceEnWithAu(cta.href) } : cta
+
+  const transformCtas = ctas =>
+    ctas?.map(({ id, ...rest }) => ({
+      ...rest,
+      href: replaceEnWithAu(rest.href)
+    })) ?? []
+
+  const transformers = {
+    'sections.two-column-section': section => ({
+      ...section,
+      cta: transformCta(section.cta)
+    }),
+    'sections.single-column-section': section => ({
+      ...section,
+      cta: transformCta(section.cta)
+    }),
+    'sections.services-section': section => ({
+      ...section,
+      ctas: transformCtas(section.ctas)
+    }),
+    'sections.image-carousel': section => ({
+      ...section,
+      cta: transformCta(section.cta)
+    }),
+    'sections.icon-card-section-with-relation': section => ({
+      ...section,
+      cta: transformCta(section.cta)
+    }),
+    'sections.feature-cards': section => ({
+      ...section,
+      features: section.features.map(item => ({
+        ...item,
+        cta: transformCta(item.cta)
+      }))
+    }),
+    'sections.content-carousel': section => ({
+      ...section,
+      cards: section.cards.map(({ categories, href, ...rest }) => ({
+        ...rest,
+        href: replaceEnWithAu(href),
+        categories: categories.map(({ id, locale, ...cat }) => cat)
+      }))
+    }),
+    'sections.cta-banner': section => ({
+      ...section,
+      cta: transformCta(section.cta)
+    })
+  }
+
   for (const doc of docs) {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
       ...rest,
-      sections: ((sections) => {
-        return sections.map(({id, ...section}) => {
-          if (section.__component === 'sections.two-column-section') {
-            return {
-              ...section,
-              cta: section.cta && {
-                ...section.cta,
-                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-              }
-            }
-          }
-          if (section.__component === 'sections.single-column-section') {
-            return {
-              ...section,
-              cta: section.cta && {
-                ...section.cta,
-                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-              }
-            }
-          }
-          if (section.__component === 'sections.services-section') {
-            return {
-              ...section,
-              ctas: section.ctas
-                ? section.ctas.map(({id, ...rest}) => ({
-                  ...rest,
-                  href: rest.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-                }))
-                : [],
-            }
-          }
-          if (section.__component === 'sections.image-carousel') {
-            return {
-              ...section,
-              cta: section.cta && {
-                ...section.cta,
-                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-              }
-            }
-          }
-          if (section.__component === 'sections.icon-card-section-with-relation') {
-            return {
-              ...section,
-              cta: section.cta && {
-                ...section.cta,
-                href: section.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-              }
-            }
-          }
-          if (section.__component === 'sections.feature-cards') {
-            return {
-              ...section,
-              features: section.features.map((item) => {
-                return {
-                  ...item,
-                  cta: item.cta && {
-                    ...item.cta,
-                    href: item.cta.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-                  }
-                }
-              }),
-            }
-          }
-          if (section.__component === 'sections.content-carousel') {
-            return {
-              ...section,
-              cards: section.cards.map(card => ({
-                ...card,
-                href: card.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-                categories: card.categories.map(({id, locale, ...rest}) => rest),
-              }))
-            };
-          }
-          if (section.__component === 'sections.cta-banner') {
-            return {
-              ...section,
-              cta: section.cta && {
-                ...section.cta,
-                href: (section.cta.href ?? '').replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-              },
-            };
-          }
-          return section;
-        });
-      })(doc.sections),
-    };
-
-
+      sections: doc.sections.map(({ id, ...section }) => {
+        const transform = transformers[section.__component] || (s => s)
+        return transform(section)
+      })
+    }
     const res = await strapi.documents(target).update({
       documentId,
       locale: 'en-AU',
