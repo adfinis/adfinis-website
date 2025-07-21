@@ -464,6 +464,57 @@ async function oneOffCopyNewsToEnAu() {
   }
 }
 
+const replaceEnWithAu = href => href?.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/')
+const transformCta = cta => cta ? { ...cta, href: replaceEnWithAu(cta.href) } : cta
+
+const transformCtas = ctas =>
+  ctas?.map(({ id, ...rest }) => ({
+    ...rest,
+    href: replaceEnWithAu(rest.href)
+  })) ?? []
+
+const transformers = {
+  'sections.two-column-section': section => ({
+    ...section,
+    cta: transformCta(section.cta)
+  }),
+  'sections.single-column-section': section => ({
+    ...section,
+    cta: transformCta(section.cta)
+  }),
+  'sections.services-section': section => ({
+    ...section,
+    ctas: transformCtas(section.ctas)
+  }),
+  'sections.image-carousel': section => ({
+    ...section,
+    cta: transformCta(section.cta)
+  }),
+  'sections.icon-card-section-with-relation': section => ({
+    ...section,
+    cta: transformCta(section.cta)
+  }),
+  'sections.feature-cards': section => ({
+    ...section,
+    features: section.features.map(item => ({
+      ...item,
+      cta: transformCta(item.cta)
+    }))
+  }),
+  'sections.content-carousel': section => ({
+    ...section,
+    cards: section.cards.map(({ categories, href, ...rest }) => ({
+      ...rest,
+      href: replaceEnWithAu(href),
+      categories: categories.map(({ id, locale, ...cat }) => cat)
+    }))
+  }),
+  'sections.cta-banner': section => ({
+    ...section,
+    cta: transformCta(section.cta)
+  })
+}
+
 async function oneOffCopyPageWIP() {
   const target = 'api::page.page';
   const docs = await strapi.documents(target).findMany({
@@ -476,57 +527,36 @@ async function oneOffCopyPageWIP() {
     }
   });
 
-  const replaceEnWithAu = href => href?.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/')
-  const transformCta = cta => cta ? { ...cta, href: replaceEnWithAu(cta.href) } : cta
-
-  const transformCtas = ctas =>
-    ctas?.map(({ id, ...rest }) => ({
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
       ...rest,
-      href: replaceEnWithAu(rest.href)
-    })) ?? []
-
-  const transformers = {
-    'sections.two-column-section': section => ({
-      ...section,
-      cta: transformCta(section.cta)
-    }),
-    'sections.single-column-section': section => ({
-      ...section,
-      cta: transformCta(section.cta)
-    }),
-    'sections.services-section': section => ({
-      ...section,
-      ctas: transformCtas(section.ctas)
-    }),
-    'sections.image-carousel': section => ({
-      ...section,
-      cta: transformCta(section.cta)
-    }),
-    'sections.icon-card-section-with-relation': section => ({
-      ...section,
-      cta: transformCta(section.cta)
-    }),
-    'sections.feature-cards': section => ({
-      ...section,
-      features: section.features.map(item => ({
-        ...item,
-        cta: transformCta(item.cta)
-      }))
-    }),
-    'sections.content-carousel': section => ({
-      ...section,
-      cards: section.cards.map(({ categories, href, ...rest }) => ({
-        ...rest,
-        href: replaceEnWithAu(href),
-        categories: categories.map(({ id, locale, ...cat }) => cat)
-      }))
-    }),
-    'sections.cta-banner': section => ({
-      ...section,
-      cta: transformCta(section.cta)
+      sections: doc.sections.map(({ id, ...section }) => {
+        const transform = transformers[section.__component] || (s => s)
+        return transform(section)
+      })
+    }
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
     })
+    console.log(res)
   }
+}
 
+async function oneOffCopyPageStudyToEnAu() {
+  const target = 'api::page-case-study.page-case-study';
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: {
+      "hero": {
+        populate: ["color"],
+      },
+      sections
+    }
+  });
+  console.log(docs)
   for (const doc of docs) {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
