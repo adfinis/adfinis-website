@@ -126,9 +126,8 @@ export default {
 };
 
 async function oneOffCopyHerosToEnAu() {
-  const customCollectionTypes = Object.keys(strapi.contentTypes).filter(key => key.startsWith('api::'));
-  const count = await strapi.documents('api::hero.hero').count({locale: 'en'});
-  const docs = await strapi.documents('api::hero.hero').findMany({
+  const target = 'api::hero.hero';
+  const docs = await strapi.documents(target).findMany({
     locale: 'en',
     populate: ["color", "background_image", "cta", "logo"]
   });
@@ -137,12 +136,10 @@ async function oneOffCopyHerosToEnAu() {
     const copyDoc = {
       ...rest,
       color: (({ id, ...rest }) => rest)(doc.color),
-      cta: doc.cta
-        ? (({ id, ...rest }) => rest)(doc.cta)
-        : null,
+      cta: transformCta(doc.cta),
     };
 
-    const res = await strapi.documents('api::hero.hero').update({
+    const res = await strapi.documents(target).update({
       documentId,
       locale: 'en-AU',
       data: copyDoc as any,
@@ -163,9 +160,7 @@ async function oneOffCopyIconCardsToEnAu() {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
       ...rest,
-      cta: doc.cta
-        ? (({ id, ...rest }) => rest)(doc.cta)
-        : null,
+      cta: transformCta(doc.cta),
     };
 
     const res = await strapi.documents(target).update({
@@ -189,12 +184,7 @@ async function oneOffCopyCardProductToEnAu() {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
       ...rest,
-      ctas: doc.ctas
-        ? doc.ctas.map(({id, ...rest}) => ({
-          ...rest,
-          href: rest.href.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/'),
-        }))
-        : [],
+      ctas: transformCtas(doc.ctas)
     };
 
     const res = await strapi.documents(target).update({
@@ -218,6 +208,7 @@ async function oneOffCopyCategoriesToEnAu() {
     const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
     const copyDoc = {
       ...rest,
+      url: replaceEnWithAu(doc.url),
     };
 
     const res = await strapi.documents(target).update({
@@ -249,10 +240,15 @@ async function oneOffCopyContentOfferToEnAu() {
       data: copyDoc as any,
     })
     console.log(res)
+    const publish = await strapi.documents(target).publish({
+      documentId,
+      locale: 'en-AU',
+    })
+    console.log(publish)
   }
 }
 
-async function oneOffCopyQutoesToEnAu() {
+async function oneOffCopyQuotesToEnAu() {
   const target = 'api::quote.quote';
   const count = await strapi.documents(target).count({locale: 'en'});
   const docs = await strapi.documents(target).findMany({
@@ -265,6 +261,29 @@ async function oneOffCopyQutoesToEnAu() {
     const copyDoc = {
       ...rest,
     };
+
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
+
+async function oneOffCopySLACardToEnAu() {
+  const target = 'api::sla-card.sla-card';
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: '*'
+  })
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, createdBy, updatedBy, localizations, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+    };
+
+    console.log(copyDoc, {id})
 
     const res = await strapi.documents(target).update({
       documentId,
@@ -299,30 +318,6 @@ async function oneOffCopyEventsPageToEnAu() {
         })
       })(doc.sections)
     };
-    const res = await strapi.documents(target).update({
-      documentId,
-      locale: 'en-AU',
-      data: copyDoc as any,
-    })
-    console.log(res)
-  }
-}
-
-
-async function oneOffCopySLACardToEnAu() {
-  const target = 'api::sla-card.sla-card';
-  const docs = await strapi.documents(target).findMany({
-    locale: 'en',
-    populate: '*'
-  })
-  for (const doc of docs) {
-    const {id, locale, documentId, updatedAt, createdAt, createdBy, updatedBy, localizations, ...rest} = doc;
-    const copyDoc = {
-      ...rest,
-    };
-
-    console.log(copyDoc, {id})
-
     const res = await strapi.documents(target).update({
       documentId,
       locale: 'en-AU',
