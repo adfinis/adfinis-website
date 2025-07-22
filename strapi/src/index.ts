@@ -604,3 +604,33 @@ async function oneOffCopyPartnerProductsToEnAu() {
     console.log(res)
   }
 }
+
+async function oneOffCopySolutionsToEnAu() {
+  const target = 'api::solutions-page.solutions-page';
+  const docs = await strapi.documents(target).findMany({
+    locale: 'en',
+    populate: {
+      "hero": {
+        populate: ["color"],
+      },
+      sections
+    }
+  })
+  console.log(docs)
+  for (const doc of docs) {
+    const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
+    const copyDoc = {
+      ...rest,
+      sections: doc.sections.map(({ id, ...section }) => {
+        const transform = transformers[section.__component] || (s => s)
+        return transform(section)
+      })
+    }
+    const res = await strapi.documents(target).update({
+      documentId,
+      locale: 'en-AU',
+      data: copyDoc as any,
+    })
+    console.log(res)
+  }
+}
