@@ -281,6 +281,7 @@ async function oneOffCopySLACardToEnAu() {
     const {id, locale, documentId, updatedAt, createdAt, createdBy, updatedBy, localizations, ...rest} = doc;
     const copyDoc = {
       ...rest,
+      items: doc.items.map(({id, ...item}) => item),
     };
 
     console.log(copyDoc, {id})
@@ -494,6 +495,11 @@ async function oneOffCopySolutionsToEnAu() {
       data: copyDoc as any,
     })
     console.log(res)
+    const publish = await strapi.documents(target).publish({
+      documentId,
+      locale: 'en-AU',
+    })
+    console.log(publish)
   }
 }
 
@@ -597,7 +603,15 @@ async function oneOffFooterToEnAu() {
 }
 
 const replaceEnWithAu = href => href?.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/')
-const transformCta = cta => cta ? { ...cta, href: replaceEnWithAu(cta.href) } : cta
+const transformCta1 = cta => cta ? { ...cta, href: replaceEnWithAu(cta.href) } : cta
+const transformCta = cta => {
+  if (!cta) return cta
+  const {id, ...rest} = cta
+  return {
+    ...rest,
+    href: replaceEnWithAu(cta.href)
+  }
+}
 
 const transformCtas = ctas =>
   ctas?.map(({ id, ...rest }) => ({
