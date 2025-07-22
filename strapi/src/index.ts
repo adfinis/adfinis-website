@@ -130,131 +130,107 @@ export default {
           color: (({ id, ...rest }) => rest)(doc.color),
           cta: transformCta(doc.cta),
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
         })
-        console.log(res)
       }
     }
     async function oneOffCopyIconCardsToEnAu() {
       const target = 'api::icon-card.icon-card';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const docs = await strapi.documents(target).findMany({
         locale: 'en',
         populate: ["icon_image", "cta"]
       });
-      console.log(docs.length, count, docs[0])
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
           ...rest,
           cta: transformCta(doc.cta),
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
         })
-        console.log(res)
       }
     }
     async function oneOffCopyCardProductToEnAu() {
       const target = 'api::card-product.card-product';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const docs = await strapi.documents(target).findMany({
         locale: 'en',
         populate: ["image", "ctas"]
       });
-      console.log(docs.length, count, docs[0])
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
           ...rest,
           ctas: transformCtas(doc.ctas)
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
         })
-        console.log(res)
       }
     }
     async function oneOffCopyCategoriesToEnAu() {
       const target = 'api::category.category';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const docs = await strapi.documents(target).findMany({
         locale: 'en',
-        // populate: ["image", "ctas"]
       });
-      console.log(docs.length, count, docs[0])
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
           ...rest,
           url: replaceEnWithAu(doc.url),
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
         })
-        console.log(res)
       }
     }
     async function oneOffCopyContentOfferToEnAu() {
       const target = 'api::content-offer.content-offer';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const docs = await strapi.documents(target).findMany({
         locale: 'en',
         populate: ["cover_image", "download_file"]
       });
-      console.log(docs.length, count, docs[0])
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
           ...rest,
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
-        })
-        console.log(publish)
+        });
       }
     }
     async function oneOffCopyQuotesToEnAu() {
       const target = 'api::quote.quote';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const docs = await strapi.documents(target).findMany({
         locale: 'en',
         populate: ['image']
       });
-      console.log(docs.length, count, docs[0])
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
           ...rest,
         };
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
+        });
       }
     }
     async function oneOffCopySLACardToEnAu() {
@@ -269,15 +245,11 @@ export default {
           ...rest,
           items: doc.items.map(({id, ...item}) => item),
         };
-
-        console.log(copyDoc, {id})
-
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
+        });
       }
     }
     async function oneOffCopyEventsPageToEnAu() {
@@ -303,17 +275,15 @@ export default {
             return transform(section)
           })
         };
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
-        })
-        console.log(publish)
+        });
       }
     }
     async function oneOffCopyNewsToEnAu() {
@@ -333,17 +303,15 @@ export default {
         const copyDoc = {
           ...rest,
         };
-        const res = await strapi.documents(target).update({
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
-        })
-        console.log(publish)
+        });
       }
     }
     async function oneOffCopyPagesToEnAu() {
@@ -366,18 +334,16 @@ export default {
             const transform = transformers[section.__component] || (s => s)
             return transform(section)
           })
-        }
-        const res = await strapi.documents(target).update({
+        };
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
         })
-        console.log(publish)
       }
     }
     async function oneOffCopyPageStudyToEnAu() {
@@ -391,7 +357,6 @@ export default {
           sections
         }
       });
-      console.log(docs)
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
@@ -400,18 +365,16 @@ export default {
             const transform = transformers[section.__component] || (s => s)
             return transform(section)
           })
-        }
-        const res = await strapi.documents(target).update({
+        };
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
         })
-        console.log(publish)
       }
     }
     async function oneOffCopyPartnerProductsToEnAu() {
@@ -425,7 +388,6 @@ export default {
           sections
         }
       })
-      console.log(docs)
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
@@ -434,18 +396,16 @@ export default {
             const transform = transformers[section.__component] || (s => s)
             return transform(section)
           })
-        }
-        const res = await strapi.documents(target).update({
+        };
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
         })
-        console.log(publish)
       }
     }
     async function oneOffCopySolutionsToEnAu() {
@@ -459,7 +419,6 @@ export default {
           sections
         }
       })
-      console.log(docs)
       for (const doc of docs) {
         const {id, locale, documentId, updatedAt, createdAt, ...rest} = doc;
         const copyDoc = {
@@ -468,23 +427,20 @@ export default {
             const transform = transformers[section.__component] || (s => s)
             return transform(section)
           })
-        }
-        const res = await strapi.documents(target).update({
+        };
+        await strapi.documents(target).update({
           documentId,
           locale: 'en-AU',
           data: copyDoc as any,
-        })
-        console.log(res)
-        const publish = await strapi.documents(target).publish({
+        });
+        await strapi.documents(target).publish({
           documentId,
           locale: 'en-AU',
-        })
-        console.log(publish)
+        });
       }
     }
     async function oneOffCopyCaseStudyOverviewToEnAu() {
       const target = 'api::case-studies-overview.case-studies-overview';
-      const count = await strapi.documents(target).count({locale: 'en'});
       const singleType = await strapi.documents(target).findFirst({
         locale: 'en',
         populate: {
@@ -492,7 +448,6 @@ export default {
           sections,
         }
       })
-
       const {id, locale, documentId, updatedAt, createdAt, ...rest} = singleType;
       const copyDoc = {
         ...rest,
@@ -501,21 +456,16 @@ export default {
           const transform = transformers[section.__component] || (s => s)
           return transform(section)
         })
-      }
-
-      console.log({copyDoc})
-
-      const res = await strapi.documents(target).update({
+      };
+      await strapi.documents(target).update({
         documentId,
         locale: 'en-AU',
         data: copyDoc as any,
-      })
-      console.log(res)
-      const publish = await strapi.documents(target).publish({
+      });
+      await strapi.documents(target).publish({
         documentId,
         locale: 'en-AU',
       })
-      console.log(publish)
     }
     async function oneOffEventsOverviewToEnAu() {
       const target = 'api::events-overview.events-overview';
@@ -525,8 +475,7 @@ export default {
           hero: true,
           sections,
         }
-      })
-
+      });
       const {id, locale, documentId, updatedAt, createdAt, ...rest} = singleType;
       const copyDoc = {
         ...rest,
@@ -535,48 +484,38 @@ export default {
           const transform = transformers[section.__component] || (s => s)
           return transform(section)
         })
-      }
-
-      console.log(copyDoc)
-      // console.log(copyDoc.sections[0])
-
-      const res = await strapi.documents(target).update({
+      };
+      await strapi.documents(target).update({
         documentId,
         locale: 'en-AU',
         data: copyDoc as any,
-      })
-      console.log(res)
-      const publish = await strapi.documents(target).publish({
+      });
+      await strapi.documents(target).publish({
         documentId,
         locale: 'en-AU',
       })
-      console.log(publish)
     }
     async function oneOffFooterToEnAu() {
       const target = 'api::footer.footer';
       const singleType = await strapi.documents(target).findFirst({
         locale: 'en',
         populate: '*'
-      })
-
+      });
       const {id, locale, documentId, updatedAt, createdAt, updatedBy, createdBy, localizations, ...rest} = singleType;
       const copyDoc = {
         ...rest,
         solutions: singleType.solutions.map(({id, locale, ...rest}) => rest),
         partner_and_products: singleType.partner_and_products.map(({id, locale, ...rest}) => rest),
-      }
-
-      const res = await strapi.documents(target).update({
+      };
+      await strapi.documents(target).update({
         documentId,
         locale: 'en-AU',
         data: copyDoc as any,
-      })
-      console.log(res)
-      const publish = await strapi.documents(target).publish({
+      });
+      await strapi.documents(target).publish({
         documentId,
         locale: 'en-AU',
-      })
-      console.log(publish)
+      });
     }
     const replaceEnWithAu = href => href?.replace('ondigitalocean.app/en/', 'ondigitalocean.app/en-AU/')
     const transformCta = cta => {
