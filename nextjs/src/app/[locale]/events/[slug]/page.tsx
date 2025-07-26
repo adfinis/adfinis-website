@@ -12,6 +12,24 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
+import { Metadata } from "next"
+
+export async function generateMetadata({
+  params: { locale, slug },
+}: {
+  params: {
+    locale: Locale
+    slug: string
+  }
+}): Promise<Metadata> {
+  const url = `event-pages/${slug}?locale=${locale}&status=published`
+  const data = await strapi(url)
+
+  return {
+    title: data.metadata_title,
+    description: data.metadata_description,
+  }
+}
 
 export default async function EventsDetailPage({
   params: { locale, slug },

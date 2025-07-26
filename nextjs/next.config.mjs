@@ -20,6 +20,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "adfinis-assets.ams3.cdn.digitaloceanspaces.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   eslint: {
