@@ -16,7 +16,8 @@ class Migrator
     $this
       ->loadCsv('Posts-Export-2025-July-29-1331.csv')
       ->stripLocales('fr')
-      ->downloadImages('assets/images');
+      ->downloadImages('assets/images')
+      ->downloadAttachments('assets/attachments');
       echo "Done";
 //    var_dump($this->rawData);
   }
@@ -139,6 +140,78 @@ class Migrator
           $filename .= '.bin';
         }
       }
+      file_put_contents($saveDir . '/' . $filename, $response);
+    }
+
+    return $isSuccessful;
+  }
+
+  private function downloadAttachments(string $path)
+  {
+    $grouped = [];
+    foreach ($this->rawData as $row) {
+      if (empty($row['Attachment ID'])) {
+        continue;
+      }
+      $ids = explode('|', $row['Attachment ID']);
+      $urls = explode('|', $row['Attachment URL']);
+
+      foreach (array_combine($ids, $urls) as $id => $url) {
+        $hash = md5($url);
+        if (!isset($grouped[$hash])) {
+          $grouped[$hash] = [
+            'url' => $url,
+            'ids' => [],
+          ];
+        }
+        $grouped[$hash]['ids'] = array_unique(array_merge($grouped[$hash]['ids'], [$id]));
+      }
+    }
+
+    foreach ($grouped as $group) {
+      $this->checkAndOrDownloadAttachment($path, $group['url']);
+    }
+
+    return $this;
+  }
+
+  private function checkAndOrDownloadAttachment(string $path, string $url)
+  {
+    $saveDir = __DIR__ . '/' . $path;
+
+    if (!is_dir($saveDir)) {
+      mkdir($saveDir, 0755, true);
+    }
+
+    $filename = basename(parse_url($url, PHP_URL_PATH));
+
+    if (file_exists($saveDir . '/' . $filename)) {
+      return true;
+    }
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_NOBODY, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+    curl_close($ch);
+
+    $isSuccessful = $httpCode >= 200 && $httpCode < 300;
+
+    if (self::DEBUG) {
+      if ($isSuccessful) {
+        echo "{$url} => ✅ 2xx (Success)\n";
+      } else {
+        echo "{$url}: Error ({$httpCode})\n";
+      }
+    }
+
+    if ($isSuccessful) {
       file_put_contents($saveDir . '/' . $filename, $response);
     }
 
