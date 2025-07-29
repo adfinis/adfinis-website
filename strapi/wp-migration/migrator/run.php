@@ -3,8 +3,10 @@
 class Migrator
 {
   private const DEBUG = true;
-  private array $rawData;
-  private array $groupedByLocale;
+  private array $rawData = [];
+  private array $groupedByLocale = [];
+  private array $newsPosts = [];
+  private array $blogPosts = [];
 
   public function __construct(
   )
@@ -15,11 +17,12 @@ class Migrator
   private function run(): void
   {
     $this
-      ->loadCsv('Posts-Export-2025-July-29-1331.csv')
+      ->loadCsv('Posts-Export-2025-July-29-2150.csv')
       ->stripLocales('fr')
       ->downloadImages('assets/images')
       ->downloadAttachments('assets/attachments')
       ->groupRawDataByLocale()
+      ->splitByCategoryNewsOrBlog()
     ;
       echo "Done";
 //    var_dump($this->rawData);
@@ -225,6 +228,24 @@ class Migrator
   {
     foreach ($this->rawData as $row) {
       $this->groupedByLocale[$row['_wpml_import_translation_group']][] = $row;
+    }
+
+    return $this;
+  }
+
+  private function splitByCategoryNewsOrBlog(): self
+  {
+    foreach ($this->groupedByLocale as $translationId => $group) {
+      echo $translationId . ": " . PHP_EOL;
+      foreach ($group as $item) {
+        $categories = strtolower($item['Categories']);
+        if (str_contains($categories, 'blog')) {
+          $this->blogPosts[] = $item;
+        }
+        if (str_contains($categories, 'news')) {
+          $this->newsPosts[] = $item;
+        }
+      }
     }
 
     return $this;
