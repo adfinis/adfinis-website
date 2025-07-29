@@ -3,9 +3,10 @@
 class Migrator
 {
   private const DEBUG = true;
+  private array $rawData;
+  private array $groupedByLocale;
 
   public function __construct(
-    private array $rawData = [],
   )
   {
     $this->run();
@@ -17,7 +18,9 @@ class Migrator
       ->loadCsv('Posts-Export-2025-July-29-1331.csv')
       ->stripLocales('fr')
       ->downloadImages('assets/images')
-      ->downloadAttachments('assets/attachments');
+      ->downloadAttachments('assets/attachments')
+      ->groupRawDataByLocale()
+    ;
       echo "Done";
 //    var_dump($this->rawData);
   }
@@ -216,6 +219,15 @@ class Migrator
     }
 
     return $isSuccessful;
+  }
+
+  private function groupRawDataByLocale(): self
+  {
+    foreach ($this->rawData as $row) {
+      $this->groupedByLocale[$row['_wpml_import_translation_group']][] = $row;
+    }
+
+    return $this;
   }
 }
 
