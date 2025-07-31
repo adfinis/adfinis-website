@@ -5,6 +5,8 @@ class Migrator
   private const DEBUG = true;
   private array $rawData = [];
   private array $groupedByLocale = [];
+  private array $wpUploadedFiles = [];
+  private array $wpUploadedFilesMappedWithStrapi = [];
   private array $newsPosts = [];
   private array $blogPosts = [];
 
@@ -23,6 +25,8 @@ class Migrator
       ->downloadAttachments('assets/attachments')
       ->groupRawDataByLocale()
       ->splitByCategoryNewsOrBlog()
+      ->getStrapiWpUploadsMap()
+      ->prepContent()
     ;
       echo "Done";
 //    var_dump($this->rawData);
@@ -108,6 +112,11 @@ class Migrator
 
     $filename = basename(parse_url($url, PHP_URL_PATH));
 
+    $this->wpUploadedFiles[md5($url)] = [
+      'wp_upload_url' => $url,
+      'wp_upload_file' => $filename
+    ];
+
     if (file_exists($saveDir . '/' . $filename)) {
       return true;
     }
@@ -191,6 +200,11 @@ class Migrator
 
     $filename = basename(parse_url($url, PHP_URL_PATH));
 
+    $this->wpUploadedFiles[md5($url)] = [
+      'wp_upload_url' => $url,
+      'wp_upload_file' => $filename
+    ];
+
     if (file_exists($saveDir . '/' . $filename)) {
       return true;
     }
@@ -236,17 +250,108 @@ class Migrator
   private function splitByCategoryNewsOrBlog(): self
   {
     foreach ($this->groupedByLocale as $translationId => $group) {
-      echo $translationId . ": " . PHP_EOL;
-      foreach ($group as $item) {
-        $categories = strtolower($item['Categories']);
-        if (str_contains($categories, 'blog')) {
-          $this->blogPosts[] = $item;
-        }
-        if (str_contains($categories, 'news')) {
-          $this->newsPosts[] = $item;
+      if (str_contains($group[0]['Categories'], 'blog')){
+        $this->blogPosts[] = $group;
+      } else {
+        $this->newsPosts[] = $group;
+      }
+    }
+
+    return $this;
+  }
+
+  private function prepContent(): self
+  {
+    foreach ($this->newsPosts as $index => $group) {
+      foreach ($group as $groupIndex => $row) {
+        $newRow = $this->replaceWpUploadsUrls($row);
+        $this->newsPosts[$index][$groupIndex] = $newRow;
+      }
+    }
+
+    foreach ($this->blogPosts as $index => $group) {
+      foreach ($group as $groupIndex => $row) {
+        $newRow = $this->replaceWpUploadsUrls($row);
+        $this->blogPosts[$index][$groupIndex] = $newRow;
+      }
+    }
+
+    var_dump($this->newsPosts);
+
+    return $this;
+  }
+
+  private function replaceWpUploadsUrls(array $row): array
+  {
+    $hasMedia = false;
+    if ($row['Image URL'] !== '') {
+      $hasMedia = true;
+    }
+
+    if ($row['Attachment URL'] !== '') {
+      $hasMedia = true;
+    }
+
+    if ($hasMedia) {
+      $content = $row['Content'];
+
+      foreach ($this->wpUploadedFilesMappedWithStrapi as $item) {
+        $content = str_replace($item['find'], $item['replace'], $content);
+      }
+
+      $row['Content'] = $content;
+    }
+    return $row;
+  }
+
+  private function hasParagraphs(string $content): bool
+  {
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true);
+    $dom->loadHTML($content);
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($dom);
+    $paragraphs = $xpath->query('//p');
+
+    return $paragraphs->length > 0;
+  }
+
+  private function getStrapiWpUploadsMap(): self
+  {
+    $map = [];
+
+    $endpoint = 'http://localhost:1337/api/upload/files';
+    $strapiCache = __DIR__ . '/strapi-uploaded-files.json';
+
+    if (!file_exists($strapiCache)) {
+      $response = file_get_contents($endpoint);
+      if ($response === false) {
+        die("Error no response");
+      }
+      $strapiFiles = json_decode($response, true);
+      if (!is_array($strapiFiles)) {
+        die("Invalid JSON response");
+      }
+      file_put_contents($strapiCache, $response);
+    } else {
+      $response = file_get_contents($strapiCache);
+      $strapiFiles = json_decode($response, true);
+    }
+
+    foreach ($strapiFiles as $file) {
+      foreach ($this->wpUploadedFiles as $index => $wpFile) {
+        if ($wpFile['wp_upload_file'] == $file['name']) {
+          $map[] = [
+            'find' => $wpFile['wp_upload_url'],
+            'replace' => $file['url'],
+          ];
+          unset($this->wpUploadedFiles[$index]);
         }
       }
     }
+
+    $this->wpUploadedFilesMappedWithStrapi = $map;
 
     return $this;
   }
