@@ -1,5 +1,9 @@
 <?php
 
+use League\HTMLToMarkdown\HtmlConverter;
+
+require __DIR__ . '/vendor/autoload.php';
+
 class Migrator
 {
   private const DEBUG = true;
@@ -9,10 +13,15 @@ class Migrator
   private array $wpUploadedFilesMappedWithStrapi = [];
   private array $newsPosts = [];
   private array $blogPosts = [];
+  private HtmlConverter $converter;
 
   public function __construct(
   )
   {
+    $this->converter = new HtmlConverter([
+      'hard_break' => true,
+      'header_style' => 'atx'
+    ]);
     $this->run();
   }
 
@@ -266,6 +275,19 @@ class Migrator
       foreach ($group as $groupIndex => $row) {
         $newRow = $this->replaceWpUploadsUrls($row);
         $this->newsPosts[$index][$groupIndex] = $newRow;
+        $content = $newRow['Content'];
+        $hasBlockquote = $this->hasBlockquote($content);
+        if ($hasBlockquote) {
+          $count = $this->countBlockquotes($content);
+          if ($count > 3 ) {
+            var_dump($newRow);
+            var_dump($this->converter->convert($content));
+            die;
+          }
+
+//          var_dump($content);
+//          echo "YES" . PHP_EOL;
+        }
       }
     }
 
@@ -273,10 +295,22 @@ class Migrator
       foreach ($group as $groupIndex => $row) {
         $newRow = $this->replaceWpUploadsUrls($row);
         $this->blogPosts[$index][$groupIndex] = $newRow;
+        $content = $newRow['Content'];
+        $hasBlockquote = $this->hasBlockquote($content);
+        if ($hasBlockquote) {
+          $count = $this->countBlockquotes($content);
+          if ($count > 3 ) {
+            var_dump($newRow);
+            var_dump($this->converter->convert($content));
+            die;
+          }
+//          var_dump($content);
+//          echo "YES" . PHP_EOL;
+        }
       }
     }
 
-    var_dump($this->newsPosts);
+//    var_dump($this->newsPosts);
 
     return $this;
   }
@@ -354,6 +388,16 @@ class Migrator
     $this->wpUploadedFilesMappedWithStrapi = $map;
 
     return $this;
+  }
+
+  private function hasBlockquote(string $html): bool
+  {
+    return stripos($html, '<blockquote') !== false;
+  }
+  private function countBlockquotes(string $html): int
+  {
+    preg_match_all('/<blockquote\b[^>]*>/i', $html, $matches);
+    return count($matches[0]);
   }
 }
 
