@@ -274,39 +274,16 @@ class Migrator
     foreach ($this->newsPosts as $index => $group) {
       foreach ($group as $groupIndex => $row) {
         $newRow = $this->replaceWpUploadsUrls($row);
+        $newRow['Content'] = $this->converter->convert($newRow['Content']);
         $this->newsPosts[$index][$groupIndex] = $newRow;
-        $content = $newRow['Content'];
-        $hasBlockquote = $this->hasBlockquote($content);
-        if ($hasBlockquote) {
-          $count = $this->countBlockquotes($content);
-          if ($count > 3 ) {
-            var_dump($newRow);
-            var_dump($this->converter->convert($content));
-            die;
-          }
-
-//          var_dump($content);
-//          echo "YES" . PHP_EOL;
-        }
       }
     }
 
     foreach ($this->blogPosts as $index => $group) {
       foreach ($group as $groupIndex => $row) {
         $newRow = $this->replaceWpUploadsUrls($row);
+        $newRow['Content'] = $this->converter->convert($newRow['Content']);
         $this->blogPosts[$index][$groupIndex] = $newRow;
-        $content = $newRow['Content'];
-        $hasBlockquote = $this->hasBlockquote($content);
-        if ($hasBlockquote) {
-          $count = $this->countBlockquotes($content);
-          if ($count > 3 ) {
-            var_dump($newRow);
-            var_dump($this->converter->convert($content));
-            die;
-          }
-//          var_dump($content);
-//          echo "YES" . PHP_EOL;
-        }
       }
     }
 
