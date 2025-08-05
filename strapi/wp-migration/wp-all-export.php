@@ -72,18 +72,27 @@ foreach ($data as $row) {
     $grouped[$groupId] = [];
   }
 
-  if ($row['ID'] === '14233') {
-    var_dump($row);
-  }
+//  if ($row['ID'] === '14233') {
+//    var_dump($row);
+//  }
 
   // Voeg alleen Categories en Permalink toe
   $grouped[$groupId][] = [
-    'Categories' => $row['Categories'] ?? '',
-    'Permalink'  => $row['Permalink']  ?? '',
-    'Locale' => $row['_wpml_import_language_code'] ?? '',
-    'status'     => $row['Status']    ?? '',
-    'id' => $row['ID']         ?? '',
-    'title'     => $row['Title']      ?? '',
+    'id' => $row['ID'] ?? '',
+    'title' => $row['Title'] ?? '',
+    'locale' => $row['_wpml_import_language_code'] ?? '',
+    'slug' => $row['Slug'] ?? '',
+    'permalink' => $row['Permalink'] ?? '',
+    'categories' => $row['Categories'] ?? '',
+    'status' => $row['Status'] ?? '',
+    'image_urls' => $row['Image URL'] ?? '',
+    'image_ids' => $row['Image ID'] ?? '',
+    'image_titles' => $row['Image Title'] ?? '',
+    'image_caption' => $row['Image Caption'] ?? '',
+    'attachments' => $row['Attachment URL'] ?? '',
+    'attachment_ids' => $row['Attachment ID'] ?? '',
+    'attachment_titles' => $row['Attachment Title'] ?? '',
+    'content' => $row['Content'] ?? '',
 //    'Tags' => $row['Tags']
   ];
 //  $grouped[$groupId][] = ['tag' => $row['Tags']];
@@ -163,6 +172,7 @@ foreach ($locales as $loc) {
   $header[] = 'ID_' . $loc;
   $header[] = 'Title_' . $loc;
   $header[] = 'Permalink_' . $loc;
+  $header[] = 'Slug_' . $loc;
 }
 
 /**
@@ -179,10 +189,11 @@ function saveToCsv(array $header, array $data, string $filename): void
     $row = array_fill_keys($header, '');
 
     foreach ($group as $entry) {
-      $loc = $entry['Locale'];
+      $loc = $entry['locale'];
       $row['ID_' . $loc] = $entry['id'];
       $row['Title_' . $loc] = $entry['title'];
-      $row['Permalink_' . $loc] = $entry['Permalink'];
+      $row['Permalink_' . $loc] = $entry['permalink'];
+      $row['Slug_' . $loc] = $entry['slug'];
     }
 
     $ordered = [];
@@ -202,7 +213,7 @@ function saveToCsv(array $header, array $data, string $filename): void
 //saveToCsv($header, $incomplete, 'normalized_incomplete.csv');
 //saveToCsv($header, $news, 'normalized_news.csv');
 //saveToCsv($header, $blog, 'normalized_blog.csv');
-//saveToCsv($header, $grouped, 'normalized_grouped.csv');
+saveToCsv($header, $grouped, 'normalized_grouped.csv');
 
 
 
