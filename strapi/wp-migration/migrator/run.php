@@ -36,6 +36,7 @@ class Migrator
       ->splitByCategoryNewsOrBlog()
       ->getStrapiWpUploadsMap()
       ->prepContent()
+      ->submitToApi();
     ;
       echo "Done";
 //    var_dump($this->rawData);
@@ -375,6 +376,25 @@ class Migrator
   {
     preg_match_all('/<blockquote\b[^>]*>/i', $html, $matches);
     return count($matches[0]);
+  }
+
+  private function submitToApi(): void
+  {
+    foreach ($this->newsPosts as $group) {
+      foreach ($group as $item) {
+        var_dump($item['_wpml_import_language_code']);
+        var_dump([
+          'metadata_title' => $item['Title'],
+          'metadata_description' => '',
+          'slug' => $item['Slug'],
+          'card_title' => $item['Title'],
+          'card_subtitle' => '',
+          'minutes_read' => 1,
+          'main_blog' => $item['Content'],
+        ]);
+        die;
+      }
+    }
   }
 }
 
