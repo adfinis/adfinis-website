@@ -1,2 +1,5 @@
 .idea
 
+strapi/wp-migration/migrator/assets
+vendor
+strapi/wp-migration/assets
