@@ -13,6 +13,7 @@ import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { Metadata } from "next"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -22,7 +23,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `event-pages/${slug}?locale=${locale}&status=published`
+  const url = `event-pages/${slug}?locale=${normalizeLocale(locale)}&status=published`
   const data = await strapi(url)
 
   return {
@@ -46,13 +47,13 @@ export default async function EventsDetailPage({
     isActive: true,
   }
 
-  const url = `event-pages/${slug}?locale=${activeLocale.locale}&status=published`
+  const url = `event-pages/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/events/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/events/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

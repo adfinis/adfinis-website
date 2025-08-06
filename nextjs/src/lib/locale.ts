@@ -1,10 +1,12 @@
 export const locales = [
   "en",
   // "en-US",
-  // "en-AU",
+  "en-au",
+  "en-AU",
   "nl",
   // "nl-NL",
   "de",
+  "de-ch",
   "de-CH",
   // "de-DE",
 ] as const

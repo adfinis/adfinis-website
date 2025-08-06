@@ -10,6 +10,7 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -18,13 +19,13 @@ export default async function PartnersProducts({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}&status=published`
+  const url = `page-partner-and-products/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${PARTNER_PRODUCTS_SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

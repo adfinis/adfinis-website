@@ -10,17 +10,18 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import NewsOverviewGridSection from "@/components/stapi/news-overview-grid-section"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function NewsOverview({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `news-overview?locale=${activeLocale.locale}&status=published`
+  const url = `news-overview?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: Locale }) => {
     return {
-      href: `/${item.locale}/${NEWS_SLUGS[item.locale]}`,
+      href: `/${item.locale.toLowerCase()}/${NEWS_SLUGS[item.locale]}`,
       locale: item.locale,
       isActive: false,
     }

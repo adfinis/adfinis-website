@@ -3,6 +3,7 @@ import SolutionDetail from "@/app/[locale]/(solutions-group)/solution-detail"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import strapi from "@/lib/strapi"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -12,7 +13,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `solutions-pages/${slug}?locale=${locale}&status=published`
+  const url = `solutions-pages/${slug}?locale=${normalizeLocale(locale)}&status=published`
   const data = await strapi(url)
   return {
     title: data.metadata_title,
@@ -26,7 +27,7 @@ export default async function SolutionsDetailPage({
   params: { locale: Locale; slug: string }
 }) {
   const activeLocale = {
-    href: `/${locale}/${SOLUTIONS_SLUGS[locale]}/${slug}`,
+    href: `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }

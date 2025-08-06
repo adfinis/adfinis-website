@@ -10,17 +10,18 @@ import Footer from "@/components/stapi/footer"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import CaseStudiesOverviewGridSection from "@/components/stapi/case-studies-overview-grid-section"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function CaseStudiesOverviewPage({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `case-studies-overview?locale=${activeLocale.locale}&status=published`
+  const url = `case-studies-overview?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: Locale }) => {
     return {
-      href: `/${item.locale}/${CASE_STUDIES_SLUGS[item.locale]}`,
+      href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale]}`,
       locale: item.locale,
       isActive: false,
     }
