@@ -9,6 +9,7 @@ import Text from "@/components/text"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function SolutionDetail({
   activeLocale,
@@ -17,12 +18,13 @@ export default async function SolutionDetail({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `solutions-pages/${slug}?locale=${activeLocale.locale}&status=published`
+  const url = `solutions-pages/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
+      const locale = item.locale.toLowerCase() as Locale
       return {
-        href: `/${item.locale}/${SOLUTIONS_SLUGS[item.locale]}/${item.slug}`,
+        href: `/${locale}/${SOLUTIONS_SLUGS[locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

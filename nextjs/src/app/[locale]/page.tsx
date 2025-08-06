@@ -9,7 +9,7 @@ export default function Home({
   params: { locale: Locale }
 }) {
   const activeLocale = {
-    href: `/${locale}`,
+    href: `/${locale.toLowerCase()}`,
     locale: locale,
     isActive: true,
   }

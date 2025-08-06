@@ -12,6 +12,7 @@ import CardArticle from "@/components/cards/card-article"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale },
@@ -21,7 +22,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `events-overview/?locale=${locale}&status=published`
+  const url = `events-overview/?locale=${normalizeLocale(locale)}&status=published`
   const data = await strapi(url)
 
   return {
@@ -47,7 +48,7 @@ export default async function EventsOverviewPage({
   const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/events`,
+        href: `/${item.locale.toLowerCase()}/events`,
         locale: item.locale,
         isActive: false,
       }
@@ -59,7 +60,7 @@ export default async function EventsOverviewPage({
   const { hero, intro, sections } = data
 
   const cards = await strapi(
-    `event-pages/?locale=${locale}&populate=card_image&populate=hero.background_image`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image`,
   )
 
   function formatDate(date: string) {

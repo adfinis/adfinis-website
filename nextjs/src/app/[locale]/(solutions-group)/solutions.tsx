@@ -9,18 +9,20 @@ import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Solutions({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `solutions-overview?locale=${activeLocale.locale}&status=published`
+  const url = `solutions-overview?locale=${normalizeLocale(activeLocale.locale)}&status=published`
 
   const data = await strapi(url)
   const locales = data.localizations.map((item: { locale: Locale }) => {
+    const locale = item.locale.toLowerCase() as Locale
     return {
-      href: `/${item.locale}/${SOLUTIONS_SLUGS[item.locale]}`,
+      href: `/${locale}/${SOLUTIONS_SLUGS[locale]}`,
       locale: item.locale,
       isActive: false,
     }

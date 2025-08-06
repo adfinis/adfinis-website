@@ -8,6 +8,7 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -37,12 +38,12 @@ export default async function LandingPage({
     locale: locale,
     isActive: true,
   }
-  const url = `pages/${slug}?locale=${locale}&status=published`
+  const url = `pages/${slug}?locale=${normalizeLocale(locale)}&status=published`
   const data = await strapi(url)
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

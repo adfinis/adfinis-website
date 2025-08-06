@@ -6,17 +6,18 @@ import Link from "next/link"
 import IconSocial from "@/components/icons/icon-social"
 import FooterLegal from "@/components/layout/footer-legal"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Footer({ locale }: { locale: Locale }) {
   const data = await strapi(
-    `footer/?locale=${locale}&populate=solutions&populate=partner_and_products`,
+    `footer/?locale=${normalizeLocale(locale)}&populate=solutions&populate=partner_and_products`,
   )
   if (!data) {
     return null
   }
 
-  const SOLUTIONS_SLUG = `/${locale}/${SOLUTIONS_SLUGS[locale]}`
-  const PARTNER_PRODUCTS_SLUG = `/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}`
+  const SOLUTIONS_SLUG = `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale]}`
+  const PARTNER_PRODUCTS_SLUG = `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale]}`
 
   return (
     <FooterWrapper>

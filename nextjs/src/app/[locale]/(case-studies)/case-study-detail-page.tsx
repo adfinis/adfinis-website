@@ -9,6 +9,7 @@ import HeroWrapper from "@/components/stapi/hero-wrapper"
 import Footer from "@/components/stapi/footer"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function CaseStudyDetailPage({
   activeLocale,
@@ -17,13 +18,13 @@ export default async function CaseStudyDetailPage({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-case-studies/${slug}?locale=${activeLocale.locale}&status=published`
+  const url = `page-case-studies/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
   const data = await strapi(url)
 
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${CASE_STUDIES_SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

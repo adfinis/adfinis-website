@@ -7,13 +7,14 @@ import strapi from "@/lib/strapi"
 import NavDesktop from "@/components/nav-bar/nav-desktop"
 import NavMobile from "@/components/nav-bar/nav-mobile"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function NavBar({ items }: { items: LinkedLocale[] }) {
   const activeLocale = items.at(-1)
 
   const data = await strapi(
     "navigation-menu?populate=section.menu_segment.items&populate=logo_desktop&populate=logo_mobile&populate=cta" +
-      `&locale=${activeLocale?.locale}`,
+      `&locale=${normalizeLocale(activeLocale?.locale ?? "")}`,
   )
 
   return (
@@ -22,13 +23,13 @@ export default async function NavBar({ items }: { items: LinkedLocale[] }) {
         navItems={data.section}
         logoUrl={data.logo_mobile.url}
         cta={data.cta}
-        locale={(activeLocale?.locale || "en") as Locale}
+        locale={(activeLocale?.locale.toLowerCase() || "en") as Locale}
       />
       <NavDesktop
         navItems={data.section}
         logoUrl={data.logo_desktop.url}
         cta={data.cta}
-        locale={(activeLocale?.locale || "en") as Locale}
+        locale={(activeLocale?.locale.toLowerCase() || "en") as Locale}
       />
     </LinkedLocalesProvider>
   )

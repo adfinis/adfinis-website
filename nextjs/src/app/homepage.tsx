@@ -8,23 +8,23 @@ import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
+import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Homepage({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${activeLocale.locale}`
+  const url = `homepage?locale=${normalizeLocale(activeLocale.locale)}`
   const data = await strapi(url)
-  const locales = (data?.localizations ?? []).map(
-    (item: { locale: Locale }) => {
-      return {
-        href: item.locale === "en" ? "/" : `/${item.locale}`,
-        locale: item.locale,
-        isActive: false,
-      }
-    },
-  )
+  const locales = (data?.localizations ?? []).map((item: any) => {
+    const locale = item.locale.toLocaleLowerCase() as Locale
+    return {
+      href: locale === "en" ? "/" : `/${locale.toLowerCase()}`,
+      locale: item.locale,
+      isActive: false,
+    }
+  })
   locales.push(activeLocale)
 
   const { hero, intro, sections } = data ?? {}
