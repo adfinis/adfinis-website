@@ -844,6 +844,7 @@ export interface ApiContentOfferContentOffer
   extends Struct.CollectionTypeSchema {
   collectionName: 'content_offers';
   info: {
+    description: '';
     displayName: 'Content Offer';
     pluralName: 'content-offers';
     singularName: 'content-offer';
@@ -874,6 +875,14 @@ export interface ApiContentOfferContentOffer
       }>;
     download_file: Schema.Attribute.Media<'files'> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
