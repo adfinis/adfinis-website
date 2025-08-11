@@ -1323,6 +1323,14 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'>;
     logo: Schema.Attribute.Media<'images' | 'files'> &

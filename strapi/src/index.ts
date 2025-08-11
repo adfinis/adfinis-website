@@ -113,11 +113,35 @@ export default {
         }
       }
     }
+    async function setInternalNameHero() {
+      const target = 'api::hero.hero'
+      for (const locale of locales) {
+        const items = await strapi.documents(target).findMany({
+          locale,
+          filters: {
+            internal_name: {
+              $null: true
+            }
+          }
+        })
+        console.log(items)
+        for (const item of items) {
+          await strapi.documents(target).update({
+            documentId: item.documentId,
+            locale: item.locale,
+            data: {
+              internal_name: item.name
+            },
+          })
+        }
+      }
+    }
     async function run() {
       await setInternalNameIconCard()
       await setInternalNameCardProduct()
       await setInternalNameContentOffer()
       await setInternalNameHallmark()
+      await setInternalNameHero()
     }
     run()
   },
