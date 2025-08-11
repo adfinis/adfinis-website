@@ -182,6 +182,29 @@ export default {
         }
       }
     }
+    async function setInternalNamePageEvent() {
+      const target = 'api::event-page.event-page'
+      for (const locale of locales) {
+        const items = await strapi.documents(target).findMany({
+          locale,
+          filters: {
+            internal_name: {
+              $null: true
+            }
+          }
+        })
+        console.log(items)
+        for (const item of items) {
+          await strapi.documents(target).update({
+            documentId: item.documentId,
+            locale: item.locale,
+            data: {
+              internal_name: item.metadata_title
+            },
+          })
+        }
+      }
+    }
 
     async function run() {
       await setInternalNameIconCard()
@@ -191,6 +214,7 @@ export default {
       await setInternalNameHero()
       await setInternalNamePage()
       await setInternalNamePageStudy()
+      await setInternalNamePageEvent()
     }
     run()
   },
