@@ -4,7 +4,6 @@ import NotFoundWrapper from "@/components/not-found/not-found-wrapper"
 import { strapiWithoutRedirect } from "@/lib/strapi"
 import Footer from "@/components/stapi/footer"
 import { type Locale } from "@/lib/locale"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function NotFound() {
   try {
@@ -13,8 +12,7 @@ export default async function NotFound() {
       locale: "en" as Locale,
       isActive: true,
     }
-    const url = `homepage?locale=${normalizeLocale(activeLocale.locale)}`
-    const data = await strapiWithoutRedirect(url)
+    const data = await strapiWithoutRedirect(activeLocale.locale)
     const locales = (data?.localizations ?? []).map(
       (item: { locale: Locale }) => {
         return {

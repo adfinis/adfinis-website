@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getNewsGrid } from "@/lib/strapi"
 import { NEWS_SLUGS } from "@/lib/slugs"
 import CardGroup from "@/components/cards/card-group"
 import CardArticle from "@/components/cards/card-article"
@@ -10,8 +10,7 @@ export default async function NewsOverviewGridSection({
 }: {
   locale: Locale
 }) {
-  const url = `news-pages?locale=${locale}&populate=hero.background_image&populate=categories&status=published`
-  const data = await strapi(url)
+  const data = await getNewsGrid(locale)
   const cards = data.map((item: any) => {
     return {
       key: `news_item_${item.id}`,

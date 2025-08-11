@@ -2,21 +2,19 @@ import NavBar from "@/components/nav-bar/nav-bar"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
+import { getHomepage } from "@/lib/strapi"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Homepage({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `homepage?locale=${normalizeLocale(activeLocale.locale)}`
-  const data = await strapi(url)
+  const data = await getHomepage(activeLocale.locale)
   const locales = (data?.localizations ?? []).map((item: any) => {
     const locale = item.locale.toLocaleLowerCase() as Locale
     return {

@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getFooter } from "@/lib/strapi"
 import { default as FooterWrapper } from "@/components/layout/footer"
 import FooterElement from "@/components/layout/footer-element"
 import { PARTNER_PRODUCTS_SLUGS, SOLUTIONS_SLUGS } from "@/lib/slugs"
@@ -6,12 +6,9 @@ import Link from "next/link"
 import IconSocial from "@/components/icons/icon-social"
 import FooterLegal from "@/components/layout/footer-legal"
 import { Locale } from "@/lib/locale"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Footer({ locale }: { locale: Locale }) {
-  const data = await strapi(
-    `footer/?locale=${normalizeLocale(locale)}&populate=solutions&populate=partner_and_products`,
-  )
+  const data = await getFooter(locale)
   if (!data) {
     return null
   }

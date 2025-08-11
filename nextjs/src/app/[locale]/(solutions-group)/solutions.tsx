@@ -1,5 +1,5 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
+import { getSolutionsOverview } from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
 import Text from "@/components/text"
 import { SOLUTIONS_SLUGS } from "@/lib/slugs"
@@ -9,16 +9,13 @@ import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function Solutions({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `solutions-overview?locale=${normalizeLocale(activeLocale.locale)}&status=published`
-
-  const data = await strapi(url)
+  const data = await getSolutionsOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
     const locale = item.locale.toLowerCase() as Locale
     return {
