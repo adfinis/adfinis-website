@@ -39,3 +39,13 @@ export const NEWS_SLUGS: { [key: string]: string } = {
   "de-ch": "news",
   "de-CH": "news",
 }
+
+export const BLOG_SLUGS: { [key: string]: string } = {
+  nl: "blogs",
+  en: "blogs",
+  "en-au": "blogs",
+  "en-AU": "blogs",
+  de: "blogs",
+  "de-ch": "blogs",
+  "de-CH": "blogs",
+}

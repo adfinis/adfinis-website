@@ -123,6 +123,27 @@ export function getEventsOverview(locale: Locale) {
   )
 }
 
+export function getBlogsOverview(locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `blogs-overview?locale=${normalizeLocale(locale)}&status=published`,
+  )
+}
+
+export function getBlogOverviewCards(locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `blog-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published`,
+  )
+}
+
+export function getBlogPage(locale: Locale, slug: string) {
+  validateLocale(locale)
+  return strapi(
+    `blog-pages/${sanitizeSlug(slug)}?locale=${normalizeLocale(locale)}&status=published`,
+  )
+}
+
 export function getNavigationMenu(locale: Locale) {
   validateLocale(locale)
   return strapi(
