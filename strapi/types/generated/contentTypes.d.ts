@@ -1259,6 +1259,9 @@ export interface ApiHallmarkHallmark extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     hallmark: Schema.Attribute.Media<'images', true> &
       Schema.Attribute.Required;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

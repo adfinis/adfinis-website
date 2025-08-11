@@ -90,10 +90,34 @@ export default {
         }
       }
     }
+    async function setInternalNameHallmark() {
+      const target = 'api::hallmark.hallmark'
+      for (const locale of locales) {
+        const items = await strapi.documents(target).findMany({
+          locale,
+          filters: {
+            internal_name: {
+              $null: true
+            }
+          }
+        })
+        console.log(items)
+        for (const item of items) {
+          await strapi.documents(target).update({
+            documentId: item.documentId,
+            locale: item.locale,
+            data: {
+              internal_name: item.title
+            },
+          })
+        }
+      }
+    }
     async function run() {
       await setInternalNameIconCard()
       await setInternalNameCardProduct()
       await setInternalNameContentOffer()
+      await setInternalNameHallmark()
     }
     run()
   },
