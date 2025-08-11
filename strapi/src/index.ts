@@ -251,6 +251,29 @@ export default {
         }
       }
     }
+    async function setInternalNamePageSolutions() {
+      const target = 'api::solutions-page.solutions-page'
+      for (const locale of locales) {
+        const items = await strapi.documents(target).findMany({
+          locale,
+          filters: {
+            internal_name: {
+              $null: true
+            }
+          }
+        })
+        console.log(items)
+        for (const item of items) {
+          await strapi.documents(target).update({
+            documentId: item.documentId,
+            locale: item.locale,
+            data: {
+              internal_name: item.metadata_title
+            },
+          })
+        }
+      }
+    }
 
     async function run() {
       await setInternalNameIconCard()
@@ -263,6 +286,7 @@ export default {
       await setInternalNamePageEvent()
       await setInternalNamePageNews()
       await setInternalNamePagePartnerProducts()
+      await setInternalNamePageSolutions()
     }
     run()
   },
