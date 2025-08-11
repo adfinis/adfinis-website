@@ -406,6 +406,8 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -423,12 +425,14 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
         };
       }>;
     metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -436,7 +440,33 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['sections.two-column-section', 'sections.video-section']
+      [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
+        'sections.color-card-carousel',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.cta-banner',
+        'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
+        'sections.feature-cards',
+        'sections.hallmarks-section',
+        'sections.icon-card-section-with-relation',
+        'sections.image-carousel',
+        'sections.kpi-section',
+        'sections.location-card-section',
+        'sections.product-feature-card',
+        'sections.quote-section',
+        'sections.regular-form-section',
+        'sections.services-section',
+        'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+      ]
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -444,6 +474,7 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
         };
       }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
