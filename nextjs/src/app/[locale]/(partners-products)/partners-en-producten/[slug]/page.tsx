@@ -2,8 +2,7 @@ import { PARTNER_PRODUCTS_SLUGS } from "@/lib/slugs"
 import PartnersProducts from "@/app/[locale]/(partners-products)/partners-products"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
-import strapi from "@/lib/strapi"
-import { normalizeLocale } from "@/lib/normalize-locale"
+import { getPartnerAndProductsPage } from "@/lib/strapi"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -13,8 +12,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `page-partner-and-products/${slug}?locale=${normalizeLocale(locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getPartnerAndProductsPage(locale, slug)
 
   return {
     title: data.metadata_title,

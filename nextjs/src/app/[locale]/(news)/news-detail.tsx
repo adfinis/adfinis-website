@@ -6,10 +6,9 @@ import TextImage from "@/components/text-image"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
+import { getNewsPage } from "@/lib/strapi"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { NEWS_SLUGS } from "@/lib/slugs"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function NewsDetail({
   activeLocale,
@@ -18,8 +17,7 @@ export default async function NewsDetail({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `news-pages/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getNewsPage(activeLocale.locale, slug)
   const { hero, main_blog, sections, publishedAt, createdAt } = data
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {

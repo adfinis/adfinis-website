@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getCaseStudy } from "@/lib/strapi"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
@@ -9,7 +9,6 @@ import HeroWrapper from "@/components/stapi/hero-wrapper"
 import Footer from "@/components/stapi/footer"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import { Locale } from "@/lib/locale"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export default async function CaseStudyDetailPage({
   activeLocale,
@@ -18,9 +17,7 @@ export default async function CaseStudyDetailPage({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-case-studies/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
-  const data = await strapi(url)
-
+  const data = await getCaseStudy(activeLocale.locale, slug)
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {

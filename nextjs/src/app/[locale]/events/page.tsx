@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getEventPageCards, getEventsOverview } from "@/lib/strapi"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -12,7 +12,6 @@ import CardArticle from "@/components/cards/card-article"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale },
@@ -22,8 +21,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `events-overview/?locale=${normalizeLocale(locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getEventsOverview(locale)
 
   return {
     title: data.metadata_title,
@@ -36,8 +34,7 @@ export default async function EventsOverviewPage({
 }: {
   params: { locale: Locale }
 }) {
-  const url = `events-overview/?locale=${locale}&status=published`
-  const data = await strapi(url)
+  const data = await getEventsOverview(locale)
   const activeLocale = {
     href: `/${locale}/events`,
     locale: locale,
@@ -58,10 +55,7 @@ export default async function EventsOverviewPage({
   locales.push(activeLocale)
 
   const { hero, intro, sections } = data
-
-  const cards = await strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image`,
-  )
+  const cards = await getEventPageCards(locale)
 
   function formatDate(date: string) {
     return getLocaleDateFormatted({ date, locale: locale as Locale })

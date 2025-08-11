@@ -2,8 +2,7 @@ import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import CaseStudyDetailPage from "@/app/[locale]/(case-studies)/case-study-detail-page"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
-import strapi from "@/lib/strapi"
-import { normalizeLocale } from "@/lib/normalize-locale"
+import { getCaseStudy } from "@/lib/strapi"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -13,8 +12,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `page-case-studies/${slug}?locale=${normalizeLocale(locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getCaseStudy(locale, slug)
   return {
     title: data.metadata_title,
     description: data.metadata_title,

@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getHallmark } from "@/lib/strapi"
 import LogoGroup from "@/components/logo-group"
 
 export default async function Hallmarks({
@@ -6,8 +6,7 @@ export default async function Hallmarks({
 }: {
   hallmarksId: string
 }) {
-  const url = `hallmarks/${hallmarksId}?populate=hallmark`
-  const data = await strapi(url)
+  const data = await getHallmark(hallmarksId)
   if (!data || !data.hallmark) {
     return
   }

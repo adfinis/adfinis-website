@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getEventPage } from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { NavProvider } from "@/components/nav-bar/nav-context"
@@ -6,14 +6,12 @@ import InfoLabel from "@/components/info-label"
 import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Container from "@/components/container"
-import SectionGroup from "@/components/sections/section-group"
 import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { Metadata } from "next"
-import { normalizeLocale } from "@/lib/normalize-locale"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -23,8 +21,7 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
-  const url = `event-pages/${slug}?locale=${normalizeLocale(locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getEventPage(locale, slug)
 
   return {
     title: data.metadata_title,
@@ -46,9 +43,7 @@ export default async function EventsDetailPage({
     locale: locale,
     isActive: true,
   }
-
-  const url = `event-pages/${slug}?locale=${normalizeLocale(activeLocale.locale)}&status=published`
-  const data = await strapi(url)
+  const data = await getEventPage(activeLocale.locale, slug)
 
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
