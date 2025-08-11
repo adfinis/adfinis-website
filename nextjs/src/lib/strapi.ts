@@ -119,7 +119,7 @@ export function getEventPageCards(locale: Locale) {
 export function getEventsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `event-pages?locale=${normalizeLocale(locale)}&status=published&populate=card_image&populate=hero.background_image`,
+    `events-overview?locale=${normalizeLocale(locale)}&status=published`,
   )
 }
 
