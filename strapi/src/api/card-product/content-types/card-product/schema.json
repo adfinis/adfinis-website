@@ -4,7 +4,8 @@
   "info": {
     "singularName": "card-product",
     "pluralName": "card-products",
-    "displayName": "Card Product"
+    "displayName": "Card Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,6 +16,16 @@
     }
   },
   "attributes": {
+    "internal_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
     "name": {
       "pluginOptions": {
         "i18n": {
@@ -44,17 +55,17 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "ctas": {
       "type": "component",

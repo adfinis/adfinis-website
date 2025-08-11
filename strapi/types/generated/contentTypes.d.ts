@@ -576,6 +576,7 @@ export interface ApiBlogsOverviewBlogsOverview extends Struct.SingleTypeSchema {
 export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
   collectionName: 'card_products';
   info: {
+    description: '';
     displayName: 'Card Product';
     pluralName: 'card-products';
     singularName: 'card-product';
@@ -613,6 +614,14 @@ export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
       }>;
     image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
