@@ -1484,6 +1484,7 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

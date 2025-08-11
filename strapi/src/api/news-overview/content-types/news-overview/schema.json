@@ -45,7 +45,8 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "sections": {
       "pluginOptions": {
