@@ -1454,6 +1454,13 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
