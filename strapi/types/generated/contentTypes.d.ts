@@ -369,6 +369,210 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_pages';
+  info: {
+    displayName: 'Page Blog';
+    pluralName: 'blog-pages';
+    singularName: 'blog-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    card_subtitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    card_title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-page.blog-page'
+    >;
+    main_blog: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
+        'sections.color-card-carousel',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.cta-banner',
+        'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
+        'sections.feature-cards',
+        'sections.hallmarks-section',
+        'sections.icon-card-section-with-relation',
+        'sections.image-carousel',
+        'sections.kpi-section',
+        'sections.location-card-section',
+        'sections.product-feature-card',
+        'sections.quote-section',
+        'sections.regular-form-section',
+        'sections.services-section',
+        'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'metadata_title'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBlogsOverviewBlogsOverview extends Struct.SingleTypeSchema {
+  collectionName: 'blogs_overviews';
+  info: {
+    displayName: 'Blogs overview';
+    pluralName: 'blogs-overviews';
+    singularName: 'blogs-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blogs-overview.blogs-overview'
+    >;
+    metadata_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata_title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.blog-content-section',
+        'sections.calendly-section',
+        'sections.career-card-section',
+        'sections.color-card-carousel',
+        'sections.content-carousel',
+        'sections.content-highlight-section',
+        'sections.cta-banner',
+        'sections.event-details-section',
+        'sections.extra-wide-icon-cards-grid-section',
+        'sections.feature-cards',
+        'sections.hallmarks-section',
+        'sections.icon-card-section-with-relation',
+        'sections.image-carousel',
+        'sections.kpi-section',
+        'sections.location-card-section',
+        'sections.product-feature-card',
+        'sections.quote-section',
+        'sections.regular-form-section',
+        'sections.services-section',
+        'sections.single-column-section',
+        'sections.sla-card-section',
+        'sections.team-member-card-section',
+        'sections.two-column-section',
+        'sections.video-section',
+        'sections.video-with-text-section',
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCardProductCardProduct extends Struct.CollectionTypeSchema {
   collectionName: 'card_products';
   info: {
@@ -1367,6 +1571,7 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
     intro: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1450,14 +1655,12 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     card_subtitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     card_title: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1492,7 +1695,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       }>;
     metadata_title: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2664,6 +2866,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::blog-page.blog-page': ApiBlogPageBlogPage;
+      'api::blogs-overview.blogs-overview': ApiBlogsOverviewBlogsOverview;
       'api::card-product.card-product': ApiCardProductCardProduct;
       'api::case-studies-overview.case-studies-overview': ApiCaseStudiesOverviewCaseStudiesOverview;
       'api::category.category': ApiCategoryCategory;

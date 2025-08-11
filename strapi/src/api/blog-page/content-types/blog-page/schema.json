@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "news_pages",
+  "collectionName": "blog_pages",
   "info": {
-    "singularName": "news-page",
-    "pluralName": "news-pages",
-    "displayName": "Page News",
-    "description": ""
+    "singularName": "blog-page",
+    "pluralName": "blog-pages",
+    "displayName": "Page Blog"
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +15,7 @@
     }
   },
   "attributes": {
-    "metadata_title": {
+    "internal_name": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,7 +23,16 @@
       },
       "type": "string",
       "required": true,
-      "unique": false
+      "unique": true
+    },
+    "metadata_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     },
     "metadata_description": {
       "pluginOptions": {
@@ -56,8 +64,7 @@
           "localized": true
         }
       },
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "card_subtitle": {
       "pluginOptions": {
@@ -65,23 +72,12 @@
           "localized": true
         }
       },
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
-    },
-    "minutes_read": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "integer",
-      "required": true,
-      "default": 1
     },
     "main_blog": {
       "pluginOptions": {
@@ -89,8 +85,7 @@
           "localized": true
         }
       },
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
     },
     "sections": {
       "pluginOptions": {

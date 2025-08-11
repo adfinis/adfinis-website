@@ -119,7 +119,28 @@ export function getEventPageCards(locale: Locale) {
 export function getEventsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `event-pages?locale=${normalizeLocale(locale)}&status=published&populate=card_image&populate=hero.background_image`,
+    `events-overview?locale=${normalizeLocale(locale)}&status=published`,
+  )
+}
+
+export function getBlogsOverview(locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `blogs-overview?locale=${normalizeLocale(locale)}&status=published`,
+  )
+}
+
+export function getBlogOverviewCards(locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `blog-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published`,
+  )
+}
+
+export function getBlogPage(locale: Locale, slug: string) {
+  validateLocale(locale)
+  return strapi(
+    `blog-pages/${sanitizeSlug(slug)}?locale=${normalizeLocale(locale)}&status=published`,
   )
 }
 
