@@ -2168,7 +2168,9 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
         };
       }>;
     internal_name: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.Private &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
