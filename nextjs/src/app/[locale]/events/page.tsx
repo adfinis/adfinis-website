@@ -9,7 +9,6 @@ import Footer from "@/components/stapi/footer"
 import CardGroup from "@/components/cards/card-group"
 import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
-import { getDictionary } from "@/lib/get-dictionary.server"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
 
@@ -40,7 +39,6 @@ export default async function EventsOverviewPage({
     locale: locale,
     isActive: true,
   }
-  const dictionary = await getDictionary(locale as Locale)
 
   const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
