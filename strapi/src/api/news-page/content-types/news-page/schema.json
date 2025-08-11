@@ -24,7 +24,7 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "metadata_description": {
       "pluginOptions": {
@@ -57,7 +57,7 @@
         }
       },
       "type": "string",
-      "required": true
+      "required": false
     },
     "card_subtitle": {
       "pluginOptions": {
@@ -66,7 +66,7 @@
         }
       },
       "type": "string",
-      "required": true
+      "required": false
     },
     "categories": {
       "type": "relation",

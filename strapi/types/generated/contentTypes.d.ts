@@ -1567,14 +1567,12 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     card_subtitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     card_title: Schema.Attribute.String &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1609,7 +1607,6 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       }>;
     metadata_title: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
