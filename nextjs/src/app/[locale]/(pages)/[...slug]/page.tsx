@@ -14,10 +14,11 @@ export async function generateMetadata({
 }: {
   params: {
     locale: Locale
-    slug: string
+    slug: string[]
   }
 }): Promise<Metadata> {
-  const data = await getPage(locale, slug)
+  console.log({ locale, slug })
+  const data = await getPage(locale, slug.join("/"))
   return {
     title: data.metadata_title,
     description: data.metadata_description,
