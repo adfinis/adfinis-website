@@ -4,7 +4,8 @@
   "info": {
     "singularName": "content-offer",
     "pluralName": "content-offers",
-    "displayName": "Content Offer"
+    "displayName": "Content Offer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,16 @@
     }
   },
   "attributes": {
+    "internal_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
     "name": {
       "pluginOptions": {
         "i18n": {
@@ -33,30 +44,30 @@
       "type": "richtext"
     },
     "cover_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": false
+      }
     },
     "download_file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "files"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     }
   }
 }
