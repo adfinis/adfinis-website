@@ -72,9 +72,9 @@ export default {
       }
     }
 
-    // console.log('Start setting internal name')
-    // setInternalName().then(() => {
-    //   console.log('Finished setting internal name!')
-    // })
+    console.log('Start setting internal name')
+    setInternalName().then(() => {
+      console.log('Finished setting internal name!')
+    })
   },
 };
