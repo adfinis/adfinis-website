@@ -152,7 +152,7 @@ export function getNavigationMenu(locale: Locale) {
 }
 
 export function getHallmark(id: string) {
-  return strapi(`hallmark/${id}?populate=hallmark`)
+  return strapi(`hallmarks/${id}?populate=hallmark`)
 }
 
 async function strapi(query: string) {
