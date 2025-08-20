@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
   collectionName: 'blog_pages';
   info: {
+    description: '';
     displayName: 'Page Blog';
     pluralName: 'blog-pages';
     singularName: 'blog-page';
@@ -436,6 +437,12 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    publication_date: Schema.Attribute.DateTime &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
@@ -1760,6 +1767,12 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<1>;
+    publication_date: Schema.Attribute.DateTime &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
       [
