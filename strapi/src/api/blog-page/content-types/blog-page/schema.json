@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog-page",
     "pluralName": "blog-pages",
-    "displayName": "Page Blog"
+    "displayName": "Page Blog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -121,6 +122,14 @@
         "sections.video-section",
         "sections.video-with-text-section"
       ]
+    },
+    "publication_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "datetime"
     }
   }
 }

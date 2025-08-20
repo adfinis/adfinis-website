@@ -136,6 +136,14 @@
         "sections.video-section",
         "sections.video-with-text-section"
       ]
+    },
+    "publication_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "datetime"
     }
   }
 }
