@@ -18,7 +18,14 @@ export default async function NewsDetail({
   slug: string
 }) {
   const data = await getNewsPage(activeLocale.locale, slug)
-  const { hero, main_blog, sections, publishedAt, createdAt } = data
+  const {
+    hero,
+    main_blog,
+    sections,
+    publication_date,
+    publishedAt,
+    createdAt,
+  } = data
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
@@ -40,7 +47,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`Published at ${getLocaleDateFormatted({ date: publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
+              text={`Published at ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />
