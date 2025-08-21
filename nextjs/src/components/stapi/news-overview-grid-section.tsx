@@ -16,7 +16,10 @@ export default async function NewsOverviewGridSection({
       key: `news_item_${item.id}`,
       title: item.card_title,
       subtitle: item.card_subtitle,
-      description: `${getLocaleDateFormatted({ date: item.publishedAt, locale: locale as Locale })} / ${item.minutes_read} min read`,
+      description: `${getLocaleDateFormatted({
+        date: item.publication_date ?? item.publishedAt,
+        locale: locale,
+      })} / ${item.minutes_read} min read`,
       imageUrl: item.hero?.background_image?.url,
       categories: item.categories?.map((cat: any) => {
         return {

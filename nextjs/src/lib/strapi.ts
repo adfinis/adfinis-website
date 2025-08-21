@@ -74,7 +74,7 @@ export function getNewsOverview(locale: Locale) {
 export function getNewsGrid(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&status=published`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc`,
   )
 }
 
