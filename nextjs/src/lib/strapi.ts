@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
 
-function normalizeLocale(locale: string) {
+export function normalizeLocale(locale: string) {
   return locale.replace(
     /-([a-z]{2})$/,
     (_, region) => "-" + region.toUpperCase(),

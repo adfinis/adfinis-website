@@ -8,6 +8,8 @@ export const PARTNER_PRODUCTS_SLUGS: Record<Locale, string> = {
   de: "partner-und-produkte",
   "de-ch": "partner-und-produkte",
   "de-CH": "partner-und-produkte",
+  "de-de": "partner-und-produkte",
+  "de-DE": "partner-und-produkte",
 } as const
 
 export const CASE_STUDIES_SLUGS: Record<Locale, string> = {
@@ -18,6 +20,8 @@ export const CASE_STUDIES_SLUGS: Record<Locale, string> = {
   de: "referenzen",
   "de-ch": "referenzen",
   "de-CH": "referenzen",
+  "de-de": "referenzen",
+  "de-DE": "referenzen",
 } as const
 
 export const SOLUTIONS_SLUGS: Record<Locale, string> = {
@@ -28,6 +32,8 @@ export const SOLUTIONS_SLUGS: Record<Locale, string> = {
   de: "loesungen",
   "de-ch": "loesungen",
   "de-CH": "loesungen",
+  "de-de": "loesungen",
+  "de-DE": "loesungen",
 } as const
 
 export const NEWS_SLUGS: { [key: string]: string } = {
@@ -38,6 +44,8 @@ export const NEWS_SLUGS: { [key: string]: string } = {
   de: "news",
   "de-ch": "news",
   "de-CH": "news",
+  "de-de": "news",
+  "de-DE": "news",
 }
 
 export const BLOG_SLUGS: { [key: string]: string } = {
@@ -48,4 +56,6 @@ export const BLOG_SLUGS: { [key: string]: string } = {
   de: "blogs",
   "de-ch": "blogs",
   "de-CH": "blogs",
+  "de-de": "blogs",
+  "de-DE": "blogs",
 }
