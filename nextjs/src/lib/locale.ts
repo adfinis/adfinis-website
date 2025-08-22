@@ -8,7 +8,8 @@ export const locales = [
   "de",
   "de-ch",
   "de-CH",
-  // "de-DE",
+  "de-DE",
+  "de-de",
 ] as const
 
 export type Locale = (typeof locales)[number]
