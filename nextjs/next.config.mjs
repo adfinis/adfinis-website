@@ -1958,11 +1958,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/en/events",
-        destination: "/en/events",
-        permanent: true,
-      },
-      {
         source: "/en/events/16145",
         destination: "/en/events",
         permanent: true,
