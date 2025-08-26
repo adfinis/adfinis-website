@@ -1,0 +1,1112 @@
+[
+  {
+    "source": "/en/15-reasons-to-adopt-red-hat-openshift-virtualization/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/9-reasons-to-explore-red-hat-enterprise-linux-9/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/",
+    "destination": "/en/about-us",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/branding/",
+    "destination": "/en/about-us",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/jobs/",
+    "destination": "/en/career",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/jobs/praktikum-marketing-kommunikation-m-w-40-60/",
+    "destination": "/en/career",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/jobs/senior-linux-system-engineer-m-w-80-100/",
+    "destination": "/en/career",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/jobs/software-engineer-backend-m-w-80-100/",
+    "destination": "/en/career",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/jobs/software-engineer-frontend-m-w-80-100/",
+    "destination": "/en/career",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/news/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/news/page/7/?tid=10",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/our-engagement/",
+    "destination": "/en/our-commitment",
+    "permanent": true
+  },
+  {
+    "source": "/en/about-us/team/",
+    "destination": "/en/our-team",
+    "permanent": true
+  },
+  {
+    "source": "/en/adservices/caluma/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/adservices/container-orchestration-ci-cd-pipelines/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/adservices/open-source-consulting/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/adservices/support/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/ai-policy-and-implementation-meetup/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/ansible-beginners-guide/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/basler-kantonalbank/",
+    "destination": "/en/case-studies/basler-kantonalbank",
+    "permanent": true
+  },
+  {
+    "source": "/en/bbz-bl-linux-client/",
+    "destination": "/en/case-studies/bbzbl",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog-with-headline/adfinis-and-owncloud-form-partnership/",
+    "destination": "/en/news/adfinis-and-owncloud-form-partnership",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog-with-headline/adfinis-brings-snyk-to-australia-switzerland-and-the-netherlands/",
+    "destination": "/en/news/adfinis-brings-snyk-to-australia-switzerland-and-the-netherlands",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog-with-headline/adfinis-expands-its-position-as-a-leading-hashicorp-partner/",
+    "destination": "/en/news/adfinis-expands-its-position-as-a-leading-hashicorp-partner",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog-with-headline/kubecon-2023-in-amsterdam/",
+    "destination": "/en/news/kubecon-2023-in-amsterdam",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog-with-headline/our-view-on-toxicity-and-inclusion/",
+    "destination": "/en/news/our-view-on-toxicity-and-inclusion",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/5-building-blocks-for-a-successful-terraform-implementation/",
+    "destination": "/en/news/5-building-blocks-for-a-successful-terraform-implementation",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/a-fast-reliable-and-trustworthy-mirror-for-linux-enthusiasts/",
+    "destination": "/en/news/a-fast-reliable-and-trustworthy-mirror-for-linux-enthusiasts",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-adds-element-to-its-portfolio-of-services/",
+    "destination": "/en/news/adfinis-adds-element-to-its-portfolio-of-services",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-and-collabora-10-years-of-driving-innovation-and-shaping-the-digital-sovereignty-landscape/",
+    "destination": "/en/news/adfinis-and-collabora-10-years-of-driving-innovation-and-shaping-the-digital-sovereignty-landscape",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-appoints-a-chief-strategy-growth-officer-and-a-new-chief-commercial-officer/",
+    "destination": "/en/news/adfinis-appoints-a-chief-strategy-growth-officer-and-a-new-chief-commercial-officer",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-awarded-gitlab-services-partner-of-the-year-for-emea/",
+    "destination": "/en/news/adfinis-awarded-gitlab-services-partner-of-the-year-for-emea",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-enters-into-partnership-with-isovalent/",
+    "destination": "/en/news/adfinis-enters-into-partnership-with-isovalent",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-ernennt-michael-hofer-zum-neuen-cto/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/adfinis-receives-the-hashicorp-emea-focus-partner-of-the-year-award/",
+    "destination": "/en/news/adfinis-receives-the-hashicorp-emea-focus-partner-of-the-year-award",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/automated-debian-packagebuild-gitlabci/",
+    "destination": "/en/news/automated-debian-packagebuild-gitlabci",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/caluma-and-sustainable-development-of-graphql/",
+    "destination": "/en/news/caluma-and-sustainable-development-of-graphql",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/cni-switch-kubespray-cluster-to-cilium-at-dectris/",
+    "destination": "/en/news/cni-switch-kubespray-cluster-to-cilium-at-dectris",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/collabora-office-on-ios-and-android-just-got-better/",
+    "destination": "/en/news/collabora-office-on-ios-and-android-just-got-better",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/database-clustering-with-galera-cluster-and-galera-manager/",
+    "destination": "/en/news/database-clustering-with-galera-cluster-and-galera-manager",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/decrypt-luks-devices-remotely-via-dropbear-ssh/",
+    "destination": "/en/news/decrypt-luks-devices-remotely-via-dropbear-ssh",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/django-girls-workshop-zurich-2017/",
+    "destination": "/en/news/django-girls-workshop-zurich-2017",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/emberfest-berlin-2017/",
+    "destination": "/en/news/emberfest-berlin-2017",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/feature-sponsoring-allows-integration-of-servicenow-into-zammad/",
+    "destination": "/en/news/feature-sponsoring-allows-integration-of-servicenow-into-zammad",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/finja-your-friendly-finding-ninja/",
+    "destination": "/en/news/finja-your-friendly-finding-ninja",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/form-validation-with-ember-js/",
+    "destination": "/en/news/form-validation-with-ember-js",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/german-interpretation-of-rfc-2119/",
+    "destination": "/en/news/german-interpretation-of-rfc-2119",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/gitlab-and-adfinis-are-now-partners-and-promote-devops-enablement/",
+    "destination": "/en/news/gitlab-and-adfinis-are-now-partners-and-promote-devops-enablement",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/gitlab-ci/",
+    "destination": "/en/news/gitlab-ci",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/gitlab-services-partner-of-the-year-for-emea/",
+    "destination": "/en/news/gitlab-services-partner-of-the-year-for-emea",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/gnupg-and-smartcards/",
+    "destination": "/en/news/gnupg-and-smartcards",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/hashiconf-europe-2019/",
+    "destination": "/en/news/hashiconf-europe-2019",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/homeoffice-with-tmux-and-vim/",
+    "destination": "/en/news/homeoffice-with-tmux-and-vim",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/how-to-deploy-suse/",
+    "destination": "/en/news/how-to-deploy-suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/how-to-set-up-your-own-matrix-org-homeserver-with-federation/",
+    "destination": "/en/news/how-to-set-up-your-own-matrix-org-homeserver-with-federation",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/jitsi-videoconference/",
+    "destination": "/en/news/jitsi-videoconference",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/libreoffice-on-ios-some-insights/",
+    "destination": "/en/news/libreoffice-on-ios-some-insights",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/libreoffice-template-contest-2020/",
+    "destination": "/en/news/libreoffice-template-contest-2020",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/linux-conf-au-2021/",
+    "destination": "/en/news/linux-conf-au-2021",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/mariadb-galera-cluster-on-red-hat-openshift-kubernetes/",
+    "destination": "/en/news/mariadb-galera-cluster-on-red-hat-openshift-kubernetes",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/matrix/",
+    "destination": "/en/news/matrix",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/mssql-on-linux-the-details/",
+    "destination": "/en/news/mssql-on-linux-the-details",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/multi-factor-authentication/",
+    "destination": "/en/news/multi-factor-authentication",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/mysql-mariadb-ha-galera-cluster-vs-drbd-replication/",
+    "destination": "/en/news/mysql-mariadb-ha-galera-cluster-vs-drbd-replication",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/office365-google-docs-or-data-integrity/",
+    "destination": "/en/news/office365-google-docs-or-data-integrity",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/openssh-security/",
+    "destination": "/en/news/openssh-security",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/openssl-x509-certificates/",
+    "destination": "/en/news/openssl-x509-certificates",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/openvpn-with-gitlab-userdb/",
+    "destination": "/en/news/openvpn-with-gitlab-userdb",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/operating-suse-cloud-application-platform-for-the-swiss-federal-government/",
+    "destination": "/en/news/operating-suse-cloud-application-platform-for-the-swiss-federal-government",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/our-mission-vision/",
+    "destination": "/en/news/our-mission-vision",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/page/10/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/page/3/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/pyark-cyberark-enterprise-password-vault-cli-tool/",
+    "destination": "/en/news/pyark-cyberark-enterprise-password-vault-cli-tool",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/rapid-advancement-adfinis-is-the-first-gitlab-select-partner-in-switzerland/",
+    "destination": "/en/news/rapid-advancement-adfinis-is-the-first-gitlab-select-partner-in-switzerland",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/release-and-patch-management-with-suse-manager-3/",
+    "destination": "/en/news/release-and-patch-management-with-suse-manager-3",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/rescue-disk-and-multi-boot-system/",
+    "destination": "/en/news/rescue-disk-and-multi-boot-system",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/robert-de-bock-joins-adfinis-as-a-devops-architect-in-the-netherlands/",
+    "destination": "/en/news/robert-de-bock-joins-adfinis-as-a-devops-architect-in-the-netherlands",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/secret-management-with-vault/",
+    "destination": "/en/news/secret-management-with-vault",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/secrets-management-at-swiss-federal-railways-sbb-with-hashicorp-vault/",
+    "destination": "/en/news/secrets-management-at-swiss-federal-railways-sbb-with-hashicorp-vault",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/ssl-certificate-monitoring-with-bash/",
+    "destination": "/en/news/ssl-certificate-monitoring-with-bash",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/strace-performance-analysis/",
+    "destination": "/en/news/strace-performance-analysis",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/suse-cloud-application-blog/",
+    "destination": "/en/news/suse-cloud-application-blog",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/suse-enterprise-storage-2-ceph/",
+    "destination": "/en/news/suse-enterprise-storage-2-ceph",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/susecon-2016/",
+    "destination": "/en/news/susecon-2016",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/systemd-start-and-stop-dependencies/",
+    "destination": "/en/news/systemd-start-and-stop-dependencies",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/terraform-and-ansible-a-great-combination/",
+    "destination": "/en/news/terraform-and-ansible-a-great-combination",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/testing-with-pytest/",
+    "destination": "/en/news/testing-with-pytest",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/the-document-foundation-welcomes-adfinis-sygroup-to-the-projects-advisory-board/",
+    "destination": "/en/news/the-document-foundation-welcomes-adfinis-sygroup-to-the-projects-advisory-board",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/the-impact-of-the-infrastructure-as-code-approach-on-your-organization/",
+    "destination": "/en/news/the-impact-of-the-infrastructure-as-code-approach-on-your-organization",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/trashed/",
+    "destination": "/en/news/trashed",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/ucs-ansible-modules/",
+    "destination": "/en/news/ucs-ansible-modules",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/web-server-security/",
+    "destination": "/en/news/web-server-security",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/year-of-the-linux-client/",
+    "destination": "/en/news/year-of-the-linux-client",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/yubikey-validation-server-setup/",
+    "destination": "/en/news/yubikey-validation-server-setup",
+    "permanent": true
+  },
+  {
+    "source": "/en/blog/yubikeys/",
+    "destination": "/en/news/yubikeys",
+    "permanent": true
+  },
+  {
+    "source": "/en/bundesgericht-jitsi/",
+    "destination": "/en/case-studies/swiss-federal-supreme-court-jitsi",
+    "permanent": true
+  },
+  {
+    "source": "/en/bundesgericht-libreoffice/",
+    "destination": "/en/case-studies/swiss-federal-supreme-court-libreoffice",
+    "permanent": true
+  },
+  {
+    "source": "/en/canton-uri/",
+    "destination": "/en/case-studies/canton-of-uri",
+    "permanent": true
+  },
+  {
+    "source": "/en/case-study-linux/",
+    "destination": "/en/case-studies",
+    "permanent": true
+  },
+  {
+    "source": "/en/category/blog/page/7/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/category/news-en/",
+    "destination": "/en/news",
+    "permanent": true
+  },
+  {
+    "source": "/en/cilium-hands-on-workshop/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/cloud-services/",
+    "destination": "/en/partners-and-products/partners",
+    "permanent": true
+  },
+  {
+    "source": "/en/concordia/",
+    "destination": "/en/case-studies/concordia",
+    "permanent": true
+  },
+  {
+    "source": "/en/contact/",
+    "destination": "/en/contact",
+    "permanent": true
+  },
+  {
+    "source": "/en/customer-story_dectris/",
+    "destination": "/en/case-studies/dectris",
+    "permanent": true
+  },
+  {
+    "source": "/en/customer-story_hbl/",
+    "destination": "/en/case-studies/hbl",
+    "permanent": true
+  },
+  {
+    "source": "/en/cybersecurity/",
+    "destination": "/en/cybersecurity/",
+    "permanent": true
+  },
+  {
+    "source": "/en/dectris/",
+    "destination": "/en/case-studies/dectris",
+    "permanent": true
+  },
+  {
+    "source": "/en/digital-sovereignty/",
+    "destination": "/en/solutions/digital-sovereignty",
+    "permanent": true
+  },
+  {
+    "source": "/en/docker-hub-rate-limit/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/docker-hub-rate-limits/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/event-gitlab-duo/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/event-transforming-multi-linux-management/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/16145/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/17720/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/20-year-adfinis/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/4186/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/adfinis-25-years-anniversary/",
+    "destination": "/en/events/adfinis-25-years-anniversary/",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/bern-roadshow/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/devsecops-world-tour/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/global-azure-bootcamp-switzerland-2019/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/hashiconf-eu/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/hug-2-consul-packer-and-vault/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/hug-8-gitlab-setup-w-terraform-localstack-for-testing-terraform/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/isovalent-workshop-tour-2023/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/kubernetes-community-days-zuerich/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/kubernetes-multi-cluster-management-with-rancher/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/kubernetes-multi-cluster-management-with-suse/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/lec-2019-in-geneva-with-armon-dadgar/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/lets-talk-technical-suse-manager-security/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/microsoft-tech-summit-switzerland-2019/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/red-hat-forum-geneva-2019/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/red-hat-forum/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/red-hat-summit-connect-zurich-2024/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/red-hat-summit-connect/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/redhat-summit-connect/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/secrets-management-at-scale-with-hashicorp-vault/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/secrets-management-at-scale-with-hashicorps-vault-on-rancher/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/secrets-management-at-scale-with-vault-on-suses-rancher/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/suse-expert-days-2019-2/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/susecon-2023/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/talk-software-supply-chain-security-slsa-assessment-for-argo-cd/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/terraform-cloud-on-azure-virtual-workshop/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/terraform-in-azure/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/unlocking-the-cloud-operating-model-with-hashicorp-adfinis/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/vortrag-mit-armon-dadgar-cto-co-founder-hashicorp/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/what-you-mightve-missed-at-hashiconf-digital-2020/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/events/zero-trust-with-hashicorps-cto-armon-dadgar/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/gitlab/",
+    "destination": "/en/partners-and-products/gitlab",
+    "permanent": true
+  },
+  {
+    "source": "/en/gitlab/devsecops-gitlab/",
+    "destination": "/en/partners-and-products/gitlab",
+    "permanent": true
+  },
+  {
+    "source": "/en/harness-the-power-of-open-source-short/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/harness-the-power-of-open-source/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/hashicorp-terraform/",
+    "destination": "/en/partners-and-products/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/hashicorp-terraform/thank-you-adfinis-terraform/",
+    "destination": "/en/partners-and-products/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/hashicorp-vault/",
+    "destination": "/en/partners-and-products/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/hashicorp-vault/book-a-techie/",
+    "destination": "/en/partners-and-products/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/hashicorp/",
+    "destination": "/en/partners-and-products/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/helvetia-linux-client/",
+    "destination": "/en/case-studies/helvetia",
+    "permanent": true
+  },
+  {
+    "source": "/en/high-availability-story/",
+    "destination": "/en/case-studies",
+    "permanent": true
+  },
+  {
+    "source": "/en/hypothekarbank-lenzburg/",
+    "destination": "/en/case-studies/hbl",
+    "permanent": true
+  },
+  {
+    "source": "/en/imprint/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/leverage-your-linux-choices/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/liberate-your-mixed-it-environment/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/linux-clients/",
+    "destination": "/en/en/solutions/linux-clients",
+    "permanent": true
+  },
+  {
+    "source": "/en/managed-services/",
+    "destination": "/en/solutions/managed-services",
+    "permanent": true
+  },
+  {
+    "source": "/en/meetup-brisbane/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/more-solutions/",
+    "destination": "/en/solutions",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/a-consistent-approach-to-provision-secure-connect-and-run-any-infrastructure-for-any-application-with-hashicorp/",
+    "destination": "/en/news/a-consistent-approach-to-provision-secure-connect-and-run-any-infrastructure-for-any-application-with-hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-awarded-suses-solution-provider-of-the-year/",
+    "destination": "/en/news/adfinis-awarded-suses-solution-provider-of-the-year",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-ernennt-michael-hofer-zum-neuen-cto/",
+    "destination": "/en/news/adfinis-ernennt-michael-hofer-zum-neuen-cto",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-expands-global-reach-with-new-subsidiary-in-egypt/",
+    "destination": "/en/news/adfinis-expands-global-reach-with-new-subsidiary-in-egypt",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-germany/",
+    "destination": "/en/news/adfinis-germany",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-is-red-hats-best-swiss-partner-2019/",
+    "destination": "/en/news/adfinis-is-red-hats-best-swiss-partner-2019",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-launches-element-enterprise-as-a-saas-solution/",
+    "destination": "/en/news/adfinis-launches-element-enterprise-as-a-saas-solution",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-sygroup-and-mattermost-celebrate-their-one-year-partnership/",
+    "destination": "/en/news/adfinis-sygroup-and-mattermost-celebrate-their-one-year-partnership",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-sygroup-and-nextcloud-enter-into-partnership/",
+    "destination": "/en/news/adfinis-sygroup-and-mattermost-celebrate-their-one-year-partnership",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-sygroup-is-red-hat-premier-partner/",
+    "destination": "/en/news/adfinis-sygroup-is-red-hat-premier-partner",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-sygroup-joins-hashicorp-partner-program-to-become-first-swiss-partner/",
+    "destination": "/en/news/adfinis-sygroup-joins-hashicorp-partner-program-to-become-first-swiss-partner",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-sygroup-wins-suse-innovation-award/",
+    "destination": "/en/news/adfinis-sygroup-wins-suse-innovation-award",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-wins-2024-gitlab-partner-of-the-year-award-for-apac/",
+    "destination": "/en/news/adfinis-wins-2024-gitlab-partner-of-the-year-award-for-apac",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/adfinis-wins-tender-from-canton-of-aargau-to-implement-ebau-with-inosca/",
+    "destination": "/en/news/adfinis-wins-tender-from-canton-of-aargau-to-implement-ebau-with-inosca",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/how-companies-make-the-jump-into-the-new-sap-world/",
+    "destination": "/en/news/how-companies-make-the-jump-into-the-new-sap-world",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/ralf-scharly-joins-adfinis-board-of-directors/",
+    "destination": "/en/news/ralf-scharly-joins-adfinis-board-of-directors",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/since-january-2019-adfinis-sygroup-has-alsobeen-active-in-french-speaking-switzerland/",
+    "destination": "/en/news/since-january-2019-adfinis-sygroup-has-alsobeen-active-in-french-speaking-switzerland",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/softwareone-and-adfinis-sygroup-announce-their-partnership/",
+    "destination": "/en/news/softwareone-and-adfinis-sygroup-announce-their-partnership",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/the-new-microsoft-and-how-the-swiss-open-source-community-benefits-from-it/",
+    "destination": "/en/news/the-new-microsoft-and-how-the-swiss-open-source-community-benefits-from-it",
+    "permanent": true
+  },
+  {
+    "source": "/en/news-en/who-is-hashicorp-the-unicorn-that-talks-to-the-devops/",
+    "destination": "/en/news/who-is-hashicorp-the-unicorn-that-talks-to-the-devops",
+    "permanent": true
+  },
+  {
+    "source": "/en/nts-workspace/",
+    "destination": "/en/case-studies/nts-workspace",
+    "permanent": true
+  },
+  {
+    "source": "/en/owncloud/",
+    "destination": "/en/partners-and-products/partners",
+    "permanent": true
+  },
+  {
+    "source": "/en/owncloud/thank-you-adfinis-owncloud-form/",
+    "destination": "/en/partners-and-products/partners",
+    "permanent": true
+  },
+  {
+    "source": "/en/press/",
+    "destination": "/en/about-us",
+    "permanent": true
+  },
+  {
+    "source": "/en/privacypolicy-australia/",
+    "destination": "/en/privacy-policy",
+    "permanent": true
+  },
+  {
+    "source": "/en/privacypolicy/",
+    "destination": "/en-au/privacy-policy",
+    "permanent": true
+  },
+  {
+    "source": "/en/rancher-prime/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/rancher-prime/thank-you-adfinis-suse-rancher-form/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/red-hat-ansible/",
+    "destination": "/en/partners-and-products/red-hat",
+    "permanent": true
+  },
+  {
+    "source": "/en/red-hat-openshift/",
+    "destination": "/en/partners-and-products/red-hat",
+    "permanent": true
+  },
+  {
+    "source": "/en/red-hat-subscriptions/",
+    "destination": "/en/en/red-hat-subscriptions",
+    "permanent": true
+  },
+  {
+    "source": "/en/red-hat/",
+    "destination": "/en/partners-and-products/red-hat",
+    "permanent": true
+  },
+  {
+    "source": "/en/references/",
+    "destination": "/en/case-studies",
+    "permanent": true
+  },
+  {
+    "source": "/en/services/",
+    "destination": "/en/solutions",
+    "permanent": true
+  },
+  {
+    "source": "/en/services/managed-service/",
+    "destination": "/en/solutions/managed-services",
+    "permanent": true
+  },
+  {
+    "source": "/en/success-story-hbl/",
+    "destination": "/en/case-studies/hbl",
+    "permanent": true
+  },
+  {
+    "source": "/en/success-story-sbb/",
+    "destination": "/en/case-studies/sbb",
+    "permanent": true
+  },
+  {
+    "source": "/en/supermicro/",
+    "destination": "/en/partners-and-products/supermicro",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse-manager-success-story/",
+    "destination": "/en/case-studies/viollier-suse-multi-linux-manager",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse-manager/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse-neuvector-short/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse-neuvector/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse-subscriptions/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/suse/",
+    "destination": "/en/partners-and-products/suse",
+    "permanent": true
+  },
+  {
+    "source": "/en/transforming-multi-linux-management/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/uncategorized/adfinis-expands-global-reach-with-new-subsidiary-in-egypt/",
+    "destination": "/en/news/adfinis-expands-global-reach-with-new-subsidiary-in-egypt",
+    "permanent": true
+  },
+  {
+    "source": "/en/vault_basler_kantonalbank_bkb/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/vault-subscriptions/",
+    "destination": "/en/",
+    "permanent": true
+  },
+  {
+    "source": "/en/viollier-devopsjourney/",
+    "destination": "/en/case-studies/viollier-hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/en/webinar-automating-with-suse-rancher-prime/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/en/webinar-no-vendor-locking-for-kubernetes/",
+    "destination": "/en/events",
+    "permanent": true
+  },
+  {
+    "source": "/fr/:path*",
+    "destination": "/en/",
+    "permanent": true,
+  }
+]

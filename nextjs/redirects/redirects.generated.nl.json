@@ -1,0 +1,322 @@
+[
+  {
+    "source": "/nl/adservices/caluma-caluma/",
+    "destination": "/nl/",
+    "permanent": true
+  },
+  {
+    "source": "/nl/adservices/ondersteuning/",
+    "destination": "/nl/",
+    "permanent": true
+  },
+  {
+    "source": "/nl/automation-health-check/",
+    "destination": "/nl/",
+    "permanent": true
+  },
+  {
+    "source": "/nl/basler-kantonalbank/",
+    "destination": "/nl/casestudies/basler-kantonalbank",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog-mit-uberschrift/adfinis-brengt-snyk-naar-zwitserland-nederland-en-australie/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog-mit-uberschrift/adfinis-expands-its-position-as-a-leading-hashicorp-partner/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/5-building-blocks-for-a-successful-terraform-implementation/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/adfinis-awarded-gitlab-services-partner-of-the-year-for-emea/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/adfinis-ontvangt-de-hashicorp-emea-focus-partner-of-the-year-award/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/database-clustering-with-galera-cluster-and-galera-manager/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/een-snelle-en-betrouwbare-mirror-voor-linux-gebruikers/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/gitlab-ci/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/gitlab-services-partner-of-the-year-for-emea/",
+    "destination": "/nl/nieuws/gitlab-services-partner-of-the-year-for-emea",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/our-view-on-toxicity-and-inclusion/",
+    "destination": "/nl/nieuws/our-view-on-toxicity-and-inclusion",
+    "permanent": true
+  },
+  {
+    "source": "/nl/blog/page/3/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/category/blog/page/2/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/cloud-services/",
+    "destination": "/nl/partners-en-producten/partners",
+    "permanent": true
+  },
+  {
+    "source": "/nl/concordia/",
+    "destination": "/nl/casestudies/concordia",
+    "permanent": true
+  },
+  {
+    "source": "/nl/contact/",
+    "destination": "/nl/contact",
+    "permanent": true
+  },
+  {
+    "source": "/nl/customer-story_dectris/",
+    "destination": "/nl/casestudies/dectris",
+    "permanent": true
+  },
+  {
+    "source": "/nl/customer-story_hbl/",
+    "destination": "/nl/casestudies/hbl",
+    "permanent": true
+  },
+  {
+    "source": "/nl/cybersecurity/",
+    "destination": "/nl/",
+    "permanent": true
+  },
+  {
+    "source": "/nl/dectris/",
+    "destination": "/nl/casestudies/dectris",
+    "permanent": true
+  },
+  {
+    "source": "/nl/diensten/",
+    "destination": "/nl/oplossingen",
+    "permanent": true
+  },
+  {
+    "source": "/nl/diensten/managed-service/",
+    "destination": "/nl/oplossingen/managed-services",
+    "permanent": true
+  },
+  {
+    "source": "/nl/events/",
+    "destination": "/nl/events",
+    "permanent": true
+  },
+  {
+    "source": "/nl/events/adfinis-25-jarig-jubileum/",
+    "destination": "/nl/events/25-jaar-adfinis",
+    "permanent": true
+  },
+  {
+    "source": "/nl/events/exclusive-switzerland-standing-apero/",
+    "destination": "/nl/events",
+    "permanent": true
+  },
+  {
+    "source": "/nl/events/hug-8-gitlab-setup-w-terraform-localstack-for-testing-terraform/",
+    "destination": "/nl/events",
+    "permanent": true
+  },
+  {
+    "source": "/nl/events/talk-software-supply-chain-security-slsa-assessment-for-argo-cd/",
+    "destination": "/nl/events",
+    "permanent": true
+  },
+  {
+    "source": "/nl/geen-onderdeel-van-een-categorie/adfinis-introduceert-element-enterprise-als-saas-oplossing/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/geen-onderdeel-van-een-categorie/adfinis-vergroot-wereldwijd-bereik-met-nieuwe-dochteronderneming-in-egypte/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/geen-onderdeel-van-een-categorie/adfinis-voegt-element-aan-haar-dienstenportfolio-toe/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/geen-onderdeel-van-een-categorie/een-snelle-en-betrouwbare-mirror-voor-linux-gebruikers/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/geen-onderdeel-van-een-categorie/robert-de-bock-joins-adfinis-as-a-devops-architect-in-the-netherlands/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/gitlab-health-check/",
+    "destination": "/nl/partners-en-producten/gitlab",
+    "permanent": true
+  },
+  {
+    "source": "/nl/gitlab/",
+    "destination": "/nl/partners-en-producten/gitlab",
+    "permanent": true
+  },
+  {
+    "source": "/nl/hashicorp-vault/",
+    "destination": "/nl/partners-en-producten/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/nl/hashicorp/",
+    "destination": "/nl/partners-en-producten/hashicorp",
+    "permanent": true
+  },
+  {
+    "source": "/nl/hypotheek-bank-lenzburg/",
+    "destination": "/nl/casestudies/hbl",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/",
+    "destination": "/nl/over-ons",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/branding/",
+    "destination": "/nl/over-ons",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/management/",
+    "destination": "/nl/ons-team",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/nieuws/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/onze-bijdrage/",
+    "destination": "/nl/onze-betrokkenheid",
+    "permanent": true
+  },
+  {
+    "source": "/nl/informatie/vacatures/",
+    "destination": "/nl/carriere",
+    "permanent": true
+  },
+  {
+    "source": "/nl/kanton-uri/",
+    "destination": "/nl/casestudies/canton-of-uri",
+    "permanent": true
+  },
+  {
+    "source": "/nl/linux-client/",
+    "destination": "/nl/oplossingen/linux-clients",
+    "permanent": true
+  },
+  {
+    "source": "/nl/managed-services/",
+    "destination": "/nl/oplossingen/managed-services",
+    "permanent": true
+  },
+  {
+    "source": "/nl/meer-oplossingen/",
+    "destination": "/nl/oplossingen",
+    "permanent": true
+  },
+  {
+    "source": "/nl/news-en-nl/adfinis-apac-wint-2024-gitlab-partner-of-the-year-award/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/news-en-nl/adfinis-duitsland/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/news-en-nl/adfinis-wint-aanbesteding-van-kanton-aargau-voor-implementatie-ebau-met-inosca/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  },
+  {
+    "source": "/nl/nts-werkruimte/",
+    "destination": "/nl/casestudies/nts-workspace",
+    "permanent": true
+  },
+  {
+    "source": "/nl/oplossingen/",
+    "destination": "/nl/oplossingen",
+    "permanent": true
+  },
+  {
+    "source": "/nl/privacybeleid/",
+    "destination": "/nl/privacy-policy",
+    "permanent": true
+  },
+  {
+    "source": "/nl/red-hat-ansible/",
+    "destination": "/nl/partners-en-producten/red-hat",
+    "permanent": true
+  },
+  {
+    "source": "/nl/red-hat/",
+    "destination": "/nl/partners-en-producten/red-hat",
+    "permanent": true
+  },
+  {
+    "source": "/nl/referenties-2/",
+    "destination": "/nl/casestudies",
+    "permanent": true
+  },
+  {
+    "source": "/nl/success-story-sbb/",
+    "destination": "/nl/casestudies/sbb",
+    "permanent": true
+  },
+  {
+    "source": "/nl/suse/",
+    "destination": "/nl/partners-en-producten/suse",
+    "permanent": true
+  },
+  {
+    "source": "/nl/vault_basler_kantonalbank_bkb/",
+    "destination": "/nl/casestudies/basler-kantonalbank",
+    "permanent": true
+  },
+  {
+    "source": "/nl/verhaal-met-hoge-beschikbaarheid/",
+    "destination": "/nl/nieuws",
+    "permanent": true
+  }
+]
