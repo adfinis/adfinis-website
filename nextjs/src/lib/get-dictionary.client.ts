@@ -10,9 +10,9 @@ import deDE from "@/dictionaries/de-de.json"
 const dictionaries = {
   en,
   nl,
-  "de-CH": deCH,
-  "de-DE": deDE,
-  "en-AU": enAU,
+  "de-ch": deCH,
+  "de-de": deDE,
+  "en-au": enAU,
 } as const
 
 /**
