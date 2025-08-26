@@ -10,11 +10,6 @@
     "permanent": true
   },
   {
-    "source": "/en/about-us",
-    "destination": "/en/about-us",
-    "permanent": true
-  },
-  {
     "source": "/en/about-us/branding",
     "destination": "/en/about-us",
     "permanent": true
