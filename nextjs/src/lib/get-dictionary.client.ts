@@ -4,7 +4,7 @@ import { type Locale } from "@/lib/locale"
 import en from "@/dictionaries/en.json"
 import enAU from "@/dictionaries/en-au.json"
 import nl from "@/dictionaries/nl.json"
-import deCH from "@/dictionaries/de-ch-ch.json"
+import deCH from "@/dictionaries/de-ch.json"
 import deDE from "@/dictionaries/de-de.json"
 
 const dictionaries = {
