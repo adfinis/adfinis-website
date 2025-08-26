@@ -4,6 +4,7 @@ export interface MatomoTrackingData {
   // Required parameters
   idsite: string | number
   rec: number
+  token_auth: string
 
   // Page tracking
   url?: string
@@ -56,6 +57,7 @@ export interface MatomoConfig {
   siteId: string | number
   trackerUrl: string
   enabled: boolean
+  authToken: string
   debug?: boolean
 }
 
@@ -75,28 +77,26 @@ class MatomoTracker {
       console.log("🔍 [Matomo Debug]", data)
     }
 
+    if (this.config.authToken === "") {
+      throw new Error("Matomo auth token is not set")
+    }
+
     try {
-      const trackingData: MatomoTrackingData = {
-        idsite: this.config.siteId,
-        rec: 1,
+      // @ts-ignore
+      const params = new URLSearchParams({
+        idsite: this.config.siteId.toString(),
+        rec: "1",
+        token_auth: this.config.authToken,
         ...data,
-      }
-      const params = new URLSearchParams()
-      Object.entries(trackingData).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          if (typeof value === "object") {
-            params.append(key, JSON.stringify(value))
-          } else {
-            params.append(key, String(value))
-          }
-        }
       })
-      const url = `${this.config.trackerUrl}/matomo.php?${params.toString()}`
+      const url = `${this.config.trackerUrl}/matomo.php`
       const response = await fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: {
           "User-Agent": data.ua || "NextJS-Server-Tracker/1.0",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
+        body: params,
       })
       if (!response.ok && this.config.debug) {
         console.warn(`Matomo tracking failed: ${response.status}`)
@@ -125,7 +125,7 @@ class MatomoTracker {
       action_name: data.title,
       urlref: data.referrer,
       _id: data.visitorId,
-      // cip: data.ip,
+      cip: data.ip,
       ua: data.userAgent,
       lang: data.language,
     })
@@ -147,7 +147,7 @@ class MatomoTracker {
       e_v: data.value,
       url: data.url,
       _id: data.visitorId,
-      // cip: data.ip,
+      cip: data.ip,
       ua: data.userAgent,
     })
   }
@@ -223,6 +223,7 @@ const config: MatomoConfig = {
   siteId: process.env.MATOMO_SITE_ID || "1",
   trackerUrl: process.env.MATOMO_URL || "",
   enabled: process.env.MATOMO_ENABLE_TRACKING === "true",
+  authToken: process.env.MATOMO_AUTH_TOKEN || "",
   debug: process.env.MATOMO_DEBUG_TRACKING === "true",
 }
 
