@@ -88,13 +88,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
         </div>
       </FooterElement>
       <hr className="border-y-stone/15 col-span-1 md:col-span-2 lg:col-span-4" />
-      <FooterLegal
-        privacyPolicy={{
-          text: "Privacy Policy",
-          // TODO move to landing page
-          href: "/privacy-policy",
-        }}
-      />
+      <FooterLegal />
     </FooterWrapper>
   )
 }

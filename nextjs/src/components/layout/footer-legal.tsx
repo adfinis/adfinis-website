@@ -7,15 +7,7 @@ type FooterLegalProps = {
   }
 }
 const FooterLegal: React.FC<FooterLegalProps> = ({ privacyPolicy }) => (
-  <span className="text-14">
-    &copy; {new Date().getFullYear()} Adfinis.{" "}
-    <Link
-      className=" hover:underline hover:text-sapphire"
-      href={privacyPolicy.href}
-    >
-      {privacyPolicy.text}.
-    </Link>
-  </span>
+  <span className="text-14">&copy; {new Date().getFullYear()} Adfinis.</span>
 )
 
 export default FooterLegal
