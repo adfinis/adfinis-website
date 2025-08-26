@@ -35,7 +35,7 @@ export default async function NewsOverviewGridSection({
           href: cat.url,
         }
       }),
-      href: `/${locale}/${NEWS_SLUGS[locale]}/${item.slug}`,
+      href: `/${locale}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}/${item.slug}`,
     }
   })
 

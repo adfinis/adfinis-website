@@ -13,8 +13,8 @@ export default async function Footer({ locale }: { locale: Locale }) {
     return null
   }
 
-  const SOLUTIONS_SLUG = `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale]}`
-  const PARTNER_PRODUCTS_SLUG = `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale]}`
+  const SOLUTIONS_SLUG = `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale.toLowerCase() as Locale]}`
+  const PARTNER_PRODUCTS_SLUG = `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale.toLowerCase() as Locale]}`
 
   const aboutMap = {
     en: [

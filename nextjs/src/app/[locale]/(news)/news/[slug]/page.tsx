@@ -26,7 +26,7 @@ export default async function NewsDetailPage({
   params: { locale: Locale; slug: string }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale]}/${slug}`,
+    href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }

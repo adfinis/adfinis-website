@@ -23,7 +23,7 @@ export default async function PartnersProducts({
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[item.locale.toLowerCase() as Locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

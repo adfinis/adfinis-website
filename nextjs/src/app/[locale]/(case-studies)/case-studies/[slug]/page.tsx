@@ -25,7 +25,7 @@ export default async function DetailPage({
   params: { locale: Locale; slug: string }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale]}/${slug}`,
+    href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }

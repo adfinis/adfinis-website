@@ -21,7 +21,7 @@ export default async function NewsOverview({
   const data = await getNewsOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
     return {
-      href: `/${item.locale.toLowerCase()}/${NEWS_SLUGS[item.locale]}`,
+      href: `/${item.locale.toLowerCase()}/${NEWS_SLUGS[item.locale.toLowerCase() as Locale]}`,
       locale: item.locale,
       isActive: false,
     }

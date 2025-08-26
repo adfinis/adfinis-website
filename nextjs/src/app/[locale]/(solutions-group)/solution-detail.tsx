@@ -22,7 +22,7 @@ export default async function SolutionDetail({
     (item: { locale: Locale; slug: string }) => {
       const locale = item.locale.toLowerCase() as Locale
       return {
-        href: `/${locale}/${SOLUTIONS_SLUGS[locale]}/${item.slug}`,
+        href: `/${locale}/${SOLUTIONS_SLUGS[locale.toLowerCase() as Locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

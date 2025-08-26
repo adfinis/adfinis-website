@@ -25,7 +25,7 @@ export default function SolutionsPage({
   params: { locale: Locale }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale]}`,
+    href: `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale.toLowerCase() as Locale]}`,
     locale: locale,
     isActive: true,
   }

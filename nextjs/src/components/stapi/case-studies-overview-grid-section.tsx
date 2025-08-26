@@ -19,7 +19,7 @@ export default async function CaseStudiesOverviewGridSection({
       description: "",
       imageUrl: item.hero?.background_image?.url,
       logoUrl: item.client_image?.url,
-      href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${item.slug}`,
+      href: `/${locale}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}/${item.slug}`,
     }
   })
   return (
