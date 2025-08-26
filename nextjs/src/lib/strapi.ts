@@ -122,7 +122,7 @@ export function getEventPage(locale: Locale, slug: string) {
 export function getEventPageCards(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false`,
   )
 }
 
