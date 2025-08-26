@@ -13,8 +13,10 @@ import { Locale } from "@/lib/locale"
 
 export default async function NewsOverview({
   activeLocale,
+  searchParams,
 }: {
   activeLocale: LinkedLocale
+  searchParams?: { [key: string]: string | string[] | undefined }
 }) {
   const data = await getNewsOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
@@ -25,6 +27,7 @@ export default async function NewsOverview({
     }
   })
   locales.push(activeLocale)
+  const page = searchParams?.page
 
   const { hero, intro, sections } = data
   return (
@@ -38,7 +41,7 @@ export default async function NewsOverview({
           <Text markdown={intro} />
         </Intro>
       )}
-      <NewsOverviewGridSection locale={activeLocale.locale} />
+      <NewsOverviewGridSection locale={activeLocale.locale} page={page} />
       {sections &&
         sections.length > 0 &&
         sections.map((section: any, index: number) =>
