@@ -4,13 +4,21 @@ import CardGroup from "@/components/cards/card-group"
 import CardArticle from "@/components/cards/card-article"
 import Container from "@/components/container"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
+import Pagination from "../pagination/pagination"
 
 export default async function NewsOverviewGridSection({
+  page,
   locale,
 }: {
+  /**
+   * page comes from searchParams.
+   */
+  page?: string | string[]
   locale: Locale
 }) {
-  const data = await getNewsGrid(locale)
+  const index = Array.isArray(page) ? Number(page[0]) : Number(page) || 1
+  const pageSize = 24
+  const { data, meta } = await getNewsGrid(locale, { page: index, pageSize })
   const cards = data.map((item: any) => {
     return {
       key: `news_item_${item.id}`,
@@ -30,6 +38,7 @@ export default async function NewsOverviewGridSection({
       href: `/${locale}/${NEWS_SLUGS[locale]}/${item.slug}`,
     }
   })
+
   return (
     <Container padding="both-padding" background="white">
       <CardGroup maxWidth="none">
@@ -37,6 +46,13 @@ export default async function NewsOverviewGridSection({
           <CardArticle {...card} key={card.key} />
         ))}
       </CardGroup>
+      <Pagination
+        pageCount={meta.pagination.pageCount}
+        total={meta.pagination.total}
+        pageSize={meta.pagination.pageSize}
+        page={index}
+        locale={locale}
+      />
     </Container>
   )
 }

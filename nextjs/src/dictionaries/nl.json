@@ -40,5 +40,8 @@
             "cta": "Neem contact op",
             "stayInTouch": "## Blijf in contact"
         }
+    },
+    "common": {
+        "of": "van"
     }
 }

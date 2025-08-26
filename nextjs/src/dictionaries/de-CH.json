@@ -40,5 +40,8 @@
             "cta": "Kontaktiere uns",
             "stayInTouch": "## Bleib in Kontakt"
         }
+    },
+    "common": {
+        "of": "von"
     }
 }
