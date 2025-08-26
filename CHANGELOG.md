@@ -15,6 +15,38 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [0.19.0] - 2025-08-26
+
+- AW-40 matomo (#217)
+- feat (AW-266): add .well-known security and pub encryption key (#216)
+- feat (AW-265): enable de-de locale on frontend (#215)
+- AW-262 prioritize publication date over published at (#214)
+- feat (AW-260): add publication_date field (#213)
+- (AW-259-fix-home-page-not-working) AW-259 fix home page not working (#212)
+- chore (AW-258): remove migration script (#211)
+- AW-258 add internal name migration (#210)
+- AW-258 add internal name fields on collection types (#209)
+- AW-256 set up blog resource in strapi for locale blog slug (#208)
+- AW-257 en au page resource serving 500 error (#207)
+- AW-251 security check locale and slug input through url (#206)
+- Aw 250 one off copy undefined in slug en au (#205)
+- Feature/aw 245 seo duplicate meta titles (#204)
+- fix (AW-247): allow cdn in nextjs cors (#203)
+- AW-247 new image upload not working (#202)
+- chore: Disable cache for now (#201)
+- CDN Updates (#200)
+- Feature/aw 222 performance caching (#198)
+- Feature/aw 211 new success stories are added (#199)
+- fix: Align intro centered like component below (#196)
+- fix: Add locale to nav logo (#195)
+- Feature/aw 233 menu bug in translations (#197)
+- Feature/aw 80 404 space invader game (#194)
+- fix: Add date formatting to news overview card data (#191)
+- fix: Update translations with conditional button display (#193)
+- fix: Remove fallbacks duplication (#190)
+- feat: Add updated date structure with translation label (#189)
+- fix (AW-210): pass correct locale to strapi api (#188)
+
 ## [0.18.0] - 2025-04-08
 
 - feat AW-208: move dynamic zone components below fixed details (#186)
