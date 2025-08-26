@@ -191,7 +191,9 @@ export async function strapiWithoutRedirect(locale: Locale) {
   const page = await fetch(
     `${STRAPI}/homepage?locale=${normalizeLocale(locale)}`,
     {
-      cache: "no-cache",
+      next: {
+        revalidate: 3600,
+      },
     },
   )
   const { data } = await page.json()
