@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "internal_name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true

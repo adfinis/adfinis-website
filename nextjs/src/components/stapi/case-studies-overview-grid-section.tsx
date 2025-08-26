@@ -1,16 +1,16 @@
 import CardGroup from "@/components/cards/card-group"
 import CardArticle from "@/components/cards/card-article"
 import Container from "@/components/container"
-import { SLUGS } from "@/app/[locale]/(case-studies)/case-studies-slugs"
-import strapi from "@/lib/strapi"
+import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
+import { getCaseStudiesGrid } from "@/lib/strapi"
+import { Locale } from "@/lib/locale"
 
 export default async function CaseStudiesOverviewGridSection({
   locale,
 }: {
-  locale: string
+  locale: Locale
 }) {
-  const url = `page-case-studies?locale=${locale}&populate=hero.background_image&populate=client_image`
-  const data = await strapi(url)
+  const data = await getCaseStudiesGrid(locale)
   const cards = data.map((item: any) => {
     return {
       key: `case_study_${item.id}`,
@@ -19,7 +19,7 @@ export default async function CaseStudiesOverviewGridSection({
       description: "",
       imageUrl: item.hero?.background_image?.url,
       logoUrl: item.client_image?.url,
-      href: `/${locale}/${SLUGS[locale]}/${item.slug}`,
+      href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${item.slug}`,
     }
   })
   return (

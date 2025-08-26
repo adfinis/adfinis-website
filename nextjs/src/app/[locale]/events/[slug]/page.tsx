@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getEventPage } from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { NavProvider } from "@/components/nav-bar/nav-context"
@@ -6,18 +6,34 @@ import InfoLabel from "@/components/info-label"
 import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Container from "@/components/container"
-import SectionGroup from "@/components/sections/section-group"
 import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
-import { getDictionary } from "@/lib/get-dictionary"
+import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
+import { Metadata } from "next"
+
+export async function generateMetadata({
+  params: { locale, slug },
+}: {
+  params: {
+    locale: Locale
+    slug: string
+  }
+}): Promise<Metadata> {
+  const data = await getEventPage(locale, slug)
+
+  return {
+    title: data.metadata_title,
+    description: data.metadata_description,
+  }
+}
 
 export default async function EventsDetailPage({
   params: { locale, slug },
 }: {
   params: {
-    locale: string
+    locale: Locale
     slug: string
   }
 }) {
@@ -27,14 +43,12 @@ export default async function EventsDetailPage({
     locale: locale,
     isActive: true,
   }
-
-  const url = `event-pages/${slug}?locale=${activeLocale.locale}&status=published`
-  const data = await strapi(url)
+  const data = await getEventPage(activeLocale.locale, slug)
 
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/events/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/events/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }
@@ -73,17 +87,22 @@ export default async function EventsDetailPage({
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
       <Container background="white" padding="both-padding">
-        <InfoLabel text={formattedDate} className="block mb-4" />
-        <Text markdown={details} className="mb-8 max-w-4xl" />
-        {tester && sign_up_button && (
-          <LinkButton
-            href={sign_up_button.href}
-            size={sign_up_button.size}
-            variant={sign_up_button.variant}
-          >
-            {sign_up_button.label}
-          </LinkButton>
-        )}
+        <div className="max-w-4xl mx-auto">
+          <InfoLabel
+            text={`${dictionary.pages.events.dateEvent}: ${formattedDate}`}
+            className="block mb-4"
+          />
+          <Text markdown={details} className="mb-8" />
+          {tester && sign_up_button && (
+            <LinkButton
+              href={sign_up_button.href}
+              size={sign_up_button.size}
+              variant={sign_up_button.variant}
+            >
+              {sign_up_button.label}
+            </LinkButton>
+          )}
+        </div>
       </Container>
       <Container
         padding="both-padding"

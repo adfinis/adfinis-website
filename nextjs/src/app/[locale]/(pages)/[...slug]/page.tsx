@@ -1,4 +1,4 @@
-import strapi from "@/lib/strapi"
+import { getPage } from "@/lib/strapi"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -6,11 +6,29 @@ import Intro from "@/components/intro"
 import Text from "@/components/text"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { Locale } from "@/lib/locale"
+import { Metadata } from "next"
+
+export async function generateMetadata({
+  params: { locale, slug },
+}: {
+  params: {
+    locale: Locale
+    slug: string[]
+  }
+}): Promise<Metadata> {
+  console.log({ locale, slug })
+  const data = await getPage(locale, slug.join("/"))
+  return {
+    title: data.metadata_title,
+    description: data.metadata_description,
+  }
+}
 
 export default async function LandingPage({
   params: { locale, slug },
 }: {
-  params: { locale: string; slug: string[] }
+  params: { locale: Locale; slug: string[] }
 }) {
   const URI_PATH = slug.join("/")
   const activeLocale = {
@@ -18,12 +36,11 @@ export default async function LandingPage({
     locale: locale,
     isActive: true,
   }
-  const url = `pages/${slug}?status=published`
-  const data = await strapi(url)
+  const data = await getPage(locale, URI_PATH)
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

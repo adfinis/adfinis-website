@@ -31,22 +31,14 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
   return (
     <div onMouseLeave={hideDesktopItems}>
       {/* title of the menu items (always visible, in topbar) */}
-      {navItem.url ? (
-        <Link
-          className="cursor-pointer inline-flex text-sm/6 font-semibold text-neutral group pr-8 py-4"
-          href={navItem.url}
-          onMouseEnter={showDesktopItems}
-        >
-          <LinkAnimation>{navItem.title}</LinkAnimation>
-        </Link>
-      ) : (
-        <h2
-          onMouseEnter={showDesktopItems}
-          className="cursor-pointer text-sm/6 font-semibold text-neutral"
-        >
-          {navItem.title}
-        </h2>
-      )}
+
+      <Link
+        className="cursor-pointer inline-flex text-sm/6 font-semibold text-neutral group pr-8 py-4"
+        href={navItem.url || "#"}
+        onMouseEnter={showDesktopItems}
+      >
+        <LinkAnimation>{navItem.title}</LinkAnimation>
+      </Link>
 
       {/* the menu items */}
       <Transition
@@ -69,19 +61,13 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
                 className="grid grid-cols-1 content-start gap-4 pr-2 border-r last-of-type:border-r-0 min-h-72 border-neutral/30 w-1/6"
                 key={index}
               >
-                {item.url ? (
-                  <Link
-                    className="text-16 leading-5 font-semibold group"
-                    key={index}
-                    href={item.url}
-                  >
-                    <LinkAnimation>{item.title}</LinkAnimation>
-                  </Link>
-                ) : (
-                  <h3 className="text-16 leading-5 font-semibold">
-                    {item.title}
-                  </h3>
-                )}
+                <Link
+                  className="text-16 leading-5 font-semibold group"
+                  key={index}
+                  href={item.url || "#"}
+                >
+                  <LinkAnimation>{item.title}</LinkAnimation>
+                </Link>
 
                 {item.items?.map(
                   (subItem, subIndex) =>

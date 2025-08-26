@@ -1,6 +1,6 @@
 {
   "name": "strapi",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "private": true,
   "description": "A Strapi application",
   "scripts": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "@strapi/plugin-cloud": "5.8.1",
     "@strapi/plugin-users-permissions": "5.8.1",
-    "@strapi/provider-upload-aws-s3": "^5.5.0",
+    "@strapi/provider-upload-aws-s3": "^5.16.0",
     "@strapi/strapi": "5.8.1",
     "@types/node": "^20.17.6",
     "@types/react": "^18.3.12",

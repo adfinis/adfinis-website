@@ -7,12 +7,12 @@ export default function Layout({
   params: { locale },
 }: {
   children: ReactNode
-  params: { locale: string }
+  params: { locale: Locale }
 }) {
   return (
     <>
       {children}
-      <CookieNotice locale={(locale as Locale) || "en"} />
+      <CookieNotice locale={locale || "en"} />
     </>
   )
 }

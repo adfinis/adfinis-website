@@ -11,14 +11,21 @@ import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
 import Link from "next/link"
+import { Locale } from "@/lib/locale"
 
 type NavDesktopProps = {
   navItems: NavItem[]
   logoUrl: string
   cta?: CTA
+  locale: Locale
 }
 
-const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
+const NavDesktop: React.FC<NavDesktopProps> = ({
+  navItems,
+  logoUrl,
+  cta,
+  locale,
+}) => {
   const { setNavActive } = useNavContext()
   const [menuExpanded, setMenuExpanded] = useState(true)
   const { scrollDir, scrollPosition } = useDetectScroll({
@@ -80,7 +87,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({ navItems, logoUrl, cta }) => {
               ])}
               id="nav-header"
             >
-              <Link href={`/en`}>
+              <Link href={`/${locale}`}>
                 <Image
                   src={logoUrl}
                   alt={"Adfinis logo"}

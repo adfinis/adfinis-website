@@ -5,6 +5,7 @@ import IconGlobe from "@/components/icons/icon-globe"
 import IconChevronDown from "@/components/icons/icon-chevron-down"
 import Link from "next/link"
 import { useLinkedLocales } from "@/components/nav-bar/linked-locales-provider"
+import { normalizeLocale } from "@/lib/strapi"
 
 export default function ActionWrappers() {
   const linkedLocales = useLinkedLocales()
@@ -28,7 +29,7 @@ export default function ActionWrappers() {
                 href={link.href}
                 className="flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-neutral text-sm/6 text-neutral hover:text-biscay"
               >
-                {link.locale}
+                {normalizeLocale(link.locale)}
               </Link>
             </MenuItem>
           ))}

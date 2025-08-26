@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         data-scheme="dark"
       >
         <div className="w-full lg:w-1/2">
-          <div className="inline-grid gap-8 py-24 lg:py-16 items-center place-items-start text-shadow-md/10">
+          <div className="inline-grid gap-8 py-24 lg:py-16 items-center place-items-start">
             {children}
           </div>
         </div>

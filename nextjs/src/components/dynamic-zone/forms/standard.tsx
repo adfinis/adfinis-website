@@ -8,7 +8,7 @@ import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import { saveStandardForm } from "@/app/actions"
 import { useFormState } from "react-dom"
-import { type Dictionary } from "@/lib/get-dictionary"
+import { type Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 
 type Props = {
@@ -63,12 +63,15 @@ export default function Standard({ submitLabel, dictionary, locale }: Props) {
           errorMessage={state?.errors?.privacy_policy ?? []}
         />
         <div className="w-full text-center">
-          {state.success && (
-            <p className="text-input-primary">Form successfully submitted</p>
+          {state.success ? (
+            <p className="text-input-primary">
+              {dictionary.forms.submitSuccessful}
+            </p>
+          ) : (
+            <Button variant={"cta"} name={"submit"} type="submit">
+              {submitLabel}
+            </Button>
           )}
-          <Button variant={"cta"} name={"submit"} type="submit">
-            {submitLabel}
-          </Button>
         </div>
       </div>
     </form>

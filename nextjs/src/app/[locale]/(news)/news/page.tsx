@@ -1,13 +1,31 @@
-import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
+import { NEWS_SLUGS } from "@/lib/slugs"
 import NewsOverview from "@/app/[locale]/(news)/news-overview"
+import { Locale } from "@/lib/locale"
+import { Metadata } from "next"
+import { getNewsOverview } from "@/lib/strapi"
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: {
+    locale: Locale
+    slug: string
+  }
+}): Promise<Metadata> {
+  const data = await getNewsOverview(locale)
+  return {
+    title: data.metadata_title,
+    description: data.metadata_description,
+  }
+}
 
 export default async function NewsOverviewPage({
   params: { locale },
 }: {
-  params: { locale: string }
+  params: { locale: Locale }
 }) {
   const activeLocale = {
-    href: `/${locale}/${NEWS_SLUGS[locale]}`,
+    href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale]}`,
     locale: locale,
     isActive: true,
   }

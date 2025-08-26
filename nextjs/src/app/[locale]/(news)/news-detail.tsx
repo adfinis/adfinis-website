@@ -6,8 +6,9 @@ import TextImage from "@/components/text-image"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
-import { NEWS_SLUGS } from "@/app/[locale]/(news)/news-slugs"
+import { getNewsPage } from "@/lib/strapi"
+import { Locale, getLocaleDateFormatted } from "@/lib/locale"
+import { NEWS_SLUGS } from "@/lib/slugs"
 
 export default async function NewsDetail({
   activeLocale,
@@ -16,13 +17,19 @@ export default async function NewsDetail({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `news-pages/${slug}?locale=${activeLocale.locale}&status=published`
-  const data = await strapi(url)
-  const { hero, main_blog, sections, publishedAt, createdAt } = data
+  const data = await getNewsPage(activeLocale.locale, slug)
+  const {
+    hero,
+    main_blog,
+    sections,
+    publication_date,
+    publishedAt,
+    createdAt,
+  } = data
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${NEWS_SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${NEWS_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }
@@ -40,7 +47,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`Published at ${publishedAt ?? createdAt}`}
+              text={`Published at ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />

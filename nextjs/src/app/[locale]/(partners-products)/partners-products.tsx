@@ -1,5 +1,5 @@
-import { SLUGS } from "@/app/[locale]/(partners-products)/slugs"
-import strapi from "@/lib/strapi"
+import { PARTNER_PRODUCTS_SLUGS } from "@/lib/slugs"
+import { getPartnerAndProductsPage } from "@/lib/strapi"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
@@ -9,6 +9,7 @@ import { NavProvider } from "@/components/nav-bar/nav-context"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import Footer from "@/components/stapi/footer"
+import { Locale } from "@/lib/locale"
 
 export default async function PartnersProducts({
   activeLocale,
@@ -17,13 +18,12 @@ export default async function PartnersProducts({
   activeLocale: LinkedLocale
   slug: string
 }) {
-  const url = `page-partner-and-products/${slug}?locale=${activeLocale.locale}&status=published`
-  const data = await strapi(url)
+  const data = await getPartnerAndProductsPage(activeLocale.locale, slug)
 
   const locales = data.localizations.map(
-    (item: { locale: string; slug: string }) => {
+    (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale}/${SLUGS[item.locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[item.locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }

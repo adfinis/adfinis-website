@@ -14,7 +14,7 @@
         "jobFunction": "Berufsbezeichnung",
         "message": "Nachricht",
         "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzbestimmungen von Adfinis.",
-        "submitSuccessful": "Formular erfolgreich übermittelt"
+        "submitSuccessful": "Danke, Ihre Angaben wurden erfolgreich übermittelt"
     },
     "validation": {
         "required": "Dieses Feld ist erforderlich.",
@@ -32,7 +32,13 @@
     "pages": {
         "events": {
             "title": "Event Details",
-            "cta": "Jetzt anmelden"
+            "cta": "Jetzt anmelden",
+            "dateEvent": "Datum Event"
+        },
+        "notFound": {
+            "body": "## 404\nOh nein, diese Seite wurde von Space Invaders angegriffen! Zeig ihnen, was du drauf hast!\nVerwende `Leertaste` zum Schießen und `←` und `→` zum Bewegen!",
+            "cta": "Kontaktiere uns",
+            "stayInTouch": "## Bleib in Kontakt"
         }
     }
 }

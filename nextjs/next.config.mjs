@@ -20,10 +20,29 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "adfinis-assets.ams3.cdn.digitaloceanspaces.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   eslint: {
     dirs: ["src"],
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate", // 30 minutes
+          },
+        ],
+      },
+    ]
   },
 }
 

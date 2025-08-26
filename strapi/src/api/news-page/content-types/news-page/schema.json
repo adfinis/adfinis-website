@@ -16,6 +16,16 @@
     }
   },
   "attributes": {
+    "internal_name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
     "metadata_title": {
       "pluginOptions": {
         "i18n": {
@@ -24,7 +34,7 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "metadata_description": {
       "pluginOptions": {
@@ -57,7 +67,7 @@
         }
       },
       "type": "string",
-      "required": true
+      "required": false
     },
     "card_subtitle": {
       "pluginOptions": {
@@ -66,7 +76,7 @@
         }
       },
       "type": "string",
-      "required": true
+      "required": false
     },
     "categories": {
       "type": "relation",
@@ -126,6 +136,14 @@
         "sections.video-section",
         "sections.video-with-text-section"
       ]
+    },
+    "publication_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "datetime"
     }
   }
 }

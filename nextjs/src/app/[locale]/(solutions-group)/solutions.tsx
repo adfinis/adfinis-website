@@ -1,25 +1,25 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
+import { getSolutionsOverview } from "@/lib/strapi"
 import NavBar from "@/components/nav-bar/nav-bar"
 import Text from "@/components/text"
-import { SLUGS } from "@/app/[locale]/(solutions-group)/solutions-slugs"
+import { SOLUTIONS_SLUGS } from "@/lib/slugs"
 import Intro from "@/components/intro"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { Locale } from "@/lib/locale"
 
 export default async function Solutions({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `solutions-overview?locale=${activeLocale.locale}&status=published`
-
-  const data = await strapi(url)
-  const locales = data.localizations.map((item: { locale: string }) => {
+  const data = await getSolutionsOverview(activeLocale.locale)
+  const locales = data.localizations.map((item: { locale: Locale }) => {
+    const locale = item.locale.toLowerCase() as Locale
     return {
-      href: `/${item.locale}/${SLUGS[item.locale]}`,
+      href: `/${locale}/${SOLUTIONS_SLUGS[locale]}`,
       locale: item.locale,
       isActive: false,
     }

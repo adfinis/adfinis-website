@@ -1,5 +1,5 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import strapi from "@/lib/strapi"
+import { getCaseStudiesOverview } from "@/lib/strapi"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -7,19 +7,19 @@ import Intro from "@/components/intro"
 import Text from "@/components/text"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
-import { SLUGS } from "@/app/[locale]/(case-studies)/case-studies-slugs"
+import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import CaseStudiesOverviewGridSection from "@/components/stapi/case-studies-overview-grid-section"
+import { Locale } from "@/lib/locale"
 
 export default async function CaseStudiesOverviewPage({
   activeLocale,
 }: {
   activeLocale: LinkedLocale
 }) {
-  const url = `case-studies-overview?locale=${activeLocale.locale}&status=published`
-  const data = await strapi(url)
-  const locales = data.localizations.map((item: { locale: string }) => {
+  const data = await getCaseStudiesOverview(activeLocale.locale)
+  const locales = data.localizations.map((item: { locale: Locale }) => {
     return {
-      href: `/${item.locale}/${SLUGS[item.locale]}`,
+      href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale]}`,
       locale: item.locale,
       isActive: false,
     }
