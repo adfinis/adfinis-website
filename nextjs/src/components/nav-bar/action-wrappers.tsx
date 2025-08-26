@@ -10,6 +10,16 @@ import { normalizeLocale } from "@/lib/strapi"
 export default function ActionWrappers() {
   const linkedLocales = useLinkedLocales()
   const activeLocale = linkedLocales.filter((value) => value.isActive)[0]
+  const localesMap = {
+    en: "International",
+    "de-ch": "Schweiz",
+    "de-CH": "Schweiz",
+    "de-de": "Deutschland",
+    "de-DE": "Deutschland",
+    nl: "Nederland",
+    "en-au": "Australia & New Zealand",
+    "en-AU": "Australia & New Zealand",
+  }
   return (
     <div className="flex justify-end items-center gap-4 lg:gap-6 text-neutral">
       <Menu>
@@ -29,7 +39,7 @@ export default function ActionWrappers() {
                 href={link.href}
                 className="flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-neutral text-sm/6 text-neutral hover:text-biscay"
               >
-                {normalizeLocale(link.locale)}
+                {localesMap[link.locale]}
               </Link>
             </MenuItem>
           ))}
