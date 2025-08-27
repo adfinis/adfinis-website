@@ -1908,11 +1908,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/en/contact",
-        destination: "/en/contact",
-        permanent: true,
-      },
-      {
         source: "/en/customer-story_dectris",
         destination: "/en/case-studies/dectris",
         permanent: true,
@@ -2627,11 +2622,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/nl/contact",
-        destination: "/nl/contact",
-        permanent: true,
-      },
-      {
         source: "/nl/customer-story_dectris",
         destination: "/nl/casestudies/dectris",
         permanent: true,
@@ -2659,11 +2649,6 @@ const nextConfig = {
       {
         source: "/nl/diensten/managed-service",
         destination: "/nl/oplossingen/managed-services",
-        permanent: true,
-      },
-      {
-        source: "/nl/events",
-        destination: "/nl/events",
         permanent: true,
       },
       {
@@ -2813,11 +2798,6 @@ const nextConfig = {
       {
         source: "/nl/nts-werkruimte",
         destination: "/nl/casestudies/nts-workspace",
-        permanent: true,
-      },
-      {
-        source: "/nl/oplossingen",
-        destination: "/nl/oplossingen",
         permanent: true,
       },
       {
