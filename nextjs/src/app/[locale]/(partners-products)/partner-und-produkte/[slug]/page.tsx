@@ -29,7 +29,7 @@ export default async function PartnerAndProductsPage({
   }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale]}/${slug}`,
+    href: `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,
     isActive: true,
   }

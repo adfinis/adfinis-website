@@ -13,8 +13,49 @@ export default async function Footer({ locale }: { locale: Locale }) {
     return null
   }
 
-  const SOLUTIONS_SLUG = `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale]}`
-  const PARTNER_PRODUCTS_SLUG = `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale]}`
+  const SOLUTIONS_SLUG = `/${locale.toLowerCase()}/${SOLUTIONS_SLUGS[locale.toLowerCase() as Locale]}`
+  const PARTNER_PRODUCTS_SLUG = `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale.toLowerCase() as Locale]}`
+
+  const aboutMap = {
+    en: [
+      {
+        text: "Privacy Policy",
+        href: "/en/privacy-policy",
+      },
+    ],
+    "de-ch": [
+      {
+        text: "Datenschutzerklärung",
+        href: "/de-ch/datenschutzerklaerung",
+      },
+      {
+        text: "Impressum",
+        href: "/de-ch/impressum",
+      },
+    ],
+    "de-de": [
+      {
+        text: "Datenschutzerklärung",
+        href: "/de-de/datenschutzerklaerung",
+      },
+      {
+        text: "Impressum",
+        href: "/de-ch/impressum",
+      },
+    ],
+    nl: [
+      {
+        text: "Privacybeleid",
+        href: "/nl/privacybeleid",
+      },
+    ],
+    "en-au": [
+      {
+        text: "Privacy Policy",
+        href: "/en-au/privacy-policy",
+      },
+    ],
+  }
 
   return (
     <FooterWrapper>
@@ -33,14 +74,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
           href: `${PARTNER_PRODUCTS_SLUG}/${item.slug}`,
         }))}
       />
-      <FooterElement
-        title={`About`}
-        links={
-          [
-            /* TODO add landing pages */
-          ]
-        }
-      >
+      <FooterElement title={`About`} links={aboutMap[locale]}>
         <div className="flex gap-6">
           <Link href={data.linkedin_url}>
             <IconSocial type={`linkedin`} />
@@ -54,13 +88,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
         </div>
       </FooterElement>
       <hr className="border-y-stone/15 col-span-1 md:col-span-2 lg:col-span-4" />
-      <FooterLegal
-        privacyPolicy={{
-          text: "Privacy Policy",
-          // TODO move to landing page
-          href: "/privacy-policy",
-        }}
-      />
+      <FooterLegal />
     </FooterWrapper>
   )
 }

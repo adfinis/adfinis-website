@@ -1,6 +1,6 @@
 {
     "cookieBanner": {
-        "text": "Wir verwenden Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website machen. Durch die Nutzung unserer Seite stimmen Sie unserer [Cookie-Richtlinie](/cookie-policy) zu.",
+        "text": "Wir verwenden Cookies, um sicherzustellen, dass Sie die beste Erfahrung auf unserer Website machen. Durch die Nutzung unserer Seite stimmen Sie unserer [Cookie-Richtlinie](/de-ch/datenschutzerklaerung) zu.",
         "accept": "Alle akzeptieren",
         "reject": "Alle ablehnen",
         "personalize": "Personalisieren"
@@ -9,19 +9,19 @@
         "firstName": "Vorname",
         "lastName": "Nachname",
         "email": "E-Mail",
-        "phone": "Telefonnummer",
-        "companyName": "Firmenname",
-        "jobFunction": "Berufsbezeichnung",
+        "phone": "Telefon",
+        "companyName": "Firma",
+        "jobFunction": "Funktion",
         "message": "Nachricht",
-        "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzbestimmungen von Adfinis.",
-        "submitSuccessful": "Danke, Ihre Angaben wurden erfolgreich übermittelt"
+        "acceptPrivacyPolicy": "Ich bin einverstanden mit der Datenschutzerklärung von Adfinis.",
+        "submitSuccessful": "Danke, Ihre Eingabe wurde erfolgreich übermittelt"
     },
     "validation": {
-        "required": "Dieses Feld ist erforderlich.",
+        "required": "Dieses Feld muss ausgefüllt werden.",
         "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
         "min": "Dieses Feld muss mindestens ${min} Zeichen lang sein.",
-        "max": "Dieses Feld darf maximal ${max} Zeichen lang sein.",
-        "oneOf": "Dieses Feld muss einen der folgenden Werte haben: ${values}.",
+        "max": "Dieses Feld darf höchstens ${max} Zeichen lang sein.",
+        "oneOf": "Dieses Feld muss einen der folgenden Werte enthalten: ${values}.",
         "privacyPolicy": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
         "phone": {
             "format": "Ungültiges Telefonnummernformat.",
@@ -36,9 +36,12 @@
             "dateEvent": "Datum Event"
         },
         "notFound": {
-            "body": "## 404\nOh nein, diese Seite wurde von Space Invaders angegriffen! Zeig ihnen, was du drauf hast!\nVerwende `Leertaste` zum Schießen und `←` und `→` zum Bewegen!",
+            "body": "## 404\nOh nein, diese Seite wurde von Space Invaders angegriffen! Zeig ihnen, was du drauf hast!\nVerwende `Leertaste` zum Schiessen und `←` und `→` zum Bewegen!",
             "cta": "Kontaktiere uns",
             "stayInTouch": "## Bleib in Kontakt"
         }
+    },
+    "common": {
+        "of": "von"
     }
 }

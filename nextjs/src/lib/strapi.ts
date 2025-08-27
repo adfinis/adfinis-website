@@ -71,10 +71,20 @@ export function getNewsOverview(locale: Locale) {
   )
 }
 
-export function getNewsGrid(locale: Locale) {
+export function getNewsGrid(
+  locale: Locale,
+  {
+    page,
+    pageSize,
+  }: {
+    page: number
+    pageSize: number
+  },
+) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+    { raw: true },
   )
 }
 
@@ -112,7 +122,7 @@ export function getEventPage(locale: Locale, slug: string) {
 export function getEventPageCards(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false`,
   )
 }
 
@@ -155,7 +165,12 @@ export function getHallmark(id: string) {
   return strapi(`hallmarks/${id}?populate=hallmark`)
 }
 
-async function strapi(query: string) {
+type Options =
+  | {
+      raw?: boolean
+    }
+  | undefined
+async function strapi(query: string, options?: Options) {
   const page = await fetch(`${STRAPI}/${query}`, {
     next: {
       revalidate: 0,
@@ -164,8 +179,11 @@ async function strapi(query: string) {
   if (page && page.status === 404) {
     return notFound()
   }
-  const { data } = await page.json()
-  return data
+  const res = await page.json()
+  if (options?.raw) {
+    return res
+  }
+  return res.data
 }
 
 export async function strapiWithoutRedirect(locale: Locale) {
@@ -173,7 +191,9 @@ export async function strapiWithoutRedirect(locale: Locale) {
   const page = await fetch(
     `${STRAPI}/homepage?locale=${normalizeLocale(locale)}`,
     {
-      cache: "no-cache",
+      next: {
+        revalidate: 3600,
+      },
     },
   )
   const { data } = await page.json()

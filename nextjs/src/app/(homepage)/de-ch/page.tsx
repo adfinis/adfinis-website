@@ -3,11 +3,8 @@ import { Locale } from "@/lib/locale"
 
 export const dynamic = "force-dynamic"
 
-export default function Home({
-  params: { locale },
-}: {
-  params: { locale: Locale }
-}) {
+export default function Home() {
+  const locale = "de-ch" as Locale
   const activeLocale = {
     href: `/${locale.toLowerCase()}`,
     locale: locale,

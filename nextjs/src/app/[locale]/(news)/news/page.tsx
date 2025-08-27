@@ -21,13 +21,17 @@ export async function generateMetadata({
 
 export default async function NewsOverviewPage({
   params: { locale },
+  searchParams,
 }: {
   params: { locale: Locale }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale]}`,
+    href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}`,
     locale: locale,
     isActive: true,
   }
-  return <NewsOverview activeLocale={activeLocale} />
+  return (
+    <NewsOverview activeLocale={activeLocale} searchParams={searchParams} />
+  )
 }

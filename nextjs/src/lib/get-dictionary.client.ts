@@ -4,15 +4,15 @@ import { type Locale } from "@/lib/locale"
 import en from "@/dictionaries/en.json"
 import enAU from "@/dictionaries/en-au.json"
 import nl from "@/dictionaries/nl.json"
-import de from "@/dictionaries/de.json"
-import deCH from "@/dictionaries/de-CH.json"
+import deCH from "@/dictionaries/de-ch.json"
+import deDE from "@/dictionaries/de-de.json"
 
 const dictionaries = {
   en,
   nl,
-  de,
-  "de-CH": deCH,
-  "en-AU": enAU,
+  "de-ch": deCH,
+  "de-de": deDE,
+  "en-au": enAU,
 } as const
 
 /**

@@ -1,6 +1,6 @@
 {
     "cookieBanner": {
-        "text": "We use cookies to ensure you get the best experience on our website. By using our site, you agree to our [cookie policy](/cookie-policy).",
+        "text": "We use cookies to ensure you get the best experience on our website. By using our site, you agree to our [cookie policy](/en-au/privacy-policy).",
         "accept": "Accept all",
         "reject": "Reject all",
         "personalize": "Personalize"
@@ -40,5 +40,8 @@
             "cta": "Get in touch",
             "stayInTouch": "## Stay in touch"
         }
+    },
+    "common": {
+        "of": "of"
     }
 }

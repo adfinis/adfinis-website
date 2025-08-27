@@ -19,7 +19,7 @@ export default async function CaseStudiesOverviewPage({
   const data = await getCaseStudiesOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
     return {
-      href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale]}`,
+      href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale.toLowerCase() as Locale]}`,
       locale: item.locale,
       isActive: false,
     }

@@ -25,7 +25,7 @@ export default function OverviewPage({
   params: { locale: Locale }
 }) {
   const activeLocale = {
-    href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale]}`,
+    href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}`,
     locale,
     isActive: true,
   }

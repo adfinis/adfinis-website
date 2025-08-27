@@ -15,6 +15,22 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.0.0] - 2025-08-27
+
+- feat (AW-279): add favicon assets (#233)
+- fix (AW-278): cookie policy link (#232)
+- fix (AW-277): 404 page was captured by locae (#231)
+- AW-271 past events button doesnt work (#230)
+- AW-230 marketing will create a sheet with 301 re directs (#229)
+- feat: Add browser cache and strapi cache for 1h (#228)
+- chore: Remove duplicate privacy policy
+- chore: Enforce lowercase in mapped slugs
+- feat: Add hardcoded footer links (#223)
+- Feature/aw 269 translated 404 pages (#221) (#222)
+- Feature/aw 269 translated 404 pages (#221)
+- feat: Add pagination to news (#220)
+- fix (db connection): add prod ca certificate
+
 ## [0.19.0] - 2025-08-26
 
 - AW-40 matomo (#217)
