@@ -173,7 +173,7 @@ type Options =
 async function strapi(query: string, options?: Options) {
   const page = await fetch(`${STRAPI}/${query}`, {
     next: {
-      revalidate: 0,
+      revalidate: 20 * 60,
     },
   })
   if (page && page.status === 404) {
