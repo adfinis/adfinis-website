@@ -1,6 +1,10 @@
-import CookieNotice from "@/components/cookie-notice"
 import { Locale } from "@/lib/locale"
 import { ReactNode } from "react"
+import dynamic from "next/dynamic"
+
+const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
+  ssr: false,
+})
 
 export default function Layout({
   children,

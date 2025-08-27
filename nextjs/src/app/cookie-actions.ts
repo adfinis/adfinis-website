@@ -12,7 +12,7 @@ export async function setCookieAction(formData: FormData) {
   // Set a cookie
   cookieStore.set(COOKIE_CONSENT_KEY, consent, {
     path: "/",
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     maxAge: 60 * 60 * 24 * 365, // 1 year
   })
