@@ -20,7 +20,7 @@ const CardMember: React.FC<CardMemberProps> = ({
 
   return (
     <div
-      className="relative aspect-2/3 overflow-hidden rounded-lg cursor-crosshair"
+      className="relative aspect-2/3 overflow-hidden rounded-lg"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
     >
