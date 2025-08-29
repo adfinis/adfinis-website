@@ -1,10 +1,6 @@
 import { Locale } from "@/lib/locale"
 import { ReactNode } from "react"
-import dynamic from "next/dynamic"
-
-const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
-  ssr: false,
-})
+import CookieNotice from "@/components/cookie-notice"
 
 export default function Layout({
   children,
@@ -16,7 +12,7 @@ export default function Layout({
   return (
     <>
       {children}
-      <CookieNotice locale={locale || "en"} />
+      <CookieNotice locale={locale} />
     </>
   )
 }
