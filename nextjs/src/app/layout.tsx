@@ -1,6 +1,11 @@
 import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
+import dynamic from "next/dynamic"
+
+const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
+  ssr: false,
+})
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -52,6 +57,7 @@ export default function RootLayout({
         data-scheme="light"
       >
         {children}
+        <CookieNotice locale="en" />
       </body>
     </html>
   )
