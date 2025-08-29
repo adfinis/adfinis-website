@@ -57,7 +57,6 @@ export default function RootLayout({
         data-scheme="light"
       >
         {children}
-        <CookieNotice locale="en" />
       </body>
     </html>
   )

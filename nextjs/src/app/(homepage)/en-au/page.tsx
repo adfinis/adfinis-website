@@ -1,5 +1,6 @@
 import Homepage from "@/app/homepage"
 import { Locale } from "@/lib/locale"
+import CookieNotice from "@/components/cookie-notice"
 
 export const dynamic = "force-dynamic"
 
@@ -10,5 +11,10 @@ export default function Home() {
     locale: locale,
     isActive: true,
   }
-  return <Homepage activeLocale={activeLocale} />
+  return (
+    <>
+      <Homepage activeLocale={activeLocale} />
+      <CookieNotice locale={locale} />
+    </>
+  )
 }
