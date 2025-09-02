@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.1.0] - 2025-09-02
+
+- feat (AW-302): Add Image support in single-column-section.tsx (#255)
+
 ## [1.0.1] - 2025-09-02
 
 - chore: Disable frontend and strapi cache (#253)
