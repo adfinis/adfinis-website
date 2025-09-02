@@ -39,7 +39,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}/${slug}`,
+      canonical: `/${locale}/events/${slug}`,
       languages,
     },
   }
