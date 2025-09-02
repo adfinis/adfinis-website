@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   return {
     title: data.metadata_title,
-    description: data.metadata_description,
+    description: data.meta_description, // TODO refactor
   }
 }
 
