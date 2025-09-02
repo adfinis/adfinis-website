@@ -22,10 +22,26 @@ export async function generateMetadata({
   }
 }): Promise<Metadata> {
   const data = await getEventPage(locale, slug)
+  const languages = data.localizations.reduce(
+    (acc: any, item: any) => {
+      const slugLocale = item.locale.toLowerCase()
+      acc[item.locale] = `/${slugLocale}/events/${item.slug}`
+      return acc
+    },
+    { [locale]: `/${locale}/events/${slug}` },
+  )
+
+  if (languages?.en !== undefined) {
+    languages["x-default"] = languages.en
+  }
 
   return {
     title: data.metadata_title,
     description: data.metadata_description,
+    alternates: {
+      canonical: `/${locale}/events/${slug}`,
+      languages,
+    },
   }
 }
 
