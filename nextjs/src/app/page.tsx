@@ -10,6 +10,17 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data.metadata_title,
     description: data.metadata_description,
+    alternates: {
+      canonical: `/`,
+      languages: {
+        en: "/en",
+        "en-AU": "/en-au",
+        "de-DE": "/de-de",
+        "de-CH": "/de-ch",
+        nl: "/nl",
+        "x-default": "/",
+      },
+    },
   }
 }
 
