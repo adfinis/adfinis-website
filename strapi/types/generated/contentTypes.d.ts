@@ -1237,6 +1237,7 @@ export interface ApiFormsBetaFormsBeta extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     first_name: Schema.Attribute.String & Schema.Attribute.Required;
+    from_url: Schema.Attribute.String;
     is_created_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
     job_function: Schema.Attribute.String;
     last_name: Schema.Attribute.String & Schema.Attribute.Required;
