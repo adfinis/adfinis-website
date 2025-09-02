@@ -1,19 +1,25 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
- 
+
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
- 
+
 ## [Unreleased] - yyyy-mm-dd
- 
+
 Here we write upgrading notes for brands. It's a team effort to make them as
 straightforward as possible.
- 
+
 ### Added
+
 - [PROJECTNAME-XXXX](http://tickets.projectname.com/browse/PROJECTNAME-XXXX)
   MINOR Ticket title goes here.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
+
+## [1.0.1] - 2025-09-02
+
+- chore: Disable frontend and strapi cache (#253)
 
 ## [1.0.0] - 2025-08-27
 
@@ -85,7 +91,7 @@ straightforward as possible.
 - feat: Add basic styling for external-script (#168)
 - Feature/aw 201 security updates next 14 (#169)
 - Feature/aw 182 dd mm yyyy formaat moet (#170)
- 
+
 ## [0.17.0] - 2025-04-01
 
 - feature/aw 171 form fields labels vertalen (#164)
@@ -185,7 +191,7 @@ straightforward as possible.
 
 ## [0.12.0] - 2025-01-21
 
-- Feature/aw 27 events overview grid overview (#73) 
+- Feature/aw 27 events overview grid overview (#73)
 - AW-70 migrate home page to dynamic zone (#74)
 - AW-69 migrate solutions overview page to dynamic zone (#72)
 - AW-72 strapi hero collection refactor and fix typo (#71)
@@ -225,7 +231,7 @@ straightforward as possible.
 
 - feat: partners and journeys collections (#43)
 - hotfix: build strapi / frontend
- 
+
 ## [0.7.1] - 2025-01-03
 
 - fix: hotfix theme preview page
@@ -257,6 +263,7 @@ Fix frontend build (typing, and linter issues)
 Frontend homepage & journeys overview connected to strapi
 
 ### Added
+
 - Journeys overview (#27)
 - Feature/hero collection (#25)
 - Feature/36 sla card (#24)
@@ -267,22 +274,23 @@ Frontend homepage & journeys overview connected to strapi
 Frontend homepage and footer component
 
 ### Added
+
 - strapi frontend homepage (#19)
 - digital ocean spaces support for media upload (#22)
 - footer components (#20)
 
 # [0.2.1] - 2024-11-28
- 
+
 Update frontend after publishing changes from strapi
- 
+
 ### Added
 
 - fix: opt-out from default fetch caching (nextjs 14)
 
 # [0.2.0] - 2024-11-28
- 
+
 First release on staging environment running on App Platform
- 
+
 ### Added
 
 - feat: Add Container section
