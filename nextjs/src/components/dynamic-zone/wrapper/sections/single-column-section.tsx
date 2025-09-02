@@ -2,7 +2,7 @@ import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
-import Text from "@/components/text"
+import TextImage from "@/components/text-image"
 import InfoLabel from "@/components/info-label"
 
 type Props = {
@@ -23,7 +23,7 @@ export default function SingleColumnSection({ section }: { section: Props }) {
           <InfoLabel text={section.infolabel} className="block mb-4" />
         )}
         {section.body && (
-          <Text markdown={section.body} className="mb-8 max-w-4xl" />
+          <TextImage markdown={section.body} className="mb-8 max-w-4xl" />
         )}
         {section.cta && (
           <LinkButton {...section.cta}>{section.cta.label}</LinkButton>
