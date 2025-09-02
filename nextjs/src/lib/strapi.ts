@@ -172,9 +172,9 @@ type Options =
   | undefined
 async function strapi(query: string, options?: Options) {
   const page = await fetch(`${STRAPI}/${query}`, {
-    // next: {
-    //   revalidate: 5 * 60,
-    // },
+    next: {
+      revalidate: 15,
+    },
   })
   if (page && page.status === 404) {
     return notFound()
@@ -192,7 +192,7 @@ export async function strapiWithoutRedirect(locale: Locale) {
     `${STRAPI}/homepage?locale=${normalizeLocale(locale)}`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 15,
       },
     },
   )

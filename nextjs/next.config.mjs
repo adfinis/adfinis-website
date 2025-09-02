@@ -31,19 +31,19 @@ const nextConfig = {
   eslint: {
     dirs: ["src"],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       headers: [
-  //         {
-  //           key: "Cache-Control",
-  //           value: "public, max-age=300, must-revalidate", // 5 minutes
-  //         },
-  //       ],
-  //     },
-  //   ]
-  // },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=15, must-revalidate", // 15s
+          },
+        ],
+      },
+    ]
+  },
   async redirects() {
     return [
       // de-ch redirects
