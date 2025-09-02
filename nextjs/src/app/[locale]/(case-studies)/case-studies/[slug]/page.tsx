@@ -13,9 +13,27 @@ export async function generateMetadata({
   }
 }): Promise<Metadata> {
   const data = await getCaseStudy(locale, slug)
+  const languages = data.localizations.reduce(
+    (acc: any, item: any) => {
+      const slugLocale = item.locale.toLowerCase() as Locale
+      acc[item.locale] =
+        `/${slugLocale}/${CASE_STUDIES_SLUGS[slugLocale]}/${item.slug}`
+      return acc
+    },
+    { [locale]: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${slug}` },
+  )
+
+  if (languages?.en !== undefined) {
+    languages["x-default"] = languages.en
+  }
+
   return {
     title: data.metadata_title,
-    description: data.metadata_title,
+    description: data.metadata_description,
+    alternates: {
+      canonical: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${slug}`,
+      languages,
+    },
   }
 }
 

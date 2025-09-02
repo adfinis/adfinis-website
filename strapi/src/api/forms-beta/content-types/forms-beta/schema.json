@@ -49,6 +49,9 @@
     "is_created_at": {
       "type": "datetime",
       "required": true
+    },
+    "from_url": {
+      "type": "string"
     }
   }
 }

@@ -16,10 +16,29 @@ export async function generateMetadata({
     slug: string[]
   }
 }): Promise<Metadata> {
-  const data = await getPage("en", slug.join("/"))
+  const path = slug.join("/")
+  const data = await getPage("en", path)
+  const locale = "en"
+  const languages = data.localizations.reduce(
+    (acc: any, item: any) => {
+      const slugLocale = item.locale.toLowerCase()
+      acc[item.locale] = `/${slugLocale}/${item.slug}`
+      return acc
+    },
+    { [locale]: `/${locale}/${slug}` },
+  )
+
+  if (languages?.en !== undefined) {
+    languages["x-default"] = languages.en
+  }
+
   return {
     title: data.metadata_title,
     description: data.metadata_description,
+    alternates: {
+      canonical: `/${locale}/${path}`,
+      languages,
+    },
   }
 }
 

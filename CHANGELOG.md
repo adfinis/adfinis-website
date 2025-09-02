@@ -17,6 +17,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.2.0] - 2025-09-02
+
+- feat (AW-300): store form submit referer (#260)
+- feat AW-284 hreflang semrush issue (#259)
+
 ## [1.1.1] - 2025-09-02
 
 - chore (AW-301): Change cache to 15s (#257)
