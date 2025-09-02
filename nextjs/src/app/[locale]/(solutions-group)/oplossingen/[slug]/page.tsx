@@ -13,9 +13,27 @@ export async function generateMetadata({
   }
 }): Promise<Metadata> {
   const data = await getSolutionPage(locale, slug)
+  const languages = data.localizations.reduce(
+    (acc: any, item: any) => {
+      const slugLocale = item.locale.toLowerCase() as Locale
+      acc[item.locale] =
+        `/${slugLocale}/${SOLUTIONS_SLUGS[slugLocale]}/${item.slug}`
+      return acc
+    },
+    { [locale]: `/${locale}/${SOLUTIONS_SLUGS[locale]}/${slug}` },
+  )
+
+  if (languages?.en !== undefined) {
+    languages["x-default"] = languages.en
+  }
+
   return {
     title: data.metadata_title,
     description: data.metadata_description,
+    alternates: {
+      canonical: `/${locale}/${SOLUTIONS_SLUGS[locale]}/${slug}`,
+      languages,
+    },
   }
 }
 
