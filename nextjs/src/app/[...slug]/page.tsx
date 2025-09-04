@@ -8,6 +8,7 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { slug },
@@ -22,10 +23,10 @@ export async function generateMetadata({
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase()
-      acc[item.locale] = `/${slugLocale}/${item.slug}`
+      acc[item.locale] = `${ABSOLUTE_URL}/${slugLocale}/${item.slug}`
       return acc
     },
-    { [locale]: `/${locale}/${slug}` },
+    { [locale]: `${ABSOLUTE_URL}/${locale}/${slug}` },
   )
 
   if (languages?.en !== undefined) {
@@ -36,7 +37,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}/${path}`,
+      canonical: `${ABSOLUTE_URL}/${locale}/${path}`,
       languages,
     },
   }
