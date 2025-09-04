@@ -12,6 +12,7 @@ import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { Metadata } from "next"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -25,10 +26,10 @@ export async function generateMetadata({
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase()
-      acc[item.locale] = `/${slugLocale}/events/${item.slug}`
+      acc[item.locale] = `${ABSOLUTE_URL}/${slugLocale}/events/${item.slug}`
       return acc
     },
-    { [locale]: `/${locale}/events/${slug}` },
+    { [locale]: `${ABSOLUTE_URL}/${locale}/events/${slug}` },
   )
 
   if (languages?.en !== undefined) {
@@ -39,7 +40,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}/events/${slug}`,
+      canonical: `${ABSOLUTE_URL}/${locale}/events/${slug}`,
       languages,
     },
   }

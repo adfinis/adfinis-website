@@ -3,6 +3,7 @@ import { Locale } from "@/lib/locale"
 import CookieNotice from "@/components/cookie-notice"
 import { Metadata } from "next"
 import { getHomepage } from "@/lib/strapi"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export const dynamic = "force-dynamic"
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,14 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `${ABSOLUTE_URL}/${locale}`,
       languages: {
-        en: "/en",
-        "en-AU": "/en-au",
-        "de-DE": "/de-de",
-        "de-CH": "/de-ch",
-        nl: "/nl",
-        "x-default": "/",
+        en: `${ABSOLUTE_URL}/en`,
+        "en-AU": `${ABSOLUTE_URL}/en-au`,
+        "de-DE": `${ABSOLUTE_URL}/de-de`,
+        "de-CH": `${ABSOLUTE_URL}/de-ch`,
+        nl: `${ABSOLUTE_URL}/nl`,
+        "x-default": `${ABSOLUTE_URL}/`,
       },
     },
   }
