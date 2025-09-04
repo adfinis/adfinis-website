@@ -3,6 +3,7 @@ import { Locale } from "@/lib/locale"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import { Metadata } from "next"
 import { getCaseStudiesOverview } from "@/lib/strapi"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { locale },
@@ -16,10 +17,11 @@ export async function generateMetadata({
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase() as Locale
-      acc[item.locale] = `/${slugLocale}/${CASE_STUDIES_SLUGS[slugLocale]}`
+      acc[item.locale] =
+        `${ABSOLUTE_URL}/${slugLocale}/${CASE_STUDIES_SLUGS[slugLocale]}`
       return acc
     },
-    { [locale]: `/${locale}/${CASE_STUDIES_SLUGS[locale]}` },
+    { [locale]: `${ABSOLUTE_URL}/${locale}/${CASE_STUDIES_SLUGS[locale]}` },
   )
 
   if (languages?.en !== undefined) {
@@ -30,7 +32,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.meta_description, // TODO refactor
     alternates: {
-      canonical: `/${locale}/${CASE_STUDIES_SLUGS[locale]}`,
+      canonical: `${ABSOLUTE_URL}/${locale}/${CASE_STUDIES_SLUGS[locale]}`,
       languages,
     },
   }

@@ -11,6 +11,7 @@ import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { locale },
@@ -24,10 +25,10 @@ export async function generateMetadata({
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase()
-      acc[item.locale] = `/${slugLocale}/events`
+      acc[item.locale] = `${ABSOLUTE_URL}/${slugLocale}/events`
       return acc
     },
-    { [locale]: `/${locale}/events` },
+    { [locale]: `${ABSOLUTE_URL}/${locale}/events` },
   )
 
   if (languages?.en !== undefined) {
@@ -38,7 +39,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.meta_description, // TODO refactor
     alternates: {
-      canonical: `/${locale}/events`,
+      canonical: `${ABSOLUTE_URL}/${locale}/events`,
       languages,
     },
   }

@@ -3,6 +3,7 @@ import NewsOverview from "@/app/[locale]/(news)/news-overview"
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { getNewsOverview } from "@/lib/strapi"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { locale },
@@ -16,10 +17,11 @@ export async function generateMetadata({
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase() as Locale
-      acc[item.locale] = `/${slugLocale}/${NEWS_SLUGS[slugLocale]}`
+      acc[item.locale] =
+        `${ABSOLUTE_URL}/${slugLocale}/${NEWS_SLUGS[slugLocale]}`
       return acc
     },
-    { [locale]: `/${locale}/${NEWS_SLUGS[locale]}` },
+    { [locale]: `${ABSOLUTE_URL}/${locale}/${NEWS_SLUGS[locale]}` },
   )
 
   if (languages?.en !== undefined) {
@@ -30,7 +32,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}/${NEWS_SLUGS[locale]}`,
+      canonical: `${ABSOLUTE_URL}/${locale}/${NEWS_SLUGS[locale]}`,
       languages,
     },
   }

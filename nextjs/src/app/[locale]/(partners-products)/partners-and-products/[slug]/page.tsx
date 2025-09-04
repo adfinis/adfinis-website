@@ -3,6 +3,7 @@ import PartnersProducts from "@/app/[locale]/(partners-products)/partners-produc
 import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { getPartnerAndProductsPage } from "@/lib/strapi"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -17,10 +18,12 @@ export async function generateMetadata({
     (acc: any, item: any) => {
       const slugLocale = item.locale.toLowerCase() as Locale
       acc[item.locale] =
-        `/${slugLocale}/${PARTNER_PRODUCTS_SLUGS[slugLocale]}/${item.slug}`
+        `${ABSOLUTE_URL}/${slugLocale}/${PARTNER_PRODUCTS_SLUGS[slugLocale]}/${item.slug}`
       return acc
     },
-    { [locale]: `/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}/${slug}` },
+    {
+      [locale]: `${ABSOLUTE_URL}/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}/${slug}`,
+    },
   )
 
   if (languages?.en !== undefined) {
@@ -31,7 +34,7 @@ export async function generateMetadata({
     title: data.metadata_title,
     description: data.metadata_description,
     alternates: {
-      canonical: `/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}/${slug}`,
+      canonical: `${ABSOLUTE_URL}/${locale}/${PARTNER_PRODUCTS_SLUGS[locale]}/${slug}`,
       languages,
     },
   }
