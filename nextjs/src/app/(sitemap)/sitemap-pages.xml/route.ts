@@ -3,6 +3,8 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 const STRAPI = process.env.STRAPI_API || ""
 
+export const dynamic = "force-dynamic"
+
 export async function GET() {
   const pages = [
     {
