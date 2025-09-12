@@ -17,6 +17,10 @@ export function GET() {
     <loc>${ABSOLUTE_URL}/sitemap-case-studies.xml</loc>
     <lastmod>2025-09-12T12:07:26.917Z</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>${ABSOLUTE_URL}/sitemap-solutions.xml</loc>
+    <lastmod>2025-09-12T12:07:26.917Z</lastmod>
+  </sitemap>
 </sitemapindex>
 `,
     {
