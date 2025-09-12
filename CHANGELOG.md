@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.4.0] - 2025-09-12
+
+- AW-295 create sitemap xml (#266)
+
 ## [1.3.1] - 2025-09-12
 
 - feat: Add robots.txt (#264)
