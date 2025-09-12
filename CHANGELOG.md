@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.3.1] - 2025-09-12
+
+- feat: Add robots.txt (#264)
+
 ## [1.3.0] - 2025-09-04
 
 - AW-284 feat absolute domain (#262)
