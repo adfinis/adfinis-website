@@ -17,6 +17,12 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.5.0] - 2025-09-17
+
+- feat (AW-310): add sitemap to robots.txt (#270)
+- AW-291 slug issue in icon card section red hat page (#269)
+- fix (AW-309): return 404 when locale was not found (#268)
+
 ## [1.4.0] - 2025-09-12
 
 - AW-295 create sitemap xml (#266)
