@@ -6,7 +6,10 @@ export function GET() {
 
   const content = isProduction
     ? `User-agent: *
-Allow: /`
+Allow: /
+
+Sitemap: ${ABSOLUTE_URL}/sitemap.xml
+`
     : `User-agent: *
 Disallow: /
 
