@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
 export function GET() {
   const isProduction = process.env.NODE_ENV === "production"
@@ -7,7 +8,10 @@ export function GET() {
     ? `User-agent: *
 Allow: /`
     : `User-agent: *
-Disallow: /`
+Disallow: /
+
+Sitemap: ${ABSOLUTE_URL}/sitemap.xml
+`
 
   return new NextResponse(content, {
     headers: {

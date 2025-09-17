@@ -1047,11 +1047,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/red-hat-subscriptions",
-        destination: "/de-ch/partner-und-produkte/red-hat",
-        permanent: true,
-      },
-      {
         source: "/red-hat",
         destination: "/de-ch/partner-und-produkte/red-hat",
         permanent: true,
@@ -2209,7 +2204,7 @@ const nextConfig = {
       },
       {
         source: "/en/linux-clients",
-        destination: "/en/en/solutions/linux-clients",
+        destination: "/en/solutions/linux-clients",
         permanent: true,
       },
       {
@@ -2403,11 +2398,6 @@ const nextConfig = {
       {
         source: "/en/red-hat-openshift",
         destination: "/en/partners-and-products/red-hat",
-        permanent: true,
-      },
-      {
-        source: "/en/red-hat-subscriptions",
-        destination: "/en/en/red-hat-subscriptions",
         permanent: true,
       },
       {

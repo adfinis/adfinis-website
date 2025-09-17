@@ -11,7 +11,7 @@ export function normalizeLocale(locale: string) {
 
 function validateLocale(locale: Locale) {
   if (!locales.includes(locale)) {
-    throw new Error("Invalid locale")
+    return notFound()
   }
 }
 
