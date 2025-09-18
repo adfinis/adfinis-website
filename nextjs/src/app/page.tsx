@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = await getHomepage("en")
   return {
     title: data.metadata_title,
-    description: data.metadata_description,
+    description: data.meta_description, // TODO change to metadata
     alternates: {
       canonical: `${ABSOLUTE_URL}/`,
       languages: {
