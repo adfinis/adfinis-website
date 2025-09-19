@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.5.3] - 2025-09-19
+
+- fix (AW-316):  incorrect pages found in sitemap xml (#274)
+
 ## [1.5.2] - 2025-09-18
 
 - fix (AW-305): fixed typo for metadata description (#272)
