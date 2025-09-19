@@ -52,8 +52,9 @@ export async function GET() {
       priority: undefined,
     })
     item.localizations.forEach((related: any) => {
+      const relatedLocale: Locale = related.locale.toLowerCase()
       pages.push({
-        slug: `${related.locale.toLowerCase()}/${SOLUTIONS_SLUGS[item.locale as Locale]}/${related.slug}`,
+        slug: `${related.locale.toLowerCase()}/${SOLUTIONS_SLUGS[relatedLocale]}/${related.slug}`,
         lastmod: "2025-09-02T00:00:00+00:00",
         priority: undefined,
       })
