@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.6.0] - 2025-09-22
+
+- feat (AW-296): move matomo to client (#276)
+
 ## [1.5.3] - 2025-09-19
 
 - fix (AW-316):  incorrect pages found in sitemap xml (#274)
