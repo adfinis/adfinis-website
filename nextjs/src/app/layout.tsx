@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 import dynamic from "next/dynamic"
+import { Matomo } from "@/components/matomo/matomo"
 
 const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
   ssr: false,
@@ -56,6 +57,7 @@ export default function RootLayout({
         className={`bg-neutral ${sourceSans3.variable}`}
         data-scheme="light"
       >
+        <Matomo />
         {children}
       </body>
     </html>
