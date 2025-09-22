@@ -18,15 +18,13 @@ export const MatomoTagManager = ({ matomoSrc }: { matomoSrc: string }) => {
   if (hasConsent !== "all") return null
 
   return (
-    <Script id="matomo-tag-manager">
-      {`
-        var _mtm = window._mtm = window._mtm || [];
-        _mtm.push({"mtm.startTime": (new Date().getTime()), "event": "mtm.Start"});
-        (function() {
-          var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
-          g.async=true; g.src="${matomoSrc}"; s.parentNode.insertBefore(g,s);
-        })();
-      `}
-    </Script>
+    <Script
+      src={matomoSrc}
+      strategy="afterInteractive"
+      onLoad={() => {
+        const _mtm = ((window as any)._mtm = (window as any)._mtm || [])
+        _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" })
+      }}
+    />
   )
 }
