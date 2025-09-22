@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.6.1] - 2025-09-22
+
+- fix (AW-296): try running matomo with onLoad prop
+
 ## [1.6.0] - 2025-09-22
 
 - feat (AW-296): move matomo to client (#276)
