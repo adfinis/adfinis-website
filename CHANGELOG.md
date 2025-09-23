@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.8.0] - 2025-09-23
+
+- fix (AW-285): include subdomains
+
 ## [1.7.1] - 2025-09-23
 
 - chore (AW-288): remove old footer setup (#281)
