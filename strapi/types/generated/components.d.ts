@@ -283,6 +283,21 @@ export interface FooterPartnerProductsLink extends Struct.ComponentSchema {
   };
 }
 
+export interface FooterSolutionsLink extends Struct.ComponentSchema {
+  collectionName: 'components_footer_solutions_links';
+  info: {
+    displayName: 'Solutions link';
+    icon: 'link';
+  };
+  attributes: {
+    link_label: Schema.Attribute.String;
+    page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::solutions-page.solutions-page'
+    >;
+  };
+}
+
 export interface GlobalBrandColors extends Struct.ComponentSchema {
   collectionName: 'components_global_brand_colors';
   info: {
@@ -1069,6 +1084,7 @@ declare module '@strapi/strapi' {
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
       'footer.partner-products-link': FooterPartnerProductsLink;
+      'footer.solutions-link': FooterSolutionsLink;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;

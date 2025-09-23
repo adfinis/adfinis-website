@@ -1160,6 +1160,7 @@ export interface ApiEventsOverviewEventsOverview
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
+    description: '';
     displayName: 'Footer';
     pluralName: 'footers';
     singularName: 'footer';
@@ -1201,7 +1202,22 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::page-partner-and-product.page-partner-and-product'
     >;
+    partner_product_links: Schema.Attribute.Component<
+      'footer.partner-products-link',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
+    solution_links: Schema.Attribute.Component<'footer.solutions-link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     solutions: Schema.Attribute.Relation<
       'oneToMany',
       'api::solutions-page.solutions-page'
