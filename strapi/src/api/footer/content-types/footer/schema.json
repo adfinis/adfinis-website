@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "Footer"
+    "displayName": "Footer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -57,6 +58,26 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::page-partner-and-product.page-partner-and-product"
+    },
+    "solution_links": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "footer.solutions-link"
+    },
+    "partner_product_links": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "footer.partner-products-link"
     }
   }
 }
