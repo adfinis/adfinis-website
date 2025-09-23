@@ -62,29 +62,17 @@ export default async function Footer({ locale }: { locale: Locale }) {
       <FooterElement title="Adfinis" text={data.description} />
       <FooterElement
         title={`Solutions`}
-        links={[
-          ...data.solutions.map((item: any) => ({
-            text: item.metadata_title,
-            href: `${SOLUTIONS_SLUG}/${item.slug}`,
-          })),
-          ...data.solution_links.map((item: any) => ({
-            text: item.link_label ?? item.page.metadata_title,
-            href: `${SOLUTIONS_SLUG}/${item.page.slug}`,
-          })),
-        ]}
+        links={data.solution_links.map((item: any) => ({
+          text: item.link_label ?? item.page.metadata_title,
+          href: `${SOLUTIONS_SLUG}/${item.page.slug}`,
+        }))}
       />
       <FooterElement
         title={`Partners & Products`}
-        links={[
-          ...data.partner_and_products.map((item: any) => ({
-            text: item.metadata_title,
-            href: `${PARTNER_PRODUCTS_SLUG}/${item.slug}`,
-          })),
-          ...data.partner_product_links.map((item: any) => ({
-            text: item.link_label ?? item.page.metadata_title,
-            href: `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
-          })),
-        ]}
+        links={data.partner_product_links.map((item: any) => ({
+          text: item.link_label ?? item.page.metadata_title,
+          href: `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
+        }))}
       />
       <FooterElement title={`About`} links={aboutMap[locale]}>
         <div className="flex gap-6">
