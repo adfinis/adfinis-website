@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.7.0] - 2025-09-23
+
+- feat (AW-288): internal name and meta title mixup footer (#279)
+
 ## [1.6.1] - 2025-09-22
 
 - fix (AW-296): try running matomo with onLoad prop
