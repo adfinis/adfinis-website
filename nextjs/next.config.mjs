@@ -32,29 +32,50 @@ const nextConfig = {
     dirs: ["src"],
   },
   async headers() {
+    if (process.env.NODE_ENV !== "production") {
+      return []
+    }
+
     return [
       {
-        source: "/:path*",
+        source: "/(.*)",
         headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
           {
             key: "Cache-Control",
             value: "public, max-age=15, must-revalidate", // 15s
           },
         ],
       },
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
-          },
-        ],
-      },
     ]
   },
   async redirects() {
+    const absoluteUrl = process.env.ABSOLUTE_URL
+    const url = new URL(absoluteUrl)
+    const hostname = url.hostname
+
+    const redirectDomain = hostname.includes("www.")
+      ? [
+          {
+            source: "/:path*",
+            has: [
+              {
+                type: "host",
+                value: hostname.replace("www.", ""),
+              },
+            ],
+            destination: `${absoluteUrl}/:path*`,
+            permanent: true,
+            statusCode: 308,
+          },
+        ]
+      : []
+
     return [
+      ...redirectDomain,
       // de-ch redirects
       {
         source: "/adservices/opensource-is-the-way-to-go",
