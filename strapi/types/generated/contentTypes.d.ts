@@ -1198,10 +1198,6 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::footer.footer'>;
-    partner_and_products: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::page-partner-and-product.page-partner-and-product'
-    >;
     partner_product_links: Schema.Attribute.Component<
       'footer.partner-products-link',
       true
@@ -1218,10 +1214,6 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    solutions: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::solutions-page.solutions-page'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -49,16 +49,6 @@
       },
       "type": "string"
     },
-    "solutions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::solutions-page.solutions-page"
-    },
-    "partner_and_products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page-partner-and-product.page-partner-and-product"
-    },
     "solution_links": {
       "type": "component",
       "repeatable": true,
