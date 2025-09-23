@@ -267,6 +267,22 @@ export interface ExternalLinksLinkWithChevron extends Struct.ComponentSchema {
   };
 }
 
+export interface FooterPartnerProductsLink extends Struct.ComponentSchema {
+  collectionName: 'components_footer_partner_products_links';
+  info: {
+    description: '';
+    displayName: 'Partner products link';
+    icon: 'link';
+  };
+  attributes: {
+    link_label: Schema.Attribute.String;
+    page: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::page-partner-and-product.page-partner-and-product'
+    >;
+  };
+}
+
 export interface GlobalBrandColors extends Struct.ComponentSchema {
   collectionName: 'components_global_brand_colors';
   info: {
@@ -1052,6 +1068,7 @@ declare module '@strapi/strapi' {
       'cards.team-member-card': CardsTeamMemberCard;
       'external-links.call-to-action': ExternalLinksCallToAction;
       'external-links.link-with-chevron': ExternalLinksLinkWithChevron;
+      'footer.partner-products-link': FooterPartnerProductsLink;
       'global.brand-colors': GlobalBrandColors;
       'global.event-category': GlobalEventCategory;
       'global.hallmark': GlobalHallmark;

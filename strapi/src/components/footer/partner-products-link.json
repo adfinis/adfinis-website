@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_partner_products_links",
+  "info": {
+    "displayName": "Partner products link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link_label": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page-partner-and-product.page-partner-and-product"
+    }
+  }
+}
