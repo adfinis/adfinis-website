@@ -32,7 +32,7 @@ export function getHomepage(locale: Locale) {
 export function getFooter(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `footer/?locale=${normalizeLocale(locale)}&populate[partner_and_products][fields][]=slug&populate[partner_and_products][fields][]=metadata_title&populate[solutions][fields][]=slug&populate[solutions][fields][]=metadata_title&populate[solution_links][populate][page][fields][]=metadata_title&populate[solution_links][populate][page][fields][]=slug&populate[partner_product_links][populate][page][fields][]=metadata_title&populate[partner_product_links][populate][page][fields][]=slug`,
+    `footer/?locale=${normalizeLocale(locale)}&populate[solution_links][populate][page][fields][]=metadata_title&populate[solution_links][populate][page][fields][]=slug&populate[partner_product_links][populate][page][fields][]=metadata_title&populate[partner_product_links][populate][page][fields][]=slug`,
   )
 }
 
