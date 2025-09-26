@@ -4,6 +4,7 @@ import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { getNewsPage } from "@/lib/strapi"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -13,6 +14,10 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
+  if (!["de-de", "de-ch", "en", "en-au"].includes(locale)) {
+    return notFound()
+  }
+
   const data = await getNewsPage(locale, slug)
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
