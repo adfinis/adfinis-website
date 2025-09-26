@@ -4,6 +4,7 @@ import { SOLUTIONS_SLUGS } from "@/lib/slugs"
 import { Metadata } from "next"
 import { getSolutionsOverview } from "@/lib/strapi"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata({
   params: { locale },
@@ -13,6 +14,10 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
+  if (!["nl"].includes(locale)) {
+    return notFound()
+  }
+
   const data = await getSolutionsOverview(locale)
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
