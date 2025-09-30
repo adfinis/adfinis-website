@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   const host = request.headers.get("host")
   const forwardedHost = request.headers.get("x-forwarded-host")
   const useHost = forwardedHost || request.headers.get("host")
-  const proto = forwardedHost || request.headers.get("x-forwarded-proto")
+  const proto = request.headers.get("x-forwarded-proto")
 
   console.log({ host, forwardedHost, useHost, nextUrl: request.nextUrl, proto })
 
