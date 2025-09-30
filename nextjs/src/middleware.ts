@@ -2,14 +2,30 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest) {
-  const host = request.headers.get("host")
   const forwardedHost = request.headers.get("x-forwarded-host")
-  const useHost = forwardedHost || request.headers.get("host")
-  const proto = request.headers.get("x-forwarded-proto")
+  const host = forwardedHost || request.headers.get("host")
+  const forwardedProto = request.headers.get("x-forwarded-proto") || "https"
+  const hasWww = host?.startsWith("www.")
+  const wwwRedirectEnabled = process.env.WWW_REDIRECT === "true"
 
-  console.log({ host, forwardedHost, useHost, nextUrl: request.nextUrl, proto })
+  let response: NextResponse
 
-  return NextResponse.next()
+  if (!hasWww && wwwRedirectEnabled) {
+    const newUrl = new URL(request.url)
+    newUrl.protocol = forwardedProto
+    newUrl.host = `www.${host}`
+
+    response = NextResponse.redirect(newUrl, 301)
+  } else {
+    response = NextResponse.next()
+  }
+
+  response.headers.set(
+    "Strict-Transport-Security",
+    "max-age=63072000; includeSubDomains; preload",
+  )
+
+  return response
 }
 
 export const config = {
