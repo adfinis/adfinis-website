@@ -3,6 +3,12 @@ import type { NextRequest } from "next/server"
 import { matomo, shouldTrack, generateVisitorId } from "@/lib/matomo"
 
 export async function middleware(request: NextRequest) {
+  const host = request.headers.get("host")
+  const forwardedHost = request.headers.get("x-forwarded-host")
+  const useHost = forwardedHost || request.headers.get("host")
+
+  console.log({ host, forwardedHost, useHost })
+
   const response = NextResponse.next()
 
   if (!shouldTrack(request)) {
