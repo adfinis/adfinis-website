@@ -4,6 +4,7 @@ import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import { Metadata } from "next"
 import { getCaseStudiesOverview } from "@/lib/strapi"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata({
   params: { locale },
@@ -13,6 +14,10 @@ export async function generateMetadata({
     slug: string
   }
 }): Promise<Metadata> {
+  if (!["en", "en-au"].includes(locale)) {
+    return notFound()
+  }
+
   const data = await getCaseStudiesOverview(locale)
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
