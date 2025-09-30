@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.9.0] - 2025-09-23
+
+- refactor (AW-319): remove matomo middleware
+- chore (AW-308): updated readme
+- chore (AW-285): log info for hsts headers
+- fix (AW-317): prevent hreflang conflicts
+- feat: Add hsts headers (#283)
+
 ## [1.8.0] - 2025-09-23
 
 - fix (AW-285): include subdomains
