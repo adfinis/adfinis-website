@@ -9,7 +9,7 @@ This is a full-stack web application built with:
 
 ## Prerequisites
 
-### System Requirements (Linux)
+### System Requirements
 
 1. **Node.js**: This project uses two different Node.js versions
    - Next.js: Node.js v20.17.0
@@ -20,25 +20,34 @@ This is a full-stack web application built with:
    # Install nvm
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
    # Restart your terminal or source your profile
-   source ~/.bashrc
+   source ~/.bashrc # or ~/.zshrc if using zsh
    ```
 
-3. **Docker**: Required for PostgreSQL database
-   ```bash
-   # Fedora/RHEL/CentOS
-   sudo dnf install docker docker-compose
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   sudo usermod -aG docker $USER
+3. **Docker**: Recommended for PostgreSQL database
 
-   # Ubuntu/Debian
-   sudo apt update
-   sudo apt install docker.io docker-compose
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   sudo usermod -aG docker $USER
-   # Log out and back in for group changes to take effect
-   ```
+**Fedora / RHEL / CentOS**
+```shell
+sudo dnf install docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+```
+
+**Ubuntu / Debian**
+```shell
+sudo apt update
+sudo apt install docker.io docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+# Log out and back in for group changes to take effect
+```
+
+**Arch Linux / Manjaro**
+```shell
+sudo pacman -Syu docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+# Log out and back in, or run `newgrp docker` to apply group changes
+```
 
 ## Development Setup
 
