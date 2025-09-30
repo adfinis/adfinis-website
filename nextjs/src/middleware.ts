@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
     const newUrl = new URL(request.url)
     newUrl.protocol = forwardedProto
     newUrl.host = process.env.ABSOLUTE_URL!.replace("https://", "")
-
+    console.log(newUrl.host, process.env.ABSOLUTE_URL)
     response = NextResponse.redirect(newUrl, 301)
   } else {
     response = NextResponse.next()
