@@ -13,8 +13,9 @@ export async function middleware(request: NextRequest) {
   if (!hasWww && wwwRedirectEnabled) {
     const newUrl = new URL(request.url)
     newUrl.protocol = forwardedProto
-    newUrl.host = process.env.ABSOLUTE_URL!.replace("https://", "")
-    console.log(newUrl.host, process.env.ABSOLUTE_URL)
+    newUrl.host = process.env!.ABSOLUTE_URL!.replace("https://", "")
+    newUrl.port = ""
+
     response = NextResponse.redirect(newUrl, 301)
   } else {
     response = NextResponse.next()
