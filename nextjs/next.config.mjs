@@ -53,29 +53,7 @@ const nextConfig = {
     ]
   },
   async redirects() {
-    const absoluteUrl = process.env.ABSOLUTE_URL
-    const url = new URL(absoluteUrl)
-    const hostname = url.hostname
-
-    const redirectDomain = hostname.includes("www.")
-      ? [
-          {
-            source: "/:path*",
-            has: [
-              {
-                type: "host",
-                value: hostname.replace("www.", ""),
-              },
-            ],
-            destination: `${absoluteUrl}/:path*`,
-            permanent: true,
-            statusCode: 308,
-          },
-        ]
-      : []
-
     return [
-      ...redirectDomain,
       // de-ch redirects
       {
         source: "/adservices/opensource-is-the-way-to-go",
