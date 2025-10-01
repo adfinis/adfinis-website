@@ -21,10 +21,7 @@ export async function middleware(request: NextRequest) {
     response = NextResponse.next()
   }
 
-  response.headers.set(
-    "Strict-Transport-Security",
-    "max-age=63072000; includeSubDomains; preload",
-  )
+  response.headers.set("Strict-Transport-Security", "max-age=63072000;")
 
   return response
 }
