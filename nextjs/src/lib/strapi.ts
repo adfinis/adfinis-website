@@ -26,13 +26,13 @@ function sanitizeSlug(input: string) {
 
 export function getHomepage(locale: Locale) {
   validateLocale(locale)
-  return strapi(`homepage?locale=${normalizeLocale(locale)}`)
+  return strapi(`homepage?locale=${normalizeLocale(locale)}&status=published`)
 }
 
 export function getFooter(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `footer/?locale=${normalizeLocale(locale)}&populate[solution_links][populate][page][fields][]=metadata_title&populate[solution_links][populate][page][fields][]=slug&populate[partner_product_links][populate][page][fields][]=metadata_title&populate[partner_product_links][populate][page][fields][]=slug`,
+    `footer/?locale=${normalizeLocale(locale)}&populate[solution_links][populate][page][fields][]=metadata_title&populate[solution_links][populate][page][fields][]=slug&populate[partner_product_links][populate][page][fields][]=metadata_title&populate[partner_product_links][populate][page][fields][]=slug&status=published`,
   )
 }
 
@@ -83,7 +83,7 @@ export function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
     { raw: true },
   )
 }
@@ -104,7 +104,9 @@ export function getPartnerAndProductsPage(locale: Locale, slug: string) {
 
 export function getSolutionPage(locale: Locale, slug: string) {
   validateLocale(locale)
-  return strapi(`solutions-pages/${slug}?locale=${normalizeLocale(locale)}`)
+  return strapi(
+    `solutions-pages/${slug}?locale=${normalizeLocale(locale)}&status=published`,
+  )
 }
 
 export function getSolutionsOverview(locale: Locale) {
@@ -116,13 +118,15 @@ export function getSolutionsOverview(locale: Locale) {
 
 export function getEventPage(locale: Locale, slug: string) {
   validateLocale(locale)
-  return strapi(`event-pages/${slug}?locale=${normalizeLocale(locale)}`)
+  return strapi(
+    `event-pages/${slug}?locale=${normalizeLocale(locale)}&status=published`,
+  )
 }
 
 export function getEventPageCards(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&status=published`,
   )
 }
 
@@ -157,12 +161,12 @@ export function getBlogPage(locale: Locale, slug: string) {
 export function getNavigationMenu(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `navigation-menu/?locale=${normalizeLocale(locale)}&populate=section.menu_segment.items&populate=logo_desktop&populate=logo_mobile&populate=cta`,
+    `navigation-menu/?locale=${normalizeLocale(locale)}&populate=section.menu_segment.items&populate=logo_desktop&populate=logo_mobile&populate=cta&status=published`,
   )
 }
 
 export function getHallmark(id: string) {
-  return strapi(`hallmarks/${id}?populate=hallmark`)
+  return strapi(`hallmarks/${id}?populate=hallmark&status=published`)
 }
 
 type Options =
@@ -189,7 +193,7 @@ async function strapi(query: string, options?: Options) {
 export async function strapiWithoutRedirect(locale: Locale) {
   validateLocale(locale)
   const page = await fetch(
-    `${STRAPI}/homepage?locale=${normalizeLocale(locale)}`,
+    `${STRAPI}/homepage?locale=${normalizeLocale(locale)}&status=published`,
     {
       next: {
         revalidate: 15,
