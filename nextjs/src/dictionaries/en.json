@@ -42,6 +42,7 @@
         }
     },
     "common": {
-        "of": "of"
+        "of": "of",
+        "publishedAt": "Published at"
     }
 }

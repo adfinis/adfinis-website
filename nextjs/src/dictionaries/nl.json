@@ -42,6 +42,7 @@
         }
     },
     "common": {
-        "of": "van"
+        "of": "van",
+        "publishedAt": "Gepubliceerd op"
     }
 }
