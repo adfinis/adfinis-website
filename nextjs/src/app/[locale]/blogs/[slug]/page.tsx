@@ -9,6 +9,7 @@ import InfoLabel from "@/components/info-label"
 import TextImage from "@/components/text-image"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { getDictionary } from "@/lib/get-dictionary.server"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -48,6 +49,7 @@ export default async function BlogPage({
     },
   )
   locales.push(activeLocale)
+  const dictionary = await getDictionary(activeLocale.locale as Locale)
 
   return (
     <>
@@ -59,7 +61,7 @@ export default async function BlogPage({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`Published at ${getLocaleDateFormatted({ date: publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
+              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />

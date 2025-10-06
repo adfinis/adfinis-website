@@ -33,7 +33,7 @@
         "events": {
             "title": "Event Details",
             "cta": "Sign up now",
-            "dateEvent": "Date event"
+            "dateEvent": "Event date"
         },
         "notFound": {
             "body": "## 404\nSpace invaders destroyed this page! Take revenge on them!\nUse `space` to shoot and `←` and `→` to move!",
@@ -42,6 +42,7 @@
         }
     },
     "common": {
-        "of": "of"
+        "of": "of",
+        "publishedAt": "Published at"
     }
 }
