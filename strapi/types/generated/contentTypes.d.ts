@@ -1039,6 +1039,14 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    show_event_details_section: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
     sign_up_button: Schema.Attribute.Component<
       'external-links.call-to-action',
       false
