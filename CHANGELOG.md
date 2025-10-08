@@ -17,6 +17,13 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.10.0] - 2025-10-08
+
+- AW-335 feat: add toggle for event details (#288)
+- AW-324 feat: Add line break support for text-image rendered markdown (#286)
+- AW-326 feat: Change translation to Event date (#287)
+- fix AW-285: always use default port 80
+
 ## [1.9.0] - 2025-09-23
 
 - refactor (AW-319): remove matomo middleware
