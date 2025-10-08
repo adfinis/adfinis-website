@@ -38,6 +38,7 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
           "a",
           "b",
           "blockquote",
+          "br",
           "em",
           "h1",
           "h2",

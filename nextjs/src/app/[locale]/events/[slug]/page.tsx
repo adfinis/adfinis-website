@@ -83,6 +83,7 @@ export default async function EventsDetailPage({
     map_embed_html,
     sign_up_button,
     is_past_event,
+    show_event_details_section,
     sections,
   } = data
 
@@ -121,19 +122,21 @@ export default async function EventsDetailPage({
           )}
         </div>
       </Container>
-      <Container
-        padding="both-padding"
-        background={is_past_event ? "sapphire" : "stone"}
-      >
-        <SectionEvent
-          title={dictionary.pages.events.title}
-          date={date_event}
-          location={address}
-          time={time}
-          html={map_embed_html}
-          cta={is_past_event === true ? undefined : sign_up_button}
-        />
-      </Container>
+      {show_event_details_section !== false && (
+        <Container
+          padding="both-padding"
+          background={is_past_event ? "sapphire" : "stone"}
+        >
+          <SectionEvent
+            title={dictionary.pages.events.title}
+            date={date_event}
+            location={address}
+            time={time}
+            html={map_embed_html}
+            cta={is_past_event === true ? undefined : sign_up_button}
+          />
+        </Container>
+      )}
       {sections &&
         sections.length > 0 &&
         sections.map((section: any, index: number) =>

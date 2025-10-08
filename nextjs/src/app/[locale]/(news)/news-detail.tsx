@@ -9,6 +9,7 @@ import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { getNewsPage } from "@/lib/strapi"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
 import { NEWS_SLUGS } from "@/lib/slugs"
+import { getDictionary } from "@/lib/get-dictionary.server"
 
 export default async function NewsDetail({
   activeLocale,
@@ -36,6 +37,7 @@ export default async function NewsDetail({
     },
   )
   locales.push(activeLocale)
+  const dictionary = await getDictionary(activeLocale.locale as Locale)
 
   return (
     <>
@@ -47,7 +49,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`Published at ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
+              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />
