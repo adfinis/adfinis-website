@@ -171,6 +171,16 @@
         "sections.video-section",
         "sections.video-with-text-section"
       ]
+    },
+    "show_event_details_section": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
