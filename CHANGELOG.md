@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.11.0] - 2025-10-08
+
+- AW-335 feat: event page details toggle migration (#290)
+
 ## [1.10.0] - 2025-10-08
 
 - AW-335 feat: add toggle for event details (#288)
