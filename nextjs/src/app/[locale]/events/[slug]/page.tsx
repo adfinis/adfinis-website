@@ -122,7 +122,7 @@ export default async function EventsDetailPage({
           )}
         </div>
       </Container>
-      {show_event_details_section !== false && (
+      {show_event_details_section && (
         <Container
           padding="both-padding"
           background={is_past_event ? "sapphire" : "stone"}
