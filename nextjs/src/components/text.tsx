@@ -1,6 +1,8 @@
 import React from "react"
 import Markdown, { defaultUrlTransform } from "react-markdown"
 import remarkGfm from "remark-gfm"
+import rehypeHighlight from "rehype-highlight"
+import "highlight.js/styles/github.css"
 
 interface TextProps {
   markdown: string
@@ -51,8 +53,10 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
           "strong",
           "ul",
           "del",
+          "span",
         ]}
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeHighlight]}
         urlTransform={(url) =>
           url.startsWith("tel:") ? url : defaultUrlTransform(url)
         }

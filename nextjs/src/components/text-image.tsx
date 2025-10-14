@@ -1,6 +1,8 @@
 import React from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import rehypeHighlight from "rehype-highlight"
+import "highlight.js/styles/github.css"
 
 interface TextImage {
   markdown: string
@@ -54,8 +56,10 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
           "ul",
           "del",
           "img",
+          "span",
         ]}
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeHighlight]}
       >
         {markdown}
       </Markdown>
