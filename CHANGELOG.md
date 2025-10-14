@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.12.0] - 2025-10-14
+
+- AW-336 feat: code functionality not working properly (#293)
+
 ## [1.11.0] - 2025-10-08
 
 - AW-335 feat: event page details toggle migration (#290)
