@@ -54,6 +54,101 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // start AW-337
+      // For case-studies
+      {
+        source: "/:locale(en|en-au)/casestudies/:slug",
+        destination: "/:locale/case-studies/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(en|en-au)/referenzen/:slug",
+        destination: "/:locale/case-studies/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/case-studies/:slug",
+        destination: "/:locale/referenzen/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/casestudies/:slug",
+        destination: "/:locale/referenzen/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/case-studies/:slug",
+        destination: "/nl/casestudies/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/referenzen/:slug",
+        destination: "/nl/casestudies/:slug",
+        permanent: true,
+      },
+      // For partners and products
+      {
+        source: "/:locale(en|en-au)/partner-und-produkte/:slug",
+        destination: "/:locale/partners-and-products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(en|en-au)/partners-en-producten/:slug",
+        destination: "/:locale/partners-and-products/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/partners-and-products/:slug",
+        destination: "/:locale/partner-und-produkte/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/partners-en-producten/:slug",
+        destination: "/:locale/partner-und-produkte/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/partners-and-products/:slug",
+        destination: "/nl/partners-en-producten/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/partner-und-produkte/:slug",
+        destination: "/nl/partners-en-producten/:slug",
+        permanent: true,
+      },
+      // For solutions
+      {
+        source: "/:locale(en|en-au)/loesungen/:slug",
+        destination: "/:locale/solutions/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(en|en-au)/oplossingen/:slug",
+        destination: "/:locale/solutions/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/solutions/:slug",
+        destination: "/:locale/loesungen/:slug",
+        permanent: true,
+      },
+      {
+        source: "/:locale(de-de|de-ch)/oplossingen/:slug",
+        destination: "/:locale/loesungen/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/solutions/:slug",
+        destination: "/nl/oplossingen/:slug",
+        permanent: true,
+      },
+      {
+        source: "/nl/loesungen/:slug",
+        destination: "/nl/oplossingen/:slug",
+        permanent: true,
+      },
+      // end AW-337
       // de-ch redirects
       {
         source: "/adservices/opensource-is-the-way-to-go",
