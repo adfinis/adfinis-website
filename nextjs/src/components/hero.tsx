@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         <div className="w-[50vw] h-max absolute right-0 bottom-0 block">
           <Triangle
             color="neutral"
-            className="w-[50vw] h-auto opacity-0 pointer-events-none"
+            className="w-[50vw] h-auto pointer-events-none"
           />
           <Image
             src={logoUrl}
