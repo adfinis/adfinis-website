@@ -9,6 +9,28 @@ interface TextProps {
   className?: string
 }
 
+export const allowedElements = [
+  "a",
+  "b",
+  "blockquote",
+  "br",
+  "em",
+  "h1",
+  "h2",
+  "h3",
+  "br",
+  "hr",
+  "i",
+  "li",
+  "ol",
+  "p",
+  "pre",
+  "code",
+  "strong",
+  "ul",
+  "del",
+]
+
 /**
  * @description Github-flavored markdown text component.
  *
@@ -34,27 +56,7 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
   return (
     <div className={`markdown-text ${className || ""}`}>
       <Markdown
-        allowedElements={[
-          "a",
-          "b",
-          "blockquote",
-          "em",
-          "h1",
-          "h2",
-          "h3",
-          "br",
-          "hr",
-          "i",
-          "li",
-          "ol",
-          "p",
-          "pre",
-          "code",
-          "strong",
-          "ul",
-          "del",
-          "span",
-        ]}
+        allowedElements={allowedElements}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
         urlTransform={(url) =>

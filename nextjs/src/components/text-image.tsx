@@ -3,6 +3,7 @@ import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeHighlight from "rehype-highlight"
 import "highlight.js/styles/github.css"
+import { allowedElements } from "./text"
 
 interface TextImage {
   markdown: string
@@ -36,28 +37,7 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
   return (
     <div className={`markdown-text markdown-text-image ${className || ""}`}>
       <Markdown
-        allowedElements={[
-          "a",
-          "b",
-          "blockquote",
-          "br",
-          "em",
-          "h1",
-          "h2",
-          "h3",
-          "hr",
-          "i",
-          "li",
-          "ol",
-          "p",
-          "pre",
-          "code",
-          "strong",
-          "ul",
-          "del",
-          "img",
-          "span",
-        ]}
+        allowedElements={[...allowedElements, "img"]}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
       >
