@@ -94,8 +94,8 @@ const NavMobile: React.FC<NavMobileProps> = ({
                   enterFrom="scale-75"
                   enterTo="scale-100"
                   leave="transition-all duration-75"
-                  leaveFrom="opacity-0"
-                  leaveTo="opacity-0"
+                  leaveFrom="opacity-5"
+                  leaveTo="opacity-5"
                 >
                   <button
                     onClick={() => setExpand(undefined)}
@@ -128,7 +128,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
                   // Shared transition styles
                   "transition ease-out -translate-y-1",
                   // Shared closed styles
-                  "data-[closed]:opacity-0",
+                  "data-[closed]:opacity-5",
                   // Entering styles
                   "data-[enter]:duration-300 data-[enter]:data-[closed]:-translate-y-4",
                   // Leaving styles

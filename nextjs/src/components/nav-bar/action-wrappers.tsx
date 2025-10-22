@@ -31,7 +31,7 @@ export default function ActionWrappers() {
         <MenuItems
           transition
           anchor="bottom end"
-          className="mt-2 z-50 w-52 origin-top-right rounded bg-gradient-to-br from-biscay to-sapphire p-1 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+          className="mt-2 z-50 w-52 origin-top-right rounded bg-gradient-to-br from-biscay to-sapphire p-1 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-5"
         >
           {linkedLocales.map((link) => (
             <MenuItem key={link.locale}>

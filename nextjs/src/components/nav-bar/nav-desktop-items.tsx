@@ -44,7 +44,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
       <Transition
         show={isShowing}
         enter="transition delay-150 duration-150 ease-out"
-        enterFrom="opacity-0"
+        enterFrom="opacity-5"
         enterTo="translate-y-0 opacity-100"
       >
         <div

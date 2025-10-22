@@ -49,7 +49,7 @@ const NavMobileItem: React.FC<{
               // Base styles
               "w-full transition ease-in grid gap-2 bg-sapphire",
               // Shared closed styles
-              "data-[closed]:opacity-0",
+              "data-[closed]:opacity-5",
               // Entering styles
               "data-[enter]:duration-300 data-[enter]:data-[closed]:-translate-x-4",
               // No Leaving styles
