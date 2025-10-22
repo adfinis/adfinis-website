@@ -26,6 +26,7 @@ export const allowedElements = [
   "p",
   "pre",
   "code",
+  "span",
   "strong",
   "ul",
   "del",
