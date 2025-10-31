@@ -113,6 +113,9 @@
         .markdown-text ul li {
             list-style-image: url('/svg/chevron-right-dark.svg');
         }
+        .markdown-text p > code {
+            @apply bg-neutral text-stone;
+        }
     }
 
     .markdown-text-image {
