@@ -17,11 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-## [1.14.0] - 2025-10-22
+## [1.15.0] - 2025-11-03
 
-- AW-336 feat code functionality not working properly (#299)
-- AW-318 fix markdown rendering in blog (#297)
-- AW-314 fix: Remove opacity-0 from codebase where possible (#298)
+- AW-339 feat: Add gray bg styling for inline code (#301)
+- AW-338 feat: make url non unique (#302)
 
 ## [1.13.0] - 2025-10-14
 
