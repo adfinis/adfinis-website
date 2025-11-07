@@ -24,6 +24,7 @@ const shape = (dictionary: Dictionary) => {
     last_name: z.string().trim().min(1, dictionary.validation.required),
     email: z.string().email(dictionary.validation.email),
     company_name: z.string().trim().min(1, dictionary.validation.required),
+    job_function: z.string().trim().min(1, dictionary.validation.required),
     privacy_policy: z.preprocess(
       (val) => val === "on",
       z.boolean().refine((val) => val, {
