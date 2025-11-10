@@ -44,5 +44,8 @@
     "common": {
         "of": "von",
         "publishedAt": "Veröffentlicht am"
+    },
+    "ui": {
+        "localeSwitcherAriaLabel": "Sprache wechseln"
     }
 }

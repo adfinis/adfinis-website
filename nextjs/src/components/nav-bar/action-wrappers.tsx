@@ -5,7 +5,7 @@ import IconGlobe from "@/components/icons/icon-globe"
 import IconChevronDown from "@/components/icons/icon-chevron-down"
 import Link from "next/link"
 import { useLinkedLocales } from "@/components/nav-bar/linked-locales-provider"
-import { normalizeLocale } from "@/lib/strapi"
+import { getDictionary } from "@/lib/get-dictionary.client"
 
 export default function ActionWrappers() {
   const linkedLocales = useLinkedLocales()
@@ -20,10 +20,14 @@ export default function ActionWrappers() {
     "en-au": "Australia & New Zealand",
     "en-AU": "Australia & New Zealand",
   }
+  const dictionary = getDictionary(activeLocale.locale)
   return (
     <div className="flex justify-end items-center gap-4 lg:gap-6 text-neutral">
       <Menu>
-        <MenuButton className="inline-flex items-center gap-3 rounded-md bg-gray-800 py-1.5 px-3 text-14 uppercase font-semibold focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-stone/70 data-[focus]:outline-1 data-[focus]:outline-neutral">
+        <MenuButton
+          aria-label={dictionary.ui.localeSwitcherAriaLabel}
+          className="inline-flex items-center gap-3 rounded-md bg-gray-800 py-1.5 px-3 text-14 uppercase font-semibold focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-stone/70 data-[focus]:outline-1 data-[focus]:outline-neutral"
+        >
           <IconGlobe />
           <span className="hidden lg:block">{activeLocale.locale}</span>
           <IconChevronDown />
