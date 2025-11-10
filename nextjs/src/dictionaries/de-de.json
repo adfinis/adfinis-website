@@ -46,6 +46,7 @@
         "publishedAt": "Veröffentlicht am"
     },
     "ui": {
-        "localeSwitcherAriaLabel": "Sprache wechseln"
+        "localeSwitcherAriaLabel": "Sprache wechseln",
+        "mobileHamburgerAriaLabel": "Hauptmenü öffnen"
     }
 }

@@ -46,6 +46,7 @@
         "publishedAt": "Gepubliceerd op"
     },
     "ui": {
-        "localeSwitcherAriaLabel": "Selecteer taal"
+        "localeSwitcherAriaLabel": "Selecteer taal",
+        "mobileHamburgerAriaLabel": "Open hoofdmenu"
     }
 }
