@@ -13,18 +13,21 @@ const SocialsGroup: React.FC = () => {
         className="rounded-full bg-white p-3 grid place-items-center"
       >
         <IconSocial type={`linkedin`} className="w-4 h-4" />
+        <span className="sr-only">LinkedIn</span>
       </Link>
       <Link
         href="https://github.com/adfinis"
         className="rounded-full bg-white p-3 grid place-items-center"
       >
         <IconSocial type={`github`} className="w-4 h-4" />
+        <span className="sr-only">GitHub</span>
       </Link>
       <Link
         href="https://www.youtube.com/@adfinis"
         className="rounded-full bg-white p-3 grid place-items-center"
       >
         <IconSocial type={`youtube`} className="w-4 h-4" />
+        <span className="sr-only">YouTube</span>
       </Link>
     </div>
   )

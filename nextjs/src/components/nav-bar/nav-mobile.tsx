@@ -16,6 +16,7 @@ import { CTA } from "@/lib/cta"
 import { colors } from "@/lib/colors"
 import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
 import { Locale } from "@/lib/locale"
+import { getDictionary } from "@/lib/get-dictionary.client"
 
 type NavMobileProps = {
   navItems: NavItem[]
@@ -44,6 +45,8 @@ const NavMobile: React.FC<NavMobileProps> = ({
     axis: Axis.Y,
   })
 
+  const dictionary = getDictionary(locale)
+
   useEffect(() => {
     switch (true) {
       case scrollPosition.top < 20:
@@ -69,6 +72,7 @@ const NavMobile: React.FC<NavMobileProps> = ({
               <span className="relative">
                 {expand === undefined && (
                   <button
+                    aria-label={dictionary.ui.mobileHamburgerAriaLabel}
                     onClick={() => setIsOpen(!isOpen)}
                     className={clsx([
                       "absolute inset-0",

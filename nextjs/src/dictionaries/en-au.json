@@ -44,5 +44,9 @@
     "common": {
         "of": "of",
         "publishedAt": "Published at"
+    },
+    "ui": {
+        "localeSwitcherAriaLabel": "Switch language",
+        "mobileHamburgerAriaLabel": "Open main menu"
     }
 }

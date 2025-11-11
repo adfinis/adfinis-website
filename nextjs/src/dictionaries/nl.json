@@ -44,5 +44,9 @@
     "common": {
         "of": "van",
         "publishedAt": "Gepubliceerd op"
+    },
+    "ui": {
+        "localeSwitcherAriaLabel": "Selecteer taal",
+        "mobileHamburgerAriaLabel": "Open hoofdmenu"
     }
 }
