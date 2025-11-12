@@ -34,13 +34,35 @@ const shape = (dictionary: Dictionary) => {
   }
 }
 
+const raffleFormValidation = (dictionary: Dictionary) => {
+  return {
+    ...shape(dictionary),
+    agree_to_receive_mail: z.preprocess(
+      (val) => val === "on",
+      z.boolean().refine((val) => val, {
+        message: dictionary.validation.agreeToReceiveMail,
+      }),
+    ),
+  }
+}
+
 export async function saveSimpleForm(
   locale: Locale,
   state: SaveSimpleFormState,
   formData: FormData,
 ): Promise<SaveSimpleFormState> {
   const dictionary = await getDictionary(locale)
-  const schema = z.object(shape(dictionary))
+  const schema = z.object({
+    first_name: z.string().trim().min(1, dictionary.validation.required),
+    last_name: z.string().trim().min(1, dictionary.validation.required),
+    email: z.string().email(dictionary.validation.email),
+    privacy_policy: z.preprocess(
+      (val) => val === "on",
+      z.boolean().refine((val) => val, {
+        message: dictionary.validation.privacyPolicy,
+      }),
+    ),
+  })
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -73,6 +95,52 @@ type StandardFormStateErrors = {
   job_function?: string[]
 } & SaveSimpleFormStateErrors
 
+type RaffleFormStateErrors = {
+  agree_to_receive_mail?: string[]
+} & StandardFormStateErrors
+
+type RaffleFormState = {
+  success: boolean
+  errors?: RaffleFormStateErrors
+}
+export async function saveRaffleForm(
+  locale: Locale,
+  state: RaffleFormState,
+  formData: FormData,
+): Promise<RaffleFormState> {
+  const dictionary = await getDictionary(locale)
+  const schema = z.object(raffleFormValidation(dictionary))
+  const validation = schema.safeParse({
+    first_name: formData.get("firstName"),
+    last_name: formData.get("lastName"),
+    email: formData.get("email"),
+    privacy_policy: formData.get("privacy_policy"),
+    agree_to_receive_mail: formData.get("agree_to_receive_mail"),
+    company_name: formData.get("company_name"),
+    job_function: formData.get("job_function"),
+  })
+
+  if (validation.success) {
+    const payload = {
+      type: "raffle",
+      ...validation.data,
+      ...{ privacy_policy: "yes", is_created_at: new Date() },
+      company_name: formData.get("company_name"),
+      job_function: formData.get("job_function"),
+    }
+    const { agree_to_receive_mail, ...data } = payload
+    const res = await formSubmit({
+      data,
+    })
+    return { success: true }
+  }
+
+  return {
+    success: false,
+    errors: validation.error.flatten().fieldErrors,
+  }
+}
+
 type StandardFormState = {
   success: boolean
   errors?: StandardFormStateErrors
@@ -89,6 +157,8 @@ export async function saveStandardForm(
     last_name: formData.get("lastName"),
     email: formData.get("email"),
     privacy_policy: formData.get("privacy_policy"),
+    company_name: formData.get("company_name"),
+    job_function: formData.get("job_function"),
   })
 
   if (validation.success) {
