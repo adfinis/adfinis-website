@@ -17,6 +17,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.16.0] - 2025-11-12
+
+- AW-320 & AW-323 feat: Form improvements  (#305)
+- AW-334 feat: accessibility (#304)
+
 ## [1.15.0] - 2025-11-03
 
 - AW-339 feat: Add gray bg styling for inline code (#301)

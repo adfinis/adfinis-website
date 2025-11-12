@@ -14,6 +14,7 @@
         "jobFunction": "Functie",
         "message": "Bericht",
         "acceptPrivacyPolicy": "Ik accepteer het privacybeleid van Adfinis",
+        "agreeToReceiveMail": "I agree to receive other communications from Adfinis and its partners",
         "submitSuccessful": "Uw formuliergegevens zijn succesvol verstuurd."
     },
     "validation": {
@@ -23,6 +24,7 @@
         "max": "Dit veld mag maximaal ${max} tekens lang zijn.",
         "oneOf": "Dit veld moet een van de volgende waarden zijn: ${values}.",
         "privacyPolicy": "Je moet het privacybeleid accepteren.",
+        "agreeToReceiveMail": "You must accept the this field.",
         "phone": {
             "format": "Ongeldig telefoonnummerformaat.",
             "short": "Telefoonnummer is te kort.",
@@ -44,5 +46,9 @@
     "common": {
         "of": "van",
         "publishedAt": "Gepubliceerd op"
+    },
+    "ui": {
+        "localeSwitcherAriaLabel": "Selecteer taal",
+        "mobileHamburgerAriaLabel": "Open hoofdmenu"
     }
 }

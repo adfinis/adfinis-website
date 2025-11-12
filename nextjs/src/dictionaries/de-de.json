@@ -14,6 +14,7 @@
         "jobFunction": "Berufsbezeichnung",
         "message": "Nachricht",
         "acceptPrivacyPolicy": "Ich akzeptiere die Datenschutzbestimmungen von Adfinis.",
+        "agreeToReceiveMail": "I agree to receive other communications from Adfinis and its partners",
         "submitSuccessful": "Danke, Ihre Angaben wurden erfolgreich übermittelt"
     },
     "validation": {
@@ -23,6 +24,7 @@
         "max": "Dieses Feld darf maximal ${max} Zeichen lang sein.",
         "oneOf": "Dieses Feld muss einen der folgenden Werte haben: ${values}.",
         "privacyPolicy": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
+        "agreeToReceiveMail": "You must accept the this field.",
         "phone": {
             "format": "Ungültiges Telefonnummernformat.",
             "short": "Die Telefonnummer ist zu kurz.",
@@ -44,5 +46,9 @@
     "common": {
         "of": "von",
         "publishedAt": "Veröffentlicht am"
+    },
+    "ui": {
+        "localeSwitcherAriaLabel": "Sprache wechseln",
+        "mobileHamburgerAriaLabel": "Hauptmenü öffnen"
     }
 }
