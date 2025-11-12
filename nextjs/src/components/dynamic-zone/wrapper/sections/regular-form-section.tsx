@@ -8,12 +8,13 @@ import Contact from "@/components/dynamic-zone/forms/contact"
 import EventForm from "@/components/dynamic-zone/forms/event-form"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
+import Raffle from "@/components/dynamic-zone/forms/raffle"
 
 type Props = {
   props: SectionProps
   submit_label: string
   title: string | null
-  form_type: "short" | "standard" | "contact" | "event"
+  form_type: "short" | "standard" | "contact" | "event" | "raffle"
 }
 
 export default async function RegularFormSection({
@@ -54,6 +55,13 @@ export default async function RegularFormSection({
       )}
       {section.form_type === "event" && (
         <EventForm
+          locale={locale}
+          dictionary={dictionary}
+          submitLabel={section.submit_label}
+        />
+      )}
+      {section.form_type === "raffle" && (
+        <Raffle
           locale={locale}
           dictionary={dictionary}
           submitLabel={section.submit_label}

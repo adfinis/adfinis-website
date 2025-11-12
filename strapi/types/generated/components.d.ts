@@ -901,11 +901,12 @@ export interface SectionsQuoteSection extends Struct.ComponentSchema {
 export interface SectionsRegularFormSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_regular_form_sections';
   info: {
+    description: '';
     displayName: 'Regular form section';
   };
   attributes: {
     form_type: Schema.Attribute.Enumeration<
-      ['standard', 'contact', 'event', 'short']
+      ['standard', 'contact', 'event', 'short', 'raffle']
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'short'>;

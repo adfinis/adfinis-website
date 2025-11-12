@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_regular_form_sections",
   "info": {
-    "displayName": "Regular form section"
+    "displayName": "Regular form section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -20,7 +21,8 @@
         "standard",
         "contact",
         "event",
-        "short"
+        "short",
+        "raffle"
       ],
       "required": true,
       "default": "short"
