@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.17.0] - 2025-11-14
+
+- AW-343 feat: add static structured data (#307)
+
 ## [1.16.0] - 2025-11-12
 
 - AW-320 & AW-323 feat: Form improvements  (#305)
