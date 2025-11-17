@@ -202,6 +202,8 @@ export async function saveContactForm(
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
+    company_name: formData.get("company_name"),
+    job_function: formData.get("job_function"),
     email: formData.get("email"),
     privacy_policy: formData.get("privacy_policy"),
     message: formData.get("message"),
@@ -264,6 +266,8 @@ export async function saveEventForm(
     privacy_policy: formData.get("privacy_policy"),
     message: formData.get("message"),
     phone_number: formData.get("phone_number"),
+    company_name: formData.get("company_name"),
+    job_function: formData.get("job_function"),
   })
 
   if (validation.success) {

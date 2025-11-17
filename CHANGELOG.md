@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.17.1] - 2025-11-17
+
+- fix: form fields validation (missing required fields)
+
 ## [1.17.0] - 2025-11-14
 
 - AW-343 feat: add static structured data (#307)
