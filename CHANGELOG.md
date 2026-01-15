@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.18.0] - 2026-01-15
+
+- feat (AW-348): add landingpage redirect
+
+## [1.17.2] - 2025-12-18
+
+- fix: npx fix-react2shell-next
+
 ## [1.17.1] - 2025-11-17
 
 - fix: form fields validation (missing required fields)
