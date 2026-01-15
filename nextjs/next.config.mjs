@@ -54,6 +54,18 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'header',
+            key: 'host',
+            value: 'secretz.io',
+          },
+        ],
+        destination: 'https://www.adfinis.com/en/partners-and-products/openbao',
+        permanent: false,
+      },
       // start AW-337
       // For case-studies
       {
