@@ -63,7 +63,7 @@ const nextConfig = {
             value: 'secretz.io',
           },
         ],
-        destination: 'https://www.adfinis.com/en/partners-and-products/openbao?:query',
+        destination: 'https://www.adfinis.com/en/partners-and-products/openbao',
         permanent: false,
       },
       {
@@ -75,7 +75,7 @@ const nextConfig = {
             value: 'www.secretz.io',
           },
         ],
-        destination: 'https://www.adfinis.com/en/partners-and-products/openbao?:query',
+        destination: 'https://www.adfinis.com/en/partners-and-products/openbao',
         permanent: false,
       },
       // start AW-337
