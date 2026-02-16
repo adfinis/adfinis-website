@@ -63,19 +63,7 @@ const nextConfig = {
             value: 'secretz.io',
           },
         ],
-        destination: 'https://www.adfinis.com/en/partners-and-products/openbao',
-        permanent: false,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'header',
-            key: 'host',
-            value: 'www.secretz.io',
-          },
-        ],
-        destination: 'https://www.adfinis.com/en/partners-and-products/openbao',
+        destination: 'https://www.secretz.io',
         permanent: false,
       },
       // start AW-337
