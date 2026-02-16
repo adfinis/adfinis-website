@@ -17,7 +17,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-## [1.19.0] - 2026-01-16
+## [1.20.0] - 2026-02-16
+
+- feat: adjust secretz.io forwarding configuration (#315)
+
+## [1.19.0] - 2026-02-02
 
 - fix (AW-351): security.txt dates and url
 
