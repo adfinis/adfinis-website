@@ -14,6 +14,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page-partner-and-product.page-partner-and-product"
+    },
+    "external_url": {
+      "type": "string"
     }
   }
 }
