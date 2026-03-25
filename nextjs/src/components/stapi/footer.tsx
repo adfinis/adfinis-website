@@ -71,7 +71,8 @@ export default async function Footer({ locale }: { locale: Locale }) {
         title={`Partners & Products`}
         links={data.partner_product_links.map((item: any) => ({
           text: item.link_label ?? item.page.metadata_title,
-          href: `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
+          href:
+            item.external_url || `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
         }))}
       />
       <FooterElement title={`About`} links={aboutMap[locale]}>

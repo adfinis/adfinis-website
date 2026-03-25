@@ -275,6 +275,7 @@ export interface FooterPartnerProductsLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
+    external_url: Schema.Attribute.String;
     link_label: Schema.Attribute.String;
     page: Schema.Attribute.Relation<
       'oneToOne',
