@@ -22,6 +22,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
         text: "Privacy Policy",
         href: "/en/privacy-policy",
       },
+      {
+        text: "Legal notice",
+        href: "/en/legal-notice",
+      },
     ],
     "de-ch": [
       {
@@ -48,11 +52,19 @@ export default async function Footer({ locale }: { locale: Locale }) {
         text: "Privacybeleid",
         href: "/nl/privacybeleid",
       },
+      {
+        text: "Juridische kennisgeving",
+        href: "/nl/legal-notice",
+      },
     ],
     "en-au": [
       {
         text: "Privacy Policy",
         href: "/en-au/privacy-policy",
+      },
+      {
+        text: "Legal notice",
+        href: "/en-au/legal-notice",
       },
     ],
   }
@@ -71,7 +83,8 @@ export default async function Footer({ locale }: { locale: Locale }) {
         title={`Partners & Products`}
         links={data.partner_product_links.map((item: any) => ({
           text: item.link_label ?? item.page.metadata_title,
-          href: `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
+          href:
+            item.external_url ?? `${PARTNER_PRODUCTS_SLUG}/${item.page.slug}`,
         }))}
       />
       <FooterElement title={`About`} links={aboutMap[locale]}>
