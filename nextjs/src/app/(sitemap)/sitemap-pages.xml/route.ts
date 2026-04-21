@@ -1,43 +1,38 @@
 import { NextResponse } from "next/server"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { locales } from "@/lib/locale"
+import {
+  type SitemapAlternate,
+  buildContentEntries,
+  renderSitemapXml, SitemapEntry
+} from "@/lib/sitemap"
 
 const STRAPI = process.env.STRAPI_API || ""
 
 export const dynamic = "force-dynamic"
 
 export async function GET() {
-  const pages = [
-    {
-      slug: "",
+  const entries: SitemapEntry[] = []
+  const homepageAlternates: SitemapAlternate[] = locales.map((locale) => ({
+    locale,
+    href: `${ABSOLUTE_URL}/${locale}`,
+  }))
+
+  entries.push({
+    loc: `${ABSOLUTE_URL}/`,
+    lastmod: "2025-09-02T00:00:00+00:00",
+    priority: "1.0",
+    alternates: homepageAlternates,
+  })
+
+  for (const locale of locales) {
+    entries.push({
+      loc: `${ABSOLUTE_URL}/${locale}`,
       lastmod: "2025-09-02T00:00:00+00:00",
       priority: "1.0",
-    },
-    {
-      slug: "en-au",
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: "1.0",
-    },
-    {
-      slug: "en",
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: "1.0",
-    },
-    {
-      slug: "nl",
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: "1.0",
-    },
-    {
-      slug: "de-de",
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: "1.0",
-    },
-    {
-      slug: "de-ch",
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: undefined,
-    },
-  ]
+      alternates: homepageAlternates,
+    })
+  }
 
   const response = await fetch(
     `${STRAPI}/pages?populate[localizations][fields][0]=slug&populate[localizations][fields][1]=locale&fields[0]=slug&fields[1]=locale&pagination[pageSize]=1000`,
@@ -48,45 +43,17 @@ export async function GET() {
     },
   )
   const { data } = await response.json()
-  data.forEach((item: any) => {
-    pages.push({
-      slug: item.slug,
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: undefined,
-    })
-    pages.push({
-      slug: `${item.locale}/${item.slug}`,
-      lastmod: "2025-09-02T00:00:00+00:00",
-      priority: undefined,
-    })
-    item.localizations.forEach((related: any) => {
-      pages.push({
-        slug: `${related.locale.toLowerCase()}/${related.slug}`,
-        lastmod: "2025-09-02T00:00:00+00:00",
-        priority: undefined,
-      })
-    })
-  })
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
-  .map(
-    (page) => `
-      <url>
-        <loc>${ABSOLUTE_URL}/${page.slug}</loc>
-        <lastmod>${page.lastmod}</lastmod>
-        ${page.priority !== undefined ? `<priority>${page.priority}</priority>` : ""}
-      </url>`,
+  const contentEntries = buildContentEntries(
+    data,
+    (locale, slug) => `${ABSOLUTE_URL}/${locale}/${slug}`,
   )
-  .join("\n")}
-</urlset>`
+  entries.push(...contentEntries)
 
-  return new NextResponse(sitemap, {
+  return new NextResponse(renderSitemapXml(entries), {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      // "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   })
 }
