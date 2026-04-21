@@ -56,6 +56,7 @@ export default function RootLayout({
     "@type": "WebSite",
     name: "Adfinis AG",
     url: "https://www.adfinis.com/",
+    logo: "https://adfinis-assets.ams3.cdn.digitaloceanspaces.com/public-assets/Adfinis_Blue_3_41b329491f_25f3a40e9e.png",
   }
 
   return (
