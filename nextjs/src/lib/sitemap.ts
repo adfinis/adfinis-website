@@ -1,5 +1,8 @@
+import { NextResponse } from "next/server"
+import { ABSOLUTE_URL } from "./absolute-url"
 import { type Locale, locales } from "./locale"
 
+const STRAPI = process.env.STRAPI_API || ""
 const DEFAULT_LOCALE = "en"
 const HREFLANG_MAP: Record<Locale, string> = {
   en: "en",
@@ -101,4 +104,67 @@ function renderEntry(entry: SitemapEntry): string {
   }
 
   return `<url>\n${item.join("\n")}\n</url>`
+}
+
+export function buildHomepageEntries(): SitemapEntry[] {
+  const alternates: SitemapAlternate[] = locales.map((locale) => ({
+    locale,
+    href: `${ABSOLUTE_URL}/${locale}`,
+  }))
+
+  return [
+    {
+      loc: `${ABSOLUTE_URL}/`,
+      lastmod: "2025-09-02T00:00:00+00:00",
+      priority: "1.0",
+      alternates,
+    },
+    ...locales.map((locale) => ({
+      loc: `${ABSOLUTE_URL}/${locale}`,
+      lastmod: "2025-09-02T00:00:00+00:00",
+      priority: "1.0",
+      alternates,
+    })),
+  ]
+}
+
+export async function buildCategorySitemap(options: {
+  endpoint: string
+  categorySlug?: Record<string, string> | string
+  includeIndex?: boolean
+  extraEntries?: SitemapEntry[]
+}): Promise<NextResponse> {
+  const { endpoint, categorySlug, includeIndex = true, extraEntries } = options
+
+  const getCategorySlug = (locale: Locale) =>
+    typeof categorySlug === "string" ? categorySlug : categorySlug?.[locale]
+
+  const buildUrl = (locale: Locale, slug?: string) => {
+    const catSlug = getCategorySlug(locale)
+    const parts = [ABSOLUTE_URL, locale, catSlug, slug].filter(Boolean)
+    return parts.join("/")
+  }
+
+  const entries: SitemapEntry[] = [...(extraEntries ?? [])]
+
+  if (includeIndex) {
+    entries.push(
+      ...buildIndexEntries((locale) => buildUrl(locale)),
+    )
+  }
+
+  const response = await fetch(
+    `${STRAPI}/${endpoint}?populate[localizations][fields][0]=slug&populate[localizations][fields][1]=locale&fields[0]=slug&fields[1]=locale&pagination[pageSize]=1000`,
+    { next: { revalidate: 15 } },
+  )
+  const { data } = await response.json()
+
+  entries.push(
+    ...buildContentEntries(data, (locale, slug) => buildUrl(locale, slug)),
+  )
+
+  return new NextResponse(renderSitemapXml(entries), {
+    status: 200,
+    headers: { "Content-Type": "application/xml" },
+  })
 }
