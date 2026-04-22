@@ -24,7 +24,7 @@
         "max": "This field must be at most ${max} characters long.",
         "oneOf": "This field must be one of the following values: ${values}.",
         "privacyPolicy": "You must accept the privacy policy.",
-        "agreeToReceiveMail": "You must accept the this field.",
+        "agreeToReceiveMail": "This field is required",
         "phone": {
             "format": "Invalid phone number format.",
             "short": "Phone number is too short.",
