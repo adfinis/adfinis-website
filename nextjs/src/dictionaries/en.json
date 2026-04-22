@@ -45,7 +45,7 @@
     },
     "common": {
         "of": "of",
-        "publishedAt": "Published at"
+        "publishedAt": "Published on"
     },
     "ui": {
         "localeSwitcherAriaLabel": "Switch language",
