@@ -17,6 +17,18 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.22.0] - 2026-04-29
+
+- feat: AW-365 sort event cards by date_event asc (#323)
+- feat: AW-342 form translations (#322)
+- feat: AW-350 copy change blogs (#321)
+- feat: AW-361 hreflang in sitemap (#320)
+- feat: AW-360 add logo to jsonLd
+
+## [1.21.0] - 2026-03-31
+
+- feat: AW-362 add footer links (#317)
+
 ## [1.20.0] - 2026-02-16
 
 - feat: adjust secretz.io forwarding configuration (#315)
