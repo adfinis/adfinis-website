@@ -23,6 +23,10 @@
         h3 {
             @apply font-light tracking-tight text-title-primary mb-4 lg:mb-8;
 
+            &:not(:first-child) {
+                @apply mt-8 lg:mt-12;
+            }
+
             b,
             strong {
                 @apply font-semibold;
@@ -89,6 +93,12 @@
 
         blockquote {
             @apply border-l-4 border-quote-primary pl-4;
+        }
+
+        ul, ol {
+            &:not(:last-child) {
+                @apply mb-4 lg:mb-6;
+            }
         }
 
         ul+p {
