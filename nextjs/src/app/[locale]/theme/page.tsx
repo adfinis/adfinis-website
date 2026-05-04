@@ -38,7 +38,7 @@ import CardSlider from "@/components/cards/card-slider"
 import CardSliderElement from "@/components/cards/card-slider-element"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import SectionGroup from "@/components/sections/section-group"
-import LogoGroup from "@/components/logo-group"
+import LogoSlider from "@/components/logo-slider"
 import ButtonGroup from "@/components/button-group"
 import CardIcon from "@/components/cards/card-icon"
 import CardGroup from "@/components/cards/card-group"
@@ -160,7 +160,6 @@ export default async function Theme({
           align="center"
         >
           <ButtonGroup ctas={logoSection.ctas} align={"center"} />
-          <LogoGroup logos={[...logoSection.logos]} />
         </SectionGroup>
       </Container>
 
@@ -241,10 +240,7 @@ export default async function Theme({
               />
             ))}
           </CardGroup>
-          <LogoGroup
-            logos={[...statisticsSection.logos.slice(0, 7)]}
-            columns="auto"
-          />
+          <LogoSlider logos={[...statisticsSection.logos.slice(0, 7)]} />
         </SectionGroup>
       </Container>
 
