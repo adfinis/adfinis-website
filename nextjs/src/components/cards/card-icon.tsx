@@ -40,7 +40,7 @@ const CardIcon: React.FC<CardIconProps> = ({
       </Title>
       <Text
         markdown={description}
-        className="text-center self-start flex-grow"
+        className="text-center self-center flex-grow"
       />
       {cta && (
         <Link
