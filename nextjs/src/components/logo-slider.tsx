@@ -17,10 +17,8 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
   const { width } = useWindowSize()
   const distance = width || 1500
   const sliderRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [hasOverflow, setHasOverflow] = useState(false)
-  const introPlayedRef = useRef(false)
 
   function scrollHorizontal(offset: number, duration = 600) {
     if (!sliderRef.current) return
@@ -42,9 +40,9 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
   }
 
   const checkOverflow = useCallback(() => {
-    if (!sliderRef.current || !trackRef.current) return
+    if (!sliderRef.current) return
     setHasOverflow(
-      trackRef.current.scrollWidth > sliderRef.current.clientWidth,
+      sliderRef.current.scrollWidth > sliderRef.current.clientWidth,
     )
   }, [])
 
@@ -53,42 +51,22 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
   }, [width, logos.length, checkOverflow])
 
   useEffect(() => {
-    if (!sliderRef.current || !trackRef.current) return
-    const slider = sliderRef.current
-    const track = trackRef.current
+    if (!sliderRef.current) return
+    const el = sliderRef.current
     const resizeObserver = new ResizeObserver(() => checkOverflow())
-    resizeObserver.observe(slider)
-    resizeObserver.observe(track)
-    Array.from(track.children).forEach((child) => resizeObserver.observe(child))
+    resizeObserver.observe(el)
+    Array.from(el.children).forEach((child) => resizeObserver.observe(child))
     return () => resizeObserver.disconnect()
   }, [logos.length, checkOverflow])
 
   useEffect(() => {
-    if (!hasOverflow || !sliderRef.current || !trackRef.current) return
-    if (introPlayedRef.current) return
-
-    const slider = sliderRef.current
-    const track = trackRef.current
-    const startOffset = -(track.scrollWidth - slider.clientWidth)
-    track.style.transform = `translateX(${startOffset}px)`
+    if (!hasOverflow || !sliderRef.current) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting || !trackRef.current) return
-        observer.disconnect()
-        introPlayedRef.current = true
-
-        const startTime = performance.now()
-        const duration = 2500
-        const step = (now: number) => {
-          if (!trackRef.current) return
-          const elapsed = now - startTime
-          const t = Math.min(elapsed / duration, 1)
-          const eased = 1 - Math.pow(1 - t, 3) // ease-out cubic
-          trackRef.current.style.transform = `translateX(${startOffset * (1 - eased)}px)`
-          if (t < 1) requestAnimationFrame(step)
+        if (entry.isIntersecting) {
+          scrollHorizontal(-distance, 2500)
         }
-        requestAnimationFrame(step)
       },
       {
         root: null,
@@ -97,15 +75,18 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
       },
     )
 
-    observer.observe(slider)
-    return () => observer.disconnect()
+    sliderRef.current.scrollLeft = distance
+    observer.observe(sliderRef.current)
+
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef.current)
+      }
+    }
   }, [hasOverflow])
 
   return (
-    <div
-      data-testid="logo-slider"
-      className="relative w-topbar sm:-mx-8 lg:w-screen lg:mx-[calc(50%-50vw)]"
-    >
+    <div className="relative w-topbar sm:-mx-8 lg:w-screen lg:mx-[calc(50%-50vw)]">
       <div className="hidden lg:block">
         {hasOverflow && scrollPosition > 0 && (
           <button
@@ -128,28 +109,23 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
       <div
         ref={sliderRef}
         onScroll={(e) => setScrollPosition(e.currentTarget.scrollLeft)}
-        className="overflow-x-auto overscroll-x-none"
+        className={clsx([
+          "flex overflow-x-auto gap-x-8 lg:gap-x-6 overscroll-x-none items-center",
+          "pt-2 pb-4 px-2 2xl:-mr-6",
+          !hasOverflow && "justify-evenly",
+        ])}
       >
-        <div
-          ref={trackRef}
-          className={clsx([
-            "flex gap-x-8 lg:gap-x-6 items-center",
-            "pt-2 pb-4 px-2 2xl:-mr-6",
-            hasOverflow ? "w-max" : "w-full justify-evenly",
-          ])}
-        >
-          {logos.map((logo, i) => (
-            <Image
-              key={i}
-              src={logo.src}
-              alt={logo.alt}
-              width={300}
-              height={128}
-              onLoad={checkOverflow}
-              className="flex-shrink-0 max-h-10 w-auto object-contain"
-            />
-          ))}
-        </div>
+        {logos.map((logo, i) => (
+          <Image
+            key={i}
+            src={logo.src}
+            alt={logo.alt}
+            width={300}
+            height={128}
+            onLoad={checkOverflow}
+            className="flex-shrink-0 max-h-10 w-auto object-contain"
+          />
+        ))}
       </div>
     </div>
   )

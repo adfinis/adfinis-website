@@ -11,10 +11,12 @@ export default async function Hallmarks({
     return
   }
 
-  const logos = data.hallmark.map((logo: any) => ({
-    src: logo.url,
-    alt: logo.alt ?? "",
-  }))
-
-  return <LogoSlider logos={logos} />
+  return (
+    <LogoSlider
+      logos={data.hallmark.map((logo: any) => ({
+        src: logo.url,
+        alt: logo.alt ?? "",
+      }))}
+    />
+  )
 }
