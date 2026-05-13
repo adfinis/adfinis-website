@@ -104,24 +104,29 @@ export default async function EventsDetailPage({
         <NavBar items={locales} />
         {hero && <HeroWrapper hero={hero} />}
       </NavProvider>
-      <Container background="white" padding="both-padding">
-        <div className="max-w-4xl mx-auto">
-          <InfoLabel
-            text={`${dictionary.pages.events.dateEvent}: ${formattedDate}`}
-            className="block mb-4"
-          />
-          <Text markdown={details} className="mb-8" />
-          {tester && sign_up_button && (
-            <LinkButton
-              href={sign_up_button.href}
-              size={sign_up_button.size}
-              variant={sign_up_button.variant}
-            >
-              {sign_up_button.label}
-            </LinkButton>
-          )}
+      <section
+        className="px-4 lg:px-0 relative bg-white"
+        data-testid="news-detail"
+      >
+        <div className="container">
+          <div className="max-w-4xl mx-auto pb-8">
+            <InfoLabel
+              text={`${dictionary.pages.events.dateEvent}: ${formattedDate}`}
+              className="block mb-4"
+            />
+            <Text markdown={details} className="mb-8" />
+            {tester && sign_up_button && (
+              <LinkButton
+                href={sign_up_button.href}
+                size={sign_up_button.size}
+                variant={sign_up_button.variant}
+              >
+                {sign_up_button.label}
+              </LinkButton>
+            )}
+          </div>
         </div>
-      </Container>
+      </section>
       {show_event_details_section && (
         <Container
           padding="both-padding"

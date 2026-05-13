@@ -1,5 +1,5 @@
 import { getHallmark } from "@/lib/strapi"
-import LogoGroup from "@/components/logo-group"
+import LogoSlider from "@/components/logo-slider"
 
 export default async function Hallmarks({
   hallmarksId,
@@ -12,8 +12,7 @@ export default async function Hallmarks({
   }
 
   return (
-    <LogoGroup
-      columns={"auto"}
+    <LogoSlider
       logos={data.hallmark.map((logo: any) => ({
         src: logo.url,
         alt: logo.alt ?? "",

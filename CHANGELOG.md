@@ -17,6 +17,13 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.23.0] - 2026-04-29
+
+- fix: Improve whitespace on event detail page #330
+- fix: Enhance spacing for headings and list items in markdown text #329
+- fix: Align text in CardIcon component #328
+
+
 ## [1.22.0] - 2026-04-29
 
 - feat: AW-365 sort event cards by date_event asc (#323)
