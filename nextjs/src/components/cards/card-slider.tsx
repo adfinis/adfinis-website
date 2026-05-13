@@ -35,8 +35,6 @@ const CardSlider: React.FC<CardSliderProps> = ({
   const distance = width || 1500
   const sliderRef = useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
-  const [hasOverflow, setHasOverflow] = useState(false)
-  const introPlayedRef = useRef(false)
 
   function scrollHorizontal(offset: number) {
     if (!sliderRef.current) return
@@ -45,26 +43,11 @@ const CardSlider: React.FC<CardSliderProps> = ({
   }
 
   useEffect(() => {
-    if (!sliderRef.current) return
-    const el = sliderRef.current
-    const resizeObserver = new ResizeObserver(() => {
-      setHasOverflow(el.scrollWidth > el.clientWidth)
-    })
-    resizeObserver.observe(el)
-    Array.from(el.children).forEach((child) => resizeObserver.observe(child))
-    return () => resizeObserver.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!hasOverflow || !sliderRef.current) return
-    if (introPlayedRef.current) return
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting) return
-        observer.disconnect()
-        introPlayedRef.current = true
-        scrollHorizontal(-distance)
+        if (entry.isIntersecting) {
+          scrollHorizontal(-distance)
+        }
       },
       {
         root: null, // Uses the viewport as the root
@@ -73,14 +56,20 @@ const CardSlider: React.FC<CardSliderProps> = ({
       },
     )
 
-    sliderRef.current.scrollLeft = distance // Adjust this value as needed
-    observer.observe(sliderRef.current)
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft = distance // Adjust this value as needed
+      observer.observe(sliderRef.current)
+    }
 
-    return () => observer.disconnect()
-  }, [hasOverflow])
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef?.current)
+      }
+    }
+  }, [])
 
   return (
-    <div className="relative w-topbar sm:-mx-8 lg:w-screen lg:mx-[calc(50%-50vw)]">
+    <div className="w-topbar sm:-mx-8">
       <div className="flex flex-col items-start gap-8 flex-1 self-stretch pb-8 sm:hidden">
         <Title level={2} boldness={"semibold"}>
           {title}
@@ -89,7 +78,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
       </div>
 
       <div className="hidden lg:block">
-        {hasOverflow && scrollPosition > 0 && (
+        {scrollPosition > 0 && (
           <button
             onClick={() => scrollHorizontal(-distance)}
             className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 left-6  flex items-center justify-center z-20"
@@ -97,14 +86,12 @@ const CardSlider: React.FC<CardSliderProps> = ({
             <IconChevronLeft className="w-3.5 h-3.5 text-white" />
           </button>
         )}
-        {hasOverflow && (
-          <button
-            onClick={() => scrollHorizontal(distance)}
-            className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center z-20"
-          >
-            <IconChevronRight className="w-3.5 h-3.5 text-white" />
-          </button>
-        )}
+        <button
+          onClick={() => scrollHorizontal(distance)}
+          className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center z-20"
+        >
+          <IconChevronRight className="w-3.5 h-3.5 text-white" />
+        </button>
       </div>
 
       <div
@@ -112,7 +99,6 @@ const CardSlider: React.FC<CardSliderProps> = ({
         className={clsx([
           "flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none overscroll-x-none scroll-smooth",
           "pt-2 pb-4 px-2 2xl:-mr-6",
-          !hasOverflow && "justify-center",
         ])}
         onScroll={(e) => setScrollPosition(e.currentTarget.scrollLeft)}
         ref={sliderRef}
