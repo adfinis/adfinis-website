@@ -69,6 +69,15 @@
       "type": "date",
       "required": true
     },
+    "date_event_end": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date",
+      "required": false
+    },
     "time": {
       "pluginOptions": {
         "i18n": {

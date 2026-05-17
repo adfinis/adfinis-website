@@ -954,6 +954,12 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    date_event_end: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     details: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
