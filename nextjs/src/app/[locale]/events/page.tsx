@@ -9,7 +9,7 @@ import Footer from "@/components/stapi/footer"
 import CardGroup from "@/components/cards/card-group"
 import Container from "@/components/container"
 import CardArticle from "@/components/cards/card-article"
-import { getLocaleDateFormatted, Locale } from "@/lib/locale"
+import { getLocaleDateRangeFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
@@ -72,8 +72,12 @@ export default async function EventsOverviewPage({
   const { hero, intro, sections } = data
   const cards = await getEventPageCards(locale)
 
-  function formatDate(date: string) {
-    return getLocaleDateFormatted({ date, locale: locale as Locale })
+  function formatDate(startDate: string, endDate?: string | null) {
+    return getLocaleDateRangeFormatted({
+      startDate,
+      endDate,
+      locale: locale as Locale,
+    })
   }
 
   return (
@@ -99,7 +103,7 @@ export default async function EventsOverviewPage({
                 key={event.documentId.slice(-4)}
                 title={event.metadata_title}
                 subtitle={event.address}
-                description={`${formatDate(event.date_event)}`}
+                description={formatDate(event.date_event, event.date_event_end)}
                 imageUrl={event.hero?.background_image.url}
                 logoUrl={event.card_image?.url}
                 href={`/${locale.toLocaleLowerCase()}/events/${event.slug}`}
