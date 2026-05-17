@@ -1,10 +1,11 @@
 import { revalidateTag } from "next/cache"
 import { NextRequest, NextResponse } from "next/server"
 import { timingSafeEqual } from "node:crypto"
+import { TAGS } from "@/lib/strapi"
 
 export const dynamic = "force-dynamic"
 
-const REVALIDATABLE_MODELS = new Set(["news-page", "news-overview"])
+const REVALIDATABLE_MODELS = new Set<string>(Object.values(TAGS))
 
 function isAuthorized(req: NextRequest) {
   const secret = process.env.REVALIDATE_SECRET

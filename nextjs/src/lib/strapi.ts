@@ -2,6 +2,11 @@ import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
 
+export const TAGS = {
+  NEWS_PAGE: "news-page",
+  NEWS_OVERVIEW: "news-overview",
+} as const
+
 export function normalizeLocale(locale: string) {
   return locale.replace(
     /-([a-z]{2})$/,
@@ -61,7 +66,7 @@ export function getNewsPage(locale: Locale, slug: string) {
   validateLocale(locale)
   return strapi(
     `news-pages/${sanitizeSlug(slug)}?locale=${normalizeLocale(locale)}&status=published`,
-    { tags: ["news-page"] },
+    { tags: [TAGS.NEWS_PAGE] },
   )
 }
 
@@ -69,7 +74,7 @@ export function getNewsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
     `news-overview?locale=${normalizeLocale(locale)}&status=published`,
-    { tags: ["news-overview"] },
+    { tags: [TAGS.NEWS_OVERVIEW] },
   )
 }
 
@@ -86,7 +91,7 @@ export function getNewsGrid(
   validateLocale(locale)
   return strapi(
     `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
-    { raw: true, tags: ["news-page"] },
+    { raw: true, tags: [TAGS.NEWS_PAGE] },
   )
 }
 
