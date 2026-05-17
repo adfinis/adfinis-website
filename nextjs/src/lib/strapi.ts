@@ -61,6 +61,7 @@ export function getNewsPage(locale: Locale, slug: string) {
   validateLocale(locale)
   return strapi(
     `news-pages/${sanitizeSlug(slug)}?locale=${normalizeLocale(locale)}&status=published`,
+    { tags: ["news-page"] },
   )
 }
 
@@ -68,6 +69,7 @@ export function getNewsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
     `news-overview?locale=${normalizeLocale(locale)}&status=published`,
+    { tags: ["news-overview"] },
   )
 }
 
@@ -84,7 +86,7 @@ export function getNewsGrid(
   validateLocale(locale)
   return strapi(
     `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
-    { raw: true },
+    { raw: true, tags: ["news-page"] },
   )
 }
 
@@ -172,12 +174,14 @@ export function getHallmark(id: string) {
 type Options =
   | {
       raw?: boolean
+      tags?: string[]
     }
   | undefined
 async function strapi(query: string, options?: Options) {
   const page = await fetch(`${STRAPI}/${query}`, {
     next: {
-      revalidate: 15,
+      tags: options?.tags,
+      revalidate: 3600,
     },
   })
   if (page && page.status === 404) {
