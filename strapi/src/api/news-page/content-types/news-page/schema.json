@@ -144,6 +144,16 @@
         }
       },
       "type": "datetime"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.seo"
     }
   }
 }
