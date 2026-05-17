@@ -4,6 +4,7 @@ import { Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { getCaseStudiesOverview } from "@/lib/strapi"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata({
@@ -33,14 +34,12 @@ export async function generateMetadata({
     languages["x-default"] = languages.en
   }
 
-  return {
-    title: data.metadata_title,
-    description: data.meta_description, // TODO refactor
-    alternates: {
-      canonical: `${ABSOLUTE_URL}/${locale}/${CASE_STUDIES_SLUGS[locale]}`,
-      languages,
-    },
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: CASE_STUDIES_SLUGS[locale],
+    languages,
+  })
 }
 
 export default function OverviewPage({

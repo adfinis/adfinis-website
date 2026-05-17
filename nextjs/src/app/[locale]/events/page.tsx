@@ -12,6 +12,7 @@ import CardArticle from "@/components/cards/card-article"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { buildMetadata } from "@/lib/metadata"
 
 export async function generateMetadata({
   params: { locale },
@@ -35,14 +36,12 @@ export async function generateMetadata({
     languages["x-default"] = languages.en
   }
 
-  return {
-    title: data.metadata_title,
-    description: data.meta_description, // TODO refactor
-    alternates: {
-      canonical: `${ABSOLUTE_URL}/${locale}/events`,
-      languages,
-    },
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: "events",
+    languages,
+  })
 }
 
 export default async function EventsOverviewPage({

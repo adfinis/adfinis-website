@@ -3,6 +3,8 @@ import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 import dynamic from "next/dynamic"
 import { Matomo } from "@/components/matomo/matomo"
+import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { DEFAULT_SHARE_IMAGE, SITE_NAME } from "@/lib/metadata"
 
 const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
   ssr: false,
@@ -14,10 +16,26 @@ const sourceSans3 = Source_Sans_3({
   variable: "--font-source-sans-3",
 })
 
+const DEFAULT_DESCRIPTION =
+  "Plan innovatively. Build sustainably. Run resiliently. As open source professionals, we offer a wide range of services and solutions from a single source. Open technologies and standards are our key to innovation. Potential. Unlocked."
+
 export const metadata: Metadata = {
-  title: "Adfinis",
-  description:
-    "Plan innovatively. Build sustainably. Run resiliently. As open source professionals, we offer a wide range of services and solutions from a single source. Open technologies and standards are our key to innovation. Potential. Unlocked.",
+  metadataBase: ABSOLUTE_URL ? new URL(ABSOLUTE_URL) : undefined,
+  title: SITE_NAME,
+  description: DEFAULT_DESCRIPTION,
+  openGraph: {
+    siteName: SITE_NAME,
+    type: "website",
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: DEFAULT_SHARE_IMAGE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_SHARE_IMAGE],
+  },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
