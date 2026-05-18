@@ -147,7 +147,7 @@ export function getEventsOverview(locale: Locale) {
 export function getBlogsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `blogs-overview?locale=${normalizeLocale(locale)}&status=published`,
+    `blogs-overview?locale=${normalizeLocale(locale)}&populate[seo][populate]=*&status=published`,
   )
 }
 

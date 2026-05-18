@@ -7,6 +7,9 @@ module.exports = (config, { strapi }) => {
       ...ctx.query,
       populate: {
         localizations: true,
+        seo: {
+          populate: '*'
+        },
         hero: {
           populate: '*'
         },

@@ -388,6 +388,19 @@ export interface GlobalIntroBody extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalSeo extends Struct.ComponentSchema {
+  collectionName: 'components_global_seos';
+  info: {
+    description: 'Customise how a page appears when shared (Open Graph / social link preview).';
+    displayName: 'SEO / Share';
+  };
+  attributes: {
+    og_description: Schema.Attribute.Text;
+    og_title: Schema.Attribute.String;
+    share_image: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface GlobalSlaItem extends Struct.ComponentSchema {
   collectionName: 'components_global_sla_items';
   info: {
@@ -1093,6 +1106,7 @@ declare module '@strapi/strapi' {
       'global.hero-with-cta': GlobalHeroWithCta;
       'global.intro': GlobalIntro;
       'global.intro-body': GlobalIntroBody;
+      'global.seo': GlobalSeo;
       'global.sla-item': GlobalSlaItem;
       'menu.menu-link': MenuMenuLink;
       'menu.menu-section': MenuMenuSection;

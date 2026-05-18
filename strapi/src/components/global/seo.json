@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_global_seos",
+  "info": {
+    "displayName": "SEO / Share",
+    "description": "Customise how a page appears when shared (Open Graph / social link preview)."
+  },
+  "options": {},
+  "attributes": {
+    "share_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "og_title": {
+      "type": "string",
+      "required": false
+    },
+    "og_description": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

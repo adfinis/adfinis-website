@@ -4,6 +4,7 @@ import { SOLUTIONS_SLUGS } from "@/lib/slugs"
 import { Metadata } from "next"
 import { getSolutionsOverview } from "@/lib/strapi"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata({
@@ -33,14 +34,12 @@ export async function generateMetadata({
     languages["x-default"] = languages.en
   }
 
-  return {
-    title: data.metadata_title,
-    description: data.metadata_description,
-    alternates: {
-      canonical: `${ABSOLUTE_URL}/${locale}/${SOLUTIONS_SLUGS[locale]}`,
-      languages,
-    },
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: SOLUTIONS_SLUGS[locale],
+    languages,
+  })
 }
 
 export default function SolutionsPage({

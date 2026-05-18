@@ -1,5 +1,6 @@
 import { getBlogOverviewCards, getBlogsOverview } from "@/lib/strapi"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
+import { buildMetadata } from "@/lib/metadata"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -19,10 +20,11 @@ export async function generateMetadata({
   }
 }) {
   const data = await getBlogsOverview(locale)
-  return {
-    title: data.metadata_title,
-    description: data.metadata_description,
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: "blogs",
+  })
 }
 
 export default async function Page({

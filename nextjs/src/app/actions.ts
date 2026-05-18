@@ -2,6 +2,7 @@
 
 import { z } from "zod"
 import formSubmit from "@/lib/form-submit"
+import formsparkSubmit from "@/lib/formspark-submit"
 import { type Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 import { getDictionary } from "@/lib/get-dictionary.server"
@@ -71,13 +72,13 @@ export async function saveSimpleForm(
   })
 
   if (validation.success) {
-    await formSubmit({
-      data: {
-        type: "short",
-        ...validation.data,
-        ...{ privacy_policy: "yes", is_created_at: new Date() },
-      },
-    })
+    const data = {
+      type: "short",
+      ...validation.data,
+      ...{ privacy_policy: "yes", is_created_at: new Date() },
+    }
+    formSubmit({ data })
+    formsparkSubmit(data)
 
     return {
       success: true,
@@ -129,9 +130,9 @@ export async function saveRaffleForm(
       job_function: formData.get("job_function"),
     }
     const { agree_to_receive_mail, ...data } = payload
-    const res = await formSubmit({
-      data,
-    })
+    formSubmit({ data })
+    formsparkSubmit(data)
+
     return { success: true }
   }
 
@@ -162,15 +163,16 @@ export async function saveStandardForm(
   })
 
   if (validation.success) {
-    await formSubmit({
-      data: {
-        type: "standard",
-        ...validation.data,
-        ...{ privacy_policy: "yes", is_created_at: new Date() },
-        company_name: formData.get("company_name"),
-        job_function: formData.get("job_function"),
-      },
-    })
+    const data = {
+      type: "standard",
+      ...validation.data,
+      ...{ privacy_policy: "yes", is_created_at: new Date() },
+      company_name: formData.get("company_name"),
+      job_function: formData.get("job_function"),
+    }
+    formSubmit({ data })
+    formsparkSubmit(data)
+
     return { success: true }
   }
 
@@ -210,15 +212,16 @@ export async function saveContactForm(
   })
 
   if (validation.success) {
-    await formSubmit({
-      data: {
-        type: "contact",
-        ...validation.data,
-        ...{ privacy_policy: "yes", is_created_at: new Date() },
-        company_name: formData.get("company_name"),
-        job_function: formData.get("job_function"),
-      },
-    })
+    const data = {
+      type: "contact",
+      ...validation.data,
+      ...{ privacy_policy: "yes", is_created_at: new Date() },
+      company_name: formData.get("company_name"),
+      job_function: formData.get("job_function"),
+    }
+    formSubmit({ data })
+    formsparkSubmit(data)
+
     return { success: true }
   }
 
@@ -271,15 +274,16 @@ export async function saveEventForm(
   })
 
   if (validation.success) {
-    await formSubmit({
-      data: {
-        type: "event",
-        ...validation.data,
-        ...{ privacy_policy: "yes", is_created_at: new Date() },
-        company_name: formData.get("company_name"),
-        job_function: formData.get("job_function"),
-      },
-    })
+    const data = {
+      type: "event",
+      ...validation.data,
+      ...{ privacy_policy: "yes", is_created_at: new Date() },
+      company_name: formData.get("company_name"),
+      job_function: formData.get("job_function"),
+    }
+    formSubmit({ data })
+    formsparkSubmit(data)
+
     return { success: true }
   }
 
