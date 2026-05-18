@@ -7,14 +7,18 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: {
-    locale: Locale
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: string
     slug: string
-  }
+  }>
 }): Promise<Metadata> {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale, slug } = params
+
   if (!["de-de", "de-ch"].includes(locale)) {
     return notFound()
   }
@@ -45,11 +49,15 @@ export async function generateMetadata({
   })
 }
 
-export default async function DetailPage({
-  params: { locale, slug },
-}: {
-  params: { locale: Locale; slug: string }
+export default async function DetailPage(props: {
+  params: Promise<{ locale: string; slug: string }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale, slug } = params
+
   const activeLocale = {
     href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,

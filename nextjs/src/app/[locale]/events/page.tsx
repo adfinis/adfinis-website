@@ -14,14 +14,18 @@ import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: {
-    locale: Locale
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: string
     slug: string
-  }
+  }>
 }): Promise<Metadata> {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
   const data = await getEventsOverview(locale)
   const languages = data.localizations.reduce(
     (acc: any, item: any) => {
@@ -44,11 +48,15 @@ export async function generateMetadata({
   })
 }
 
-export default async function EventsOverviewPage({
-  params: { locale },
-}: {
-  params: { locale: Locale }
+export default async function EventsOverviewPage(props: {
+  params: Promise<{ locale: string }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
   const data = await getEventsOverview(locale)
   const activeLocale = {
     href: `/${locale}/events`,

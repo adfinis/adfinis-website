@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host")
   const host = forwardedHost || request.headers.get("host")
   const forwardedProto = request.headers.get("x-forwarded-proto") || "https"

@@ -1,8 +1,7 @@
 "use client"
 
 import { saveEventForm } from "@/app/actions"
-import { useFormState } from "react-dom"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useActionState } from "react"
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
@@ -19,7 +18,7 @@ type Props = {
 }
 export default function EventForm({ submitLabel, dictionary, locale }: Props) {
   const action = saveEventForm.bind(null, locale ?? "en")
-  const [state, formAction] = useFormState(action, { success: false })
+  const [state, formAction] = useActionState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {

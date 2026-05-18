@@ -1,13 +1,12 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useActionState } from "react"
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
 import Button from "@/components/button"
 import { saveRaffleForm, saveStandardForm } from "@/app/actions"
-import { useFormState } from "react-dom"
 import { type Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 
@@ -18,7 +17,7 @@ type Props = {
 }
 export default function Raffle({ submitLabel, dictionary, locale }: Props) {
   const action = saveRaffleForm.bind(null, locale ?? "en")
-  const [state, formAction] = useFormState(action, { success: false })
+  const [state, formAction] = useActionState(action, { success: false })
   const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
