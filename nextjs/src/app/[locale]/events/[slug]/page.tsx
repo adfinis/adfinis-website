@@ -10,7 +10,7 @@ import SectionEvent from "@/components/sections/section-event"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
-import { Locale, getLocaleDateFormatted } from "@/lib/locale"
+import { Locale, getLocaleDateRangeFormatted } from "@/lib/locale"
 import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 
@@ -78,6 +78,7 @@ export default async function EventsDetailPage({
     hero,
     details,
     date_event,
+    date_event_end,
     time,
     address,
     map_embed_html,
@@ -93,8 +94,9 @@ export default async function EventsDetailPage({
     sign_up_button.text = sign_up_button?.label
   }
 
-  const formattedDate = getLocaleDateFormatted({
-    date: date_event,
+  const formattedDate = getLocaleDateRangeFormatted({
+    startDate: date_event,
+    endDate: date_event_end,
     locale: activeLocale.locale as Locale,
   })
 
@@ -134,7 +136,7 @@ export default async function EventsDetailPage({
         >
           <SectionEvent
             title={dictionary.pages.events.title}
-            date={date_event}
+            date={formattedDate}
             location={address}
             time={time}
             html={map_embed_html}

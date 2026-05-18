@@ -2,6 +2,12 @@ export const locales = ["en", "en-au", "nl", "de-ch", "de-de"] as const
 
 export type Locale = (typeof locales)[number]
 
+const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+}
+
 export function getLocaleDateFormatted({
   date,
   locale,
@@ -10,10 +16,25 @@ export function getLocaleDateFormatted({
   locale: Locale
 }) {
   const dateObj = new Date(date)
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
+  return dateObj.toLocaleDateString(locale, DATE_FORMAT_OPTIONS)
+}
+
+export function getLocaleDateRangeFormatted({
+  startDate,
+  endDate,
+  locale,
+}: {
+  startDate: string
+  endDate?: string | null
+  locale: Locale
+}) {
+  const start = new Date(startDate)
+  if (!endDate || endDate === startDate) {
+    return start.toLocaleDateString(locale, DATE_FORMAT_OPTIONS)
   }
-  return dateObj.toLocaleDateString(locale, options)
+  const end = new Date(endDate)
+  return new Intl.DateTimeFormat(locale, DATE_FORMAT_OPTIONS).formatRange(
+    start,
+    end,
+  )
 }
