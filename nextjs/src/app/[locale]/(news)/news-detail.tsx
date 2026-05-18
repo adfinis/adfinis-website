@@ -26,6 +26,7 @@ export default async function NewsDetail({
     publication_date,
     publishedAt,
     createdAt,
+    location,
   } = data
   const locales = data.localizations.map(
     (item: { locale: Locale; slug: string }) => {
@@ -49,7 +50,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
+              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })} ${location ? `| ${location}` : ""}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />

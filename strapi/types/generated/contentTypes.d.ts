@@ -1791,6 +1791,12 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::news-page.news-page'
     >;
+    location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     main_blog: Schema.Attribute.RichText &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
