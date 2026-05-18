@@ -1,14 +1,9 @@
 import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
-import dynamic from "next/dynamic"
 import { Matomo } from "@/components/matomo/matomo"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { DEFAULT_SHARE_IMAGE, SITE_NAME } from "@/lib/metadata"
-
-const CookieNotice = dynamic(() => import("@/components/cookie-notice"), {
-  ssr: false,
-})
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],

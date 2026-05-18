@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import NotFoundWrapper from "@/components/not-found/not-found-wrapper"
@@ -38,9 +39,9 @@ export default async function NotFound() {
       <div className="w-screen h-screen grid place-content-center text-center text-50">
         404 Not Found
         <br />
-        <a className="text-20 text-sapphire underline" href="/">
+        <Link className="text-20 text-sapphire underline" href="/">
           Return home
-        </a>
+        </Link>
       </div>
     )
   }
