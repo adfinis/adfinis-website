@@ -2,6 +2,7 @@ import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { getBlogPage } from "@/lib/strapi"
 import { BLOG_SLUGS } from "@/lib/slugs"
+import { buildMetadata } from "@/lib/metadata"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -21,10 +22,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const data = await getBlogPage(locale, slug)
 
-  return {
-    title: data.metadata_title,
-    description: data.metadata_description,
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: `${BLOG_SLUGS[locale]}/${slug}`,
+    type: "article",
+  })
 }
 
 export default async function BlogPage({

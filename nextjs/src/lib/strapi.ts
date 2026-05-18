@@ -2,6 +2,11 @@ import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
 
+export const TAGS = {
+  NEWS_PAGE: "news-page",
+  NEWS_OVERVIEW: "news-overview",
+} as const
+
 export function normalizeLocale(locale: string) {
   return locale.replace(
     /-([a-z]{2})$/,
@@ -61,6 +66,7 @@ export function getNewsPage(locale: Locale, slug: string) {
   validateLocale(locale)
   return strapi(
     `news-pages/${sanitizeSlug(slug)}?locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.NEWS_PAGE] },
   )
 }
 
@@ -68,6 +74,7 @@ export function getNewsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
     `news-overview?locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.NEWS_OVERVIEW] },
   )
 }
 
@@ -84,7 +91,7 @@ export function getNewsGrid(
   validateLocale(locale)
   return strapi(
     `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
-    { raw: true },
+    { raw: true, tags: [TAGS.NEWS_PAGE] },
   )
 }
 
@@ -140,7 +147,7 @@ export function getEventsOverview(locale: Locale) {
 export function getBlogsOverview(locale: Locale) {
   validateLocale(locale)
   return strapi(
-    `blogs-overview?locale=${normalizeLocale(locale)}&status=published`,
+    `blogs-overview?locale=${normalizeLocale(locale)}&populate[seo][populate]=*&status=published`,
   )
 }
 
@@ -172,12 +179,14 @@ export function getHallmark(id: string) {
 type Options =
   | {
       raw?: boolean
+      tags?: string[]
     }
   | undefined
 async function strapi(query: string, options?: Options) {
   const page = await fetch(`${STRAPI}/${query}`, {
     next: {
-      revalidate: 15,
+      tags: options?.tags,
+      revalidate: 3600,
     },
   })
   if (page && page.status === 404) {

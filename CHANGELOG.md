@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.24.0] - 2026-05-18
+
+- AW-346 on demand cache invalidation (#338)
+- AW-232 feat: Add Formspark submission functionality to all forms (#342)
+- AW-370 Add optional location field to news detail page (#341)
+- AW-329 opengraph (#340)
+- AW-364 option for multiple dates for events (#339)
+
 ## [1.23.0] - 2026-04-29
 
 - fix: Improve whitespace on event detail page #330
