@@ -28,9 +28,6 @@ const nextConfig = {
       },
     ],
   },
-  eslint: {
-    dirs: ["src"],
-  },
   async headers() {
     if (process.env.NODE_ENV !== "production") {
       return []

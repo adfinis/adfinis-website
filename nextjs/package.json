@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.5",
+    "@headlessui/react": "^2.2.10",
     "@smakss/react-scroll-direction": "^4.2.0",
     "@types/node": "^22.7.4",
     "@types/react": "19.2.14",

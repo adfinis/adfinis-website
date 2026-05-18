@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const model = payload.model ?? ""
     const revalidated = REVALIDATABLE_MODELS.has(model)
     if (revalidated) {
-      revalidateTag(model)
+      revalidateTag(model, "max")
     }
 
     return NextResponse.json({
