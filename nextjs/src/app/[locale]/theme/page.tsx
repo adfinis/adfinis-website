@@ -67,9 +67,11 @@ import { getDictionary } from "@/lib/get-dictionary.server"
 import CardLocation from "@/components/cards/card-location"
 
 export default async function Theme(props: {
-  params: Promise<{ locale: Locale }>
+  params: Promise<{ locale: string }>
 }) {
-  const params = await props.params
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
 
   const { locale } = params
 

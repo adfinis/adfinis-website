@@ -9,11 +9,13 @@ import { notFound } from "next/navigation"
 
 export async function generateMetadata(props: {
   params: Promise<{
-    locale: Locale
+    locale: string
     slug: string
   }>
 }): Promise<Metadata> {
-  const params = await props.params
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
 
   const { locale } = params
 
@@ -45,11 +47,13 @@ export async function generateMetadata(props: {
 }
 
 export default async function NewsOverviewPage(props: {
-  params: Promise<{ locale: Locale }>
+  params: Promise<{ locale: string }>
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const searchParams = await props.searchParams
-  const params = await props.params
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
 
   const { locale } = params
 
