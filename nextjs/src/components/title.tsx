@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority"
 import clsx from "clsx"
-import React, { type JSX } from "react";
+import React, { type JSX } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 

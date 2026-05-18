@@ -66,16 +66,12 @@ import { Country as CareerCountry } from "@/components/icons/icon-flag"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import CardLocation from "@/components/cards/card-location"
 
-export default async function Theme(
-  props: {
-    params: Promise<{ locale: Locale }>
-  }
-) {
-  const params = await props.params;
+export default async function Theme(props: {
+  params: Promise<{ locale: Locale }>
+}) {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   const dictionary = await getDictionary(locale)
   return (

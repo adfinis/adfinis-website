@@ -52,15 +52,15 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         has: [
           {
-            type: 'header',
-            key: 'host',
-            value: 'secretz.io',
+            type: "header",
+            key: "host",
+            value: "secretz.io",
           },
         ],
-        destination: 'https://www.secretz.io',
+        destination: "https://www.secretz.io",
         permanent: false,
       },
       // start AW-337

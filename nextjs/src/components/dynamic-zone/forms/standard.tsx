@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useActionState } from "react";
+import { useEffect, useRef, useActionState } from "react"
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"

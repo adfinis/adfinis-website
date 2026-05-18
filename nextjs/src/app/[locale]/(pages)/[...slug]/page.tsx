@@ -11,20 +11,15 @@ import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{
-      locale: Locale
-      slug: string[]
-    }>
-  }
-): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: Locale
+    slug: string[]
+  }>
+}): Promise<Metadata> {
+  const params = await props.params
 
-  const {
-    locale,
-    slug
-  } = params;
+  const { locale, slug } = params
 
   const path = slug.join("/")
   const data = await getPage(locale, path)
@@ -44,17 +39,12 @@ export async function generateMetadata(
   return buildMetadata({ data, locale, path, languages })
 }
 
-export default async function LandingPage(
-  props: {
-    params: Promise<{ locale: Locale; slug: string[] }>
-  }
-) {
-  const params = await props.params;
+export default async function LandingPage(props: {
+  params: Promise<{ locale: Locale; slug: string[] }>
+}) {
+  const params = await props.params
 
-  const {
-    locale,
-    slug
-  } = params;
+  const { locale, slug } = params
 
   const URI_PATH = slug.join("/")
   const activeLocale = {

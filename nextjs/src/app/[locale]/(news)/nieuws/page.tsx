@@ -7,19 +7,15 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{
-      locale: Locale
-      slug: string
-    }>
-  }
-): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: Locale
+    slug: string
+  }>
+}): Promise<Metadata> {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   if (!["nl"].includes(locale)) {
     return notFound()
@@ -48,16 +44,12 @@ export async function generateMetadata(
   })
 }
 
-export default async function NewsOverviewPage(
-  props: {
-    params: Promise<{ locale: Locale }>
-  }
-) {
-  const params = await props.params;
+export default async function NewsOverviewPage(props: {
+  params: Promise<{ locale: Locale }>
+}) {
+  const params = await props.params
 
-  const {
-    locale
-  } = params;
+  const { locale } = params
 
   const activeLocale = {
     href: `/${locale.toLowerCase()}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}`,

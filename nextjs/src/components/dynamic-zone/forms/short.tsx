@@ -5,7 +5,7 @@ import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
 import Button from "@/components/button"
 import { saveSimpleForm } from "@/app/actions"
-import { useEffect, useRef, useActionState } from "react";
+import { useEffect, useRef, useActionState } from "react"
 import Checkbox from "@/components/form-fields/checkbox"
 import { Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"

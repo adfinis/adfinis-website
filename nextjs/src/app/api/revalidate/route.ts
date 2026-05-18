@@ -21,7 +21,10 @@ function isAuthorized(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   if (!isAuthorized(req)) {
-    return NextResponse.json({ revalidated: false, reason: "unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { revalidated: false, reason: "unauthorized" },
+      { status: 401 },
+    )
   }
 
   try {
@@ -38,6 +41,9 @@ export async function POST(req: NextRequest) {
       model,
     })
   } catch {
-    return NextResponse.json({ revalidated: false, reason: "invalid-json" }, { status: 400 })
+    return NextResponse.json(
+      { revalidated: false, reason: "invalid-json" },
+      { status: 400 },
+    )
   }
 }
