@@ -83,6 +83,16 @@
         "sections.video-with-text-section"
       ],
       "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "global.seo"
     }
   }
 }

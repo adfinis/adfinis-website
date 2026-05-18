@@ -744,6 +744,12 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1045,6 +1051,12 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     show_event_details_section: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1160,6 +1172,12 @@ export interface ApiEventsOverviewEventsOverview
         'sections.video-with-text-section',
       ]
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1475,6 +1493,12 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1705,6 +1729,12 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1826,6 +1856,12 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.video-with-text-section',
       ]
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1961,6 +1997,12 @@ export interface ApiPageCaseStudyPageCaseStudy
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -2065,6 +2107,12 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'metadata_title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -2159,6 +2207,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.video-with-text-section',
       ]
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2369,6 +2423,12 @@ export interface ApiSolutionsOverviewSolutionsOverview
           localized: true;
         };
       }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2461,6 +2521,12 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.video-with-text-section',
       ]
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Schema.Attribute.Component<'global.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

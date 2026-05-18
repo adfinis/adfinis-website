@@ -13,6 +13,7 @@ import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateRangeFormatted } from "@/lib/locale"
 import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
+import { buildMetadata } from "@/lib/metadata"
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -36,14 +37,13 @@ export async function generateMetadata({
     languages["x-default"] = languages.en
   }
 
-  return {
-    title: data.metadata_title,
-    description: data.metadata_description,
-    alternates: {
-      canonical: `${ABSOLUTE_URL}/${locale}/events/${slug}`,
-      languages,
-    },
-  }
+  return buildMetadata({
+    data,
+    locale,
+    path: `events/${slug}`,
+    type: "article",
+    languages,
+  })
 }
 
 export default async function EventsDetailPage({
