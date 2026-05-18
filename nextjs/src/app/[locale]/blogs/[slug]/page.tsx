@@ -12,14 +12,21 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { getDictionary } from "@/lib/get-dictionary.server"
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: {
-    locale: Locale
-    slug: string
+export async function generateMetadata(
+  props: {
+    params: Promise<{
+      locale: Locale
+      slug: string
+    }>
   }
-}): Promise<Metadata> {
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale,
+    slug
+  } = params;
+
   const data = await getBlogPage(locale, slug)
 
   return buildMetadata({
@@ -30,11 +37,18 @@ export async function generateMetadata({
   })
 }
 
-export default async function BlogPage({
-  params: { locale, slug },
-}: {
-  params: { locale: Locale; slug: string }
-}) {
+export default async function BlogPage(
+  props: {
+    params: Promise<{ locale: Locale; slug: string }>
+  }
+) {
+  const params = await props.params;
+
+  const {
+    locale,
+    slug
+  } = params;
+
   const activeLocale = {
     href: `/${locale.toLowerCase()}/${BLOG_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,

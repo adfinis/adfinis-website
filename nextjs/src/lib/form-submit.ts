@@ -12,7 +12,7 @@ function stripHostname(referrer: string): string {
 }
 
 export default async function formSubmit(payload: any) {
-  const headersList = headers()
+  const headersList = await headers()
   payload.data.from_url = stripHostname(headersList.get("referer") || "")
 
   return fetch(`${STRAPI}/forms-betas`, {

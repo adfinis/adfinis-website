@@ -7,14 +7,21 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: {
-    locale: Locale
-    slug: string
+export async function generateMetadata(
+  props: {
+    params: Promise<{
+      locale: Locale
+      slug: string
+    }>
   }
-}): Promise<Metadata> {
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    locale,
+    slug
+  } = params;
+
   if (!["en", "en-au"].includes(locale)) {
     return notFound()
   }
@@ -44,14 +51,21 @@ export async function generateMetadata({
   })
 }
 
-export default async function PartnerAndProductsPage({
-  params: { locale, slug },
-}: {
-  params: {
-    locale: Locale
-    slug: string
+export default async function PartnerAndProductsPage(
+  props: {
+    params: Promise<{
+      locale: Locale
+      slug: string
+    }>
   }
-}) {
+) {
+  const params = await props.params;
+
+  const {
+    locale,
+    slug
+  } = params;
+
   const activeLocale = {
     href: `/${locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[locale.toLowerCase() as Locale]}/${slug}`,
     locale: locale,
