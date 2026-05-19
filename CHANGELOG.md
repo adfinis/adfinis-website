@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.25.0] - 2026-05-19
+
+- AW-306 nextjs bump (#344)
+
 ## [1.24.0] - 2026-05-18
 
 - AW-346 on demand cache invalidation (#338)
