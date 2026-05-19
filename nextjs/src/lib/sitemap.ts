@@ -148,9 +148,7 @@ export async function buildCategorySitemap(options: {
   const entries: SitemapEntry[] = [...(extraEntries ?? [])]
 
   if (includeIndex) {
-    entries.push(
-      ...buildIndexEntries((locale) => buildUrl(locale)),
-    )
+    entries.push(...buildIndexEntries((locale) => buildUrl(locale)))
   }
 
   const response = await fetch(

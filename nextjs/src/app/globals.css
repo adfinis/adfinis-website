@@ -1,3 +1,6 @@
+@import "./text.css";
+@import "./hamburger-react.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -147,7 +150,3 @@ body {
     text-shadow: 0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
   }
 }
-
-
-@import './text.css';
-@import './hamburger-react.css';

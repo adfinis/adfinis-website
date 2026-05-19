@@ -2,13 +2,18 @@ import { Locale } from "@/lib/locale"
 import { ReactNode } from "react"
 import CookieNotice from "@/components/cookie-notice"
 
-export default function Layout({
-  children,
-  params: { locale },
-}: {
+export default async function Layout(props: {
   children: ReactNode
-  params: { locale: Locale }
+  params: Promise<{ locale: string }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
+  const { children } = props
+
   return (
     <>
       {children}

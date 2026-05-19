@@ -11,14 +11,18 @@ import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 
-export async function generateMetadata({
-  params: { locale, slug },
-}: {
-  params: {
-    locale: Locale
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: string
     slug: string[]
-  }
+  }>
 }): Promise<Metadata> {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale, slug } = params
+
   const path = slug.join("/")
   const data = await getPage(locale, path)
   const languages = data.localizations.reduce(
@@ -37,11 +41,15 @@ export async function generateMetadata({
   return buildMetadata({ data, locale, path, languages })
 }
 
-export default async function LandingPage({
-  params: { locale, slug },
-}: {
-  params: { locale: Locale; slug: string[] }
+export default async function LandingPage(props: {
+  params: Promise<{ locale: string; slug: string[] }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale, slug } = params
+
   const URI_PATH = slug.join("/")
   const activeLocale = {
     href: `/${locale}/${URI_PATH}`,

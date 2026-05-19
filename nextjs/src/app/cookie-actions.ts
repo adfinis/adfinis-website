@@ -7,7 +7,7 @@ export async function setCookieAction(formData: FormData) {
   const consent = formData.get("consent")
   if (typeof consent !== "string") return
   // Get the cookies object from headers
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
 
   // Set a cookie
   cookieStore.set(COOKIE_CONSENT_KEY, consent, {
@@ -19,11 +19,11 @@ export async function setCookieAction(formData: FormData) {
 }
 
 export async function hasCookie(name: string) {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   return cookieStore.has(name)
 }
 
 export async function getCookie(name: string) {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   return cookieStore.get(name)?.value
 }

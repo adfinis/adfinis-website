@@ -7,14 +7,18 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: {
-    locale: Locale
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: string
     slug: string
-  }
+  }>
 }): Promise<Metadata> {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
   if (!["nl"].includes(locale)) {
     return notFound()
   }
@@ -42,11 +46,15 @@ export async function generateMetadata({
   })
 }
 
-export default function OverviewPage({
-  params: { locale },
-}: {
-  params: { locale: Locale }
+export default async function OverviewPage(props: {
+  params: Promise<{ locale: string }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
   const activeLocale = {
     href: `/${locale.toLowerCase()}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}`,
     locale,

@@ -12,13 +12,17 @@ import CardArticle from "@/components/cards/card-article"
 import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: {
+export async function generateMetadata(props: {
+  params: Promise<{
+    locale: string
+  }>
+}) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
     locale: Locale
   }
-}) {
+
+  const { locale } = params
+
   const data = await getBlogsOverview(locale)
   return buildMetadata({
     data,
@@ -27,11 +31,15 @@ export async function generateMetadata({
   })
 }
 
-export default async function Page({
-  params: { locale },
-}: {
-  params: { locale: Locale }
+export default async function Page(props: {
+  params: Promise<{ locale: string }>
 }) {
+  const params = (await props.params) as Awaited<typeof props.params> & {
+    locale: Locale
+  }
+
+  const { locale } = params
+
   const data = await getBlogsOverview(locale)
   const cards = await getBlogOverviewCards(locale)
   const activeLocale = {
