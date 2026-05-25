@@ -11,9 +11,9 @@ This is a full-stack web application built with:
 
 ### System Requirements
 
-1. **Node.js**: This project uses two different Node.js versions
-   - Next.js: Node.js v20.17.0
-   - Strapi: Node.js v22.11.0
+1. **Node.js**: Both apps target Node.js v24.16.0 (latest LTS, "Krypton")
+   - Next.js: Node.js v24.16.0
+   - Strapi: Node.js v24.16.0
 
 2. **Node Version Manager ([nvm](https://github.com/nvm-sh/nvm))**: Recommended for managing multiple Node.js versions
    ```bash
