@@ -25,7 +25,6 @@ straightforward as possible.
 - 50e9ae4 fi (AW-397)x: Improve form submission handling and add from_url (#346)
 - be3884e fix (AW-379): treat non-OK responses and missing data as 404
 
-- AW-306 nextjs bump (#344)
 ## [1.25.0] - 2026-05-19
 
 - AW-306 nextjs bump (#344)
