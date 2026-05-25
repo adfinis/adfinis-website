@@ -77,8 +77,16 @@ export async function saveSimpleForm(
       ...validation.data,
       ...{ privacy_policy: "yes", is_created_at: new Date() },
     }
-    formSubmit({ data })
-    formsparkSubmit(data)
+    const formSubmitPromise = formSubmit({ data })
+    const formsparkSubmitPromise = formsparkSubmit(data)
+
+    try {
+      await Promise.all([formSubmitPromise, formsparkSubmitPromise])
+    } catch (e) {
+      return {
+        success: false,
+      }
+    }
 
     return {
       success: true,
@@ -130,8 +138,16 @@ export async function saveRaffleForm(
       job_function: formData.get("job_function"),
     }
     const { agree_to_receive_mail, ...data } = payload
-    formSubmit({ data })
-    formsparkSubmit(data)
+    const formSubmitPromise = formSubmit({ data })
+    const formsparkSubmitPromise = formsparkSubmit(data)
+
+    try {
+      await Promise.all([formSubmitPromise, formsparkSubmitPromise])
+    } catch (e) {
+      return {
+        success: false,
+      }
+    }
 
     return { success: true }
   }
@@ -160,6 +176,7 @@ export async function saveStandardForm(
     privacy_policy: formData.get("privacy_policy"),
     company_name: formData.get("company_name"),
     job_function: formData.get("job_function"),
+    from_url: formData.get("from_url"),
   })
 
   if (validation.success) {
@@ -170,8 +187,16 @@ export async function saveStandardForm(
       company_name: formData.get("company_name"),
       job_function: formData.get("job_function"),
     }
-    formSubmit({ data })
-    formsparkSubmit(data)
+    const formSubmitPromise = formSubmit({ data })
+    const formsparkSubmitPromise = formsparkSubmit(data)
+
+    try {
+      await Promise.all([formSubmitPromise, formsparkSubmitPromise])
+    } catch (e) {
+      return {
+        success: false,
+      }
+    }
 
     return { success: true }
   }
@@ -219,8 +244,16 @@ export async function saveContactForm(
       company_name: formData.get("company_name"),
       job_function: formData.get("job_function"),
     }
-    formSubmit({ data })
-    formsparkSubmit(data)
+    const formSubmitPromise = formSubmit({ data })
+    const formsparkSubmitPromise = formsparkSubmit(data)
+
+    try {
+      await Promise.all([formSubmitPromise, formsparkSubmitPromise])
+    } catch (e) {
+      return {
+        success: false,
+      }
+    }
 
     return { success: true }
   }
@@ -281,8 +314,16 @@ export async function saveEventForm(
       company_name: formData.get("company_name"),
       job_function: formData.get("job_function"),
     }
-    formSubmit({ data })
-    formsparkSubmit(data)
+    const formSubmitPromise = formSubmit({ data })
+    const formsparkSubmitPromise = formsparkSubmit(data)
+
+    try {
+      await Promise.all([formSubmitPromise, formsparkSubmitPromise])
+    } catch (e) {
+      return {
+        success: false,
+      }
+    }
 
     return { success: true }
   }
