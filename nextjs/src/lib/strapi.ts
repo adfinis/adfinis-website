@@ -189,12 +189,18 @@ async function strapi(query: string, options?: Options) {
       revalidate: 3600,
     },
   })
-  if (page && page.status === 404) {
+  if (!page.ok) {
     return notFound()
   }
-  const res = await page.json()
+  const res = await page.json().catch(() => null)
+  if (!res) {
+    return notFound()
+  }
   if (options?.raw) {
     return res
+  }
+  if (res.data == null) {
+    return notFound()
   }
   return res.data
 }
