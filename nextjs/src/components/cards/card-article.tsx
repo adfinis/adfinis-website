@@ -37,7 +37,7 @@ const CardArticle: React.FC<CardArticleProps> = ({
       {imageUrl && (
         <Image
           src={imageUrl}
-          alt={title}
+          alt={title ?? ""}
           width={400}
           height={400}
           className={clsx([
