@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.26.0] - 2026-05-25
+
+- 2a1adb5 feat (AW-379): nextjs & strapi .nvmrc + engines.node pinned to 24.x.x 
+- 016db79 feat (AW-379): tag every page-bearing fetch for on-demand revalidation 
+- aef08ab fix (AW-379): reduce noise in logs 
+- 50e9ae4 fi (AW-397)x: Improve form submission handling and add from_url (#346)
+- be3884e fix (AW-379): treat non-OK responses and missing data as 404
+
 ## [1.25.0] - 2026-05-19
 
 - AW-306 nextjs bump (#344)
