@@ -3,18 +3,19 @@
 import { useMemo } from "react"
 import { usePathname } from "next/navigation"
 
-export function MatomoPixel() {
+export function MatomoPixel({ url, siteId }: { url: string; siteId: string }) {
   const pathname = usePathname()
 
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
   const src = useMemo(() => {
     const params = new URLSearchParams({
-      idsite: "1",
+      idsite: siteId,
       rec: "1",
       bots: "1",
       rand: crypto.randomUUID(),
     })
 
-    return `https://analytics.example.nl/matomo.php?${params.toString()}`
+    return `${url}/matomo.php?${params.toString()}`
   }, [pathname])
 
   return (

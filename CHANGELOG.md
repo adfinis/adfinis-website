@@ -17,13 +17,9 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-## [1.27.1] - 2026-05-28
+## [1.27.2] - 2026-05-28
 
-- fix AW-379 friendly analytics (4a20aa7)
- 
-## [1.27.0] - 2026-05-28
-
-- AW-379 friendly analytics (4a20aa7)
+- fix AW-379 friendly analytics
 
 ## [1.26.0] - 2026-05-25
 

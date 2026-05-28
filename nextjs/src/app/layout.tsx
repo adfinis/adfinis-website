@@ -4,7 +4,6 @@ import "./globals.css"
 import { Matomo } from "@/components/matomo/matomo"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { DEFAULT_SHARE_IMAGE, SITE_NAME } from "@/lib/metadata"
-import { connection } from "next/server"
 import { MatomoPixel } from "@/components/matomo/matomo-pixel"
 
 const sourceSans3 = Source_Sans_3({
@@ -66,7 +65,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  await connection()
+  const matomoUrl = process.env.MATOMO_URL ?? ""
+  const matomoSiteId = process.env.MATOMO_SITE_ID ?? ""
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -90,7 +90,7 @@ export default async function RootLayout({
       >
         <Matomo />
         {children}
-        <MatomoPixel />
+        <MatomoPixel url={matomoUrl} siteId={matomoSiteId} />
       </body>
     </html>
   )
