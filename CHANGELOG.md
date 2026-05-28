@@ -19,7 +19,7 @@ straightforward as possible.
 
 ## [1.27.0] - 2026-05-28
 
-- AW-379 nextjs bump (4a20aa7)
+- AW-379 friendly analytics (4a20aa7)
 
 ## [1.26.0] - 2026-05-25
 
