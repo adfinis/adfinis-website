@@ -4,6 +4,7 @@ import "./globals.css"
 import { Matomo } from "@/components/matomo/matomo"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { DEFAULT_SHARE_IMAGE, SITE_NAME } from "@/lib/metadata"
+import { connection } from "next/server"
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -54,16 +55,29 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 }
 
+function createMatomoPixelUrl() {
+  const params = new URLSearchParams({
+    idsite: process.env.MATOMO_SITE_ID || "",
+    rec: "1",
+    bots: "1",
+    rand: crypto.randomUUID(),
+  })
+
+  return `${process.env.MATOMO_URL}/matomo.php?${params.toString()}`
+}
+
 /**
  *
  * @description data-scheme: We globally assume "light" as default.
  * Sections only need to specify this property (`data-scheme="dark"`) if they are dark. The variables are then overridden in `global.css`.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  await connection()
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -86,6 +100,15 @@ export default function RootLayout({
       >
         <Matomo />
         {children}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={createMatomoPixelUrl()}
+          alt=""
+          width={1}
+          height={1}
+          referrerPolicy="no-referrer"
+          aria-hidden="true"
+        />
       </body>
     </html>
   )
