@@ -1,15 +1,14 @@
-import { PARTNER_PRODUCTS_SLUGS } from "@/lib/slugs"
-import Text from "@/components/text"
-import Intro from "@/components/intro"
-import NavBar from "@/components/nav-bar/nav-bar"
-import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { NavProvider } from "@/components/nav-bar/nav-context"
-import { renderSections } from "@/components/dynamic-zone/render-sections"
+import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
+import Intro from "@/components/intro"
+import Text from "@/components/text"
+import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
+import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { Locale } from "@/lib/locale"
 
-export default async function PartnersProducts({
+export default async function PageDetail({
   activeLocale,
   data,
 }: {
@@ -19,13 +18,12 @@ export default async function PartnersProducts({
   const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale.toLowerCase()}/${PARTNER_PRODUCTS_SLUGS[item.locale.toLowerCase() as Locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }
     },
   )
-
   locales.push(activeLocale)
 
   const { hero, intro, sections } = data
@@ -46,7 +44,6 @@ export default async function PartnersProducts({
         sections.map((section: any, index: number) =>
           renderSections(section, index, activeLocale.locale),
         )}
-
       <Footer locale={activeLocale.locale} />
     </>
   )

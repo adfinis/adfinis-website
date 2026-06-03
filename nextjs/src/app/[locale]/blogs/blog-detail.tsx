@@ -7,29 +7,21 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { Locale, getLocaleDateFormatted } from "@/lib/locale"
-import { NEWS_SLUGS } from "@/lib/slugs"
+import { BLOG_SLUGS } from "@/lib/slugs"
 import { getDictionary } from "@/lib/get-dictionary.server"
 
-export default async function NewsDetail({
+export default async function BlogDetail({
   activeLocale,
   data,
 }: {
   activeLocale: LinkedLocale
   data: any
 }) {
-  const {
-    hero,
-    main_blog,
-    sections,
-    publication_date,
-    publishedAt,
-    createdAt,
-    location,
-  } = data
+  const { hero, main_blog, sections, publishedAt, createdAt } = data
   const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
       return {
-        href: `/${item.locale.toLowerCase()}/${NEWS_SLUGS[item.locale.toLowerCase() as Locale]}/${item.slug}`,
+        href: `/${item.locale.toLowerCase()}/${BLOG_SLUGS[item.locale.toLowerCase() as Locale]}/${item.slug}`,
         locale: item.locale,
         isActive: false,
       }
@@ -48,7 +40,7 @@ export default async function NewsDetail({
         <div className="container sm:px-2">
           <div className="mx-auto pb-8 max-w-4xl">
             <InfoLabel
-              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publication_date ?? publishedAt ?? createdAt, locale: activeLocale.locale as Locale })} ${location ? `| ${location}` : ""}`}
+              text={`${dictionary.common.publishedAt} ${getLocaleDateFormatted({ date: publishedAt ?? createdAt, locale: activeLocale.locale as Locale })}`}
               className="block mb-4"
             />
             <TextImage markdown={main_blog} />
