@@ -13,14 +13,12 @@ function safeEqual(a: string, b: string) {
 }
 
 export async function GET(req: NextRequest) {
-  const secret = process.env.DRAFT_MODE_SECRET
-  if (!secret) {
-    return new Response("Draft mode not configured", { status: 500 })
-  }
+  const secret = process.env.DRAFT_MODE_SECRET ?? ""
 
   const { searchParams } = new URL(req.url)
   const provided = searchParams.get("secret") ?? ""
   const path = searchParams.get("path") ?? "/"
+  const status = searchParams.get("status")
 
   if (!safeEqual(provided, secret)) {
     return new Response("Invalid token", { status: 401 })
@@ -29,6 +27,12 @@ export async function GET(req: NextRequest) {
     return new Response("Invalid path", { status: 400 })
   }
 
-  ;(await draftMode()).enable()
+  const draft = await draftMode()
+  if (status === "published") {
+    draft.disable()
+  } else {
+    draft.enable()
+  }
+
   redirect(path)
 }

@@ -20,7 +20,7 @@ export default ({ env }) => ({
     enabled: true,
     config: {
       allowedOrigins: env('CLIENT_URL'),
-      async handler(uid, { documentId, locale }) {
+      async handler(uid, { documentId, locale, status }) {
         const clientUrl = env('CLIENT_URL')
         const secret = env('DRAFT_MODE_SECRET')
         if (!clientUrl || !secret) return null
@@ -28,9 +28,10 @@ export default ({ env }) => ({
         const path = await buildPreviewUrl(strapi, uid, documentId, locale)
         if (!path) return null
 
-        const url = new URL('/api/draft/enable', clientUrl)
+        const url = new URL('/api/draft', clientUrl)
         url.searchParams.set('secret', secret)
         url.searchParams.set('path', path)
+        url.searchParams.set('status', status)
         return url.href
       },
     },
