@@ -7,7 +7,15 @@ const FooterLegal = async () => {
   return (
     <span className="text-14">
       &copy; {new Date().getFullYear()} Adfinis.
-      {isEnabled && <strong className="ml-2 font-bold">PREVIEW-MODE</strong>}
+      {isEnabled && (
+        <a
+          href="/api/draft/disable"
+          className="ml-2 font-bold underline hover:no-underline"
+          title="Click to disable preview mode"
+        >
+          PREVIEW-MODE
+        </a>
+      )}
     </span>
   )
 }
