@@ -1,5 +1,4 @@
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
-import { getSolutionPage } from "@/lib/strapi"
 import { SOLUTIONS_SLUGS } from "@/lib/slugs"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
@@ -12,13 +11,12 @@ import { Locale } from "@/lib/locale"
 
 export default async function SolutionDetail({
   activeLocale,
-  slug,
+  data,
 }: {
   activeLocale: LinkedLocale
-  slug: string
+  data: any
 }) {
-  const data = await getSolutionPage(activeLocale.locale, slug)
-  const locales = data.localizations.map(
+  const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
       const locale = item.locale.toLowerCase() as Locale
       return {

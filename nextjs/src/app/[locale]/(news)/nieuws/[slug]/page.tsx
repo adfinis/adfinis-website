@@ -62,5 +62,6 @@ export default async function NewsDetailPage(props: {
     isActive: true,
   }
 
-  return <NewsDetail activeLocale={activeLocale} slug={slug} />
+  const data = await getNewsPage(activeLocale.locale, slug)
+  return <NewsDetail activeLocale={activeLocale} data={data} />
 }

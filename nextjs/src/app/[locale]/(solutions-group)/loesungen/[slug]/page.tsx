@@ -63,5 +63,6 @@ export default async function SolutionsDetailPage(props: {
     isActive: true,
   }
 
-  return <SolutionDetail slug={slug} activeLocale={activeLocale} />
+  const data = await getSolutionPage(activeLocale.locale, slug)
+  return <SolutionDetail data={data} activeLocale={activeLocale} />
 }

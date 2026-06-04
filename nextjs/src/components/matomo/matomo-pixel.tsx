@@ -1,13 +1,13 @@
 "use client"
 
-import { useMemo } from "react"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 
 export function MatomoPixel({ url, siteId }: { url: string; siteId: string }) {
   const pathname = usePathname()
+  const [src, setSrc] = useState<string | null>(null)
 
-  // eslint-disable-next-line react-hooks/preserve-manual-memoization
-  const src = useMemo(() => {
+  useEffect(() => {
     const params = new URLSearchParams({
       idsite: siteId,
       rec: "1",
@@ -15,8 +15,10 @@ export function MatomoPixel({ url, siteId }: { url: string; siteId: string }) {
       rand: crypto.randomUUID(),
     })
 
-    return `${url}/matomo.php?${params.toString()}`
-  }, [pathname])
+    setSrc(`${url}/matomo.php?${params.toString()}`)
+  }, [pathname, url, siteId])
+
+  if (!src) return null
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
