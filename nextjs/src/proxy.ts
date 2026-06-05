@@ -23,6 +23,10 @@ export async function proxy(request: NextRequest) {
 
   response.headers.set("Strict-Transport-Security", "max-age=63072000;")
 
+  if (request.cookies.has("__prerender_bypass")) {
+    response.headers.set("Cache-Control", "private, no-store")
+  }
+
   return response
 }
 
