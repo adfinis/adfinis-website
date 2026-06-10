@@ -1,10 +1,9 @@
 "use client"
 import clsx from "clsx"
 import Image from "next/image"
-import React, { useCallback, useEffect, useRef, useState } from "react"
-import { useWindowSize } from "@uidotdev/usehooks"
-import IconChevronLeft from "./icons/icon-chevron-left"
-import IconChevronRight from "./icons/icon-chevron-right"
+import React, { useEffect, useRef, useState } from "react"
+
+const SPEED = 50 // marquee speed in pixels per second
 
 type LogoSliderProps = {
   logos: {
@@ -14,116 +13,85 @@ type LogoSliderProps = {
 }
 
 const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
-  const { width } = useWindowSize()
-  const distance = width || 1500
-  const sliderRef = useRef<HTMLDivElement>(null)
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [hasOverflow, setHasOverflow] = useState(false)
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [overflow, setOverflow] = useState(false)
+  const [shift, setShift] = useState(0)
 
-  function scrollHorizontal(offset: number, duration = 600) {
-    if (!sliderRef.current) return
-    const el = sliderRef.current
-    const start = el.scrollLeft
-    const target = start + offset
-    const startTime = performance.now()
-
-    function step(now: number) {
-      if (!sliderRef.current) return
-      const elapsed = now - startTime
-      const t = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - t, 3) // ease-out cubic
-      sliderRef.current.scrollLeft = start + (target - start) * eased
-      setScrollPosition(sliderRef.current.scrollLeft)
-      if (t < 1) requestAnimationFrame(step)
+  /**
+   * Measures the logos against the viewport to drive the marquee.
+   *
+   * A `ResizeObserver` (re)measures whenever the viewport or track resizes —
+   * including when lazy-loaded logos finish loading and grow the track. Each
+   * pass computes:
+   * - `setWidth`: the intrinsic width of a single logo set (first to last
+   *   logo), read even while the set overflows, to decide if it should scroll
+   *   (`overflow`) or stay static and centered.
+   * - `shift`: the exact seamless loop distance — the offset between a logo and
+   *   its duplicate when the set is doubled — fed to the CSS marquee animation.
+   *
+   * `overflow` is a dependency so that after the set duplicates, the observer
+   * re-runs and measures `shift` from the now-present second copy.
+   */
+  useEffect(() => {
+    const viewport = viewportRef.current
+    const track = trackRef.current
+    if (!viewport || !track) return
+    const measure = () => {
+      const items = track.children
+      const first = items[0] as HTMLElement | undefined
+      const lastOfSet = items[logos.length - 1] as HTMLElement | undefined
+      if (!first || !lastOfSet) return
+      // Intrinsic width of a single logo set (works while overflowing too).
+      const setWidth =
+        lastOfSet.offsetLeft + lastOfSet.offsetWidth - first.offsetLeft
+      setOverflow(setWidth > viewport.clientWidth)
+      // When the set is duplicated, the exact seamless loop distance is the gap
+      // between a logo and its copy; otherwise the marquee is not running.
+      const copy = items[logos.length] as HTMLElement | undefined
+      setShift(copy ? copy.offsetLeft - first.offsetLeft : setWidth)
     }
-    requestAnimationFrame(step)
-  }
+    const observer = new ResizeObserver(measure)
+    observer.observe(viewport)
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [logos.length, overflow])
 
-  const checkOverflow = useCallback(() => {
-    if (!sliderRef.current) return
-    setHasOverflow(
-      sliderRef.current.scrollWidth > sliderRef.current.clientWidth,
-    )
-  }, [])
-
-  useEffect(() => {
-    checkOverflow()
-  }, [width, logos.length, checkOverflow])
-
-  useEffect(() => {
-    if (!sliderRef.current) return
-    const el = sliderRef.current
-    const resizeObserver = new ResizeObserver(() => checkOverflow())
-    resizeObserver.observe(el)
-    Array.from(el.children).forEach((child) => resizeObserver.observe(child))
-    return () => resizeObserver.disconnect()
-  }, [logos.length, checkOverflow])
-
-  useEffect(() => {
-    if (!hasOverflow || !sliderRef.current) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          scrollHorizontal(-distance, 2500)
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -10% 0px",
-        threshold: 1,
-      },
-    )
-
-    sliderRef.current.scrollLeft = distance
-    observer.observe(sliderRef.current)
-
-    return () => {
-      if (sliderRef.current) {
-        observer.unobserve(sliderRef.current)
-      }
-    }
-  }, [hasOverflow])
+  // Render the set twice only when it overflows, so the marquee can loop;
+  // otherwise the logos fit and stay static and centered.
+  const items = overflow ? [...logos, ...logos] : logos
 
   return (
-    <div className="relative w-topbar sm:-mx-8 lg:w-screen lg:mx-[calc(50%-50vw)]">
-      <div className="hidden lg:block">
-        {hasOverflow && scrollPosition > 0 && (
-          <button
-            onClick={() => scrollHorizontal(-distance)}
-            className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 left-6 flex items-center justify-center z-20"
-          >
-            <IconChevronLeft className="w-3.5 h-3.5 text-white" />
-          </button>
-        )}
-        {hasOverflow && (
-          <button
-            onClick={() => scrollHorizontal(distance)}
-            className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center z-20"
-          >
-            <IconChevronRight className="w-3.5 h-3.5 text-white" />
-          </button>
-        )}
-      </div>
-
+    <div
+      ref={viewportRef}
+      data-testid="logo-slider"
+      className="w-full overflow-hidden pt-2 pb-4"
+    >
       <div
-        ref={sliderRef}
-        onScroll={(e) => setScrollPosition(e.currentTarget.scrollLeft)}
-        className={clsx([
-          "flex overflow-x-auto gap-x-8 lg:gap-x-6 overscroll-x-none items-center",
-          "pt-2 pb-4 px-2 2xl:-mr-6",
-          !hasOverflow && "justify-evenly",
-        ])}
+        ref={trackRef}
+        className={clsx(
+          "flex items-center gap-x-8 lg:gap-x-6 2xl:gap-x-12",
+          overflow
+            ? "animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none"
+            : "justify-evenly",
+        )}
+        style={
+          overflow
+            ? ({
+                "--marquee-shift": `${shift}px`,
+                "--marquee-duration": `${shift / SPEED}s`,
+              } as React.CSSProperties)
+            : undefined
+        }
       >
-        {logos.map((logo, i) => (
+        {items.map((logo, i) => (
           <Image
             key={i}
             src={logo.src}
             alt={logo.alt}
             width={300}
             height={128}
-            onLoad={checkOverflow}
-            className="flex-shrink-0 max-h-10 w-auto object-contain"
+            className="max-h-10 w-auto shrink-0 object-contain"
           />
         ))}
       </div>

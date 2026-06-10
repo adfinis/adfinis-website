@@ -104,6 +104,19 @@ const config: Config = {
          */
         "2/3": "2/3",
       },
+      keyframes: {
+        /**
+         * @info rightward marquee: shifts left by one logo-set (--marquee-shift)
+         * then resets, which is seamless because the track holds two identical sets.
+         */
+        marquee: {
+          from: { transform: "translateX(calc(-1 * var(--marquee-shift, 0px)))" },
+          to: { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        marquee: "marquee var(--marquee-duration, 20s) linear infinite",
+      },
     },
   },
   plugins: [tailwindCssFormsPlugin()],
