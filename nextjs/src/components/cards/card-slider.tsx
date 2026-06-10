@@ -69,7 +69,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
   }, [])
 
   return (
-    <div className="w-topbar sm:-mx-8">
+    <div className="container relative px-0" data-testid="card-slider">
       <div className="flex flex-col items-start gap-8 flex-1 self-stretch pb-8 sm:hidden">
         <Title level={2} boldness={"semibold"}>
           {title}
@@ -98,7 +98,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
         data-scheme="light"
         className={clsx([
           "flex overflow-x-auto gap-x-6 snap-x snap-mandatory lg:snap-none overscroll-x-none scroll-smooth",
-          "pt-2 pb-4 px-2 2xl:-mr-6",
+          "pt-2 pb-4 px-2 -mx-2 2xl:-mr-6",
         ])}
         onScroll={(e) => setScrollPosition(e.currentTarget.scrollLeft)}
         ref={sliderRef}
