@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.10",
-    "@sentry/nextjs": "^10.56.0",
+    "@sentry/nextjs": "^10.57.0",
+    "@sentry/profiling-node": "^10.57.0",
     "@smakss/react-scroll-direction": "^4.2.0",
     "@types/node": "^22.7.4",
     "@types/react": "19.2.14",
