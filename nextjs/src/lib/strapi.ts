@@ -2,6 +2,11 @@ import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
+const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
+
+function authHeaders(): HeadersInit {
+  return STRAPI_TOKEN ? { Authorization: `Bearer ${STRAPI_TOKEN}` } : {}
+}
 
 export const TAGS = {
   HOMEPAGE: "homepage",
@@ -288,8 +293,8 @@ async function strapi(query: string, options?: Options) {
     : query
 
   const fetchOptions: RequestInit = isDraft
-    ? { cache: "no-store" }
-    : { next: { tags: options?.tags, revalidate: 3600 } }
+    ? { cache: "no-store", headers: authHeaders() }
+    : { next: { tags: options?.tags, revalidate: 3600 }, headers: authHeaders() }
 
   const page = await fetch(`${STRAPI}/${finalQuery}`, fetchOptions)
   if (!page.ok) {
@@ -317,8 +322,8 @@ export async function strapiWithoutRedirect(locale: Locale) {
     : `homepage?locale=${normalizeLocale(locale)}&status=published`
 
   const fetchOptions: RequestInit = isDraft
-    ? { cache: "no-store" }
-    : { next: { revalidate: 15 } }
+    ? { cache: "no-store", headers: authHeaders() }
+    : { next: { revalidate: 15 }, headers: authHeaders() }
 
   const page = await fetch(`${STRAPI}/${query}`, fetchOptions)
   const { data } = await page.json()
