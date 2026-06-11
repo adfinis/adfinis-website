@@ -61,8 +61,9 @@ export async function buildPreviewUrl(
   strapi: any,
   uid: string,
   documentId: string,
-  locale: Locale,
+  rawLocale: string,
 ): Promise<string | null> {
+  const locale = rawLocale.toLowerCase() as Locale
   if (GLOBAL_UIDS.has(uid)) return null
 
   switch (uid) {
@@ -84,7 +85,7 @@ export async function buildPreviewUrl(
   try {
     const doc = await strapi
       .documents(uid)
-      .findOne({ documentId, locale, status: "draft" })
+      .findOne({ documentId, locale: rawLocale, status: "draft" })
     slug = doc?.slug
   } catch {
     slug = undefined
