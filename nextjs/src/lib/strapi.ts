@@ -121,7 +121,7 @@ export function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
     { raw: true, tags: [TAGS.NEWS_PAGE] },
   )
 }
