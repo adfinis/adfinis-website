@@ -4,8 +4,12 @@ import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
 
-function authHeaders(): HeadersInit {
-  return STRAPI_TOKEN ? { Authorization: `Bearer ${STRAPI_TOKEN}` } : {}
+export function strapiFetch(path: string, init: RequestInit = {}) {
+  const headers = new Headers(init.headers)
+  if (STRAPI_TOKEN && !headers.has("Authorization")) {
+    headers.set("Authorization", `Bearer ${STRAPI_TOKEN}`)
+  }
+  return fetch(`${STRAPI}/${path}`, { ...init, headers })
 }
 
 export const TAGS = {
@@ -293,10 +297,10 @@ async function strapi(query: string, options?: Options) {
     : query
 
   const fetchOptions: RequestInit = isDraft
-    ? { cache: "no-store", headers: authHeaders() }
-    : { next: { tags: options?.tags, revalidate: 3600 }, headers: authHeaders() }
+    ? { cache: "no-store" }
+    : { next: { tags: options?.tags, revalidate: 3600 } }
 
-  const page = await fetch(`${STRAPI}/${finalQuery}`, fetchOptions)
+  const page = await strapiFetch(finalQuery, fetchOptions)
   if (!page.ok) {
     return notFound()
   }
@@ -322,10 +326,10 @@ export async function strapiWithoutRedirect(locale: Locale) {
     : `homepage?locale=${normalizeLocale(locale)}&status=published`
 
   const fetchOptions: RequestInit = isDraft
-    ? { cache: "no-store", headers: authHeaders() }
-    : { next: { revalidate: 15 }, headers: authHeaders() }
+    ? { cache: "no-store" }
+    : { next: { revalidate: 15 } }
 
-  const page = await fetch(`${STRAPI}/${query}`, fetchOptions)
+  const page = await strapiFetch(query, fetchOptions)
   const { data } = await page.json()
   return data
 }
