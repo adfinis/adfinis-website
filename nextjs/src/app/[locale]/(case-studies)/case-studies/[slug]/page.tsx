@@ -63,5 +63,6 @@ export default async function DetailPage(props: {
     locale: locale,
     isActive: true,
   }
-  return <CaseStudyDetailPage slug={slug} activeLocale={activeLocale} />
+  const data = await getCaseStudy(activeLocale.locale, slug)
+  return <CaseStudyDetailPage data={data} activeLocale={activeLocale} />
 }

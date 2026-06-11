@@ -1,6 +1,5 @@
 import { headers } from "next/headers"
-
-const STRAPI = process.env.STRAPI_API || ""
+import { strapiFetch } from "./strapi"
 
 function stripHostname(referrer: string): string {
   try {
@@ -15,12 +14,10 @@ export default async function formSubmit(payload: any) {
   const headersList = await headers()
   payload.data.from_url = stripHostname(headersList.get("referer") || "")
 
-  return fetch(`${STRAPI}/forms-betas`, {
+  return strapiFetch("forms-betas", {
     cache: "no-cache",
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   })
 }

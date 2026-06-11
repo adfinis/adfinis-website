@@ -1,4 +1,3 @@
-import { getCaseStudy } from "@/lib/strapi"
 import Text from "@/components/text"
 import Intro from "@/components/intro"
 import NavBar from "@/components/nav-bar/nav-bar"
@@ -12,13 +11,12 @@ import { Locale } from "@/lib/locale"
 
 export default async function CaseStudyDetailPage({
   activeLocale,
-  slug,
+  data,
 }: {
   activeLocale: LinkedLocale
-  slug: string
+  data: any
 }) {
-  const data = await getCaseStudy(activeLocale.locale, slug)
-  const locales = data.localizations.map(
+  const locales = (data.localizations ?? []).map(
     (item: { locale: Locale; slug: string }) => {
       return {
         href: `/${item.locale.toLowerCase()}/${CASE_STUDIES_SLUGS[item.locale.toLowerCase() as Locale]}/${item.slug}`,

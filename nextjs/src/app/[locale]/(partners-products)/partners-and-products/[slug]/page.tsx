@@ -66,5 +66,6 @@ export default async function PartnerAndProductsPage(props: {
     isActive: true,
   }
 
-  return <PartnersProducts activeLocale={activeLocale} slug={slug} />
+  const data = await getPartnerAndProductsPage(activeLocale.locale, slug)
+  return <PartnersProducts activeLocale={activeLocale} data={data} />
 }

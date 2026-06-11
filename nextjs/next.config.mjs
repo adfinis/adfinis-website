@@ -28,6 +28,10 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    minimumCacheTTL: 2_592_000,
+    deviceSizes: [640, 828, 1080, 1920],
+    imageSizes: [64, 128, 256, 384],
+    qualities: [75],
   },
   async headers() {
     if (process.env.NODE_ENV !== "production") {
@@ -44,7 +48,7 @@ const nextConfig = {
           },
           {
             key: "Cache-Control",
-            value: "public, max-age=15, must-revalidate", // 15s
+            value: "public, s-maxage=60, stale-while-revalidate=86400",
           },
         ],
       },

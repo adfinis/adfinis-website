@@ -6,11 +6,13 @@ import { factories } from '@strapi/strapi'
 
 export default factories.createCoreController('api::news-page.news-page', ({ strapi }) => ({
   async findOne(ctx) {
-    const { id: slug } = ctx.params;
-    const { query } = ctx;
+    const { id: param } = ctx.params;
+    const { byDocumentId, ...query } = ctx.query;
+
+    const filters = byDocumentId === 'true' ? { documentId: param } : { slug: param };
 
     const entity = await strapi.documents('api::news-page.news-page').findFirst({
-      filters: { slug },
+      filters,
       ...query,
     });
 

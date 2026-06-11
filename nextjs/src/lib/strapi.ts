@@ -1,6 +1,16 @@
+import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 const STRAPI = process.env.STRAPI_API || ""
+const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
+
+export function strapiFetch(path: string, init: RequestInit = {}) {
+  const headers = new Headers(init.headers)
+  if (STRAPI_TOKEN && !headers.has("Authorization")) {
+    headers.set("Authorization", `Bearer ${STRAPI_TOKEN}`)
+  }
+  return fetch(`${STRAPI}/${path}`, { ...init, headers })
+}
 
 export const TAGS = {
   HOMEPAGE: "homepage",
@@ -111,7 +121,7 @@ export function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&status=published&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
     { raw: true, tags: [TAGS.NEWS_PAGE] },
   )
 }
@@ -210,6 +220,69 @@ export function getHallmark(id: string) {
   })
 }
 
+
+export function getPageByDocumentId(documentId: string, locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `pages/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.PAGE] },
+  )
+}
+
+export function getCaseStudyByDocumentId(documentId: string, locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `page-case-studies/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.PAGE_CASE_STUDY] },
+  )
+}
+
+export function getPartnerAndProductsByDocumentId(
+  documentId: string,
+  locale: Locale,
+) {
+  validateLocale(locale)
+  return strapi(
+    `page-partner-and-products/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.PAGE_PARTNER_AND_PRODUCT] },
+  )
+}
+
+export function getSolutionPageByDocumentId(
+  documentId: string,
+  locale: Locale,
+) {
+  validateLocale(locale)
+  return strapi(
+    `solutions-pages/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.SOLUTIONS_PAGE] },
+  )
+}
+
+export function getNewsPageByDocumentId(documentId: string, locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `news-pages/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.NEWS_PAGE] },
+  )
+}
+
+export function getBlogPageByDocumentId(documentId: string, locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `blog-pages/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.BLOG_PAGE] },
+  )
+}
+
+export function getEventPageByDocumentId(documentId: string, locale: Locale) {
+  validateLocale(locale)
+  return strapi(
+    `event-pages/${documentId}?byDocumentId=true&locale=${normalizeLocale(locale)}&status=published`,
+    { tags: [TAGS.EVENT_PAGE] },
+  )
+}
+
 type Options =
   | {
       raw?: boolean
@@ -217,12 +290,17 @@ type Options =
     }
   | undefined
 async function strapi(query: string, options?: Options) {
-  const page = await fetch(`${STRAPI}/${query}`, {
-    next: {
-      tags: options?.tags,
-      revalidate: 3600,
-    },
-  })
+  const { isEnabled: isDraft } = await draftMode()
+
+  const finalQuery = isDraft
+    ? query.replace(/(\?|&)status=published/, "$1status=draft")
+    : query
+
+  const fetchOptions: RequestInit = isDraft
+    ? { cache: "no-store" }
+    : { next: { tags: options?.tags, revalidate: 3600 } }
+
+  const page = await strapiFetch(finalQuery, fetchOptions)
   if (!page.ok) {
     return notFound()
   }
@@ -241,14 +319,17 @@ async function strapi(query: string, options?: Options) {
 
 export async function strapiWithoutRedirect(locale: Locale) {
   validateLocale(locale)
-  const page = await fetch(
-    `${STRAPI}/homepage?locale=${normalizeLocale(locale)}&status=published`,
-    {
-      next: {
-        revalidate: 15,
-      },
-    },
-  )
+  const { isEnabled: isDraft } = await draftMode()
+
+  const query = isDraft
+    ? `homepage?locale=${normalizeLocale(locale)}&status=draft`
+    : `homepage?locale=${normalizeLocale(locale)}&status=published`
+
+  const fetchOptions: RequestInit = isDraft
+    ? { cache: "no-store" }
+    : { next: { revalidate: 15 } }
+
+  const page = await strapiFetch(query, fetchOptions)
   const { data } = await page.json()
   return data
 }

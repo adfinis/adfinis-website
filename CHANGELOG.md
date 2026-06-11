@@ -17,6 +17,18 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.28.0] - 2026-06-12
+
+- fix (AW-303): preview for upper case locales
+- refactor (AW-388): remove duplicates
+- refactor (AW-388): route all Strapi calls through shared strapiFetch helper
+- feat (AW-388): send Strapi API token on all REST calls
+- feat: [AW-332] Change width to container (#355)
+- feat AW-386 add sentry profiling (#354)
+- feat: [AW-354] Implement marquee effect for logo slider (#353)
+- fix (AW-303): bypass shared cache when draft mode cookie is present
+- feat AW-303 preview mode with intelligent cache clearing (#351)
+
 ## [1.27.2] - 2026-05-28
 
 - fix AW-379 friendly analytics

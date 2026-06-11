@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server"
 import { ABSOLUTE_URL } from "./absolute-url"
 import { type Locale, locales } from "./locale"
-
-const STRAPI = process.env.STRAPI_API || ""
+import { strapiFetch } from "./strapi"
 const DEFAULT_LOCALE = "en"
 const HREFLANG_MAP: Record<Locale, string> = {
   en: "en",
@@ -151,8 +150,8 @@ export async function buildCategorySitemap(options: {
     entries.push(...buildIndexEntries((locale) => buildUrl(locale)))
   }
 
-  const response = await fetch(
-    `${STRAPI}/${endpoint}?populate[localizations][fields][0]=slug&populate[localizations][fields][1]=locale&fields[0]=slug&fields[1]=locale&pagination[pageSize]=1000`,
+  const response = await strapiFetch(
+    `${endpoint}?populate[localizations][fields][0]=slug&populate[localizations][fields][1]=locale&fields[0]=slug&fields[1]=locale&pagination[pageSize]=1000`,
     { next: { revalidate: 15 } },
   )
   const { data } = await response.json()
