@@ -1,6 +1,7 @@
 import { headers } from "next/headers"
 
 const STRAPI = process.env.STRAPI_API || ""
+const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
 
 function stripHostname(referrer: string): string {
   try {
@@ -20,6 +21,7 @@ export default async function formSubmit(payload: any) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...(STRAPI_TOKEN ? { Authorization: `Bearer ${STRAPI_TOKEN}` } : {}),
     },
     body: JSON.stringify(payload),
   })
