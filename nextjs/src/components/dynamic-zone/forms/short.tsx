@@ -3,6 +3,7 @@
 import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
+import Altcha from "@/components/form-fields/altcha"
 import Button from "@/components/button"
 import { saveSimpleForm } from "@/app/actions"
 import { useRef, useActionState } from "react"
@@ -53,6 +54,7 @@ export default function Short({ submitLabel, dictionary, locale }: Props) {
           errorMessage={state?.errors?.privacy_policy ?? []}
           defaultChecked={state?.values?.privacy_policy}
         />
+        <Altcha errorMessage={state?.errors?.altcha ?? []} />
         <div className="w-full text-center">
           {state.success && (
             <p className="text-input-primary">
