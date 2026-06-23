@@ -29,4 +29,14 @@ describe("GET /api/altcha/challenge", () => {
     const response = await GET()
     expect(response.headers.get("Cache-Control")).toBe("no-store")
   })
+
+  test("returns 503 when ALTCHA_HMAC_KEY is missing", async () => {
+    vi.stubEnv("ALTCHA_HMAC_KEY", "")
+    const response = await GET()
+    expect(response.status).toBe(503)
+    expect(response.headers.get("Cache-Control")).toBe("no-store")
+
+    const data = await response.json()
+    expect(data).toEqual({ error: "Service unavailable" })
+  })
 })

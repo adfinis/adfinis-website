@@ -10,7 +10,9 @@ type Props = {
 export default function Altcha({ errorMessage = [] }: Props) {
   useEffect(() => {
     // Register the <altcha-widget> custom element once on the client.
-    import("altcha")
+    import("altcha").catch((error) => {
+      console.error("Failed to load Altcha widget", error)
+    })
   }, [])
 
   return (
