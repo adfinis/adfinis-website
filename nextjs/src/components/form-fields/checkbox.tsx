@@ -8,8 +8,14 @@ type Props = {
   name: string
   label: string
   errorMessage: string[]
+  defaultChecked?: boolean
 }
-export default function Checkbox({ name, label, errorMessage }: Props) {
+export default function Checkbox({
+  name,
+  label,
+  errorMessage,
+  defaultChecked,
+}: Props) {
   const id = useId()
   return (
     <div className="flex gap-2 relative">
@@ -20,6 +26,7 @@ export default function Checkbox({ name, label, errorMessage }: Props) {
         id={id}
         name={name}
         type="checkbox"
+        defaultChecked={defaultChecked}
       />
       <label
         htmlFor={id}
