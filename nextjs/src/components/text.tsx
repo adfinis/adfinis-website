@@ -1,8 +1,7 @@
 import React from "react"
 import Markdown, { defaultUrlTransform } from "react-markdown"
 import remarkGfm from "remark-gfm"
-import rehypeHighlight from "rehype-highlight"
-import "highlight.js/styles/github.css"
+import CodeBlock from "./markdown/code-block"
 
 interface TextProps {
   markdown: string
@@ -59,7 +58,7 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
       <Markdown
         allowedElements={allowedElements}
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        components={{ code: CodeBlock }}
         urlTransform={(url) =>
           url.startsWith("tel:") ? url : defaultUrlTransform(url)
         }

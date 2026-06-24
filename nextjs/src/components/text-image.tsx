@@ -1,9 +1,8 @@
 import React from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import rehypeHighlight from "rehype-highlight"
-import "highlight.js/styles/github.css"
 import { allowedElements } from "./text"
+import CodeBlock from "./markdown/code-block"
 
 interface TextImage {
   markdown: string
@@ -39,7 +38,7 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
       <Markdown
         allowedElements={[...allowedElements, "img"]}
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        components={{ code: CodeBlock }}
       >
         {markdown}
       </Markdown>
