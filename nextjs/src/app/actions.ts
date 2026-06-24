@@ -6,12 +6,14 @@ import formsparkSubmit from "@/lib/formspark-submit"
 import { type Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 import { getDictionary } from "@/lib/get-dictionary.server"
+import { verifyAltcha } from "@/lib/altcha"
 
 type SaveSimpleFormStateErrors = {
   first_name?: string[]
   last_name?: string[]
   email?: string[]
   privacy_policy?: string[]
+  altcha?: string[]
 }
 
 type SimpleFormValues = {
@@ -77,6 +79,14 @@ export async function saveSimpleForm(
     lastName: (formData.get("lastName") as string) ?? "",
     email: (formData.get("email") as string) ?? "",
     privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
   }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -155,6 +165,14 @@ export async function saveRaffleForm(
     privacy_policy: formData.get("privacy_policy") != null,
     agree_to_receive_mail: formData.get("agree_to_receive_mail") != null,
   }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -220,6 +238,14 @@ export async function saveStandardForm(
     company_name: (formData.get("company_name") as string) ?? "",
     job_function: (formData.get("job_function") as string) ?? "",
     privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
   }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -293,6 +319,14 @@ export async function saveContactForm(
     job_function: (formData.get("job_function") as string) ?? "",
     message: (formData.get("message") as string) ?? "",
     privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
   }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
@@ -379,6 +413,14 @@ export async function saveEventForm(
     message: (formData.get("message") as string) ?? "",
     phone_number: (formData.get("phone_number") as string) ?? "",
     privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
   }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),

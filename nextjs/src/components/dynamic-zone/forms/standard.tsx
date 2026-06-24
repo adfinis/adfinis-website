@@ -5,6 +5,7 @@ import FormColumns from "@/components/form/form-columns"
 import Input from "@/components/form-fields/input"
 import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
+import Altcha from "@/components/form-fields/altcha"
 import Button from "@/components/button"
 import { saveStandardForm } from "@/app/actions"
 import { useRestoreFormValues } from "@/components/form/use-restore-form-values"
@@ -64,6 +65,7 @@ export default function Standard({ submitLabel, dictionary, locale }: Props) {
           errorMessage={state?.errors?.privacy_policy ?? []}
           defaultChecked={state?.values?.privacy_policy}
         />
+        <Altcha errorMessage={state?.errors?.altcha ?? []} />
         <div className="w-full text-center">
           {state.success ? (
             <p className="text-input-primary">
