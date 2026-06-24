@@ -10,6 +10,7 @@ type Props = {
   label: string
   rows?: number
   errorMessage: string[]
+  defaultValue?: string
 }
 
 export default function Textarea({
@@ -17,6 +18,7 @@ export default function Textarea({
   label,
   errorMessage,
   rows = 5,
+  defaultValue,
 }: Props) {
   const id = useId()
   return (
@@ -29,6 +31,7 @@ export default function Textarea({
         id={id}
         name={name}
         rows={rows}
+        defaultValue={defaultValue}
       />
       {errorMessage.length > 0 && (
         <p className={errorMessageClasses}>{errorMessage[0]}</p>

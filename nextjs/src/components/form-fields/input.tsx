@@ -9,9 +9,15 @@ type Props = {
   name: string
   label: string
   errorMessage: string[]
+  defaultValue?: string
 }
 
-export default function Input({ name, label, errorMessage }: Props) {
+export default function Input({
+  name,
+  label,
+  errorMessage,
+  defaultValue,
+}: Props) {
   const id = useId()
   return (
     <div className="grid gap-2 relative">
@@ -20,6 +26,7 @@ export default function Input({ name, label, errorMessage }: Props) {
         type="text"
         name={name}
         id={id}
+        defaultValue={defaultValue}
         className={inputClasses({
           variant: errorMessage.length > 0 ? "error" : "default",
         })}
