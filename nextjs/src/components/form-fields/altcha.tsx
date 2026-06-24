@@ -19,7 +19,7 @@ export default function Altcha({ errorMessage = [] }: Props) {
     <div className="grid gap-2 relative">
       {/* @ts-expect-error - <altcha-widget> is a custom element */}
       <altcha-widget
-        challengeurl="/api/altcha/challenge"
+        challenge="/api/altcha/challenge"
         name="altcha"
         hidefooter
         auto="onload"
