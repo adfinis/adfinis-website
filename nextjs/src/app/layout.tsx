@@ -69,11 +69,25 @@ export default async function RootLayout({
   const matomoSiteId = process.env.MATOMO_SITE_ID ?? ""
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Adfinis AG",
-    url: "https://www.adfinis.com/",
-    logo: "https://adfinis-assets.ams3.cdn.digitaloceanspaces.com/public-assets/Adfinis_Blue_3_41b329491f_25f3a40e9e.png",
+    "@context": "https://schema.org/",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${ABSOLUTE_URL}/#website`,
+        name: "Adfinis AG",
+        url: `${ABSOLUTE_URL}/`,
+      },
+      {
+        "@type": "Organization",
+        "@id": `${ABSOLUTE_URL}/#organization`,
+        name: "Adfinis AG",
+        url: `${ABSOLUTE_URL}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: "https://adfinis-assets.ams3.cdn.digitaloceanspaces.com/public-assets/Adfinis_Blue_3_41b329491f_25f3a40e9e.png",
+        },
+      },
+    ],
   }
 
   return (
