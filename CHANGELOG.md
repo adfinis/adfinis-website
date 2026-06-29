@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.29.0] - 2026-06-29
+
+- feat (AW-383): improve structured data
+- feat (AW-387): dynamic import highlight.js (#361)
+- fix (AW-387): use v3 `challenge` attribute for Altcha widget URL
+- feat (AW-304): add captcha to forms frontend (#360)
+- fix (AW-385): preserve form values when validation fails
+
 ## [1.28.0] - 2026-06-12
 
 - fix (AW-303): preview for upper case locales

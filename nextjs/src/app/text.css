@@ -113,6 +113,11 @@
         & code {
             @apply text-18 lg:text-16;
         }
+        & pre > code {
+            @apply block overflow-x-auto rounded-md;
+            padding: 1em;
+            background: #ffffff;
+        }
         p > code {
             @apply bg-stone/10 px-1 py-0.5 rounded-md;
         }

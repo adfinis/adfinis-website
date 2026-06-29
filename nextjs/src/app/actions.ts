@@ -6,17 +6,27 @@ import formsparkSubmit from "@/lib/formspark-submit"
 import { type Dictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 import { getDictionary } from "@/lib/get-dictionary.server"
+import { verifyAltcha } from "@/lib/altcha"
 
 type SaveSimpleFormStateErrors = {
   first_name?: string[]
   last_name?: string[]
   email?: string[]
   privacy_policy?: string[]
+  altcha?: string[]
+}
+
+type SimpleFormValues = {
+  firstName?: string
+  lastName?: string
+  email?: string
+  privacy_policy?: boolean
 }
 
 type SaveSimpleFormState = {
   success: boolean
   errors?: SaveSimpleFormStateErrors
+  values?: SimpleFormValues
 }
 
 const shape = (dictionary: Dictionary) => {
@@ -64,6 +74,20 @@ export async function saveSimpleForm(
       }),
     ),
   })
+  const submittedValues: SimpleFormValues = {
+    firstName: (formData.get("firstName") as string) ?? "",
+    lastName: (formData.get("lastName") as string) ?? "",
+    email: (formData.get("email") as string) ?? "",
+    privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -85,6 +109,7 @@ export async function saveSimpleForm(
     } catch (e) {
       return {
         success: false,
+        values: submittedValues,
       }
     }
 
@@ -96,6 +121,7 @@ export async function saveSimpleForm(
   return {
     success: false,
     errors: validation.error.flatten().fieldErrors,
+    values: submittedValues,
   }
 }
 
@@ -108,9 +134,20 @@ type RaffleFormStateErrors = {
   agree_to_receive_mail?: string[]
 } & StandardFormStateErrors
 
+type RaffleFormValues = {
+  firstName?: string
+  lastName?: string
+  email?: string
+  company_name?: string
+  job_function?: string
+  privacy_policy?: boolean
+  agree_to_receive_mail?: boolean
+}
+
 type RaffleFormState = {
   success: boolean
   errors?: RaffleFormStateErrors
+  values?: RaffleFormValues
 }
 export async function saveRaffleForm(
   locale: Locale,
@@ -119,6 +156,23 @@ export async function saveRaffleForm(
 ): Promise<RaffleFormState> {
   const dictionary = await getDictionary(locale)
   const schema = z.object(raffleFormValidation(dictionary))
+  const submittedValues: RaffleFormValues = {
+    firstName: (formData.get("firstName") as string) ?? "",
+    lastName: (formData.get("lastName") as string) ?? "",
+    email: (formData.get("email") as string) ?? "",
+    company_name: (formData.get("company_name") as string) ?? "",
+    job_function: (formData.get("job_function") as string) ?? "",
+    privacy_policy: formData.get("privacy_policy") != null,
+    agree_to_receive_mail: formData.get("agree_to_receive_mail") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -146,6 +200,7 @@ export async function saveRaffleForm(
     } catch (e) {
       return {
         success: false,
+        values: submittedValues,
       }
     }
 
@@ -155,12 +210,19 @@ export async function saveRaffleForm(
   return {
     success: false,
     errors: validation.error.flatten().fieldErrors,
+    values: submittedValues,
   }
+}
+
+type StandardFormValues = SimpleFormValues & {
+  company_name?: string
+  job_function?: string
 }
 
 type StandardFormState = {
   success: boolean
   errors?: StandardFormStateErrors
+  values?: StandardFormValues
 }
 export async function saveStandardForm(
   locale: Locale,
@@ -169,6 +231,22 @@ export async function saveStandardForm(
 ): Promise<StandardFormState> {
   const dictionary = await getDictionary(locale)
   const schema = z.object(shape(dictionary))
+  const submittedValues: StandardFormValues = {
+    firstName: (formData.get("firstName") as string) ?? "",
+    lastName: (formData.get("lastName") as string) ?? "",
+    email: (formData.get("email") as string) ?? "",
+    company_name: (formData.get("company_name") as string) ?? "",
+    job_function: (formData.get("job_function") as string) ?? "",
+    privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -195,6 +273,7 @@ export async function saveStandardForm(
     } catch (e) {
       return {
         success: false,
+        values: submittedValues,
       }
     }
 
@@ -204,6 +283,7 @@ export async function saveStandardForm(
   return {
     success: false,
     errors: validation.error.flatten().fieldErrors,
+    values: submittedValues,
   }
 }
 
@@ -211,9 +291,14 @@ type ContactFormStateErrors = {
   message?: string[]
 } & StandardFormStateErrors
 
+type ContactFormValues = StandardFormValues & {
+  message?: string
+}
+
 type ContactFormState = {
   success: boolean
   errors?: ContactFormStateErrors
+  values?: ContactFormValues
 }
 export async function saveContactForm(
   locale: Locale,
@@ -226,6 +311,23 @@ export async function saveContactForm(
     //@ts-ignore
     message: z.string().trim().min(1, dictionary.validation.required),
   })
+  const submittedValues: ContactFormValues = {
+    firstName: (formData.get("firstName") as string) ?? "",
+    lastName: (formData.get("lastName") as string) ?? "",
+    email: (formData.get("email") as string) ?? "",
+    company_name: (formData.get("company_name") as string) ?? "",
+    job_function: (formData.get("job_function") as string) ?? "",
+    message: (formData.get("message") as string) ?? "",
+    privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -252,6 +354,7 @@ export async function saveContactForm(
     } catch (e) {
       return {
         success: false,
+        values: submittedValues,
       }
     }
 
@@ -261,6 +364,7 @@ export async function saveContactForm(
   return {
     success: false,
     errors: validation.error.flatten().fieldErrors,
+    values: submittedValues,
   }
 }
 
@@ -268,9 +372,14 @@ type EventFormStateErrors = {
   phone_number?: string[]
 } & ContactFormStateErrors
 
+type EventFormValues = ContactFormValues & {
+  phone_number?: string
+}
+
 type EventFormState = {
   success: boolean
   errors?: EventFormStateErrors
+  values?: EventFormValues
 }
 export async function saveEventForm(
   locale: Locale,
@@ -295,6 +404,24 @@ export async function saveEventForm(
         message: dictionary.validation.phone.long,
       }),
   })
+  const submittedValues: EventFormValues = {
+    firstName: (formData.get("firstName") as string) ?? "",
+    lastName: (formData.get("lastName") as string) ?? "",
+    email: (formData.get("email") as string) ?? "",
+    company_name: (formData.get("company_name") as string) ?? "",
+    job_function: (formData.get("job_function") as string) ?? "",
+    message: (formData.get("message") as string) ?? "",
+    phone_number: (formData.get("phone_number") as string) ?? "",
+    privacy_policy: formData.get("privacy_policy") != null,
+  }
+  const altchaOk = await verifyAltcha(formData.get("altcha"))
+  if (!altchaOk) {
+    return {
+      success: false,
+      errors: { altcha: [dictionary.validation.required] },
+      values: submittedValues,
+    }
+  }
   const validation = schema.safeParse({
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -322,6 +449,7 @@ export async function saveEventForm(
     } catch (e) {
       return {
         success: false,
+        values: submittedValues,
       }
     }
 
@@ -331,5 +459,6 @@ export async function saveEventForm(
   return {
     success: false,
     errors: validation.error.flatten().fieldErrors,
+    values: submittedValues,
   }
 }
