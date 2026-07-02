@@ -1,9 +1,10 @@
 import { z } from "zod"
-import formSubmit from "@/lib/form-submit"
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { getDictionary, type Dictionary } from "@/lib/get-dictionary.server"
 import { type Locale } from "@/lib/locale"
+import { headers } from "next/headers"
+import { strapiFetch } from "@/lib/strapi"
 
 const fieldBuilders = {
   first_name: (d: Dictionary) =>
@@ -130,18 +131,37 @@ export async function runFormAction(
       ([k]) => !exclude.has(k as FieldKey),
     ),
   )
-  const data = {
-    type: config.type,
-    ...validated,
-    privacy_policy: "yes",
-    is_created_at: new Date(),
-  }
-
   try {
+    const headersList = await headers()
+    const data = {
+      type: config.type,
+      ...validated,
+      privacy_policy: "yes",
+      from_url: stripHostname(headersList.get("referer") || ""),
+      is_created_at: new Date(),
+    }
     await Promise.all([formSubmit({ data }), formsparkSubmit(data)])
   } catch {
     return { success: false, values }
   }
 
   return { success: true }
+}
+
+function stripHostname(referrer: string): string {
+  try {
+    const url = new URL(referrer)
+    return url.pathname + url.search + url.hash
+  } catch {
+    return referrer
+  }
+}
+
+async function formSubmit(payload: any) {
+  return strapiFetch("forms-betas", {
+    cache: "no-cache",
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
 }
