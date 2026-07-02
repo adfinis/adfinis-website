@@ -1,13 +1,18 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 vi.mock("server-only", () => ({}))
-vi.mock("@/lib/form-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/formspark-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/altcha", () => ({ verifyAltcha: vi.fn() }))
+vi.mock("@/lib/strapi", () => ({ strapiFetch: vi.fn() }))
+vi.mock("next/headers", () => ({
+  headers: vi.fn(
+    async () => new Headers({ referer: "https://localhost:3000/en/contact" }),
+  ),
+}))
 
-import formSubmit from "@/lib/form-submit"
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
+import { strapiFetch } from "@/lib/strapi"
 import {
   saveSimpleForm,
   saveStandardForm,
@@ -16,7 +21,7 @@ import {
   saveRaffleForm,
 } from "./actions"
 
-const mockFormSubmit = vi.mocked(formSubmit)
+const mockStrapiFetch = vi.mocked(strapiFetch)
 const mockFormsparkSubmit = vi.mocked(formsparkSubmit)
 const mockVerifyAltcha = vi.mocked(verifyAltcha)
 
@@ -41,18 +46,19 @@ function withCompany(fd: FormData): FormData {
 beforeEach(() => {
   vi.clearAllMocks()
   mockVerifyAltcha.mockResolvedValue(true)
-  mockFormSubmit.mockResolvedValue(undefined as never)
+  mockStrapiFetch.mockResolvedValue(undefined as never)
   mockFormsparkSubmit.mockResolvedValue(undefined as never)
 })
 
 describe("saveSimpleForm", () => {
-  test("happy path submits with type 'short' and forced privacy_policy", async () => {
+  test("happy path submits with type 'short', forced privacy_policy and from_url", async () => {
     const result = await saveSimpleForm("en", { success: false }, base())
     expect(result).toEqual({ success: true })
-    expect(mockFormSubmit).toHaveBeenCalledTimes(1)
+    expect(mockStrapiFetch).toHaveBeenCalledTimes(1)
     expect(mockFormsparkSubmit).toHaveBeenCalledTimes(1)
     expect(lastPayload().type).toBe("short")
     expect(lastPayload().privacy_policy).toBe("yes")
+    expect(lastPayload().from_url).toBe("/en/contact")
   })
 
   test("altcha failure returns altcha error and does not submit", async () => {
@@ -60,7 +66,7 @@ describe("saveSimpleForm", () => {
     const result = await saveSimpleForm("en", { success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors?.altcha).toBeDefined()
-    expect(mockFormSubmit).not.toHaveBeenCalled()
+    expect(mockStrapiFetch).not.toHaveBeenCalled()
   })
 
   test("validation failure returns snake_case errors and camel/snake values", async () => {
@@ -74,7 +80,7 @@ describe("saveSimpleForm", () => {
   })
 
   test("backend failure returns values without errors", async () => {
-    mockFormSubmit.mockRejectedValue(new Error("strapi down"))
+    mockStrapiFetch.mockRejectedValue(new Error("strapi down"))
     const result = await saveSimpleForm("en", { success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors).toBeUndefined()

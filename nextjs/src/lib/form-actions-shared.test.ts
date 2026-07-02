@@ -1,16 +1,21 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 vi.mock("server-only", () => ({}))
-vi.mock("@/lib/form-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/formspark-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/altcha", () => ({ verifyAltcha: vi.fn() }))
+vi.mock("@/lib/strapi", () => ({ strapiFetch: vi.fn() }))
+vi.mock("next/headers", () => ({
+  headers: vi.fn(
+    async () => new Headers({ referer: "https://localhost:3000/en/contact" }),
+  ),
+}))
 
-import formSubmit from "@/lib/form-submit"
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
+import { strapiFetch } from "@/lib/strapi"
 import { runFormAction, type FormConfig } from "./form-actions-shared"
 
-const mockFormSubmit = vi.mocked(formSubmit)
+const mockStrapiFetch = vi.mocked(strapiFetch)
 const mockFormsparkSubmit = vi.mocked(formsparkSubmit)
 const mockVerifyAltcha = vi.mocked(verifyAltcha)
 
@@ -42,7 +47,7 @@ describe("runFormAction", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockVerifyAltcha.mockResolvedValue(true)
-    mockFormSubmit.mockResolvedValue(undefined as never)
+    mockStrapiFetch.mockResolvedValue(undefined as never)
     mockFormsparkSubmit.mockResolvedValue(undefined as never)
   })
 
@@ -51,7 +56,7 @@ describe("runFormAction", () => {
     const result = await runFormAction(STANDARD, "en", validStandardFormData())
     expect(result.success).toBe(false)
     expect(result.errors?.altcha).toEqual(["This field is required."])
-    expect(mockFormSubmit).not.toHaveBeenCalled()
+    expect(mockStrapiFetch).not.toHaveBeenCalled()
     expect(mockFormsparkSubmit).not.toHaveBeenCalled()
   })
 
@@ -72,16 +77,18 @@ describe("runFormAction", () => {
     expect(result.values?.lastName).toBe("Doe")
     expect(result.values?.company_name).toBe("Adfinis")
     expect(result.values?.privacy_policy).toBe(false)
-    expect(mockFormSubmit).not.toHaveBeenCalled()
+    expect(mockStrapiFetch).not.toHaveBeenCalled()
   })
 
-  test("submits to both backends with trimmed, forced payload on success", async () => {
+  test("submits to both backends with trimmed, forced payload including from_url on success", async () => {
     const fd = validStandardFormData()
     fd.set("company_name", "  Adfinis  ")
     const result = await runFormAction(STANDARD, "en", fd)
     expect(result).toEqual({ success: true })
-    expect(mockFormSubmit).toHaveBeenCalledTimes(1)
+    expect(mockStrapiFetch).toHaveBeenCalledTimes(1)
     expect(mockFormsparkSubmit).toHaveBeenCalledTimes(1)
+
+    // formspark receives the data object directly
     const payload = mockFormsparkSubmit.mock.calls[0][0] as Record<
       string,
       unknown
@@ -89,12 +96,26 @@ describe("runFormAction", () => {
     expect(payload.type).toBe("standard")
     expect(payload.privacy_policy).toBe("yes")
     expect(payload.company_name).toBe("Adfinis") // trimmed
+    expect(payload.from_url).toBe("/en/contact") // hostname stripped from referer
     expect(payload.is_created_at).toBeInstanceOf(Date)
-    expect(mockFormSubmit).toHaveBeenCalledWith({ data: payload })
+
+    // strapi receives { data } POSTed to the forms-betas endpoint
+    const [path, init] = mockStrapiFetch.mock.calls[0]
+    expect(path).toBe("forms-betas")
+    expect(init?.method).toBe("POST")
+    expect(JSON.parse(init?.body as string).data.from_url).toBe("/en/contact")
   })
 
-  test("returns values without errors when a backend throws", async () => {
+  test("returns values without errors when formspark throws", async () => {
     mockFormsparkSubmit.mockRejectedValue(new Error("network"))
+    const result = await runFormAction(STANDARD, "en", validStandardFormData())
+    expect(result.success).toBe(false)
+    expect(result.errors).toBeUndefined()
+    expect(result.values?.firstName).toBe("John")
+  })
+
+  test("returns values without errors when strapi throws", async () => {
+    mockStrapiFetch.mockRejectedValue(new Error("strapi down"))
     const result = await runFormAction(STANDARD, "en", validStandardFormData())
     expect(result.success).toBe(false)
     expect(result.errors).toBeUndefined()
