@@ -5,7 +5,9 @@ module.exports = (config, { strapi }) => {
     ctx.query = {
       ...ctx.query,
       populate: {
-        localizations: true,
+        localizations: {
+          populate: "*",
+        },
         seo: {
           populate: "*",
         },
@@ -22,13 +24,19 @@ module.exports = (config, { strapi }) => {
                 cards: {
                   populate: "*",
                 },
-                props: true,
-                cta: true,
+                props: {
+                  populate: "*",
+                },
+                cta: {
+                  populate: "*",
+                },
               },
             },
             "sections.product-feature-card": {
               populate: {
-                props: true,
+                props: {
+                  populate: "*",
+                },
                 cards: {
                   populate: "*",
                 },
@@ -36,8 +44,12 @@ module.exports = (config, { strapi }) => {
             },
             "sections.content-carousel": {
               populate: {
-                props: true,
-                cta: true,
+                props: {
+                  populate: "*",
+                },
+                cta: {
+                  populate: "*",
+                },
                 cards: {
                   populate: "*",
                 },
@@ -45,7 +57,9 @@ module.exports = (config, { strapi }) => {
             },
             "sections.sla-card-section": {
               populate: {
-                props: true,
+                props: {
+                  populate: "*",
+                },
                 cards: {
                   populate: "*",
                 },
@@ -68,12 +82,16 @@ module.exports = (config, { strapi }) => {
                 cards: {
                   populate: "*",
                 },
-                section_props: true,
+                section_props: {
+                  populate: "*",
+                },
               },
             },
             "sections.content-highlight-section": {
               populate: {
-                props: true,
+                props: {
+                  populate: "*",
+                },
                 content_offer: {
                   populate: "*",
                 },
@@ -97,7 +115,9 @@ module.exports = (config, { strapi }) => {
             },
             "sections.kpi-section": {
               populate: {
-                props: true,
+                props: {
+                  populate: "*",
+                },
                 kpis: {
                   populate: "*",
                 },
@@ -111,7 +131,9 @@ module.exports = (config, { strapi }) => {
                 team_members: {
                   populate: "*",
                 },
-                props: true,
+                props: {
+                  populate: "*",
+                },
               },
             },
             "sections.regular-form-section": {
@@ -122,7 +144,9 @@ module.exports = (config, { strapi }) => {
                 cards: {
                   populate: "*",
                 },
-                props: true,
+                props: {
+                  populate: "*",
+                },
               },
             },
             "sections.location-card-section": {
@@ -130,7 +154,9 @@ module.exports = (config, { strapi }) => {
                 cards: {
                   populate: "*",
                 },
-                props: true,
+                props: {
+                  populate: "*",
+                },
               },
             },
             "sections.services-section": {
@@ -152,12 +178,14 @@ module.exports = (config, { strapi }) => {
             "sections.image-carousel": {
               populate: {
                 props: {
-                  populate: true,
+                  populate: "*",
                 },
                 images: {
-                  populate: true,
+                  populate: "*",
                 },
-                cta: true,
+                cta: {
+                  populate: "*",
+                },
               },
             },
           },
