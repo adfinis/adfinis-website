@@ -2,6 +2,27 @@ export const locales = ["en", "en-au", "nl", "de-ch", "de-de"] as const
 
 export type Locale = (typeof locales)[number]
 
+/**
+ * Map a browser language tag (e.g. from `navigator.language`) to one of our
+ * supported locales. Falls back to `fallback` when nothing matches.
+ */
+export function detectLocale(
+  browserLanguage: string | undefined,
+  fallback: Locale = "en",
+): Locale {
+  const tag = (browserLanguage ?? "").toLowerCase()
+  if (tag.startsWith("de")) {
+    return tag.includes("de-ch") || tag.includes("-ch") ? "de-ch" : "de-de"
+  }
+  if (tag.startsWith("nl")) {
+    return "nl"
+  }
+  if (tag.startsWith("en")) {
+    return tag.includes("-au") || tag.includes("-nz") ? "en-au" : "en"
+  }
+  return fallback
+}
+
 const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
