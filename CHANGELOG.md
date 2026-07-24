@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.31.0] - 2026-07-04
+
+-  chore (AW-395): strapi upgrade (#367)
+
 ## [1.30.0] - 2026-07-02
 
 -  fix (AW-380): missing url option in form spark (#364)
