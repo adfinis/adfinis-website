@@ -17,7 +17,7 @@ type Card = {
 type Props = {
   // TODO rename to props (strapi and next)
   section_props: SectionProps
-  title: string | undefined
+  body: string | undefined
   cards: Card[]
 }
 export default function IconCardSectionWithRelation({
@@ -30,7 +30,7 @@ export default function IconCardSectionWithRelation({
       background={section.section_props.background}
       padding={section.section_props.padding}
     >
-      <SectionGroup title={section.title}>
+      <SectionGroup text={section.body}>
         <CardGroup>
           {section.cards.map((item, i: number) => {
             return (
