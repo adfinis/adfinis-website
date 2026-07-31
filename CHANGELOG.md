@@ -17,7 +17,12 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
-## [1.31.0] - 2026-07-04
+## [1.32.0] - 2026-07-31
+
+- refactor (AW-373): rename title to body (#370)
+- feat (AW-307): Create new language selector (#368)
+
+## [1.31.0] - 2026-07-24
 
 -  chore (AW-395): strapi upgrade (#367)
 
