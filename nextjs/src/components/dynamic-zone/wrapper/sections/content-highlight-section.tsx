@@ -28,19 +28,32 @@ export default function ContentHighlightSection({
 }: {
   section: Props
 }) {
+  const coverImage = (
+    <Image
+      className="rounded-xl max-h-64 lg:max-h-full w-auto"
+      src={section.content_offer?.cover_image?.url ?? ""}
+      alt={section.content_offer?.cover_image?.alternativeText ?? ""}
+      width={800}
+      height={400}
+    />
+  )
+
   return (
     <Container
       background={section.props.background}
       padding={section.props.padding}
     >
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-12 items-center">
-        <Image
-          className="rounded-xl max-h-64 lg:max-h-full w-auto mx-auto lg:order-1"
-          src={section.content_offer?.cover_image?.url ?? ""}
-          alt={section.content_offer?.cover_image?.alternativeText ?? ""}
-          width={800}
-          height={400}
-        />
+        {section.content_offer.download_file ? (
+          <a
+            className="mx-auto lg:order-1"
+            href={section.content_offer.download_file.url}
+          >
+            {coverImage}
+          </a>
+        ) : (
+          <div className="mx-auto lg:order-1">{coverImage}</div>
+        )}
 
         <div className="col-span-2 grid gap-4 lg:gap-8 justify-items-start">
           <Title level={3} boldness={"semibold"}>
