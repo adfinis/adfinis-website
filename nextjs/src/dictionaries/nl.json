@@ -50,5 +50,20 @@
     "ui": {
         "localeSwitcherAriaLabel": "Selecteer taal",
         "mobileHamburgerAriaLabel": "Open hoofdmenu"
+    },
+    "languageSelector": {
+        "title": "Kies je taal",
+        "detectedText": "We hebben gedetecteerd dat je browser is ingesteld op **${language}.** Welke taal wil je gebruiken voor onze website?",
+        "selectLabel": "Kies je taal & regio",
+        "cancel": "Annuleren",
+        "confirm": "Bevestigen",
+        "footer": "Je kunt je taal later altijd via het menu wijzigen.",
+        "languages": {
+            "de-ch": "Deutsch (Schweiz)",
+            "de-de": "Deutsch (Deutschland)",
+            "en": "English (International)",
+            "en-au": "English (Australia & New Zealand)",
+            "nl": "Nederlands (Nederland)"
+        }
     }
 }

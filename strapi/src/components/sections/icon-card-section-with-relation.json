@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "title": {
+    "body": {
       "type": "richtext",
       "required": true
     },

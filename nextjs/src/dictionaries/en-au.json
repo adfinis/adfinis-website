@@ -50,5 +50,20 @@
     "ui": {
         "localeSwitcherAriaLabel": "Switch language",
         "mobileHamburgerAriaLabel": "Open main menu"
+    },
+    "languageSelector": {
+        "title": "Choose your language",
+        "detectedText": "We've detected that your browser is set to **${language}.** Which language would you like to use for our website?",
+        "selectLabel": "Choose your language & region",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "footer": "You can always change your language later via the menu.",
+        "languages": {
+            "de-ch": "Deutsch (Schweiz)",
+            "de-de": "Deutsch (Deutschland)",
+            "en": "English (International)",
+            "en-au": "English (Australia & New Zealand)",
+            "nl": "Nederlands (Nederland)"
+        }
     }
 }
