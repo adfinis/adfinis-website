@@ -55,7 +55,7 @@ const nextConfig = {
     ]
   },
   async redirects() {
-    return [
+    const rules = [
       {
         source: "/:path*",
         has: [
@@ -2948,6 +2948,17 @@ const nextConfig = {
         permanent: true,
       },
     ]
+
+    const canonicalOrigin =
+      process.env.WWW_REDIRECT === "true" ? process.env.ABSOLUTE_URL : undefined
+
+    if (!canonicalOrigin) return rules
+
+    return rules.map((rule) =>
+      rule.has || /^https?:\/\//.test(rule.destination)
+        ? rule
+        : { ...rule, destination: canonicalOrigin + rule.destination },
+    )
   },
 }
 
