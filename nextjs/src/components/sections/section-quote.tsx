@@ -10,6 +10,56 @@ type SectionQuoteProps = {
     alt?: string
   }
 }
+
+const INLINE_MARKUP_PATTERN = /\*\*([\s\S]+?)\*\*|<u>([\s\S]+?)<\/u>/g
+
+/**
+ * Renders the supported inline markup from Strapi:
+ * - **text** → bold
+ * - <u>text</u> → underline
+ *
+ * Supported markup may be nested. All other content is rendered as
+ * React-escaped text; no raw HTML is injected.
+ */
+const renderRichText = (text: string): React.ReactNode[] => {
+  const nodes: React.ReactNode[] = []
+  let cursor = 0
+  let elementIndex = 0
+
+  for (const match of text.matchAll(INLINE_MARKUP_PATTERN)) {
+    const matchIndex = match.index
+
+    if (matchIndex > cursor) {
+      nodes.push(text.slice(cursor, matchIndex))
+    }
+
+    const boldContent = match[1]
+    const underlineContent = match[2]
+
+    if (boldContent !== undefined) {
+      nodes.push(
+        <strong key={`bold-${elementIndex++}`}>
+          {renderRichText(boldContent)}
+        </strong>,
+      )
+    } else if (underlineContent !== undefined) {
+      nodes.push(
+        <u key={`underline-${elementIndex++}`}>
+          {renderRichText(underlineContent)}
+        </u>,
+      )
+    }
+
+    cursor = matchIndex + match[0].length
+  }
+
+  if (cursor < text.length) {
+    nodes.push(text.slice(cursor))
+  }
+
+  return nodes
+}
+
 const SectionQuote: React.FC<SectionQuoteProps> = ({
   author,
   quote,
@@ -27,7 +77,7 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
             "xl:pb-16",
           ])}
         >
-          {quote}
+          {quote && renderRichText(quote)}
           <svg
             height="64"
             viewBox="0 0 143 64"
