@@ -1,7 +1,8 @@
 import React from "react"
-import Markdown, { defaultUrlTransform } from "react-markdown"
+import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import CodeBlock from "./markdown/code-block"
+import { markdownUrlTransform } from "./markdown/url-transform"
 
 interface TextProps {
   markdown: string
@@ -59,9 +60,7 @@ const Text: React.FC<TextProps> = ({ markdown, className }) => {
         allowedElements={allowedElements}
         remarkPlugins={[remarkGfm]}
         components={{ code: CodeBlock }}
-        urlTransform={(url) =>
-          url.startsWith("tel:") ? url : defaultUrlTransform(url)
-        }
+        urlTransform={markdownUrlTransform}
       >
         {markdown}
       </Markdown>
