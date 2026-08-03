@@ -15,7 +15,9 @@
         "message": "Nachricht",
         "acceptPrivacyPolicy": "Ich bin einverstanden mit der Datenschutzerklärung von Adfinis.",
         "agreeToReceiveMail": "Ich bin damit einverstanden, weitere Mitteilungen von Adfinis und seinen Partnern zu erhalten.",
-        "submitSuccessful": "Danke, Ihre Eingabe wurde erfolgreich übermittelt"
+        "submitSuccessful": "Danke, Ihre Eingabe wurde erfolgreich übermittelt",
+        "submitAnotherPrompt": "Möchten Sie ein weiteres Formular senden?",
+        "submitAnotherLink": "Hier klicken für ein neues Formular."
     },
     "validation": {
         "required": "Dieses Feld muss ausgefüllt werden.",
