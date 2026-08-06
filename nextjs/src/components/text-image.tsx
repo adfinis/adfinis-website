@@ -3,6 +3,7 @@ import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { allowedElements } from "./text"
 import CodeBlock from "./markdown/code-block"
+import { markdownUrlTransform } from "./markdown/url-transform"
 
 interface TextImage {
   markdown: string
@@ -39,6 +40,7 @@ const TextImage: React.FC<TextImage> = ({ markdown, className }) => {
         allowedElements={[...allowedElements, "img"]}
         remarkPlugins={[remarkGfm]}
         components={{ code: CodeBlock }}
+        urlTransform={markdownUrlTransform}
       >
         {markdown}
       </Markdown>
