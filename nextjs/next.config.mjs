@@ -55,7 +55,7 @@ const nextConfig = {
     ]
   },
   async redirects() {
-    return [
+    const rules = [
       {
         source: "/:path*",
         has: [
@@ -166,12 +166,12 @@ const nextConfig = {
       // de-ch redirects
       {
         source: "/adservices/opensource-is-the-way-to-go",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/adservices/support",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -875,7 +875,7 @@ const nextConfig = {
       },
       {
         source: "/harness-the-power-of-open-source",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -905,7 +905,7 @@ const nextConfig = {
       },
       {
         source: "/high-availability-story",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -1135,7 +1135,7 @@ const nextConfig = {
       },
       {
         source: "/nouveau-test-a-domicile",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -1180,12 +1180,12 @@ const nextConfig = {
       },
       {
         source: "/s4hana",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/services",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -1255,7 +1255,7 @@ const nextConfig = {
       },
       {
         source: "/the-automated-enterprise",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
@@ -1355,114 +1355,114 @@ const nextConfig = {
       {
         source:
           "/wp-content/uploads/sites/9/2017/05/Pressemitteilung_Nextcloud-Partnerschaft.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2018/11/job_Linux_System_Engineer_m⁄w_80-100.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2018/11/successstory_Camac_AdfinisSyGroup_.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2018/12/HashiCorp_Adfinis_EN.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2018/12/HashiCorp_adfinis.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2018/12/PM_SUSE-Innovationspreis_14.02.2017.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2018/12/PressRelease_Mattermost_.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2018/12/successstory_NTS_link-neu_DE_.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2019/01/PremierPartnerschaft_RedHat_Adfinis.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2019/03/AGB_SIK_vaj.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2019/03/Pressemitteilung_Edificom_Adfinis_DE.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2019/03/Pressemitteilung_Edificom_Adfinis_EN.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2019/04/wigl-day.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2019/05/WO-callout.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source: "/wp-content/uploads/sites/9/2021/06/VaultRancher.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2022/06/GinLab_Sildes_June2022.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2022/10/Privacy-Policy-Australia_221012.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       {
         source:
           "/wp-content/uploads/sites/9/2023/05/CNI-switch-to-Cilium-Presentation.pdf",
-        destination: "/de-ch/",
+        destination: "/de-ch",
         permanent: true,
       },
       // en redirects
       {
         source: "/en/15-reasons-to-adopt-red-hat-openshift-virtualization",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/9-reasons-to-explore-red-hat-enterprise-linux-9",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -1517,22 +1517,22 @@ const nextConfig = {
       },
       {
         source: "/en/adservices/caluma",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/adservices/container-orchestration-ci-cd-pipelines",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/adservices/open-source-consulting",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/adservices/support",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -1542,7 +1542,7 @@ const nextConfig = {
       },
       {
         source: "/en/ansible-beginners-guide",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -1637,7 +1637,7 @@ const nextConfig = {
       },
       {
         source: "/en/blog/adfinis-ernennt-michael-hofer-zum-neuen-cto",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -2031,7 +2031,7 @@ const nextConfig = {
       },
       {
         source: "/en/cybersecurity",
-        destination: "/en/cybersecurity/",
+        destination: "/en/cybersecurity",
         permanent: true,
       },
       {
@@ -2046,12 +2046,12 @@ const nextConfig = {
       },
       {
         source: "/en/docker-hub-rate-limit",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/docker-hub-rate-limits",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -2086,7 +2086,7 @@ const nextConfig = {
       },
       {
         source: "/en/events/adfinis-25-years-anniversary",
-        destination: "/en/events/adfinis-25-years-anniversary/",
+        destination: "/en/events/adfinis-25-years-anniversary",
         permanent: true,
       },
       {
@@ -2256,12 +2256,12 @@ const nextConfig = {
       },
       {
         source: "/en/harness-the-power-of-open-source-short",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/harness-the-power-of-open-source",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -2306,17 +2306,17 @@ const nextConfig = {
       },
       {
         source: "/en/imprint",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/leverage-your-linux-choices",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/liberate-your-mixed-it-environment",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -2494,7 +2494,7 @@ const nextConfig = {
       },
       {
         source: "/en/privacypolicy",
-        destination: "/en-au/privacy-policy",
+        destination: "/en/privacy-policy",
         permanent: true,
       },
       {
@@ -2596,12 +2596,12 @@ const nextConfig = {
       },
       {
         source: "/en/vault_basler_kantonalbank_bkb",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
         source: "/en/vault-subscriptions",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       {
@@ -2622,23 +2622,23 @@ const nextConfig = {
       // fr (depreciated)
       {
         source: "/fr/:path*",
-        destination: "/en/",
+        destination: "/en",
         permanent: true,
       },
       // nl redirects
       {
         source: "/nl/adservices/caluma-caluma",
-        destination: "/nl/",
+        destination: "/nl",
         permanent: true,
       },
       {
         source: "/nl/adservices/ondersteuning",
-        destination: "/nl/",
+        destination: "/nl",
         permanent: true,
       },
       {
         source: "/nl/automation-health-check",
-        destination: "/nl/",
+        destination: "/nl",
         permanent: true,
       },
       {
@@ -2740,7 +2740,7 @@ const nextConfig = {
       },
       {
         source: "/nl/cybersecurity",
-        destination: "/nl/",
+        destination: "/nl",
         permanent: true,
       },
       {
@@ -2948,6 +2948,17 @@ const nextConfig = {
         permanent: true,
       },
     ]
+
+    const canonicalOrigin =
+      process.env.WWW_REDIRECT === "true" ? process.env.ABSOLUTE_URL : undefined
+
+    if (!canonicalOrigin) return rules
+
+    return rules.map((rule) =>
+      rule.has || /^https?:\/\//.test(rule.destination)
+        ? rule
+        : { ...rule, destination: canonicalOrigin + rule.destination },
+    )
   },
 }
 

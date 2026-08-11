@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.33.0] - 2026-08-11
+
+- fix (AW-369): re-direct loops (#371)
+- feat (AW-373): support bold and underline markup in section quote
+- feat (AW-347): make content offer cover image clickable
+- fix (AW-328): urls without markdown markup resolve to http (#375)
+- feat (AW-393): rest form for new submission
+
 ## [1.32.0] - 2026-07-31
 
 - refactor (AW-373): rename title to body (#370)
