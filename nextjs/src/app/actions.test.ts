@@ -8,7 +8,15 @@ vi.mock("next/headers", () => ({
   headers: vi.fn(
     async () => new Headers({ referer: "https://localhost:3000/en/contact" }),
   ),
+  cookies: vi.fn(async () => ({
+    get: (name: string) =>
+      name === "aw-consents" ? { value: "all" } : undefined,
+  })),
 }))
+vi.mock("@/lib/reddit-capi", () => ({
+  redditCapi: { trackLead: vi.fn() },
+}))
+vi.mock("next/server", () => ({ after: (fn: () => unknown) => fn() }))
 
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
@@ -53,7 +61,7 @@ beforeEach(() => {
 describe("saveSimpleForm", () => {
   test("happy path submits with type 'short', forced privacy_policy and from_url", async () => {
     const result = await saveSimpleForm("en", { success: false }, base())
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
     expect(mockStrapiFetch).toHaveBeenCalledTimes(1)
     expect(mockFormsparkSubmit).toHaveBeenCalledTimes(1)
     expect(lastPayload().type).toBe("short")
@@ -93,7 +101,7 @@ describe("saveStandardForm", () => {
     const fd = withCompany(base())
     fd.set("company_name", "  Adfinis  ")
     const result = await saveStandardForm("en", { success: false }, fd)
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("standard")
     expect(lastPayload().company_name).toBe("Adfinis")
   })
@@ -110,7 +118,7 @@ describe("saveContactForm", () => {
     const fd = withCompany(base())
     fd.set("message", "Hello there")
     const result = await saveContactForm("en", { success: false }, fd)
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("contact")
     expect(lastPayload().message).toBe("Hello there")
   })
@@ -134,7 +142,7 @@ describe("saveEventForm", () => {
     const fd = eventFd()
     fd.set("phone_number", "+41791234567")
     const result = await saveEventForm("en", { success: false }, fd)
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("event")
   })
 
@@ -185,7 +193,7 @@ describe("saveRaffleForm", () => {
     const fd = withCompany(base())
     fd.set("agree_to_receive_mail", "on")
     const result = await saveRaffleForm("en", { success: false }, fd)
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("raffle")
     expect("agree_to_receive_mail" in lastPayload()).toBe(false)
   })
