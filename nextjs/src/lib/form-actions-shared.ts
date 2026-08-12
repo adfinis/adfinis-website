@@ -3,8 +3,11 @@ import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { getDictionary, type Dictionary } from "@/lib/get-dictionary.server"
 import { type Locale } from "@/lib/locale"
-import { headers } from "next/headers"
+import { headers, cookies } from "next/headers"
+import { after } from "next/server"
 import { strapiFetch } from "@/lib/strapi"
+import { redditCapi } from "@/lib/reddit-capi"
+import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
 
 const fieldBuilders = {
   first_name: (d: Dictionary) =>
@@ -74,6 +77,7 @@ export type FormState = {
   success: boolean
   errors?: Partial<Record<FieldKey | "altcha", string[]>>
   values?: FormValues
+  conversionId?: string
 }
 
 export interface FormConfig {
@@ -141,11 +145,17 @@ export async function runFormAction(
       is_created_at: new Date(),
     }
     await Promise.all([formSubmit({ data }), formsparkSubmit(data)])
+
+    const conversionId = crypto.randomUUID()
+    try {
+      after(() => fireRedditLead(conversionId, validation.data, headersList))
+    } catch {
+      // Reddit tracking must never affect the submission result
+    }
+    return { success: true, conversionId }
   } catch {
     return { success: false, values }
   }
-
-  return { success: true }
 }
 
 function stripHostname(referrer: string): string {
@@ -163,5 +173,37 @@ async function formSubmit(payload: any) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+  })
+}
+
+async function fireRedditLead(
+  conversionId: string,
+  data: Record<string, unknown>,
+  headersList: Headers,
+): Promise<void> {
+  const cookieStore = await cookies()
+  const requireConsent = process.env.REDDIT_CAPI_REQUIRE_CONSENT === "true"
+  if (requireConsent) {
+    const consent = cookieStore.get(COOKIE_CONSENT_KEY)?.value
+    if (consent !== "all") return
+  }
+
+  const ipAddress =
+    headersList.get("do-connecting-ip") ||
+    headersList.get("x-forwarded-for")?.split(",")[0].trim() ||
+    headersList.get("x-real-ip") ||
+    undefined
+
+  const email = typeof data.email === "string" ? data.email : undefined
+  const phone =
+    typeof data.phone_number === "string" ? data.phone_number : undefined
+
+  await redditCapi.trackLead({
+    conversionId,
+    email,
+    phone,
+    ipAddress,
+    userAgent: headersList.get("user-agent") || undefined,
+    rdtUuid: cookieStore.get("_rdt_uuid")?.value,
   })
 }
