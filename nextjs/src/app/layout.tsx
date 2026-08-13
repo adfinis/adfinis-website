@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 import { Matomo } from "@/components/matomo/matomo"
+import { Reddit } from "@/components/reddit/reddit"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { DEFAULT_SHARE_IMAGE, SITE_NAME } from "@/lib/metadata"
 import { MatomoPixel } from "@/components/matomo/matomo-pixel"
@@ -103,6 +104,7 @@ export default async function RootLayout({
         data-scheme="light"
       >
         <Matomo />
+        <Reddit />
         {children}
         <MatomoPixel url={matomoUrl} siteId={matomoSiteId} />
       </body>

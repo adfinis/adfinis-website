@@ -9,6 +9,7 @@ import Altcha from "@/components/form-fields/altcha"
 import Button from "@/components/button"
 import { saveRaffleForm } from "@/app/actions"
 import { useRestoreFormValues } from "@/components/form/use-restore-form-values"
+import { useRedditLead } from "@/components/reddit/use-reddit-lead"
 import { useFormConfirmation } from "@/components/form/use-form-confirmation"
 import FormConfirmation from "@/components/form/form-confirmation"
 import { type Dictionary } from "@/lib/get-dictionary.server"
@@ -25,6 +26,7 @@ export default function Raffle({ submitLabel, dictionary, locale }: Props) {
   const formRef = useRef<HTMLFormElement>(null)
 
   useRestoreFormValues(formRef, state)
+  useRedditLead(state)
   const { showConfirmation, submitAnother } = useFormConfirmation(
     state,
     formRef,

@@ -5,20 +5,11 @@ import Button from "./button"
 import Text from "./text"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
 import { getDictionary } from "@/lib/get-dictionary.client"
-import { useState, useEffect } from "react"
+import { useConsent } from "@/hooks/useConsent"
 
 const CookieNotice: React.FC<{ locale: Locale }> = ({ locale }) => {
-  const [hasConsent, setHasConsent] = useState<string | undefined>("initial")
-
+  const hasConsent = useConsent()
   const dictionary = getDictionary(locale)
-
-  useEffect(() => {
-    const consent = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith(`${COOKIE_CONSENT_KEY}=`))
-      ?.split("=")[1]
-    setHasConsent(consent)
-  }, [])
 
   if (hasConsent) return null
 
@@ -26,7 +17,6 @@ const CookieNotice: React.FC<{ locale: Locale }> = ({ locale }) => {
     document.cookie = `${COOKIE_CONSENT_KEY}=${consentType}; expires=${new Date(
       Date.now() + 365 * 24 * 60 * 60 * 1000,
     ).toUTCString()}; path=/`
-    setHasConsent(consentType)
     window.location.reload()
   }
 
