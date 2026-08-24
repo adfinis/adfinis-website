@@ -16,6 +16,9 @@ vi.mock("next/headers", () => ({
 vi.mock("@/lib/reddit-capi", () => ({
   redditCapi: { trackLead: vi.fn() },
 }))
+vi.mock("@/lib/linkedin-capi", () => ({
+  linkedinCapi: { trackConversion: vi.fn() },
+}))
 vi.mock("next/server", () => ({ after: (fn: () => unknown) => fn() }))
 
 import formsparkSubmit from "@/lib/formspark-submit"

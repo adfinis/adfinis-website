@@ -7,6 +7,7 @@ import { headers, cookies } from "next/headers"
 import { after } from "next/server"
 import { strapiFetch } from "@/lib/strapi"
 import { redditCapi } from "@/lib/reddit-capi"
+import { linkedinCapi } from "@/lib/linkedin-capi"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
 
 const fieldBuilders = {
@@ -152,6 +153,11 @@ export async function runFormAction(
     } catch {
       // Reddit tracking must never affect the submission result
     }
+    try {
+      after(() => fireLinkedInConversion(conversionId, validation.data))
+    } catch {
+      // LinkedIn tracking must never affect the submission result
+    }
     return { success: true, conversionId }
   } catch {
     return { success: false, values }
@@ -205,5 +211,25 @@ async function fireRedditLead(
     ipAddress,
     userAgent: headersList.get("user-agent") || undefined,
     rdtUuid: cookieStore.get("_rdt_uuid")?.value,
+  })
+}
+
+async function fireLinkedInConversion(
+  conversionId: string,
+  data: Record<string, unknown>,
+): Promise<void> {
+  const cookieStore = await cookies()
+  const requireConsent = process.env.LINKEDIN_CAPI_REQUIRE_CONSENT === "true"
+  if (requireConsent) {
+    const consent = cookieStore.get(COOKIE_CONSENT_KEY)?.value
+    if (consent !== "all") return
+  }
+
+  const email = typeof data.email === "string" ? data.email : undefined
+
+  await linkedinCapi.trackConversion({
+    eventId: conversionId,
+    email,
+    liFatId: cookieStore.get("li_fat_id")?.value,
   })
 }
