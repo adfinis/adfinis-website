@@ -24,6 +24,14 @@ export function useFormConfirmation(
   const submitAnother = () => {
     setDismissedState(state)
     formRef.current?.reset()
+    // The fields only exist again after the confirmation is swapped out.
+    requestAnimationFrame(() => {
+      formRef.current
+        ?.querySelector<HTMLElement>(
+          "input:not([type='hidden']), textarea, select",
+        )
+        ?.focus()
+    })
   }
 
   return { showConfirmation, submitAnother }

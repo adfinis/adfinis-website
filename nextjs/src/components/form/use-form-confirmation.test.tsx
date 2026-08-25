@@ -51,3 +51,22 @@ test("re-shows the confirmation after a new successful submission", () => {
   rerender({ state: { success: true } })
   expect(result.current.showConfirmation).toBe(true)
 })
+
+test("moves focus to the first field after submitting another", async () => {
+  const form = document.createElement("form")
+  form.reset = vi.fn()
+  const input = document.createElement("input")
+  form.appendChild(input)
+  document.body.appendChild(form)
+  const formRef = { current: form } as RefObject<HTMLFormElement>
+
+  const { result } = renderHook(() =>
+    useFormConfirmation({ success: true }, formRef),
+  )
+
+  act(() => result.current.submitAnother())
+  await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
+
+  expect(document.activeElement).toBe(input)
+  document.body.removeChild(form)
+})
