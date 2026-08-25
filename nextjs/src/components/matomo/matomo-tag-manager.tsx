@@ -1,19 +1,10 @@
 "use client"
 
 import Script from "next/script"
-import { useEffect, useState } from "react"
-import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
+import { useConsent } from "@/hooks/useConsent"
 
 export const MatomoTagManager = ({ matomoSrc }: { matomoSrc: string }) => {
-  const [hasConsent, setHasConsent] = useState<string | undefined>("initial")
-
-  useEffect(() => {
-    const consent = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith(`${COOKIE_CONSENT_KEY}=`))
-      ?.split("=")[1]
-    setHasConsent(consent)
-  }, [])
+  const hasConsent = useConsent()
 
   if (hasConsent !== "all") return null
 

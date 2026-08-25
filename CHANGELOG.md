@@ -17,6 +17,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.34.0] - 2026-08-25
+
+- feat (AW-367): linkedin (#380)
+- feat (AW-367): reddit pixel (#378)
+
 ## [1.33.0] - 2026-08-11
 
 - fix (AW-369): re-direct loops (#371)

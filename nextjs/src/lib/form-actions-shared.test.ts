@@ -84,7 +84,8 @@ describe("runFormAction", () => {
     const fd = validStandardFormData()
     fd.set("company_name", "  Adfinis  ")
     const result = await runFormAction(STANDARD, "en", fd)
-    expect(result).toEqual({ success: true })
+    expect(result.success).toBe(true)
+    expect(result.conversionId).toEqual(expect.any(String))
     expect(mockStrapiFetch).toHaveBeenCalledTimes(1)
     expect(mockFormsparkSubmit).toHaveBeenCalledTimes(1)
 

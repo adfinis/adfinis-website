@@ -3,8 +3,12 @@ import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { getDictionary, type Dictionary } from "@/lib/get-dictionary.server"
 import { type Locale } from "@/lib/locale"
-import { headers } from "next/headers"
+import { headers, cookies } from "next/headers"
+import { after } from "next/server"
 import { strapiFetch } from "@/lib/strapi"
+import { redditCapi } from "@/lib/reddit-capi"
+import { linkedinCapi, type LinkedInUserInfo } from "@/lib/linkedin-capi"
+import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
 
 const fieldBuilders = {
   first_name: (d: Dictionary) =>
@@ -74,6 +78,7 @@ export type FormState = {
   success: boolean
   errors?: Partial<Record<FieldKey | "altcha", string[]>>
   values?: FormValues
+  conversionId?: string
 }
 
 export interface FormConfig {
@@ -141,11 +146,28 @@ export async function runFormAction(
       is_created_at: new Date(),
     }
     await Promise.all([formSubmit({ data }), formsparkSubmit(data)])
+
+    const conversionId = crypto.randomUUID()
+    try {
+      after(() => fireRedditLead(conversionId, validated, headersList))
+    } catch {
+      // Reddit tracking must never affect the submission result
+    }
+    try {
+      after(async () => {
+        try {
+          await fireLinkedInConversion(conversionId, validated, headersList)
+        } catch (error) {
+          console.error("LinkedIn conversion failed", { conversionId, error })
+        }
+      })
+    } catch {
+      // Registering the callback must never affect the submission result
+    }
+    return { success: true, conversionId }
   } catch {
     return { success: false, values }
   }
-
-  return { success: true }
 }
 
 function stripHostname(referrer: string): string {
@@ -164,4 +186,84 @@ async function formSubmit(payload: any) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   })
+}
+
+async function fireRedditLead(
+  conversionId: string,
+  data: Record<string, unknown>,
+  headersList: Headers,
+): Promise<void> {
+  const cookieStore = await cookies()
+  if (cookieStore.get(COOKIE_CONSENT_KEY)?.value !== "all") return
+
+  const ipAddress =
+    headersList.get("do-connecting-ip") ||
+    headersList.get("x-forwarded-for")?.split(",")[0].trim() ||
+    headersList.get("x-real-ip") ||
+    undefined
+
+  const email = typeof data.email === "string" ? data.email : undefined
+  const phone =
+    typeof data.phone_number === "string" ? data.phone_number : undefined
+
+  await redditCapi.trackLead({
+    conversionId,
+    email,
+    phone,
+    ipAddress,
+    userAgent: headersList.get("user-agent") || undefined,
+    rdtUuid: cookieStore.get("_rdt_uuid")?.value,
+  })
+}
+
+async function fireLinkedInConversion(
+  conversionId: string,
+  data: Record<string, unknown>,
+  headersList: Headers,
+): Promise<void> {
+  const cookieStore = await cookies()
+  if (cookieStore.get(COOKIE_CONSENT_KEY)?.value !== "all") return
+
+  const email = typeof data.email === "string" ? data.email : undefined
+
+  const extended = process.env.LINKEDIN_EXTENDED_CONVERSION_INPUT === "true"
+
+  await linkedinCapi.trackConversion({
+    eventId: conversionId,
+    email,
+    liFatId: cookieStore.get("li_fat_id")?.value,
+    ipAddress: extended ? getLinkedInIp(headersList) : undefined,
+    userInfo: extended ? buildUserInfo(data) : undefined,
+  })
+}
+
+function getLinkedInIp(headersList: Headers): string | undefined {
+  const ip =
+    headersList.get("cf-connecting-ip")?.trim() ||
+    headersList.get("do-connecting-ip")?.trim() ||
+    undefined
+  if (!ip) return undefined
+  if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) {
+    console.warn("LinkedIn CAPI: dropping non-IPv4 client IP")
+    return undefined
+  }
+  return ip
+}
+
+function buildUserInfo(
+  data: Record<string, unknown>,
+): LinkedInUserInfo | undefined {
+  const str = (v: unknown) =>
+    typeof v === "string" && v.trim() !== "" ? v.trim() : undefined
+
+  const firstName = str(data.first_name)
+  const lastName = str(data.last_name)
+  if (!firstName || !lastName) return undefined
+
+  const userInfo: LinkedInUserInfo = { firstName, lastName }
+  const companyName = str(data.company_name)
+  if (companyName) userInfo.companyName = companyName
+  const title = str(data.job_function)
+  if (title) userInfo.title = title
+  return userInfo
 }

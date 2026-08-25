@@ -9,10 +9,10 @@ function getHmacKey(): string {
   return HMAC_KEY
 }
 
-export async function createAltchaChallenge() {
+export async function createAltchaChallenge(maxNumber = 100_000) {
   return createChallenge({
     hmacKey: getHmacKey(),
-    maxNumber: 100_000,
+    maxNumber,
     expires: new Date(Date.now() + 10 * 60 * 1000),
   })
 }
