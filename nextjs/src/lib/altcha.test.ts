@@ -23,7 +23,7 @@ describe("altcha", () => {
   })
 
   test("verifyAltcha returns true for a valid solved payload", async () => {
-    const challenge = await createAltchaChallenge()
+    const challenge = await createAltchaChallenge(1000)
     const solveResult = solveChallenge(
       challenge.challenge,
       challenge.salt,
@@ -53,7 +53,7 @@ describe("altcha", () => {
   })
 
   test("verifyAltcha returns false when signature is tampered", async () => {
-    const challenge = await createAltchaChallenge()
+    const challenge = await createAltchaChallenge(1000)
     const solveResult = solveChallenge(
       challenge.challenge,
       challenge.salt,

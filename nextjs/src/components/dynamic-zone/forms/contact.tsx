@@ -11,6 +11,7 @@ import Button from "@/components/button"
 import Textarea from "@/components/form-fields/textarea"
 import { useRestoreFormValues } from "@/components/form/use-restore-form-values"
 import { useRedditLead } from "@/components/reddit/use-reddit-lead"
+import { useLinkedInConversion } from "@/components/linkedin/use-linkedin-conversion"
 import { useFormConfirmation } from "@/components/form/use-form-confirmation"
 import FormConfirmation from "@/components/form/form-confirmation"
 import { Dictionary } from "@/lib/get-dictionary.server"
@@ -28,6 +29,7 @@ export default function Contact({ submitLabel, dictionary, locale }: Props) {
 
   useRestoreFormValues(formRef, state)
   useRedditLead(state)
+  useLinkedInConversion(state)
   const { showConfirmation, submitAnother } = useFormConfirmation(
     state,
     formRef,
