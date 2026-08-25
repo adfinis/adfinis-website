@@ -26,6 +26,11 @@ async function sha256Hex(value: string): Promise<string> {
 
 const normalizeEmail = (v: string) => v.trim().toLowerCase()
 
+// Accept either a bare numeric rule id or an already-formed URN, so a fully
+// pasted "urn:lla:llaPartnerConversion:123" never gets a doubled prefix.
+const conversionUrn = (id: string) =>
+  id.startsWith("urn:") ? id : `urn:lla:llaPartnerConversion:${id}`
+
 export class LinkedInCapiTracker {
   private readonly config: LinkedInCapiConfig
 
@@ -59,7 +64,7 @@ export class LinkedInCapiTracker {
     if (userIds.length === 0) return
 
     const payload = {
-      conversion: `urn:lla:llaPartnerConversion:${this.config.conversionId}`,
+      conversion: conversionUrn(this.config.conversionId),
       conversionHappenedAt: (input.eventAt ?? new Date()).getTime(),
       eventId: input.eventId,
       user: { userIds },
@@ -80,13 +85,14 @@ export class LinkedInCapiTracker {
         },
         body: JSON.stringify(payload),
       })
-      if (!response.ok && this.config.debug) {
-        console.warn(`LinkedIn CAPI tracking failed: ${response.status}`)
+      if (!response.ok) {
+        const body = await response.text().catch(() => "")
+        console.error(
+          `LinkedIn CAPI tracking failed: ${response.status} ${body}`,
+        )
       }
     } catch (error) {
-      if (this.config.debug) {
-        console.error("LinkedIn CAPI tracking error:", error)
-      }
+      console.error("LinkedIn CAPI tracking error:", error)
     }
   }
 }
@@ -95,10 +101,10 @@ const config: LinkedInCapiConfig = {
   capiUrl:
     process.env.LINKEDIN_CAPI_URL ||
     "https://api.linkedin.com/rest/conversionEvents",
-  apiVersion: process.env.LINKEDIN_API_VERSION || "202501",
+  apiVersion: process.env.LINKEDIN_API_VERSION || "202608",
   enabled: process.env.LINKEDIN_ENABLE_TRACKING === "true",
   accessToken: process.env.LINKEDIN_CAPI_ACCESS_TOKEN || "",
-  conversionId: process.env.LINKEDIN_CONVERSION_ID || "",
+  conversionId: process.env.LINKEDIN_CONVERSION_ID_CAPI || "",
   debug: process.env.LINKEDIN_DEBUG_TRACKING === "true",
 }
 

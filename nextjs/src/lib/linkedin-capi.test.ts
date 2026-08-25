@@ -6,7 +6,7 @@ import { LinkedInCapiTracker, type LinkedInCapiConfig } from "./linkedin-capi"
 
 const baseConfig: LinkedInCapiConfig = {
   capiUrl: "https://api.linkedin.com/rest/conversionEvents",
-  apiVersion: "202501",
+  apiVersion: "202608",
   enabled: true,
   accessToken: "test-token",
   conversionId: "12345678",
@@ -72,7 +72,7 @@ describe("LinkedInCapiTracker", () => {
     expect(url).toBe("https://api.linkedin.com/rest/conversionEvents")
     expect(init.method).toBe("POST")
     expect(init.headers.Authorization).toBe("Bearer test-token")
-    expect(init.headers["LinkedIn-Version"]).toBe("202501")
+    expect(init.headers["LinkedIn-Version"]).toBe("202608")
     expect(init.headers["X-Restli-Protocol-Version"]).toBe("2.0.0")
 
     const body = JSON.parse(init.body)
@@ -90,12 +90,47 @@ describe("LinkedInCapiTracker", () => {
     ])
   })
 
-  test("swallows fetch errors so submissions are never affected", async () => {
-    const fetchMock = vi.fn().mockRejectedValue(new Error("network"))
+  test("does not double-prefix an id that is already a full URN", async () => {
+    const fetchMock = mockFetch()
+    const tracker = new LinkedInCapiTracker({
+      ...baseConfig,
+      conversionId: "urn:lla:llaPartnerConversion:99",
+    })
+    await tracker.trackConversion({ eventId: "e1", email: "john@example.com" })
+    const body = JSON.parse(fetchMock.mock.calls[0][1].body)
+    expect(body.conversion).toBe("urn:lla:llaPartnerConversion:99")
+  })
+
+  test("logs the status and response body on a non-2xx, without throwing", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 422,
+      text: () => Promise.resolve("Validation failed because [{field=user}]"),
+    })
     vi.stubGlobal("fetch", fetchMock)
     const tracker = new LinkedInCapiTracker(baseConfig)
+
     await expect(
       tracker.trackConversion({ eventId: "e1", email: "john@example.com" }),
     ).resolves.toBeUndefined()
+
+    expect(errorSpy).toHaveBeenCalledTimes(1)
+    expect(errorSpy.mock.calls[0][0]).toContain("422")
+    expect(errorSpy.mock.calls[0][0]).toContain("Validation failed because")
+  })
+
+  test("logs a thrown fetch error, without throwing", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
+    const fetchMock = vi.fn().mockRejectedValue(new Error("network"))
+    vi.stubGlobal("fetch", fetchMock)
+    const tracker = new LinkedInCapiTracker(baseConfig)
+
+    await expect(
+      tracker.trackConversion({ eventId: "e1", email: "john@example.com" }),
+    ).resolves.toBeUndefined()
+
+    expect(errorSpy).toHaveBeenCalledTimes(1)
+    expect(errorSpy.mock.calls[0][0]).toContain("LinkedIn CAPI tracking error")
   })
 })

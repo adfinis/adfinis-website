@@ -2,21 +2,24 @@
 
 import { useEffect, useRef } from "react"
 
-// Numeric conversion rule id, exposed to the client so lintrk can fire the
-// same conversion the server-side CAPI reports (LinkedIn deduplicates the two)
-const CONVERSION_ID = Number(process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_ID)
+const CONVERSION_ID = Number(
+  process.env.NEXT_PUBLIC_LINKEDIN_CONVERSION_ID_PIXEL,
+)
 
 export function useLinkedInConversion(state: {
   success: boolean
   conversionId?: string
 }): void {
-  const firedFor = useRef<object | null>(null)
+  const firedFor = useRef<string | null>(null)
 
   useEffect(() => {
     if (!state.success || !state.conversionId) return
-    if (!Number.isFinite(CONVERSION_ID)) return
-    if (firedFor.current === state) return
-    firedFor.current = state
-    window.lintrk?.("track", { conversion_id: CONVERSION_ID })
+    if (!Number.isInteger(CONVERSION_ID) || CONVERSION_ID <= 0) return
+    if (firedFor.current === state.conversionId) return
+    firedFor.current = state.conversionId
+    window.lintrk?.("track", {
+      conversion_id: CONVERSION_ID,
+      event_id: state.conversionId,
+    })
   }, [state])
 }

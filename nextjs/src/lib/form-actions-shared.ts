@@ -154,9 +154,15 @@ export async function runFormAction(
       // Reddit tracking must never affect the submission result
     }
     try {
-      after(() => fireLinkedInConversion(conversionId, validation.data))
+      after(async () => {
+        try {
+          await fireLinkedInConversion(conversionId, validation.data)
+        } catch (error) {
+          console.error("LinkedIn conversion failed", { conversionId, error })
+        }
+      })
     } catch {
-      // LinkedIn tracking must never affect the submission result
+      // Registering the callback must never affect the submission result
     }
     return { success: true, conversionId }
   } catch {
