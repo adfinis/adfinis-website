@@ -194,11 +194,7 @@ async function fireRedditLead(
   headersList: Headers,
 ): Promise<void> {
   const cookieStore = await cookies()
-  const requireConsent = process.env.REDDIT_CAPI_REQUIRE_CONSENT === "true"
-  if (requireConsent) {
-    const consent = cookieStore.get(COOKIE_CONSENT_KEY)?.value
-    if (consent !== "all") return
-  }
+  if (cookieStore.get(COOKIE_CONSENT_KEY)?.value !== "all") return
 
   const ipAddress =
     headersList.get("do-connecting-ip") ||
@@ -225,11 +221,7 @@ async function fireLinkedInConversion(
   data: Record<string, unknown>,
 ): Promise<void> {
   const cookieStore = await cookies()
-  const requireConsent = process.env.LINKEDIN_CAPI_REQUIRE_CONSENT === "true"
-  if (requireConsent) {
-    const consent = cookieStore.get(COOKIE_CONSENT_KEY)?.value
-    if (consent !== "all") return
-  }
+  if (cookieStore.get(COOKIE_CONSENT_KEY)?.value !== "all") return
 
   const email = typeof data.email === "string" ? data.email : undefined
 

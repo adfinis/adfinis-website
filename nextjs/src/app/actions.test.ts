@@ -19,11 +19,21 @@ vi.mock("@/lib/reddit-capi", () => ({
 vi.mock("@/lib/linkedin-capi", () => ({
   linkedinCapi: { trackConversion: vi.fn() },
 }))
-vi.mock("next/server", () => ({ after: (fn: () => unknown) => fn() }))
+// Capture the after() callbacks' promises so tests can await tracking side
+// effects (the callbacks are async and otherwise fire-and-forget).
+const afterHold = vi.hoisted(() => ({ promises: [] as Promise<unknown>[] }))
+vi.mock("next/server", () => ({
+  after: (fn: () => unknown) => {
+    afterHold.promises.push(Promise.resolve().then(fn))
+  },
+}))
 
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { strapiFetch } from "@/lib/strapi"
+import { cookies } from "next/headers"
+import { linkedinCapi } from "@/lib/linkedin-capi"
+import { redditCapi } from "@/lib/reddit-capi"
 import {
   saveSimpleForm,
   saveStandardForm,
@@ -35,6 +45,21 @@ import {
 const mockStrapiFetch = vi.mocked(strapiFetch)
 const mockFormsparkSubmit = vi.mocked(formsparkSubmit)
 const mockVerifyAltcha = vi.mocked(verifyAltcha)
+const mockCookies = vi.mocked(cookies)
+const mockTrackConversion = vi.mocked(linkedinCapi.trackConversion)
+const mockTrackLead = vi.mocked(redditCapi.trackLead)
+
+async function flushAfter() {
+  await Promise.all(afterHold.promises)
+  afterHold.promises = []
+}
+
+function consentCookies(value?: string) {
+  return {
+    get: (name: string) =>
+      name === "aw-consents" && value != null ? { value } : undefined,
+  } as never
+}
 
 const lastPayload = () =>
   mockFormsparkSubmit.mock.calls.at(-1)?.[0] as Record<string, unknown>
@@ -56,9 +81,12 @@ function withCompany(fd: FormData): FormData {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  afterHold.promises = []
   mockVerifyAltcha.mockResolvedValue(true)
   mockStrapiFetch.mockResolvedValue(undefined as never)
   mockFormsparkSubmit.mockResolvedValue(undefined as never)
+  // Default: full consent. Individual tests override to exercise the gate.
+  mockCookies.mockResolvedValue(consentCookies("all"))
 })
 
 describe("saveSimpleForm", () => {
@@ -199,5 +227,40 @@ describe("saveRaffleForm", () => {
     expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("raffle")
     expect("agree_to_receive_mail" in lastPayload()).toBe(false)
+  })
+})
+
+describe("CAPI consent gating (fail-closed)", () => {
+  function contactFd(): FormData {
+    const fd = withCompany(base())
+    fd.set("message", "Hello there")
+    return fd
+  }
+
+  test("fires both CAPIs on a successful submit with full consent", async () => {
+    const result = await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+    expect(result.success).toBe(true)
+    expect(mockTrackConversion).toHaveBeenCalledTimes(1)
+    expect(mockTrackLead).toHaveBeenCalledTimes(1)
+  })
+
+  test("fires neither CAPI when consent is only partial", async () => {
+    mockCookies.mockResolvedValue(consentCookies("essential"))
+    const result = await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+    // Submission still succeeds; only tracking is withheld.
+    expect(result.success).toBe(true)
+    expect(mockTrackConversion).not.toHaveBeenCalled()
+    expect(mockTrackLead).not.toHaveBeenCalled()
+  })
+
+  test("fires neither CAPI when the consent cookie is absent", async () => {
+    mockCookies.mockResolvedValue(consentCookies(undefined))
+    const result = await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+    expect(result.success).toBe(true)
+    expect(mockTrackConversion).not.toHaveBeenCalled()
+    expect(mockTrackLead).not.toHaveBeenCalled()
   })
 })
