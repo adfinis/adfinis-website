@@ -90,6 +90,48 @@ describe("LinkedInCapiTracker", () => {
     ])
   })
 
+  test("includes PLAINTEXT_IP_ADDRESS and userInfo when provided", async () => {
+    const fetchMock = mockFetch()
+    const tracker = new LinkedInCapiTracker(baseConfig)
+    await tracker.trackConversion({
+      eventId: "e1",
+      email: "john@example.com",
+      ipAddress: "203.0.113.7",
+      userInfo: {
+        firstName: "John",
+        lastName: "Doe",
+        companyName: "Adfinis",
+        title: "Engineer",
+      },
+    })
+
+    const body = JSON.parse(fetchMock.mock.calls[0][1].body)
+    expect(body.user.userIds).toEqual([
+      { idType: "SHA256_EMAIL", idValue: HASHED_EMAIL },
+      { idType: "PLAINTEXT_IP_ADDRESS", idValue: "203.0.113.7" },
+    ])
+    expect(body.user.userInfo).toEqual({
+      firstName: "John",
+      lastName: "Doe",
+      companyName: "Adfinis",
+      title: "Engineer",
+    })
+  })
+
+  test("sends userInfo with an empty userIds list when there is no id", async () => {
+    const fetchMock = mockFetch()
+    const tracker = new LinkedInCapiTracker(baseConfig)
+    await tracker.trackConversion({
+      eventId: "e1",
+      userInfo: { firstName: "John", lastName: "Doe" },
+    })
+
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    const body = JSON.parse(fetchMock.mock.calls[0][1].body)
+    expect(body.user.userIds).toEqual([])
+    expect(body.user.userInfo).toEqual({ firstName: "John", lastName: "Doe" })
+  })
+
   test("does not double-prefix an id that is already a full URN", async () => {
     const fetchMock = mockFetch()
     const tracker = new LinkedInCapiTracker({

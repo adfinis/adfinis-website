@@ -9,10 +9,20 @@ export interface LinkedInCapiConfig {
   debug: boolean
 }
 
+export interface LinkedInUserInfo {
+  firstName: string
+  lastName: string
+  companyName?: string
+  title?: string
+  countryCode?: string
+}
+
 export interface LinkedInConversionInput {
   eventId: string
   email?: string
   liFatId?: string
+  ipAddress?: string
+  userInfo?: LinkedInUserInfo
   eventAt?: Date
 }
 
@@ -60,14 +70,25 @@ export class LinkedInCapiTracker {
         idValue: input.liFatId,
       })
     }
-    // Without any user identifier LinkedIn cannot match the conversion.
-    if (userIds.length === 0) return
+    if (input.ipAddress) {
+      userIds.push({
+        idType: "PLAINTEXT_IP_ADDRESS",
+        idValue: input.ipAddress,
+      })
+    }
+    if (userIds.length === 0 && !input.userInfo) return
+
+    const user: {
+      userIds: Array<{ idType: string; idValue: string }>
+      userInfo?: LinkedInUserInfo
+    } = { userIds }
+    if (input.userInfo) user.userInfo = input.userInfo
 
     const payload = {
       conversion: conversionUrn(this.config.conversionId),
       conversionHappenedAt: (input.eventAt ?? new Date()).getTime(),
       eventId: input.eventId,
-      user: { userIds },
+      user,
     }
 
     if (this.config.debug) {
