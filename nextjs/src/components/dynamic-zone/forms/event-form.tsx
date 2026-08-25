@@ -8,6 +8,7 @@ import Email from "@/components/form-fields/email"
 import Checkbox from "@/components/form-fields/checkbox"
 import Altcha from "@/components/form-fields/altcha"
 import Button from "@/components/button"
+import SubmitErrorMessage from "@/components/form/submit-error-message"
 import Textarea from "@/components/form-fields/textarea"
 import { useRestoreFormValues } from "@/components/form/use-restore-form-values"
 import { useRedditLead } from "@/components/reddit/use-reddit-lead"
@@ -23,7 +24,9 @@ type Props = {
 }
 export default function EventForm({ submitLabel, dictionary, locale }: Props) {
   const action = saveEventForm.bind(null, locale ?? "en")
-  const [state, formAction] = useActionState(action, { success: false })
+  const [state, formAction, isPending] = useActionState(action, {
+    success: false,
+  })
   const formRef = useRef<HTMLFormElement>(null)
 
   useRestoreFormValues(formRef, state)
@@ -99,9 +102,18 @@ export default function EventForm({ submitLabel, dictionary, locale }: Props) {
             defaultChecked={state?.values?.privacy_policy}
           />
           <Altcha errorMessage={state?.errors?.altcha ?? []} />
-          <div className="w-full text-center">
-            <Button variant={"cta"} name={"submit"} type="submit">
-              {submitLabel}
+          <div className="grid w-full gap-4 text-center">
+            {state.submitError && !isPending && (
+              <SubmitErrorMessage message={dictionary.forms.submitFailed} />
+            )}
+            <Button
+              variant={"cta"}
+              className="justify-self-center"
+              name={"submit"}
+              type="submit"
+              disabled={isPending}
+            >
+              {isPending ? dictionary.forms.submitting : submitLabel}
             </Button>
           </div>
         </div>

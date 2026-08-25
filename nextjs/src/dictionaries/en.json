@@ -17,8 +17,9 @@
         "agreeToReceiveMail": "I agree to receive other communications from Adfinis and its partners",
         "submitSuccessful": "Thank you! Your response has been submitted.",
         "submitAnotherPrompt": "Need to send another?",
-        "submitAnotherLink": "Click here to submit a new form."
-    },
+        "submitAnotherLink": "Click here to submit a new form.",
+        "submitting": "Submitting…",
+        "submitFailed": "Your message could not be sent. Please try again, or contact us by email."    },
     "validation": {
         "required": "This field is required.",
         "email": "Please enter a valid email address.",
