@@ -26,3 +26,9 @@ test("calls onSubmitAnother when the link is clicked", () => {
 
   expect(onSubmitAnother).toHaveBeenCalledOnce()
 })
+
+test("announces itself to assistive technology", () => {
+  render(<FormConfirmation {...props} onSubmitAnother={() => {}} />)
+
+  expect(screen.getByRole("status").textContent).toContain(props.message)
+})

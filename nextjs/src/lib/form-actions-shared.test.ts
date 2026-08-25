@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 vi.mock("server-only", () => ({}))
+vi.mock("@sentry/nextjs", () => ({ logger: { error: vi.fn() } }))
 vi.mock("@/lib/formspark-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/altcha", () => ({ verifyAltcha: vi.fn() }))
 vi.mock("@/lib/strapi", () => ({ strapiFetch: vi.fn() }))
@@ -10,6 +11,7 @@ vi.mock("next/headers", () => ({
   ),
 }))
 
+import * as Sentry from "@sentry/nextjs"
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { strapiFetch } from "@/lib/strapi"
@@ -18,6 +20,7 @@ import { runFormAction, type FormConfig } from "./form-actions-shared"
 const mockStrapiFetch = vi.mocked(strapiFetch)
 const mockFormsparkSubmit = vi.mocked(formsparkSubmit)
 const mockVerifyAltcha = vi.mocked(verifyAltcha)
+const mockSentryLogError = vi.mocked(Sentry.logger.error)
 
 const STANDARD: FormConfig = {
   type: "standard",
@@ -47,7 +50,7 @@ describe("runFormAction", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockVerifyAltcha.mockResolvedValue(true)
-    mockStrapiFetch.mockResolvedValue(undefined as never)
+    mockStrapiFetch.mockResolvedValue(new Response(null, { status: 200 }))
     mockFormsparkSubmit.mockResolvedValue(undefined as never)
   })
 
@@ -107,20 +110,88 @@ describe("runFormAction", () => {
     expect(JSON.parse(init?.body as string).data.from_url).toBe("/en/contact")
   })
 
-  test("returns values without errors when formspark throws", async () => {
-    mockFormsparkSubmit.mockRejectedValue(new Error("network"))
+  test("returns submitError with values and logs to Sentry when formspark throws", async () => {
+    mockFormsparkSubmit.mockRejectedValue(
+      new Error("formspark responded with 500", {
+        cause: { status: 500, body: "Internal Server Error" },
+      }),
+    )
     const result = await runFormAction(STANDARD, "en", validStandardFormData())
     expect(result.success).toBe(false)
+    expect(result.submitError).toBe(true)
     expect(result.errors).toBeUndefined()
     expect(result.values?.firstName).toBe("John")
+    expect(mockSentryLogError).toHaveBeenCalledTimes(1)
+    expect(mockSentryLogError).toHaveBeenCalledWith("Form submission failed", {
+      destination: "formspark",
+      form_type: "standard",
+      status: 500,
+      response_body: "Internal Server Error",
+    })
   })
 
-  test("returns values without errors when strapi throws", async () => {
+  test("returns submitError and logs to Sentry when strapi throws a network error", async () => {
     mockStrapiFetch.mockRejectedValue(new Error("strapi down"))
     const result = await runFormAction(STANDARD, "en", validStandardFormData())
     expect(result.success).toBe(false)
+    expect(result.submitError).toBe(true)
     expect(result.errors).toBeUndefined()
     expect(result.values?.firstName).toBe("John")
+    const attrs = mockSentryLogError.mock.calls[0][1] as Record<string, unknown>
+    expect(attrs.destination).toBe("strapi")
+    expect(attrs.status).toBeNull()
+  })
+
+  test("returns submitError when strapi responds with a non-ok status", async () => {
+    mockStrapiFetch.mockResolvedValue(new Response("boom", { status: 500 }))
+    const result = await runFormAction(STANDARD, "en", validStandardFormData())
+    expect(result.success).toBe(false)
+    expect(result.submitError).toBe(true)
+    expect(result.values?.firstName).toBe("John")
+  })
+
+  test("logs both destinations to Sentry when both fail", async () => {
+    mockStrapiFetch.mockRejectedValue(
+      new Error("strapi responded with 500", {
+        cause: { status: 500, body: "Internal Server Error" },
+      }),
+    )
+    mockFormsparkSubmit.mockRejectedValue(
+      new Error("formspark responded with 500", {
+        cause: { status: 500, body: "Internal Server Error" },
+      }),
+    )
+    const result = await runFormAction(STANDARD, "en", validStandardFormData())
+    expect(result.submitError).toBe(true)
+    expect(mockSentryLogError).toHaveBeenCalledTimes(2)
+    const destinationsLogged = mockSentryLogError.mock.calls.map(
+      (c) => (c[1] as Record<string, unknown>).destination,
+    )
+    expect(destinationsLogged).toEqual(["strapi", "formspark"])
+  })
+
+  test("never puts user field values into Sentry attributes", async () => {
+    mockFormsparkSubmit.mockRejectedValue(
+      new Error("formspark responded with 500", {
+        cause: { status: 500, body: "Internal Server Error" },
+      }),
+    )
+    await runFormAction(STANDARD, "en", validStandardFormData())
+    const attrs = mockSentryLogError.mock.calls[0][1] as Record<string, unknown>
+    const serialized = JSON.stringify(attrs)
+    expect(serialized).not.toContain("John")
+    expect(serialized).not.toContain("john@example.com")
+    expect(serialized).not.toContain("Adfinis")
+  })
+
+  test("does not log to Sentry on success, validation failure or altcha failure", async () => {
+    await runFormAction(STANDARD, "en", validStandardFormData())
+    const invalid = validStandardFormData()
+    invalid.set("email", "not-an-email")
+    await runFormAction(STANDARD, "en", invalid)
+    mockVerifyAltcha.mockResolvedValue(false)
+    await runFormAction(STANDARD, "en", validStandardFormData())
+    expect(mockSentryLogError).not.toHaveBeenCalled()
   })
 
   test("excludeFromPayload omits the field from the payload but still validates it", async () => {

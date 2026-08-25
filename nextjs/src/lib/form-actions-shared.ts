@@ -1,4 +1,5 @@
 import { z } from "zod"
+import * as Sentry from "@sentry/nextjs"
 import formsparkSubmit from "@/lib/formspark-submit"
 import { verifyAltcha } from "@/lib/altcha"
 import { getDictionary, type Dictionary } from "@/lib/get-dictionary.server"
@@ -75,6 +76,7 @@ export type FormValues = {
 
 export type FormState = {
   success: boolean
+  submitError?: boolean
   errors?: Partial<Record<FieldKey | "altcha", string[]>>
   values?: FormValues
   conversionId?: string
@@ -135,27 +137,50 @@ export async function runFormAction(
       ([k]) => !exclude.has(k as FieldKey),
     ),
   )
-  try {
-    const headersList = await headers()
-    const data = {
-      type: config.type,
-      ...validated,
-      privacy_policy: "yes",
-      from_url: stripHostname(headersList.get("referer") || ""),
-      is_created_at: new Date(),
-    }
-    await Promise.all([formSubmit({ data }), formsparkSubmit(data)])
-
-    const conversionId = crypto.randomUUID()
-    try {
-      after(() => fireRedditLead(conversionId, validation.data, headersList))
-    } catch {
-      // Reddit tracking must never affect the submission result
-    }
-    return { success: true, conversionId }
-  } catch {
-    return { success: false, values }
+  const headersList = await headers()
+  const data = {
+    type: config.type,
+    ...validated,
+    privacy_policy: "yes",
+    from_url: stripHostname(headersList.get("referer") || ""),
+    is_created_at: new Date(),
   }
+  const results = await Promise.allSettled([
+    formSubmit({ data }),
+    formsparkSubmit(data),
+  ])
+
+  const destinations = ["strapi", "formspark"] as const
+  let failed = false
+  results.forEach((result, i) => {
+    if (result.status !== "rejected") return
+    failed = true
+    const error = result.reason
+    const cause = (error?.cause ?? {}) as { status?: number; body?: string }
+    console.error(
+      `Form submission failed (type=${config.type}, destination=${destinations[i]}):`,
+      error,
+    )
+    // Metadata only — no form field values may ever reach Sentry.
+    Sentry.logger.error("Form submission failed", {
+      destination: destinations[i],
+      form_type: config.type,
+      status: cause.status ?? null,
+      response_body: (cause.body ?? String(error)).slice(0, 1000),
+    })
+  })
+
+  if (failed) {
+    return { success: false, submitError: true, values }
+  }
+
+  const conversionId = crypto.randomUUID()
+  try {
+    after(() => fireRedditLead(conversionId, validation.data, headersList))
+  } catch {
+    // Reddit tracking must never affect the submission result
+  }
+  return { success: true, conversionId }
 }
 
 function stripHostname(referrer: string): string {
@@ -168,12 +193,22 @@ function stripHostname(referrer: string): string {
 }
 
 async function formSubmit(payload: any) {
-  return strapiFetch("forms-betas", {
+  const res = await strapiFetch("forms-betas", {
     cache: "no-cache",
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   })
+  if (!res.ok) {
+    const body = await res.text().catch(() => "<unreadable body>")
+    console.error(
+      `Strapi form submission failed (type=${payload.data?.type}): ${res.status} ${res.statusText} — ${body}`,
+    )
+    throw new Error(`strapi responded with ${res.status}`, {
+      cause: { status: res.status, body },
+    })
+  }
+  return res
 }
 
 async function fireRedditLead(

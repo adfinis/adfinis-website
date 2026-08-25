@@ -110,12 +110,19 @@ const config: Config = {
          * then resets, which is seamless because the track holds two identical sets.
          */
         marquee: {
-          from: { transform: "translateX(calc(-1 * var(--marquee-shift, 0px)))" },
+          from: {
+            transform: "translateX(calc(-1 * var(--marquee-shift, 0px)))",
+          },
           to: { transform: "translateX(0)" },
+        },
+        "fade-slide-in": {
+          from: { opacity: "0", transform: "translateY(-6px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         marquee: "marquee var(--marquee-duration, 20s) linear infinite",
+        "fade-slide-in": "fade-slide-in 200ms ease-out",
       },
     },
   },

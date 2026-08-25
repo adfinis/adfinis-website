@@ -4,6 +4,7 @@ vi.mock("server-only", () => ({}))
 vi.mock("@/lib/formspark-submit", () => ({ default: vi.fn() }))
 vi.mock("@/lib/altcha", () => ({ verifyAltcha: vi.fn() }))
 vi.mock("@/lib/strapi", () => ({ strapiFetch: vi.fn() }))
+vi.mock("@sentry/nextjs", () => ({ logger: { error: vi.fn() } }))
 vi.mock("next/headers", () => ({
   headers: vi.fn(
     async () => new Headers({ referer: "https://localhost:3000/en/contact" }),
@@ -54,7 +55,7 @@ function withCompany(fd: FormData): FormData {
 beforeEach(() => {
   vi.clearAllMocks()
   mockVerifyAltcha.mockResolvedValue(true)
-  mockStrapiFetch.mockResolvedValue(undefined as never)
+  mockStrapiFetch.mockResolvedValue(new Response(null, { status: 200 }))
   mockFormsparkSubmit.mockResolvedValue(undefined as never)
 })
 
@@ -87,10 +88,11 @@ describe("saveSimpleForm", () => {
     expect(result.values?.privacy_policy).toBe(true)
   })
 
-  test("backend failure returns values without errors", async () => {
+  test("backend failure returns submitError with values, without errors", async () => {
     mockStrapiFetch.mockRejectedValue(new Error("strapi down"))
     const result = await saveSimpleForm("en", { success: false }, base())
     expect(result.success).toBe(false)
+    expect(result.submitError).toBe(true)
     expect(result.errors).toBeUndefined()
     expect(result.values?.email).toBe("john@example.com")
   })
