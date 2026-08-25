@@ -17,8 +17,9 @@
         "agreeToReceiveMail": "Ik ga akkoord met het ontvangen van verdere berichten van Adfinis en haar partners.",
         "submitSuccessful": "Uw formuliergegevens zijn succesvol verstuurd.",
         "submitAnotherPrompt": "Nog een formulier versturen?",
-        "submitAnotherLink": "Klik hier om een nieuw formulier te openen."
-    },
+        "submitAnotherLink": "Klik hier om een nieuw formulier te openen.",
+        "submitting": "Versturen…",
+        "submitFailed": "Uw bericht kon niet worden verzonden. Probeer het opnieuw of neem per e-mail contact met ons op."    },
     "validation": {
         "required": "Dit veld is verplicht.",
         "email": "Voer een geldig e-mailadres in.",

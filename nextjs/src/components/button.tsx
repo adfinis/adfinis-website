@@ -68,6 +68,7 @@ const Button: React.FC<ButtonProps> = ({
       )}
       tabIndex={disabled ? -1 : 0}
       aria-disabled={disabled}
+      disabled={disabled ?? undefined}
     >
       {chevron === "left" && <IconChevronLeft className="h-2.5 w-auto" />}
       {children}
