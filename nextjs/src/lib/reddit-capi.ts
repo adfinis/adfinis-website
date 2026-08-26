@@ -79,7 +79,10 @@ export class RedditCapiTracker {
         body: JSON.stringify(payload),
       })
       if (!response.ok && this.config.debug) {
-        console.warn(`Reddit CAPI tracking failed: ${response.status}`)
+        const body = await response.text()
+        console.warn(
+          `Reddit CAPI tracking failed: ${response.status} ${body}`,
+        )
       }
     } catch (error) {
       if (this.config.debug) {
