@@ -52,15 +52,17 @@ export class RedditCapiTracker {
     if (input.userAgent) user.user_agent = input.userAgent
     if (input.rdtUuid) user.uuid = input.rdtUuid
 
-    const event: Record<string, unknown> = {
-      event_at: (input.eventAt ?? new Date()).toISOString(),
-      event_type: { tracking_type: "Lead" },
-      user,
-      event_metadata: { conversion_id: input.conversionId },
+    const payload = {
+      test_mode: this.config.testMode,
+      events: [
+        {
+          event_at: (input.eventAt ?? new Date()).toISOString(),
+          event_type: { tracking_type: "Lead" },
+          user,
+          event_metadata: { conversion_id: input.conversionId },
+        },
+      ],
     }
-    if (this.config.testMode) event.test_mode = true
-
-    const payload = { events: [event] }
 
     if (this.config.debug) {
       console.log("🔍 [Reddit CAPI Debug]", JSON.stringify(payload))
