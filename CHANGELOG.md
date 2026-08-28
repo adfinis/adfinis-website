@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.35.0] - 2026-08-28
+
+- feat (AW-400): add strapi single type LLM's (#382)
+
 ## [1.34.1] - 2026-08-25
 
 - hotfix (AW-367): reddit v2 capi
