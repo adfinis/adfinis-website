@@ -29,6 +29,7 @@ export const TAGS = {
   BLOGS_OVERVIEW: "blogs-overview",
   NEWS_PAGE: "news-page",
   NEWS_OVERVIEW: "news-overview",
+  LLM: "llm",
 } as const
 
 export function normalizeLocale(locale: string) {
@@ -214,12 +215,15 @@ export function getNavigationMenu(locale: Locale) {
   )
 }
 
+export function getLlm() {
+  return strapi(`llm?status=published`, { tags: [TAGS.LLM] })
+}
+
 export function getHallmark(id: string) {
   return strapi(`hallmarks/${id}?populate=hallmark&status=published`, {
     tags: [TAGS.HALLMARK],
   })
 }
-
 
 export function getPageByDocumentId(documentId: string, locale: Locale) {
   validateLocale(locale)
