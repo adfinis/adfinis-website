@@ -1651,6 +1651,35 @@ export interface ApiIconCardIconCard extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLlmLlm extends Struct.SingleTypeSchema {
+  collectionName: 'llms';
+  info: {
+    displayName: "LLM's";
+    pluralName: 'llms';
+    singularName: 'llm';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::llm.llm'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNavigationMenuNavigationMenu
   extends Struct.SingleTypeSchema {
   collectionName: 'navigation_menus';
@@ -3149,6 +3178,7 @@ declare module '@strapi/strapi' {
       'api::hero.hero': ApiHeroHero;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::icon-card.icon-card': ApiIconCardIconCard;
+      'api::llm.llm': ApiLlmLlm;
       'api::navigation-menu.navigation-menu': ApiNavigationMenuNavigationMenu;
       'api::news-overview.news-overview': ApiNewsOverviewNewsOverview;
       'api::news-page.news-page': ApiNewsPageNewsPage;
