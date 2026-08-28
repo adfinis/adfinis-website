@@ -1659,7 +1659,7 @@ export interface ApiLlmLlm extends Struct.SingleTypeSchema {
     singularName: 'llm';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     content: Schema.Attribute.RichText &
