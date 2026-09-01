@@ -8,7 +8,9 @@ import { after } from "next/server"
 import { strapiFetch } from "@/lib/strapi"
 import { redditCapi } from "@/lib/reddit-capi"
 import { linkedinCapi, type LinkedInUserInfo } from "@/lib/linkedin-capi"
+import { googleAdsCapi } from "@/lib/google-ads-capi"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
+import { CLICK_ID_COOKIE, parseClickId } from "@/lib/click-id"
 
 const fieldBuilders = {
   first_name: (d: Dictionary) =>
@@ -164,6 +166,17 @@ export async function runFormAction(
     } catch {
       // Registering the callback must never affect the submission result
     }
+    try {
+      after(async () => {
+        try {
+          await fireGoogleAdsConversion(conversionId, config.type, validated)
+        } catch (error) {
+          console.error("Google Ads conversion failed", { conversionId, error })
+        }
+      })
+    } catch {
+      // Registering the callback must never affect the submission result
+    }
     return { success: true, conversionId }
   } catch {
     return { success: false, values }
@@ -234,6 +247,26 @@ async function fireLinkedInConversion(
     liFatId: cookieStore.get("li_fat_id")?.value,
     ipAddress: extended ? getLinkedInIp(headersList) : undefined,
     userInfo: extended ? buildUserInfo(data) : undefined,
+  })
+}
+
+async function fireGoogleAdsConversion(
+  conversionId: string,
+  formType: string,
+  data: Record<string, unknown>,
+) {
+  const cookieStore = await cookies()
+  if (cookieStore.get(COOKIE_CONSENT_KEY)?.value !== "all") return
+
+  const clickId = parseClickId(cookieStore.get(CLICK_ID_COOKIE)?.value)
+
+  await googleAdsCapi.trackConversion({
+    transactionId: conversionId,
+    formType,
+    clickId,
+    email: typeof data.email === "string" ? data.email : undefined,
+    phone:
+      typeof data.phone_number === "string" ? data.phone_number : undefined,
   })
 }
 
