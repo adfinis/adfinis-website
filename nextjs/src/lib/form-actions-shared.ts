@@ -169,7 +169,7 @@ export async function runFormAction(
     try {
       after(async () => {
         try {
-          await fireGoogleAdsConversion(conversionId, config.type, validated)
+          await fireGoogleAdsConversion(conversionId, validated)
         } catch (error) {
           console.error("Google Ads conversion failed", { conversionId, error })
         }
@@ -252,7 +252,6 @@ async function fireLinkedInConversion(
 
 async function fireGoogleAdsConversion(
   conversionId: string,
-  formType: string,
   data: Record<string, unknown>,
 ) {
   const cookieStore = await cookies()
@@ -262,7 +261,6 @@ async function fireGoogleAdsConversion(
 
   await googleAdsCapi.trackConversion({
     transactionId: conversionId,
-    formType,
     clickId,
     email: typeof data.email === "string" ? data.email : undefined,
     phone:

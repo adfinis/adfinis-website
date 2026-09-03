@@ -294,14 +294,13 @@ describe("Google Ads conversions", () => {
     return fd
   }
 
-  test("passes the form type, the conversion id and the stored click id", async () => {
+  test("passes the conversion id and the stored click id", async () => {
     const result = await saveContactForm("en", { success: false }, contactFd())
     await flushAfter()
 
     expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
     expect(mockTrackGoogleAds.mock.calls[0][0]).toEqual({
       transactionId: result.conversionId,
-      formType: "contact",
       clickId: { type: "gclid", value: "TESTCLICK" },
       email: "john@example.com",
       phone: undefined,
@@ -331,10 +330,10 @@ describe("Google Ads conversions", () => {
         return saveRaffleForm("en", { success: false }, fd)
       },
     ],
-  ])("reports the %s form under its own form type", async (type, submit) => {
+  ])("fires for the %s form", async (_type, submit) => {
     await submit()
     await flushAfter()
-    expect(mockTrackGoogleAds.mock.calls[0][0].formType).toBe(type)
+    expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
   })
 
   test("sends the phone number from the event form", async () => {
