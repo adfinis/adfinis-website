@@ -86,8 +86,11 @@ export async function signServiceAccountJwt(
 
 export function parseServiceAccountJson(raw: string | undefined) {
   if (!raw) return { email: "", key: "" }
+  const text = raw.trim().startsWith("{")
+    ? raw
+    : Buffer.from(raw.trim(), "base64").toString("utf8")
   try {
-    const parsed = JSON.parse(raw) as {
+    const parsed = JSON.parse(text) as {
       client_email?: unknown
       private_key?: unknown
     }

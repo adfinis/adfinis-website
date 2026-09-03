@@ -101,6 +101,19 @@ describe("parseServiceAccountJson", () => {
     })
   })
 
+  test("accepts the key file as a base64 string", () => {
+    const raw = Buffer.from(
+      JSON.stringify({
+        client_email: "a@b.iam.gserviceaccount.com",
+        private_key: "pem",
+      }),
+    ).toString("base64")
+    expect(parseServiceAccountJson(raw)).toEqual({
+      email: "a@b.iam.gserviceaccount.com",
+      key: "pem",
+    })
+  })
+
   test("returns empty values when unset or malformed", () => {
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
     expect(parseServiceAccountJson(undefined)).toEqual({ email: "", key: "" })
