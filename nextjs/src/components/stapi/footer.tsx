@@ -26,6 +26,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
         text: "Legal notice",
         href: "/en/legal-notice",
       },
+      {
+        text: "Accessibility Statement",
+        href: "/en/accessibility-statement",
+      },
     ],
     "de-ch": [
       {
@@ -35,6 +39,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
       {
         text: "Impressum",
         href: "/de-ch/impressum",
+      },
+      {
+        text: "Barrierefreiheitserklärung",
+        href: "/de-ch/barrierefreiheitserklaerung",
       },
     ],
     "de-de": [
@@ -46,6 +54,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
         text: "Impressum",
         href: "/de-ch/impressum",
       },
+      {
+        text: "Barrierefreiheitserklärung",
+        href: "/de-de/barrierefreiheitserklaerung",
+      },
     ],
     nl: [
       {
@@ -56,6 +68,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
         text: "Juridische kennisgeving",
         href: "/nl/legal-notice",
       },
+      {
+        text: "Toegankelijkheidsverklaring",
+        href: "/nl/toegankelijkheidsverklaring",
+      },
     ],
     "en-au": [
       {
@@ -65,6 +81,10 @@ export default async function Footer({ locale }: { locale: Locale }) {
       {
         text: "Legal notice",
         href: "/en-au/legal-notice",
+      },
+      {
+        text: "Accessibility Statement",
+        href: "/en-au/accessibility-statement",
       },
     ],
   }
