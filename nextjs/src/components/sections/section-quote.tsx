@@ -12,11 +12,12 @@ type SectionQuoteProps = {
 }
 
 const INLINE_MARKUP_PATTERN =
-  /\*\*([\s\S]+?)\*\*|<u>([\s\S]+?)<\/u>|<em>([\s\S]+?)<\/em>|<i>([\s\S]+?)<\/i>|\*(?!\s)([\s\S]+?)(?<!\s)\*|(?<!\w)_(?!\s)([\s\S]+?)(?<!\s)_(?!\w)/g
+  /\*\*([\s\S]+?)\*\*|<u>([\s\S]+?)<\/u>|<em>([\s\S]+?)<\/em>|<i>([\s\S]+?)<\/i>|\*(?!\*)(?!\s)((?:\*\*|[^*])+?)(?<!\s)\*(?!\*)|(?<!\w)_(?!\s)([\s\S]+?)(?<!\s)_(?!\w)/g
 
 /**
  * Renders the supported inline markup from Strapi:
  * - **text** → bold
+ * - *text*, _text_, <em>text</em>, <i>text</i> → italic
  * - <u>text</u> → underline
  *
  * Supported markup may be nested. All other content is rendered as

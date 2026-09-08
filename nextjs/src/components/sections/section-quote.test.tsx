@@ -70,3 +70,35 @@ test("renders plain text unchanged", () => {
   expect(blockquote.querySelector("em")).toBeNull()
   expect(blockquote.querySelector("strong")).toBeNull()
 })
+
+test("renders bold nested inside italic", () => {
+  const blockquote = quoteOf("*Really **great** work*")
+  const em = blockquote.querySelector("em")
+  expect(em?.textContent).toBe("Really great work")
+  expect(em?.querySelector("strong")?.textContent).toBe("great")
+  expect(blockquote.textContent).not.toContain("*")
+})
+
+test("keeps a trailing asterisk literal and still renders later bold", () => {
+  const blockquote = quoteOf("Cost*: **big**")
+  expect(blockquote.querySelector("em")).toBeNull()
+  expect(blockquote.querySelector("strong")?.textContent).toBe("big")
+  expect(blockquote.textContent).toContain("Cost*: big")
+  expect(blockquote.textContent).not.toContain("**")
+})
+
+test("keeps an asterisk before a comma literal and still renders later bold", () => {
+  const blockquote = quoteOf("Adfinis*, **great**")
+  expect(blockquote.querySelector("em")).toBeNull()
+  expect(blockquote.querySelector("strong")?.textContent).toBe("great")
+  expect(blockquote.textContent).toContain("Adfinis*, great")
+  expect(blockquote.textContent).not.toContain("**")
+})
+
+test("keeps an asterisk inside a word literal and still renders later bold", () => {
+  const blockquote = quoteOf("a*b and **bold**")
+  expect(blockquote.querySelector("em")).toBeNull()
+  expect(blockquote.querySelector("strong")?.textContent).toBe("bold")
+  expect(blockquote.textContent).toContain("a*b and bold")
+  expect(blockquote.textContent).not.toContain("**")
+})
