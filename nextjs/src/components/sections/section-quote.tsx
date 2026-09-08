@@ -11,7 +11,8 @@ type SectionQuoteProps = {
   }
 }
 
-const INLINE_MARKUP_PATTERN = /\*\*([\s\S]+?)\*\*|<u>([\s\S]+?)<\/u>/g
+const INLINE_MARKUP_PATTERN =
+  /\*\*([\s\S]+?)\*\*|<u>([\s\S]+?)<\/u>|<em>([\s\S]+?)<\/em>|<i>([\s\S]+?)<\/i>|\*(?!\s)([\s\S]+?)(?<!\s)\*|(?<!\w)_(?!\s)([\s\S]+?)(?<!\s)_(?!\w)/g
 
 /**
  * Renders the supported inline markup from Strapi:
@@ -35,6 +36,7 @@ const renderRichText = (text: string): React.ReactNode[] => {
 
     const boldContent = match[1]
     const underlineContent = match[2]
+    const italicContent = match[3] ?? match[4] ?? match[5] ?? match[6]
 
     if (boldContent !== undefined) {
       nodes.push(
@@ -47,6 +49,12 @@ const renderRichText = (text: string): React.ReactNode[] => {
         <u key={`underline-${elementIndex++}`}>
           {renderRichText(underlineContent)}
         </u>,
+      )
+    } else if (italicContent !== undefined) {
+      nodes.push(
+        <em key={`italic-${elementIndex++}`}>
+          {renderRichText(italicContent)}
+        </em>,
       )
     }
 
