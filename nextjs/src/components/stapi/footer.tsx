@@ -42,7 +42,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
       },
       {
         text: "Barrierefreiheitserklärung",
-        href: "/de-ch/barrierefreiheitserklaerung",
+        href: "/de-ch/erklarung-zur-barrierefreiheit",
       },
     ],
     "de-de": [
@@ -56,7 +56,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
       },
       {
         text: "Barrierefreiheitserklärung",
-        href: "/de-de/barrierefreiheitserklaerung",
+        href: "/de-de/erklarung-zur-barrierefreiheit",
       },
     ],
     nl: [
