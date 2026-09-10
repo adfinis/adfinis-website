@@ -16,6 +16,17 @@ type SectionEventProps = {
   html?: string
 }
 
+/**
+ * Escapes a number followed by "." or ")" at the start of the text, so markdown
+ * renders it as plain text instead of starting a numbered list.
+ *
+ * German dates begin like "15. September 2026", which markdown reads as item 15
+ * of a list: the "15." ends up in the margin, out of line with the time and
+ * address below it.
+ */
+export const escapeLeadingListMarker = (text: string) =>
+  text.replace(/^(\d+)([.)])/, "$1\\$2")
+
 const SectionEvent: React.FC<SectionEventProps> = ({
   title,
   date,
@@ -36,7 +47,7 @@ const SectionEvent: React.FC<SectionEventProps> = ({
           {date && (
             <li className="flex gap-6 items-center">
               <IconDate className="text-sunglow flex-shrink-0 self-start" />
-              <Text markdown={date} />
+              <Text markdown={escapeLeadingListMarker(date)} />
             </li>
           )}
           {time && (
