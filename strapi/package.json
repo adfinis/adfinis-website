@@ -8,7 +8,8 @@
     "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@strapi/plugin-users-permissions": "5.50.2",
