@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump. The commits can raise it, never lower it.'
+        type: choice
+        options: [auto, patch, minor, major]
+        default: auto
+      dry_run:
+        description: 'Only show the release; push nothing and open no PR'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
+        with:
+          node-version-file: 'nextjs/.nvmrc'
+
+      - name: Stop if a release PR is already open
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open=$(gh pr list --base main --head develop --state open --json url --jq '.[0].url')
+          if [ -n "$open" ]; then
+            echo "::error::A release PR is already open: $open"
+            exit 1
+          fi
+
+      - name: Write the changelog and raise the versions
+        id: release
+        env:
+          BUMP: ${{ inputs.bump }}
+          DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: node .github/scripts/release-notes.mjs --bump "$BUMP" --notes-file "$RUNNER_TEMP/release-notes.md" $DRY_RUN
+
+      - name: Commit to develop and open the release PR
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.release.outputs.version }}
+          GIT_AUTHOR_NAME: ${{ github.actor }}
+          GIT_AUTHOR_EMAIL: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git add CHANGELOG.md nextjs/package.json nextjs/package-lock.json strapi/package.json strapi/package-lock.json
+          git commit -m "chore(release): $VERSION"
+          git push origin HEAD:develop
+          gh pr create --base main --head develop --title "Release $VERSION" --body-file "$RUNNER_TEMP/release-notes.md"
