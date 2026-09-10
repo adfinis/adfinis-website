@@ -53,6 +53,14 @@ describe('checkMessage', () => {
     })
   }
 
+  it('does not count the " (#123)" GitHub adds on merge towards the length', () => {
+    const title = `feat(AW-123): ${'a'.repeat(86)}`
+    assert.equal(title.length, 100)
+    assert.deepEqual(checkMessage(title).errors, [])
+    assert.deepEqual(checkMessage(`${title} (#412)`).errors, [])
+    assert.equal(bumpFor(checkMessage(`${title} (#412)`)), 'minor')
+  })
+
   it('names every broken rule at once', () => {
     const { errors } = checkMessage('Feat (AW-1): Add x.')
     assert.equal(errors.length, 4)

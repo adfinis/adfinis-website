@@ -24,6 +24,7 @@ const HEADER =
   /^(?<type>[A-Za-z]+)(?<gap>\s*)(?:\((?<scope>[^)]*)\))?(?<bang>!)?(?<colon>:?)(?<space>\s*)(?<description>.*)$/
 const BREAKING_FOOTER = /^BREAKING[ -]CHANGE: /m
 const MAX_HEADER = 100
+const PR_NUMBER = / \(#\d+\)$/
 
 export const FORMAT_HELP = [
   'Format: type(scope)!: description',
@@ -104,8 +105,9 @@ export function checkMessage(message) {
     if (description.endsWith('.')) errors.push('the description must not end with a full stop')
   }
 
-  if (header.length > MAX_HEADER) {
-    errors.push(`the header is ${header.length} characters; the most is ${MAX_HEADER}`)
+  const length = header.replace(PR_NUMBER, '').length
+  if (length > MAX_HEADER) {
+    errors.push(`the header is ${length} characters; the most is ${MAX_HEADER}`)
   }
 
   result.breaking = Boolean(bang) || BREAKING_FOOTER.test(body)

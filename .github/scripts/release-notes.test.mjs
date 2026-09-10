@@ -1,8 +1,15 @@
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
+import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { describe, it } from 'node:test'
+import { fileURLToPath } from 'node:url'
 import {
   changelogSection,
+  compareVersions,
   higherBump,
+  isReleaseCommit,
   insertSection,
   nextVersion,
   planRelease,
@@ -111,6 +118,108 @@ describe('changelog', () => {
 
   it('refuses a changelog with no release heading', () => {
     assert.throws(() => insertSection('# Change Log\n', 'x'))
+  })
+})
+
+describe('isReleaseCommit', () => {
+  it('knows the workflow release commit and the old manual one', () => {
+    assert.equal(isReleaseCommit('chore(release): 1.36.0'), true)
+    assert.equal(isReleaseCommit('chore: changelog'), true)
+    assert.equal(isReleaseCommit('chore: changelog typo'), false)
+    assert.equal(isReleaseCommit('chore(deps): bump next'), false)
+  })
+})
+
+describe('compareVersions', () => {
+  it('compares each part as a number', () => {
+    assert.ok(compareVersions('1.10.0', '1.9.0') > 0)
+    assert.ok(compareVersions('1.35.0', '2.0.0') < 0)
+    assert.equal(compareVersions('1.35.0', '1.35.0'), 0)
+  })
+})
+
+describe('release-notes.mjs in a git repo', () => {
+  const script = fileURLToPath(new URL('./release-notes.mjs', import.meta.url))
+
+  function repo() {
+    const dir = mkdtempSync(join(tmpdir(), 'release-notes-'))
+    const env = {
+      ...process.env,
+      GIT_AUTHOR_NAME: 'Test',
+      GIT_AUTHOR_EMAIL: 'test@example.com',
+      GIT_COMMITTER_NAME: 'Test',
+      GIT_COMMITTER_EMAIL: 'test@example.com',
+      GITHUB_OUTPUT: '',
+      GITHUB_STEP_SUMMARY: '',
+    }
+    const git = (...args) => execFileSync('git', ['-c', 'core.hooksPath=/dev/null', ...args], { cwd: dir, env })
+    const setVersion = (version) => {
+      for (const app of ['nextjs', 'strapi']) {
+        mkdirSync(join(dir, app), { recursive: true })
+        writeFileSync(join(dir, app, 'package.json'), JSON.stringify({ name: app, version }, null, 2) + '\n')
+      }
+    }
+    const commit = (message) => git('commit', '-q', '--allow-empty', '-m', message)
+    const run = () => {
+      try {
+        return { code: 0, out: execFileSync('node', [script, '--main', 'main', '--dry-run'], { cwd: dir, env, encoding: 'utf8', stdio: 'pipe' }) }
+      } catch (error) {
+        return { code: error.status, out: `${error.stdout}${error.stderr}` }
+      }
+    }
+
+    git('init', '-q', '-b', 'main')
+    setVersion('1.0.0')
+    writeFileSync(join(dir, 'CHANGELOG.md'), '# Change Log\n\n## [1.0.0] - 2026-01-01\n')
+    git('add', '.')
+    commit('chore: changelog')
+    git('switch', '-q', '-c', 'develop')
+    return { dir, git, setVersion, commit, run }
+  }
+
+  it('lists a commit merged into develop while the last release PR was open', () => {
+    const r = repo()
+    r.commit('fix(AW-1): a')
+    r.setVersion('1.1.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.1.0')
+    r.commit('feat(AW-2): merged while the release pr was open')
+    r.git('switch', '-q', 'main')
+    r.git('merge', '-q', '--no-ff', '-m', 'Merge pull request #1 from adfinis/develop', 'develop')
+    r.git('switch', '-q', 'develop')
+    r.commit('fix(AW-3): c')
+
+    const { code, out } = r.run()
+    assert.equal(code, 0, out)
+    assert.match(out, /1\.1\.0 -> 1\.2\.0/)
+    assert.match(out, /- feat\(AW-2\): merged while the release pr was open/)
+    assert.match(out, /- fix\(AW-3\): c/)
+    assert.doesNotMatch(out, /- fix\(AW-1\): a/)
+  })
+
+  it('stops when develop has a release commit that main does not have yet', () => {
+    const r = repo()
+    r.commit('feat(AW-1): a')
+    r.setVersion('1.1.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.1.0')
+    r.commit('fix(AW-2): b')
+
+    const { code, out } = r.run()
+    assert.equal(code, 1)
+    assert.match(out, /already has release commit .* for 1\.1\.0, but main is still at 1\.0\.0/)
+  })
+
+  it('uses main as the start when there has never been a release commit', () => {
+    const r = repo()
+    r.git('switch', '-q', 'main')
+    r.git('commit', '-q', '--amend', '-m', 'initial')
+    r.git('switch', '-q', '-C', 'develop')
+    r.commit('feat(AW-1): a')
+
+    const { code, out } = r.run()
+    assert.equal(code, 0, out)
+    assert.match(out, /1\.0\.0 -> 1\.1\.0/)
   })
 })
 

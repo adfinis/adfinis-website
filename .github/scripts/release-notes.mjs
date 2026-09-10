@@ -59,8 +59,47 @@ export function insertSection(changelog, section) {
   return [...lines.slice(0, index), section, ...lines.slice(index)].join('\n')
 }
 
+export function isReleaseCommit(subject) {
+  return /^chore\(release\): \S+$/.test(subject) || subject === 'chore: changelog'
+}
+
+export function compareVersions(a, b) {
+  const [pa, pb] = [a, b].map((v) => v.split('.').map(Number))
+  for (let i = 0; i < 3; i++) if (pa[i] !== pb[i]) return pa[i] - pb[i]
+  return 0
+}
+
 function git(...args) {
   return execFileSync('git', args, { encoding: 'utf8' })
+}
+
+function lastReleaseCommit() {
+  const log = git('log', '--no-merges', '--format=%h%x1f%s', '-E', '--grep=^chore(\\(release\\))?: ', 'HEAD')
+  for (const line of log.split('\n')) {
+    const [sha, subject] = line.split('\x1f')
+    if (sha && isReleaseCommit(subject)) return { sha, subject }
+  }
+  return null
+}
+
+function versionAt(ref) {
+  return JSON.parse(git('show', `${ref}:nextjs/package.json`)).version
+}
+
+function findBase(main) {
+  const release = lastReleaseCommit()
+  if (!release) return { base: main }
+  const released = versionAt(release.sha)
+  const onMain = versionAt(main)
+  if (compareVersions(released, onMain) > 0) {
+    return {
+      error: [
+        `develop already has release commit ${release.sha} "${release.subject}" for ${released}, but ${main} is still at ${onMain}.`,
+        `If no release PR is open, open it by hand: gh pr create --base main --head develop --title "Release ${released}"`,
+      ].join('\n'),
+    }
+  }
+  return { base: release.sha }
 }
 
 function readCommits(base) {
@@ -81,11 +120,11 @@ function readVersions(root) {
 }
 
 function parseArgs(args) {
-  const options = { bump: 'auto', base: 'origin/main', notesFile: null, dryRun: false }
+  const options = { bump: 'auto', main: 'origin/main', notesFile: null, dryRun: false }
   for (let i = 0; i < args.length; i++) {
     const arg = args[i]
     if (arg === '--bump') options.bump = args[++i]
-    else if (arg === '--base') options.base = args[++i]
+    else if (arg === '--main') options.main = args[++i]
     else if (arg === '--notes-file') options.notesFile = args[++i]
     else if (arg === '--dry-run') options.dryRun = true
     else throw new Error(`unknown option "${arg}"`)
@@ -114,11 +153,18 @@ function main(args) {
     return 1
   }
 
-  const commits = readCommits(options.base)
-  if (!commits.length) {
-    console.error(`Nothing to release: develop has no commits that ${options.base} doesn't.`)
+  const { base, error } = findBase(options.main)
+  if (error) {
+    console.error(error)
     return 1
   }
+
+  const commits = readCommits(base)
+  if (!commits.length) {
+    console.error(`Nothing to release: no commits since ${base}.`)
+    return 1
+  }
+  console.log(`Commits since ${base}: ${commits.length}`)
 
   const plan = planRelease(commits, options.bump)
   const version = nextVersion(versions.nextjs, plan.bump)
