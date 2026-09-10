@@ -19,6 +19,9 @@ vi.mock("@/lib/reddit-capi", () => ({
 vi.mock("@/lib/linkedin-capi", () => ({
   linkedinCapi: { trackConversion: vi.fn() },
 }))
+vi.mock("@/lib/google-ads-capi", () => ({
+  googleAdsCapi: { trackConversion: vi.fn() },
+}))
 // Capture the after() callbacks' promises so tests can await tracking side
 // effects (the callbacks are async and otherwise fire-and-forget).
 const afterHold = vi.hoisted(() => ({ promises: [] as Promise<unknown>[] }))
@@ -34,6 +37,7 @@ import { strapiFetch } from "@/lib/strapi"
 import { cookies, headers } from "next/headers"
 import { linkedinCapi } from "@/lib/linkedin-capi"
 import { redditCapi } from "@/lib/reddit-capi"
+import { googleAdsCapi } from "@/lib/google-ads-capi"
 import { runFormAction } from "@/lib/form-actions-shared"
 import {
   saveSimpleForm,
@@ -50,6 +54,7 @@ const mockCookies = vi.mocked(cookies)
 const mockHeaders = vi.mocked(headers)
 const mockTrackConversion = vi.mocked(linkedinCapi.trackConversion)
 const mockTrackLead = vi.mocked(redditCapi.trackLead)
+const mockTrackGoogleAds = vi.mocked(googleAdsCapi.trackConversion)
 
 function headersWith(extra: Record<string, string>) {
   return new Headers({
@@ -63,10 +68,14 @@ async function flushAfter() {
   afterHold.promises = []
 }
 
-function consentCookies(value?: string) {
+function consentCookies(value?: string, clickId?: string | null) {
+  const stored = clickId === null ? undefined : clickId ?? "gclid:TESTCLICK"
   return {
-    get: (name: string) =>
-      name === "aw-consents" && value != null ? { value } : undefined,
+    get: (name: string) => {
+      if (name === "aw-consents") return value != null ? { value } : undefined
+      if (name === "aw_gclid") return stored ? { value: stored } : undefined
+      return undefined
+    },
   } as never
 }
 
@@ -253,6 +262,7 @@ describe("CAPI consent gating (fail-closed)", () => {
     expect(result.success).toBe(true)
     expect(mockTrackConversion).toHaveBeenCalledTimes(1)
     expect(mockTrackLead).toHaveBeenCalledTimes(1)
+    expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
   })
 
   test("fires neither CAPI when consent is only partial", async () => {
@@ -263,6 +273,7 @@ describe("CAPI consent gating (fail-closed)", () => {
     expect(result.success).toBe(true)
     expect(mockTrackConversion).not.toHaveBeenCalled()
     expect(mockTrackLead).not.toHaveBeenCalled()
+    expect(mockTrackGoogleAds).not.toHaveBeenCalled()
   })
 
   test("fires neither CAPI when the consent cookie is absent", async () => {
@@ -272,6 +283,79 @@ describe("CAPI consent gating (fail-closed)", () => {
     expect(result.success).toBe(true)
     expect(mockTrackConversion).not.toHaveBeenCalled()
     expect(mockTrackLead).not.toHaveBeenCalled()
+    expect(mockTrackGoogleAds).not.toHaveBeenCalled()
+  })
+})
+
+describe("Google Ads conversions", () => {
+  function contactFd(): FormData {
+    const fd = withCompany(base())
+    fd.set("message", "Hello there")
+    return fd
+  }
+
+  test("passes the conversion id and the stored click id", async () => {
+    const result = await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+
+    expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
+    expect(mockTrackGoogleAds.mock.calls[0][0]).toEqual({
+      transactionId: result.conversionId,
+      clickId: { type: "gclid", value: "TESTCLICK" },
+      email: "john@example.com",
+      phone: undefined,
+    })
+  })
+
+  test.each([
+    ["short", () => saveSimpleForm("en", { success: false }, base())],
+    [
+      "standard",
+      () => saveStandardForm("en", { success: false }, withCompany(base())),
+    ],
+    ["contact", () => saveContactForm("en", { success: false }, contactFd())],
+    [
+      "event",
+      () => {
+        const fd = contactFd()
+        fd.set("phone_number", "")
+        return saveEventForm("en", { success: false }, fd)
+      },
+    ],
+    [
+      "raffle",
+      () => {
+        const fd = withCompany(base())
+        fd.set("agree_to_receive_mail", "on")
+        return saveRaffleForm("en", { success: false }, fd)
+      },
+    ],
+  ])("fires for the %s form", async (_type, submit) => {
+    await submit()
+    await flushAfter()
+    expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
+  })
+
+  test("sends the phone number from the event form", async () => {
+    const fd = contactFd()
+    fd.set("phone_number", "+41791234567")
+    await saveEventForm("en", { success: false }, fd)
+    await flushAfter()
+    expect(mockTrackGoogleAds.mock.calls[0][0].phone).toBe("+41791234567")
+  })
+
+  test("still fires with no click id, leaving the decision to the tracker", async () => {
+    mockCookies.mockResolvedValue(consentCookies("all", null))
+    await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+    expect(mockTrackGoogleAds.mock.calls[0][0].clickId).toBeUndefined()
+  })
+
+  test("ignores a click id cookie it cannot parse", async () => {
+    mockCookies.mockResolvedValue(consentCookies("all", "not-a-click-id"))
+    await saveContactForm("en", { success: false }, contactFd())
+    await flushAfter()
+    expect(mockTrackGoogleAds.mock.calls[0][0].clickId).toBeUndefined()
   })
 })
 
