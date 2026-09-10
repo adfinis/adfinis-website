@@ -1,17 +1,16 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react"
-import type { Card } from "./card"
 import Text from "../text"
-import CardColored from "./card-colored"
-import Link from "../link-button"
 import CardSliderExplanation from "./card-slider-explanation"
 import type { CTA } from "@/lib/cta"
 import ButtonGroup from "../button-group"
 import clsx from "clsx"
 import IconChevronRight from "../icons/icon-chevron-right"
 import IconChevronLeft from "../icons/icon-chevron-left"
-import { useWindowSize } from "@uidotdev/usehooks"
 import Title from "../title"
+import { cardSliderOffset } from "./card-slider-offset"
+
+const SLIDE_IN_DISTANCE = 1500
 
 type CardSliderProps = {
   title: string
@@ -25,28 +24,32 @@ const CardSlider: React.FC<CardSliderProps> = ({
   ctas,
   children,
 }) => {
-  /**
-   * @info -mx-8 is a correction for the Container.tsx component (sm:px-2), in order to prevent a scrollbar from appearing
-   * The reason is w-topbar's calculation, in some edge cases slightly being bigger than the container.
-   * @see Container.tsx for additional details
-   */
-
-  const { width } = useWindowSize()
-  const distance = width || 1500
   const sliderRef = useRef<HTMLDivElement>(null)
   const [scrollPosition, setScrollPosition] = useState(0)
 
-  function scrollHorizontal(offset: number) {
-    if (!sliderRef.current) return
-    sliderRef.current.scrollLeft += offset
-    setScrollPosition(sliderRef.current.scrollLeft)
+  function page(direction: 1 | -1) {
+    const slider = sliderRef.current
+    if (!slider) return
+    const padding = parseFloat(getComputedStyle(slider).paddingLeft)
+    const { left, right } = slider.getBoundingClientRect()
+    const cards = Array.from(slider.children, (card) =>
+      card.getBoundingClientRect(),
+    )
+    const offset = cardSliderOffset(
+      { left: left + padding, right: right - padding },
+      cards,
+      direction,
+    )
+    slider.scrollBy({ left: offset })
   }
 
   useEffect(() => {
+    const slider = sliderRef.current
+    if (!slider) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          scrollHorizontal(-distance)
+          slider.scrollTo({ left: 0 })
         }
       },
       {
@@ -55,17 +58,9 @@ const CardSlider: React.FC<CardSliderProps> = ({
         threshold: 0.8, // Element is considered visible when at least 80% is in view
       },
     )
-
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft = distance // Adjust this value as needed
-      observer.observe(sliderRef.current)
-    }
-
-    return () => {
-      if (sliderRef.current) {
-        observer.unobserve(sliderRef?.current)
-      }
-    }
+    slider.scrollLeft = SLIDE_IN_DISTANCE
+    observer.observe(slider)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -80,14 +75,14 @@ const CardSlider: React.FC<CardSliderProps> = ({
       <div className="hidden lg:block">
         {scrollPosition > 0 && (
           <button
-            onClick={() => scrollHorizontal(-distance)}
+            onClick={() => page(-1)}
             className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 left-6  flex items-center justify-center z-20"
           >
             <IconChevronLeft className="w-3.5 h-3.5 text-white" />
           </button>
         )}
         <button
-          onClick={() => scrollHorizontal(distance)}
+          onClick={() => page(1)}
           className="bg-jumbo/90 p-3.5 rounded-full absolute top-1/2 -translate-y-1/2 right-6 flex items-center justify-center z-20"
         >
           <IconChevronRight className="w-3.5 h-3.5 text-white" />
