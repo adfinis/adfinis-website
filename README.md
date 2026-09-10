@@ -159,6 +159,49 @@ npm run start      # Start production server
 npm run lint       # Run ESLint
 ```
 
+## Commit messages
+
+Every commit and every PR title follows [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+type(scope)!: description
+```
+
+| Type | Use it for | Version bump | Jira key as scope |
+| --- | --- | --- | --- |
+| `feat` | something new a visitor or editor can see or use | minor | required |
+| `fix` | a bug fix, hotfixes included | patch | required |
+| `perf` | faster or lighter, same behaviour | patch | required |
+| `refactor` | code reorganised, same behaviour | patch | required |
+| `style` | formatting only | patch | optional |
+| `test` | tests only | patch | optional |
+| `docs` | documentation only | patch | optional |
+| `build` | dependencies, `package.json`, build setup | patch | optional |
+| `ci` | GitHub workflows | patch | optional |
+| `chore` | other upkeep, e.g. the release commit | patch | optional |
+| `revert` | undoing an earlier commit | patch | optional |
+
+- `type` is lowercase and comes from the table. No space before `(`.
+- `scope` is one Jira key in capitals (`AW-404`) or one lowercase word (`deps`, `release`).
+- `!` right before the colon marks a breaking change and makes the release a major one. So does a line starting `BREAKING CHANGE: ` in the body.
+- A colon, then exactly one space.
+- The description starts with a lowercase letter or a digit and doesn't end with a full stop.
+- The whole first line is at most 100 characters.
+- Messages starting with `Merge `, `Revert "`, `fixup! `, `squash! ` or `amend! ` are not checked.
+
+Examples: `feat(AW-404): add google ads conversion api`, `fix(AW-406)!: move event dates to the new api`, `chore(deps): bump next`.
+
+`npm install` in `nextjs/` or `strapi/` switches on a git hook that refuses a commit in the wrong format. Pull requests into `develop` are checked the same way, title and every commit.
+
+## Releasing
+
+1. Open **Actions → Release → Run workflow** on GitHub.
+2. Leave **bump** on `auto` to take the version from the commits, or pick a bigger one. Tick **dry run** to see the result without changing anything.
+3. The workflow adds a section to `CHANGELOG.md` with every commit on `develop` since the last release commit, raises the version in both `package.json` files, commits that to `develop` and opens a PR from `develop` to `main` called `Release x.y.z`.
+4. Read the PR and merge it.
+
+Anything merged into `develop` while a release PR is open goes out with that release, but is listed under the next one. The workflow stops if a release PR is already open, or if `develop` has a release commit that `main` doesn't have yet.
+
 ## Architecture
 
 This project follows a headless CMS architecture:
