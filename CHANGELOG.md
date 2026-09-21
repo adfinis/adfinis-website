@@ -17,6 +17,14 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.36.0] - 2026-09-21
+
+- fix (AW-407): page the card slider to the card that was cut off (#388)
+- feat (AW-404): google ads conversion api (#384)
+- fix (AW-406): escape the day number so german event dates stay in line (#387)
+- feat (AW-401): add accessibility statement to the footer (#385)
+- feat (AW-357): render italic markup in section quote (#386)
+
 ## [1.35.0] - 2026-08-28
 
 - feat (AW-400): add strapi single type LLM's (#382)
