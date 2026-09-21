@@ -31,14 +31,33 @@ With `--use-on-cd`, entering `strapi/` or `nextjs/` automatically switches to th
 
 Install Docker with your package manager (`docker.io` on Debian/Ubuntu, `docker` on Fedora/Arch), start the service and add yourself to the `docker` group (`sudo usermod -aG docker $USER`, then log out and in). Install [fnm](https://github.com/Schniz/fnm#installation) or nvm.
 
-### Install the Node versions
+## Quick start
 
 ```bash
-(cd strapi && fnm install)   # Node 22.11.0
-(cd nextjs && fnm install)   # Node 24.16.0
+./scripts/setup.sh
 ```
 
-## Development setup
+The script is safe to re-run and never overwrites existing files. It:
+
+1. checks that git, Docker (running) and a Node version manager (fnm or nvm) are available (`./scripts/setup.sh --check` does only this) and tells you how to install what is missing,
+2. installs the Node versions pinned in `strapi/.nvmrc` and `nextjs/.nvmrc`,
+3. starts the PostgreSQL container (creating it on first run),
+4. creates `strapi/.env` and `nextjs/.env.local` with generated secrets, the database settings and a matching `DRAFT_MODE_SECRET`,
+5. runs `npm ci` in both apps,
+6. seeds Strapi (`npm run seed` in `strapi/`): the five locales, a local admin account (`admin@adfinis.test` / `Adfinis-local-1`, only if no admin exists yet; set `DEFAULT_STRAPI_ADMIN_PASS` to choose another password), a read-only API token (the seed prints it once; `setup.sh` stores it in `nextjs/.env.local`), a placeholder homepage, navigation menu and footer for every locale and a webhook named "Revalidate nextjs cache" (see [Architecture](#architecture)). The seed lives in `strapi/scripts/seed/`, one file per step under `steps/`.
+
+Then start the two apps in separate terminals:
+
+```bash
+cd strapi && npm run develop     # http://localhost:1337/admin
+cd nextjs && npm run dev         # http://localhost:3000
+```
+
+The seed refuses to run unless it looks like a local development setup: `NODE_ENV` must be unset or `development`, `APP_URL` must be unset and the database (`DATABASE_HOST` / `DATABASE_URL`) must be `localhost`. The seeded content is only placeholder text so the site renders; replace it in the Strapi admin. Seeded media points at a logo in `nextjs/public`, so no object storage is needed.
+
+The rest of this section explains each step in case you want to do it by hand or something goes wrong.
+
+## Manual setup
 
 ### 1. Database
 
@@ -74,7 +93,7 @@ Edit `strapi/.env`:
    DATABASE_USERNAME=postgres
    DATABASE_PASSWORD=supersecret
    ```
-3. **Draft mode**: set `DRAFT_MODE_SECRET` (`openssl rand -hex 32`). It must be the same value as in the Next.js env (step 3), and is what makes "Preview" in the Strapi admin work.
+3. **Draft mode**: set `DRAFT_MODE_SECRET` (`openssl rand -hex 32`). It must be the same value as in the Next.js env (see step 3), and is what makes "Preview" in the Strapi admin work.
 4. **Uploads**: media is stored in a DigitalOcean Space (`DO_SPACE_*`). You can leave the keys empty; Strapi starts fine and everything except uploading media works. Ask a teammate for credentials if you need uploads, and set `DO_SPACE_DIRECTORY` to your own folder so you don't overwrite shared assets.
 
 Then start it:
@@ -87,18 +106,19 @@ Strapi is now at http://localhost:1337/admin. On first visit it asks you to crea
 
 > The content-types (pages, sections, components, …) are part of this repository under `strapi/src`. Strapi creates all tables on first start, so you do **not** need to create anything in the Content-Type Builder. Only content and settings are missing, see the next section.
 
-### 3. Configure your local Strapi
+### 3. Seed your local Strapi
 
-A fresh database is empty. In the Strapi admin:
+A fresh database is empty. Seed it:
 
-1. **Locales**: *Settings → Internationalization*. The frontend supports exactly these five locales; add the missing ones (mind the upper-case region) and don't add others:
-   `en` (default), `en-AU`, `nl`, `de-CH`, `de-DE`
+```bash
+cd strapi && npm run seed
+```
 
-2. **Public API permissions**: *Settings → Users & Permissions plugin → Roles → Public*. For every content type enable `find` and `findOne`. Without this the API answers `403` and the site renders `404`.
+Run on its own, the seed prints the API token once; copy it into `nextjs/.env.local` as `STRAPI_API_TOKEN` (`./scripts/setup.sh` does that for you, and nothing else writes env files). To do it by hand in the Strapi admin instead:
 
-   Alternatively, create an API token (*Settings → API Tokens*) and put it in `nextjs/.env.local` as `STRAPI_API_TOKEN`.
-
-3. **Content**: create and publish at least a *Homepage*, *Navigation menu* and *Footer* entry per locale. Pages that are only drafts are not shown (the frontend requests `status=published`).
+1. **Locales**: *Settings → Internationalization*. The frontend supports exactly these five locales; add the missing ones (mind the upper-case region): `en` (default), `en-AU`, `nl`, `de-CH`, `de-DE`.
+2. **API access**: create an API token (*Settings → API Tokens*, type *Read-only*) and put it in `nextjs/.env.local` as `STRAPI_API_TOKEN`. Alternatively enable `find` and `findOne` for every content type under *Settings → Users & Permissions plugin → Roles → Public*.
+3. **Content**: create and publish a *Homepage*, *Navigation menu* and *Footer* entry per locale. The frontend only shows published entries (`status=published`). It also expects every link URL in the menu and the footer social URLs (LinkedIn, GitHub, YouTube) to be filled in, even though Strapi marks them optional, otherwise the page fails with a `null` `href` error.
 
 ### 4. Next.js
 
@@ -152,7 +172,7 @@ The repo ships `.vscode/settings.json` (works in VS Code and VSCodium): ESLint f
 - **Strapi** is the CMS and API. Content types are in `strapi/src/api` and reusable components in `strapi/src/components`. Schema changes that need data migrations go in `strapi/database/migrations`.
 - **Next.js** (App Router) renders the site from the Strapi API: routing under `nextjs/src/app/[locale]`, Strapi fetch helpers in `nextjs/src/lib/strapi.ts`, page sections in `nextjs/src/components/sections`.
 - **PostgreSQL** stores all content. Production and staging read their database settings from `strapi/config/env/`.
-- Next.js caches Strapi responses by tag (see `TAGS` in `strapi.ts`). Deployed environments purge them through `POST /api/revalidate`, protected by `REVALIDATE_SECRET`; you don't need this locally.
+- Next.js caches Strapi responses by tag (see `TAGS` in `strapi.ts`). Strapi purges them by calling `POST /api/revalidate` (protected by `Authorization: Bearer <REVALIDATE_SECRET>`) from a webhook on every entry create, update, delete, publish and unpublish. The seed creates that webhook locally as "Revalidate nextjs cache" (*Settings → Webhooks*), pointing at `http://localhost:3000/api/revalidate` with the secret from `nextjs/.env`; override the secret in `nextjs/.env.local` and re-run `./scripts/setup.sh` to sync it.
 
 ## Troubleshooting
 
@@ -161,7 +181,8 @@ The repo ships `.vscode/settings.json` (works in VS Code and VSCodium): ESLint f
 | `Unsupported engine` / weird build errors | Wrong Node version. Run `fnm use` (or `nvm use`) in *that* folder. |
 | Strapi starts with SQLite instead of Postgres | `DATABASE_CLIENT=postgres` missing in `strapi/.env`. |
 | Strapi: `password authentication failed` / `ECONNREFUSED` | Container not running (`docker ps`), or the `DATABASE_*` values don't match the `docker run` flags. |
-| Site shows 404 everywhere; Strapi logs `403` | Public role permissions missing, or nothing is *published* yet (step 3). |
+| Site shows 404 everywhere; Strapi logs `403` | `STRAPI_API_TOKEN` missing in `nextjs/.env.local` (re-run `./scripts/setup.sh`), or nothing is *published* yet. |
+| Site shows a 500 mentioning `href` … `null` | A menu URL or footer social URL is empty in Strapi (see Manual setup, step 3). Restart `npm run dev` afterwards, Next caches Strapi responses. |
 | Site shows 404 for one locale | That locale is not created in Strapi or has no published content. Codes are case-sensitive: `en-AU`, not `en-au`. |
 | Port 1337 / 3000 / 5432 already in use | Stop the other process, or the old container: `docker ps`. |
 
@@ -173,7 +194,7 @@ docker start adfinis-website-postgres    # start again
 docker rm -f adfinis-website-postgres    # DELETE the container and all local content
 ```
 
-After `docker rm` re-run step 1 and redo step 3.
+After `docker rm` run `./scripts/setup.sh` again; it recreates the container and re-seeds.
 
 ## License
 
