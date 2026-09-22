@@ -124,3 +124,58 @@ describe("proxy existing behaviour", () => {
     expect(response.headers.get("Cache-Control")).toBe("private, no-store")
   })
 })
+
+describe("proxy basic auth", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
+  function enableBasicAuth() {
+    vi.stubEnv("BASIC_AUTH_USER", "adfinis")
+    vi.stubEnv("BASIC_AUTH_PASSWORD", "s3cret")
+  }
+
+  function requestWithAuth(credentials?: string) {
+    const req = request("/en")
+    if (credentials) {
+      req.headers.set("authorization", `Basic ${btoa(credentials)}`)
+    }
+    return req
+  }
+
+  test("stays off when the env vars are unset", async () => {
+    const response = await proxy(requestWithAuth())
+    expect(response.status).not.toBe(401)
+  })
+
+  test("challenges an unauthenticated request", async () => {
+    enableBasicAuth()
+    const response = await proxy(requestWithAuth())
+
+    expect(response.status).toBe(401)
+    expect(response.headers.get("WWW-Authenticate")).toContain("Basic")
+  })
+
+  test("challenges wrong credentials", async () => {
+    enableBasicAuth()
+    const response = await proxy(requestWithAuth("adfinis:wrong"))
+    expect(response.status).toBe(401)
+  })
+
+  test("challenges a malformed header instead of throwing", async () => {
+    enableBasicAuth()
+    const req = request("/en")
+    req.headers.set("authorization", "Basic not-base64!!")
+
+    const response = await proxy(req)
+    expect(response.status).toBe(401)
+  })
+
+  test("lets the correct credentials through, colons included", async () => {
+    enableBasicAuth()
+    vi.stubEnv("BASIC_AUTH_PASSWORD", "s3:cret")
+
+    const response = await proxy(requestWithAuth("adfinis:s3:cret"))
+    expect(response.status).not.toBe(401)
+  })
+})
