@@ -171,6 +171,7 @@ else
   set_env "$STRAPI_ENV" DATABASE_NAME postgres
   set_env "$STRAPI_ENV" DATABASE_USERNAME postgres
   set_env "$STRAPI_ENV" DATABASE_PASSWORD "$PG_PASSWORD"
+  set_env "$STRAPI_ENV" DO_SPACE_DIRECTORY "$(whoami)-$(openssl rand -hex 3 | cut -c1-5)"
   ok "strapi/.env created with generated secrets"
 fi
 
