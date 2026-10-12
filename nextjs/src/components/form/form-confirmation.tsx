@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect, useRef } from "react"
+
 type Props = {
   message: string
   prompt: string
@@ -11,9 +15,22 @@ export default function FormConfirmation({
   link,
   onSubmitAnother,
 }: Props) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const reduceMotion =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false
+    ref.current?.scrollIntoView?.({
+      block: "nearest",
+      behavior: reduceMotion ? "auto" : "smooth",
+    })
+  }, [])
+
   return (
     <div
-      className="w-full text-center text-input-primary py-8"
+      ref={ref}
+      role="status"
+      className="w-full text-center text-input-primary py-8 motion-safe:animate-fade-slide-in"
       data-testid="form-confirmation"
     >
       <h2 className="text-2xl md:text-3xl font-bold">{message}</h2>
