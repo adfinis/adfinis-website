@@ -32,6 +32,9 @@ type Props = {
 
 type Step = "intro" | "form" | "thank-you"
 
+// Duration (ms) of both the fade out and the fade in.
+const FADE_DURATION = 600
+
 export default function GatedContentForm({
   intro,
   thankYou,
@@ -48,7 +51,7 @@ export default function GatedContentForm({
   useLinkedInConversion(state)
 
   const step: Step = state.success ? "thank-you" : formOpened ? "form" : "intro"
-  const { shown, visible } = useFadeSwap(step)
+  const { shown, visible } = useFadeSwap(step, FADE_DURATION)
 
   useEffect(() => {
     if (shown === "form" && visible) {
@@ -60,9 +63,10 @@ export default function GatedContentForm({
     <div
       aria-live="polite"
       className={clsx(
-        "w-full grid gap-4 lg:gap-8 justify-items-start transition-opacity duration-300 ease-in-out",
-        visible ? "opacity-100" : "opacity-0",
+        "w-full grid gap-4 lg:gap-8 justify-items-start transition-[opacity,transform] ease-in-out motion-reduce:transition-none",
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
       )}
+      style={{ transitionDuration: `${FADE_DURATION}ms` }}
       data-testid="gated-content"
     >
       {shown === "intro" && (
