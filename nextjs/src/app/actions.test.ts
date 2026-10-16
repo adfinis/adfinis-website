@@ -42,6 +42,7 @@ import { runFormAction } from "@/lib/form-actions-shared"
 import {
   saveSimpleForm,
   saveStandardForm,
+  saveGatedContentForm,
   saveContactForm,
   saveEventForm,
   saveRaffleForm,
@@ -158,6 +159,21 @@ describe("saveStandardForm", () => {
 
   test("missing company_name fails validation", async () => {
     const result = await saveStandardForm("en", { success: false }, base())
+    expect(result.success).toBe(false)
+    expect(result.errors?.company_name).toBeDefined()
+  })
+})
+
+describe("saveGatedContentForm", () => {
+  test("happy path uses type 'gated-content'", async () => {
+    const fd = withCompany(base())
+    const result = await saveGatedContentForm("en", { success: false }, fd)
+    expect(result.success).toBe(true)
+    expect(lastPayload().type).toBe("gated-content")
+  })
+
+  test("missing company_name fails validation", async () => {
+    const result = await saveGatedContentForm("en", { success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors?.company_name).toBeDefined()
   })
