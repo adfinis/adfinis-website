@@ -684,6 +684,24 @@ export interface SectionsFeatureCards extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsGatedContent extends Struct.ComponentSchema {
+  collectionName: 'components_sections_gated_contents';
+  info: {
+    description: 'Content offer that can only be downloaded after submitting a form';
+    displayName: 'Gated Content';
+  };
+  attributes: {
+    content_offer: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::content-offer.content-offer'
+    >;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    submit_label: Schema.Attribute.String & Schema.Attribute.Required;
+    thank_you_message: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsGroupTitleWithExternalLink
   extends Struct.ComponentSchema {
   collectionName: 'components_sections_group_title_with_external_links';
@@ -1125,6 +1143,7 @@ declare module '@strapi/strapi' {
       'sections.event-details-section': SectionsEventDetailsSection;
       'sections.extra-wide-icon-cards-grid-section': SectionsExtraWideIconCardsGridSection;
       'sections.feature-cards': SectionsFeatureCards;
+      'sections.gated-content': SectionsGatedContent;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
       'sections.hallmarks-section': SectionsHallmarksSection;
