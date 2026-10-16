@@ -7,8 +7,7 @@ import { useEffect, useState } from "react"
  *
  * When `target` changes, `visible` turns false straight away (fade out). Once
  * `duration` has passed, `shown` switches to the new target, which makes
- * `visible` true again (fade in). Users who prefer reduced motion get the new
- * view immediately.
+ * `visible` true again (fade in).
  */
 export function useFadeSwap<T>(target: T, duration = 300) {
   const [shown, setShown] = useState(target)
@@ -18,13 +17,7 @@ export function useFadeSwap<T>(target: T, duration = 300) {
       return
     }
 
-    const reduceMotion = window.matchMedia?.(
-      "(prefers-reduced-motion: reduce)",
-    ).matches
-    const timeout = setTimeout(
-      () => setShown(target),
-      reduceMotion ? 0 : duration,
-    )
+    const timeout = setTimeout(() => setShown(target), duration)
     return () => clearTimeout(timeout)
   }, [target, shown, duration])
 

@@ -63,8 +63,9 @@ export default function GatedContentForm({
     <div
       aria-live="polite"
       className={clsx(
-        "w-full grid gap-4 lg:gap-8 justify-items-start transition-[opacity,transform] ease-in-out motion-reduce:transition-none",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        "w-full grid gap-4 lg:gap-8 justify-items-start transition-[opacity,transform] ease-in-out",
+        // A fade is fine with reduced motion, the slide is not.
+        visible ? "opacity-100" : "opacity-0 motion-safe:translate-y-4",
       )}
       style={{ transitionDuration: `${FADE_DURATION}ms` }}
       data-testid="gated-content"
