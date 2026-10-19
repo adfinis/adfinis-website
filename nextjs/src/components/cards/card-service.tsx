@@ -21,22 +21,24 @@ const CardIcon: React.FC<CardServicesProps> = ({
   usps,
 }) => {
   return (
-    <div className="rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 justify-items-stretch max-w-sm">
+    <div className="rounded-xl px-6 pt-6 pb-8 shadow-2 grid gap-6 content-start justify-items-stretch max-w-sm">
       <Title level={3} boldness={"semibold"} align={"center"}>
         {title}
       </Title>
       {description && <p>{description}</p>}
-      {usps.map((usp, index) => (
-        <div
-          key={index}
-          className={`flex items-start gap-2 ${!usp.active && "opacity-30"}`}
-        >
-          <IconCheck className="text-white rounded-full p-[2px] h-4 w-4 bg-sapphire mt-[6px] lg:mt-1" />
-          <span className="flex-1 text-20 lg:text-18 text-stone">
-            {usp.text}
-          </span>
-        </div>
-      ))}
+      <div className="grid gap-2 lg:gap-4">
+        {usps.map((usp, index) => (
+          <div
+            key={index}
+            className={`flex items-start gap-2 ${!usp.active && "opacity-30"}`}
+          >
+            <IconCheck className="text-white rounded-full p-[2px] h-4 w-4 bg-sapphire mt-[6px] lg:mt-1" />
+            <span className="flex-1 text-20 lg:text-18 text-stone">
+              {usp.text}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
