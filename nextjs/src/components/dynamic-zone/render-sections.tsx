@@ -11,6 +11,7 @@ import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/even
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/sections/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
+import GatedContent from "@/components/dynamic-zone/wrapper/sections/gated-content"
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
 import CtaBanner from "@/components/dynamic-zone/wrapper/sections/cta-banner"
 import SingleColumnSection from "./wrapper/sections/single-column-section"
@@ -53,6 +54,14 @@ export function renderSections(section: any, index: number, locale?: string) {
         <ContentHighlightSection
           key={`sections.content-highlight-section_${index}`}
           section={section}
+        />
+      )
+    case "sections.gated-content":
+      return (
+        <GatedContent
+          key={`sections.gated-content_${index}`}
+          section={section}
+          locale={locale as Locale}
         />
       )
     case "sections.quote-section":
