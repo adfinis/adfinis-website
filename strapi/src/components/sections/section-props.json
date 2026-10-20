@@ -8,24 +8,28 @@
   "attributes": {
     "background": {
       "type": "enumeration",
+      "required": true,
+      "default": "neutral",
       "enum": [
         "white",
         "neutral",
         "sapphire",
         "stone"
-      ],
-      "default": "neutral",
-      "required": true
+      ]
     },
     "padding": {
       "type": "enumeration",
+      "required": true,
+      "default": "both-padding",
       "enum": [
         "no-padding",
         "both-padding",
         "start-padding"
-      ],
-      "default": "both-padding",
-      "required": true
+      ]
+    },
+    "anchor": {
+      "type": "string",
+      "regex": "^[a-z0-9-]+$"
     }
   }
 }
