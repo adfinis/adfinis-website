@@ -1,6 +1,6 @@
 {
   "name": "strapi",
-  "version": "1.36.0",
+  "version": "1.37.0",
   "private": true,
   "description": "A Strapi application",
   "scripts": {
@@ -8,7 +8,8 @@
     "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "seed": "node scripts/seed"
   },
   "dependencies": {
     "@strapi/plugin-users-permissions": "5.50.2",

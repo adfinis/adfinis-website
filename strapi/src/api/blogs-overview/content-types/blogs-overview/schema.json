@@ -66,6 +66,7 @@
         "sections.event-details-section",
         "sections.extra-wide-icon-cards-grid-section",
         "sections.feature-cards",
+        "sections.gated-content",
         "sections.hallmarks-section",
         "sections.icon-card-section-with-relation",
         "sections.image-carousel",

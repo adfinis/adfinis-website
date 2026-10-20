@@ -40,6 +40,28 @@ export async function saveStandardForm(
   )
 }
 
+export async function saveGatedContentForm(
+  locale: Locale,
+  _state: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  return runFormAction(
+    {
+      type: "gated-content",
+      fields: [
+        "first_name",
+        "last_name",
+        "email",
+        "company_name",
+        "job_function",
+        "privacy_policy",
+      ],
+    },
+    locale,
+    formData,
+  )
+}
+
 export async function saveContactForm(
   locale: Locale,
   _state: FormState,
