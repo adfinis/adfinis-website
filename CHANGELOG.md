@@ -17,6 +17,13 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.37.0] - 2026-10-20
+
+- fix (AW-411): keep the gated content fade when reduced motion is preferred (#394)
+- fix (AW-413): keep sla card bullets at the top with tighter spacing (#393)
+- feat (AW-409): update readme and setup script (#392)
+- feat (AW-402): strapi basic auth (#391)
+
 ## [1.36.0] - 2026-09-21
 
 - fix (AW-407): page the card slider to the card that was cut off (#388)
