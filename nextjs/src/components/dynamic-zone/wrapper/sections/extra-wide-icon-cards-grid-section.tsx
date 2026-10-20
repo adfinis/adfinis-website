@@ -28,6 +28,7 @@ export default function ExtraWideIconCardsGridSection({
 }) {
   return (
     <Container
+      id={section.props.anchor}
       padding={section.props.padding}
       background={section.props.background}
     >

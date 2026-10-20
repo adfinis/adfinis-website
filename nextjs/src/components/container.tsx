@@ -23,7 +23,7 @@ const containerStyles = cva(["py-18 lg:py-24"], {
 })
 type ContainerProps = VariantProps<typeof containerStyles> & {
   children: React.ReactNode
-  id?: string
+  id?: string | null
   background: PickStringLiteral<
     BackgroundOptions,
     "white" | "neutral" | "sapphire" | "stone"

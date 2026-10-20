@@ -5,6 +5,7 @@ import Text from "@/components/text"
 import SectionCardWide from "@/components/sections/section-card-wide"
 import Title from "@/components/title"
 import LinkButton from "@/components/link-button"
+import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
 
 type FeatureCard = {
   title: string
@@ -20,10 +21,15 @@ type Props = {
   title: string
   description: string
   features: FeatureCard[]
+  props?: SectionProps
 }
 export default function FeatureCards({ section }: { section: Props }) {
   return (
-    <Container background="stone" padding="both-padding">
+    <Container
+      id={section.props?.anchor}
+      background="stone"
+      padding="both-padding"
+    >
       <SectionGroup title={section.title} data-testid="project-cards">
         <Text
           markdown={section.description}

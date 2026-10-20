@@ -27,6 +27,7 @@ export default function IconCardSectionWithRelation({
 }) {
   return (
     <Container
+      id={section.section_props.anchor}
       background={section.section_props.background}
       padding={section.section_props.padding}
     >
