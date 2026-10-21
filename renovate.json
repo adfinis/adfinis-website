@@ -1,0 +1,42 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>adfinis/renovate-config"
+  ],
+  "baseBranchPatterns": [
+    "develop"
+  ],
+  "prConcurrentLimit": 10,
+  "packageRules": [
+    {
+      "description": "Strapi packages must be upgraded in lockstep",
+      "matchPackageNames": [
+        "@strapi/**"
+      ],
+      "groupName": "strapi"
+    },
+    {
+      "description": "Strapi 5 admin requires React 18",
+      "matchFileNames": [
+        "strapi/package.json"
+      ],
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "allowedVersions": "<19"
+    },
+    {
+      "description": "Strapi 5 admin requires react-router-dom 6",
+      "matchFileNames": [
+        "strapi/package.json"
+      ],
+      "matchPackageNames": [
+        "react-router-dom"
+      ],
+      "allowedVersions": "<7"
+    }
+  ]
+}
