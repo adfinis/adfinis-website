@@ -141,7 +141,7 @@ The site is at http://localhost:3000 (`/` is the English homepage, other locales
 | `DRAFT_MODE_SECRET`  | Same value as in `strapi/.env`; needed for previews                     |
 | `ALTCHA_HMAC_KEY`    | Needed to submit forms (`openssl rand -hex 32`)                         |
 | `FORMSPARK_FORM_ID`  | Form submissions; leave empty locally                                   |
-| `SENTRY_*`, `MATOMO_*`, `REDDIT_*`, `LINKEDIN_*`, `GOOGLE_ADS_*` | Monitoring/tracking; keep disabled (`*_ENABLE_TRACKING=false`) locally |
+| `SENTRY_*`, `NEXT_PUBLIC_SENTRY_*`, `MATOMO_*`, `REDDIT_*`, `LINKEDIN_*`, `GOOGLE_ADS_*` | Monitoring/tracking; keep disabled (`*_ENABLE_TRACKING=false`) locally |
 
 Optional: [localias](https://github.com/peterldowns/localias) config in `.localias.yaml` serves the site as `https://www.adfinis.test` (`brew install peterldowns/tap/localias`, then `localias start`).
 
