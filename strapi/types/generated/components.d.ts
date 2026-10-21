@@ -956,6 +956,7 @@ export interface SectionsSectionProps extends Struct.ComponentSchema {
     displayName: 'Section props';
   };
   attributes: {
+    anchor: Schema.Attribute.String;
     background: Schema.Attribute.Enumeration<
       ['white', 'neutral', 'sapphire', 'stone']
     > &
