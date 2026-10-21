@@ -7,6 +7,7 @@
 
 html {
   @apply 3xl:text-20;
+  scroll-padding-top: 5rem;
 }
 
 body {

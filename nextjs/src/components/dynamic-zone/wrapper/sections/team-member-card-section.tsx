@@ -20,6 +20,7 @@ type Props = {
 export default function TeamMemberCardSection({ section }: { section: Props }) {
   return (
     <Container
+      id={section.props.anchor}
       padding={section.props.padding}
       background={section.props.background}
     >

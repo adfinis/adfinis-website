@@ -40,6 +40,7 @@ export default function ContentHighlightSection({
 
   return (
     <Container
+      id={section.props.anchor}
       background={section.props.background}
       padding={section.props.padding}
     >

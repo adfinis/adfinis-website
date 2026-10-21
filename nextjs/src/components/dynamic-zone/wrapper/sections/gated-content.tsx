@@ -48,6 +48,7 @@ export default async function GatedContent({
 
   return (
     <Container
+      id={section.props.anchor}
       background={section.props.background}
       padding={section.props.padding}
     >

@@ -34,6 +34,7 @@ export default function ContentCarousel({ section }: { section: Props }) {
   const ctas = section.cta ? [section.cta] : []
   return (
     <Container
+      id={section.props.anchor}
       padding={section.props.padding}
       background={section.props.background}
     >
