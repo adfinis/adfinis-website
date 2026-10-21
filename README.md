@@ -4,8 +4,8 @@ This repository contains the sources of our company website (adfinis.com). It is
 
 | Folder     | What                            | Node.js   | Dev URL                |
 | ---------- | ------------------------------- | --------- | ---------------------- |
-| `strapi/`  | Strapi 5 headless CMS (backend) | `22.11.0` | http://localhost:1337  |
-| `nextjs/`  | Next.js 16 / React 19 (frontend)| `24.16.0` | http://localhost:3000  |
+| `strapi/`  | Strapi 5 headless CMS (backend) | `24.15.0` | http://localhost:1337  |
+| `nextjs/`  | Next.js 16 / React 19 (frontend)| `24.15.0` | http://localhost:3000  |
 
 Content lives in **PostgreSQL**, is edited in Strapi and is fetched by Next.js over the Strapi REST API. Each app has its own `package.json`, `.nvmrc` and `node_modules`, so every command below is run from inside the respective folder.
 
