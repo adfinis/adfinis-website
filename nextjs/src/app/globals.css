@@ -1,22 +1,202 @@
-@import "./text.css";
-@import "./hamburger-react.css";
+@import 'tailwindcss';
+@import './text.css';
+@import './hamburger-react.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-  @apply 3xl:text-20;
-  scroll-padding-top: 5rem;
+@utility container {
+  margin-inline: auto;
 }
 
-body {
-  @apply font-sans;
+/*
+  `inline` makes utilities use these values directly instead of a :root variable, so the
+  nested var()s resolve on the element itself: next/font sets --font-source-sans-3 on <body>,
+  and the scheme colors come from [data-scheme] ancestors.
+*/
+@theme inline {
+  --font-*: initial;
+  --font-sans: var(--font-source-sans-3), sans-serif;
+
+  --background-color-button-primary: rgb(var(--button-bg-primary));
+  --background-color-button-secondary: rgb(var(--button-bg-secondary));
+  --background-color-input-primary: rgb(var(--input-bg-primary));
+
+  --text-color-title-primary: rgb(var(--title-text-primary));
+  --text-color-button-primary: rgb(var(--button-text-primary));
+  --text-color-button-secondary: rgb(var(--button-text-secondary));
+  --text-color-paragraph-primary: rgb(var(--paragraph-text-primary));
+  --text-color-input-primary: rgb(var(--input-text-primary));
+  --text-color-checkbox-primary: rgb(var(--checkbox-text-primary));
+
+  --border-color-button-primary: rgb(var(--button-text-primary));
+  --border-color-button-secondary: rgb(var(--button-text-secondary));
+  --border-color-quote-primary: rgb(var(--quote-border-primary));
+  --border-color-input-primary: rgb(var(--input-border-primary));
+  --border-color-checkbox-primary: rgb(var(--checkbox-border-primary));
+
+  --ring-color-input-primary: rgb(var(--input-ring-primary));
+  --ring-color-checkbox-primary: rgb(var(--checkbox-ring-primary));
+
+  --ring-offset-color-checkbox-primary: rgb(var(--checkbox-ring-offset-primary));
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@theme {
+  --text-*: initial;
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-20: 1.25rem;
+  --text-22: 1.375rem;
+  --text-25: 1.5625rem;
+  --text-30: 1.875rem;
+  --text-35: 2.1875rem;
+  --text-40: 2.5rem;
+  --text-50: 3.125rem;
+
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-stone: #0f0f0f;
+  --color-biscay: #1c2e5d;
+  --color-sapphire: #2e4b98;
+  --color-jumbo: #8b8b8c;
+  --color-neutral: #f5f6f5;
+  --color-sunglow: #ffca31;
+  --color-sky: #55c0ee;
+  --color-cinnamon: #e56820;
+  --color-green: #34ae6b;
+  --color-razzmatazz: #e30d74;
+  --color-fuchsia: #7e57c2;
+  --color-manhattan: #f7c6a5;
+  --color-error: #ff0e00;
+  --color-grass: #7e9600;
+  --color-salmon: #f7c6a5;
+  --color-pink: #e30d74;
+  --color-purple: #6e0069;
+
+  --shadow-*: initial;
+  --shadow-1: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+  --shadow-2: 2px 4px 12px 0px rgba(0, 0, 0, 0.1);
+
+  --leading-11: 2.75rem;
+  --leading-12: 3rem;
+  --leading-13: 3.25rem;
+  --leading-6_5: 1.625rem;
+  --leading-7_5: 1.875rem;
+
+  --breakpoint-3xl: 2160px;
+
+  --height-100: 25rem;
+  --height-12_5: 3.125rem;
+
+  --width-112: 28rem;
+  --width-128: 32rem;
+
+  --aspect-2\/3: 2/3;
+
+  --animate-marquee: marquee var(--marquee-duration, 20s) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(calc(-1 * var(--marquee-shift, 0px)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind v4 preflight resets buttons to cursor: default; keep the v3 pointer */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility w-topbar {
+  /**
+  * Responsive topbar utility.
+  * mobile: The width is calculated as the viewport minus 1rem. (@see tailwind.config.ts:container)
+  * desktop: The width is calculated as the viewport minus half of the screen minus the container.
+  */
+  width: calc(100vw - (--spacing(4)));
+
+  @media (min-width: --theme(--breakpoint-sm)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-sm)) / 2);
+  }
+
+  @media (min-width: --theme(--breakpoint-md)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-md)) / 2);
+  }
+
+  @media (min-width: --theme(--breakpoint-lg)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-lg)) / 2);
+  }
+
+  @media (min-width: --theme(--breakpoint-xl)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-xl)) / 2);
+  }
+
+  @media (min-width: --theme(--breakpoint-2xl)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-2xl)) / 2);
+  }
+
+  @media (min-width: --theme(--breakpoint-3xl)) {
+    width: calc(100vw - (100vw - --theme(--breakpoint-3xl)) / 2);
+  }
+}
+
+@utility external-script {
+  @apply w-full;
+  iframe {
+    @apply w-full;
+  }
+}
+
+/* 
+  * Simulates tailwind 4.10+ text-shadow utility.
+  */
+
+@utility text-shadow-md/10 {
+  text-shadow:
+    0px 1px 1px rgb(0 0 0 / 0.1),
+    0px 1px 2px rgb(0 0 0 / 0.1),
+    0px 2px 4px rgb(0 0 0 / 0.1);
+}
+
+@layer base {
+  html {
+    @apply 3xl:text-20;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply font-sans;
   }
 }
 
@@ -26,24 +206,24 @@ body {
   * @info these values are raw rgb values for the corresponding hex colors in colors.css
   */
   :root {
-    --color-white: 255 255 255;
-    --color-stone: 15 15 15;
-    --color-biscay: 28 46 93;
-    --color-sapphire: 46 75 152;
-    --color-jumbo: 139 139 140;
-    --color-neutral: 245 246 245;
-    --color-sunglow: 255 202 49;
-    --color-sky: 85 192 238;
-    --color-cinnamon: 229 104 32;
-    --color-green: 52 174 107;
-    --color-razzmatazz: 227 13 116;
-    --color-fuchsia: 126 87 194;
-    --color-manhattan: 247 198 165;
-    --color-error: 255 14 0;
-    --color-grass: 126 150 0;
-    --color-salmon: 247 198 165;
-    --color-pink: 227 13 116;
-    --color-purple: 110 0 105;
+    --rgb-white: 255 255 255;
+    --rgb-stone: 15 15 15;
+    --rgb-biscay: 28 46 93;
+    --rgb-sapphire: 46 75 152;
+    --rgb-jumbo: 139 139 140;
+    --rgb-neutral: 245 246 245;
+    --rgb-sunglow: 255 202 49;
+    --rgb-sky: 85 192 238;
+    --rgb-cinnamon: 229 104 32;
+    --rgb-green: 52 174 107;
+    --rgb-razzmatazz: 227 13 116;
+    --rgb-fuchsia: 126 87 194;
+    --rgb-manhattan: 247 198 165;
+    --rgb-error: 255 14 0;
+    --rgb-grass: 126 150 0;
+    --rgb-salmon: 247 198 165;
+    --rgb-pink: 227 13 116;
+    --rgb-purple: 110 0 105;
   }
 
 
@@ -53,38 +233,38 @@ body {
 * The default is "light", set in layout.tsx.
 */
   [data-scheme="light"] {
-    --button-text-primary: var(--color-neutral);
-    --button-bg-primary: var(--color-sapphire);
-    --button-text-secondary: var(--color-sapphire);
+    --button-text-primary: var(--rgb-neutral);
+    --button-bg-primary: var(--rgb-sapphire);
+    --button-text-secondary: var(--rgb-sapphire);
     --button-bg-secondary: none;
-    --title-text-primary: var(--color-biscay);
-    --paragraph-text-primary: var(--color-stone);
-    --quote-border-primary: var(--color-biscay);
-    --input-bg-primary: var(--color-stone);
-    --input-text-primary: var(--color-stone);
-    --input-border-primary: var(--color-stone);
-    --input-ring-primary: var(--color-stone);
-    --checkbox-border-primary: var(--color-stone);
-    --checkbox-text-primary: var(--color-stone);
-    --checkbox-ring-primary: var(--color-stone);
-    --checkbox-ring-offset-primary: var(--color-neutral);
+    --title-text-primary: var(--rgb-biscay);
+    --paragraph-text-primary: var(--rgb-stone);
+    --quote-border-primary: var(--rgb-biscay);
+    --input-bg-primary: var(--rgb-stone);
+    --input-text-primary: var(--rgb-stone);
+    --input-border-primary: var(--rgb-stone);
+    --input-ring-primary: var(--rgb-stone);
+    --checkbox-border-primary: var(--rgb-stone);
+    --checkbox-text-primary: var(--rgb-stone);
+    --checkbox-ring-primary: var(--rgb-stone);
+    --checkbox-ring-offset-primary: var(--rgb-neutral);
   }
 
   [data-scheme="dark"] {
-    --button-text-primary: var(--color-sapphire);
-    --button-bg-primary: var(--color-neutral);
-    --button-text-secondary: var(--color-neutral);
-    --title-text-primary: var(--color-neutral);
-    --paragraph-text-primary: var(--color-neutral);
-    --quote-border-primary: var(--color-neutral);
-    --input-bg-primary: var(--color-neutral);
-    --input-text-primary: var(--color-neutral);
-    --input-border-primary: var(--color-neutral);
-    --input-ring-primary: var(--color-neutral);
-    --checkbox-border-primary: var(--color-neutral);
-    --checkbox-text-primary: var(--color-stone);
-    --checkbox-ring-primary: var(--color-neutral);
-    --checkbox-ring-offset-primary: var(--color-stone);
+    --button-text-primary: var(--rgb-sapphire);
+    --button-bg-primary: var(--rgb-neutral);
+    --button-text-secondary: var(--rgb-neutral);
+    --title-text-primary: var(--rgb-neutral);
+    --paragraph-text-primary: var(--rgb-neutral);
+    --quote-border-primary: var(--rgb-neutral);
+    --input-bg-primary: var(--rgb-neutral);
+    --input-text-primary: var(--rgb-neutral);
+    --input-border-primary: var(--rgb-neutral);
+    --input-ring-primary: var(--rgb-neutral);
+    --checkbox-border-primary: var(--rgb-neutral);
+    --checkbox-text-primary: var(--rgb-stone);
+    --checkbox-ring-primary: var(--rgb-neutral);
+    --checkbox-ring-offset-primary: var(--rgb-stone);
   }
 }
 
@@ -94,60 +274,8 @@ body {
 * @layer components makes sure that other tailwind classes still take precedence when passed to the component which has a components class.
 */
 @layer components {
-  /**
-  * Responsive topbar utility.
-  * mobile: The width is calculated as the viewport minus 1rem. (@see tailwind.config.ts:container)
-  * desktop: The width is calculated as the viewport minus half of the screen minus the container.
-  */
-
-  .w-topbar {
-    width: calc(100vw - theme("spacing.4"));
-
-    @media (min-width: theme("screens.sm")) {
-      width: calc(100vw - (100vw - theme("screens.sm")) / 2);
-    }
-
-    @media (min-width: theme("screens.md")) {
-      width: calc(100vw - (100vw - theme("screens.md")) / 2);
-    }
-
-    @media (min-width: theme("screens.lg")) {
-      width: calc(100vw - (100vw - theme("screens.lg")) / 2);
-    }
-
-    @media (min-width: theme("screens.xl")) {
-      width: calc(100vw - (100vw - theme("screens.xl")) / 2);
-    }
-
-    @media (min-width: theme("screens.2xl")) {
-      width: calc(100vw - (100vw - theme("screens.2xl")) / 2);
-    }
-
-    @media (min-width: theme("screens.3xl")) {
-      width: calc(100vw - (100vw - theme("screens.3xl")) / 2);
-    }
-  }
-
   b,
   strong {
     @apply font-semibold leading-none;
-  }
-}
-
-@layer components {
-  .external-script {
-      @apply w-full;
-      iframe {
-          @apply w-full;
-      }
-  }
-}
-
-  /* 
-  * Simulates tailwind 4.10+ text-shadow utility.
-  */
-@layer utilities {
-  .text-shadow-md\/10 {
-    text-shadow: 0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
   }
 }

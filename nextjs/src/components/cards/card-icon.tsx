@@ -38,10 +38,7 @@ const CardIcon: React.FC<CardIconProps> = ({
       <Title level={3} boldness={"semibold"} align={"center"}>
         {title}
       </Title>
-      <Text
-        markdown={description}
-        className="text-center self-center flex-grow"
-      />
+      <Text markdown={description} className="text-center self-center grow" />
       {cta && (
         <Link
           href={cta.href}

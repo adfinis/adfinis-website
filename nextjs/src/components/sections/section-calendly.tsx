@@ -46,7 +46,7 @@ const SectionCalendly: React.FC<SectionCalendlyProps> = ({
     /**
      * @info ugly hack for accounting inaccessible calendly iframe margins
      */
-    <div className="lg:pt-4 md:-mt-[66px] md:-mb-[30px] lg:-mt-[132px] lg:-mb-[60px]">
+    <div className="lg:pt-4 md:mt-[-66px] md:mb-[-30px] lg:mt-[-132px] lg:mb-[-60px]">
       <InlineWidget styles={{ height }} url={url} />
     </div>
   )

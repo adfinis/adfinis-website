@@ -71,7 +71,7 @@ const CardCareer: React.FC<CardCareer> = ({
               {country && (
                 <IconFlag
                   country={country}
-                  className="w-8 h-8 lg:w-10 lg:h-10 border border-white rounded-full flex-shrink-0"
+                  className="w-8 h-8 lg:w-10 lg:h-10 border border-white rounded-full shrink-0"
                 />
               )}
             </span>

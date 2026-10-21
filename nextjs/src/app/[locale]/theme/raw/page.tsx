@@ -80,62 +80,62 @@ export default function Buttons() {
         <h1 className="text-40 font-bold col-span-3 text-razzmatazz">Colors</h1>
       </div>
       <div className="container py-8 grid place-items-start gap-12 grid-cols-2 lg:grid-cols-3">
-        <span className="w-full bg-stone rounded p-4 text-20 md:text-35 text-neutral">
+        <span className="w-full bg-stone rounded-sm p-4 text-20 md:text-35 text-neutral">
           <b>Stone</b>
           <br /> #0f0f0f
           <br /> rgb(15, 15, 15)
         </span>
-        <span className="w-full bg-sapphire rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sapphire rounded-sm p-4 text-20 md:text-35">
           <b>Sapphire</b>
           <br /> #2e4b98
           <br /> rgb(46, 75, 152)
         </span>
-        <span className="w-full bg-sky rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sky rounded-sm p-4 text-20 md:text-35">
           <b>Sky</b>
           <br /> #55c0ee
           <br /> rgb(85, 192, 238)
         </span>
-        <span className="w-full bg-biscay rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-biscay rounded-sm p-4 text-20 md:text-35">
           <b>Biscay</b>
           <br /> #1c2e5d
           <br /> rgb(28, 46, 93)
         </span>
-        <span className="w-full bg-jumbo rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-jumbo rounded-sm p-4 text-20 md:text-35">
           <b>Jumbo</b>
           <br /> #8b8b8c
           <br /> rgb(139, 139, 140)
         </span>
-        <span className="w-full bg-neutral text-stone rounded p-4 text-20 md:text-35 border border-stone">
+        <span className="w-full bg-neutral text-stone rounded-sm p-4 text-20 md:text-35 border border-stone">
           <b>Neutral</b>
           <br /> #f5f6f5
           <br /> rgb(245, 246, 245)
         </span>
-        <span className="w-full bg-sunglow rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-sunglow rounded-sm p-4 text-20 md:text-35">
           <b>Sunglow</b>
           <br /> #ffca31
           <br /> rgb(255, 202, 49)
         </span>
-        <span className="w-full bg-cinnamon rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-cinnamon rounded-sm p-4 text-20 md:text-35">
           <b>Cinnamon</b>
           <br /> #e56820
           <br /> rgb(229, 104, 32)
         </span>
-        <span className="w-full bg-green rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-green rounded-sm p-4 text-20 md:text-35">
           <b>Green</b>
           <br /> #34ae6b
           <br /> rgb(52, 174, 107)
         </span>
-        <span className="w-full bg-razzmatazz rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-razzmatazz rounded-sm p-4 text-20 md:text-35">
           <b>Razzmatazz</b>
           <br /> #e30d74
           <br /> rgb(227, 13, 116)
         </span>
-        <span className="w-full bg-fuchsia rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-fuchsia rounded-sm p-4 text-20 md:text-35">
           <b>Fuchsia</b>
           <br /> #7e57c2
           <br /> rgb(126, 87, 194)
         </span>
-        <span className="w-full bg-manhattan rounded p-4 text-20 md:text-35">
+        <span className="w-full bg-manhattan rounded-sm p-4 text-20 md:text-35">
           <b>Manhattan</b>
           <br /> #f7c6a5
           <br /> rgb(247, 198, 165)
