@@ -17,6 +17,11 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.38.0] - 2026-10-21
+
+- feat (AW-412): anchor links to different components custom anchor id field (#396)
+- chore: add CODEOWNERS (#397)
+
 ## [1.37.0] - 2026-10-20
 
 - fix (AW-411): keep the gated content fade when reduced motion is preferred (#394)
