@@ -4,8 +4,8 @@ This repository contains the sources of our company website (adfinis.com). It is
 
 | Folder     | What                            | Node.js   | Dev URL                |
 | ---------- | ------------------------------- | --------- | ---------------------- |
-| `strapi/`  | Strapi 5 headless CMS (backend) | `22.11.0` | http://localhost:1337  |
-| `nextjs/`  | Next.js 16 / React 19 (frontend)| `24.16.0` | http://localhost:3000  |
+| `strapi/`  | Strapi 5 headless CMS (backend) | `24.15.0` | http://localhost:1337  |
+| `nextjs/`  | Next.js 16 / React 19 (frontend)| `24.15.0` | http://localhost:3000  |
 
 Content lives in **PostgreSQL**, is edited in Strapi and is fetched by Next.js over the Strapi REST API. Each app has its own `package.json`, `.nvmrc` and `node_modules`, so every command below is run from inside the respective folder.
 
@@ -141,7 +141,7 @@ The site is at http://localhost:3000 (`/` is the English homepage, other locales
 | `DRAFT_MODE_SECRET`  | Same value as in `strapi/.env`; needed for previews                     |
 | `ALTCHA_HMAC_KEY`    | Needed to submit forms (`openssl rand -hex 32`)                         |
 | `FORMSPARK_FORM_ID`  | Form submissions; leave empty locally                                   |
-| `SENTRY_*`, `MATOMO_*`, `REDDIT_*`, `LINKEDIN_*`, `GOOGLE_ADS_*` | Monitoring/tracking; keep disabled (`*_ENABLE_TRACKING=false`) locally |
+| `SENTRY_*`, `NEXT_PUBLIC_SENTRY_*`, `MATOMO_*`, `REDDIT_*`, `LINKEDIN_*`, `GOOGLE_ADS_*` | Monitoring/tracking; keep disabled (`*_ENABLE_TRACKING=false`) locally |
 
 Optional: [localias](https://github.com/peterldowns/localias) config in `.localias.yaml` serves the site as `https://www.adfinis.test` (`brew install peterldowns/tap/localias`, then `localias start`).
 

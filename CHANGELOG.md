@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.39.0] - 2026-10-22
+
+- chore (AW-414) upgrade nodejs and dependencies nextjs / strapi (#400)
+
 ## [1.38.0] - 2026-10-21
 
 - feat (AW-412): anchor links to different components custom anchor id field (#396)

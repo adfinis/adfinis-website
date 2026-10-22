@@ -1,3 +1,5 @@
+@reference "../../app/globals.css";
+
 .section-group-dividers>* {
     /**
     * Adds a horizontal line between cards that are children.

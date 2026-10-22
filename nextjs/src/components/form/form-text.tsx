@@ -14,7 +14,7 @@ export const fieldClasses = cva(
     "bg-input-primary/5",
     "text-input-primary text-16 leading-normal font-normal w-full rounded-md px-4 py-2",
     "border",
-    "ring-0 active:!ring-0 focus:!ring-0", // resets blue border of chrome when active. This is replaced with the active: modifiers below
+    "ring-0 active:ring-0! focus:ring-0!", // resets blue border of chrome when active. This is replaced with the active: modifiers below
     "focus:border-input-primary active:border-input-primary",
   ],
   {

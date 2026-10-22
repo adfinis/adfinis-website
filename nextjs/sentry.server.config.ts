@@ -3,6 +3,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs"
+import { dataCollection } from "@/lib/sentry-data-collection"
 import { nodeProfilingIntegration } from "@sentry/profiling-node"
 
 Sentry.init({
@@ -19,12 +20,8 @@ Sentry.init({
   // Trace lifecycle automatically enables profiling during active traces
   profileLifecycle: "trace",
 
-  // Enable logs to be sent to Sentry
-  enableLogs: true,
-
-  // Enable sending user PII (Personally Identifiable Information)
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
-  sendDefaultPii: false,
+  // Keep the restrictive v10 (sendDefaultPii: false) data collection
+  dataCollection,
 
   environment: process.env.NEXT_PUBLIC_SENTRY_ENV,
 })
