@@ -98,7 +98,7 @@
 
   --aspect-2\/3: 2/3;
 
-  --animate-marquee: marquee var(--marquee-duration, 20s) linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
 
   @keyframes marquee {
     from {
