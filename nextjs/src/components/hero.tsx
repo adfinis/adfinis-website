@@ -44,13 +44,13 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
         />
       )}
       {
-        navActive && <div className="absolute inset-0 backdrop-blur-sm z-10" /> // blur everything behind when nav is active
+        navActive && <div className="absolute inset-0 backdrop-blur-xs z-10" /> // blur everything behind when nav is active
       }
 
       <div
         className={clsx([
           "absolute inset-0",
-          "transition-all duration-150 bg-gradient-to-r from-stone/65 to-stone/10",
+          "transition-all duration-150 bg-linear-to-r from-stone/65 to-stone/10",
           { "bg-stone/80 z-10": navActive }, // darkens elements behind as overlay when nav active
         ])}
       />

@@ -1,13 +1,10 @@
 "use client"
 import React, { useMemo } from "react"
 import dynamic from "next/dynamic"
+import type { ExtraProps } from "react-markdown"
 
-interface CodeBlockProps {
-  className?: string
-  children?: React.ReactNode
-  // react-markdown passes additional props (e.g. node) that we ignore.
-  [key: string]: unknown
-}
+// react-markdown passes additional props (e.g. node) that we ignore.
+type CodeBlockProps = React.JSX.IntrinsicElements["code"] & ExtraProps
 
 /**
  * @description react-markdown `code` renderer. Inline code renders as plain

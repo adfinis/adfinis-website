@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-
 /**
 * @description Handles styling of the markdown text.tsx component.
 * @see src/components/text.tsx

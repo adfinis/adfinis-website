@@ -48,8 +48,6 @@ import CardKpi from "@/components/cards/card-kpi"
 import CardService from "@/components/cards/card-service"
 import SectionCardLogo from "@/components/sections/section-card-logo"
 import SectionQuote from "@/components/sections/section-quote"
-import StandardForm from "@/components/form/standard-form"
-import { type Locale } from "@/lib/locale"
 import SectionCalendly from "@/components/sections/section-calendly"
 import ExternalScript from "@/components/external-script"
 import Topbar from "@/components/topbar"
@@ -63,19 +61,9 @@ import CardImage from "@/components/cards/card-image"
 import CardMember from "@/components/cards/card-member"
 import CardPortrait from "@/components/cards/card-portrait"
 import { Country as CareerCountry } from "@/components/icons/icon-flag"
-import { getDictionary } from "@/lib/get-dictionary.server"
 import CardLocation from "@/components/cards/card-location"
 
-export default async function Theme(props: {
-  params: Promise<{ locale: string }>
-}) {
-  const params = (await props.params) as Awaited<typeof props.params> & {
-    locale: Locale
-  }
-
-  const { locale } = params
-
-  const dictionary = await getDictionary(locale)
+export default function Theme() {
   return (
     <main className="bg-white">
       <NavProvider>
@@ -295,22 +283,6 @@ export default async function Theme(props: {
             quote={quoteSection.quote}
           />
         </SectionGroup>
-      </Container>
-
-      <Container
-        id="contact-form-dark"
-        background="stone"
-        padding="both-padding"
-      >
-        <StandardForm dictionary={dictionary} />
-      </Container>
-
-      <Container
-        id="contact-form-light"
-        background="neutral"
-        padding="both-padding"
-      >
-        <StandardForm dictionary={dictionary} />
       </Container>
 
       <Container

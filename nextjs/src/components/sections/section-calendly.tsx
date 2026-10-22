@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { InlineWidget, useCalendlyEventListener } from "react-calendly"
 
 type SectionCalendlyProps = {
@@ -17,37 +17,11 @@ const SectionCalendly: React.FC<SectionCalendlyProps> = ({
     },
   })
 
-  const browserWindow: any = (typeof window !== "undefined" && window) || {}
-  const [width, setWidth] = useState(browserWindow?.innerWidth || 0) // execute on client-side only
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window?.innerWidth)
-    }
-
-    window?.addEventListener("resize", handleResize)
-    return () => {
-      window?.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  let height = "670px"
-  switch (true) {
-    case width < 640:
-      height = "1050px"
-      break
-    case width < 1024:
-      height = "1100px"
-      break
-    default:
-      height = "670px"
-  }
-
   return (
-    /**
-     * @info ugly hack for accounting inaccessible calendly iframe margins
-     */
-    <div className="lg:pt-4 md:-mt-[66px] md:-mb-[30px] lg:-mt-[132px] lg:-mb-[60px]">
-      <InlineWidget styles={{ height }} url={url} />
+    <div className="w-[calc(100vw-2rem)] max-w-5xl lg:pt-4 md:mt-[-66px] md:mb-[-30px] lg:mt-[-102px] lg:mb-[-60px]">
+      <div className="h-[1050px] sm:h-[1100px] lg:h-[670px]">
+        <InlineWidget styles={{ height: "100%" }} url={url} />
+      </div>
     </div>
   )
 }

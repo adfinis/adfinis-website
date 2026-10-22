@@ -44,8 +44,8 @@ const CardColored: React.FC<CardColoredProps> = ({
             className={clsx(
               href && [
                 "transition-all duration-300 ease-out cursor-pointer",
-                "lg:bg-gradient-to-r from-white to-white",
-                "lg:bg-left-bottom bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px]",
+                "lg:bg-linear-to-r from-white to-white",
+                "lg:bg-bottom-left bg-size-[0%_2px] bg-no-repeat group-hover:bg-size-[100%_2px]",
               ],
             )}
           >
