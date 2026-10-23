@@ -79,7 +79,7 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
           overflow
             ? ({
                 "--marquee-shift": `${shift}px`,
-                "--marquee-duration": `${shift / SPEED}s`,
+                animationDuration: `${shift / SPEED}s`,
               } as React.CSSProperties)
             : undefined
         }
