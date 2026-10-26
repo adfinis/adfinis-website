@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Triangle from "./triangle"
+import Slant from "./slant"
 import clsx from "clsx"
 import React from "react"
 import { colors } from "@/lib/colors"
@@ -22,13 +23,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
   return (
     <div
       className={clsx([
-        "relative min-h-[600px] lg:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
-        'before:content-[""] before:absolute',
-        "before:left-0 before:right-0",
-        "before:bottom-[-15vw] before:h-[15vw] ",
-        "before:z-20 before:bg-white",
-        "before:skew-y-6",
-        "before:origin-bottom-right",
+        "relative flex flex-col min-h-[600px] lg:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
       ])}
     >
       {imageUrl && (
@@ -86,6 +81,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           </div>
         </div>
       </section>
+      <Slant color="white" className="relative z-20 mt-auto -mb-px" />
     </div>
   )
 }
