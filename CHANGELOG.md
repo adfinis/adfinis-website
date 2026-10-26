@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.41.0] - 2026-10-26
+
+- fix(AW-416): keep hero text above the slant when zoomed out (#404)
+
 ## [1.40.0] - 2026-10-22
 
 - fix (AW-415): slider animation (#402)
