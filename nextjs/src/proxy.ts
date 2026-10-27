@@ -8,6 +8,7 @@ import {
 } from "@/lib/click-id"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
 import { basicAuthChallenge } from "@/lib/basic-auth"
+import { Locale, locales } from "@/lib/locale"
 
 export async function proxy(request: NextRequest) {
   const challenge = basicAuthChallenge(request)
@@ -32,7 +33,10 @@ export async function proxy(request: NextRequest) {
 
     response = NextResponse.redirect(newUrl, 301)
   } else {
-    response = NextResponse.next()
+    const segment = request.nextUrl.pathname.split("/")[1] as Locale
+    const requestHeaders = new Headers(request.headers)
+    requestHeaders.set("x-locale", locales.includes(segment) ? segment : "en")
+    response = NextResponse.next({ request: { headers: requestHeaders } })
   }
 
   response.headers.set("Strict-Transport-Security", "max-age=63072000;")
