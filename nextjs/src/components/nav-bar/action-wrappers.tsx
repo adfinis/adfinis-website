@@ -8,7 +8,6 @@ import {
 } from "@headlessui/react"
 import { useClickAway } from "@uidotdev/usehooks"
 import { useState, type ReactNode, type Ref } from "react"
-import { useRouter } from "next/navigation"
 import IconGlobe from "@/components/icons/icon-globe"
 import IconChevronDown from "@/components/icons/icon-chevron-down"
 import Button from "@/components/button"
@@ -32,7 +31,6 @@ function CloseOnClickAway({ children }: { children: ReactNode }) {
 
 export default function ActionWrappers() {
   const linkedLocales = useLinkedLocales()
-  const router = useRouter()
 
   const activeLocale = linkedLocales.find((locale) => locale.isActive)
   const activeLocaleKey = normalize(activeLocale?.locale ?? "en")
@@ -54,7 +52,7 @@ export default function ActionWrappers() {
     )
     close()
     if (target && selectedLocale !== activeLocaleKey) {
-      router.push(target.href)
+      window.location.assign(target.href)
     }
   }
 

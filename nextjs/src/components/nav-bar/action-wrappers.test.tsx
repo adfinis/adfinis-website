@@ -7,10 +7,7 @@ import {
 } from "@testing-library/react"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
-const push = vi.fn()
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push }),
-}))
+const assign = vi.fn()
 
 // jsdom lacks the ResizeObserver that Headless UI's Popover uses for anchoring.
 class ResizeObserverStub {
@@ -55,7 +52,8 @@ async function openPopover() {
 
 beforeEach(() => {
   vi.stubGlobal("ResizeObserver", ResizeObserverStub)
-  push.mockClear()
+  vi.stubGlobal("location", { assign })
+  assign.mockClear()
 })
 
 afterEach(() => {
@@ -99,7 +97,7 @@ describe("ActionWrappers language selector", () => {
     const select = await openPopover()
     fireEvent.change(select, { target: { value: "nl" } })
     fireEvent.click(screen.getByRole("button", { name: /bestätigen/i }))
-    expect(push).toHaveBeenCalledWith("/nl")
+    expect(assign).toHaveBeenCalledWith("/nl")
   })
 
   test("confirming the current locale does not navigate", async () => {
@@ -107,7 +105,7 @@ describe("ActionWrappers language selector", () => {
     await openPopover()
     // Selection is already de-ch (the active page).
     fireEvent.click(screen.getByRole("button", { name: /bestätigen/i }))
-    expect(push).not.toHaveBeenCalled()
+    expect(assign).not.toHaveBeenCalled()
   })
 
   test("closes when clicking outside the selector", async () => {
@@ -134,7 +132,7 @@ describe("ActionWrappers language selector", () => {
     await waitFor(() =>
       expect(screen.queryByText("Wählen Sie Ihre Sprache")).toBeNull(),
     )
-    expect(push).not.toHaveBeenCalled()
+    expect(assign).not.toHaveBeenCalled()
     const reopened = await openPopover()
     expect(reopened.value).toBe("de-ch")
   })

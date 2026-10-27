@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { headers } from "next/headers"
 import { Source_Sans_3 } from "next/font/google"
 import "./globals.css"
 import { Matomo } from "@/components/matomo/matomo"
@@ -67,6 +68,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const lang = (await headers()).get("x-locale") ?? "en"
   const matomoUrl = process.env.MATOMO_URL ?? ""
   const matomoSiteId = process.env.MATOMO_SITE_ID ?? ""
 
@@ -93,7 +95,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
         <script
