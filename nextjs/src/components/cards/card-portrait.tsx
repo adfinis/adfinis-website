@@ -1,6 +1,5 @@
 import React from "react"
 import { Card } from "./card"
-import Image from "next/image"
 import Text from "../text"
 
 interface CardPortraitProps extends Card {}
@@ -13,7 +12,8 @@ const CardPortrait: React.FC<CardPortraitProps> = ({
   return (
     <div className="grid gap-6 lg:flex">
       {imageUrl ? (
-        <Image
+        <img
+          loading="lazy"
           src={imageUrl}
           alt={title}
           width={320}

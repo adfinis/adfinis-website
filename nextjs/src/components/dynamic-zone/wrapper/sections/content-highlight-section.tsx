@@ -1,6 +1,5 @@
 import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import Image from "next/image"
 import Title from "@/components/title"
 import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
@@ -29,7 +28,8 @@ export default function ContentHighlightSection({
   section: Props
 }) {
   const coverImage = (
-    <Image
+    <img
+      loading="lazy"
       className="rounded-xl max-h-64 lg:max-h-full w-auto"
       src={section.content_offer?.cover_image?.url ?? ""}
       alt={section.content_offer?.cover_image?.alternativeText ?? ""}

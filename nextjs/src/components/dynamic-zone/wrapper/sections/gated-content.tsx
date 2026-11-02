@@ -1,6 +1,5 @@
 import Container from "@/components/container"
 import { SectionProps } from "@/components/dynamic-zone/wrapper/section-props"
-import Image from "next/image"
 import Text from "@/components/text"
 import GatedContentForm, {
   type GatedContentState,
@@ -54,7 +53,8 @@ export default async function GatedContent({
     >
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-12 items-center">
         <div className="mx-auto lg:order-1">
-          <Image
+          <img
+            loading="lazy"
             className="rounded-xl max-h-64 lg:max-h-full w-auto"
             src={section.content_offer?.cover_image?.url ?? ""}
             alt={section.content_offer?.cover_image?.alternativeText ?? ""}

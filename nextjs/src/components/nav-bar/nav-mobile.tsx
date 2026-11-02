@@ -10,7 +10,6 @@ import LinkButton from "../link-button"
 import type { NavItem } from "./nav"
 import NavMobileItem from "./nav-mobile-item"
 import IconChevronLeft from "../icons/icon-chevron-left"
-import Image from "next/image"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import { CTA } from "@/lib/cta"
 import { colors } from "@/lib/colors"
@@ -114,7 +113,8 @@ const NavMobile: React.FC<NavMobileProps> = ({
                 href={`/${locale}`}
                 className="h-20 flex items-center mx-auto"
               >
-                <Image
+                <img
+                  loading="lazy"
                   className="max-h-20"
                   src={logoUrl}
                   alt={"Adfinis logo"}
