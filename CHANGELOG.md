@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.43.0] - 2026-11-02
+
+- fix(AW-435): report a blocked main thread to sentry (#409)
+
 ## [1.42.0] - 2026-11-02
 
 - feat(AW-434): replace next/image with plain img tags (#407)
