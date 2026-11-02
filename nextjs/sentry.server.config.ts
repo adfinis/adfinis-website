@@ -5,11 +5,12 @@
 import * as Sentry from "@sentry/nextjs"
 import { dataCollection } from "@/lib/sentry-data-collection"
 import { nodeProfilingIntegration } from "@sentry/profiling-node"
+import { eventLoopBlockIntegration } from "@sentry/node-native"
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
 
-  integrations: [nodeProfilingIntegration()],
+  integrations: [nodeProfilingIntegration(), eventLoopBlockIntegration()],
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
