@@ -6,7 +6,6 @@ import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
 import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
-import Image from "next/image"
 import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
@@ -88,7 +87,8 @@ const NavDesktop: React.FC<NavDesktopProps> = ({
               id="nav-header"
             >
               <Link href={`/${locale}`}>
-                <Image
+                <img
+                  loading="lazy"
                   src={logoUrl}
                   alt={"Adfinis logo"}
                   width={160}

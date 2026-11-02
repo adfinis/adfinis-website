@@ -2,7 +2,6 @@ import React from "react"
 import type { Card } from "./card"
 import Text from "../text"
 import Triangle from "../triangle"
-import Image from "next/image"
 import IconFlag from "../icons/icon-flag"
 import Title from "../title"
 import Link from "next/link"
@@ -47,7 +46,8 @@ const CardCareer: React.FC<CardCareer> = ({
             className="w-1/2 h-auto absolute right-0 bottom-0 z-10"
           />
           {imageUrl && (
-            <Image
+            <img
+              loading="lazy"
               role="presentation"
               className="absolute left-0 top-0 right-0 w-full h-[200px] lg:h-[300px] object-cover"
               width="200"

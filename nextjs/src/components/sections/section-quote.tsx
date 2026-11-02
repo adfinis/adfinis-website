@@ -1,5 +1,4 @@
 import clsx from "clsx"
-import Image from "next/image"
 import React from "react"
 
 type SectionQuoteProps = {
@@ -117,7 +116,8 @@ const SectionQuote: React.FC<SectionQuoteProps> = ({
               "lg:-right-30 lg:-bottom-30 lg:w-60 lg:h-60",
             ])}
           >
-            <Image
+            <img
+              loading="lazy"
               className={clsx([
                 "rounded-full aspect-square object-cover object-center",
                 "w-24 h-24",

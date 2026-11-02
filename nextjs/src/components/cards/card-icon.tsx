@@ -1,5 +1,4 @@
 import { CTA } from "@/lib/cta"
-import Image from "next/image"
 import React from "react"
 import Title from "../title"
 import Text from "../text"
@@ -27,7 +26,8 @@ const CardIcon: React.FC<CardIconProps> = ({
       data-scheme="light"
     >
       {imageUrl && (
-        <Image
+        <img
+          loading="lazy"
           alt={title}
           src={imageUrl}
           width={300}
