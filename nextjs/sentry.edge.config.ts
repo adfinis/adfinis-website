@@ -10,7 +10,7 @@ Sentry.init({
   dsn: process.env.SENTRY_DSN,
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
+  tracesSampleRate: 0.1,
 
   // Keep the restrictive v10 (sendDefaultPii: false) data collection
   dataCollection,
