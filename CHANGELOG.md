@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.42.0] - 2026-11-02
+
+- feat(AW-434): replace next/image with plain img tags (#407)
+
 ## [1.41.0] - 2026-10-26
 
 - fix(AW-416): keep hero text above the slant when zoomed out (#404)

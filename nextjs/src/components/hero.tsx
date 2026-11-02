@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Triangle from "./triangle"
 import Slant from "./slant"
 import clsx from "clsx"
@@ -27,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
       ])}
     >
       {imageUrl && (
-        <Image
+        <img
           src={imageUrl}
           alt="Hero Image"
           width={1920}
@@ -35,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           className={clsx([
             "absolute inset-0 object-cover object-center z-0 h-full w-full",
           ])}
-          priority
+          fetchPriority="high"
         />
       )}
       {
@@ -60,7 +59,8 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
             color="neutral"
             className="w-[50vw] h-auto pointer-events-none"
           />
-          <Image
+          <img
+            loading="lazy"
             src={logoUrl}
             alt=""
             aria-hidden="true"

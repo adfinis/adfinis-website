@@ -25,6 +25,7 @@ export default defineConfig([
 
     rules: {
       "prettier/prettier": "error",
+      "@next/next/no-img-element": "off",
     },
   },
 ])

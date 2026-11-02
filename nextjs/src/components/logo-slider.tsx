@@ -1,6 +1,5 @@
 "use client"
 import clsx from "clsx"
-import Image from "next/image"
 import React, { useEffect, useRef, useState } from "react"
 
 const SPEED = 50 // marquee speed in pixels per second
@@ -85,7 +84,8 @@ const LogoSlider: React.FC<LogoSliderProps> = ({ logos }) => {
         }
       >
         {items.map((logo, i) => (
-          <Image
+          <img
+            loading="lazy"
             key={i}
             src={logo.src}
             alt={logo.alt}
