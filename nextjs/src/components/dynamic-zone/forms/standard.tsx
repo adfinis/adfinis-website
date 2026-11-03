@@ -17,8 +17,9 @@ type Props = {
   dictionary: Dictionary
 }
 export default function Standard({ submitLabel, dictionary, locale }: Props) {
-  const action = saveStandardForm.bind(null, locale ?? "en")
-  const [state, formAction] = useActionState(action, { success: false })
+  const [state, formAction] = useActionState(saveStandardForm, {
+    success: false,
+  })
   const formRef = useRef<HTMLFormElement>(null)
 
   useRestoreFormValues(formRef, state)
@@ -31,6 +32,7 @@ export default function Standard({ submitLabel, dictionary, locale }: Props) {
 
   return (
     <form action={formAction} ref={formRef}>
+      <input type="hidden" name="locale" value={locale ?? "en"} />
       {showConfirmation ? (
         <FormConfirmation
           message={dictionary.forms.submitSuccessful}

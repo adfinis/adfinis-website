@@ -1,10 +1,17 @@
 "use server"
 
 import { runFormAction, type FormState } from "@/lib/form-actions-shared"
-import { type Locale } from "@/lib/locale"
+import { locales, type Locale } from "@/lib/locale"
+
+function localeFromFormData(formData: FormData): Locale {
+  const value = formData.get("locale")
+  return typeof value === "string" &&
+    (locales as readonly string[]).includes(value)
+    ? (value as Locale)
+    : "en"
+}
 
 export async function saveSimpleForm(
-  locale: Locale,
   _state: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -13,13 +20,12 @@ export async function saveSimpleForm(
       type: "short",
       fields: ["first_name", "last_name", "email", "privacy_policy"],
     },
-    locale,
+    localeFromFormData(formData),
     formData,
   )
 }
 
 export async function saveStandardForm(
-  locale: Locale,
   _state: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -35,7 +41,7 @@ export async function saveStandardForm(
         "privacy_policy",
       ],
     },
-    locale,
+    localeFromFormData(formData),
     formData,
   )
 }
@@ -63,7 +69,6 @@ export async function saveGatedContentForm(
 }
 
 export async function saveContactForm(
-  locale: Locale,
   _state: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -80,13 +85,12 @@ export async function saveContactForm(
         "privacy_policy",
       ],
     },
-    locale,
+    localeFromFormData(formData),
     formData,
   )
 }
 
 export async function saveEventForm(
-  locale: Locale,
   _state: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -104,13 +108,12 @@ export async function saveEventForm(
         "privacy_policy",
       ],
     },
-    locale,
+    localeFromFormData(formData),
     formData,
   )
 }
 
 export async function saveRaffleForm(
-  locale: Locale,
   _state: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -128,7 +131,7 @@ export async function saveRaffleForm(
       ],
       excludeFromPayload: ["agree_to_receive_mail"],
     },
-    locale,
+    localeFromFormData(formData),
     formData,
   )
 }

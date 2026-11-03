@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.44.0] - 2026-11-03
+
+- fix(AW-436): pass form locale as a field instead of binding it (#411)
+
 ## [1.43.0] - 2026-11-02
 
 - fix(AW-435): report a blocked main thread to sentry (#409)
