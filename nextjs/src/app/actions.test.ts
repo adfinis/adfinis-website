@@ -70,7 +70,7 @@ async function flushAfter() {
 }
 
 function consentCookies(value?: string, clickId?: string | null) {
-  const stored = clickId === null ? undefined : clickId ?? "gclid:TESTCLICK"
+  const stored = clickId === null ? undefined : (clickId ?? "gclid:TESTCLICK")
   return {
     get: (name: string) => {
       if (name === "aw-consents") return value != null ? { value } : undefined
@@ -111,7 +111,7 @@ beforeEach(() => {
 
 describe("saveSimpleForm", () => {
   test("happy path submits with type 'short', forced privacy_policy and from_url", async () => {
-    const result = await saveSimpleForm("en", { success: false }, base())
+    const result = await saveSimpleForm({ success: false }, base())
     expect(result.success).toBe(true)
     expect(mockStrapiFetch).toHaveBeenCalledTimes(1)
     expect(mockFormsparkSubmit).toHaveBeenCalledTimes(1)
@@ -122,7 +122,7 @@ describe("saveSimpleForm", () => {
 
   test("altcha failure returns altcha error and does not submit", async () => {
     mockVerifyAltcha.mockResolvedValue(false)
-    const result = await saveSimpleForm("en", { success: false }, base())
+    const result = await saveSimpleForm({ success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors?.altcha).toBeDefined()
     expect(mockStrapiFetch).not.toHaveBeenCalled()
@@ -131,7 +131,7 @@ describe("saveSimpleForm", () => {
   test("validation failure returns snake_case errors and camel/snake values", async () => {
     const fd = base()
     fd.set("firstName", "")
-    const result = await saveSimpleForm("en", { success: false }, fd)
+    const result = await saveSimpleForm({ success: false }, fd)
     expect(result.success).toBe(false)
     expect(result.errors?.first_name).toBeDefined()
     expect(result.values?.firstName).toBe("")
@@ -140,10 +140,34 @@ describe("saveSimpleForm", () => {
 
   test("backend failure returns values without errors", async () => {
     mockStrapiFetch.mockRejectedValue(new Error("strapi down"))
-    const result = await saveSimpleForm("en", { success: false }, base())
+    const result = await saveSimpleForm({ success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors).toBeUndefined()
     expect(result.values?.email).toBe("john@example.com")
+  })
+})
+
+describe("locale field", () => {
+  function emptyName(locale?: string): FormData {
+    const fd = base()
+    fd.set("firstName", "")
+    if (locale !== undefined) fd.set("locale", locale)
+    return fd
+  }
+
+  test("validates in the language of the locale field", async () => {
+    const result = await saveSimpleForm({ success: false }, emptyName("nl"))
+    expect(result.errors?.first_name).toEqual(["Dit veld is verplicht."])
+  })
+
+  test("falls back to English when the locale field is missing", async () => {
+    const result = await saveSimpleForm({ success: false }, emptyName())
+    expect(result.errors?.first_name).toEqual(["This field is required."])
+  })
+
+  test("falls back to English when the locale field is unknown", async () => {
+    const result = await saveSimpleForm({ success: false }, emptyName("fr"))
+    expect(result.errors?.first_name).toEqual(["This field is required."])
   })
 })
 
@@ -151,14 +175,14 @@ describe("saveStandardForm", () => {
   test("happy path with trimmed company_name", async () => {
     const fd = withCompany(base())
     fd.set("company_name", "  Adfinis  ")
-    const result = await saveStandardForm("en", { success: false }, fd)
+    const result = await saveStandardForm({ success: false }, fd)
     expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("standard")
     expect(lastPayload().company_name).toBe("Adfinis")
   })
 
   test("missing company_name fails validation", async () => {
-    const result = await saveStandardForm("en", { success: false }, base())
+    const result = await saveStandardForm({ success: false }, base())
     expect(result.success).toBe(false)
     expect(result.errors?.company_name).toBeDefined()
   })
@@ -183,7 +207,7 @@ describe("saveContactForm", () => {
   test("happy path includes message and type 'contact'", async () => {
     const fd = withCompany(base())
     fd.set("message", "Hello there")
-    const result = await saveContactForm("en", { success: false }, fd)
+    const result = await saveContactForm({ success: false }, fd)
     expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("contact")
     expect(lastPayload().message).toBe("Hello there")
@@ -191,7 +215,7 @@ describe("saveContactForm", () => {
 
   test("missing message fails validation", async () => {
     const fd = withCompany(base())
-    const result = await saveContactForm("en", { success: false }, fd)
+    const result = await saveContactForm({ success: false }, fd)
     expect(result.success).toBe(false)
     expect(result.errors?.message).toBeDefined()
   })
@@ -207,7 +231,7 @@ describe("saveEventForm", () => {
   test("happy path with valid optional phone, type 'event'", async () => {
     const fd = eventFd()
     fd.set("phone_number", "+41791234567")
-    const result = await saveEventForm("en", { success: false }, fd)
+    const result = await saveEventForm({ success: false }, fd)
     expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("event")
   })
@@ -215,14 +239,14 @@ describe("saveEventForm", () => {
   test("empty phone is allowed", async () => {
     const fd = eventFd()
     fd.set("phone_number", "") // the form always renders the input, so submits ""
-    const result = await saveEventForm("en", { success: false }, fd)
+    const result = await saveEventForm({ success: false }, fd)
     expect(result.success).toBe(true)
   })
 
   test("malformed phone fails with format message", async () => {
     const fd = eventFd()
     fd.set("phone_number", "12-34-abc")
-    const result = await saveEventForm("en", { success: false }, fd)
+    const result = await saveEventForm({ success: false }, fd)
     expect(result.success).toBe(false)
     expect(result.errors?.phone_number).toBeDefined()
   })
@@ -230,7 +254,7 @@ describe("saveEventForm", () => {
   test("too-short phone fails", async () => {
     const fd = eventFd()
     fd.set("phone_number", "1234")
-    const result = await saveEventForm("en", { success: false }, fd)
+    const result = await saveEventForm({ success: false }, fd)
     expect(result.success).toBe(false)
     expect(result.errors?.phone_number).toBeDefined()
   })
@@ -238,7 +262,7 @@ describe("saveEventForm", () => {
   test("too-long phone fails", async () => {
     const fd = eventFd()
     fd.set("phone_number", "1234567890123456")
-    const result = await saveEventForm("en", { success: false }, fd)
+    const result = await saveEventForm({ success: false }, fd)
     expect(result.success).toBe(false)
     expect(result.errors?.phone_number).toBeDefined()
   })
@@ -246,11 +270,7 @@ describe("saveEventForm", () => {
 
 describe("saveRaffleForm", () => {
   test("unchecked agree_to_receive_mail fails validation", async () => {
-    const result = await saveRaffleForm(
-      "en",
-      { success: false },
-      withCompany(base()),
-    )
+    const result = await saveRaffleForm({ success: false }, withCompany(base()))
     expect(result.success).toBe(false)
     expect(result.errors?.agree_to_receive_mail).toBeDefined()
   })
@@ -258,7 +278,7 @@ describe("saveRaffleForm", () => {
   test("happy path excludes agree_to_receive_mail from payload", async () => {
     const fd = withCompany(base())
     fd.set("agree_to_receive_mail", "on")
-    const result = await saveRaffleForm("en", { success: false }, fd)
+    const result = await saveRaffleForm({ success: false }, fd)
     expect(result.success).toBe(true)
     expect(lastPayload().type).toBe("raffle")
     expect("agree_to_receive_mail" in lastPayload()).toBe(false)
@@ -273,7 +293,7 @@ describe("CAPI consent gating (fail-closed)", () => {
   }
 
   test("fires both CAPIs on a successful submit with full consent", async () => {
-    const result = await saveContactForm("en", { success: false }, contactFd())
+    const result = await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(result.success).toBe(true)
     expect(mockTrackConversion).toHaveBeenCalledTimes(1)
@@ -283,7 +303,7 @@ describe("CAPI consent gating (fail-closed)", () => {
 
   test("fires neither CAPI when consent is only partial", async () => {
     mockCookies.mockResolvedValue(consentCookies("essential"))
-    const result = await saveContactForm("en", { success: false }, contactFd())
+    const result = await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     // Submission still succeeds; only tracking is withheld.
     expect(result.success).toBe(true)
@@ -294,7 +314,7 @@ describe("CAPI consent gating (fail-closed)", () => {
 
   test("fires neither CAPI when the consent cookie is absent", async () => {
     mockCookies.mockResolvedValue(consentCookies(undefined))
-    const result = await saveContactForm("en", { success: false }, contactFd())
+    const result = await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(result.success).toBe(true)
     expect(mockTrackConversion).not.toHaveBeenCalled()
@@ -311,7 +331,7 @@ describe("Google Ads conversions", () => {
   }
 
   test("passes the conversion id and the stored click id", async () => {
-    const result = await saveContactForm("en", { success: false }, contactFd())
+    const result = await saveContactForm({ success: false }, contactFd())
     await flushAfter()
 
     expect(mockTrackGoogleAds).toHaveBeenCalledTimes(1)
@@ -324,18 +344,18 @@ describe("Google Ads conversions", () => {
   })
 
   test.each([
-    ["short", () => saveSimpleForm("en", { success: false }, base())],
+    ["short", () => saveSimpleForm({ success: false }, base())],
     [
       "standard",
-      () => saveStandardForm("en", { success: false }, withCompany(base())),
+      () => saveStandardForm({ success: false }, withCompany(base())),
     ],
-    ["contact", () => saveContactForm("en", { success: false }, contactFd())],
+    ["contact", () => saveContactForm({ success: false }, contactFd())],
     [
       "event",
       () => {
         const fd = contactFd()
         fd.set("phone_number", "")
-        return saveEventForm("en", { success: false }, fd)
+        return saveEventForm({ success: false }, fd)
       },
     ],
     [
@@ -343,7 +363,7 @@ describe("Google Ads conversions", () => {
       () => {
         const fd = withCompany(base())
         fd.set("agree_to_receive_mail", "on")
-        return saveRaffleForm("en", { success: false }, fd)
+        return saveRaffleForm({ success: false }, fd)
       },
     ],
   ])("fires for the %s form", async (_type, submit) => {
@@ -355,21 +375,21 @@ describe("Google Ads conversions", () => {
   test("sends the phone number from the event form", async () => {
     const fd = contactFd()
     fd.set("phone_number", "+41791234567")
-    await saveEventForm("en", { success: false }, fd)
+    await saveEventForm({ success: false }, fd)
     await flushAfter()
     expect(mockTrackGoogleAds.mock.calls[0][0].phone).toBe("+41791234567")
   })
 
   test("still fires with no click id, leaving the decision to the tracker", async () => {
     mockCookies.mockResolvedValue(consentCookies("all", null))
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(mockTrackGoogleAds.mock.calls[0][0].clickId).toBeUndefined()
   })
 
   test("ignores a click id cookie it cannot parse", async () => {
     mockCookies.mockResolvedValue(consentCookies("all", "not-a-click-id"))
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(mockTrackGoogleAds.mock.calls[0][0].clickId).toBeUndefined()
   })
@@ -394,7 +414,7 @@ describe("LinkedIn identifiers", () => {
 
   test("sends no IP or userInfo when the extended flag is off", async () => {
     vi.stubEnv("LINKEDIN_EXTENDED_CONVERSION_INPUT", "false")
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().ipAddress).toBeUndefined()
     expect(linkedInInput().userInfo).toBeUndefined()
@@ -403,7 +423,7 @@ describe("LinkedIn identifiers", () => {
   })
 
   test("builds userInfo with company and title from a full form", async () => {
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().userInfo).toEqual({
       firstName: "John",
@@ -414,7 +434,7 @@ describe("LinkedIn identifiers", () => {
   })
 
   test("omits company and title for a form that does not collect them", async () => {
-    await saveSimpleForm("en", { success: false }, base())
+    await saveSimpleForm({ success: false }, base())
     await flushAfter()
     expect(linkedInInput().userInfo).toEqual({
       firstName: "John",
@@ -426,7 +446,7 @@ describe("LinkedIn identifiers", () => {
     mockHeaders.mockResolvedValue(
       headersWith({ "do-connecting-ip": "198.51.100.9" }),
     )
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().ipAddress).toBe("198.51.100.9")
   })
@@ -438,7 +458,7 @@ describe("LinkedIn identifiers", () => {
         "do-connecting-ip": "198.51.100.9",
       }),
     )
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().ipAddress).toBe("203.0.113.4")
   })
@@ -447,7 +467,7 @@ describe("LinkedIn identifiers", () => {
     mockHeaders.mockResolvedValue(
       headersWith({ "do-connecting-ip": "2001:db8::1" }),
     )
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().ipAddress).toBeUndefined()
   })
@@ -456,7 +476,7 @@ describe("LinkedIn identifiers", () => {
     mockHeaders.mockResolvedValue(
       headersWith({ "x-forwarded-for": "198.51.100.9, 10.0.0.1" }),
     )
-    await saveContactForm("en", { success: false }, contactFd())
+    await saveContactForm({ success: false }, contactFd())
     await flushAfter()
     expect(linkedInInput().ipAddress).toBeUndefined()
   })
