@@ -17,6 +17,13 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.45.0] - 2026-11-19
+
+- feat(AW-437): record node runtime metrics in sentry (#413)
+- feat(AW-446): show the cookie banner as a centred dialog (#414)
+- chore: update next to 16.4.6 (#415)
+- feat(AW-446): show the cookie banner as a full-width bottom bar (#416)
+
 ## [1.44.0] - 2026-11-03
 
 - fix(AW-436): pass form locale as a field instead of binding it (#411)

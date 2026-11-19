@@ -10,7 +10,11 @@ import { eventLoopBlockIntegration } from "@sentry/node-native"
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
 
-  integrations: [nodeProfilingIntegration(), eventLoopBlockIntegration()],
+  integrations: [
+    nodeProfilingIntegration(),
+    eventLoopBlockIntegration(),
+    Sentry.nodeRuntimeMetricsIntegration({ collectionIntervalMs: 300_000 }),
+  ],
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 0.1,
