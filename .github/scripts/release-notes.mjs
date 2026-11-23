@@ -86,7 +86,25 @@ function versionAt(ref) {
   return JSON.parse(git('show', `${ref}:nextjs/package.json`)).version
 }
 
+function hasAllOf(ref) {
+  try {
+    git('merge-base', '--is-ancestor', ref, 'HEAD')
+    return true
+  } catch (error) {
+    if (error.status === 1) return false
+    throw error
+  }
+}
+
 function findBase(main) {
+  if (!hasAllOf(main)) {
+    return {
+      error: [
+        `develop does not have every commit on ${main}, so the release PR could not be merged.`,
+        `Merge ${main} into develop first, or rerun the Back-merge workflow.`,
+      ].join('\n'),
+    }
+  }
   const release = lastReleaseCommit()
   if (!release) return { base: main }
   const released = versionAt(release.sha)

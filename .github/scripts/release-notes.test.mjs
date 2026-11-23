@@ -246,6 +246,18 @@ describe('release-notes.mjs in a git repo', () => {
     assert.match(out, /already has release commit .* for 1\.1\.0, but main is still at 1\.0\.0/)
   })
 
+  it('stops when main has a commit that develop does not have', () => {
+    const r = repo()
+    r.commit('feat(AW-1): a')
+    r.git('switch', '-q', 'main')
+    r.commit('fix(AW-2): made on main')
+    r.git('switch', '-q', 'develop')
+
+    const { code, out } = r.run()
+    assert.equal(code, 1)
+    assert.match(out, /Merge main into develop first, or rerun the Back-merge workflow/)
+  })
+
   it('uses main as the start when there has never been a release commit', () => {
     const r = repo()
     r.git('switch', '-q', 'main')
