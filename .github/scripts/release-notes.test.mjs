@@ -174,7 +174,14 @@ describe('release-notes.mjs in a git repo', () => {
     git('add', '.')
     commit('chore: changelog')
     git('switch', '-q', '-c', 'develop')
-    return { dir, git, setVersion, commit, run }
+    const release = (version) => {
+      git('switch', '-q', 'main')
+      git('merge', '-q', '--squash', 'develop')
+      commit(`Release ${version} (#1)`)
+      git('switch', '-q', 'develop')
+      git('merge', '-q', '--no-ff', '-m', "Merge branch 'main' into develop", 'main')
+    }
+    return { dir, git, setVersion, commit, release, run }
   }
 
   it('lists a commit merged into develop while the last release PR was open', () => {
@@ -184,9 +191,7 @@ describe('release-notes.mjs in a git repo', () => {
     r.git('add', '.')
     r.commit('chore(release): 1.1.0')
     r.commit('feat(AW-2): merged while the release pr was open')
-    r.git('switch', '-q', 'main')
-    r.git('merge', '-q', '--no-ff', '-m', 'Merge pull request #1 from adfinis/develop', 'develop')
-    r.git('switch', '-q', 'develop')
+    r.release('1.1.0')
     r.commit('fix(AW-3): c')
 
     const { code, out } = r.run()
@@ -195,6 +200,37 @@ describe('release-notes.mjs in a git repo', () => {
     assert.match(out, /- feat\(AW-2\): merged while the release pr was open/)
     assert.match(out, /- fix\(AW-3\): c/)
     assert.doesNotMatch(out, /- fix\(AW-1\): a/)
+  })
+
+  it('leaves out the commits main already has after main is merged back', () => {
+    const r = repo()
+    r.commit('fix(AW-1): a')
+    r.setVersion('1.1.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.1.0')
+    r.release('1.1.0')
+    r.commit('feat(AW-2): b')
+
+    const { code, out } = r.run()
+    assert.equal(code, 0, out)
+    assert.match(out, /Commits since \w+: 1\n/)
+    assert.match(out, /1\.1\.0 -> 1\.2\.0/)
+    assert.match(out, /- feat\(AW-2\): b/)
+    assert.doesNotMatch(out, /Release 1\.1\.0/)
+    assert.doesNotMatch(out, /- fix\(AW-1\): a/)
+  })
+
+  it('has nothing to release right after main is merged back', () => {
+    const r = repo()
+    r.commit('fix(AW-1): a')
+    r.setVersion('1.1.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.1.0')
+    r.release('1.1.0')
+
+    const { code, out } = r.run()
+    assert.equal(code, 1)
+    assert.match(out, /Nothing to release/)
   })
 
   it('stops when develop has a release commit that main does not have yet', () => {

@@ -74,7 +74,7 @@ function git(...args) {
 }
 
 function lastReleaseCommit() {
-  const log = git('log', '--no-merges', '--format=%h%x1f%s', '-E', '--grep=^chore(\\(release\\))?: ', 'HEAD')
+  const log = git('log', '--no-merges', '--topo-order', '--format=%h%x1f%s', '-E', '--grep=^chore(\\(release\\))?: ', 'HEAD')
   for (const line of log.split('\n')) {
     const [sha, subject] = line.split('\x1f')
     if (sha && isReleaseCommit(subject)) return { sha, subject }
@@ -102,8 +102,8 @@ function findBase(main) {
   return { base: release.sha }
 }
 
-function readCommits(base) {
-  return git('log', '--no-merges', '--format=%h%x1f%s%x1f%B%x1e', `${base}..HEAD`)
+function readCommits(base, main) {
+  return git('log', '--no-merges', '--format=%h%x1f%s%x1f%B%x1e', `${base}..HEAD`, `^${main}`)
     .split('\x1e')
     .map((entry) => entry.trim())
     .filter(Boolean)
@@ -159,7 +159,7 @@ function main(args) {
     return 1
   }
 
-  const commits = readCommits(base)
+  const commits = readCommits(base, options.main)
   if (!commits.length) {
     console.error(`Nothing to release: no commits since ${base}.`)
     return 1
