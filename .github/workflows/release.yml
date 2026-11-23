@@ -65,4 +65,7 @@ jobs:
           git add CHANGELOG.md nextjs/package.json nextjs/package-lock.json strapi/package.json strapi/package-lock.json
           git commit -m "chore(release): $VERSION"
           git push origin HEAD:develop
-          gh pr create --base main --head develop --title "Release $VERSION" --body-file "$RUNNER_TEMP/release-notes.md"
+          if ! gh pr create --base main --head develop --title "Release $VERSION" --body-file "$RUNNER_TEMP/release-notes.md"; then
+            echo "::error::The release commit is on develop, but the PR could not be opened. Open it by hand, with the changelog from this run's summary as the body: gh pr create --base main --head develop --title \"Release $VERSION\""
+            exit 1
+          fi
