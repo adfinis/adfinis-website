@@ -16,14 +16,14 @@ const containerStyles = cva(["py-18 lg:py-24"], {
     background: {
       white: "bg-white",
       neutral: "bg-neutral",
-      sapphire: "bg-gradient-to-br from-sapphire to-biscay",
-      stone: "bg-gradient-to-r bg-stone from-neutral/20 to-stone",
+      sapphire: "bg-linear-to-br from-sapphire to-biscay",
+      stone: "bg-linear-to-r bg-stone from-neutral/20 to-stone",
     },
   },
 })
 type ContainerProps = VariantProps<typeof containerStyles> & {
   children: React.ReactNode
-  id?: string
+  id?: string | null
   background: PickStringLiteral<
     BackgroundOptions,
     "white" | "neutral" | "sapphire" | "stone"

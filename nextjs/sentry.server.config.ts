@@ -3,15 +3,21 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs"
+import { dataCollection } from "@/lib/sentry-data-collection"
 import { nodeProfilingIntegration } from "@sentry/profiling-node"
+import { eventLoopBlockIntegration } from "@sentry/node-native"
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
 
-  integrations: [nodeProfilingIntegration()],
+  integrations: [
+    nodeProfilingIntegration(),
+    eventLoopBlockIntegration(),
+    Sentry.nodeRuntimeMetricsIntegration({ collectionIntervalMs: 300_000 }),
+  ],
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
+  tracesSampleRate: 0.1,
 
   // Set sampling rate for profiling - this is evaluated only once per SDK.init call
   profileSessionSampleRate: 1.0,
@@ -19,12 +25,8 @@ Sentry.init({
   // Trace lifecycle automatically enables profiling during active traces
   profileLifecycle: "trace",
 
-  // Enable logs to be sent to Sentry
-  enableLogs: true,
-
-  // Enable sending user PII (Personally Identifiable Information)
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
-  sendDefaultPii: false,
+  // Keep the restrictive v10 (sendDefaultPii: false) data collection
+  dataCollection,
 
   environment: process.env.NEXT_PUBLIC_SENTRY_ENV,
 })

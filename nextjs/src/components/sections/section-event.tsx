@@ -46,19 +46,19 @@ const SectionEvent: React.FC<SectionEventProps> = ({
         <ul className="grid gap-6 lg:gap-8">
           {date && (
             <li className="flex gap-6 items-center">
-              <IconDate className="text-sunglow flex-shrink-0 self-start" />
+              <IconDate className="text-sunglow shrink-0 self-start" />
               <Text markdown={escapeLeadingListMarker(date)} />
             </li>
           )}
           {time && (
             <li className="flex gap-6 items-center">
-              <IconTime className="text-sunglow flex-shrink-0 self-start" />
+              <IconTime className="text-sunglow shrink-0 self-start" />
               <Text markdown={time} />
             </li>
           )}
           {location && (
             <li className="flex gap-6 items-center">
-              <IconMaps className="text-sunglow flex-shrink-0 self-start" />
+              <IconMaps className="text-sunglow shrink-0 self-start" />
               <Text markdown={location} />
             </li>
           )}

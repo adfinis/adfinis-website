@@ -432,6 +432,8 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     registrationToken: Schema.Attribute.String & Schema.Attribute.Private;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
+    resetPasswordTokenExpiresAt: Schema.Attribute.DateTime &
+      Schema.Attribute.Private;
     roles: Schema.Attribute.Relation<'manyToMany', 'admin::role'> &
       Schema.Attribute.Private;
     updatedAt: Schema.Attribute.DateTime;
@@ -530,6 +532,7 @@ export interface ApiBlogPageBlogPage extends Struct.CollectionTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -624,6 +627,7 @@ export interface ApiBlogsOverviewBlogsOverview extends Struct.SingleTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -794,6 +798,7 @@ export interface ApiCaseStudiesOverviewCaseStudiesOverview
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -1101,6 +1106,7 @@ export interface ApiEventPageEventPage extends Struct.CollectionTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -1227,6 +1233,7 @@ export interface ApiEventsOverviewEventsOverview
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -1543,6 +1550,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -1808,6 +1816,7 @@ export interface ApiNewsOverviewNewsOverview extends Struct.SingleTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -1946,6 +1955,7 @@ export interface ApiNewsPageNewsPage extends Struct.CollectionTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -2082,6 +2092,7 @@ export interface ApiPageCaseStudyPageCaseStudy
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -2192,6 +2203,7 @@ export interface ApiPagePartnerAndProductPagePartnerAndProduct
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -2297,6 +2309,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -2508,6 +2521,7 @@ export interface ApiSolutionsOverviewSolutionsOverview
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',
@@ -2611,6 +2625,7 @@ export interface ApiSolutionsPageSolutionsPage
         'sections.event-details-section',
         'sections.extra-wide-icon-cards-grid-section',
         'sections.feature-cards',
+        'sections.gated-content',
         'sections.hallmarks-section',
         'sections.icon-card-section-with-relation',
         'sections.image-carousel',

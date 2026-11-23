@@ -71,16 +71,16 @@ const Title: React.FC<TitleProps> = ({
         ? 2
         : 1
 
+    // react-markdown 10 dropped its `className` wrapper, so we render it ourselves
     return (
-      <Markdown
-        remarkPlugins={[remarkGfm]}
+      <div
         className={clsx([
           titleStyles({ level: headingLevel, align, boldness }),
           className,
         ])}
       >
-        {markdown}
-      </Markdown>
+        <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+      </div>
     )
   }
   const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements

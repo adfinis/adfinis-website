@@ -27,7 +27,7 @@ export default async function RegularFormSection({
   const dictionary = await getDictionary(locale)
   return (
     <Container
-      id={`${section.form_type}-form`}
+      id={section.props.anchor || `${section.form_type}-form`}
       background={section.props.background}
       padding={section.props.padding}
     >

@@ -2,7 +2,6 @@ import React from "react"
 
 import type { Card } from "./card"
 import Link from "next/link"
-import Image from "next/image"
 import clsx from "clsx"
 import IconArrowLongRight from "@/components/icons/icon-arrow-long-right"
 
@@ -35,7 +34,8 @@ const CardArticle: React.FC<CardArticleProps> = ({
       data-component="CardArticle"
     >
       {imageUrl && (
-        <Image
+        <img
+          loading="lazy"
           src={imageUrl}
           alt={title ?? ""}
           width={400}
@@ -65,7 +65,8 @@ const CardArticle: React.FC<CardArticleProps> = ({
           </Link>
         ))}
         {logoUrl && (
-          <Image
+          <img
+            loading="lazy"
             src={logoUrl}
             alt={title}
             height={50}

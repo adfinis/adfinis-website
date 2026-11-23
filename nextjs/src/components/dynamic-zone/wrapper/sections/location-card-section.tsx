@@ -16,6 +16,7 @@ type Props = {
 export default function LocationCardSection({ section }: { section: Props }) {
   return (
     <Container
+      id={section.props.anchor}
       background={section.props.background}
       padding={section.props.padding}
     >

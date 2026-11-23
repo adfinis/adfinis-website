@@ -1,6 +1,5 @@
 import React from "react"
 import { type Card } from "./card"
-import Image from "next/image"
 import { colors } from "@/lib/colors"
 import { cva, VariantProps } from "class-variance-authority"
 
@@ -45,7 +44,8 @@ const CardKpi: React.FC<CardKpiProps> = ({
   return (
     <div className={cardKpiStyles({ color })}>
       {imageUrl && (
-        <Image
+        <img
+          loading="lazy"
           className="w-15 h-15 mx-auto"
           width={60}
           height={60}

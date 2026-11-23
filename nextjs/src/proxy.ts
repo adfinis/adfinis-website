@@ -7,8 +7,15 @@ import {
   serializeClickId,
 } from "@/lib/click-id"
 import { COOKIE_CONSENT_KEY } from "@/lib/cookies"
+import { basicAuthChallenge } from "@/lib/basic-auth"
 
 export async function proxy(request: NextRequest) {
+  const challenge = basicAuthChallenge(request)
+
+  if (challenge) {
+    return challenge
+  }
+
   const forwardedHost = request.headers.get("x-forwarded-host")
   const host = forwardedHost || request.headers.get("host")
   const forwardedProto = request.headers.get("x-forwarded-proto") || "https"

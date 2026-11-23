@@ -1,6 +1,5 @@
 import React from "react"
 import { type Card } from "./card"
-import Image from "next/image"
 
 interface CardLogoProps {
   title: string
@@ -10,7 +9,8 @@ interface CardLogoProps {
 const CardLogo: React.FC<CardLogoProps> = ({ title, imageUrl }) => {
   return (
     <div className="bg-white rounded-lg p-4 lg:p-6 max-w-96 grid aspect-video">
-      <Image
+      <img
+        loading="lazy"
         className="self-center w-full h-auto"
         src={imageUrl}
         alt={title || ""}

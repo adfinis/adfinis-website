@@ -1,7 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import Triangle from "./triangle"
+import Slant from "./slant"
 import clsx from "clsx"
 import React from "react"
 import { colors } from "@/lib/colors"
@@ -22,17 +22,11 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
   return (
     <div
       className={clsx([
-        "relative min-h-[600px] lg:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
-        'before:content-[""] before:absolute',
-        "before:left-0 before:right-0",
-        "before:bottom-[-15vw] before:h-[15vw] ",
-        "before:z-20 before:bg-white",
-        "before:skew-y-6",
-        "before:origin-bottom-right",
+        "relative flex flex-col min-h-[600px] lg:min-h-[750px] 2xl:min-h-[800px] 3xl:min-h-[900px] overflow-hidden",
       ])}
     >
       {imageUrl && (
-        <Image
+        <img
           src={imageUrl}
           alt="Hero Image"
           width={1920}
@@ -40,17 +34,17 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           className={clsx([
             "absolute inset-0 object-cover object-center z-0 h-full w-full",
           ])}
-          priority
+          fetchPriority="high"
         />
       )}
       {
-        navActive && <div className="absolute inset-0 backdrop-blur-sm z-10" /> // blur everything behind when nav is active
+        navActive && <div className="absolute inset-0 backdrop-blur-xs z-10" /> // blur everything behind when nav is active
       }
 
       <div
         className={clsx([
           "absolute inset-0",
-          "transition-all duration-150 bg-gradient-to-r from-stone/65 to-stone/10",
+          "transition-all duration-150 bg-linear-to-r from-stone/65 to-stone/10",
           { "bg-stone/80 z-10": navActive }, // darkens elements behind as overlay when nav active
         ])}
       />
@@ -65,7 +59,8 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
             color="neutral"
             className="w-[50vw] h-auto pointer-events-none"
           />
-          <Image
+          <img
+            loading="lazy"
             src={logoUrl}
             alt=""
             aria-hidden="true"
@@ -86,6 +81,7 @@ const Hero: React.FC<HeroProps> = ({ imageUrl, children, color, logoUrl }) => {
           </div>
         </div>
       </section>
+      <Slant color="white" className="relative z-20 mt-auto -mb-px" />
     </div>
   )
 }

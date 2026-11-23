@@ -1,5 +1,4 @@
 import { colors } from "@/lib/colors"
-import Image from "next/image"
 import React from "react"
 import Triangle from "../triangle"
 
@@ -18,7 +17,8 @@ const CardImage: React.FC<CardImageProps> = ({
 }) => {
   return (
     <div className="relative rounded-xl overflow-hidden">
-      <Image
+      <img
+        loading="lazy"
         className={`object-cover object-center ${className || ""}`}
         src={src}
         alt={alt}

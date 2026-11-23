@@ -64,7 +64,7 @@ export default function ActionWrappers() {
         <CloseOnClickAway>
           <PopoverButton
             aria-label={ui.localeSwitcherAriaLabel}
-            className="inline-flex items-center gap-3 rounded-md py-1.5 px-3 text-14 uppercase font-semibold focus:outline-none data-[open]:bg-biscay data-[focus]:outline-1 data-[focus]:outline-neutral"
+            className="inline-flex items-center gap-3 rounded-md py-1.5 px-3 text-14 uppercase font-semibold focus:outline-hidden data-open:bg-biscay data-focus:outline-1 data-focus:outline-neutral"
           >
             <IconGlobe />
             <span className="hidden lg:block">{activeLocaleKey}</span>
@@ -78,7 +78,7 @@ export default function ActionWrappers() {
           <PopoverPanel
             transition
             data-scheme="dark"
-            className="fixed inset-x-4 top-20 mx-auto max-w-sm z-50 origin-top rounded-lg bg-biscay p-6 text-neutral transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 min-[432px]:absolute min-[432px]:inset-x-auto min-[432px]:mx-0 min-[432px]:max-w-none min-[432px]:top-full min-[432px]:right-0 min-[432px]:mt-2 min-[432px]:w-96 min-[432px]:origin-top-right"
+            className="fixed inset-x-4 top-20 mx-auto max-w-sm z-50 origin-top rounded-lg bg-biscay p-6 text-neutral transition duration-100 ease-out focus:outline-hidden data-closed:scale-95 data-closed:opacity-0 min-[432px]:absolute min-[432px]:inset-x-auto min-[432px]:mx-0 min-[432px]:max-w-none min-[432px]:top-full min-[432px]:right-0 min-[432px]:mt-2 min-[432px]:w-96 min-[432px]:origin-top-right"
           >
             {({ close }) => (
               <div className="grid gap-4">
@@ -104,7 +104,7 @@ export default function ActionWrappers() {
                       onChange={(event) =>
                         setSelectedLocale(event.target.value as Locale)
                       }
-                      className="w-full appearance-none rounded border border-neutral/30 bg-sapphire/40 py-2.5 pl-4 pr-10 text-14 text-neutral focus:border-neutral focus:outline-none"
+                      className="w-full appearance-none rounded-sm border border-neutral/30 bg-sapphire/40 py-2.5 pl-4 pr-10 text-14 text-neutral focus:border-neutral focus:outline-hidden"
                     >
                       {linkedLocales.map((link) => (
                         <option

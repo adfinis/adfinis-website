@@ -2,7 +2,6 @@
 
 import React, { useState } from "react"
 import { Card } from "./card"
-import Image from "next/image"
 import "./card-member.css"
 import clsx from "clsx"
 import { colors } from "@/lib/colors"
@@ -26,7 +25,8 @@ const CardMember: React.FC<CardMemberProps> = ({
     >
       {/* the image url after reveal */}
       {imageUrl2 && (
-        <Image
+        <img
+          loading="lazy"
           className={clsx([
             "absolute inset-0 w-full h-3/4 object-cover object-center",
             { "image-reveal opacity-100 z-10": active },
@@ -40,7 +40,8 @@ const CardMember: React.FC<CardMemberProps> = ({
 
       {/* the image url initially in front */}
       {imageUrl && (
-        <Image
+        <img
+          loading="lazy"
           src={imageUrl}
           alt={title}
           height={400}

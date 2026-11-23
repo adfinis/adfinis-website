@@ -19,6 +19,7 @@ export default function ImageCarousel({ section }: { section: Props }) {
   const ctas = section.cta ? [section.cta] : []
   return (
     <Container
+      id={section.props.anchor}
       background={section.props.background}
       padding={section.props.padding}
     >

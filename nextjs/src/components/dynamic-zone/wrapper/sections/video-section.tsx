@@ -11,6 +11,7 @@ type Props = {
 export default function VideoSection({ section }: { section: Props }) {
   return (
     <Container
+      id={section.props.anchor}
       background={section.props.background}
       padding={section.props.padding}
     >

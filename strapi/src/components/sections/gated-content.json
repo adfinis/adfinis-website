@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_gated_contents",
+  "info": {
+    "displayName": "Gated Content",
+    "description": "Content offer that can only be downloaded after submitting a form"
+  },
+  "options": {},
+  "attributes": {
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "content_offer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-offer.content-offer"
+    },
+    "submit_label": {
+      "type": "string",
+      "required": true
+    },
+    "thank_you_message": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

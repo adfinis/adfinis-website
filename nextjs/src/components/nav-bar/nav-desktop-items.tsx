@@ -51,7 +51,7 @@ const NavDesktopItems: React.FC<NavDesktopItemsProps> = ({ navItem }) => {
           className={clsx([
             "absolute inset-x-0 top-14 -z-10 py-10 px-16",
             {
-              "bg-stone/80 backdrop-blur-sm": scrollPosition.top > 50,
+              "bg-stone/80 backdrop-blur-xs": scrollPosition.top > 50,
             },
           ])}
         >

@@ -20,12 +20,12 @@ export const buttonStyles = cva(
         large: "h-12.5",
       },
       variant: {
-        cta: "min-w-40 px-10 bg-sunglow text-stone hover:bg-gradient-to-r hover:from-stone/10 hover:to-stone/10",
+        cta: "min-w-40 px-10 bg-sunglow text-stone hover:bg-linear-to-r hover:from-stone/10 hover:to-stone/10",
         primary:
-          "min-w-40 px-10 text-button-primary bg-button-primary hover:bg-gradient-to-r hover:from-stone/40 hover:to-stone/40",
+          "min-w-40 px-10 text-button-primary bg-button-primary hover:bg-linear-to-r hover:from-stone/40 hover:to-stone/40",
         secondary:
-          "min-w-40 px-10 border bg-none text-button-secondary border-button-secondary hover:bg-gradient-to-r hover:from-sapphire/10 hover:to-sapphire/10",
-        text: "text-button-secondary px-4 hover:bg-gradient-to-r hover:from-sapphire/10 hover:to-sapphire/10",
+          "min-w-40 px-10 border bg-none text-button-secondary border-button-secondary hover:bg-linear-to-r hover:from-sapphire/10 hover:to-sapphire/10",
+        text: "text-button-secondary px-4 hover:bg-linear-to-r hover:from-sapphire/10 hover:to-sapphire/10",
       },
       chevron: {
         left: "",

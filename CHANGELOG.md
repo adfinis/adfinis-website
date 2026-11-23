@@ -17,6 +17,57 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.45.0] - 2026-11-19
+
+- feat(AW-437): record node runtime metrics in sentry (#413)
+- feat(AW-446): show the cookie banner as a centred dialog (#414)
+- chore: update next to 16.4.6 (#415)
+- feat(AW-446): show the cookie banner as a full-width bottom bar (#416)
+
+## [1.44.0] - 2026-11-03
+
+- fix(AW-436): pass form locale as a field instead of binding it (#411)
+
+## [1.43.0] - 2026-11-02
+
+- fix(AW-435): report a blocked main thread to sentry (#409)
+
+## [1.42.0] - 2026-11-02
+
+- feat(AW-434): replace next/image with plain img tags (#407)
+
+## [1.41.0] - 2026-10-26
+
+- fix(AW-416): keep hero text above the slant when zoomed out (#404)
+
+## [1.40.0] - 2026-10-22
+
+- fix (AW-415): slider animation (#402)
+
+## [1.39.0] - 2026-10-22
+
+- chore (AW-414) upgrade nodejs and dependencies nextjs / strapi (#400)
+
+## [1.38.0] - 2026-10-21
+
+- feat (AW-412): anchor links to different components custom anchor id field (#396)
+- chore: add CODEOWNERS (#397)
+
+## [1.37.0] - 2026-10-20
+
+- fix (AW-411): keep the gated content fade when reduced motion is preferred (#394)
+- fix (AW-413): keep sla card bullets at the top with tighter spacing (#393)
+- feat (AW-409): update readme and setup script (#392)
+- feat (AW-402): strapi basic auth (#391)
+
+## [1.36.0] - 2026-09-21
+
+- fix (AW-407): page the card slider to the card that was cut off (#388)
+- feat (AW-404): google ads conversion api (#384)
+- fix (AW-406): escape the day number so german event dates stay in line (#387)
+- feat (AW-401): add accessibility statement to the footer (#385)
+- feat (AW-357): render italic markup in section quote (#386)
+
 ## [1.35.0] - 2026-08-28
 
 - feat (AW-400): add strapi single type LLM's (#382)

@@ -10,7 +10,6 @@ import LinkButton from "../link-button"
 import type { NavItem } from "./nav"
 import NavMobileItem from "./nav-mobile-item"
 import IconChevronLeft from "../icons/icon-chevron-left"
-import Image from "next/image"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
 import { CTA } from "@/lib/cta"
 import { colors } from "@/lib/colors"
@@ -114,7 +113,8 @@ const NavMobile: React.FC<NavMobileProps> = ({
                 href={`/${locale}`}
                 className="h-20 flex items-center mx-auto"
               >
-                <Image
+                <img
+                  loading="lazy"
                   className="max-h-20"
                   src={logoUrl}
                   alt={"Adfinis logo"}
@@ -132,11 +132,11 @@ const NavMobile: React.FC<NavMobileProps> = ({
                   // Shared transition styles
                   "transition ease-out -translate-y-1",
                   // Shared closed styles
-                  "data-[closed]:opacity-5",
+                  "data-closed:opacity-5",
                   // Entering styles
-                  "data-[enter]:duration-300 data-[enter]:data-[closed]:-translate-y-4",
+                  "data-enter:duration-300 data-enter:data-closed:-translate-y-4",
                   // Leaving styles
-                  "data-[leave]:duration-300 data-[leave]:data-[closed]:-translate-y-4",
+                  "data-leave:duration-300 data-leave:data-closed:-translate-y-4",
                 ])}
               >
                 {navItems.map((item, index) => (

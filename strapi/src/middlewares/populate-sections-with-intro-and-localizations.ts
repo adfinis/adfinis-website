@@ -97,6 +97,16 @@ module.exports = (config, { strapi }) => {
                 },
               },
             },
+            "sections.gated-content": {
+              populate: {
+                props: {
+                  populate: "*",
+                },
+                content_offer: {
+                  populate: "*",
+                },
+              },
+            },
             "sections.quote-section": {
               populate: {
                 quotes: {

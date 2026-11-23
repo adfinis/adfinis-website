@@ -1,5 +1,4 @@
 import { CTA } from "@/lib/cta"
-import Image from "next/image"
 import React from "react"
 import Title from "../title"
 import Text from "../text"
@@ -27,7 +26,8 @@ const CardIcon: React.FC<CardIconProps> = ({
       data-scheme="light"
     >
       {imageUrl && (
-        <Image
+        <img
+          loading="lazy"
           alt={title}
           src={imageUrl}
           width={300}
@@ -38,10 +38,7 @@ const CardIcon: React.FC<CardIconProps> = ({
       <Title level={3} boldness={"semibold"} align={"center"}>
         {title}
       </Title>
-      <Text
-        markdown={description}
-        className="text-center self-center flex-grow"
-      />
+      <Text markdown={description} className="text-center self-center grow" />
       {cta && (
         <Link
           href={cta.href}

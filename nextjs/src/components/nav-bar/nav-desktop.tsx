@@ -6,7 +6,6 @@ import useDetectScroll, { Axis } from "@smakss/react-scroll-direction"
 import { NavItem } from "./nav"
 import NavDesktopItems from "./nav-desktop-items"
 import ActionWrappers from "@/components/nav-bar/action-wrappers"
-import Image from "next/image"
 import { CTA } from "@/lib/cta"
 import LinkButton from "@/components/link-button"
 import { useNavContext } from "./nav-context"
@@ -76,7 +75,7 @@ const NavDesktop: React.FC<NavDesktopProps> = ({
     >
       <div className="bg-sapphire shadow-2">
         <div className="container mr-0">
-          <div className="hidden lg:grid divide-y divide-jumbo/30 pr-[50px]">
+          <div className="hidden lg:grid pr-[50px]">
             <section
               onMouseEnter={handleMouseEnter}
               className={clsx([
@@ -88,7 +87,8 @@ const NavDesktop: React.FC<NavDesktopProps> = ({
               id="nav-header"
             >
               <Link href={`/${locale}`}>
-                <Image
+                <img
+                  loading="lazy"
                   src={logoUrl}
                   alt={"Adfinis logo"}
                   width={160}
@@ -100,7 +100,10 @@ const NavDesktop: React.FC<NavDesktopProps> = ({
             </section>
             {menuExpanded && (
               // The Sub-bar
-              <section className="hidden lg:block" id="nav-items">
+              <section
+                className="hidden lg:block border-t border-jumbo/30"
+                id="nav-items"
+              >
                 <div className="flex justify-start items-center h-full relative">
                   {navItems.map((item, index) => (
                     <div key={index}>
