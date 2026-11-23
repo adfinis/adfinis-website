@@ -1,0 +1,46 @@
+name: Back-merge
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: back-merge
+  cancel-in-progress: false
+
+jobs:
+  back-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        with:
+          ref: develop
+          fetch-depth: 0
+
+      - name: Merge main into develop
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "develop already has everything on main."
+            exit 0
+          fi
+          if git log --format=%s HEAD..origin/main | grep '^Revert "'; then
+            echo "::error::main holds a revert. Merging it would undo that work on develop too. Merge main into develop by hand and decide what to keep: git checkout develop && git pull && git merge origin/main"
+            exit 1
+          fi
+          if ! git merge --no-ff -m "Merge branch 'main' into develop" origin/main; then
+            git merge --abort
+            echo "::error::main does not merge into develop cleanly. Merge it by hand: git checkout develop && git pull && git merge origin/main"
+            exit 1
+          fi
+          if ! git push origin HEAD:develop; then
+            echo "::error::The merge worked but the push to develop was refused. Merge it by hand: git checkout develop && git pull && git merge origin/main && git push"
+            exit 1
+          fi

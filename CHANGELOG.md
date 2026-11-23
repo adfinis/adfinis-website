@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.46.0] - 2026-11-23
+
+- ci: add a one-click release workflow and enforce the commit format (#389)
+
 ## [1.45.0] - 2026-11-19
 
 - feat(AW-437): record node runtime metrics in sentry (#413)

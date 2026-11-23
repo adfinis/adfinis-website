@@ -1,6 +1,6 @@
 {
   "name": "nextjs",
-  "version": "1.45.0",
+  "version": "1.46.0",
   "private": true,
   "engines": {
     "node": "24.x.x"
@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.10",
