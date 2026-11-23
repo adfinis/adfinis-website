@@ -210,7 +210,7 @@ Examples: `feat(AW-404): add google ads conversion api`, `fix(AW-406)!: move eve
 
 Anything merged into `develop` while a release PR is open goes out with that release, but is listed under the next one. The workflow stops if a release PR is already open, or if `develop` has a release commit that `main` doesn't have yet.
 
-After every push to `main`, the Back-merge workflow merges `main` into `develop`. The Release workflow stops if `develop` lacks a commit from `main`; merge `main` into `develop` by hand when the Back-merge run failed.
+After every push to `main`, the Back-merge workflow merges `main` into `develop`. It stops without merging when `main` holds a revert, because that merge would undo the same work on `develop`. The Release workflow stops if `develop` lacks a commit from `main`; merge `main` into `develop` by hand when the Back-merge run failed.
 
 ## Architecture
 

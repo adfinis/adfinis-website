@@ -31,6 +31,10 @@ jobs:
             echo "develop already has everything on main."
             exit 0
           fi
+          if git log --format=%s HEAD..origin/main | grep '^Revert "'; then
+            echo "::error::main holds a revert. Merging it would undo that work on develop too. Merge main into develop by hand and decide what to keep: git checkout develop && git pull && git merge origin/main"
+            exit 1
+          fi
           if ! git merge --no-ff -m "Merge branch 'main' into develop" origin/main; then
             git merge --abort
             echo "::error::main does not merge into develop cleanly. Merge it by hand: git checkout develop && git pull && git merge origin/main"
