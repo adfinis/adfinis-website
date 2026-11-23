@@ -204,11 +204,13 @@ Examples: `feat(AW-404): add google ads conversion api`, `fix(AW-406)!: move eve
 ## Releasing
 
 1. Open **Actions → Release → Run workflow** on GitHub.
-2. Leave **bump** on `auto` to take the version from the commits, or pick a bigger one. Tick **dry run** to see the result without changing anything.
+2. Leave **bump** on `minor`, or pick `auto` to take the version from the commits. A breaking commit always makes it a major. Tick **dry run** to see the result without changing anything.
 3. The workflow adds a section to `CHANGELOG.md` with every commit on `develop` since the last release commit, raises the version in both `package.json` files, commits that to `develop` and opens a PR from `develop` to `main` called `Release x.y.z`.
 4. Read the PR and merge it.
 
 Anything merged into `develop` while a release PR is open goes out with that release, but is listed under the next one. The workflow stops if a release PR is already open, or if `develop` has a release commit that `main` doesn't have yet.
+
+After every push to `main`, the Back-merge workflow merges `main` into `develop`. The Release workflow stops if `develop` lacks a commit from `main`; merge `main` into `develop` by hand when the Back-merge run failed.
 
 ## Architecture
 

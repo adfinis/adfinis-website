@@ -7,7 +7,7 @@ on:
         description: 'Version bump. The commits can raise it, never lower it.'
         type: choice
         options: [auto, patch, minor, major]
-        default: auto
+        default: minor
       dry_run:
         description: 'Only show the release; push nothing and open no PR'
         type: boolean
