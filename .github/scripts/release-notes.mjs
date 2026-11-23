@@ -73,8 +73,8 @@ function git(...args) {
   return execFileSync('git', args, { encoding: 'utf8' })
 }
 
-function lastReleaseCommit() {
-  const log = git('log', '--no-merges', '--topo-order', '--format=%h%x1f%s', '-E', '--grep=^chore(\\(release\\))?: ', 'HEAD')
+function lastReleaseCommit(main) {
+  const log = git('log', '--no-merges', '--topo-order', '--format=%h%x1f%s', '-E', '--grep=^chore(\\(release\\))?: ', 'HEAD', `^${main}`)
   for (const line of log.split('\n')) {
     const [sha, subject] = line.split('\x1f')
     if (sha && isReleaseCommit(subject)) return { sha, subject }
@@ -105,7 +105,7 @@ function findBase(main) {
       ].join('\n'),
     }
   }
-  const release = lastReleaseCommit()
+  const release = lastReleaseCommit(main)
   if (!release) return { base: main }
   const released = versionAt(release.sha)
   const onMain = versionAt(main)

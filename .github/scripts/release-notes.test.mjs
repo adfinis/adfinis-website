@@ -233,6 +233,32 @@ describe('release-notes.mjs in a git repo', () => {
     assert.match(out, /Nothing to release/)
   })
 
+  it('starts from develop\'s own release commit when main has a rebased copy of it', () => {
+    const r = repo()
+    r.commit('fix(AW-1): a')
+    r.setVersion('1.1.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.1.0')
+    r.release('1.1.0')
+    r.commit('feat(AW-2): b')
+    r.setVersion('1.2.0')
+    r.git('add', '.')
+    r.commit('chore(release): 1.2.0')
+    r.git('switch', '-q', 'main')
+    r.git('cherry-pick', '--allow-empty', 'develop~1', 'develop')
+    r.git('switch', '-q', 'develop')
+    r.git('merge', '-q', '--no-ff', '-m', "Merge branch 'main' into develop", 'main')
+    r.commit('fix(AW-3): c')
+
+    const { code, out } = r.run()
+    assert.equal(code, 0, out)
+    assert.match(out, /Commits since \w+: 1\n/)
+    assert.match(out, /1\.2\.0 -> 1\.2\.1/)
+    assert.match(out, /- fix\(AW-3\): c/)
+    assert.doesNotMatch(out, /- feat\(AW-2\): b/)
+    assert.doesNotMatch(out, /- chore\(release\)/)
+  })
+
   it('stops when develop has a release commit that main does not have yet', () => {
     const r = repo()
     r.commit('feat(AW-1): a')
