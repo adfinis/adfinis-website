@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.47.1] - 2026-11-24
+
+- chore(AW-111): Update README.md (#421)
+
 ## [1.47.0] - 2026-11-24
 
 - chore: update strapi to 5.63.0 (#417)
