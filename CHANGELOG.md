@@ -17,6 +17,10 @@ straightforward as possible.
 - [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
   PATCH Ticket title goes here.
 
+## [1.47.2] - 2026-11-24
+
+- ci: reset develop to main after each release (#424)
+
 ## [1.47.1] - 2026-11-24
 
 - chore(AW-111): Update README.md (#421)
