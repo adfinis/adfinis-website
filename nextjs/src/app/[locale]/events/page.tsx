@@ -1,4 +1,8 @@
-import { getEventPageCards, getEventsOverview } from "@/lib/strapi"
+import {
+  getEventPageCards,
+  getEventsOverview,
+  getPastEventPageCards,
+} from "@/lib/strapi"
 import { NavProvider } from "@/components/nav-bar/nav-context"
 import NavBar from "@/components/nav-bar/nav-bar"
 import HeroWrapper from "@/components/stapi/hero-wrapper"
@@ -13,6 +17,8 @@ import { getLocaleDateRangeFormatted, Locale } from "@/lib/locale"
 import { Metadata } from "next"
 import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
+import { getDictionary } from "@/lib/get-dictionary.server"
+import Title from "@/components/title"
 
 export async function generateMetadata(props: {
   params: Promise<{
@@ -77,14 +83,28 @@ export default async function EventsOverviewPage(props: {
   locales.push(activeLocale)
 
   const { hero, intro, sections } = data
-  const cards = await getEventPageCards(locale)
+  const [cards, pastCards, dictionary] = await Promise.all([
+    getEventPageCards(locale),
+    getPastEventPageCards(locale),
+    getDictionary(locale),
+  ])
 
-  function formatDate(startDate: string, endDate?: string | null) {
-    return getLocaleDateRangeFormatted({
-      startDate,
-      endDate,
-      locale: locale as Locale,
-    })
+  function renderCard(event: any) {
+    return (
+      <CardArticle
+        key={event.documentId.slice(-4)}
+        title={event.metadata_title}
+        subtitle={event.address}
+        description={getLocaleDateRangeFormatted({
+          startDate: event.date_event,
+          endDate: event.date_event_end,
+          locale,
+        })}
+        imageUrl={event.hero?.background_image.url}
+        logoUrl={event.card_image?.url}
+        href={`/${locale.toLocaleLowerCase()}/events/${event.slug}`}
+      />
+    )
   }
 
   return (
@@ -104,19 +124,13 @@ export default async function EventsOverviewPage(props: {
           padding="both-padding"
           background="neutral"
         >
-          <CardGroup maxWidth="none">
-            {cards.map((event: any) => (
-              <CardArticle
-                key={event.documentId.slice(-4)}
-                title={event.metadata_title}
-                subtitle={event.address}
-                description={formatDate(event.date_event, event.date_event_end)}
-                imageUrl={event.hero?.background_image.url}
-                logoUrl={event.card_image?.url}
-                href={`/${locale.toLocaleLowerCase()}/events/${event.slug}`}
-              />
-            ))}
-          </CardGroup>
+          <CardGroup maxWidth="none">{cards.map(renderCard)}</CardGroup>
+        </Container>
+      )}
+      {pastCards.length > 0 && (
+        <Container id="past-events" padding="both-padding" background="white">
+          <Title className="mb-12">{dictionary.pages.events.pastEvents}</Title>
+          <CardGroup maxWidth="none">{pastCards.map(renderCard)}</CardGroup>
         </Container>
       )}
       {sections &&

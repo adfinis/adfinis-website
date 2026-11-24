@@ -37,7 +37,9 @@
         "events": {
             "title": "Evenement Details",
             "cta": "Meld je nu aan",
-            "dateEvent": "Datum evenement"
+            "dateEvent": "Datum evenement",
+            "pastEvent": "Afgelopen evenement",
+            "pastEvents": "Afgelopen evenementen"
         },
         "notFound": {
             "body": "## 404\nSpace Invaders hebben deze pagina vernietigd! Neem wraak op hen! \n Gebruik `spatie` om te schieten en `←` en `→` om te bewegen!",
