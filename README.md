@@ -206,11 +206,13 @@ Examples: `feat(AW-404): add google ads conversion api`, `fix(AW-406)!: move eve
 1. Open **Actions → Release → Run workflow** on GitHub.
 2. Leave **bump** on `minor`, or pick `auto` to take the version from the commits. A breaking commit always makes it a major. Tick **dry run** to see the result without changing anything.
 3. The workflow adds a section to `CHANGELOG.md` with every commit on `develop` since the last release commit, raises the version in both `package.json` files, commits that to `develop` and opens a PR from `develop` to `main` called `Release x.y.z`.
-4. Read the PR and merge it.
+4. Read the PR and merge it with **Squash and merge**. The rules on `main` allow no merge commits.
 
-Anything merged into `develop` while a release PR is open goes out with that release, but is listed under the next one. The workflow stops if a release PR is already open, or if `develop` has a release commit that `main` doesn't have yet.
+Anything merged into `develop` while a release PR is open goes out with that release, but is missing from the changelog. The workflow stops if a release PR is already open, or if `develop` has a release commit that `main` doesn't have yet.
 
-After every push to `main`, the Back-merge workflow merges `main` into `develop`. It stops without merging when `main` holds a revert, because that merge would undo the same work on `develop`. The Release workflow stops if `develop` lacks a commit from `main`; merge `main` into `develop` by hand when the Back-merge run failed.
+After a release PR is merged, the Back-merge workflow moves `develop` to the new commit on `main`. Commits merged into `develop` after the release PR are put back on top. So `develop` starts equal to `main` and the next release PR lists only new commits. This rewrites `develop`: run `git fetch && git checkout develop && git reset --hard origin/develop` before you branch from your local copy again.
+
+After any other push to `main`, such as a hotfix, the Back-merge workflow merges `main` into `develop`. It stops without merging when `main` holds a revert, because that merge would undo the same work on `develop`. The Release workflow stops if `develop` lacks a commit from `main`; merge `main` into `develop` by hand when the Back-merge run failed.
 
 ## Architecture
 
