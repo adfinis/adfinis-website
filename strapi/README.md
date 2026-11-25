@@ -32,6 +32,19 @@ npm run build
 yarn build
 ```
 
+### `test`
+
+Runs the API tests in `tests/` with Jest and Supertest, as in the [Strapi testing guide](https://docs.strapi.io/cms/testing).
+
+```
+npm run test
+```
+
+- The tests start their own Strapi on a throwaway SQLite file, `.tmp/test.db`. They do not read `.env` and do not use your database or port 1337.
+- `tests/strapi.js` compiles the TypeScript to `dist`, starts Strapi and runs `tests/seed.js`.
+- To add a test: add the documents it needs to `tests/seed.js`, then add an `it(...)` to `tests/tags.test.js` that sends the same request as `nextjs/src/lib/strapi.ts`.
+- For a new test file, copy the `beforeAll` and `afterAll` from `tests/tags.test.js`.
+
 ## ⚙️ Deployment
 
 Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
