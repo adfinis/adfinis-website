@@ -37,6 +37,7 @@ export default async function TagFilter({
       aria-label={dictionary.filters.label}
       className="grid gap-4 mb-12"
       data-component="TagFilter"
+      data-testid="tag-filter"
     >
       {groups.map(({ group, tags }) => (
         <div key={group} className="flex flex-wrap items-center gap-2">
@@ -58,6 +59,7 @@ export default async function TagFilter({
                   variant={isActive(tag) ? "primary" : "secondary"}
                   className="min-w-0 h-8 px-4 text-12"
                   aria-current={isActive(tag) ? "true" : undefined}
+                  data-testid="tag-filter-option"
                 >
                   {tag.name}
                 </LinkButton>

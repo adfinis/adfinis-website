@@ -32,6 +32,7 @@ const CardArticle: React.FC<CardArticleProps> = ({
     <article
       className="relative rounded-xl min-w-80 lg:min-w-72 overflow-hidden bg-white h-100 shadow-2"
       data-component="CardArticle"
+      data-testid="card"
     >
       {imageUrl && (
         <img

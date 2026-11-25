@@ -1,0 +1,7 @@
+{
+  "data": [
+    { "name": "Kubernetes", "slug": "kubernetes", "group": "solution" },
+    { "name": "Red Hat", "slug": "red-hat", "group": "partner" },
+    { "name": "Zurich", "slug": "zurich", "group": "location" }
+  ]
+}

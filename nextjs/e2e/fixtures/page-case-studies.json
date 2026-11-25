@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "case1",
+      "slug": "red-hat-case-study",
+      "card_title": "Red Hat case study",
+      "publication_date": "2020-02-20"
+    },
+    {
+      "id": 2,
+      "documentId": "case2",
+      "slug": "other-case-study",
+      "card_title": "Other case study",
+      "publication_date": "2020-01-20"
+    }
+  ]
+}

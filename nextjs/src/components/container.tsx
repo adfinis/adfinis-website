@@ -24,6 +24,7 @@ const containerStyles = cva(["py-18 lg:py-24"], {
 type ContainerProps = VariantProps<typeof containerStyles> & {
   children: React.ReactNode
   id?: string | null
+  testId?: string
   background: PickStringLiteral<
     BackgroundOptions,
     "white" | "neutral" | "sapphire" | "stone"
@@ -34,6 +35,7 @@ const Container: React.FC<ContainerProps> = ({
   background,
   children,
   id,
+  testId,
   padding = "both-padding",
 }) => {
   const fallbackId = useId()
@@ -41,6 +43,7 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <section
       id={id || fallbackId}
+      data-testid={testId}
       className={containerStyles({ background, padding })}
       data-scheme={isDark ? "dark" : "light"}
     >

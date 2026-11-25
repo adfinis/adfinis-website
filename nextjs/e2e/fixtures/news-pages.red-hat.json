@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "news1",
+      "slug": "red-hat-news",
+      "card_title": "Red Hat news",
+      "publication_date": "2020-03-01",
+      "minutes_read": 3
+    }
+  ],
+  "meta": {
+    "pagination": { "page": 1, "pageSize": 24, "pageCount": 1, "total": 1 }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "documentId": "event0001",
+      "slug": "red-hat-event",
+      "metadata_title": "Red Hat event",
+      "address": "Bern",
+      "date_event": "2099-05-01",
+      "createdAt": "2020-02-15T00:00:00.000Z"
+    },
+    {
+      "documentId": "event0002",
+      "slug": "other-event",
+      "metadata_title": "Other event",
+      "address": "Bern",
+      "date_event": "2099-06-01",
+      "createdAt": "2020-01-15T00:00:00.000Z"
+    }
+  ]
+}

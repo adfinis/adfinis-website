@@ -1,0 +1,16 @@
+{
+  "data": {
+    "metadata_title": "Filtered carousel",
+    "localizations": [],
+    "sections": [
+      {
+        "__component": "sections.filtered-carousel",
+        "props": { "padding": "both-padding", "background": "white" },
+        "title": "Red Hat",
+        "description": "Newest Red Hat items",
+        "resource": "all",
+        "tags": [{ "name": "Red Hat", "slug": "red-hat", "group": "partner" }]
+      }
+    ]
+  }
+}

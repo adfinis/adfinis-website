@@ -129,12 +129,21 @@ export default async function EventsOverviewPage(props: {
           background="neutral"
         >
           <TagFilter locale={locale} filter={filter} />
-          {cards.length === 0 && <p>{dictionary.filters.noResults}</p>}
-          <CardGroup maxWidth="none">{cards.map(renderCard)}</CardGroup>
+          {cards.length === 0 && (
+            <p data-testid="no-results">{dictionary.filters.noResults}</p>
+          )}
+          <CardGroup maxWidth="none" testId="card-grid">
+            {cards.map(renderCard)}
+          </CardGroup>
         </Container>
       )}
       {pastCards.length > 0 && (
-        <Container id="past-events" padding="both-padding" background="white">
+        <Container
+          id="past-events"
+          testId="past-events"
+          padding="both-padding"
+          background="white"
+        >
           <Title className="mb-12">{dictionary.pages.events.pastEvents}</Title>
           <CardGroup maxWidth="none">{pastCards.map(renderCard)}</CardGroup>
         </Container>

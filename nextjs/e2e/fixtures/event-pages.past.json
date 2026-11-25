@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "documentId": "event0003",
+      "slug": "past-event",
+      "metadata_title": "Past event",
+      "address": "Bern",
+      "date_event": "2001-05-01",
+      "createdAt": "2001-01-01T00:00:00.000Z"
+    },
+    {
+      "documentId": "event0004",
+      "slug": "older-past-event",
+      "metadata_title": "Older past event",
+      "address": "Bern",
+      "date_event": "2000-05-01",
+      "createdAt": "2000-01-01T00:00:00.000Z"
+    }
+  ]
+}

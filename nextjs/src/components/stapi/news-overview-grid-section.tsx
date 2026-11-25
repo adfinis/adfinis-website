@@ -51,9 +51,9 @@ export default async function NewsOverviewGridSection({
     <Container padding="both-padding" background="white">
       <TagFilter locale={locale} filter={filter} />
       {hasTagFilter(filter) && meta.pagination.total === 0 && (
-        <p>{dictionary.filters.noResults}</p>
+        <p data-testid="no-results">{dictionary.filters.noResults}</p>
       )}
-      <CardGroup maxWidth="none">
+      <CardGroup maxWidth="none" testId="card-grid">
         {cards.map((card: any) => (
           <CardArticle {...card} key={card.key} />
         ))}
