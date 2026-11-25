@@ -19,6 +19,8 @@ import { ABSOLUTE_URL } from "@/lib/absolute-url"
 import { buildMetadata } from "@/lib/metadata"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import Title from "@/components/title"
+import TagFilter from "@/components/tag-filter"
+import { hasTagFilter, parseTagFilter } from "@/lib/tag-filter"
 
 export async function generateMetadata(props: {
   params: Promise<{
@@ -56,7 +58,9 @@ export async function generateMetadata(props: {
 
 export default async function EventsOverviewPage(props: {
   params: Promise<{ locale: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
+  const filter = parseTagFilter(await props.searchParams)
   const params = (await props.params) as Awaited<typeof props.params> & {
     locale: Locale
   }
@@ -84,7 +88,7 @@ export default async function EventsOverviewPage(props: {
 
   const { hero, intro, sections } = data
   const [cards, pastCards, dictionary] = await Promise.all([
-    getEventPageCards(locale),
+    getEventPageCards(locale, filter),
     getPastEventPageCards(locale),
     getDictionary(locale),
   ])
@@ -118,12 +122,14 @@ export default async function EventsOverviewPage(props: {
           <Text markdown={intro} />
         </Intro>
       )}
-      {cards.length > 0 && (
+      {(cards.length > 0 || hasTagFilter(filter)) && (
         <Container
           id="event-grid-example"
           padding="both-padding"
           background="neutral"
         >
+          <TagFilter locale={locale} filter={filter} />
+          {cards.length === 0 && <p>{dictionary.filters.noResults}</p>}
           <CardGroup maxWidth="none">{cards.map(renderCard)}</CardGroup>
         </Container>
       )}

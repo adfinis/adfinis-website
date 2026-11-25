@@ -3,6 +3,8 @@ import IconChevronLeft from "../icons/icon-chevron-left"
 import IconChevronRight from "../icons/icon-chevron-right"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
+import { TagFilter } from "@/lib/strapi"
+import { tagFilterHref } from "@/lib/tag-filter"
 
 type PaginationProps = {
   page: number
@@ -10,6 +12,7 @@ type PaginationProps = {
   pageCount: number
   total: number
   locale: Locale
+  filter?: TagFilter
 }
 
 const Pagination = async ({
@@ -18,6 +21,7 @@ const Pagination = async ({
   pageCount,
   total,
   locale,
+  filter,
 }: PaginationProps) => {
   if (pageCount <= 1) return null
 
@@ -38,7 +42,7 @@ const Pagination = async ({
 
         <li>
           {page > 1 ? (
-            <Link href={`?page=${page - 1}`} scroll={false}>
+            <Link href={tagFilterHref(filter, page - 1)} scroll={false}>
               <IconChevronLeft className="size-4 text-biscay" />
             </Link>
           ) : (
@@ -47,7 +51,7 @@ const Pagination = async ({
         </li>
         <li>
           {page < pageCount ? (
-            <Link href={`?page=${page + 1}`} scroll={false}>
+            <Link href={tagFilterHref(filter, page + 1)} scroll={false}>
               <IconChevronRight className="size-4 text-biscay" />
             </Link>
           ) : (

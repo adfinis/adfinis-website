@@ -10,11 +10,14 @@ import Footer from "@/components/stapi/footer"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import CaseStudiesOverviewGridSection from "@/components/stapi/case-studies-overview-grid-section"
 import { Locale } from "@/lib/locale"
+import { parseTagFilter, SearchParams } from "@/lib/tag-filter"
 
 export default async function CaseStudiesOverviewPage({
   activeLocale,
+  searchParams,
 }: {
   activeLocale: LinkedLocale
+  searchParams?: SearchParams
 }) {
   const data = await getCaseStudiesOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
@@ -39,7 +42,10 @@ export default async function CaseStudiesOverviewPage({
           <Text markdown={intro} />
         </Intro>
       )}
-      <CaseStudiesOverviewGridSection locale={activeLocale.locale} />
+      <CaseStudiesOverviewGridSection
+        locale={activeLocale.locale}
+        filter={parseTagFilter(searchParams)}
+      />
       {sections &&
         sections.length > 0 &&
         sections.map((section: any, index: number) =>

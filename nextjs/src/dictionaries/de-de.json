@@ -51,6 +51,14 @@
         "of": "von",
         "publishedAt": "Veröffentlicht am"
     },
+    "filters": {
+        "label": "Filter",
+        "partner": "Partner",
+        "location": "Standort",
+        "solution": "Lösung",
+        "reset": "Filter zurücksetzen",
+        "noResults": "Keine Einträge für diesen Filter."
+    },
     "ui": {
         "localeSwitcherAriaLabel": "Sprache wechseln",
         "mobileHamburgerAriaLabel": "Hauptmenü öffnen"

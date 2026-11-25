@@ -10,13 +10,14 @@ import { renderSections } from "@/components/dynamic-zone/render-sections"
 import Footer from "@/components/stapi/footer"
 import NewsOverviewGridSection from "@/components/stapi/news-overview-grid-section"
 import { Locale } from "@/lib/locale"
+import { parseTagFilter, SearchParams } from "@/lib/tag-filter"
 
 export default async function NewsOverview({
   activeLocale,
   searchParams,
 }: {
   activeLocale: LinkedLocale
-  searchParams?: { [key: string]: string | string[] | undefined }
+  searchParams?: SearchParams
 }) {
   const data = await getNewsOverview(activeLocale.locale)
   const locales = data.localizations.map((item: { locale: Locale }) => {
@@ -41,7 +42,11 @@ export default async function NewsOverview({
           <Text markdown={intro} />
         </Intro>
       )}
-      <NewsOverviewGridSection locale={activeLocale.locale} page={page} />
+      <NewsOverviewGridSection
+        locale={activeLocale.locale}
+        page={page}
+        filter={parseTagFilter(searchParams)}
+      />
       {sections &&
         sections.length > 0 &&
         sections.map((section: any, index: number) =>

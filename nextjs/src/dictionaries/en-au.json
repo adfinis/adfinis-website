@@ -51,6 +51,14 @@
         "of": "of",
         "publishedAt": "Published on"
     },
+    "filters": {
+        "label": "Filter",
+        "partner": "Partner",
+        "location": "Location",
+        "solution": "Solution",
+        "reset": "Reset filters",
+        "noResults": "No items match this filter."
+    },
     "ui": {
         "localeSwitcherAriaLabel": "Switch language",
         "mobileHamburgerAriaLabel": "Open main menu"
