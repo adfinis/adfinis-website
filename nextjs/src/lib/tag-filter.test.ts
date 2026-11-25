@@ -95,3 +95,18 @@ test("card labels: the kind first, then only partner tags, linked to the filter"
   ])
   expect(cardLabels({ text: "Event", href: "/en/events" })).toHaveLength(1)
 })
+
+test("a date range is read from the address and written back, bad dates dropped", () => {
+  const filter = parseTagFilter({
+    partner: "red-hat",
+    from: "2026-01-01",
+    to: "next week",
+  })
+  expect(parseTagFilter({ from: "2026-02-31", to: "2026-13-01" })).toEqual({})
+
+  expect(filter).toEqual({ partner: ["red-hat"], from: "2026-01-01" })
+  expect(hasTagFilter({ to: "2026-02-01" })).toBe(true)
+  expect(tagFilterHref({ ...filter, to: "2026-02-01" }, 2)).toBe(
+    "?partner=red-hat&from=2026-01-01&to=2026-02-01&page=2",
+  )
+})

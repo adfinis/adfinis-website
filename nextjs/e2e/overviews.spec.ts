@@ -55,3 +55,16 @@ test("news: the no-results text shows only when a filter matches nothing", async
   await expect(news.noResults).toBeVisible()
   await expect(news.cards).toHaveCount(0)
 })
+
+test("news: a date range filters the cards and the address", async ({
+  page,
+}) => {
+  const news = new NewsPage(page)
+  await news.open()
+
+  await news.tagFilter.chooseDates("2020-01-15", "2020-02-15")
+
+  await expect(page).toHaveURL(/\?from=2020-01-15&to=2020-02-15$/)
+  await expect(news.cards).toHaveCount(1)
+  await expect(news.cards).toContainText(["Kubernetes news"])
+})

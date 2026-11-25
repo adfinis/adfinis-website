@@ -64,6 +64,9 @@
         "apply": "Toepassen",
         "reset": "Wissen",
         "close": "Sluiten",
+        "dateRange": "Periode",
+        "from": "Van",
+        "to": "Tot",
         "noResults": "Geen resultaten voor dit filter."
     },
     "ui": {

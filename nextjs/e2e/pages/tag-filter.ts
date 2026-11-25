@@ -20,4 +20,11 @@ export class TagFilter {
     await this.filter.page().keyboard.press("Escape")
     await this.filter.getByTestId("tag-filter-apply").click()
   }
+
+  async chooseDates(from: string, to: string) {
+    await this.filter.getByTestId("tag-filter-toggle").click()
+    await this.filter.getByTestId("tag-filter-from").fill(from)
+    await this.filter.getByTestId("tag-filter-to").fill(to)
+    await this.filter.getByTestId("tag-filter-apply").click()
+  }
 }

@@ -64,6 +64,9 @@
         "apply": "Anwenden",
         "reset": "Zurücksetzen",
         "close": "Schließen",
+        "dateRange": "Zeitraum",
+        "from": "Von",
+        "to": "Bis",
         "noResults": "Keine Einträge für diesen Filter."
     },
     "ui": {
