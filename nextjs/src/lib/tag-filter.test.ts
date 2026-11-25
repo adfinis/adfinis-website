@@ -5,7 +5,12 @@ vi.mock("next/headers", () => ({
 }))
 vi.mock("next/navigation", () => ({ notFound: vi.fn() }))
 
-import { hasTagFilter, parseTagFilter, tagFilterHref } from "./tag-filter"
+import {
+  cardLabels,
+  hasTagFilter,
+  parseTagFilter,
+  tagFilterHref,
+} from "./tag-filter"
 
 describe("hasTagFilter", () => {
   test("is false without a filter or with only empty groups", () => {
@@ -76,4 +81,17 @@ describe("filter links", () => {
   test("values that are not slugs are escaped", () => {
     expect(tagFilterHref({ partner: ["a&b=c"] })).toBe("?partner=a%26b%3Dc")
   })
+})
+
+test("card labels: the kind first, then only partner tags, linked to the filter", () => {
+  expect(
+    cardLabels({ text: "News", href: "/en/news" }, [
+      { name: "Red Hat", slug: "red-hat", group: "partner" },
+      { name: "Zurich", slug: "zurich", group: "location" },
+    ]),
+  ).toEqual([
+    { text: "News", href: "/en/news" },
+    { text: "Red Hat", href: "/en/news?partner=red-hat" },
+  ])
+  expect(cardLabels({ text: "Event", href: "/en/events" })).toHaveLength(1)
 })

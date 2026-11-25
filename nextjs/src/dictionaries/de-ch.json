@@ -51,6 +51,11 @@
         "of": "von",
         "publishedAt": "Veröffentlicht am"
     },
+    "cardLabels": {
+        "news": "News",
+        "event": "Event",
+        "caseStudy": "Referenz"
+    },
     "filters": {
         "label": "Filter",
         "partner": "Partner",

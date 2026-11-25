@@ -4,7 +4,7 @@ import Container from "@/components/container"
 import { CASE_STUDIES_SLUGS } from "@/lib/slugs"
 import { getCaseStudiesGrid, TagFilter as TagFilterValue } from "@/lib/strapi"
 import TagFilter from "@/components/tag-filter"
-import { hasTagFilter } from "@/lib/tag-filter"
+import { cardLabels, hasTagFilter } from "@/lib/tag-filter"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale } from "@/lib/locale"
 
@@ -19,6 +19,10 @@ export default async function CaseStudiesOverviewGridSection({
     getCaseStudiesGrid(locale, filter),
     getDictionary(locale),
   ])
+  const overview = {
+    text: dictionary.cardLabels.caseStudy,
+    href: `/${locale}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}`,
+  }
   const cards = data.map((item: any) => {
     return {
       key: `case_study_${item.id}`,
@@ -27,7 +31,8 @@ export default async function CaseStudiesOverviewGridSection({
       description: "",
       imageUrl: item.hero?.background_image?.url,
       logoUrl: item.client_image?.url,
-      href: `/${locale}/${CASE_STUDIES_SLUGS[locale.toLowerCase() as Locale]}/${item.slug}`,
+      categories: cardLabels(overview, item.tags),
+      href: `${overview.href}/${item.slug}`,
     }
   })
   return (

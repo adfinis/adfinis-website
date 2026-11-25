@@ -105,11 +105,9 @@ describe("FilteredCarousel", () => {
     if (carousel === null) {
       return null
     }
-    const { container } = render(carousel)
-    return Array.from(
-      container.querySelectorAll("[data-component='CardArticle'] a"),
-      (link) => link.textContent,
-    )
+    return render(carousel)
+      .queryAllByTestId("card-title")
+      .map((title) => title.textContent)
   }
 
   test("a dated story is shown before older undated ones", async () => {

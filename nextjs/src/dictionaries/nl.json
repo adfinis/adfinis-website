@@ -51,6 +51,11 @@
         "of": "van",
         "publishedAt": "Gepubliceerd op"
     },
+    "cardLabels": {
+        "news": "Nieuws",
+        "event": "Event",
+        "caseStudy": "Casestudy"
+    },
     "filters": {
         "label": "Filter",
         "partner": "Partner",

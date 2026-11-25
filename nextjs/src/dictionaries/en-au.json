@@ -51,6 +51,11 @@
         "of": "of",
         "publishedAt": "Published on"
     },
+    "cardLabels": {
+        "news": "News",
+        "event": "Event",
+        "caseStudy": "Success story"
+    },
     "filters": {
         "label": "Filter",
         "partner": "Partner",

@@ -145,7 +145,7 @@ export async function getCaseStudiesGrid(
       ? "sort=publication_date:desc"
       : "sort[0]=publication_date:desc&sort[1]=publishedAt:desc"
   return strapi(
-    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&${sort}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
+    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&populate=tags&${sort}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.PAGE_CASE_STUDY, TAGS.TAG] },
   )
 }
@@ -190,7 +190,7 @@ export async function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { raw: true, tags: [TAGS.NEWS_PAGE, TAGS.TAG] },
   )
 }
@@ -246,7 +246,7 @@ export async function getEventPageCards(
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.EVENT_PAGE, TAGS.TAG] },
   )
 }
@@ -255,7 +255,7 @@ export function getPastEventPageCards(locale: Locale) {
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[$or][0][is_past_event][$eq]=true&filters[$or][1][date_event_end][$lt]=${now}&filters[$or][2][$and][0][date_event_end][$null]=true&filters[$or][2][$and][1][date_event][$lt]=${now}&status=published&sort=date_event:desc&pagination[pageSize]=12`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[$or][0][is_past_event][$eq]=true&filters[$or][1][date_event_end][$lt]=${now}&filters[$or][2][$and][0][date_event_end][$null]=true&filters[$or][2][$and][1][date_event][$lt]=${now}&status=published&sort=date_event:desc&pagination[pageSize]=12`,
     { tags: [TAGS.EVENT_PAGE] },
   )
 }

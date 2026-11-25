@@ -20,7 +20,7 @@ import { buildMetadata } from "@/lib/metadata"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import Title from "@/components/title"
 import TagFilter from "@/components/tag-filter"
-import { hasTagFilter, parseTagFilter } from "@/lib/tag-filter"
+import { cardLabels, hasTagFilter, parseTagFilter } from "@/lib/tag-filter"
 
 export async function generateMetadata(props: {
   params: Promise<{
@@ -93,6 +93,11 @@ export default async function EventsOverviewPage(props: {
     getDictionary(locale),
   ])
 
+  const overview = {
+    text: dictionary.cardLabels.event,
+    href: `/${locale.toLocaleLowerCase()}/events`,
+  }
+
   function renderCard(event: any) {
     return (
       <CardArticle
@@ -106,7 +111,8 @@ export default async function EventsOverviewPage(props: {
         })}
         imageUrl={event.hero?.background_image.url}
         logoUrl={event.card_image?.url}
-        href={`/${locale.toLocaleLowerCase()}/events/${event.slug}`}
+        categories={cardLabels(overview, event.tags)}
+        href={`${overview.href}/${event.slug}`}
       />
     )
   }

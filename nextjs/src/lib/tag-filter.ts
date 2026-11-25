@@ -26,6 +26,21 @@ export function hasTagFilter(filter: TagFilter = {}) {
   return TAG_GROUPS.some((group) => filter[group]?.length)
 }
 
+export function cardLabels(
+  kind: { text: string; href: string },
+  tags: Tag[] = [],
+) {
+  return [
+    kind,
+    ...tags
+      .filter(({ group }) => group === "partner")
+      .map(({ name, slug }) => ({
+        text: name,
+        href: kind.href + tagFilterHref({ partner: [slug] }),
+      })),
+  ]
+}
+
 export function tagFilterHref(filter: TagFilter = {}, page?: number) {
   const params = TAG_GROUPS.flatMap((group) =>
     filter[group]?.length
