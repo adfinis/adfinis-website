@@ -54,9 +54,11 @@
     "filters": {
         "label": "Filter",
         "partner": "Partner",
-        "location": "Locatie",
+        "location": "Regio",
         "solution": "Oplossing",
-        "reset": "Filters wissen",
+        "apply": "Toepassen",
+        "reset": "Wissen",
+        "close": "Sluiten",
         "noResults": "Geen resultaten voor dit filter."
     },
     "ui": {

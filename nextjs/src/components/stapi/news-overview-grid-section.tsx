@@ -48,24 +48,26 @@ export default async function NewsOverviewGridSection({
   })
 
   return (
-    <Container padding="both-padding" background="white">
+    <>
       <TagFilter locale={locale} filter={filter} />
-      {hasTagFilter(filter) && meta.pagination.total === 0 && (
-        <p data-testid="no-results">{dictionary.filters.noResults}</p>
-      )}
-      <CardGroup maxWidth="none" testId="card-grid">
-        {cards.map((card: any) => (
-          <CardArticle {...card} key={card.key} />
-        ))}
-      </CardGroup>
-      <Pagination
-        pageCount={meta.pagination.pageCount}
-        total={meta.pagination.total}
-        pageSize={meta.pagination.pageSize}
-        page={index}
-        locale={locale}
-        filter={filter}
-      />
-    </Container>
+      <Container padding="both-padding" background="white">
+        {hasTagFilter(filter) && meta.pagination.total === 0 && (
+          <p data-testid="no-results">{dictionary.filters.noResults}</p>
+        )}
+        <CardGroup maxWidth="none" testId="card-grid">
+          {cards.map((card: any) => (
+            <CardArticle {...card} key={card.key} />
+          ))}
+        </CardGroup>
+        <Pagination
+          pageCount={meta.pagination.pageCount}
+          total={meta.pagination.total}
+          pageSize={meta.pagination.pageSize}
+          page={index}
+          locale={locale}
+          filter={filter}
+        />
+      </Container>
+    </>
   )
 }

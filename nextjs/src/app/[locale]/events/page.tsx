@@ -123,12 +123,14 @@ export default async function EventsOverviewPage(props: {
         </Intro>
       )}
       {(cards.length > 0 || hasTagFilter(filter)) && (
+        <TagFilter locale={locale} filter={filter} />
+      )}
+      {(cards.length > 0 || hasTagFilter(filter)) && (
         <Container
           id="event-grid-example"
           padding="both-padding"
           background="neutral"
         >
-          <TagFilter locale={locale} filter={filter} />
           {cards.length === 0 && (
             <p data-testid="no-results">{dictionary.filters.noResults}</p>
           )}

@@ -1,4 +1,10 @@
-import { TAG_GROUPS, type Tag, type TagFilter } from "@/lib/strapi"
+export const TAG_GROUPS = ["partner", "location", "solution"] as const
+
+export type TagGroup = (typeof TAG_GROUPS)[number]
+
+export type Tag = { name: string; slug: string; group: TagGroup }
+
+export type TagFilter = Partial<Record<TagGroup, string[]>>
 
 export type SearchParams = { [key: string]: string | string[] | undefined }
 
@@ -18,19 +24,6 @@ export function parseTagFilter(searchParams: SearchParams = {}): TagFilter {
 
 export function hasTagFilter(filter: TagFilter = {}) {
   return TAG_GROUPS.some((group) => filter[group]?.length)
-}
-
-export function toggleTag(
-  filter: TagFilter,
-  { group, slug }: Pick<Tag, "group" | "slug">,
-): TagFilter {
-  const slugs = filter[group] ?? []
-  return {
-    ...filter,
-    [group]: slugs.includes(slug)
-      ? slugs.filter((item) => item !== slug)
-      : [...slugs, slug],
-  }
 }
 
 export function tagFilterHref(filter: TagFilter = {}, page?: number) {

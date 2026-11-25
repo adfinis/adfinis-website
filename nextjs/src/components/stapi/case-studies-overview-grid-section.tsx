@@ -31,16 +31,18 @@ export default async function CaseStudiesOverviewGridSection({
     }
   })
   return (
-    <Container padding="both-padding" background="neutral">
+    <>
       <TagFilter locale={locale} filter={filter} />
-      {hasTagFilter(filter) && cards.length === 0 && (
-        <p data-testid="no-results">{dictionary.filters.noResults}</p>
-      )}
-      <CardGroup maxWidth="none" testId="card-grid">
-        {cards.map((card: any) => (
-          <CardArticle {...card} key={card.key} />
-        ))}
-      </CardGroup>
-    </Container>
+      <Container padding="both-padding" background="neutral">
+        {hasTagFilter(filter) && cards.length === 0 && (
+          <p data-testid="no-results">{dictionary.filters.noResults}</p>
+        )}
+        <CardGroup maxWidth="none" testId="card-grid">
+          {cards.map((card: any) => (
+            <CardArticle {...card} key={card.key} />
+          ))}
+        </CardGroup>
+      </Container>
+    </>
   )
 }

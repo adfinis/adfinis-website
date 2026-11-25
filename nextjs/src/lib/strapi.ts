@@ -2,6 +2,12 @@ import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 import { today } from "@/lib/event"
+import {
+  TAG_GROUPS,
+  type Tag,
+  type TagFilter,
+  type TagGroup,
+} from "@/lib/tag-filter"
 const STRAPI = process.env.STRAPI_API || ""
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
 
@@ -56,13 +62,8 @@ function sanitizeSlug(input: string) {
     .replace(/-+/g, "-")
 }
 
-export const TAG_GROUPS = ["partner", "location", "solution"] as const
-
-export type TagGroup = (typeof TAG_GROUPS)[number]
-
-export type Tag = { name: string; slug: string; group: TagGroup }
-
-export type TagFilter = Partial<Record<TagGroup, string[]>>
+export { TAG_GROUPS }
+export type { Tag, TagFilter, TagGroup }
 
 /**
  * Answers with no tags when Strapi refuses or lacks the endpoint, so the

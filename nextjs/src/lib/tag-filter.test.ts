@@ -5,12 +5,7 @@ vi.mock("next/headers", () => ({
 }))
 vi.mock("next/navigation", () => ({ notFound: vi.fn() }))
 
-import {
-  hasTagFilter,
-  parseTagFilter,
-  tagFilterHref,
-  toggleTag,
-} from "./tag-filter"
+import { hasTagFilter, parseTagFilter, tagFilterHref } from "./tag-filter"
 
 describe("hasTagFilter", () => {
   test("is false without a filter or with only empty groups", () => {
@@ -57,23 +52,12 @@ describe("parseTagFilter", () => {
 })
 
 describe("filter links", () => {
-  const redHat = { group: "partner", slug: "red-hat" } as const
-  const cloud = { group: "solution", slug: "cloud" } as const
-
-  test("a link adds its slug and drops the page", () => {
-    expect(tagFilterHref(toggleTag({}, redHat))).toBe("?partner=red-hat")
-    expect(tagFilterHref(toggleTag({ solution: ["security"] }, cloud))).toBe(
-      "?solution=security,cloud",
-    )
-  })
-
-  test("a link on a chosen tag removes its slug", () => {
+  test("a link holds every chosen slug, and none for an empty group", () => {
+    expect(tagFilterHref({ partner: ["red-hat"] })).toBe("?partner=red-hat")
     expect(
-      tagFilterHref(
-        toggleTag({ partner: ["red-hat"], solution: ["cloud"] }, redHat),
-      ),
-    ).toBe("?solution=cloud")
-    expect(tagFilterHref(toggleTag({ partner: ["red-hat"] }, redHat))).toBe("?")
+      tagFilterHref({ partner: [], solution: ["security", "cloud"] }),
+    ).toBe("?solution=security,cloud")
+    expect(tagFilterHref({ partner: [] })).toBe("?")
   })
 
   test("groups keep a fixed order whatever the order chosen", () => {
