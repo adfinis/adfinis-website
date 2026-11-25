@@ -156,4 +156,62 @@ describe("tag queries", () => {
       expect(params["pagination[pageSize]"]).toBe("100")
     }
   })
+
+  test("carousel: the newest few events and success stories", async () => {
+    await getEventPageCards("en", undefined, {
+      sort: "createdAt:desc",
+      pageSize: 5,
+    })
+    await getCaseStudiesGrid("en", undefined, { pageSize: 5 })
+
+    expect(request(0)).toMatchObject({
+      params: {
+        "filters[is_past_event][$eq]": "false",
+        sort: "createdAt:desc",
+        "pagination[pageSize]": "5",
+      },
+      cacheTags: ["event-page", "tag"],
+    })
+    expect(request(1)).toMatchObject({
+      params: { sort: "publication_date:desc", "pagination[pageSize]": "5" },
+      cacheTags: ["page-case-study", "tag"],
+    })
+  })
+
+  test("carousel: dated and undated items are asked for apart", async () => {
+    await getCaseStudiesGrid("en", undefined, { pageSize: 5, dated: true })
+    await getCaseStudiesGrid("en", undefined, { pageSize: 5, dated: false })
+    await getNewsGrid("en", { page: 1, pageSize: 5, dated: true })
+    await getNewsGrid("en", { page: 1, pageSize: 5, dated: false })
+
+    for (const index of [0, 2]) {
+      const { params } = request(index)
+      expect(params["filters[publication_date][$notNull]"]).toBe("true")
+      expect(params["filters[publication_date][$null]"]).toBeUndefined()
+    }
+    for (const index of [1, 3]) {
+      const { params } = request(index)
+      expect(params["filters[publication_date][$null]"]).toBe("true")
+      expect(params["filters[publication_date][$notNull]"]).toBeUndefined()
+    }
+    for (const index of [0, 1, 2, 3]) {
+      expect(request(index).params).toMatchObject({
+        "sort[0]": "publication_date:desc",
+        "sort[1]": "publishedAt:desc",
+        "pagination[pageSize]": "5",
+      })
+    }
+  })
+
+  test("overviews: undated items are not split off", async () => {
+    await getCaseStudiesGrid("en")
+    await getNewsGrid("en", { page: 1, pageSize: 24 })
+
+    for (const index of [0, 1]) {
+      expect(Object.keys(request(index).params).join()).not.toContain(
+        "filters[publication_date]",
+      )
+    }
+    expect(request(0).params.sort).toBe("publication_date:desc")
+  })
 })

@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_sections_filtered_carousels",
+  "info": {
+    "displayName": "Filtered carousel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "external-links.call-to-action"
+    },
+    "props": {
+      "type": "component",
+      "repeatable": false,
+      "component": "sections.section-props",
+      "required": true
+    },
+    "resource": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "news",
+        "events",
+        "success-stories"
+      ],
+      "default": "all",
+      "required": true
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "limit": {
+      "type": "integer",
+      "default": 5,
+      "required": true,
+      "min": 1,
+      "max": 12
+    }
+  }
+}

@@ -125,6 +125,7 @@
         "sections.event-details-section",
         "sections.extra-wide-icon-cards-grid-section",
         "sections.feature-cards",
+        "sections.filtered-carousel",
         "sections.gated-content",
         "sections.hallmarks-section",
         "sections.icon-card-section-with-relation",

@@ -684,6 +684,37 @@ export interface SectionsFeatureCards extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsFilteredCarousel extends Struct.ComponentSchema {
+  collectionName: 'components_sections_filtered_carousels';
+  info: {
+    description: '';
+    displayName: 'Filtered carousel';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'external-links.call-to-action', false>;
+    description: Schema.Attribute.RichText;
+    limit: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 12;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>;
+    props: Schema.Attribute.Component<'sections.section-props', false> &
+      Schema.Attribute.Required;
+    resource: Schema.Attribute.Enumeration<
+      ['all', 'news', 'events', 'success-stories']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'all'>;
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SectionsGatedContent extends Struct.ComponentSchema {
   collectionName: 'components_sections_gated_contents';
   info: {
@@ -1144,6 +1175,7 @@ declare module '@strapi/strapi' {
       'sections.event-details-section': SectionsEventDetailsSection;
       'sections.extra-wide-icon-cards-grid-section': SectionsExtraWideIconCardsGridSection;
       'sections.feature-cards': SectionsFeatureCards;
+      'sections.filtered-carousel': SectionsFilteredCarousel;
       'sections.gated-content': SectionsGatedContent;
       'sections.group-title-with-external-link': SectionsGroupTitleWithExternalLink;
       'sections.group-title-with-rich-intro': SectionsGroupTitleWithRichIntro;
