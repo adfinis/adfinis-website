@@ -1,6 +1,7 @@
 import Text from "@/components/text"
 import LinkButton from "@/components/link-button"
 import Hero from "@/components/hero"
+import InfoLabel from "@/components/info-label"
 import { colors } from "@/lib/colors"
 import { CTA } from "@/lib/cta"
 
@@ -18,13 +19,20 @@ type Props = {
   }
 }
 
-export default function HeroWrapper({ hero }: { hero: Props }) {
+export default function HeroWrapper({
+  hero,
+  label,
+}: {
+  hero: Props
+  label?: string
+}) {
   return (
     <Hero
       color={hero.color.color}
       imageUrl={hero.background_image?.url || ""}
       logoUrl={hero.logo?.url}
     >
+      {label && <InfoLabel text={label} />}
       <Text markdown={hero.body} />
       {hero.cta && (
         <LinkButton

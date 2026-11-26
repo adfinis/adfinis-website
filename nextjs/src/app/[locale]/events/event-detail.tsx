@@ -11,6 +11,7 @@ import Footer from "@/components/stapi/footer"
 import { LinkedLocale } from "@/components/nav-bar/linked-locales-provider"
 import { getDictionary } from "@/lib/get-dictionary.server"
 import { Locale, getLocaleDateRangeFormatted } from "@/lib/locale"
+import { isPastEvent } from "@/lib/event"
 
 export default async function EventDetail({
   activeLocale,
@@ -41,12 +42,12 @@ export default async function EventDetail({
     address,
     map_embed_html,
     sign_up_button,
-    is_past_event,
     show_event_details_section,
     sections,
   } = data
 
-  const tester = is_past_event === false && sign_up_button !== undefined
+  const isPast = isPastEvent(data)
+  const tester = !isPast && sign_up_button !== undefined
 
   if (sign_up_button) {
     sign_up_button.text = sign_up_button?.label
@@ -62,7 +63,12 @@ export default async function EventDetail({
     <>
       <NavProvider>
         <NavBar items={locales} />
-        {hero && <HeroWrapper hero={hero} />}
+        {hero && (
+          <HeroWrapper
+            hero={hero}
+            label={isPast ? dictionary.pages.events.pastEvent : undefined}
+          />
+        )}
       </NavProvider>
       <section
         className="px-4 lg:px-0 relative bg-white"
@@ -90,7 +96,7 @@ export default async function EventDetail({
       {show_event_details_section && (
         <Container
           padding="both-padding"
-          background={is_past_event ? "sapphire" : "stone"}
+          background={isPast ? "sapphire" : "stone"}
         >
           <SectionEvent
             title={dictionary.pages.events.title}
@@ -98,7 +104,7 @@ export default async function EventDetail({
             location={address}
             time={time}
             html={map_embed_html}
-            cta={is_past_event === true ? undefined : sign_up_button}
+            cta={isPast ? undefined : sign_up_button}
           />
         </Container>
       )}

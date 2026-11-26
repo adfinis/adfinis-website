@@ -1,6 +1,7 @@
 import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
+import { today } from "@/lib/event"
 const STRAPI = process.env.STRAPI_API || ""
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
 
@@ -169,8 +170,18 @@ export function getEventPage(locale: Locale, slug: string) {
 
 export function getEventPageCards(locale: Locale) {
   validateLocale(locale)
+  const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&status=published&sort=date_event:asc`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=date_event:asc&pagination[pageSize]=100`,
+    { tags: [TAGS.EVENT_PAGE] },
+  )
+}
+
+export function getPastEventPageCards(locale: Locale) {
+  validateLocale(locale)
+  const now = today()
+  return strapi(
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[$or][0][is_past_event][$eq]=true&filters[$or][1][date_event_end][$lt]=${now}&filters[$or][2][$and][0][date_event_end][$null]=true&filters[$or][2][$and][1][date_event][$lt]=${now}&status=published&sort=date_event:desc&pagination[pageSize]=12`,
     { tags: [TAGS.EVENT_PAGE] },
   )
 }
