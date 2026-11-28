@@ -4,7 +4,17 @@ export type TagGroup = (typeof TAG_GROUPS)[number]
 
 export type Tag = { name: string; slug: string; group: TagGroup }
 
-export type TagFilter = Partial<Record<TagGroup, string[]>>
+export type TagFilter = Partial<Record<TagGroup, string[]>> & {
+  from?: string
+  to?: string
+}
+
+function isDate(value: string) {
+  return (
+    /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    new Date(value).toJSON()?.slice(0, 10) === value
+  )
+}
 
 export type SearchParams = { [key: string]: string | string[] | undefined }
 
@@ -19,11 +29,21 @@ export function parseTagFilter(searchParams: SearchParams = {}): TagFilter {
       filter[group] = [...new Set(slugs)]
     }
   }
+  for (const bound of ["from", "to"] as const) {
+    const value = searchParams[bound]
+    if (typeof value === "string" && isDate(value)) {
+      filter[bound] = value
+    }
+  }
   return filter
 }
 
 export function hasTagFilter(filter: TagFilter = {}) {
-  return TAG_GROUPS.some((group) => filter[group]?.length)
+  return Boolean(
+    TAG_GROUPS.some((group) => filter[group]?.length) ||
+    filter.from ||
+    filter.to,
+  )
 }
 
 export function cardLabels(
@@ -47,6 +67,12 @@ export function tagFilterHref(filter: TagFilter = {}, page?: number) {
       ? [`${group}=${filter[group].map(encodeURIComponent).join(",")}`]
       : [],
   )
+  if (filter.from) {
+    params.push(`from=${filter.from}`)
+  }
+  if (filter.to) {
+    params.push(`to=${filter.to}`)
+  }
   if (page) {
     params.push(`page=${page}`)
   }

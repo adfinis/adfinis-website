@@ -13,7 +13,8 @@ function fixtureName({ pathname, searchParams }) {
       .map((key) => searchParams.get(key))
       .sort(),
     ...(has("[date_event][$lt]") ? ["past"] : []),
-    ...(has("[publication_date][$null]") ? ["undated"] : []),
+    ...(keys.includes("filters[publication_date][$null]") ? ["undated"] : []),
+    ...(has("[publication_date][$gte]") ? ["range"] : []),
   ].join(".")
 }
 

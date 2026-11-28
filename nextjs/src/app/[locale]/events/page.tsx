@@ -129,7 +129,7 @@ export default async function EventsOverviewPage(props: {
         </Intro>
       )}
       {(cards.length > 0 || hasTagFilter(filter)) && (
-        <TagFilter locale={locale} filter={filter} />
+        <TagFilter locale={locale} filter={filter} dateRange />
       )}
       {(cards.length > 0 || hasTagFilter(filter)) && (
         <Container

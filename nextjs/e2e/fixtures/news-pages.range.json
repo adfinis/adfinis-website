@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "documentId": "news2",
+      "slug": "kubernetes-news",
+      "card_title": "Kubernetes news",
+      "publication_date": "2020-02-01",
+      "minutes_read": 3
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 24,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}

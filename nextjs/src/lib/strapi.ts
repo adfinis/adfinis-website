@@ -99,6 +99,25 @@ async function tagFilterQuery(locale: Locale, filter: TagFilter = {}) {
     .join("")
 }
 
+function newsDateQuery({ from, to }: TagFilter = {}) {
+  if (!from && !to) {
+    return ""
+  }
+  const between = (field: string, branch: number, start: number) =>
+    [from && `[$gte]=${from}`, to && `[$lte]=${to}T23:59:59.999Z`]
+      .filter(Boolean)
+      .map(
+        (bound, index) =>
+          `&filters[$or][${branch}][$and][${start + index}][${field}]${bound}`,
+      )
+      .join("")
+  return `${between("publication_date", 0, 0)}&filters[$or][1][$and][0][publication_date][$null]=true${between("publishedAt", 1, 1)}`
+}
+
+function eventDateQuery({ from, to }: TagFilter = {}) {
+  return `${from ? `&filters[date_event][$gte]=${from}` : ""}${to ? `&filters[date_event][$lte]=${to}` : ""}`
+}
+
 /**
  * Postgres sorts items without a publication date first when the newest are
  * asked for. The carousel asks for dated and undated items apart instead.
@@ -190,7 +209,7 @@ export async function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${newsDateQuery(filter)}${await tagFilterQuery(locale, filter)}`,
     { raw: true, tags: [TAGS.NEWS_PAGE, TAGS.TAG] },
   )
 }
@@ -246,7 +265,7 @@ export async function getEventPageCards(
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${eventDateQuery(filter)}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.EVENT_PAGE, TAGS.TAG] },
   )
 }

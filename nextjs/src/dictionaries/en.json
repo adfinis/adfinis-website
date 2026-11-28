@@ -64,6 +64,9 @@
         "apply": "Apply",
         "reset": "Reset",
         "close": "Close",
+        "dateRange": "Date range",
+        "from": "From",
+        "to": "To",
         "noResults": "No items match this filter."
     },
     "ui": {

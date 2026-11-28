@@ -48,6 +48,15 @@ describe("event card queries", () => {
     })
   })
 
+  test("upcoming: a date range bounds the start date", async () => {
+    await getEventPageCards("en", { from: "2027-02-01", to: "2027-02-28" })
+
+    expect(requestedParams()).toMatchObject({
+      "filters[date_event][$gte]": "2027-02-01",
+      "filters[date_event][$lte]": "2027-02-28",
+    })
+  })
+
   test("past: marked past or ended, newest 12 first", async () => {
     await getPastEventPageCards("en")
 
@@ -129,6 +138,23 @@ describe("tag queries", () => {
         "pagination[pageSize]": "24",
       },
       cacheTags: ["news-page", "tag"],
+    })
+  })
+
+  test("news: a date range matches publication_date, or publishedAt when it is empty", async () => {
+    await getNewsGrid("en", {
+      page: 1,
+      pageSize: 24,
+      filter: { from: "2026-01-01", to: "2026-01-31" },
+    })
+
+    expect(request(0).params).toMatchObject({
+      "filters[$or][0][$and][0][publication_date][$gte]": "2026-01-01",
+      "filters[$or][0][$and][1][publication_date][$lte]":
+        "2026-01-31T23:59:59.999Z",
+      "filters[$or][1][$and][0][publication_date][$null]": "true",
+      "filters[$or][1][$and][1][publishedAt][$gte]": "2026-01-01",
+      "filters[$or][1][$and][2][publishedAt][$lte]": "2026-01-31T23:59:59.999Z",
     })
   })
 

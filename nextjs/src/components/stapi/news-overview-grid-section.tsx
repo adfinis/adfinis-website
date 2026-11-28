@@ -48,7 +48,7 @@ export default async function NewsOverviewGridSection({
 
   return (
     <>
-      <TagFilter locale={locale} filter={filter} />
+      <TagFilter locale={locale} filter={filter} dateRange />
       <Container padding="both-padding" background="white">
         {hasTagFilter(filter) && meta.pagination.total === 0 && (
           <p data-testid="no-results">{dictionary.filters.noResults}</p>

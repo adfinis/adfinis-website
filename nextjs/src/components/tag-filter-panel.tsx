@@ -25,7 +25,16 @@ import {
 type Props = {
   groups: { group: TagGroup; label: string; tags: Tag[] }[]
   active: TagFilter
-  labels: { label: string; apply: string; reset: string; close: string }
+  dateRange: boolean
+  labels: {
+    label: string
+    apply: string
+    reset: string
+    close: string
+    dateRange: string
+    from: string
+    to: string
+  }
 }
 
 export default function TagFilterPanel(props: Props) {
@@ -64,7 +73,7 @@ export default function TagFilterPanel(props: Props) {
   )
 }
 
-function TagFilterFields({ groups, active, labels }: Props) {
+function TagFilterFields({ groups, active, dateRange, labels }: Props) {
   const router = useRouter()
   const href = tagFilterHref(active)
   const [chosen, setChosen] = useState(active)
@@ -112,6 +121,33 @@ function TagFilterFields({ groups, active, labels }: Props) {
           )
         })}
       </div>
+      {dateRange && (
+        <fieldset className="grid gap-2">
+          <legend className="mb-2 text-12 uppercase font-semibold tracking-wider text-white">
+            {labels.dateRange}
+          </legend>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+            {(["from", "to"] as const).map((bound) => (
+              <input
+                key={bound}
+                type="date"
+                aria-label={labels[bound]}
+                value={chosen[bound] ?? ""}
+                min={bound === "to" ? chosen.from : undefined}
+                max={bound === "from" ? chosen.to : undefined}
+                onChange={({ target }) =>
+                  setChosen({
+                    ...chosen,
+                    [bound]: target.value || undefined,
+                  })
+                }
+                className="h-12.5 w-full rounded-full border border-white/50 bg-white/10 px-7 text-white [color-scheme:dark] hover:bg-white/20 focus:outline-1 focus:outline-white"
+                data-testid={`tag-filter-${bound}`}
+              />
+            ))}
+          </div>
+        </fieldset>
+      )}
       <div className="flex flex-wrap gap-4">
         <Button
           type="button"

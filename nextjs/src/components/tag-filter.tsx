@@ -9,9 +9,11 @@ const DROPDOWNS = ["partner", "solution", "location"] as const
 export default async function TagFilter({
   locale,
   filter = {},
+  dateRange = false,
 }: {
   locale: Locale
   filter?: TagFilterValue
+  dateRange?: boolean
 }) {
   const [tags, dictionary] = await Promise.all([
     getTags(locale),
@@ -19,7 +21,9 @@ export default async function TagFilter({
   ])
   if (tags.length === 0) return null
 
-  const active: TagFilterValue = {}
+  const active: TagFilterValue = dateRange
+    ? { from: filter.from, to: filter.to }
+    : {}
   for (const tag of tags) {
     if (filter[tag.group]?.includes(tag.slug)) {
       active[tag.group] = [...(active[tag.group] ?? []), tag.slug]
@@ -34,6 +38,7 @@ export default async function TagFilter({
   return (
     <TagFilterPanel
       groups={groups}
+      dateRange={dateRange}
       active={active}
       labels={dictionary.filters}
     />
