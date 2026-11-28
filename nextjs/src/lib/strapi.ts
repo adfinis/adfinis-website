@@ -30,6 +30,7 @@ export const TAGS = {
   BLOGS_OVERVIEW: "blogs-overview",
   NEWS_PAGE: "news-page",
   NEWS_OVERVIEW: "news-overview",
+  TAG: "tag",
   LLM: "llm",
 } as const
 
@@ -53,6 +54,48 @@ function sanitizeSlug(input: string) {
     .replace(/[^a-z0-9\-_\s]/g, "")
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-")
+}
+
+export const TAG_GROUPS = ["partner", "location", "solution"] as const
+
+export type TagGroup = (typeof TAG_GROUPS)[number]
+
+export type Tag = { name: string; slug: string; group: TagGroup }
+
+export type TagFilter = Partial<Record<TagGroup, string[]>>
+
+/**
+ * Answers with no tags when Strapi refuses or lacks the endpoint, so the
+ * overviews render unfiltered instead of 404.
+ */
+export async function getTags(locale: Locale): Promise<Tag[]> {
+  validateLocale(locale)
+  const { isEnabled: isDraft } = await draftMode()
+
+  const fetchOptions: RequestInit = isDraft
+    ? { cache: "no-store" }
+    : { next: { tags: [TAGS.TAG], revalidate: 3600 } }
+
+  const response = await strapiFetch(
+    `tags?locale=${normalizeLocale(locale)}&sort=name:asc&pagination[pageSize]=100`,
+    fetchOptions,
+  )
+  if (!response.ok) {
+    return []
+  }
+  const res = await response.json().catch(() => null)
+  return res?.data ?? []
+}
+
+async function tagFilterQuery(locale: Locale, filter: TagFilter = {}) {
+  if (!TAG_GROUPS.some((group) => filter[group]?.length)) {
+    return ""
+  }
+  const tags = await getTags(locale)
+  return tags
+    .filter((tag) => filter[tag.group]?.includes(tag.slug))
+    .map((tag, index) => `&filters[tags][slug][$in][${index}]=${tag.slug}`)
+    .join("")
 }
 
 export function getHomepage(locale: Locale) {
@@ -79,11 +122,11 @@ export function getCaseStudy(locale: Locale, slug: string) {
   )
 }
 
-export function getCaseStudiesGrid(locale: Locale) {
+export async function getCaseStudiesGrid(locale: Locale, filter?: TagFilter) {
   validateLocale(locale)
   return strapi(
-    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&sort=publication_date:desc&status=published`,
-    { tags: [TAGS.PAGE_CASE_STUDY] },
+    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&sort=publication_date:desc&pagination[pageSize]=100&status=published${await tagFilterQuery(locale, filter)}`,
+    { tags: [TAGS.PAGE_CASE_STUDY, TAGS.TAG] },
   )
 }
 
@@ -111,20 +154,22 @@ export function getNewsOverview(locale: Locale) {
   )
 }
 
-export function getNewsGrid(
+export async function getNewsGrid(
   locale: Locale,
   {
     page,
     pageSize,
+    filter,
   }: {
     page: number
     pageSize: number
+    filter?: TagFilter
   },
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published`,
-    { raw: true, tags: [TAGS.NEWS_PAGE] },
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${await tagFilterQuery(locale, filter)}`,
+    { raw: true, tags: [TAGS.NEWS_PAGE, TAGS.TAG] },
   )
 }
 
@@ -168,12 +213,12 @@ export function getEventPage(locale: Locale, slug: string) {
   )
 }
 
-export function getEventPageCards(locale: Locale) {
+export async function getEventPageCards(locale: Locale, filter?: TagFilter) {
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=date_event:asc&pagination[pageSize]=100`,
-    { tags: [TAGS.EVENT_PAGE] },
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=date_event:asc&pagination[pageSize]=100${await tagFilterQuery(locale, filter)}`,
+    { tags: [TAGS.EVENT_PAGE, TAGS.TAG] },
   )
 }
 

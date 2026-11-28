@@ -98,6 +98,11 @@
       "relation": "oneToOne",
       "target": "api::hero.hero"
     },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
     "intro": {
       "pluginOptions": {
         "i18n": {
