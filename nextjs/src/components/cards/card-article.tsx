@@ -50,20 +50,26 @@ const CardArticle: React.FC<CardArticleProps> = ({
       <div
         className={clsx([
           "w-full bg-white flex items-center gap-2 px-6",
-          logoUrl ? "h-24 justify-end" : "h-12",
+          logoUrl ? "h-24" : "h-12",
         ])}
       >
         {categories?.map((category, index) => (
-          <Link
-            className={clsx([
-              "leading-none text-12 font-semibold tracking-wider uppercase text-sapphire",
-              "hover:underline decoration-sapphire/50 underline-offset-2 decoration-2",
-            ])}
-            key={index}
-            href={category.href}
-          >
-            {category.text}
-          </Link>
+          <React.Fragment key={index}>
+            {index > 0 && (
+              <span aria-hidden className="text-12 text-sapphire">
+                ·
+              </span>
+            )}
+            <Link
+              className={clsx([
+                "leading-none text-12 font-semibold tracking-wider uppercase text-sapphire",
+                "hover:underline decoration-sapphire/50 underline-offset-2 decoration-2",
+              ])}
+              href={category.href}
+            >
+              {category.text}
+            </Link>
+          </React.Fragment>
         ))}
         {logoUrl && (
           <img
@@ -72,7 +78,7 @@ const CardArticle: React.FC<CardArticleProps> = ({
             alt={title}
             height={50}
             width={200}
-            className="max-h-18 w-auto"
+            className="max-h-18 w-auto ml-auto"
           />
         )}
       </div>
@@ -80,6 +86,7 @@ const CardArticle: React.FC<CardArticleProps> = ({
         <div className="relative grid gap-4 p-6 bg-sapphire">
           <CardTitleTag
             href={href!}
+            data-testid="card-title"
             className={clsx([
               "text-white font-bold text-18",
               {

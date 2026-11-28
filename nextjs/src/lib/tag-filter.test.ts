@@ -6,10 +6,10 @@ vi.mock("next/headers", () => ({
 vi.mock("next/navigation", () => ({ notFound: vi.fn() }))
 
 import {
+  cardLabels,
   hasTagFilter,
   parseTagFilter,
   tagFilterHref,
-  toggleTag,
 } from "./tag-filter"
 
 describe("hasTagFilter", () => {
@@ -57,23 +57,12 @@ describe("parseTagFilter", () => {
 })
 
 describe("filter links", () => {
-  const redHat = { group: "partner", slug: "red-hat" } as const
-  const cloud = { group: "solution", slug: "cloud" } as const
-
-  test("a link adds its slug and drops the page", () => {
-    expect(tagFilterHref(toggleTag({}, redHat))).toBe("?partner=red-hat")
-    expect(tagFilterHref(toggleTag({ solution: ["security"] }, cloud))).toBe(
-      "?solution=security,cloud",
-    )
-  })
-
-  test("a link on a chosen tag removes its slug", () => {
+  test("a link holds every chosen slug, and none for an empty group", () => {
+    expect(tagFilterHref({ partner: ["red-hat"] })).toBe("?partner=red-hat")
     expect(
-      tagFilterHref(
-        toggleTag({ partner: ["red-hat"], solution: ["cloud"] }, redHat),
-      ),
-    ).toBe("?solution=cloud")
-    expect(tagFilterHref(toggleTag({ partner: ["red-hat"] }, redHat))).toBe("?")
+      tagFilterHref({ partner: [], solution: ["security", "cloud"] }),
+    ).toBe("?solution=security,cloud")
+    expect(tagFilterHref({ partner: [] })).toBe("?")
   })
 
   test("groups keep a fixed order whatever the order chosen", () => {
@@ -92,4 +81,17 @@ describe("filter links", () => {
   test("values that are not slugs are escaped", () => {
     expect(tagFilterHref({ partner: ["a&b=c"] })).toBe("?partner=a%26b%3Dc")
   })
+})
+
+test("card labels: the kind first, then only partner tags, linked to the filter", () => {
+  expect(
+    cardLabels({ text: "News", href: "/en/news" }, [
+      { name: "Red Hat", slug: "red-hat", group: "partner" },
+      { name: "Zurich", slug: "zurich", group: "location" },
+    ]),
+  ).toEqual([
+    { text: "News", href: "/en/news" },
+    { text: "Red Hat", href: "/en/news?partner=red-hat" },
+  ])
+  expect(cardLabels({ text: "Event", href: "/en/events" })).toHaveLength(1)
 })

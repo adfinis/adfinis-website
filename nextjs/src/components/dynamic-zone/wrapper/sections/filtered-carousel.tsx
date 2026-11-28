@@ -11,6 +11,8 @@ import {
   Locale,
 } from "@/lib/locale"
 import { CASE_STUDIES_SLUGS, NEWS_SLUGS } from "@/lib/slugs"
+import { getDictionary } from "@/lib/get-dictionary.server"
+import { cardLabels } from "@/lib/tag-filter"
 import {
   getCaseStudiesGrid,
   getEventPageCards,
@@ -90,6 +92,17 @@ export default async function FilteredCarousel({
       : [],
   ])
 
+  const { cardLabels: kinds } = await getDictionary(locale)
+  const eventsOverview = { text: kinds.event, href: `/${locale}/events` }
+  const newsOverview = {
+    text: kinds.news,
+    href: `/${locale}/${NEWS_SLUGS[locale]}`,
+  }
+  const caseStudiesOverview = {
+    text: kinds.caseStudy,
+    href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}`,
+  }
+
   const eventCards: Card[] = events.map((item: any) => ({
     id: `event_${item.documentId}`,
     addedAt: item.createdAt,
@@ -102,7 +115,8 @@ export default async function FilteredCarousel({
     }),
     imageUrl: item.hero?.background_image?.url,
     logoUrl: item.card_image?.url,
-    href: `/${locale}/events/${item.slug}`,
+    categories: cardLabels(eventsOverview, item.tags),
+    href: `${eventsOverview.href}/${item.slug}`,
   }))
 
   const cards: Card[] = eventsOnly
@@ -118,11 +132,8 @@ export default async function FilteredCarousel({
             locale,
           })} / ${item.minutes_read} min read`,
           imageUrl: item.hero?.background_image?.url,
-          categories: item.categories?.map((category: any) => ({
-            text: category.name,
-            href: category.url,
-          })),
-          href: `/${locale}/${NEWS_SLUGS[locale]}/${item.slug}`,
+          categories: cardLabels(newsOverview, item.tags),
+          href: `${newsOverview.href}/${item.slug}`,
         })),
         eventCards,
         caseStudies.map((item: any) => ({
@@ -133,7 +144,8 @@ export default async function FilteredCarousel({
           description: "",
           imageUrl: item.hero?.background_image?.url,
           logoUrl: item.client_image?.url,
-          href: `/${locale}/${CASE_STUDIES_SLUGS[locale]}/${item.slug}`,
+          categories: cardLabels(caseStudiesOverview, item.tags),
+          href: `${caseStudiesOverview.href}/${item.slug}`,
         })),
       ]
         .flat()

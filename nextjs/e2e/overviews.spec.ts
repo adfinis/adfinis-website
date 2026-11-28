@@ -35,7 +35,7 @@ for (const { name, Overview, all, redHat } of [
     await overview.open()
     await expect(overview.cards).toHaveCount(all)
 
-    await overview.tagFilter.choose("Red Hat")
+    await overview.tagFilter.choose("Partner", "Red Hat")
 
     await expect(page).toHaveURL(/\?partner=red-hat$/)
     await expect(overview.cards).toHaveCount(1)
@@ -50,7 +50,7 @@ test("news: the no-results text shows only when a filter matches nothing", async
   await news.open()
   await expect(news.noResults).toBeHidden()
 
-  await news.tagFilter.choose("Zurich")
+  await news.tagFilter.choose("Region", "Zurich")
 
   await expect(news.noResults).toBeVisible()
   await expect(news.cards).toHaveCount(0)

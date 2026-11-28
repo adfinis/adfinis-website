@@ -51,12 +51,19 @@
         "of": "von",
         "publishedAt": "Veröffentlicht am"
     },
+    "cardLabels": {
+        "news": "News",
+        "event": "Event",
+        "caseStudy": "Referenz"
+    },
     "filters": {
         "label": "Filter",
         "partner": "Partner",
-        "location": "Standort",
+        "location": "Region",
         "solution": "Lösung",
-        "reset": "Filter zurücksetzen",
+        "apply": "Anwenden",
+        "reset": "Zurücksetzen",
+        "close": "Schließen",
         "noResults": "Keine Einträge für diesen Filter."
     },
     "ui": {

@@ -1,15 +1,23 @@
 import type { Locator, Page } from "@playwright/test"
 
 export class TagFilter {
-  private readonly options: Locator
+  private readonly filter: Locator
 
   constructor(page: Page) {
-    this.options = page
-      .getByTestId("tag-filter")
-      .getByTestId("tag-filter-option")
+    this.filter = page.getByTestId("tag-filter")
   }
 
-  async choose(name: string) {
-    await this.options.filter({ hasText: name }).click()
+  async choose(group: string, name: string) {
+    await this.filter.getByTestId("tag-filter-toggle").click()
+    await this.filter
+      .getByTestId("tag-filter-group")
+      .filter({ hasText: group })
+      .click()
+    await this.filter
+      .getByTestId("tag-filter-option")
+      .filter({ hasText: name })
+      .click()
+    await this.filter.page().keyboard.press("Escape")
+    await this.filter.getByTestId("tag-filter-apply").click()
   }
 }

@@ -2,6 +2,12 @@ import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { Locale, locales } from "@/lib/locale"
 import { today } from "@/lib/event"
+import {
+  TAG_GROUPS,
+  type Tag,
+  type TagFilter,
+  type TagGroup,
+} from "@/lib/tag-filter"
 const STRAPI = process.env.STRAPI_API || ""
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || ""
 
@@ -56,13 +62,8 @@ function sanitizeSlug(input: string) {
     .replace(/-+/g, "-")
 }
 
-export const TAG_GROUPS = ["partner", "location", "solution"] as const
-
-export type TagGroup = (typeof TAG_GROUPS)[number]
-
-export type Tag = { name: string; slug: string; group: TagGroup }
-
-export type TagFilter = Partial<Record<TagGroup, string[]>>
+export { TAG_GROUPS }
+export type { Tag, TagFilter, TagGroup }
 
 /**
  * Answers with no tags when Strapi refuses or lacks the endpoint, so the
@@ -144,7 +145,7 @@ export async function getCaseStudiesGrid(
       ? "sort=publication_date:desc"
       : "sort[0]=publication_date:desc&sort[1]=publishedAt:desc"
   return strapi(
-    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&${sort}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
+    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&populate=tags&${sort}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.PAGE_CASE_STUDY, TAGS.TAG] },
   )
 }
@@ -189,7 +190,7 @@ export async function getNewsGrid(
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { raw: true, tags: [TAGS.NEWS_PAGE, TAGS.TAG] },
   )
 }
@@ -245,7 +246,7 @@ export async function getEventPageCards(
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.EVENT_PAGE, TAGS.TAG] },
   )
 }
@@ -254,7 +255,7 @@ export function getPastEventPageCards(locale: Locale) {
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[$or][0][is_past_event][$eq]=true&filters[$or][1][date_event_end][$lt]=${now}&filters[$or][2][$and][0][date_event_end][$null]=true&filters[$or][2][$and][1][date_event][$lt]=${now}&status=published&sort=date_event:desc&pagination[pageSize]=12`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&populate=tags&filters[$or][0][is_past_event][$eq]=true&filters[$or][1][date_event_end][$lt]=${now}&filters[$or][2][$and][0][date_event_end][$null]=true&filters[$or][2][$and][1][date_event][$lt]=${now}&status=published&sort=date_event:desc&pagination[pageSize]=12`,
     { tags: [TAGS.EVENT_PAGE] },
   )
 }

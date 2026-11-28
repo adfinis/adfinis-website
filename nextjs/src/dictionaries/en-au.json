@@ -51,12 +51,19 @@
         "of": "of",
         "publishedAt": "Published on"
     },
+    "cardLabels": {
+        "news": "News",
+        "event": "Event",
+        "caseStudy": "Success story"
+    },
     "filters": {
         "label": "Filter",
         "partner": "Partner",
-        "location": "Location",
+        "location": "Region",
         "solution": "Solution",
-        "reset": "Reset filters",
+        "apply": "Apply",
+        "reset": "Reset",
+        "close": "Close",
         "noResults": "No items match this filter."
     },
     "ui": {

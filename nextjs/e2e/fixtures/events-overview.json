@@ -1,1 +1,7 @@
-{ "data": { "metadata_title": "Overview", "localizations": [] } }
+{
+  "data": {
+    "metadata_title": "Overview",
+    "intro": "Overview.\n\nNews, events and success stories.\n\nThe filter narrows the list.\n\nEverything here is sample content.",
+    "localizations": []
+  }
+}

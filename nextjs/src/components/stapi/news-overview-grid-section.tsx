@@ -6,7 +6,7 @@ import Container from "@/components/container"
 import { getLocaleDateFormatted, Locale } from "@/lib/locale"
 import Pagination from "../pagination/pagination"
 import TagFilter from "@/components/tag-filter"
-import { hasTagFilter } from "@/lib/tag-filter"
+import { cardLabels, hasTagFilter } from "@/lib/tag-filter"
 import { getDictionary } from "@/lib/get-dictionary.server"
 
 export default async function NewsOverviewGridSection({
@@ -27,6 +27,10 @@ export default async function NewsOverviewGridSection({
     getNewsGrid(locale, { page: index, pageSize, filter }),
     getDictionary(locale),
   ])
+  const overview = {
+    text: dictionary.cardLabels.news,
+    href: `/${locale}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}`,
+  }
   const cards = data.map((item: any) => {
     return {
       key: `news_item_${item.id}`,
@@ -37,35 +41,32 @@ export default async function NewsOverviewGridSection({
         locale: locale,
       })} / ${item.minutes_read} min read`,
       imageUrl: item.hero?.background_image?.url,
-      categories: item.categories?.map((cat: any) => {
-        return {
-          text: cat.name,
-          href: cat.url,
-        }
-      }),
-      href: `/${locale}/${NEWS_SLUGS[locale.toLowerCase() as Locale]}/${item.slug}`,
+      categories: cardLabels(overview, item.tags),
+      href: `${overview.href}/${item.slug}`,
     }
   })
 
   return (
-    <Container padding="both-padding" background="white">
+    <>
       <TagFilter locale={locale} filter={filter} />
-      {hasTagFilter(filter) && meta.pagination.total === 0 && (
-        <p data-testid="no-results">{dictionary.filters.noResults}</p>
-      )}
-      <CardGroup maxWidth="none" testId="card-grid">
-        {cards.map((card: any) => (
-          <CardArticle {...card} key={card.key} />
-        ))}
-      </CardGroup>
-      <Pagination
-        pageCount={meta.pagination.pageCount}
-        total={meta.pagination.total}
-        pageSize={meta.pagination.pageSize}
-        page={index}
-        locale={locale}
-        filter={filter}
-      />
-    </Container>
+      <Container padding="both-padding" background="white">
+        {hasTagFilter(filter) && meta.pagination.total === 0 && (
+          <p data-testid="no-results">{dictionary.filters.noResults}</p>
+        )}
+        <CardGroup maxWidth="none" testId="card-grid">
+          {cards.map((card: any) => (
+            <CardArticle {...card} key={card.key} />
+          ))}
+        </CardGroup>
+        <Pagination
+          pageCount={meta.pagination.pageCount}
+          total={meta.pagination.total}
+          pageSize={meta.pagination.pageSize}
+          page={index}
+          locale={locale}
+          filter={filter}
+        />
+      </Container>
+    </>
   )
 }
