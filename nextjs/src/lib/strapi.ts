@@ -98,6 +98,17 @@ async function tagFilterQuery(locale: Locale, filter: TagFilter = {}) {
     .join("")
 }
 
+/**
+ * Postgres sorts items without a publication date first when the newest are
+ * asked for. The carousel asks for dated and undated items apart instead.
+ */
+function datedQuery(dated?: boolean) {
+  if (dated === undefined) {
+    return ""
+  }
+  return `&filters[publication_date][${dated ? "$notNull" : "$null"}]=true`
+}
+
 export function getHomepage(locale: Locale) {
   validateLocale(locale)
   return strapi(
@@ -122,10 +133,18 @@ export function getCaseStudy(locale: Locale, slug: string) {
   )
 }
 
-export async function getCaseStudiesGrid(locale: Locale, filter?: TagFilter) {
+export async function getCaseStudiesGrid(
+  locale: Locale,
+  filter?: TagFilter,
+  { pageSize = 100, dated }: { pageSize?: number; dated?: boolean } = {},
+) {
   validateLocale(locale)
+  const sort =
+    dated === undefined
+      ? "sort=publication_date:desc"
+      : "sort[0]=publication_date:desc&sort[1]=publishedAt:desc"
   return strapi(
-    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&sort=publication_date:desc&pagination[pageSize]=100&status=published${await tagFilterQuery(locale, filter)}`,
+    `page-case-studies?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=client_image&${sort}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.PAGE_CASE_STUDY, TAGS.TAG] },
   )
 }
@@ -160,15 +179,17 @@ export async function getNewsGrid(
     page,
     pageSize,
     filter,
+    dated,
   }: {
     page: number
     pageSize: number
     filter?: TagFilter
+    dated?: boolean
   },
 ) {
   validateLocale(locale)
   return strapi(
-    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${await tagFilterQuery(locale, filter)}`,
+    `news-pages?locale=${normalizeLocale(locale)}&populate=hero.background_image&populate=categories&populate=tags&sort[0]=publication_date:desc&sort[1]=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&status=published${datedQuery(dated)}${await tagFilterQuery(locale, filter)}`,
     { raw: true, tags: [TAGS.NEWS_PAGE, TAGS.TAG] },
   )
 }
@@ -213,11 +234,18 @@ export function getEventPage(locale: Locale, slug: string) {
   )
 }
 
-export async function getEventPageCards(locale: Locale, filter?: TagFilter) {
+export async function getEventPageCards(
+  locale: Locale,
+  filter?: TagFilter,
+  {
+    sort = "date_event:asc",
+    pageSize = 100,
+  }: { sort?: "date_event:asc" | "createdAt:desc"; pageSize?: number } = {},
+) {
   validateLocale(locale)
   const now = today()
   return strapi(
-    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=date_event:asc&pagination[pageSize]=100${await tagFilterQuery(locale, filter)}`,
+    `event-pages/?locale=${normalizeLocale(locale)}&populate=card_image&populate=hero.background_image&filters[is_past_event][$eq]=false&filters[$or][0][date_event_end][$gte]=${now}&filters[$or][1][$and][0][date_event_end][$null]=true&filters[$or][1][$and][1][date_event][$gte]=${now}&status=published&sort=${sort}&pagination[pageSize]=${pageSize}${await tagFilterQuery(locale, filter)}`,
     { tags: [TAGS.EVENT_PAGE, TAGS.TAG] },
   )
 }

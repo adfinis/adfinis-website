@@ -55,6 +55,19 @@ module.exports = (config, { strapi }) => {
                 },
               },
             },
+            "sections.filtered-carousel": {
+              populate: {
+                props: {
+                  populate: "*",
+                },
+                cta: {
+                  populate: "*",
+                },
+                tags: {
+                  populate: "*",
+                },
+              },
+            },
             "sections.sla-card-section": {
               populate: {
                 props: {

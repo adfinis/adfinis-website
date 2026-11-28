@@ -10,6 +10,7 @@ import ProductFeatureCard from "@/components/dynamic-zone/wrapper/relations/prod
 import EventDetailsSection from "@/components/dynamic-zone/wrapper/sections/event-details-section"
 import ExtraWideIconCardsGridSection from "@/components/dynamic-zone/wrapper/sections/extra-wide-icon-cards-grid-section"
 import ContentCarousel from "@/components/dynamic-zone/wrapper/sections/content-carousel"
+import FilteredCarousel from "@/components/dynamic-zone/wrapper/sections/filtered-carousel"
 import ContentHighlightSection from "@/components/dynamic-zone/wrapper/sections/content-highlight-section"
 import GatedContent from "@/components/dynamic-zone/wrapper/sections/gated-content"
 import ColorCardCarousel from "@/components/dynamic-zone/wrapper/sections/color-card-carousel"
@@ -106,6 +107,14 @@ export function renderSections(section: any, index: number, locale?: string) {
         <ContentCarousel
           key={`sections.content-carousel_${index}`}
           section={section}
+        />
+      )
+    case "sections.filtered-carousel":
+      return (
+        <FilteredCarousel
+          key={`sections.filtered-carousel_${index}`}
+          section={section}
+          locale={locale as Locale}
         />
       )
     case "sections.services-section":
