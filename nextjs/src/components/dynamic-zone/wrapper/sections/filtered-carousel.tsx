@@ -147,6 +147,7 @@ export default async function FilteredCarousel({
   return (
     <Container
       id={section.props.anchor}
+      testId="filtered-carousel"
       padding={section.props.padding}
       background={section.props.background}
     >

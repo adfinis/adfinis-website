@@ -15,6 +15,7 @@ type CardGroupProps = {
    * @info defaults to`5xl` for backwards compatibility when nothing provided.
    */
   maxWidth?: "5xl" | "6xl" | "7xl" | "none"
+  testId?: string
 }
 
 /**
@@ -29,9 +30,11 @@ const CardGroup: React.FC<CardGroupProps> = ({
   hasDividers,
   maxWidth = "5xl",
   className,
+  testId,
 }) => {
   return (
     <div
+      data-testid={testId}
       // twMerge so a gap-* (etc.) passed via className overrides the defaults
       className={twMerge(
         clsx([

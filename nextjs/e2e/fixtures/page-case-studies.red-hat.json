@@ -1,0 +1,11 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "case1",
+      "slug": "red-hat-case-study",
+      "card_title": "Red Hat case study",
+      "publication_date": "2020-02-20"
+    }
+  ]
+}

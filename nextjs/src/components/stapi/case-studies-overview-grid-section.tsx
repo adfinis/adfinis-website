@@ -34,9 +34,9 @@ export default async function CaseStudiesOverviewGridSection({
     <Container padding="both-padding" background="neutral">
       <TagFilter locale={locale} filter={filter} />
       {hasTagFilter(filter) && cards.length === 0 && (
-        <p>{dictionary.filters.noResults}</p>
+        <p data-testid="no-results">{dictionary.filters.noResults}</p>
       )}
-      <CardGroup maxWidth="none">
+      <CardGroup maxWidth="none" testId="card-grid">
         {cards.map((card: any) => (
           <CardArticle {...card} key={card.key} />
         ))}

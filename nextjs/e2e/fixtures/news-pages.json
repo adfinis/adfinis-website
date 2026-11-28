@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "documentId": "news1",
+      "slug": "red-hat-news",
+      "card_title": "Red Hat news",
+      "publication_date": "2020-03-01",
+      "minutes_read": 3
+    },
+    {
+      "id": 2,
+      "documentId": "news2",
+      "slug": "kubernetes-news",
+      "card_title": "Kubernetes news",
+      "publication_date": "2020-02-01",
+      "minutes_read": 3
+    },
+    {
+      "id": 3,
+      "documentId": "news3",
+      "slug": "other-news",
+      "card_title": "Other news",
+      "publication_date": "2020-01-01",
+      "minutes_read": 3
+    }
+  ],
+  "meta": {
+    "pagination": { "page": 1, "pageSize": 24, "pageCount": 1, "total": 3 }
+  }
+}
