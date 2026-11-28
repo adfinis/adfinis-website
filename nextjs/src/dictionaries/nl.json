@@ -51,6 +51,14 @@
         "of": "van",
         "publishedAt": "Gepubliceerd op"
     },
+    "filters": {
+        "label": "Filter",
+        "partner": "Partner",
+        "location": "Locatie",
+        "solution": "Oplossing",
+        "reset": "Filters wissen",
+        "noResults": "Geen resultaten voor dit filter."
+    },
     "ui": {
         "localeSwitcherAriaLabel": "Selecteer taal",
         "mobileHamburgerAriaLabel": "Open hoofdmenu"

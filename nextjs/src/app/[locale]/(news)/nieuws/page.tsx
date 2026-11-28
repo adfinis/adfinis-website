@@ -48,7 +48,9 @@ export async function generateMetadata(props: {
 
 export default async function NewsOverviewPage(props: {
   params: Promise<{ locale: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
+  const searchParams = await props.searchParams
   const params = (await props.params) as Awaited<typeof props.params> & {
     locale: Locale
   }
@@ -60,5 +62,7 @@ export default async function NewsOverviewPage(props: {
     locale: locale,
     isActive: true,
   }
-  return <NewsOverview activeLocale={activeLocale} />
+  return (
+    <NewsOverview activeLocale={activeLocale} searchParams={searchParams} />
+  )
 }
